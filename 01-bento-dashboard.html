@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst" data-intensity="standard">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>01 · Bento + AI dashboard · Atmosphere Lab</title>
+<link rel="stylesheet" href="lab.css"/>
+<style>
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+  }
+  .cell {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius-xl);
+    padding: 18px 18px 16px;
+    min-height: 100px;
+  }
+  .cell.span-4 { grid-column: span 4; }
+  .cell.span-6 { grid-column: span 6; }
+  .cell.span-8 { grid-column: span 8; }
+  .cell.span-3 { grid-column: span 3; }
+  .cell.dark {
+    background: var(--obsidian);
+    border-color: transparent;
+    color: var(--off-white);
+  }
+  .cell.dark .meta { color: rgba(245,244,241,0.55); }
+  .cell h3 {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 10px;
+  }
+  .kpi {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .kpi-l { font-size: 12px; color: var(--fg-3); margin-top: 6px; }
+  .cell.dark .kpi-l { color: rgba(245,244,241,0.55); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .chip {
+    font-size: 11px; font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent);
+    background: var(--accent-pale);
+    color: var(--fg-1);
+  }
+  .chip.g { --accent: var(--finance-green); --accent-pale: var(--green-pale); }
+  .chip.a { --accent: var(--biz-amber); --accent-pale: var(--amber-pale); }
+  .chip.p { --accent: var(--tech-purple); --accent-pale: var(--purple-pale); }
+  .status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--success-pale); color: var(--success);
+  }
+  .status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+  .status.q { background: var(--warning-pale); color: var(--warning); }
+  .status.b { background: var(--danger-pale); color: var(--danger); }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .row:last-child { border-bottom: none; }
+  .cell.dark .row { border-color: rgba(255,255,255,0.08); }
+  @media (max-width: 800px) {
+    .cell.span-3, .cell.span-4, .cell.span-6, .cell.span-8 { grid-column: span 12; }
+  }
+</style>
+</head>
+<body>
+<header class="lab-bar">
+  <a class="back" href="index.html">← Lab index</a>
+  <span class="lab-title">01 · Bento dashboard</span>
+  <div class="lab-controls" id="lab-controls"></div>
+</header>
+
+<main class="lab-stage">
+  <div class="eyebrow-rule" style="margin-bottom:16px"><span class="eyebrow-mono">Intelligence layer</span></div>
+  <h1 class="h2" style="margin:0 0 8px">Operating pulse.</h1>
+  <p class="body-sm" style="margin:0 0 28px;max-width:480px">Information-rich, not chaotic — every cell has one job. Division accent drives borders and chips.</p>
+
+  <div class="bento">
+    <div class="cell span-3">
+      <div class="meta">Pipeline · live</div>
+      <div class="kpi">48</div>
+      <div class="kpi-l">Active requisitions</div>
+      <div class="chips"><span class="status">Live</span></div>
+    </div>
+    <div class="cell span-3">
+      <div class="meta">Time-to-offer</div>
+      <div class="kpi">19<span style="font-size:22px">d</span></div>
+      <div class="kpi-l">Median · last 90 days</div>
+    </div>
+    <div class="cell span-3">
+      <div class="meta">Retention target</div>
+      <div class="kpi">90%</div>
+      <div class="kpi-l">Startup → permanent</div>
+    </div>
+    <div class="cell span-3 dark">
+      <div class="meta">Safe Zone</div>
+      <div class="kpi">4<span style="font-size:22px">mo</span></div>
+      <div class="kpi-l">Duration · operating partner</div>
+    </div>
+
+    <div class="cell span-8">
+      <div class="meta">Workstreams by division</div>
+      <h3>Cross-division queue</h3>
+      <div class="row"><span>Talent acquisition · product eng</span><span class="status">Live</span></div>
+      <div class="row"><span>Payroll run · March close</span><span class="status q">Queued</span></div>
+      <div class="row"><span>Brand system refresh</span><span class="status">Live</span></div>
+      <div class="row"><span>Cloud hardening · staging</span><span class="status b">Blocked</span></div>
+    </div>
+    <div class="cell span-4">
+      <div class="meta">Division mix</div>
+      <h3>Active arms</h3>
+      <div class="chips">
+        <span class="chip">enlyst HR</span>
+        <span class="chip g">enlysum Finance</span>
+        <span class="chip a">enlybiz Growth</span>
+        <span class="chip p">enlysoft Cloud</span>
+      </div>
+    </div>
+
+    <div class="cell span-6" style="border-top-color:var(--finance-green)">
+      <div class="meta">enlysum · finance</div>
+      <h3>Cash &amp; compliance</h3>
+      <p class="body-sm" style="margin:0">FBR calendar · payroll · fractional CFO signal. Dense but scannable.</p>
+      <div class="chips"><span class="chip g">Books current</span><span class="chip g">SECP ready</span></div>
+    </div>
+    <div class="cell span-6" style="border-top-color:var(--biz-amber)">
+      <div class="meta">enlybiz · marketing</div>
+      <h3>Demand this week</h3>
+      <p class="body-sm" style="margin:0">Campaigns, creative reviews, performance notes — one cell, one narrative.</p>
+      <div class="chips"><span class="chip a">3 live ads</span><span class="chip a">2 creatives due</span></div>
+    </div>
+  </div>
+</main>
+
+<section class="lab-notes">
+  <h3>Notes</h3>
+  <ul>
+    <li>Extends ServiceCard motif (3px division top border) into a bento grid — this is the DS pattern for information complexity.</li>
+    <li>Toggle division to recolor the default accent cells; mixed cells keep fixed division hues for wayfinding.</li>
+    <li><strong>Ships in DS v1:</strong> bento guidance + StatusChip/Pill density. Atmosphere stays off this surface in Recruiter OS.</li>
+  </ul>
+</section>
+<script src="lab.js"></script>
+</body>
+</html>

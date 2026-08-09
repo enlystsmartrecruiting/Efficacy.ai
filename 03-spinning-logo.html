@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst" data-intensity="standard">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>03 · Spinning logo · Atmosphere Lab</title>
+<link rel="stylesheet" href="lab.css"/>
+<style>
+  .stage-3d {
+    perspective: 900px;
+    min-height: min(60dvh, 480px);
+    display: grid;
+    place-items: center;
+    background: var(--obsidian);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+  .rig {
+    width: 160px; height: 160px;
+    transform-style: preserve-3d;
+    animation: spinY var(--spin-duration) linear infinite;
+    filter: drop-shadow(0 0 28px rgba(var(--glow-color-rgb), 0.55));
+  }
+  @keyframes spinY {
+    from { transform: rotateY(0deg) rotateX(8deg); }
+    to   { transform: rotateY(360deg) rotateX(8deg); }
+  }
+  .rig img, .rig object, .rig svg {
+    width: 160px; height: 160px;
+    display: block;
+  }
+  .face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+  }
+  .hint {
+    text-align: center;
+    color: rgba(245,244,241,0.55);
+    font-size: 13px;
+    margin-top: 20px;
+  }
+  [data-intensity="calm"] .rig,
+  html.reduced .rig {
+    animation: none;
+  }
+</style>
+</head>
+<body>
+<header class="lab-bar">
+  <a class="back" href="index.html">← Lab index</a>
+  <span class="lab-title">03 · Spinning logo mark</span>
+  <div class="lab-controls" id="lab-controls"></div>
+</header>
+
+<main class="lab-stage">
+  <div class="eyebrow-rule" style="margin-bottom:16px"><span class="eyebrow-mono">Hero moment · one per page</span></div>
+  <p class="body-sm" style="margin:0 0 20px;max-width:480px">CSS-3D auto-rotate of an experiment <em>copy</em> of the mark. Originals stay sacred. Calm / reduced-motion sets <code>--spin-duration: 0s</code>.</p>
+
+  <div class="stage-3d">
+    <div class="rig" id="rig" aria-label="Enlyst mark rotating">
+      <!-- Inline copy so we can recolor stripes by division -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 56 56" fill="none">
+        <rect width="56" height="56" rx="12" fill="#111111"/>
+        <path id="s1" d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#2D5BE3"/>
+        <path id="s2" d="M12 24 L38 24 L30 36 L4 36 Z" fill="#2D5BE3" opacity="0.58"/>
+        <path id="s3" d="M18 40 L44 40 L36 52 L10 52 Z" fill="#2D5BE3" opacity="0.26"/>
+      </svg>
+    </div>
+  </div>
+  <p class="hint">Copy path: <code>_assets/enlyst-mark.svg</code> · geometry matches DS favicon mark</p>
+</main>
+
+<section class="lab-notes">
+  <h3>Notes</h3>
+  <ul>
+    <li>Division switcher recolors stripe fills to the active accent — mark geometry unchanged.</li>
+    <li>Prefer CSS-3D over WebGL for a single mark; Three.js reserved if we need lighting later.</li>
+    <li><strong>Lab / showreel only.</strong> Framework badge never spins. Recruiter OS: static mark.</li>
+  </ul>
+</section>
+<script src="lab.js"></script>
+<script>
+function recolor() {
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  ['s1','s2','s3'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute('fill', accent);
+  });
+}
+window.addEventListener('lab:division', recolor);
+window.addEventListener('lab:intensity', () => {
+  const rig = document.getElementById('rig');
+  const d = getComputedStyle(document.documentElement).getPropertyValue('--spin-duration').trim();
+  if (d === '0s' || window.EnlystLab?.prefersReduced()) {
+    rig.style.animation = 'none';
+  } else {
+    rig.style.animation = '';
+  }
+});
+document.addEventListener('DOMContentLoaded', recolor);
+</script>
+</body>
+</html>

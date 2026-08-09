@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst" data-intensity="standard">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>05 · Combo hero · Atmosphere Lab</title>
+<link rel="stylesheet" href="lab.css"/>
+<style>
+  .hero {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    min-height: min(78dvh, 640px);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    padding: 40px 36px;
+  }
+  #field {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .copy h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 12px 0 14px;
+  }
+  .copy p { color: var(--fg-2); max-width: 400px; margin: 0 0 22px; font-size: 15px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .btn {
+    font-size: 13px; font-weight: 500;
+    padding: 12px 20px; border-radius: var(--radius-md);
+    border: none; cursor: pointer; font-family: var(--font-sans);
+  }
+  .btn.primary { background: var(--accent); color: #fff; box-shadow: var(--glow-mid); }
+  .btn.ghost { background: transparent; border: 1.5px solid var(--border); color: var(--fg-1); }
+  .mini-bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .mini-bento .cell {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 14px;
+    backdrop-filter: blur(6px);
+  }
+  .mini-bento .cell.g { border-top-color: var(--finance-green); }
+  .mini-bento .cell.a { border-top-color: var(--biz-amber); }
+  .mini-bento .cell.p { border-top-color: var(--tech-purple); }
+  .mini-bento .kpi { font-family: var(--font-serif); font-size: 28px; line-height: 1; }
+  .mini-bento .l { font-size: 11px; color: var(--fg-3); margin-top: 4px; }
+  .logo-slot {
+    display: grid;
+    place-items: center;
+    perspective: 900px;
+  }
+  .rig {
+    width: 140px; height: 140px;
+    animation: spinY var(--spin-duration) linear infinite;
+    filter: drop-shadow(0 0 32px rgba(var(--glow-color-rgb), 0.5));
+  }
+  @keyframes spinY {
+    from { transform: rotateY(0deg) rotateX(10deg); }
+    to { transform: rotateY(360deg) rotateX(10deg); }
+  }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 28px 20px; }
+    .logo-slot { order: -1; min-height: 180px; }
+  }
+</style>
+</head>
+<body>
+<header class="lab-bar">
+  <a class="back" href="index.html">← Lab index</a>
+  <span class="lab-title">05 · Combo hero</span>
+  <div class="lab-controls" id="lab-controls"></div>
+</header>
+
+<main class="lab-stage">
+  <div class="eyebrow-rule" style="margin-bottom:16px"><span class="eyebrow-mono">Fan stack · showreel pattern</span></div>
+
+  <div class="hero" id="scene">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="copy">
+      <div class="eyebrow-rule"><span class="eyebrow-mono">Enlystnow</span></div>
+      <h1>No business fights alone.</h1>
+      <p>Bento density + soft particles + one 3D logo moment. Structure still wins — atmosphere is the layer above.</p>
+      <div class="ctas">
+        <button class="btn primary" type="button">Enter the Safe Zone</button>
+        <button class="btn ghost" type="button">See the Framework</button>
+      </div>
+      <div class="mini-bento">
+        <div class="cell"><div class="kpi">1.2M+</div><div class="l">PKR LTV signal</div></div>
+        <div class="cell g"><div class="kpi">90%</div><div class="l">Retention target</div></div>
+        <div class="cell a"><div class="kpi">4</div><div class="l">Operating divisions</div></div>
+        <div class="cell p"><div class="kpi">EF</div><div class="l">Adoption standard</div></div>
+      </div>
+    </div>
+    <div class="logo-slot">
+      <div class="rig" id="rig">
+        <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="12" fill="#111111"/>
+          <path id="s1" d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#2D5BE3"/>
+          <path id="s2" d="M12 24 L38 24 L30 36 L4 36 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path id="s3" d="M18 40 L44 40 L36 52 L10 52 Z" fill="#2D5BE3" opacity="0.26"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="lab-notes">
+  <h3>Notes</h3>
+  <ul>
+    <li>This is the approved “fan” composition for showreels — not the Recruiter OS chrome.</li>
+    <li>One hero 3D moment max; particles behind information; bento carries KPIs.</li>
+    <li>Promote patterns to DS only after intensity + a11y pass (see MOTION_AND_ATMOSPHERE.md §8).</li>
+  </ul>
+</section>
+<script src="lab.js"></script>
+<script>
+(function () {
+  const canvas = document.getElementById('field');
+  const ctx = canvas.getContext('2d');
+  const scene = document.getElementById('scene');
+  let particles = [], raf = 0;
+
+  function resize() {
+    const r = scene.getBoundingClientRect();
+    canvas.width = r.width * devicePixelRatio;
+    canvas.height = r.height * devicePixelRatio;
+    canvas.style.width = r.width + 'px';
+    canvas.style.height = r.height + 'px';
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    spawn();
+  }
+  function spawn() {
+    const n = Math.min(EnlystLab.particleBudget(), 60);
+    const op = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-opacity')) || 0.3;
+    const rw = canvas.clientWidth, rh = canvas.clientHeight;
+    particles = Array.from({ length: n }, () => ({
+      x: Math.random() * rw, y: Math.random() * rh,
+      r: 1 + Math.random() * 1.8,
+      vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+      o: op * (0.35 + Math.random() * 0.5),
+    }));
+  }
+  function recolor() {
+    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+    ['s1','s2','s3'].forEach((id) => { const el = document.getElementById(id); if (el) el.setAttribute('fill', accent); });
+    const rig = document.getElementById('rig');
+    const d = getComputedStyle(document.documentElement).getPropertyValue('--spin-duration').trim();
+    rig.style.animation = (d === '0s' || EnlystLab.prefersReduced()) ? 'none' : '';
+  }
+  function tick() {
+    if (document.visibilityState !== 'hidden') {
+      const rw = canvas.clientWidth, rh = canvas.clientHeight;
+      ctx.clearRect(0, 0, rw, rh);
+      const c = getComputedStyle(document.documentElement).getPropertyValue('--glow-color-rgb').trim();
+      for (const p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = rw; if (p.x > rw) p.x = 0;
+        if (p.y < 0) p.y = rh; if (p.y > rh) p.y = 0;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${c},${p.o})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  window.addEventListener('lab:intensity', () => { spawn(); recolor(); });
+  window.addEventListener('lab:division', recolor);
+  window.addEventListener('resize', resize);
+  document.addEventListener('DOMContentLoaded', () => { resize(); recolor(); tick(); });
+})();
+</script>
+</body>
+</html>

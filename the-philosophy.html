@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Enlyst — The Philosophy</title>
+<meta name="description" content="Every person carries the seed of an owner. Enlyst exists to protect that potential."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* ─────────────────────────────────────
+   TOKENS
+───────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#2D5BE3; --green:#1A7A4A; --amber:#C4620A; --purple:#6B3FA0;
+  --bg:#0A0A0F; --border:rgba(255,255,255,0.07);
+  --t1:#ffffff; --t2:rgba(255,255,255,0.55); --t3:rgba(255,255,255,0.28);
+  --s5:#64748b; --s6:#475569; --s7:#334155;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::selection{background:var(--blue);color:#fff;}
+a{color:inherit;text-decoration:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+
+/* noise */
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");}
+
+/* ─────────────────────────────────────
+   ORBS
+───────────────────────────────────── */
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;animation:drift 20s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(60px,-40px);}}
+
+/* ─────────────────────────────────────
+   NAV
+───────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:rgba(10,10,15,.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  height:62px;display:flex;align-items:center;
+  padding:0 48px;justify-content:space-between;
+  transition:border-color .3s;
+}
+.nav-brand{display:flex;align-items:center;gap:11px;}
+.nav-wm{font-family:var(--serif);font-size:19px;letter-spacing:-.02em;}
+.nav-wm em{font-family:var(--sans);font-style:italic;color:var(--blue);font-size:14px;font-weight:400;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--s5);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a.active{border-bottom:1px solid rgba(45,91,227,.5);padding-bottom:2px;}
+.nav-cta{padding:7px 18px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;border-radius:100px;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+/* ─────────────────────────────────────
+   LAYOUT
+───────────────────────────────────── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 48px;position:relative;z-index:10;}
+section{position:relative;z-index:10;}
+.rule{border-top:1px solid var(--border);}
+
+/* ─────────────────────────────────────
+   REVEAL
+───────────────────────────────────── */
+.r{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.r.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:100ms;}.d2{transition-delay:200ms;}.d3{transition-delay:300ms;}.d4{transition-delay:400ms;}
+
+/* ─────────────────────────────────────
+   TYPE HELPERS
+───────────────────────────────────── */
+.serif{font-family:var(--serif);}
+.mono{font-family:var(--mono);}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.eyebrow::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,rgba(45,91,227,.4),transparent);}
+.grad{background:linear-gradient(100deg,var(--blue),#7b9ff5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* ─────────────────────────────────────
+   HERO
+───────────────────────────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;}
+
+/* ─────────────────────────────────────
+   ORBIT — THE FORTRESS VISUAL
+───────────────────────────────────── */
+.orbit-scene{
+  position:relative;width:480px;height:480px;flex-shrink:0;
+}
+.orbit-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.06);
+  animation:spin 32s linear infinite;
+}
+.orbit-ring-2{
+  position:absolute;inset:40px;border-radius:50%;
+  border:1px dashed rgba(255,255,255,0.04);
+  animation:spin 20s linear infinite reverse;
+}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+
+/* center shield */
+.orbit-center{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:100px;height:100px;
+  background:linear-gradient(135deg,rgba(45,91,227,.15),rgba(45,91,227,.05));
+  border:1px solid rgba(45,91,227,.3);
+  border-radius:24px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;
+  box-shadow:0 0 40px rgba(45,91,227,.2),inset 0 1px 0 rgba(255,255,255,.05);
+  animation:glow 4s ease-in-out infinite alternate;
+}
+@keyframes glow{
+  from{box-shadow:0 0 30px rgba(45,91,227,.15);}
+  to{box-shadow:0 0 60px rgba(45,91,227,.4);}
+}
+
+/* division nodes */
+.orbit-node{
+  position:absolute;
+  width:108px;height:108px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;padding:12px;
+  backdrop-filter:blur(12px);
+  cursor:pointer;
+  transition:border-color .3s,background .3s,transform .3s;
+}
+.orbit-node:hover{transform:scale(1.08)!important;background:rgba(255,255,255,.06);}
+
+/* positions: top, right, bottom, left */
+.node-top   {top:-14px;left:50%;transform:translateX(-50%);}
+.node-right {top:50%;right:-14px;transform:translateY(-50%);}
+.node-bottom{bottom:-14px;left:50%;transform:translateX(-50%);}
+.node-left  {top:50%;left:-14px;transform:translateY(-50%);}
+
+/* connector lines */
+.connector{position:absolute;top:50%;left:50%;transform-origin:0 0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent);pointer-events:none;}
+.con-top   {width:1px;height:128px;transform:translate(-50%,-100%);background:linear-gradient(to top,transparent,rgba(255,255,255,.07));}
+.con-right {width:128px;height:1px;transform:translateY(-50%);background:linear-gradient(to right,transparent,rgba(255,255,255,.07));}
+.con-bottom{width:1px;height:128px;transform:translateX(-50%);background:linear-gradient(to bottom,transparent,rgba(255,255,255,.07));}
+.con-left  {width:128px;height:1px;transform:translate(-128px,-50%);background:linear-gradient(to left,transparent,rgba(255,255,255,.07));}
+
+/* float animations per node */
+.float-a{animation:floatA 7s ease-in-out infinite;}
+.float-b{animation:floatB 7s ease-in-out infinite 1.5s;}
+.float-c{animation:floatC 7s ease-in-out infinite 3s;}
+.float-d{animation:floatD 7s ease-in-out infinite 4.5s;}
+@keyframes floatA{0%,100%{top:-14px;}50%{top:-22px;}}
+@keyframes floatB{0%,100%{right:-14px;}50%{right:-22px;}}
+@keyframes floatC{0%,100%{bottom:-14px;}50%{bottom:-22px;}}
+@keyframes floatD{0%,100%{left:-14px;}50%{left:-22px;}}
+
+/* ─────────────────────────────────────
+   PHILOSOPHY VERSES
+   — short, spaced out, animated
+───────────────────────────────────── */
+.verse-section{padding:100px 0;}
+.verse{
+  max-width:720px;margin:0 auto;
+  text-align:center;padding:0 48px;
+}
+.verse-text{
+  font-family:var(--serif);
+  font-size:clamp(26px,3.5vw,44px);
+  font-weight:400;line-height:1.25;
+  letter-spacing:-.02em;color:var(--t1);
+}
+.verse-text.dim{color:rgba(255,255,255,.22);}
+.verse-subtext{
+  font-size:16px;color:var(--t2);line-height:1.8;
+  max-width:520px;margin:24px auto 0;
+}
+
+/* horizontal rule with glow */
+.glow-rule{
+  height:1px;border:none;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:.35;margin:0;
+}
+
+/* ─────────────────────────────────────
+   PULL QUOTE — small, restrained
+───────────────────────────────────── */
+.pull{
+  border-left:2px solid var(--blue);padding:16px 24px;
+  background:rgba(45,91,227,.04);border-radius:0 8px 8px 0;
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(16px,2vw,20px);line-height:1.55;
+  color:rgba(255,255,255,.75);
+}
+
+/* ─────────────────────────────────────
+   ECOSYSTEM LOGOS
+───────────────────────────────────── */
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.eco-card{
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  padding:36px 24px 24px;position:relative;overflow:hidden;
+  transition:border-color .3s,transform .35s cubic-bezier(.16,1,.3,1);
+}
+.eco-card:first-child{border-radius:16px 0 0 16px;}
+.eco-card:last-child {border-radius:0 16px 16px 0;}
+.eco-card:hover{transform:translateY(-4px);}
+.eco-stripe{position:absolute;top:0;left:0;right:0;height:2px;}
+.eco-desc{font-size:13px;color:var(--s5);line-height:1.6;margin-top:10px;}
+.eco-domain{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:16px;}
+
+/* ─────────────────────────────────────
+   TEAM
+───────────────────────────────────── */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.p-card{
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  border-radius:16px;padding:28px;
+  transition:border-color .3s;
+}
+.p-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:#fff;margin-bottom:16px;}
+.p-name{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:3px;}
+.p-role{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+.p-bio{font-size:13px;color:var(--t2);line-height:1.75;}
+
+/* ─────────────────────────────────────
+   CTA
+───────────────────────────────────── */
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;border-radius:100px;transition:opacity .2s;box-shadow:0 0 28px rgba(45,91,227,.3);}
+.btn-p:hover{opacity:.88;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;color:var(--s5);font-size:13px;font-weight:500;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s;}
+.btn-g:hover{color:#fff;border-color:rgba(255,255,255,.18);}
+
+/* ─────────────────────────────────────
+   FOOTER
+───────────────────────────────────── */
+.footer{border-top:1px solid var(--border);padding:48px 0 24px;position:relative;z-index:10;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px;}
+.foot-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--s7);margin-bottom:14px;}
+.foot-link{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--s6);margin-bottom:9px;transition:color .2s;}
+.foot-link:hover{color:#fff;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .nav{padding:0 24px;}
+  .wrap{padding:0 24px;}
+  .hero-inner{flex-direction:column!important;gap:48px!important;}
+  .orbit-scene{width:280px;height:280px;}
+  .eco-grid{grid-template-columns:1fr 1fr;}
+  .eco-card:first-child{border-radius:16px 0 0 0;}
+  .eco-card:last-child{border-radius:0 0 16px 0;}
+  .team-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .verse{padding:0 24px;}
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+</style>
+</head>
+<body>
+
+<!-- ORBS -->
+<div class="orb" style="width:600px;height:600px;background:#2D5BE3;opacity:.05;top:-180px;left:-240px;"></div>
+<div class="orb" style="width:360px;height:360px;background:#6B3FA0;opacity:.04;top:50%;right:-140px;animation-delay:-8s;"></div>
+<div class="orb" style="width:280px;height:280px;background:#1A7A4A;opacity:.04;bottom:15%;left:8%;animation-delay:-14s;"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+    <svg width="22" height="24" viewBox="0 0 44 46" fill="none">
+      <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+      <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+      <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+    </svg>
+    <span class="nav-wm">enlyst<em>now</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="startup-framework.html">Startups</a>
+    <a href="foundation.html">Foundation</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Engage Us →</a>
+</nav>
+
+
+<!-- ═══════════════════
+     HERO — orbit + headline
+═══════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner" style="display:flex;align-items:center;gap:80px;flex-wrap:wrap;">
+
+      <!-- left -->
+      <div style="flex:1;min-width:280px;">
+        <div class="eyebrow r">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--blue);display:inline-block;flex-shrink:0;animation:pulse 2s infinite;"></span>
+          Enlyst — Who We Are
+        </div>
+        <h1 class="serif r d1" style="font-size:clamp(44px,6.5vw,80px);line-height:.96;letter-spacing:-.03em;font-weight:400;margin-bottom:28px;">
+          Every person<br/>carries the seed<br/>
+          <span class="grad" style="font-style:italic;">of an owner.</span>
+        </h1>
+        <p class="r d2" style="font-size:17px;color:var(--t2);line-height:1.75;max-width:440px;margin-bottom:36px;">
+          We are not here to sell a service. We are here because the world produces far fewer owners than it should — and we intend to change that.
+        </p>
+        <div class="r d3" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-p">Start a conversation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#ecosystem" class="btn-g">See the ecosystem</a>
+        </div>
+      </div>
+
+      <!-- right — orbit -->
+      <div class="r d2" style="flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+        <div class="orbit-scene">
+          <!-- rings -->
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring-2"></div>
+
+          <!-- connectors -->
+          <div class="connector con-top"></div>
+          <div class="connector con-right"></div>
+          <div class="connector con-bottom"></div>
+          <div class="connector con-left"></div>
+
+          <!-- center -->
+          <div class="orbit-center">
+            <svg width="28" height="30" viewBox="0 0 44 46" fill="none">
+              <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+              <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+              <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+            </svg>
+            <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);">enlyst</span>
+          </div>
+
+          <!-- node: enlyst HR — top -->
+          <div class="orbit-node node-top float-a" style="border-color:rgba(45,91,227,.25);" onclick="window.location='enlystnow.com'">
+            <svg width="100" height="28" viewBox="0 0 100 28" fill="none" style="width:88px;">
+              <path d="M0 2 L18 2 L14 10 L-4 10 Z" fill="#2D5BE3"/>
+              <path d="M4 13 L22 13 L18 21 L0 21 Z" fill="#2D5BE3" opacity="0.58"/>
+              <path d="M8 24 L26 24 L22 28 L4 28 Z" fill="#2D5BE3" opacity="0.26"/>
+              <text x="30" y="20" font-family="'Instrument Serif',Georgia,serif" font-size="14" fill="#fff" letter-spacing="-.3">enlyst</text>
+            </svg>
+            <span class="mono" style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">HR</span>
+          </div>
+
+          <!-- node: enlysum — right -->
+          <div class="orbit-node node-right float-b" style="border-color:rgba(26,122,74,.25);" onclick="window.location='enlysum.com'">
+            <svg width="100" height="28" viewBox="0 0 100 28" fill="none" style="width:88px;">
+              <path d="M0 2 L18 2 L14 10 L-4 10 Z" fill="#1A7A4A"/>
+              <path d="M4 13 L22 13 L18 21 L0 21 Z" fill="#1A7A4A" opacity="0.58"/>
+              <path d="M8 24 L26 24 L22 28 L4 28 Z" fill="#1A7A4A" opacity="0.26"/>
+              <text x="30" y="20" font-family="'Instrument Serif',Georgia,serif" font-size="11" fill="#fff" letter-spacing="-.2">enlysum</text>
+            </svg>
+            <span class="mono" style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Finance</span>
+          </div>
+
+          <!-- node: enlybiz — bottom -->
+          <div class="orbit-node node-bottom float-c" style="border-color:rgba(196,98,10,.25);" onclick="window.location='enlybiz.com'">
+            <svg width="100" height="28" viewBox="0 0 100 28" fill="none" style="width:88px;">
+              <path d="M0 2 L18 2 L14 10 L-4 10 Z" fill="#C4620A"/>
+              <path d="M4 13 L22 13 L18 21 L0 21 Z" fill="#C4620A" opacity="0.58"/>
+              <path d="M8 24 L26 24 L22 28 L4 28 Z" fill="#C4620A" opacity="0.26"/>
+              <text x="30" y="20" font-family="'Instrument Serif',Georgia,serif" font-size="11" fill="#fff" letter-spacing="-.2">enlybiz</text>
+            </svg>
+            <span class="mono" style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Marketing</span>
+          </div>
+
+          <!-- node: enlysoft — left -->
+          <div class="orbit-node node-left float-d" style="border-color:rgba(107,63,160,.25);" onclick="window.location='enlysoft.net'">
+            <svg width="100" height="28" viewBox="0 0 100 28" fill="none" style="width:88px;">
+              <path d="M0 2 L18 2 L14 10 L-4 10 Z" fill="#6B3FA0"/>
+              <path d="M4 13 L22 13 L18 21 L0 21 Z" fill="#6B3FA0" opacity="0.58"/>
+              <path d="M8 24 L26 24 L22 28 L4 28 Z" fill="#6B3FA0" opacity="0.26"/>
+              <text x="30" y="20" font-family="'DM Mono',monospace" font-size="10" fill="#E2E8F0">enlysoft</text>
+            </svg>
+            <span class="mono" style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Cloud</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     HERO IMAGE
+═══════════════════════ -->
+<section style="padding-bottom:0;">
+  <div style="max-width:1320px;margin:0 auto;padding:0 48px;position:relative;z-index:10;">
+    <div class="r" style="height:440px;border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 8%,transparent 55%);z-index:2;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,15,.5),transparent 50%);z-index:2;pointer-events:none;"></div>
+      <div style="position:absolute;bottom:24px;left:28px;z-index:3;display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="background:rgba(0,0,0,.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1);padding:10px 16px;border-radius:10px;">
+          <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--s5);margin-bottom:3px;">HQ · Lahore Stock Exchange Plaza</div>
+          <div class="serif" style="font-size:16px;">The Enlyst Core Team</div>
+        </div>
+        <div style="background:rgba(0,0,0,.7);backdrop-filter:blur(14px);border:1px solid rgba(45,91,227,.25);padding:10px 16px;border-radius:10px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80;display:inline-block;"></span>
+            <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4ade80;">Active · Lahore, PK</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;">Suite M-3, LSE Plaza</div>
+        </div>
+      </div>
+      <!-- Replace with: <img src="f0213816.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d1525,#0f1a14,#12080A);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;opacity:.1;">
+          <svg width="56" height="60" viewBox="0 0 44 46" fill="none" style="margin:0 auto 10px;">
+            <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+            <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+          <div class="mono" style="font-size:10px;color:var(--s6);letter-spacing:.1em;text-transform:uppercase;">f0213816.jpg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     VERSE 1 — The owner
+═══════════════════════ -->
+<section class="verse-section rule" style="padding-top:100px;">
+  <div class="verse r">
+    <div class="eyebrow" style="justify-content:center;">The Belief</div>
+    <div class="verse-text">
+      The world tells you to study for a job.<br/>
+      Work hard for a job. Get skills for a job.
+    </div>
+    <div class="verse-text dim" style="margin-top:12px;">We think that story is incomplete.</div>
+    <p class="verse-subtext r d1">
+      Behind every row of employees lives a person who once had an idea, a theory, a vision. They tried, failed, tried again — and one day became an owner. That person was not a different kind of human. They simply had the right conditions at the right time.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     VERSE 2 — Technology and bias
+═══════════════════════ -->
+<section class="verse-section rule">
+  <div class="verse r">
+    <div class="eyebrow" style="justify-content:center;">The Conviction</div>
+    <div class="verse-text">
+      The line between a fair world<br/>and an unfair one is very thin.
+    </div>
+    <p class="verse-subtext r d1">
+      Most of the time, what separates opportunity given from opportunity denied is not merit — it is the bias of the person holding the door. Before we build any system, especially in hiring, we ask one question:
+    </p>
+    <div class="pull r d2" style="margin-top:28px;text-align:left;">
+      How can this process be automated so that humans are freed to be good to each other?
+    </div>
+    <p class="verse-subtext r d3" style="margin-top:20px;">
+      If systems protect processes, humans become protectors of each other. A less biased world produces more owners than it does employees — and the employees it produces carry the responsibility of owners.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     VERSE 3 — Protection
+═══════════════════════ -->
+<section class="verse-section rule">
+  <div class="verse r">
+    <div class="eyebrow" style="justify-content:center;">The Mission</div>
+    <div class="verse-text">
+      We are here to bandage<br/>
+      <span style="color:rgba(255,255,255,.28);">before the wound becomes fatal.</span>
+    </div>
+    <p class="verse-subtext r d1">
+      Technology advances faster than most businesses can absorb. A founder hires an agency, three months pass, reports arrive — then comes the honest conversation that the business is on the verge of bankruptcy. Nobody said anything.
+    </p>
+    <div class="pull r d2" style="margin-top:28px;text-align:left;">
+      We want to collaborate with the business world through technology — genuine friendship, consultancy without much commercial consideration, as an independent institution.
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     ECOSYSTEM — LOGOS
+═══════════════════════ -->
+<section id="ecosystem" class="rule" style="padding:80px 0;">
+  <div class="wrap">
+    <div class="r" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:36px;">
+      <div>
+        <div class="eyebrow">The Ecosystem</div>
+        <h2 class="serif" style="font-size:clamp(26px,3.5vw,44px);line-height:1.05;letter-spacing:-.02em;font-weight:400;">
+          Four divisions.<br/>One bulwark.
+        </h2>
+      </div>
+      <p style="font-size:13px;color:var(--s5);max-width:300px;line-height:1.7;">The ecosystem that emerges from the Enlyst framework is the bulwark of security it exists to create.</p>
+    </div>
+
+    <div class="eco-grid r d1">
+
+      <div class="eco-card" style="border-color:rgba(45,91,227,.15);">
+        <div class="eco-stripe" style="background:#2D5BE3;"></div>
+        <svg width="148" height="40" viewBox="0 0 148 40" fill="none">
+          <path d="M0 2 L32 2 L25 13 L-7 13 Z" fill="#2D5BE3"/>
+          <path d="M7 17 L39 17 L32 28 L0 28 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M14 32 L46 32 L39 40 L7 40 Z" fill="#2D5BE3" opacity="0.26"/>
+          <text x="52" y="28" font-family="'Instrument Serif',Georgia,serif" font-size="24" fill="#fff" letter-spacing="-.7">enlyst</text>
+        </svg>
+        <div class="eco-desc">HR &amp; talent. Finds the right people, builds the culture that keeps them.</div>
+        <div class="eco-domain" style="color:rgba(45,91,227,.6);">enlystnow.com</div>
+      </div>
+
+      <div class="eco-card" style="border-color:rgba(26,122,74,.15);">
+        <div class="eco-stripe" style="background:#1A7A4A;"></div>
+        <svg width="148" height="40" viewBox="0 0 148 40" fill="none">
+          <path d="M0 2 L32 2 L25 13 L-7 13 Z" fill="#1A7A4A"/>
+          <path d="M7 17 L39 17 L32 28 L0 28 Z" fill="#1A7A4A" opacity="0.58"/>
+          <path d="M14 32 L46 32 L39 40 L7 40 Z" fill="#1A7A4A" opacity="0.26"/>
+          <text x="52" y="27" font-family="'Instrument Serif',Georgia,serif" font-size="19" fill="#fff" letter-spacing="-.4">enlysum</text>
+        </svg>
+        <div class="eco-desc">Finance &amp; accounting. The shield against the financial chaos that quietly kills.</div>
+        <div class="eco-domain" style="color:rgba(26,122,74,.7);">enlysum.com</div>
+      </div>
+
+      <div class="eco-card" style="border-color:rgba(196,98,10,.15);">
+        <div class="eco-stripe" style="background:#C4620A;"></div>
+        <svg width="148" height="40" viewBox="0 0 148 40" fill="none">
+          <path d="M0 2 L32 2 L25 13 L-7 13 Z" fill="#C4620A"/>
+          <path d="M7 17 L39 17 L32 28 L0 28 Z" fill="#C4620A" opacity="0.58"/>
+          <path d="M14 32 L46 32 L39 40 L7 40 Z" fill="#C4620A" opacity="0.26"/>
+          <text x="52" y="27" font-family="'Instrument Serif',Georgia,serif" font-size="19" fill="#fff" letter-spacing="-.4">enlybiz</text>
+        </svg>
+        <div class="eco-desc">Marketing &amp; growth. Makes the business visible — honestly and measurably.</div>
+        <div class="eco-domain" style="color:rgba(196,98,10,.7);">enlybiz.com</div>
+      </div>
+
+      <div class="eco-card" style="border-color:rgba(107,63,160,.15);background:rgba(107,63,160,.03);">
+        <div class="eco-stripe" style="background:#6B3FA0;"></div>
+        <svg width="148" height="40" viewBox="0 0 148 40" fill="none">
+          <path d="M0 2 L32 2 L25 13 L-7 13 Z" fill="#6B3FA0"/>
+          <path d="M7 17 L39 17 L32 28 L0 28 Z" fill="#6B3FA0" opacity="0.58"/>
+          <path d="M14 32 L46 32 L39 40 L7 40 Z" fill="#6B3FA0" opacity="0.26"/>
+          <text x="52" y="26" font-family="'DM Mono',monospace" font-size="15" fill="#E2E8F0">enlysoft</text>
+        </svg>
+        <div class="eco-desc">Cloud &amp; technology. The infrastructure that makes everything else possible.</div>
+        <div class="eco-domain" style="color:rgba(107,63,160,.7);">enlysoft.net</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     THE PEOPLE
+═══════════════════════ -->
+<section class="rule" style="padding:80px 0;">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:44px;">
+      <div class="eyebrow">The People</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.5vw,44px);line-height:1.05;letter-spacing:-.02em;font-weight:400;">Practitioners,<br/>not consultants.</h2>
+    </div>
+    <div class="team-grid">
+
+      <div class="p-card r" style="border-color:rgba(45,91,227,.18);">
+        <div class="p-av" style="background:#2D5BE3;box-shadow:0 0 20px rgba(45,91,227,.3);">WH</div>
+        <div class="p-name">Mr. Wasim Hassan</div>
+        <div class="p-role" style="color:#2D5BE3;">Founder · Chairperson</div>
+        <p class="p-bio">Excise &amp; Taxation Officer. Architect of government AI and cloud deployments across Punjab. The originating mind behind Enlyst's conviction that operational excellence should not be the exclusive preserve of large businesses. Google Cloud certified — 467K+ skill points.</p>
+      </div>
+
+      <div class="p-card r d1" style="border-color:rgba(196,98,10,.18);">
+        <div class="p-av" style="background:#C4620A;box-shadow:0 0 20px rgba(196,98,10,.25);">F</div>
+        <div class="p-name">Miss Fatima</div>
+        <div class="p-role" style="color:#C4620A;">CEO · enlybiz</div>
+        <p class="p-bio">Leads the marketing and growth engine across the Enlyst portfolio. Specialist in CRM architecture, brand positioning, and growth strategy built on measurable outcomes. Her conviction: a business that is invisible is a business that is vulnerable.</p>
+      </div>
+
+      <div class="p-card r d2" style="border-color:rgba(107,63,160,.18);">
+        <div class="p-av" style="background:#6B3FA0;box-shadow:0 0 20px rgba(107,63,160,.25);">IS</div>
+        <div class="p-name">Dr. Imran Sabir</div>
+        <div class="p-role" style="color:#A78BFA;">Research · Foundation</div>
+        <p class="p-bio">The intellectual backbone of the Enlyst Foundation. Doctoral-grade research on governance, educational reform, and the conditions under which institutions either protect or fail the people they were built to serve.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════
+     CLOSING — breathing
+═══════════════════════ -->
+<section class="rule" style="padding:120px 0;">
+  <div class="wrap">
+    <div class="r" style="text-align:center;max-width:640px;margin:0 auto;">
+      <h2 class="serif" style="font-size:clamp(36px,5.5vw,72px);line-height:.97;letter-spacing:-.03em;font-weight:400;margin-bottom:28px;">
+        No business<br/>
+        <span style="color:rgba(255,255,255,.28);">fights alone.</span>
+      </h2>
+      <p style="font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:40px;max-width:460px;margin-left:auto;margin-right:auto;">
+        Present in difficult times. Honest when honesty is costly. Never mistaking commercial consideration for sound advice.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-p">Start a conversation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="startup-framework.html" class="btn-g">How we work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="20" height="22" viewBox="0 0 44 46" fill="none">
+            <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+            <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+          <span class="serif" style="font-size:17px;letter-spacing:-.02em;">enlyst<em style="font-family:var(--sans);font-style:italic;font-weight:400;color:var(--blue);font-size:13px;">now</em></span>
+        </a>
+        <p style="font-size:13px;color:var(--s7);line-height:1.7;max-width:240px;">An independent institution. A genuine operating partner. Built for businesses that cannot afford to fail.</p>
+        <div style="display:flex;align-items:center;gap:7px;margin-top:14px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:#4ade80;display:inline-block;"></span>
+          <span class="mono" style="font-size:9px;color:var(--s7);text-transform:uppercase;letter-spacing:.1em;">Suite M-3, LSE Plaza, Lahore</span>
+        </div>
+      </div>
+      <div>
+        <div class="foot-label">Divisions</div>
+        <a href="enlystnow.com" class="foot-link"><span class="fdot" style="background:#2D5BE3;"></span>enlyst</a>
+        <a href="enlysum.com" class="foot-link"><span class="fdot" style="background:#1A7A4A;"></span>enlysum</a>
+        <a href="enlybiz.com" class="foot-link"><span class="fdot" style="background:#C4620A;"></span>enlybiz</a>
+        <a href="enlysoft.net" class="foot-link"><span class="fdot" style="background:#6B3FA0;"></span>enlysoft</a>
+      </div>
+      <div>
+        <div class="foot-label">Contact</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">info@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">recruiter@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:18px;">03000 340 036</div>
+        <a href="contact.html" style="font-size:13px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:5px;">Engage us <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <p class="mono" style="font-size:10px;color:var(--s7);">© 2026 Enlyst Smart Recruiting Pvt Ltd · Lahore, Pakistan</p>
+      <div style="display:flex;gap:14px;">
+        <span class="mono" style="font-size:9px;color:var(--s7);">enlystnow.com</span>
+        <span class="mono" style="font-size:9px;color:var(--s7);">enlysum.com</span>
+        <span class="mono" style="font-size:9px;color:var(--s7);">enlybiz.com</span>
+        <span class="mono" style="font-size:9px;color:var(--s7);">enlysoft.net</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+// Nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)';
+}, { passive: true });
+</script>
+</body>
+</html>

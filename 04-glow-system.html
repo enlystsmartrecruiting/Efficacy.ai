@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst" data-intensity="standard">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>04 · Glow system · Atmosphere Lab</title>
+<link rel="stylesheet" href="lab.css"/>
+<style>
+  .samples {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .sample {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 28px 22px;
+  }
+  .sample h3 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 0 0 16px;
+  }
+  .btn {
+    display: inline-block;
+    font-size: 14px; font-weight: 500;
+    padding: 12px 22px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+  .btn.outline {
+    background: transparent;
+    color: var(--fg-1);
+    border: 1.5px solid var(--border);
+  }
+  .cell-demo {
+    border-top: 3px solid var(--accent);
+    border: 1px solid var(--border);
+    border-top-width: 3px;
+    border-top-color: var(--accent);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+    background: var(--bg-surface);
+  }
+  .cell-demo strong {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .brass-on-dark {
+    background: var(--obsidian);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    color: var(--off-white);
+  }
+</style>
+</head>
+<body>
+<header class="lab-bar">
+  <a class="back" href="index.html">← Lab index</a>
+  <span class="lab-title">04 · Glow system</span>
+  <div class="lab-controls" id="lab-controls"></div>
+</header>
+
+<main class="lab-stage">
+  <div class="eyebrow-rule glow-mid" style="margin-bottom:20px;padding:8px 12px;border-radius:4px;background:var(--bg-surface)">
+    <span class="eyebrow-mono">EyebrowRule + glow-mid</span>
+  </div>
+  <p class="body-sm" style="margin:0 0 28px;max-width:520px">Tokenized shadows: <code>--glow-soft / mid / strong / brass</code>. Color always follows division RGB (or Framework gold).</p>
+
+  <div class="samples">
+    <div class="sample">
+      <h3>Button · glow-soft</h3>
+      <button class="btn glow-soft">Primary CTA</button>
+    </div>
+    <div class="sample">
+      <h3>Button · glow-mid</h3>
+      <button class="btn glow-mid">Primary CTA</button>
+    </div>
+    <div class="sample">
+      <h3>Outline · glow-soft</h3>
+      <button class="btn outline glow-soft">Secondary</button>
+    </div>
+    <div class="sample">
+      <h3>Bento cell · glow-mid</h3>
+      <div class="cell-demo glow-mid">
+        <strong>People Powered.</strong>
+        <span class="caption">ServiceCard edge + atmosphere accent</span>
+      </div>
+    </div>
+    <div class="sample" style="grid-column: 1 / -1">
+      <h3>Framework · glow-brass (on obsidian)</h3>
+      <div class="brass-on-dark glow-brass">
+        <div class="eyebrow-rule" style="margin-bottom:12px">
+          <span class="eyebrow-mono" style="color:var(--framework-gold)">Enlyst Framework</span>
+        </div>
+        <p style="margin:0;font-family:var(--font-serif);font-size:28px;letter-spacing:-0.02em">Adoption standard — brass, not neon.</p>
+      </div>
+    </div>
+    <div class="sample">
+      <h3>Text glow (sparingly)</h3>
+      <p class="h3 text-glow" style="margin:0">Bandaging the battle wounds of business.</p>
+    </div>
+  </div>
+</main>
+
+<section class="lab-notes">
+  <h3>Notes</h3>
+  <ul>
+    <li>Calm tier maps glow utilities to flat <code>--shadow-*</code> — no bloom in product UI by default.</li>
+    <li><strong>DS v1 candidate:</strong> soft/mid glow on Button hover + EyebrowRule focus. Strong/brass stay experimental.</li>
+    <li>Never use unrelated purple glow on enlyst/enlysum/enlybiz surfaces.</li>
+  </ul>
+</section>
+<script src="lab.js"></script>
+</body>
+</html>

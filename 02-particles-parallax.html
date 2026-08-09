@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst" data-intensity="standard">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>02 · Particles + parallax · Atmosphere Lab</title>
+<link rel="stylesheet" href="lab.css"/>
+<style>
+  .scene {
+    position: relative;
+    min-height: min(70dvh, 560px);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--cream);
+  }
+  #field {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .layers {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    min-height: min(70dvh, 560px);
+    display: grid;
+    place-items: center;
+    padding: 40px 24px;
+  }
+  .plane {
+    will-change: transform;
+    transition: transform 0.15s linear;
+  }
+  .plane.far { opacity: 0.35; }
+  .plane.mid { opacity: 0.7; }
+  .copy {
+    text-align: center;
+    max-width: 420px;
+  }
+  .copy h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 5vw, 48px);
+    margin: 0 0 12px;
+    letter-spacing: -0.03em;
+  }
+  .copy p { color: var(--fg-2); margin: 0; font-size: 15px; }
+  .orb {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-26);
+    box-shadow: var(--glow-mid);
+    margin: 0 auto 28px;
+  }
+</style>
+</head>
+<body>
+<header class="lab-bar">
+  <a class="back" href="index.html">← Lab index</a>
+  <span class="lab-title">02 · Particles + parallax</span>
+  <div class="lab-controls" id="lab-controls"></div>
+</header>
+
+<main class="lab-stage">
+  <div class="eyebrow-rule" style="margin-bottom:16px"><span class="eyebrow-mono">Atmosphere layer</span></div>
+  <p class="body-sm" style="margin:0 0 20px;max-width:480px">Move the pointer (or tilt on devices that report orientation). Intensity scales particle count and parallax shift via tokens.</p>
+
+  <div class="scene" id="scene">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="layers">
+      <div>
+        <div class="plane far orb" data-depth="far"></div>
+        <div class="plane mid copy" data-depth="mid">
+          <h1>Division-hue field.</h1>
+          <p>Particles sample <code>--accent</code>. Calm = static / off. Cinematic = denser + deeper shift.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="lab-notes">
+  <h3>Notes</h3>
+  <ul>
+    <li>Particle color = division accent RGB from <code>motion_tokens.css</code>. No neon purple sludge.</li>
+    <li>Mobile caps at 48 particles even in cinematic (see <code>EnlystLab.particleBudget()</code>).</li>
+    <li><strong>Lab only</strong> until DS v1 — marketing optional; Recruiter/docs: no.</li>
+  </ul>
+</section>
+<script src="lab.js"></script>
+<script>
+(function () {
+  const canvas = document.getElementById('field');
+  const ctx = canvas.getContext('2d');
+  const scene = document.getElementById('scene');
+  let particles = [];
+  let w = 0, h = 0, raf = 0;
+  let mx = 0.5, my = 0.5;
+
+  function resize() {
+    const r = scene.getBoundingClientRect();
+    w = canvas.width = r.width * devicePixelRatio;
+    h = canvas.height = r.height * devicePixelRatio;
+    canvas.style.width = r.width + 'px';
+    canvas.style.height = r.height + 'px';
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    spawn();
+  }
+
+  function rgb() {
+    return getComputedStyle(document.documentElement).getPropertyValue('--glow-color-rgb').trim() || '45, 91, 227';
+  }
+
+  function spawn() {
+    const n = window.EnlystLab ? EnlystLab.particleBudget() : 40;
+    const op = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-opacity')) || 0.35;
+    const rw = canvas.clientWidth, rh = canvas.clientHeight;
+    particles = Array.from({ length: n }, () => ({
+      x: Math.random() * rw,
+      y: Math.random() * rh,
+      r: 1 + Math.random() * 2.2,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      o: op * (0.4 + Math.random() * 0.6),
+    }));
+  }
+
+  function tick() {
+    if (document.visibilityState === 'hidden') { raf = requestAnimationFrame(tick); return; }
+    const rw = canvas.clientWidth, rh = canvas.clientHeight;
+    ctx.clearRect(0, 0, rw, rh);
+    const c = rgb();
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = rw; if (p.x > rw) p.x = 0;
+      if (p.y < 0) p.y = rh; if (p.y > rh) p.y = 0;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${c},${p.o})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    // parallax planes
+    const shift = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--parallax-shift')) || 0;
+    const dx = (mx - 0.5) * 2 * shift;
+    const dy = (my - 0.5) * 2 * shift;
+    document.querySelectorAll('[data-depth]').forEach((el) => {
+      const d = el.dataset.depth;
+      const m = d === 'far' ? 0.25 : d === 'mid' ? 0.55 : 1;
+      el.style.transform = `translate(${dx * m}px, ${dy * m}px)`;
+    });
+    raf = requestAnimationFrame(tick);
+  }
+
+  scene.addEventListener('pointermove', (e) => {
+    const r = scene.getBoundingClientRect();
+    mx = (e.clientX - r.left) / r.width;
+    my = (e.clientY - r.top) / r.height;
+  });
+
+  window.addEventListener('lab:intensity', () => { spawn(); });
+  window.addEventListener('lab:division', () => {});
+  window.addEventListener('resize', resize);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    resize();
+    tick();
+  });
+})();
+</script>
+</body>
+</html>
