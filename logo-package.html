@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Logo Package — Daily Use Kit</title>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#2D5BE3; --green:#1A7A4A; --amber:#C4620A; --purple:#6B3FA0;
+  --bg:#F4F3F0; --white:#FFFFFF; --ink:#111111; --ink2:#555; --ink3:#999;
+  --border:#E2E0DB; --surface:#FFFFFF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+}
+.topbar-brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:17px;letter-spacing:-.02em;}
+.topbar-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);}
+.print-btn{padding:7px 16px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:opacity .2s;}
+.print-btn:hover{opacity:.75;}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 40px;}
+.page{padding:56px 0;}
+
+/* SECTION */
+.sec{margin-bottom:64px;}
+.sec-label{
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink3);
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ENTITY HEADER */
+.entity-header{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px 10px 0 0;border-bottom:none;
+  margin-bottom:0;
+}
+.entity-name{font-family:var(--serif);font-size:22px;letter-spacing:-.02em;}
+.entity-role{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-left:auto;}
+.entity-color-dot{width:10px;height:10px;border-radius:50%;}
+
+/* LOGO GRID */
+.logo-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);border-radius:0 0 10px 10px;overflow:hidden;
+  background:var(--border);gap:1px;
+}
+.logo-cell{background:var(--white);display:flex;flex-direction:column;}
+.logo-cell.span2{grid-column:span 2;}
+.logo-display{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:32px 24px;min-height:110px;
+}
+.logo-display.bg-white{background:#FFFFFF;}
+.logo-display.bg-light{background:#F7F6F3;}
+.logo-display.bg-dark{background:#1A1A1A;}
+.logo-display.bg-black{background:#000000;}
+.logo-display.bg-blue{background:#2D5BE3;}
+.logo-display.bg-green{background:#1A7A4A;}
+.logo-display.bg-amber{background:#C4620A;}
+.logo-display.bg-purple{background:#6B3FA0;}
+.logo-display.bg-tech{background:#080c12;}
+.logo-meta{
+  padding:9px 14px;background:#FAFAF9;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-variant{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;background:none;border:1px solid var(--border);
+  border-radius:3px;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);
+  cursor:pointer;transition:all .2s;
+}
+.dl-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+/* ICON GRID — small squares */
+.icon-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  background:var(--border);gap:1px;
+}
+.icon-cell{background:var(--white);display:flex;flex-direction:column;}
+.icon-display{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 16px;min-height:90px;}
+.icon-meta{padding:7px 10px;background:#FAFAF9;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+
+/* FAVICON GRID */
+.favicon-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  background:var(--border);gap:1px;
+}
+.favicon-cell{background:var(--white);display:flex;flex-direction:column;}
+.favicon-display{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 16px;min-height:90px;background:#F7F6F3;}
+.favicon-meta{padding:7px 10px;background:#FAFAF9;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+
+/* SVG REFERENCE */
+.code-block{
+  background:#1A1A1A;border-radius:8px;padding:20px 24px;overflow-x:auto;
+  font-family:var(--mono);font-size:11px;line-height:1.7;color:#A0B0A8;
+  position:relative;
+}
+.code-block .kw{color:#6EE7A8;}
+.code-block .at{color:#93C5FD;}
+.code-block .vl{color:#FCA5A5;}
+.code-block .cm{color:#4B5563;}
+.copy-code-btn{
+  position:absolute;top:12px;right:12px;
+  padding:5px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  border-radius:3px;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.6);
+  cursor:pointer;transition:all .2s;
+}
+.copy-code-btn:hover{background:rgba(255,255,255,.2);color:#fff;}
+
+/* COLOUR CHIPS */
+.colour-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.colour-chip{display:flex;flex-direction:column;gap:6px;min-width:100px;}
+.colour-swatch{height:48px;border-radius:6px;border:1px solid rgba(0,0,0,.07);}
+.colour-name{font-size:11px;font-weight:600;color:var(--ink);}
+.colour-hex{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+
+/* USAGE RULES */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.rule-cell{background:var(--white);padding:20px;}
+.rule-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.rule-label.ok{color:var(--green);}
+.rule-label.no{color:#dc2626;}
+.rule-text{font-size:12px;color:var(--ink2);line-height:1.65;}
+
+/* NOTE BOX */
+.note{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--ink);border-radius:0 6px 6px 0;padding:14px 18px;font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:28px;}
+.note strong{color:var(--ink);}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .logo-grid{grid-template-columns:1fr 1fr;}
+  .logo-cell.span2{grid-column:span 2;}
+  .icon-grid{grid-template-columns:repeat(3,1fr);}
+  .favicon-grid{grid-template-columns:repeat(3,1fr);}
+  .rules-grid{grid-template-columns:1fr;}
+  .wrap{padding:0 20px;}
+  .topbar{padding:0 20px;}
+}
+@media print{
+  .topbar{display:none;}
+  .dl-btn,.copy-code-btn,.print-btn{display:none;}
+  .page{padding:24px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <svg width="20" height="22" viewBox="0 0 44 46" fill="none">
+      <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+      <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+      <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+    </svg>
+    Enlyst Logo Package
+    <span class="topbar-label">Daily Use Kit · 2025</span>
+  </div>
+  <button class="print-btn" onclick="window.print()">↓ Export PDF</button>
+</div>
+
+
+<div class="page">
+<div class="wrap">
+
+
+<!-- ════════════════════════════════════════
+     01 — THE MARK (PARENT)
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">01 — enlyst parent platform</div>
+
+  <div class="entity-header">
+    <div class="entity-color-dot" style="background:#2D5BE3;"></div>
+    <div class="entity-name">enlyst</div>
+    <div style="font-size:12px;color:var(--ink2);">Three-stripe parallelogram mark · Instrument Serif wordmark · HR Blue #2D5BE3</div>
+    <div class="entity-role">Parent Platform</div>
+  </div>
+
+  <div class="logo-grid">
+
+    <!-- Primary: White BG -->
+    <div class="logo-cell">
+      <div class="logo-display bg-white">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" id="enlyst-primary-light">
+          <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+          <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#2D5BE3" opacity="0.26"/>
+          <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#111111" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Primary · Light</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-primary-light','enlyst-primary-light.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Primary: Dark BG -->
+    <div class="logo-cell">
+      <div class="logo-display bg-dark">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-primary-dark">
+          <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+          <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#2D5BE3" opacity="0.26"/>
+          <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Primary · Dark</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-primary-dark','enlyst-primary-dark.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Brand BG -->
+    <div class="logo-cell">
+      <div class="logo-display bg-blue">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-brand-bg">
+          <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#FFFFFF"/>
+          <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#FFFFFF" opacity="0.26"/>
+          <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Brand BG</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-brand-bg','enlyst-brand-bg.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Mono Black -->
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-mono-black">
+          <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#111111"/>
+          <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#111111" opacity="0.5"/>
+          <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#111111" opacity="0.22"/>
+          <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#111111" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Mono · Black</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-mono-black','enlyst-mono-black.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Mono White -->
+    <div class="logo-cell">
+      <div class="logo-display bg-black">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-mono-white">
+          <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#FFFFFF"/>
+          <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#FFFFFF" opacity="0.55"/>
+          <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#FFFFFF" opacity="0.24"/>
+          <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Mono · White</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-mono-white','enlyst-mono-white.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Stacked -->
+    <div class="logo-cell">
+      <div class="logo-display bg-white" style="flex-direction:column;gap:10px;">
+        <svg width="40" height="42" viewBox="0 0 40 42" fill="none" id="enlyst-stacked">
+          <path d="M0 2 L26 2 L20 12 L-6 12 Z" fill="#2D5BE3"/>
+          <path d="M6 16 L32 16 L26 26 L0 26 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M12 30 L38 30 L32 42 L6 42 Z" fill="#2D5BE3" opacity="0.26"/>
+        </svg>
+        <svg width="70" height="22" viewBox="0 0 70 22" fill="none">
+          <text x="0" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="20" fill="#111111" letter-spacing="-.7">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Stacked</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-stacked','enlyst-stacked.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Favicon -->
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlyst-favicon">
+          <rect width="56" height="56" rx="12" fill="#2D5BE3"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#FFFFFF"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#FFFFFF" opacity="0.26"/>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Favicon</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-favicon','enlyst-favicon.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+    <!-- Icon only -->
+    <div class="logo-cell">
+      <div class="logo-display bg-white">
+        <svg width="48" height="50" viewBox="0 0 48 50" fill="none" id="enlyst-icon">
+          <path d="M0 2 L30 2 L22 16 L-8 16 Z" fill="#2D5BE3"/>
+          <path d="M8 20 L38 20 L30 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M16 38 L46 38 L38 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"/>
+        </svg>
+      </div>
+      <div class="logo-meta">
+        <span class="logo-variant">Icon Only</span>
+        <button class="dl-btn" onclick="downloadSVG('enlyst-icon','enlyst-icon.svg')">↓ SVG</button>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec -->
+
+
+<!-- ════════════════════════════════════════
+     02 — enlysum
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">02 — enlysum · finance & accounting</div>
+
+  <div class="entity-header">
+    <div class="entity-color-dot" style="background:#1A7A4A;"></div>
+    <div class="entity-name" style="color:#1A7A4A;">enlysum</div>
+    <div style="font-size:12px;color:var(--ink2);">Three-stripe parallelogram mark · Instrument Serif wordmark · Finance Green #1A7A4A</div>
+    <div class="entity-role">Finance Division</div>
+  </div>
+
+  <div class="logo-grid">
+    <div class="logo-cell">
+      <div class="logo-display bg-white">
+        <svg width="190" height="44" viewBox="0 0 190 44" fill="none" id="enlysum-primary-light">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#111111" letter-spacing="-.6">enlysum</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Light</span><button class="dl-btn" onclick="downloadSVG('enlysum-primary-light','enlysum-primary-light.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-dark">
+        <svg width="190" height="44" viewBox="0 0 190 44" fill="none" id="enlysum-primary-dark">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#FFFFFF" letter-spacing="-.6">enlysum</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Dark</span><button class="dl-btn" onclick="downloadSVG('enlysum-primary-dark','enlysum-primary-dark.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-green">
+        <svg width="190" height="44" viewBox="0 0 190 44" fill="none" id="enlysum-brand-bg">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#FFFFFF" letter-spacing="-.6">enlysum</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Brand BG</span><button class="dl-btn" onclick="downloadSVG('enlysum-brand-bg','enlysum-brand-bg.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlysum-favicon">
+          <rect width="56" height="56" rx="12" fill="#1A7A4A"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#FFFFFF"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#FFFFFF" opacity="0.26"/>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Favicon</span><button class="dl-btn" onclick="downloadSVG('enlysum-favicon','enlysum-favicon.svg')">↓ SVG</button></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     03 — enlybiz
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">03 — enlybiz · marketing & growth</div>
+
+  <div class="entity-header">
+    <div class="entity-color-dot" style="background:#C4620A;"></div>
+    <div class="entity-name" style="color:#C4620A;">enlybiz</div>
+    <div style="font-size:12px;color:var(--ink2);">Three-stripe parallelogram mark · Instrument Serif wordmark · Biz Amber #C4620A</div>
+    <div class="entity-role">Marketing Division</div>
+  </div>
+
+  <div class="logo-grid">
+    <div class="logo-cell">
+      <div class="logo-display bg-white">
+        <svg width="185" height="44" viewBox="0 0 185 44" fill="none" id="enlybiz-primary-light">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#111111" letter-spacing="-.6">enlybiz</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Light</span><button class="dl-btn" onclick="downloadSVG('enlybiz-primary-light','enlybiz-primary-light.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-dark">
+        <svg width="185" height="44" viewBox="0 0 185 44" fill="none" id="enlybiz-primary-dark">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#FFFFFF" letter-spacing="-.6">enlybiz</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Dark</span><button class="dl-btn" onclick="downloadSVG('enlybiz-primary-dark','enlybiz-primary-dark.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-amber">
+        <svg width="185" height="44" viewBox="0 0 185 44" fill="none" id="enlybiz-brand-bg">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"/>
+          <text x="58" y="31" font-family="'Instrument Serif',Georgia,serif" font-size="26" font-weight="400" fill="#FFFFFF" letter-spacing="-.6">enlybiz</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Brand BG</span><button class="dl-btn" onclick="downloadSVG('enlybiz-brand-bg','enlybiz-brand-bg.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlybiz-favicon">
+          <rect width="56" height="56" rx="12" fill="#C4620A"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#FFFFFF"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#FFFFFF" opacity="0.26"/>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Favicon</span><button class="dl-btn" onclick="downloadSVG('enlybiz-favicon','enlybiz-favicon.svg')">↓ SVG</button></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     04 — enlysoft
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">04 — enlysoft · cloud & technology</div>
+
+  <div class="entity-header" style="background:#080c12;border-color:#1a2a1f;">
+    <div class="entity-color-dot" style="background:#6B3FA0;"></div>
+    <div class="entity-name" style="color:#E2E8F0;font-family:var(--mono);font-size:18px;">enlysoft</div>
+    <div style="font-size:12px;color:#4a6a5a;">Three-stripe mark · DM Mono wordmark (only exception) · Tech Purple #6B3FA0</div>
+    <div class="entity-role" style="color:#4a6a5a;">Cloud & Tech Division</div>
+  </div>
+
+  <div class="logo-grid">
+    <div class="logo-cell">
+      <div class="logo-display bg-tech">
+        <svg width="200" height="44" viewBox="0 0 200 44" fill="none" id="enlysoft-primary-dark">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"/>
+          <text x="58" y="30" font-family="'DM Mono',monospace" font-size="20" font-weight="400" fill="#E2E8F0">enlysoft</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Tech Dark</span><button class="dl-btn" onclick="downloadSVG('enlysoft-primary-dark','enlysoft-primary-dark.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="200" height="44" viewBox="0 0 200 44" fill="none" id="enlysoft-primary-light">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"/>
+          <text x="58" y="30" font-family="'DM Mono',monospace" font-size="20" font-weight="400" fill="#1A1A1A">enlysoft</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Primary · Light</span><button class="dl-btn" onclick="downloadSVG('enlysoft-primary-light','enlysoft-primary-light.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-purple">
+        <svg width="200" height="44" viewBox="0 0 200 44" fill="none" id="enlysoft-brand-bg">
+          <path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"/>
+          <path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"/>
+          <text x="58" y="30" font-family="'DM Mono',monospace" font-size="20" font-weight="400" fill="#FFFFFF">enlysoft</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Brand BG</span><button class="dl-btn" onclick="downloadSVG('enlysoft-brand-bg','enlysoft-brand-bg.svg')">↓ SVG</button></div>
+    </div>
+    <div class="logo-cell">
+      <div class="logo-display bg-light">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlysoft-favicon">
+          <rect width="56" height="56" rx="12" fill="#6B3FA0"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#FFFFFF"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#FFFFFF" opacity="0.58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#FFFFFF" opacity="0.26"/>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant">Favicon</span><button class="dl-btn" onclick="downloadSVG('enlysoft-favicon','enlysoft-favicon.svg')">↓ SVG</button></div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:12px;">
+    <strong>enlysoft only:</strong> The wordmark uses DM Mono, not Instrument Serif. This is intentional — it signals the technical identity of the division and distinguishes it from all other divisions. Never use Instrument Serif for the enlysoft wordmark.
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     05 — FAMILY TOGETHER
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">05 — the full family · all five marks together</div>
+
+  <div class="logo-grid" style="border-radius:10px;grid-template-columns:1fr 1fr 1fr 1fr;">
+
+    <!-- enlyst parent dark-->
+    <div class="logo-cell">
+      <div class="logo-display bg-dark" style="flex-direction:column;gap:12px;min-height:130px;">
+        <svg width="36" height="38" viewBox="0 0 44 46" fill="none">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+        </svg>
+        <svg width="80" height="22" viewBox="0 0 80 22" fill="none">
+          <text x="0" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="20" fill="#FFFFFF" letter-spacing="-.7">enlyst</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant" style="color:#2D5BE3;">enlyst · parent</span></div>
+    </div>
+
+    <!-- enlysum -->
+    <div class="logo-cell">
+      <div class="logo-display bg-dark" style="flex-direction:column;gap:12px;min-height:130px;">
+        <svg width="36" height="38" viewBox="0 0 44 46" fill="none">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#1A7A4A"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#1A7A4A" opacity="0.58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#1A7A4A" opacity="0.26"/>
+        </svg>
+        <svg width="100" height="22" viewBox="0 0 100 22" fill="none">
+          <text x="0" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#FFFFFF" letter-spacing="-.5">enlysum</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant" style="color:#1A7A4A;">enlysum · finance</span></div>
+    </div>
+
+    <!-- enlybiz -->
+    <div class="logo-cell">
+      <div class="logo-display bg-dark" style="flex-direction:column;gap:12px;min-height:130px;">
+        <svg width="36" height="38" viewBox="0 0 44 46" fill="none">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity="0.58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity="0.26"/>
+        </svg>
+        <svg width="96" height="22" viewBox="0 0 96 22" fill="none">
+          <text x="0" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#FFFFFF" letter-spacing="-.5">enlybiz</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant" style="color:#C4620A;">enlybiz · marketing</span></div>
+    </div>
+
+    <!-- enlysoft -->
+    <div class="logo-cell">
+      <div class="logo-display bg-tech" style="flex-direction:column;gap:12px;min-height:130px;">
+        <svg width="36" height="38" viewBox="0 0 44 46" fill="none">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#6B3FA0"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#6B3FA0" opacity="0.58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#6B3FA0" opacity="0.26"/>
+        </svg>
+        <svg width="104" height="22" viewBox="0 0 104 22" fill="none">
+          <text x="0" y="19" font-family="'DM Mono',monospace" font-size="15" fill="#E2E8F0">enlysoft</text>
+        </svg>
+      </div>
+      <div class="logo-meta"><span class="logo-variant" style="color:#6B3FA0;">enlysoft · cloud</span></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     06 — FAVICON FAMILY
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">06 — favicons · all divisions</div>
+  <div class="favicon-grid">
+
+    <div class="favicon-cell">
+      <div class="favicon-display">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="fav-enlyst">
+          <rect width="56" height="56" rx="12" fill="#2D5BE3"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/>
+        </svg>
+      </div>
+      <div class="favicon-meta"><span class="logo-variant">enlyst</span><button class="dl-btn" onclick="downloadSVG('fav-enlyst','enlyst-favicon.svg')">↓</button></div>
+    </div>
+
+    <div class="favicon-cell">
+      <div class="favicon-display">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="fav-enlysum">
+          <rect width="56" height="56" rx="12" fill="#1A7A4A"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/>
+        </svg>
+      </div>
+      <div class="favicon-meta"><span class="logo-variant">enlysum</span><button class="dl-btn" onclick="downloadSVG('fav-enlysum','enlysum-favicon.svg')">↓</button></div>
+    </div>
+
+    <div class="favicon-cell">
+      <div class="favicon-display">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="fav-enlybiz">
+          <rect width="56" height="56" rx="12" fill="#C4620A"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/>
+        </svg>
+      </div>
+      <div class="favicon-meta"><span class="logo-variant">enlybiz</span><button class="dl-btn" onclick="downloadSVG('fav-enlybiz','enlybiz-favicon.svg')">↓</button></div>
+    </div>
+
+    <div class="favicon-cell">
+      <div class="favicon-display">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="fav-enlysoft">
+          <rect width="56" height="56" rx="12" fill="#6B3FA0"/>
+          <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/>
+          <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/>
+          <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/>
+        </svg>
+      </div>
+      <div class="favicon-meta"><span class="logo-variant">enlysoft</span><button class="dl-btn" onclick="downloadSVG('fav-enlysoft','enlysoft-favicon.svg')">↓</button></div>
+    </div>
+
+    <!-- parent holding / multi-colour -->
+    <div class="favicon-cell">
+      <div class="favicon-display">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="fav-holding">
+          <rect width="56" height="56" rx="12" fill="#111111"/>
+          <path d="M4 8 L22 8 L18 15 L0 15 Z" fill="#2D5BE3"/>
+          <path d="M4 18 L22 18 L18 25 L0 25 Z" fill="#1A7A4A"/>
+          <path d="M4 28 L22 28 L18 35 L0 35 Z" fill="#C4620A"/>
+          <path d="M4 38 L22 38 L18 45 L0 45 Z" fill="#6B3FA0"/>
+        </svg>
+      </div>
+      <div class="favicon-meta"><span class="logo-variant">Holding</span><button class="dl-btn" onclick="downloadSVG('fav-holding','enlyst-holding-favicon.svg')">↓</button></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     07 — COLOUR SYSTEM
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">07 — colour reference</div>
+  <div class="colour-row">
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#2D5BE3;"></div>
+      <div class="colour-name">HR Blue</div>
+      <div class="colour-hex">#2D5BE3</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#1A7A4A;"></div>
+      <div class="colour-name">Finance Green</div>
+      <div class="colour-hex">#1A7A4A</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#C4620A;"></div>
+      <div class="colour-name">Biz Amber</div>
+      <div class="colour-hex">#C4620A</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#6B3FA0;"></div>
+      <div class="colour-name">Tech Purple</div>
+      <div class="colour-hex">#6B3FA0</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#1A1A1A;"></div>
+      <div class="colour-name">Obsidian</div>
+      <div class="colour-hex">#1A1A1A</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#FFFFFF;border:1px solid var(--border);"></div>
+      <div class="colour-name">White</div>
+      <div class="colour-hex">#FFFFFF</div>
+    </div>
+    <div class="colour-chip">
+      <div class="colour-swatch" style="background:#080c12;"></div>
+      <div class="colour-name">Tech Dark</div>
+      <div class="colour-hex">#080c12</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     08 — SVG CODE SNIPPETS
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">08 — copy-paste SVG code · for web & email</div>
+
+  <div class="note"><strong>For web use:</strong> paste any of these SVG snippets directly into your HTML. They render at any size without pixelation. Change <code style="font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:3px;">width</code> and <code style="font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:3px;">height</code> attributes to resize.</div>
+
+  <p style="font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;">enlyst · horizontal · light background</p>
+  <div class="code-block" id="code-enlyst-h">
+    <button class="copy-code-btn" onclick="copyCode('code-enlyst-h')">Copy</button>
+<span class="cm">&lt;!-- enlyst horizontal lockup — light background --&gt;</span>
+<span class="kw">&lt;svg</span> <span class="at">width</span>=<span class="vl">"180"</span> <span class="at">height</span>=<span class="vl">"48"</span> <span class="at">viewBox</span>=<span class="vl">"0 0 180 48"</span> <span class="at">fill</span>=<span class="vl">"none"</span> <span class="at">xmlns</span>=<span class="vl">"http://www.w3.org/2000/svg"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M0 2 L36 2 L28 16 L-8 16 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M8 20 L44 20 L36 34 L0 34 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span> <span class="at">opacity</span>=<span class="vl">"0.58"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M16 38 L52 38 L44 48 L8 48 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span> <span class="at">opacity</span>=<span class="vl">"0.26"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;text</span> <span class="at">x</span>=<span class="vl">"60"</span> <span class="at">y</span>=<span class="vl">"36"</span> <span class="at">font-family</span>=<span class="vl">"'Instrument Serif',Georgia,serif"</span> <span class="at">font-size</span>=<span class="vl">"32"</span> <span class="at">fill</span>=<span class="vl">"#111111"</span> <span class="at">letter-spacing</span>=<span class="vl">"-1"</span><span class="kw">&gt;</span>enlyst<span class="kw">&lt;/text&gt;</span>
+<span class="kw">&lt;/svg&gt;</span></div>
+
+  <p style="font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:20px 0 10px;">enlyst · icon mark only · coloured</p>
+  <div class="code-block" id="code-enlyst-icon">
+    <button class="copy-code-btn" onclick="copyCode('code-enlyst-icon')">Copy</button>
+<span class="cm">&lt;!-- enlyst icon mark — use below 120px width --&gt;</span>
+<span class="kw">&lt;svg</span> <span class="at">width</span>=<span class="vl">"48"</span> <span class="at">height</span>=<span class="vl">"50"</span> <span class="at">viewBox</span>=<span class="vl">"0 0 48 50"</span> <span class="at">fill</span>=<span class="vl">"none"</span> <span class="at">xmlns</span>=<span class="vl">"http://www.w3.org/2000/svg"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M0 2 L30 2 L22 16 L-8 16 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M8 20 L38 20 L30 34 L0 34 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span> <span class="at">opacity</span>=<span class="vl">"0.58"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M16 38 L46 38 L38 50 L8 50 Z"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span> <span class="at">opacity</span>=<span class="vl">"0.26"</span><span class="kw">/&gt;</span>
+<span class="kw">&lt;/svg&gt;</span></div>
+
+  <p style="font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:20px 0 10px;">favicon · enlyst (paste in &lt;head&gt;)</p>
+  <div class="code-block" id="code-enlyst-fav">
+    <button class="copy-code-btn" onclick="copyCode('code-enlyst-fav')">Copy</button>
+<span class="cm">&lt;!-- Paste this SVG, save as favicon.svg, reference in HTML head --&gt;</span>
+<span class="kw">&lt;link</span> <span class="at">rel</span>=<span class="vl">"icon"</span> <span class="at">type</span>=<span class="vl">"image/svg+xml"</span> <span class="at">href</span>=<span class="vl">"favicon.svg"</span><span class="kw">&gt;</span>
+
+<span class="cm">&lt;!-- favicon.svg contents: --&gt;</span>
+<span class="kw">&lt;svg</span> <span class="at">width</span>=<span class="vl">"32"</span> <span class="at">height</span>=<span class="vl">"32"</span> <span class="at">viewBox</span>=<span class="vl">"0 0 56 56"</span> <span class="at">fill</span>=<span class="vl">"none"</span> <span class="at">xmlns</span>=<span class="vl">"http://www.w3.org/2000/svg"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;rect</span> <span class="at">width</span>=<span class="vl">"56"</span> <span class="at">height</span>=<span class="vl">"56"</span> <span class="at">rx</span>=<span class="vl">"12"</span> <span class="at">fill</span>=<span class="vl">"#2D5BE3"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M6 8 L32 8 L24 20 L-2 20 Z"</span> <span class="at">fill</span>=<span class="vl">"#FFFFFF"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M12 24 L38 24 L30 36 L4 36 Z"</span> <span class="at">fill</span>=<span class="vl">"#FFFFFF"</span> <span class="at">opacity</span>=<span class="vl">"0.58"</span><span class="kw">/&gt;</span>
+  <span class="kw">&lt;path</span> <span class="at">d</span>=<span class="vl">"M18 40 L44 40 L36 52 L10 52 Z"</span> <span class="at">fill</span>=<span class="vl">"#FFFFFF"</span> <span class="at">opacity</span>=<span class="vl">"0.26"</span><span class="kw">/&gt;</span>
+<span class="kw">&lt;/svg&gt;</span></div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+     09 — MINIMUM USAGE RULES
+════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-label">09 — minimum usage rules</div>
+  <div class="rules-grid">
+    <div class="rule-cell">
+      <div class="rule-label ok">✓ Do</div>
+      <div class="rule-text">Use the horizontal lockup as default in all navbars, documents, and presentations. The mark and wordmark must always appear together unless space prevents it.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-label no">✗ Don't</div>
+      <div class="rule-text">Never stretch, rotate, recolour, or add effects to the mark. Never use the dark-background wordmark on a light surface, or vice versa.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-label ok">✓ Do</div>
+      <div class="rule-text">Use the icon mark alone when the full lockup is below 120px wide. Use the favicon variant in browser tabs, app icons, and social profile photos.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-label no">✗ Don't</div>
+      <div class="rule-text">Never use one division's colour with another division's wordmark. Never use Instrument Serif for the enlysoft wordmark — it must always use DM Mono.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-label ok">✓ Do</div>
+      <div class="rule-text">Each division is colour-exclusive: Blue = enlyst, Green = enlysum, Amber = enlybiz, Purple = enlysoft. Maintain this mapping in all materials.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-label no">✗ Don't</div>
+      <div class="rule-text">Never use the consumer-facing division names (enlyst, enlysum, etc.) in legal documents. Use "Enlyst Smart Recruiting Pvt Ltd" for all legal purposes only.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:40px 0 20px;border-top:1px solid var(--border);margin-top:20px;">
+  <p style="font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;">Enlyst Brand Package · Daily Use Kit · info@enlystnow.com · 03000 340 036</p>
+  <p style="font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:4px;">Suite M-3, Lahore Stock Exchange Plaza · enlystnow.com</p>
+</div>
+
+
+</div><!-- /wrap -->
+</div><!-- /page -->
+
+
+<script>
+// SVG Download — serialises the SVG element and triggers browser download
+function downloadSVG(elementId, filename) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const serialiser = new XMLSerializer();
+  let svgStr = serialiser.serializeToString(el);
+  // ensure XML namespace
+  if (!svgStr.includes('xmlns=')) {
+    svgStr = svgStr.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+  const blob = new Blob([svgStr], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Copy code block text
+function copyCode(blockId) {
+  const block = document.getElementById(blockId);
+  const text = block.innerText.replace('Copy\n','').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = block.querySelector('.copy-code-btn');
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = 'Copy', 1800);
+  });
+}
+</script>
+
+</body>
+</html>

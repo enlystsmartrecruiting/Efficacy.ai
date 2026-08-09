@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enlyst Brand Guidelines 2026</title>
+<link rel="preconnect" href="https://fonts.bunny.net">
+<style>
+@import url('https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap');
+
+:root {
+  --hr-blue:        #2D5BE3;
+  --finance-green:  #1A7A4A;
+  --biz-amber:      #C4620A;
+  --tech-purple:    #6B3FA0;
+  --framework-gold: #C4A24A;
+
+  --hr-blue-58:        rgba(45,91,227,0.58);
+  --hr-blue-26:        rgba(45,91,227,0.26);
+  --finance-green-58:  rgba(26,122,74,0.58);
+  --finance-green-26:  rgba(26,122,74,0.26);
+  --biz-amber-58:      rgba(196,98,10,0.58);
+  --biz-amber-26:      rgba(196,98,10,0.26);
+  --tech-purple-58:    rgba(107,63,160,0.58);
+  --tech-purple-26:    rgba(107,63,160,0.26);
+
+  --blue-pale:    #EEF2FD;
+  --green-pale:   #EBF5EF;
+  --amber-pale:   #FDF3EC;
+  --purple-pale:  #F2EEF9;
+  --gold-pale:    #FAF4E2;
+
+  --obsidian:    #1A1A1A;
+  --ink:         #111111;
+  --ink-2:       #444444;
+  --ink-3:       #888888;
+  --mid-gray:    #9E9B95;
+  --white:       #FFFFFF;
+  --off-white:   #F7F6F3;
+  --cream:       #F4F3F0;
+  --light-gray:  #E8E6E1;
+  --rule:        #E2E0DB;
+  --tech-dark:   #080C12;
+
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
+  --bg-page: var(--off-white);
+  --bg-surface: var(--white);
+  --border: var(--rule);
+
+  --success: #1A7A4A; --success-pale: #EBF5EF;
+  --warning: #C4620A; --warning-pale: #FDF3EC;
+  --danger:  #B91C1C; --danger-pale: #FEE2E2;
+  --info:    #2D5BE3; --info-pale: #EEF2FD;
+
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'DM Mono', ui-monospace, monospace;
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px; --space-16:64px; --space-20:80px; --space-24:96px;
+
+  --radius-md:4px; --radius-xl:8px; --radius-2xl:10px; --radius-pill:999px;
+
+  --shadow-sm: 0 2px 8px rgba(17,17,17,0.05);
+  --shadow-md: 0 8px 32px rgba(17,17,17,0.07);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{
+  margin:0;font-family:var(--font-sans);background:var(--bg-page);
+  color:var(--fg-1);line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+/* ===== NAV ===== */
+.toc{
+  position:sticky;top:0;z-index:50;background:rgba(247,246,243,0.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+}
+.toc-inner{
+  max-width:1080px;margin:0 auto;padding:14px 32px;display:flex;
+  gap:28px;overflow-x:auto;white-space:nowrap;
+}
+.toc a{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--fg-3);text-decoration:none;
+  transition:color .15s;
+}
+.toc a:hover{color:var(--hr-blue);}
+
+/* ===== COVER ===== */
+.cover{
+  padding:120px 0 100px;border-bottom:1px solid var(--border);
+}
+.cover .eyebrow{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--fg-3);margin:0 0 28px;
+  display:flex;align-items:center;gap:10px;
+}
+.cover .eyebrow::before{content:'';width:28px;height:1.5px;background:var(--hr-blue);}
+.cover h1{
+  font-family:var(--font-serif);font-weight:400;font-size:clamp(48px,7vw,84px);
+  line-height:0.98;letter-spacing:-0.03em;margin:0 0 24px;color:var(--ink);
+}
+.cover h1 em{font-style:italic;color:var(--hr-blue);}
+.cover p{
+  font-size:18px;color:var(--ink-2);max-width:560px;margin:0;
+}
+.cover .meta{
+  margin-top:56px;display:flex;gap:40px;font-family:var(--font-mono);
+  font-size:12px;color:var(--fg-3);
+}
+.cover .meta strong{color:var(--ink-2);font-weight:500;}
+
+/* ===== SECTION ===== */
+section{padding:88px 0;border-bottom:1px solid var(--border);}
+section:last-of-type{border-bottom:none;}
+.s-head{margin-bottom:48px;}
+.s-num{
+  font-family:var(--font-mono);font-size:12px;color:var(--mid-gray);
+  letter-spacing:.1em;margin:0 0 8px;
+}
+.s-head h2{
+  font-family:var(--font-serif);font-weight:400;font-size:clamp(30px,3.5vw,44px);
+  letter-spacing:-0.02em;margin:0 0 14px;color:var(--ink);
+}
+.s-head p{font-size:16px;color:var(--ink-2);max-width:640px;margin:0;}
+
+/* ===== LOGO GRID ===== */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;}
+.logo-cell{
+  background:var(--bg-surface);padding:36px 24px;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:18px;min-height:140px;
+}
+.logo-cell.dark{background:var(--obsidian);}
+.logo-cell.colorbg{background:var(--hr-blue);}
+.logo-cell svg{max-width:100%;height:auto;}
+.logo-cell .tag{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--fg-3);
+}
+.logo-cell.dark .tag, .logo-cell.colorbg .tag{color:rgba(255,255,255,.55);}
+
+.division-block{margin-bottom:56px;}
+.division-label{
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.division-swatch{width:14px;height:14px;border-radius:3px;flex-shrink:0;}
+.division-label h3{
+  font-family:var(--font-sans);font-weight:600;font-size:15px;margin:0;color:var(--ink);
+}
+.division-label span{
+  font-family:var(--font-mono);font-size:12px;color:var(--fg-3);
+}
+
+/* ===== USAGE RULES ===== */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+.rule-card{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:var(--radius-xl);padding:28px;
+}
+.rule-card.do{border-left:3px solid var(--success);}
+.rule-card.dont{border-left:3px solid var(--danger);}
+.rule-card .label{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;margin:0 0 10px;
+}
+.rule-card.do .label{color:var(--success);}
+.rule-card.dont .label{color:var(--danger);}
+.rule-card ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14px;line-height:1.7;}
+.rule-card li{margin-bottom:4px;}
+
+/* ===== COLOR ===== */
+.color-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+.swatch{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--border);}
+.swatch-fill{height:96px;}
+.swatch-info{padding:14px 16px;background:var(--bg-surface);}
+.swatch-info .name{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 2px;}
+.swatch-info .hex{font-family:var(--font-mono);font-size:12px;color:var(--fg-3);margin:0;}
+
+.neutral-row{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:24px;}
+.neutral-row .swatch-fill{height:64px;}
+
+/* ===== TYPE ===== */
+.type-row{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:24px 0;border-bottom:1px solid var(--border);gap:24px;
+}
+.type-row:last-child{border-bottom:none;}
+.type-sample{font-family:var(--font-serif);font-weight:400;color:var(--ink);white-space:nowrap;}
+.type-meta{font-family:var(--font-mono);font-size:12px;color:var(--fg-3);text-align:right;flex-shrink:0;}
+.font-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;}
+.font-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;}
+.font-card .fname{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 4px;}
+.font-card .frole{font-family:var(--font-mono);font-size:11px;color:var(--fg-3);text-transform:uppercase;letter-spacing:.06em;margin:0 0 20px;}
+.font-card .fsample{font-size:34px;margin:0;color:var(--ink);}
+.font-card.serif .fsample{font-family:var(--font-serif);}
+.font-card.sans .fsample{font-family:var(--font-sans);font-weight:500;}
+.font-card.mono .fsample{font-family:var(--font-mono);font-size:26px;}
+
+/* ===== SPACING / TOKENS ===== */
+.token-table{width:100%;border-collapse:collapse;font-size:14px;}
+.token-table th{
+  text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--fg-3);padding:10px 0;border-bottom:1px solid var(--border);
+}
+.token-table td{padding:12px 0;border-bottom:1px solid var(--border);color:var(--ink-2);}
+.token-table td.mono{font-family:var(--font-mono);font-size:13px;color:var(--ink);}
+.space-bar{height:10px;background:var(--hr-blue);border-radius:2px;}
+
+/* ===== APPLICATIONS ===== */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.app-card{border-radius:var(--radius-2xl);overflow:hidden;border:1px solid var(--border);}
+.app-card .surface{padding:40px;min-height:160px;display:flex;flex-direction:column;justify-content:space-between;}
+.app-card .surface.light{background:var(--white);}
+.app-card .surface.dark{background:var(--obsidian);}
+.app-card .surface.tone{background:var(--blue-pale);}
+.app-card .surface.techdark{background:var(--tech-dark);}
+.app-card .surface .label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);}
+.app-card .surface.dark .label, .app-card .surface.techdark .label{color:rgba(255,255,255,.45);}
+.app-cap{padding:14px 20px;background:var(--bg-surface);border-top:1px solid var(--border);font-size:13px;color:var(--ink-2);}
+
+footer{padding:48px 0;}
+footer p{font-family:var(--font-mono);font-size:12px;color:var(--fg-3);margin:0;}
+
+@media (max-width:720px){
+  .logo-grid{grid-template-columns:1fr;}
+  .rules-grid{grid-template-columns:1fr;}
+  .color-grid{grid-template-columns:repeat(2,1fr);}
+  .neutral-row{grid-template-columns:repeat(3,1fr);}
+  .font-cards{grid-template-columns:1fr;}
+  .app-grid{grid-template-columns:1fr;}
+  .type-row{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#logo">Logo system</a>
+    <a href="#badge">EF badge</a>
+    <a href="#usage">Usage</a>
+    <a href="#color">Color</a>
+    <a href="#type">Typography</a>
+    <a href="#tokens">Spacing &amp; tokens</a>
+    <a href="#apps">Applications</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Brand Guidelines — 2026</p>
+    <h1>Enlyst, <em>codified.</em></h1>
+    <p>The complete visual system across enlyst, enlysoft, enlybiz, enlysum, and the parent Enlystnow identity — built from the production token source, not redrawn from memory.</p>
+    <div class="meta">
+      <span><strong>Founder</strong> Wasim Hassan</span>
+      <span><strong>Entity</strong> Enlyst Smart Recruiting Pvt Ltd</span>
+      <span><strong>Source</strong> colors_and_type.css</span>
+    </div>
+  </div>
+</header>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">01</p>
+      <h2>The mark</h2>
+      <p>Three stacked trapezoids in descending opacity (100% → 58% → 26%) — one shape, recolored per division. Each division pairs the mark with its own wordmark and typeface.</p>
+    </div>
+
+    <div class="division-block">
+      <div class="division-label">
+        <div class="division-swatch" style="background:var(--hr-blue)"></div>
+        <h3>enlyst</h3><span>HR &amp; Talent · #2D5BE3 · Instrument Serif</span>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="52" viewBox="0 0 200 52" fill="none"><path d="M0 4 L40 4 L32 18 L-8 18 Z" fill="#2D5BE3"></path><path d="M8 22 L48 22 L40 36 L0 36 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 40 L56 40 L48 52 L8 52 Z" fill="#2D5BE3" opacity="0.26"></path><text x="66" y="37" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#111111" letter-spacing="-1.2">enlyst</text></svg>
+          <p class="tag">primary-light</p>
+        </div>
+        <div class="logo-cell dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="52" viewBox="0 0 200 52" fill="none"><path d="M0 4 L40 4 L32 18 L-8 18 Z" fill="#2D5BE3"></path><path d="M8 22 L48 22 L40 36 L0 36 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 40 L56 40 L48 52 L8 52 Z" fill="#2D5BE3" opacity="0.26"></path><text x="66" y="37" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#FFFFFF" letter-spacing="-1.2">enlyst</text></svg>
+          <p class="tag">primary-dark</p>
+        </div>
+        <div class="logo-cell colorbg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="52" viewBox="0 0 200 52" fill="none"><path d="M0 4 L40 4 L32 18 L-8 18 Z" fill="#FFFFFF"></path><path d="M8 22 L48 22 L40 36 L0 36 Z" fill="#FFFFFF" opacity="0.58"></path><path d="M16 40 L56 40 L48 52 L8 52 Z" fill="#FFFFFF" opacity="0.26"></path><text x="66" y="37" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#FFFFFF" letter-spacing="-1.2">enlyst</text></svg>
+          <p class="tag">mono-white</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="division-block">
+      <div class="division-label">
+        <div class="division-swatch" style="background:var(--finance-green)"></div>
+        <h3>enlysum</h3><span>Finance · #1A7A4A · Instrument Serif</span>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="188" height="44" viewBox="0 0 188 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#111" letter-spacing="-.6">enlysum</text></svg>
+          <p class="tag">primary-light</p>
+        </div>
+        <div class="logo-cell dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="188" height="44" viewBox="0 0 188 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#FFFFFF" letter-spacing="-.6">enlysum</text></svg>
+          <p class="tag">primary-dark</p>
+        </div>
+        <div class="logo-cell colorbg" style="background:var(--finance-green)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="188" height="44" viewBox="0 0 188 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#FFFFFF" letter-spacing="-.6">enlysum</text></svg>
+          <p class="tag">mono-white</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="division-block">
+      <div class="division-label">
+        <div class="division-swatch" style="background:var(--biz-amber)"></div>
+        <h3>enlybiz</h3><span>Marketing · #C4620A · Instrument Serif</span>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="184" height="44" viewBox="0 0 184 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#111" letter-spacing="-.6">enlybiz</text></svg>
+          <p class="tag">primary-light</p>
+        </div>
+        <div class="logo-cell dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="184" height="44" viewBox="0 0 184 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#FFFFFF" letter-spacing="-.6">enlybiz</text></svg>
+          <p class="tag">primary-dark</p>
+        </div>
+        <div class="logo-cell colorbg" style="background:var(--biz-amber)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="184" height="44" viewBox="0 0 184 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#FFFFFF" letter-spacing="-.6">enlybiz</text></svg>
+          <p class="tag">mono-white</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="division-block">
+      <div class="division-label">
+        <div class="division-swatch" style="background:var(--tech-purple)"></div>
+        <h3>enlysoft</h3><span>Cloud &amp; Tech · #6B3FA0 · DM Mono (dark-first)</span>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"></path><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#1A1A1A">enlysoft</text></svg>
+          <p class="tag">primary-light</p>
+        </div>
+        <div class="logo-cell" style="background:var(--tech-dark)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"></path><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#E2E8F0">enlysoft</text></svg>
+          <p class="tag" style="color:rgba(255,255,255,.55)">primary-dark</p>
+        </div>
+        <div class="logo-cell colorbg" style="background:var(--tech-purple)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="196" height="44" viewBox="0 0 196 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"></path><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#FFFFFF">enlysoft</text></svg>
+          <p class="tag">mono-white</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="division-block" style="margin-bottom:0;">
+      <div class="division-label">
+        <div class="division-swatch" style="background:var(--hr-blue)"></div>
+        <h3>Enlystnow</h3><span>Parent / holding identity · Instrument Serif</span>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-cell">
+          <svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 240 50" fill="none"><path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"></path><path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"></path><text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#111111" letter-spacing="-1">Enlystnow</text></svg>
+          <p class="tag">primary-light</p>
+        </div>
+        <div class="logo-cell dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 240 50" fill="none"><path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"></path><path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"></path><text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">Enlystnow</text></svg>
+          <p class="tag">primary-dark</p>
+        </div>
+        <div class="logo-cell colorbg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="210" height="50" viewBox="0 0 210 50" fill="none"><path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#FFFFFF"></path><path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#FFFFFF" opacity="0.55"></path><path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#FFFFFF" opacity="0.24"></path><text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#FFFFFF" letter-spacing="-1">Enlystnow</text></svg>
+          <p class="tag">mono-white</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="badge">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">02</p>
+      <h2>The EF certification badge</h2>
+      <p>New asset — the Enlyst Framework adoption mark. Hexagonal, gold, italic serif monogram. Distinct from the division system: this badge signals an external client has earned certification, never used as a logo substitute.</p>
+    </div>
+    <div class="logo-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="logo-cell">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"></path><path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="rgba(196,162,74,.08)" stroke="#C4A24A" stroke-width=".7"></path><text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#C4A24A" font-weight="400" font-style="italic">EF</text></svg>
+        <p class="tag">on light</p>
+      </div>
+      <div class="logo-cell dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"></path><path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="rgba(196,162,74,.12)" stroke="#C4A24A" stroke-width=".7"></path><text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#C4A24A" font-weight="400" font-style="italic">EF</text></svg>
+        <p class="tag" style="color:rgba(255,255,255,.55)">on dark</p>
+      </div>
+      <div class="logo-cell" style="background:var(--gold-pale);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"></path><path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="rgba(196,162,74,.1)" stroke="#C4A24A" stroke-width=".7"></path><text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#C4A24A" font-weight="400" font-style="italic">EF</text></svg>
+        <p class="tag">on gold-pale tint</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="usage">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">03</p>
+      <h2>Usage rules</h2>
+      <p>Minimum size: 88px wide for wordmark lockups, 32px for the mark alone. Clear space: minimum one mark-height on all sides.</p>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <p class="label">Do</p>
+        <ul>
+          <li>Use <strong>primary-light</strong> on off-white / cream / white surfaces</li>
+          <li>Use <strong>primary-dark</strong> on Obsidian (#1A1A1A) or any near-black surface</li>
+          <li>Use <strong>mono-white</strong> only on a division's own brand color or a photo/gradient background</li>
+          <li>Keep enlysoft on Tech Dark (#080C12) as its default surface — it is dark-first, not an inverted variant</li>
+          <li>Maintain the 100/58/26% opacity ramp on the mark exactly as specified</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <p class="label">Don't</p>
+        <ul>
+          <li>Recolor the mark outside its assigned division hue</li>
+          <li>Mix division colors within a single lockup</li>
+          <li>Use mono-white on light or off-white backgrounds — contrast fails</li>
+          <li>Stretch, skew, or alter the trapezoid angles</li>
+          <li>Apply drop shadows or outlines to the mark itself</li>
+          <li>Substitute the EF badge as a division logo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="color">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">04</p>
+      <h2>Color</h2>
+      <p>One hue per operating arm — never mixed. Status colors (success/warning/danger/info) are UI-only and never appear in a mark.</p>
+    </div>
+
+    <div class="color-grid">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--hr-blue)"></div>
+        <div class="swatch-info"><p class="name">HR Blue</p><p class="hex">#2D5BE3 — enlyst</p></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--finance-green)"></div>
+        <div class="swatch-info"><p class="name">Finance Green</p><p class="hex">#1A7A4A — enlysum</p></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--biz-amber)"></div>
+        <div class="swatch-info"><p class="name">Biz Amber</p><p class="hex">#C4620A — enlybiz</p></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--tech-purple)"></div>
+        <div class="swatch-info"><p class="name">Tech Purple</p><p class="hex">#6B3FA0 — enlysoft</p></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--framework-gold)"></div>
+        <div class="swatch-info"><p class="name">Framework Gold</p><p class="hex">#C4A24A — EF badge</p></div>
+      </div>
+    </div>
+
+    <div class="neutral-row">
+      <div class="swatch"><div class="swatch-fill" style="background:var(--obsidian)"></div><div class="swatch-info"><p class="hex">#1A1A1A</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--ink)"></div><div class="swatch-info"><p class="hex">#111111</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--ink-2)"></div><div class="swatch-info"><p class="hex">#444444</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--mid-gray)"></div><div class="swatch-info"><p class="hex">#9E9B95</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--off-white);border-bottom:1px solid var(--border)"></div><div class="swatch-info"><p class="hex">#F7F6F3</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--light-gray)"></div><div class="swatch-info"><p class="hex">#E8E6E1</p></div></div>
+      <div class="swatch"><div class="swatch-fill" style="background:var(--tech-dark)"></div><div class="swatch-info"><p class="hex">#080C12</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">05</p>
+      <h2>Typography</h2>
+      <p>Served via Google Fonts CDN.</p>
+    </div>
+
+    <div class="font-cards">
+      <div class="font-card serif">
+        <p class="fname">Instrument Serif</p>
+        <p class="frole">Headings · Display · Wordmarks</p>
+        <p class="fsample">Aa Bb Cc</p>
+      </div>
+      <div class="font-card sans">
+        <p class="fname">Inter</p>
+        <p class="frole">Body · UI · Labels</p>
+        <p class="fsample">Aa Bb Cc</p>
+      </div>
+      <div class="font-card mono">
+        <p class="fname">DM Mono</p>
+        <p class="frole">enlysoft wordmark · eyebrows · code</p>
+        <p class="fsample">Aa Bb Cc</p>
+      </div>
+    </div>
+
+    <div class="type-row"><span class="type-sample" style="font-size:64px;">Display</span><span class="type-meta">clamp(56–88px) · Instrument Serif · ls -0.035em</span></div>
+    <div class="type-row"><span class="type-sample" style="font-size:48px;">Heading 1</span><span class="type-meta">clamp(40–64px) · Instrument Serif</span></div>
+    <div class="type-row"><span class="type-sample" style="font-size:36px;">Heading 2</span><span class="type-meta">clamp(32–46px) · Instrument Serif · ls -0.025em</span></div>
+    <div class="type-row"><span class="type-sample" style="font-size:28px;">Heading 3</span><span class="type-meta">28px · Instrument Serif · ls -0.018em</span></div>
+    <div class="type-row"><span class="type-sample" style="font-family:Inter;font-weight:600;font-size:22px;">Heading 4</span><span class="type-meta">22px · Inter 600</span></div>
+    <div class="type-row"><span class="type-sample" style="font-family:Inter;font-size:16px;">Body text</span><span class="type-meta">16px · Inter · line-height 1.55</span></div>
+    <div class="type-row"><span class="type-sample" style="font-family:Inter;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);">Eyebrow label</span><span class="type-meta">11px · Inter 500 · ls 0.14em</span></div>
+  </div>
+</section>
+
+<section id="tokens">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">06</p>
+      <h2>Spacing &amp; tokens</h2>
+      <p>4px base spacing scale. Restrained, near-flat shadow system — Enlyst avoids heavy elevation.</p>
+    </div>
+
+    <table class="token-table">
+      <tr><th>Token</th><th>Value</th><th style="width:50%">Scale</th></tr>
+      <tr><td class="mono">--space-2</td><td>8px</td><td><div class="space-bar" style="width:8px"></div></td></tr>
+      <tr><td class="mono">--space-4</td><td>16px</td><td><div class="space-bar" style="width:16px"></div></td></tr>
+      <tr><td class="mono">--space-6</td><td>24px</td><td><div class="space-bar" style="width:24px"></div></td></tr>
+      <tr><td class="mono">--space-8</td><td>32px</td><td><div class="space-bar" style="width:32px"></div></td></tr>
+      <tr><td class="mono">--space-12</td><td>48px</td><td><div class="space-bar" style="width:48px"></div></td></tr>
+      <tr><td class="mono">--space-16</td><td>64px</td><td><div class="space-bar" style="width:64px"></div></td></tr>
+      <tr><td class="mono">--space-24</td><td>96px</td><td><div class="space-bar" style="width:96px"></div></td></tr>
+    </table>
+
+    <table class="token-table" style="margin-top:32px;">
+      <tr><th>Radius</th><th>Value</th><th>Used for</th></tr>
+      <tr><td class="mono">--radius-md</td><td>4px</td><td>Default buttons, inputs</td></tr>
+      <tr><td class="mono">--radius-xl</td><td>8px</td><td>Cards</td></tr>
+      <tr><td class="mono">--radius-2xl</td><td>10px</td><td>Hero images</td></tr>
+      <tr><td class="mono">--radius-3xl</td><td>13px</td><td>Favicon squircle</td></tr>
+      <tr><td class="mono">--radius-pill</td><td>999px</td><td>Pills, tags</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="apps">
+  <div class="wrap">
+    <div class="s-head">
+      <p class="s-num">07</p>
+      <h2>Applications</h2>
+      <p>Reference lockups for the most common live surfaces.</p>
+    </div>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="surface light">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 52" fill="none"><path d="M0 4 L40 4 L32 18 L-8 18 Z" fill="#2D5BE3"></path><path d="M8 22 L48 22 L40 36 L0 36 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 40 L56 40 L48 52 L8 52 Z" fill="#2D5BE3" opacity="0.26"></path><text x="66" y="37" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#111111" letter-spacing="-1.2">enlyst</text></svg>
+          <p class="label">enlystnow.com · header</p>
+        </div>
+        <p class="app-cap">Off-white page background, primary-light lockup, Inter nav links.</p>
+      </div>
+      <div class="app-card">
+        <div class="surface dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="40" viewBox="0 0 200 52" fill="none"><path d="M0 4 L40 4 L32 18 L-8 18 Z" fill="#2D5BE3"></path><path d="M8 22 L48 22 L40 36 L0 36 Z" fill="#2D5BE3" opacity="0.58"></path><path d="M16 40 L56 40 L48 52 L8 52 Z" fill="#2D5BE3" opacity="0.26"></path><text x="66" y="37" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#FFFFFF" letter-spacing="-1.2">enlyst</text></svg>
+          <p class="label">Footer · Obsidian surface</p>
+        </div>
+        <p class="app-cap">Dark footer band — primary-dark, white body text.</p>
+      </div>
+      <div class="app-card">
+        <div class="surface techdark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="196" height="36" viewBox="0 0 196 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"></path><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#E2E8F0">enlysoft</text></svg>
+          <p class="label">enlysoft.net · header</p>
+        </div>
+        <p class="app-cap">Tech Dark (#080C12) default surface — enlysoft's native habitat, not an inversion.</p>
+      </div>
+      <div class="app-card">
+        <div class="surface" style="background:var(--biz-amber);padding:40px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="184" height="36" viewBox="0 0 184 44" fill="none"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#FFFFFF"></path><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"></path><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#FFFFFF" opacity="0.26"></path><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#FFFFFF" letter-spacing="-.6">enlybiz</text></svg>
+          <p class="label" style="color:rgba(255,255,255,.7)">enlybiz · brand-color hero</p>
+        </div>
+        <p class="app-cap">Mono-white on the division's own brand color — campaign heroes, social headers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Enlyst Smart Recruiting Pvt Ltd · Suite M-3, Lahore Stock Exchange · info@enlystnow.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

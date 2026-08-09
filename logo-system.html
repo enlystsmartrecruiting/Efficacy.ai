@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst — Logo System 2025</title>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --obsidian: #1A1A1A;
+  --off-white: #F7F6F3;
+  --mid: #888;
+  --border: rgba(255,255,255,0.08);
+  --hr-blue: #2D5BE3;
+  --fin-green: #1A7A4A;
+  --biz-amber: #C4620A;
+  --tech-purple: #6B3FA0;
+  --tech-dark: #080c12;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: #0e0e0e;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.top-nav {
+  position: sticky;
+  top: 0; z-index: 100;
+  background: rgba(14,14,14,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 48px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.nav-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-pill {
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  transition: all 0.2s;
+}
+.nav-pill:hover { color: #fff; background: rgba(255,255,255,0.07); }
+.nav-pill.active { color: #fff; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+
+.nav-dl {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.nav-dl:hover { opacity: 0.85; }
+
+/* ── BRAND SECTIONS ── */
+.brand-section { display: none; }
+.brand-section.active { display: block; }
+
+/* ── HERO STRIP ── */
+.brand-hero {
+  padding: 80px 48px 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-hero::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  opacity: 0.07;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.brand-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.brand-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+
+.brand-color-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.brand-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.brand-tagline {
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ── LOGO GRID ── */
+.logo-grid-section {
+  padding: 56px 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.section-header h2 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.section-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+.logo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* single logo card */
+.logo-card {
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-card:first-child { border-radius: 12px 0 0 12px; }
+.logo-card:last-child { border-radius: 0 12px 12px 0; }
+.logo-cards.two-col .logo-card:first-child { border-radius: 12px 0 0 12px; }
+.logo-cards.two-col .logo-card:last-child { border-radius: 0 12px 12px 0; }
+
+.logo-display {
+  padding: 48px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  position: relative;
+}
+
+.logo-card-meta {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.logo-card-use {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  font-family: var(--mono);
+}
+
+.dl-btn {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dl-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* bg variants */
+.bg-dark    { background: #111; }
+.bg-black   { background: #000; }
+.bg-white   { background: #fff; }
+.bg-offwhite{ background: #F7F6F3; }
+.bg-brand   { } /* set per-brand */
+.bg-subtle  { background: rgba(255,255,255,0.03); }
+
+/* 2-col row */
+.logo-cards.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 4-col row */
+.logo-cards.four-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* icon-only row */
+.logo-cards.icon-row {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* color spec */
+.color-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.spec-swatch {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.spec-swatch-fill {
+  height: 72px;
+}
+
+.spec-swatch-info {
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.spec-swatch-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.spec-swatch-hex {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* usage table */
+.usage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.usage-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.usage-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.75);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.usage-table tr:last-child td { border-bottom: none; }
+
+.usage-table .file-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  margin-right: 6px;
+}
+
+.usage-wrap {
+  padding: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ─────────────────────────────────────── */
+/*  ENLYST SVG LOGOS                       */
+/* ─────────────────────────────────────── */
+
+/* The three-stripe mark: based on existing three-stripe brand */
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-title">Enlyst Logo System</div>
+  <div class="nav-pills">
+    <button class="nav-pill active" data-brand="enlyst">Enlyst</button>
+    <button class="nav-pill" data-brand="enlysum">enlysum</button>
+    <button class="nav-pill" data-brand="enlybiz">enlybiz</button>
+    <button class="nav-pill" data-brand="enlysoft">enlysoft</button>
+  </div>
+  <button class="nav-dl" onclick="downloadAll()">↓ Export SVGs</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  ENLYST — PARENT BRAND                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="brand-section active" id="brand-enlyst">
+
+  <div class="brand-hero" style="background: linear-gradient(135deg, #0a0d14 0%, #0f1420 100%);">
+    <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:var(--hr-blue);opacity:0.06;filter:blur(80px);pointer-events:none;"></div>
+    <div class="brand-meta">
+      <div class="brand-color-dot" style="background:#2D5BE3;"></div>
+      <span class="brand-badge" style="background:rgba(45,91,227,0.12);color:#2D5BE3;border:1px solid rgba(45,91,227,0.25);">Parent Brand · Logo System 2025</span>
+    </div>
+    <h1 class="brand-title">enlyst</h1>
+    <p class="brand-tagline">The operating partner mark. Built on three stacked bars — representing the three pillars of business: People, Operations, Growth. Unified under one identity.</p>
+  </div>
+
+  <!-- PRIMARY LOGOS -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Primary Lockups</h2></div>
+    <div class="logo-cards">
+
+      <!-- Dark BG — Wordmark + Mark -->
+      <div class="logo-card bg-dark" style="border:1px solid rgba(255,255,255,0.07);">
+        <div class="logo-display">
+          <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Three-stripe mark -->
+            <rect x="0" y="4" width="28" height="8" rx="2" fill="#2D5BE3"/>
+            <rect x="0" y="20" width="20" height="8" rx="2" fill="#2D5BE3" opacity="0.7"/>
+            <rect x="0" y="36" width="24" height="8" rx="2" fill="#2D5BE3" opacity="0.45"/>
+            <!-- Wordmark -->
+            <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Primary · Dark</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="logo-card-use">website nav</span>
+            <button class="dl-btn" onclick="downloadSVG('enlyst-primary-dark')">SVG</button>
+          </div>
+        </div>
+        <!-- hidden SVG for download -->
+        <svg id="enlyst-primary-dark" style="display:none" width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="4" width="28" height="8" rx="2" fill="#2D5BE3"/>
+          <rect x="0" y="20" width="20" height="8" rx="2" fill="#2D5BE3" opacity="0.7"/>
+          <rect x="0" y="36" width="24" height="8" rx="2" fill="#2D5BE3" opacity="0.45"/>
+          <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+
+      <!-- Light BG — Wordmark + Mark -->
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display">
+          <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="4" width="28" height="8" rx="2" fill="#2D5BE3"/>
+            <rect x="0" y="20" width="20" height="8" rx="2" fill="#2D5BE3" opacity="0.6"/>
+            <rect x="0" y="36" width="24" height="8" rx="2" fill="#2D5BE3" opacity="0.35"/>
+            <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#1A1A1A" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Primary · Light</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="logo-card-use">print / docs</span>
+            <button class="dl-btn" onclick="downloadSVG('enlyst-primary-light')">SVG</button>
+          </div>
+        </div>
+        <svg id="enlyst-primary-light" style="display:none" width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="4" width="28" height="8" rx="2" fill="#2D5BE3"/>
+          <rect x="0" y="20" width="20" height="8" rx="2" fill="#2D5BE3" opacity="0.6"/>
+          <rect x="0" y="36" width="24" height="8" rx="2" fill="#2D5BE3" opacity="0.35"/>
+          <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#1A1A1A" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+
+      <!-- Blue BG -->
+      <div class="logo-card" style="background:#2D5BE3;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display">
+          <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="4" width="28" height="8" rx="2" fill="#FFFFFF"/>
+            <rect x="0" y="20" width="20" height="8" rx="2" fill="#FFFFFF" opacity="0.6"/>
+            <rect x="0" y="36" width="24" height="8" rx="2" fill="#FFFFFF" opacity="0.35"/>
+            <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(255,255,255,0.15);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Primary · Brand BG</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="logo-card-use" style="color:rgba(255,255,255,0.35);">email header</span>
+            <button class="dl-btn" onclick="downloadSVG('enlyst-primary-blue')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6);">SVG</button>
+          </div>
+        </div>
+        <svg id="enlyst-primary-blue" style="display:none" width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="4" width="28" height="8" rx="2" fill="#FFFFFF"/>
+          <rect x="0" y="20" width="20" height="8" rx="2" fill="#FFFFFF" opacity="0.6"/>
+          <rect x="0" y="36" width="24" height="8" rx="2" fill="#FFFFFF" opacity="0.35"/>
+          <text x="40" y="35" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICON MARK -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Icon Mark — Sizes &amp; Backgrounds</h2></div>
+    <div class="logo-cards icon-row">
+
+      <!-- 64×64 dark -->
+      <div class="logo-card bg-dark" style="border:1px solid rgba(255,255,255,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="40" height="12" rx="3" fill="#2D5BE3"/>
+            <rect x="6" y="24" width="28" height="12" rx="3" fill="#2D5BE3" opacity="0.65"/>
+            <rect x="6" y="42" width="34" height="8" rx="3" fill="#2D5BE3" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Icon · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-icon-dark')">SVG</button>
+        </div>
+        <svg id="enlyst-icon-dark" style="display:none" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="40" height="12" rx="3" fill="#2D5BE3"/>
+          <rect x="6" y="24" width="28" height="12" rx="3" fill="#2D5BE3" opacity="0.65"/>
+          <rect x="6" y="42" width="34" height="8" rx="3" fill="#2D5BE3" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <!-- white bg icon -->
+      <div class="logo-card bg-white" style="border:1px solid rgba(0,0,0,0.08);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="40" height="12" rx="3" fill="#2D5BE3"/>
+            <rect x="6" y="24" width="28" height="12" rx="3" fill="#2D5BE3" opacity="0.6"/>
+            <rect x="6" y="42" width="34" height="8" rx="3" fill="#2D5BE3" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08);">
+          <span class="logo-card-label" style="color:#888;">Icon · White</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-icon-white')" style="border-color:rgba(0,0,0,0.2);color:#666;">SVG</button>
+        </div>
+        <svg id="enlyst-icon-white" style="display:none" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="40" height="12" rx="3" fill="#2D5BE3"/>
+          <rect x="6" y="24" width="28" height="12" rx="3" fill="#2D5BE3" opacity="0.6"/>
+          <rect x="6" y="42" width="34" height="8" rx="3" fill="#2D5BE3" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <!-- favicon square -->
+      <div class="logo-card" style="background:#2D5BE3;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="10" fill="#2D5BE3"/>
+            <rect x="8" y="10" width="32" height="8" rx="2" fill="#FFFFFF"/>
+            <rect x="8" y="22" width="22" height="8" rx="2" fill="#FFFFFF" opacity="0.65"/>
+            <rect x="8" y="34" width="28" height="6" rx="2" fill="#FFFFFF" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(255,255,255,0.15);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Favicon · 48×48</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-favicon')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6);">SVG</button>
+        </div>
+        <svg id="enlyst-favicon" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="10" fill="#2D5BE3"/>
+          <rect x="8" y="10" width="32" height="8" rx="2" fill="#FFFFFF"/>
+          <rect x="8" y="22" width="22" height="8" rx="2" fill="#FFFFFF" opacity="0.65"/>
+          <rect x="8" y="34" width="28" height="6" rx="2" fill="#FFFFFF" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <!-- social profile square -->
+      <div class="logo-card bg-dark" style="border:1px solid rgba(255,255,255,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" rx="24" fill="#111111"/>
+            <rect x="30" y="40" width="140" height="36" rx="8" fill="#2D5BE3"/>
+            <rect x="30" y="88" width="98" height="36" rx="8" fill="#2D5BE3" opacity="0.6"/>
+            <rect x="30" y="136" width="120" height="26" rx="8" fill="#2D5BE3" opacity="0.32"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Social · 1:1</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-social-square')">SVG</button>
+        </div>
+        <svg id="enlyst-social-square" style="display:none" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="24" fill="#111111"/>
+          <rect x="30" y="40" width="140" height="36" rx="8" fill="#2D5BE3"/>
+          <rect x="30" y="88" width="98" height="36" rx="8" fill="#2D5BE3" opacity="0.6"/>
+          <rect x="30" y="136" width="120" height="26" rx="8" fill="#2D5BE3" opacity="0.32"/>
+        </svg>
+      </div>
+
+      <!-- monochrome white -->
+      <div class="logo-card bg-black" style="border:1px solid rgba(255,255,255,0.06);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="40" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="6" y="24" width="28" height="12" rx="3" fill="#FFFFFF" opacity="0.55"/>
+            <rect x="6" y="42" width="34" height="8" rx="3" fill="#FFFFFF" opacity="0.25"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Mono · White</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-mono-white')">SVG</button>
+        </div>
+        <svg id="enlyst-mono-white" style="display:none" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="40" height="12" rx="3" fill="#FFFFFF"/>
+          <rect x="6" y="24" width="28" height="12" rx="3" fill="#FFFFFF" opacity="0.55"/>
+          <rect x="6" y="42" width="34" height="8" rx="3" fill="#FFFFFF" opacity="0.25"/>
+        </svg>
+      </div>
+
+      <!-- monochrome black -->
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="40" height="12" rx="3" fill="#1A1A1A"/>
+            <rect x="6" y="24" width="28" height="12" rx="3" fill="#1A1A1A" opacity="0.5"/>
+            <rect x="6" y="42" width="34" height="8" rx="3" fill="#1A1A1A" opacity="0.25"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08);">
+          <span class="logo-card-label" style="color:#888;">Mono · Black</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-mono-black')" style="border-color:rgba(0,0,0,0.2);color:#666;">SVG</button>
+        </div>
+        <svg id="enlyst-mono-black" style="display:none" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="40" height="12" rx="3" fill="#1A1A1A"/>
+          <rect x="6" y="24" width="28" height="12" rx="3" fill="#1A1A1A" opacity="0.5"/>
+          <rect x="6" y="42" width="34" height="8" rx="3" fill="#1A1A1A" opacity="0.25"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL COVERS -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Social Media Cover Logos</h2></div>
+    <div class="logo-cards two-col">
+      <!-- LinkedIn / Twitter cover lockup -->
+      <div class="logo-card" style="background:linear-gradient(135deg,#0a0f1e,#111827);border:1px solid rgba(255,255,255,0.07);">
+        <div class="logo-display" style="min-height:200px;">
+          <svg width="340" height="90" viewBox="0 0 340 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="8" width="48" height="14" rx="3" fill="#2D5BE3"/>
+            <rect x="0" y="30" width="34" height="14" rx="3" fill="#2D5BE3" opacity="0.6"/>
+            <rect x="0" y="52" width="42" height="10" rx="3" fill="#2D5BE3" opacity="0.32"/>
+            <text x="64" y="58" font-family="Georgia, serif" font-size="52" fill="#FFFFFF" letter-spacing="-2">enlyst</text>
+            <text x="65" y="80" font-family="'DM Mono', monospace" font-size="13" fill="rgba(255,255,255,0.35)" letter-spacing="3">OPERATING PARTNER</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">LinkedIn / Twitter Cover</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-cover-wide')">SVG</button>
+        </div>
+        <svg id="enlyst-cover-wide" style="display:none" width="340" height="90" viewBox="0 0 340 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="90" fill="#0a0f1e"/>
+          <rect x="0" y="8" width="48" height="14" rx="3" fill="#2D5BE3"/>
+          <rect x="0" y="30" width="34" height="14" rx="3" fill="#2D5BE3" opacity="0.6"/>
+          <rect x="0" y="52" width="42" height="10" rx="3" fill="#2D5BE3" opacity="0.32"/>
+          <text x="64" y="58" font-family="Georgia, serif" font-size="52" fill="#FFFFFF" letter-spacing="-2">enlyst</text>
+          <text x="65" y="80" font-family="monospace" font-size="13" fill="rgba(255,255,255,0.35)" letter-spacing="3">OPERATING PARTNER</text>
+        </svg>
+      </div>
+
+      <!-- Stacked version -->
+      <div class="logo-card" style="background:linear-gradient(135deg,#0a0f1e,#0d1525);border:1px solid rgba(45,91,227,0.15);">
+        <div class="logo-display" style="min-height:200px; flex-direction:column; gap:12px;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="48" height="14" rx="3" fill="#2D5BE3"/>
+            <rect x="4" y="26" width="34" height="14" rx="3" fill="#2D5BE3" opacity="0.6"/>
+            <rect x="4" y="46" width="42" height="8" rx="3" fill="#2D5BE3" opacity="0.32"/>
+          </svg>
+          <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="30" font-family="Georgia, serif" font-size="34" fill="#FFFFFF" letter-spacing="-1.5">enlyst</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Stacked · Profile</span>
+          <button class="dl-btn" onclick="downloadSVG('enlyst-stacked')">SVG</button>
+        </div>
+        <svg id="enlyst-stacked" style="display:none" width="160" height="140" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="56" y="6" width="48" height="14" rx="3" fill="#2D5BE3"/>
+          <rect x="56" y="26" width="34" height="14" rx="3" fill="#2D5BE3" opacity="0.6"/>
+          <rect x="56" y="46" width="42" height="8" rx="3" fill="#2D5BE3" opacity="0.32"/>
+          <text x="10" y="110" font-family="Georgia, serif" font-size="56" fill="#FFFFFF" letter-spacing="-2">enlyst</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <div class="color-spec-grid">
+    <div class="section-header" style="grid-column:1/-1;margin-bottom:0;"><h2>Color Specification</h2></div>
+    <div class="spec-swatch">
+      <div class="spec-swatch-fill" style="background:#2D5BE3;"></div>
+      <div class="spec-swatch-info"><div class="spec-swatch-name">HR Blue</div><div class="spec-swatch-hex">#2D5BE3</div></div>
+    </div>
+    <div class="spec-swatch">
+      <div class="spec-swatch-fill" style="background:#1A1A1A;"></div>
+      <div class="spec-swatch-info"><div class="spec-swatch-name">Obsidian</div><div class="spec-swatch-hex">#1A1A1A</div></div>
+    </div>
+    <div class="spec-swatch">
+      <div class="spec-swatch-fill" style="background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);"></div>
+      <div class="spec-swatch-info"><div class="spec-swatch-name">White</div><div class="spec-swatch-hex">#FFFFFF</div></div>
+    </div>
+    <div class="spec-swatch">
+      <div class="spec-swatch-fill" style="background:#F7F6F3;"></div>
+      <div class="spec-swatch-info"><div class="spec-swatch-name">Off White</div><div class="spec-swatch-hex">#F7F6F3</div></div>
+    </div>
+  </div>
+
+  <!-- USAGE GUIDE -->
+  <div class="usage-wrap">
+    <div class="section-header"><h2>Logo Usage Guide</h2></div>
+    <table class="usage-table">
+      <tr><th>File</th><th>Format</th><th>Use Case</th><th>Background</th></tr>
+      <tr><td><span class="file-badge">enlyst-primary-dark</span></td><td>SVG</td><td>Website navigation, email signatures, dark UI</td><td>Dark / Obsidian</td></tr>
+      <tr><td><span class="file-badge">enlyst-primary-light</span></td><td>SVG</td><td>Print documents, letterhead, proposals</td><td>White / Off-white</td></tr>
+      <tr><td><span class="file-badge">enlyst-primary-blue</span></td><td>SVG</td><td>Email headers, presentations, brand backgrounds</td><td>HR Blue #2D5BE3</td></tr>
+      <tr><td><span class="file-badge">enlyst-favicon</span></td><td>SVG → ICO</td><td>Browser favicon, app icon, PWA</td><td>Blue rounded square</td></tr>
+      <tr><td><span class="file-badge">enlyst-social-square</span></td><td>SVG → PNG</td><td>LinkedIn, Twitter, WhatsApp profile photo</td><td>Dark with blue mark</td></tr>
+      <tr><td><span class="file-badge">enlyst-cover-wide</span></td><td>SVG → PNG</td><td>LinkedIn cover, Twitter header (1500×500)</td><td>Dark gradient</td></tr>
+      <tr><td><span class="file-badge">enlyst-mono-white</span></td><td>SVG</td><td>Embroidery, merchandise, reversed print</td><td>Any dark bg</td></tr>
+      <tr><td><span class="file-badge">enlyst-mono-black</span></td><td>SVG</td><td>Stamps, black-only print, legal docs</td><td>White / Off-white</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  ENLYSUM — FINANCE & ACCOUNTING                       -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="brand-section" id="brand-enlysum">
+
+  <div class="brand-hero" style="background:linear-gradient(135deg,#060e09,#0a1a0f);">
+    <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:#1A7A4A;opacity:0.08;filter:blur(80px);pointer-events:none;"></div>
+    <div class="brand-meta">
+      <div class="brand-color-dot" style="background:#1A7A4A;"></div>
+      <span class="brand-badge" style="background:rgba(26,122,74,0.12);color:#2ECC71;border:1px solid rgba(26,122,74,0.25);">Finance & Accounting · Logo System 2025</span>
+    </div>
+    <h1 class="brand-title" style="background:linear-gradient(135deg,#fff,rgba(46,204,113,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">enlysum</h1>
+    <p class="brand-tagline">The finance mark. A rising bar chart embedded in the stem of the wordmark — precision, growth, and fiscal clarity in one mark.</p>
+  </div>
+
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Primary Lockups</h2></div>
+    <div class="logo-cards">
+      <!-- dark -->
+      <div class="logo-card bg-dark" style="border:1px solid rgba(26,122,74,0.12);">
+        <div class="logo-display">
+          <svg width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Rising bars icon -->
+            <rect x="0" y="32" width="8" height="14" rx="1.5" fill="#1A7A4A"/>
+            <rect x="11" y="24" width="8" height="22" rx="1.5" fill="#1A7A4A" opacity="0.8"/>
+            <rect x="22" y="14" width="8" height="32" rx="1.5" fill="#2ECC71"/>
+            <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#2ECC71"/>
+            <!-- trend line -->
+            <polyline points="4,36 15,28 26,18 37,10" stroke="#2ECC71" stroke-width="1.5" fill="none" opacity="0.4"/>
+            <!-- wordmark -->
+            <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#FFFFFF" letter-spacing="-1">enlysum</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Primary · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-primary-dark')" style="border-color:rgba(46,204,113,0.25);color:#2ECC71;">SVG</button>
+        </div>
+        <svg id="enlysum-primary-dark" style="display:none" width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="32" width="8" height="14" rx="1.5" fill="#1A7A4A"/>
+          <rect x="11" y="24" width="8" height="22" rx="1.5" fill="#1A7A4A" opacity="0.8"/>
+          <rect x="22" y="14" width="8" height="32" rx="1.5" fill="#2ECC71"/>
+          <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#2ECC71"/>
+          <polyline points="4,36 15,28 26,18 37,10" stroke="#2ECC71" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#FFFFFF" letter-spacing="-1">enlysum</text>
+        </svg>
+      </div>
+
+      <!-- light -->
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display">
+          <svg width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="32" width="8" height="14" rx="1.5" fill="#1A7A4A" opacity="0.6"/>
+            <rect x="11" y="24" width="8" height="22" rx="1.5" fill="#1A7A4A" opacity="0.7"/>
+            <rect x="22" y="14" width="8" height="32" rx="1.5" fill="#1A7A4A"/>
+            <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#1A7A4A"/>
+            <polyline points="4,36 15,28 26,18 37,10" stroke="#1A7A4A" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#1A1A1A" letter-spacing="-1">enlysum</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#666;">Primary · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-primary-light')" style="border-color:rgba(26,122,74,0.3);color:#1A7A4A;">SVG</button>
+        </div>
+        <svg id="enlysum-primary-light" style="display:none" width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="32" width="8" height="14" rx="1.5" fill="#1A7A4A" opacity="0.6"/>
+          <rect x="11" y="24" width="8" height="22" rx="1.5" fill="#1A7A4A" opacity="0.7"/>
+          <rect x="22" y="14" width="8" height="32" rx="1.5" fill="#1A7A4A"/>
+          <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#1A7A4A"/>
+          <polyline points="4,36 15,28 26,18 37,10" stroke="#1A7A4A" stroke-width="1.5" fill="none" opacity="0.35"/>
+          <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#1A1A1A" letter-spacing="-1">enlysum</text>
+        </svg>
+      </div>
+
+      <!-- green bg -->
+      <div class="logo-card" style="background:#1A7A4A;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display">
+          <svg width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="32" width="8" height="14" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+            <rect x="11" y="24" width="8" height="22" rx="1.5" fill="rgba(255,255,255,0.55)"/>
+            <rect x="22" y="14" width="8" height="32" rx="1.5" fill="rgba(255,255,255,0.75)"/>
+            <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#FFFFFF"/>
+            <polyline points="4,36 15,28 26,18 37,10" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+            <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#FFFFFF" letter-spacing="-1">enlysum</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(255,255,255,0.15);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Primary · Brand BG</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-primary-green')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);">SVG</button>
+        </div>
+        <svg id="enlysum-primary-green" style="display:none" width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="230" height="52" fill="#1A7A4A"/>
+          <rect x="0" y="32" width="8" height="14" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+          <rect x="11" y="24" width="8" height="22" rx="1.5" fill="rgba(255,255,255,0.55)"/>
+          <rect x="22" y="14" width="8" height="32" rx="1.5" fill="rgba(255,255,255,0.75)"/>
+          <rect x="33" y="6" width="8" height="40" rx="1.5" fill="#FFFFFF"/>
+          <polyline points="4,36 15,28 26,18 37,10" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+          <text x="52" y="39" font-family="Georgia, serif" font-size="34" fill="#FFFFFF" letter-spacing="-1">enlysum</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- icons -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Icon Mark · Favicon · Social</h2></div>
+    <div class="logo-cards icon-row">
+      <div class="logo-card bg-dark" style="border:1px solid rgba(26,122,74,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="28" width="8" height="14" rx="2" fill="#1A7A4A"/>
+            <rect x="13" y="20" width="8" height="22" rx="2" fill="#1A7A4A" opacity="0.8"/>
+            <rect x="24" y="10" width="8" height="32" rx="2" fill="#2ECC71"/>
+            <rect x="35" y="2" width="8" height="40" rx="2" fill="#2ECC71"/>
+            <polyline points="6,32 17,24 28,14 39,6" stroke="#2ECC71" stroke-width="1.5" fill="none" opacity="0.45"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Icon · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-icon-dark')" style="border-color:rgba(46,204,113,0.25);color:#2ECC71;">SVG</button>
+        </div>
+        <svg id="enlysum-icon-dark" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="28" width="8" height="14" rx="2" fill="#1A7A4A"/>
+          <rect x="13" y="20" width="8" height="22" rx="2" fill="#1A7A4A" opacity="0.8"/>
+          <rect x="24" y="10" width="8" height="32" rx="2" fill="#2ECC71"/>
+          <rect x="35" y="2" width="8" height="40" rx="2" fill="#2ECC71"/>
+          <polyline points="6,32 17,24 28,14 39,6" stroke="#2ECC71" stroke-width="1.5" fill="none" opacity="0.45"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-white" style="border:1px solid rgba(0,0,0,0.08);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="28" width="8" height="14" rx="2" fill="#1A7A4A" opacity="0.5"/>
+            <rect x="13" y="20" width="8" height="22" rx="2" fill="#1A7A4A" opacity="0.65"/>
+            <rect x="24" y="10" width="8" height="32" rx="2" fill="#1A7A4A" opacity="0.85"/>
+            <rect x="35" y="2" width="8" height="40" rx="2" fill="#1A7A4A"/>
+            <polyline points="6,32 17,24 28,14 39,6" stroke="#1A7A4A" stroke-width="1.5" fill="none" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Icon · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-icon-light')" style="border-color:rgba(26,122,74,0.3);color:#1A7A4A;">SVG</button>
+        </div>
+        <svg id="enlysum-icon-light" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="28" width="8" height="14" rx="2" fill="#1A7A4A" opacity="0.5"/>
+          <rect x="13" y="20" width="8" height="22" rx="2" fill="#1A7A4A" opacity="0.65"/>
+          <rect x="24" y="10" width="8" height="32" rx="2" fill="#1A7A4A" opacity="0.85"/>
+          <rect x="35" y="2" width="8" height="40" rx="2" fill="#1A7A4A"/>
+          <polyline points="6,32 17,24 28,14 39,6" stroke="#1A7A4A" stroke-width="1.5" fill="none" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="logo-card" style="background:#1A7A4A;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="10" fill="#1A7A4A"/>
+            <rect x="4" y="30" width="7" height="12" rx="2" fill="rgba(255,255,255,0.45)"/>
+            <rect x="14" y="22" width="7" height="20" rx="2" fill="rgba(255,255,255,0.65)"/>
+            <rect x="24" y="12" width="7" height="30" rx="2" fill="rgba(255,255,255,0.85)"/>
+            <rect x="34" y="4" width="7" height="38" rx="2" fill="#FFFFFF"/>
+            <polyline points="7.5,36 17.5,26 27.5,16 37.5,8" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.15);border-color:rgba(255,255,255,0.12);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Favicon · 48×48</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-favicon')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6);">SVG</button>
+        </div>
+        <svg id="enlysum-favicon" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="10" fill="#1A7A4A"/>
+          <rect x="4" y="30" width="7" height="12" rx="2" fill="rgba(255,255,255,0.45)"/>
+          <rect x="14" y="22" width="7" height="20" rx="2" fill="rgba(255,255,255,0.65)"/>
+          <rect x="24" y="12" width="7" height="30" rx="2" fill="rgba(255,255,255,0.85)"/>
+          <rect x="34" y="4" width="7" height="38" rx="2" fill="#FFFFFF"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-dark" style="border:1px solid rgba(26,122,74,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" rx="24" fill="#0a1a0e"/>
+            <rect x="20" y="120" width="28" height="60" rx="6" fill="#1A7A4A" opacity="0.5"/>
+            <rect x="58" y="90" width="28" height="90" rx="6" fill="#1A7A4A" opacity="0.7"/>
+            <rect x="96" y="50" width="28" height="130" rx="6" fill="#2ECC71" opacity="0.9"/>
+            <rect x="134" y="20" width="28" height="160" rx="6" fill="#2ECC71"/>
+            <polyline points="34,140 72,110 110,70 148,30" stroke="#2ECC71" stroke-width="3" fill="none" opacity="0.5"/>
+            <circle cx="148" cy="30" r="5" fill="#2ECC71"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Social · 1:1</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-social')" style="border-color:rgba(46,204,113,0.25);color:#2ECC71;">SVG</button>
+        </div>
+        <svg id="enlysum-social" style="display:none" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="24" fill="#0a1a0e"/>
+          <rect x="20" y="120" width="28" height="60" rx="6" fill="#1A7A4A" opacity="0.5"/>
+          <rect x="58" y="90" width="28" height="90" rx="6" fill="#1A7A4A" opacity="0.7"/>
+          <rect x="96" y="50" width="28" height="130" rx="6" fill="#2ECC71" opacity="0.9"/>
+          <rect x="134" y="20" width="28" height="160" rx="6" fill="#2ECC71"/>
+          <polyline points="34,140 72,110 110,70 148,30" stroke="#2ECC71" stroke-width="3" fill="none" opacity="0.5"/>
+          <circle cx="148" cy="30" r="5" fill="#2ECC71"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-black" style="border:1px solid rgba(255,255,255,0.06);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="28" width="8" height="14" rx="2" fill="rgba(255,255,255,0.25)"/>
+            <rect x="13" y="20" width="8" height="22" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="24" y="10" width="8" height="32" rx="2" fill="rgba(255,255,255,0.65)"/>
+            <rect x="35" y="2" width="8" height="40" rx="2" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Mono · White</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-mono-white')">SVG</button>
+        </div>
+        <svg id="enlysum-mono-white" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="28" width="8" height="14" rx="2" fill="rgba(255,255,255,0.25)"/>
+          <rect x="13" y="20" width="8" height="22" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="24" y="10" width="8" height="32" rx="2" fill="rgba(255,255,255,0.65)"/>
+          <rect x="35" y="2" width="8" height="40" rx="2" fill="#FFFFFF"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="28" width="8" height="14" rx="2" fill="rgba(26,26,26,0.2)"/>
+            <rect x="13" y="20" width="8" height="22" rx="2" fill="rgba(26,26,26,0.35)"/>
+            <rect x="24" y="10" width="8" height="32" rx="2" fill="rgba(26,26,26,0.6)"/>
+            <rect x="35" y="2" width="8" height="40" rx="2" fill="#1A1A1A"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Mono · Black</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysum-mono-black')" style="border-color:rgba(0,0,0,0.2);color:#555;">SVG</button>
+        </div>
+        <svg id="enlysum-mono-black" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="28" width="8" height="14" rx="2" fill="rgba(26,26,26,0.2)"/>
+          <rect x="13" y="20" width="8" height="22" rx="2" fill="rgba(26,26,26,0.35)"/>
+          <rect x="24" y="10" width="8" height="32" rx="2" fill="rgba(26,26,26,0.6)"/>
+          <rect x="35" y="2" width="8" height="40" rx="2" fill="#1A1A1A"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-spec-grid">
+    <div class="section-header" style="grid-column:1/-1;margin-bottom:0;"><h2>Color Specification</h2></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#1A7A4A;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Finance Green</div><div class="spec-swatch-hex">#1A7A4A</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#2ECC71;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Green Light</div><div class="spec-swatch-hex">#2ECC71</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#EBF5EF;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Green Pale</div><div class="spec-swatch-hex">#EBF5EF</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#1A1A1A;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Obsidian</div><div class="spec-swatch-hex">#1A1A1A</div></div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  ENLYBIZ — MARKETING & GROWTH                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="brand-section" id="brand-enlybiz">
+
+  <div class="brand-hero" style="background:linear-gradient(135deg,#120800,#1e0f00);">
+    <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:#C4620A;opacity:0.08;filter:blur(80px);pointer-events:none;"></div>
+    <div class="brand-meta">
+      <div class="brand-color-dot" style="background:#C4620A;"></div>
+      <span class="brand-badge" style="background:rgba(196,98,10,0.12);color:#E8752D;border:1px solid rgba(196,98,10,0.25);">Marketing & Growth · Logo System 2025</span>
+    </div>
+    <h1 class="brand-title" style="background:linear-gradient(135deg,#fff,rgba(196,98,10,0.9));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">enlybiz</h1>
+    <p class="brand-tagline">The growth mark. A pulse / signal wave — representing momentum, market reach, and the energy of a business in motion. Warm amber energy.</p>
+  </div>
+
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Primary Lockups</h2></div>
+    <div class="logo-cards">
+      <!-- dark -->
+      <div class="logo-card bg-dark" style="border:1px solid rgba(196,98,10,0.12);">
+        <div class="logo-display">
+          <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Pulse/signal mark -->
+            <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="2" cy="26" r="2" fill="#E8752D"/>
+            <circle cx="48" cy="26" r="2" fill="#E8752D"/>
+            <!-- wordmark -->
+            <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#FFFFFF" letter-spacing="-0.5">enlybiz</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Primary · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-primary-dark')" style="border-color:rgba(232,117,45,0.3);color:#E8752D;">SVG</button>
+        </div>
+        <svg id="enlybiz-primary-dark" style="display:none" width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="2" cy="26" r="2" fill="#E8752D"/>
+          <circle cx="48" cy="26" r="2" fill="#E8752D"/>
+          <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#FFFFFF" letter-spacing="-0.5">enlybiz</text>
+        </svg>
+      </div>
+
+      <!-- light -->
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display">
+          <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="2" cy="26" r="2" fill="#C4620A"/>
+            <circle cx="48" cy="26" r="2" fill="#C4620A"/>
+            <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#1A1A1A" letter-spacing="-0.5">enlybiz</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#666;">Primary · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-primary-light')" style="border-color:rgba(196,98,10,0.3);color:#C4620A;">SVG</button>
+        </div>
+        <svg id="enlybiz-primary-light" style="display:none" width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="2" cy="26" r="2" fill="#C4620A"/>
+          <circle cx="48" cy="26" r="2" fill="#C4620A"/>
+          <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#1A1A1A" letter-spacing="-0.5">enlybiz</text>
+        </svg>
+      </div>
+
+      <!-- amber bg -->
+      <div class="logo-card" style="background:#C4620A;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display">
+          <svg width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="2" cy="26" r="2" fill="#FFFFFF"/>
+            <circle cx="48" cy="26" r="2" fill="#FFFFFF"/>
+            <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#FFFFFF" letter-spacing="-0.5">enlybiz</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(255,255,255,0.15);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Primary · Brand BG</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-primary-amber')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);">SVG</button>
+        </div>
+        <svg id="enlybiz-primary-amber" style="display:none" width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="220" height="52" fill="#C4620A"/>
+          <path d="M2 26 L8 26 L12 10 L18 42 L24 18 L30 34 L36 22 L42 26 L48 26" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="2" cy="26" r="2" fill="#FFFFFF"/>
+          <circle cx="48" cy="26" r="2" fill="#FFFFFF"/>
+          <text x="60" y="38" font-family="Georgia, serif" font-size="32" fill="#FFFFFF" letter-spacing="-0.5">enlybiz</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- icon + favicon row -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Icon Mark · Favicon · Social</h2></div>
+    <div class="logo-cards icon-row">
+      <div class="logo-card bg-dark" style="border:1px solid rgba(196,98,10,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#E8752D" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+            <circle cx="42" cy="22" r="3" fill="#E8752D"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Icon · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-icon-dark')" style="border-color:rgba(232,117,45,0.3);color:#E8752D;">SVG</button>
+        </div>
+        <svg id="enlybiz-icon-dark" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="42" cy="22" r="3" fill="#E8752D"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-white" style="border:1px solid rgba(0,0,0,0.08);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="42" cy="22" r="3" fill="#C4620A"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Icon · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-icon-light')" style="border-color:rgba(196,98,10,0.3);color:#C4620A;">SVG</button>
+        </div>
+        <svg id="enlybiz-icon-light" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#C4620A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="42" cy="22" r="3" fill="#C4620A"/>
+        </svg>
+      </div>
+
+      <div class="logo-card" style="background:#C4620A;border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="10" fill="#C4620A"/>
+            <path d="M4 24 L9 24 L12 12 L18 36 L24 16 L30 32 L36 20 L39 24 L44 24" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="44" cy="24" r="3" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.15);border-color:rgba(255,255,255,0.12);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Favicon · 48×48</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-favicon')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6);">SVG</button>
+        </div>
+        <svg id="enlybiz-favicon" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="10" fill="#C4620A"/>
+          <path d="M4 24 L9 24 L12 12 L18 36 L24 16 L30 32 L36 20 L39 24 L44 24" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="44" cy="24" r="3" fill="#FFFFFF"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-dark" style="border:1px solid rgba(196,98,10,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" rx="24" fill="#1a0a00"/>
+            <path d="M16 100 L36 100 L50 40 L74 160 L98 56 L122 136 L146 72 L162 100 L184 100" stroke="#C4620A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 100 L36 100 L50 40 L74 160 L98 56 L122 136 L146 72 L162 100 L184 100" stroke="#E8752D" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+            <circle cx="184" cy="100" r="10" fill="#E8752D"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Social · 1:1</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-social')" style="border-color:rgba(232,117,45,0.3);color:#E8752D;">SVG</button>
+        </div>
+        <svg id="enlybiz-social" style="display:none" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="24" fill="#1a0a00"/>
+          <path d="M16 100 L36 100 L50 40 L74 160 L98 56 L122 136 L146 72 L162 100 L184 100" stroke="#C4620A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="184" cy="100" r="10" fill="#E8752D"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-black" style="border:1px solid rgba(255,255,255,0.06);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="42" cy="22" r="3" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Mono · White</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-mono-white')">SVG</button>
+        </div>
+        <svg id="enlybiz-mono-white" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="42" cy="22" r="3" fill="#FFFFFF"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="rgba(26,26,26,0.7)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="42" cy="22" r="3" fill="#1A1A1A"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Mono · Black</span>
+          <button class="dl-btn" onclick="downloadSVG('enlybiz-mono-black')" style="border-color:rgba(0,0,0,0.2);color:#555;">SVG</button>
+        </div>
+        <svg id="enlybiz-mono-black" style="display:none" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 22 L8 22 L12 8 L18 36 L24 14 L30 30 L36 18 L42 22" stroke="#1A1A1A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="42" cy="22" r="3" fill="#1A1A1A"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-spec-grid">
+    <div class="section-header" style="grid-column:1/-1;margin-bottom:0;"><h2>Color Specification</h2></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#C4620A;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Biz Amber</div><div class="spec-swatch-hex">#C4620A</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#E8752D;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Amber Light</div><div class="spec-swatch-hex">#E8752D</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#9B4D08;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Amber Dark</div><div class="spec-swatch-hex">#9B4D08</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#FDF3EC;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Amber Pale</div><div class="spec-swatch-hex">#FDF3EC</div></div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  ENLYSOFT — CLOUD & TECHNOLOGY                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="brand-section" id="brand-enlysoft">
+
+  <div class="brand-hero" style="background:linear-gradient(135deg,#080c12,#0d1220);">
+    <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:#7C3AED;opacity:0.08;filter:blur(80px);pointer-events:none;"></div>
+    <div class="brand-meta">
+      <div class="brand-color-dot" style="background:#6B3FA0;"></div>
+      <span class="brand-badge" style="background:rgba(107,63,160,0.15);color:#A78BFA;border:1px solid rgba(107,63,160,0.3);">Cloud & Technology · Logo System 2025</span>
+    </div>
+    <h1 class="brand-title" style="background:linear-gradient(135deg,#fff 40%,#A78BFA 70%,#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">enlysoft</h1>
+    <p class="brand-tagline">The technology mark. A node-graph / circuit topology — interconnected nodes representing cloud infrastructure, distributed systems, and technical precision. Dark. Technical. Authoritative.</p>
+  </div>
+
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Primary Lockups</h2></div>
+    <div class="logo-cards">
+      <!-- dark — default -->
+      <div class="logo-card" style="background:#080c12;border:1px solid rgba(167,139,250,0.12);">
+        <div class="logo-display">
+          <svg width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Node graph icon -->
+            <circle cx="6" cy="10" r="4" fill="#A78BFA"/>
+            <circle cx="24" cy="26" r="3" fill="#6B3FA0"/>
+            <circle cx="6" cy="42" r="4" fill="#60A5FA"/>
+            <circle cx="44" cy="18" r="3" fill="#A78BFA" opacity="0.7"/>
+            <circle cx="44" cy="34" r="3" fill="#60A5FA" opacity="0.7"/>
+            <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
+            <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(96,165,250,0.4)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(167,139,250,0.3)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            <line x1="6" y1="10" x2="44" y2="18" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
+            <!-- wordmark mono style -->
+            <text x="60" y="37" font-family="'DM Mono', monospace" font-size="28" fill="#E2E8F0" letter-spacing="0">enlysoft</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(167,139,250,0.08);">
+          <span class="logo-card-label" style="color:rgba(167,139,250,0.5);">Primary · Tech Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-primary-dark')" style="border-color:rgba(167,139,250,0.3);color:#A78BFA;">SVG</button>
+        </div>
+        <svg id="enlysoft-primary-dark" style="display:none" width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="52" fill="#080c12"/>
+          <circle cx="6" cy="10" r="4" fill="#A78BFA"/>
+          <circle cx="24" cy="26" r="3" fill="#6B3FA0"/>
+          <circle cx="6" cy="42" r="4" fill="#60A5FA"/>
+          <circle cx="44" cy="18" r="3" fill="#A78BFA" opacity="0.7"/>
+          <circle cx="44" cy="34" r="3" fill="#60A5FA" opacity="0.7"/>
+          <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
+          <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(96,165,250,0.4)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(167,139,250,0.3)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+          <text x="60" y="37" font-family="monospace" font-size="28" fill="#E2E8F0" letter-spacing="0">enlysoft</text>
+        </svg>
+      </div>
+
+      <!-- obsidian light -->
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display">
+          <svg width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="10" r="4" fill="#6B3FA0"/>
+            <circle cx="24" cy="26" r="3" fill="#4C2C80"/>
+            <circle cx="6" cy="42" r="4" fill="#2D5BE3"/>
+            <circle cx="44" cy="18" r="3" fill="#6B3FA0" opacity="0.7"/>
+            <circle cx="44" cy="34" r="3" fill="#2D5BE3" opacity="0.7"/>
+            <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(107,63,160,0.35)" stroke-width="1.5"/>
+            <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(45,91,227,0.35)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(107,63,160,0.25)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(45,91,227,0.25)" stroke-width="1.5"/>
+            <text x="60" y="37" font-family="'DM Mono', monospace" font-size="28" fill="#1A1A1A" letter-spacing="0">enlysoft</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#666;">Primary · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-primary-light')" style="border-color:rgba(107,63,160,0.3);color:#6B3FA0;">SVG</button>
+        </div>
+        <svg id="enlysoft-primary-light" style="display:none" width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="52" fill="#F7F6F3"/>
+          <circle cx="6" cy="10" r="4" fill="#6B3FA0"/>
+          <circle cx="24" cy="26" r="3" fill="#4C2C80"/>
+          <circle cx="6" cy="42" r="4" fill="#2D5BE3"/>
+          <circle cx="44" cy="18" r="3" fill="#6B3FA0" opacity="0.7"/>
+          <circle cx="44" cy="34" r="3" fill="#2D5BE3" opacity="0.7"/>
+          <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(107,63,160,0.35)" stroke-width="1.5"/>
+          <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(45,91,227,0.35)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(107,63,160,0.25)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(45,91,227,0.25)" stroke-width="1.5"/>
+          <text x="60" y="37" font-family="monospace" font-size="28" fill="#1A1A1A" letter-spacing="0">enlysoft</text>
+        </svg>
+      </div>
+
+      <!-- purple bg -->
+      <div class="logo-card" style="background:linear-gradient(135deg,#4C2C80,#6B3FA0);border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display">
+          <svg width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="10" r="4" fill="rgba(255,255,255,0.9)"/>
+            <circle cx="24" cy="26" r="3" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="6" cy="42" r="4" fill="rgba(255,255,255,0.8)"/>
+            <circle cx="44" cy="18" r="3" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="44" cy="34" r="3" fill="rgba(255,255,255,0.6)"/>
+            <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <text x="60" y="37" font-family="'DM Mono', monospace" font-size="28" fill="#FFFFFF" letter-spacing="0">enlysoft</text>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(255,255,255,0.12);background:rgba(0,0,0,0.15);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Primary · Brand BG</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-primary-purple')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);">SVG</button>
+        </div>
+        <svg id="enlysoft-primary-purple" style="display:none" width="240" height="52" viewBox="0 0 240 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="pbg" x1="0" y1="0" x2="240" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#4C2C80"/><stop offset="1" stop-color="#6B3FA0"/></linearGradient></defs>
+          <rect width="240" height="52" fill="url(#pbg)"/>
+          <circle cx="6" cy="10" r="4" fill="rgba(255,255,255,0.9)"/>
+          <circle cx="24" cy="26" r="3" fill="rgba(255,255,255,0.6)"/>
+          <circle cx="6" cy="42" r="4" fill="rgba(255,255,255,0.8)"/>
+          <circle cx="44" cy="18" r="3" fill="rgba(255,255,255,0.7)"/>
+          <circle cx="44" cy="34" r="3" fill="rgba(255,255,255,0.6)"/>
+          <line x1="6" y1="10" x2="24" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="6" y1="42" x2="24" y2="26" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="18" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <line x1="24" y1="26" x2="44" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <text x="60" y="37" font-family="monospace" font-size="28" fill="#FFFFFF" letter-spacing="0">enlysoft</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- icon row -->
+  <div class="logo-grid-section">
+    <div class="section-header"><h2>Icon Mark · Favicon · Social</h2></div>
+    <div class="logo-cards icon-row">
+      <div class="logo-card" style="background:#080c12;border:1px solid rgba(167,139,250,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="10" r="5" fill="#A78BFA"/>
+            <circle cx="28" cy="24" r="4" fill="#6B3FA0"/>
+            <circle cx="8" cy="38" r="5" fill="#60A5FA"/>
+            <circle cx="44" cy="14" r="4" fill="#A78BFA" opacity="0.75"/>
+            <circle cx="44" cy="34" r="4" fill="#60A5FA" opacity="0.75"/>
+            <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(96,165,250,0.45)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(167,139,250,0.3)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="10" x2="44" y2="14" stroke="rgba(167,139,250,0.15)" stroke-width="1"/>
+            <line x1="8" y1="38" x2="44" y2="34" stroke="rgba(96,165,250,0.15)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(167,139,250,0.08);">
+          <span class="logo-card-label" style="color:rgba(167,139,250,0.5);">Icon · Dark</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-icon-dark')" style="border-color:rgba(167,139,250,0.3);color:#A78BFA;">SVG</button>
+        </div>
+        <svg id="enlysoft-icon-dark" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="10" r="5" fill="#A78BFA"/>
+          <circle cx="28" cy="24" r="4" fill="#6B3FA0"/>
+          <circle cx="8" cy="38" r="5" fill="#60A5FA"/>
+          <circle cx="44" cy="14" r="4" fill="#A78BFA" opacity="0.75"/>
+          <circle cx="44" cy="34" r="4" fill="#60A5FA" opacity="0.75"/>
+          <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+          <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(96,165,250,0.45)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(167,139,250,0.3)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-white" style="border:1px solid rgba(0,0,0,0.08);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="10" r="5" fill="#6B3FA0"/>
+            <circle cx="28" cy="24" r="4" fill="#4C2C80"/>
+            <circle cx="8" cy="38" r="5" fill="#2D5BE3"/>
+            <circle cx="44" cy="14" r="4" fill="#6B3FA0" opacity="0.65"/>
+            <circle cx="44" cy="34" r="4" fill="#2D5BE3" opacity="0.65"/>
+            <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(107,63,160,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(45,91,227,0.3)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(107,63,160,0.2)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(45,91,227,0.2)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Icon · Light</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-icon-light')" style="border-color:rgba(107,63,160,0.3);color:#6B3FA0;">SVG</button>
+        </div>
+        <svg id="enlysoft-icon-light" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="10" r="5" fill="#6B3FA0"/>
+          <circle cx="28" cy="24" r="4" fill="#4C2C80"/>
+          <circle cx="8" cy="38" r="5" fill="#2D5BE3"/>
+          <circle cx="44" cy="14" r="4" fill="#6B3FA0" opacity="0.65"/>
+          <circle cx="44" cy="34" r="4" fill="#2D5BE3" opacity="0.65"/>
+          <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(107,63,160,0.3)" stroke-width="1.5"/>
+          <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(45,91,227,0.3)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(107,63,160,0.2)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(45,91,227,0.2)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="logo-card" style="background:linear-gradient(135deg,#4C2C80,#6B3FA0);border:1px solid rgba(0,0,0,0.1);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="10" fill="url(#pgrad)"/>
+            <defs><linearGradient id="pgrad" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#4C2C80"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+            <circle cx="8" cy="10" r="5" fill="rgba(255,255,255,0.9)"/>
+            <circle cx="28" cy="24" r="4" fill="rgba(255,255,255,0.55)"/>
+            <circle cx="8" cy="38" r="5" fill="rgba(255,255,255,0.8)"/>
+            <circle cx="44" cy="14" r="4" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="44" cy="34" r="4" fill="rgba(255,255,255,0.6)"/>
+            <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.15);border-color:rgba(255,255,255,0.12);">
+          <span class="logo-card-label" style="color:rgba(255,255,255,0.5);">Favicon · 48×48</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-favicon')" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.6);">SVG</button>
+        </div>
+        <svg id="enlysoft-favicon" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="pfav" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#4C2C80"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+          <rect width="48" height="48" rx="10" fill="url(#pfav)"/>
+          <circle cx="8" cy="10" r="5" fill="rgba(255,255,255,0.9)"/>
+          <circle cx="28" cy="24" r="4" fill="rgba(255,255,255,0.55)"/>
+          <circle cx="8" cy="38" r="5" fill="rgba(255,255,255,0.8)"/>
+          <circle cx="44" cy="14" r="4" fill="rgba(255,255,255,0.7)"/>
+          <circle cx="44" cy="34" r="4" fill="rgba(255,255,255,0.6)"/>
+          <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="logo-card" style="background:#080c12;border:1px solid rgba(167,139,250,0.12);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" rx="24" fill="#080c12"/>
+            <circle cx="30" cy="40" r="14" fill="#A78BFA"/>
+            <circle cx="100" cy="100" r="10" fill="#6B3FA0"/>
+            <circle cx="30" cy="160" r="14" fill="#60A5FA"/>
+            <circle cx="160" cy="55" r="10" fill="#A78BFA" opacity="0.75"/>
+            <circle cx="160" cy="145" r="10" fill="#60A5FA" opacity="0.75"/>
+            <circle cx="170" cy="100" r="8" fill="#7C3AED" opacity="0.5"/>
+            <line x1="30" y1="40" x2="100" y2="100" stroke="rgba(167,139,250,0.4)" stroke-width="2"/>
+            <line x1="30" y1="160" x2="100" y2="100" stroke="rgba(96,165,250,0.4)" stroke-width="2"/>
+            <line x1="100" y1="100" x2="160" y2="55" stroke="rgba(167,139,250,0.3)" stroke-width="2"/>
+            <line x1="100" y1="100" x2="160" y2="145" stroke="rgba(96,165,250,0.3)" stroke-width="2"/>
+            <line x1="100" y1="100" x2="170" y2="100" stroke="rgba(124,58,237,0.3)" stroke-width="2"/>
+            <line x1="30" y1="40" x2="160" y2="55" stroke="rgba(167,139,250,0.12)" stroke-width="1.5"/>
+            <line x1="30" y1="160" x2="160" y2="145" stroke="rgba(96,165,250,0.12)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="border-color:rgba(167,139,250,0.08);">
+          <span class="logo-card-label" style="color:rgba(167,139,250,0.5);">Social · 1:1</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-social')" style="border-color:rgba(167,139,250,0.3);color:#A78BFA;">SVG</button>
+        </div>
+        <svg id="enlysoft-social" style="display:none" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" rx="24" fill="#080c12"/>
+          <circle cx="30" cy="40" r="14" fill="#A78BFA"/>
+          <circle cx="100" cy="100" r="10" fill="#6B3FA0"/>
+          <circle cx="30" cy="160" r="14" fill="#60A5FA"/>
+          <circle cx="160" cy="55" r="10" fill="#A78BFA" opacity="0.75"/>
+          <circle cx="160" cy="145" r="10" fill="#60A5FA" opacity="0.75"/>
+          <line x1="30" y1="40" x2="100" y2="100" stroke="rgba(167,139,250,0.4)" stroke-width="2"/>
+          <line x1="30" y1="160" x2="100" y2="100" stroke="rgba(96,165,250,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="160" y2="55" stroke="rgba(167,139,250,0.3)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="160" y2="145" stroke="rgba(96,165,250,0.3)" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-black" style="border:1px solid rgba(255,255,255,0.06);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="10" r="5" fill="rgba(255,255,255,0.85)"/>
+            <circle cx="28" cy="24" r="4" fill="rgba(255,255,255,0.45)"/>
+            <circle cx="8" cy="38" r="5" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="44" cy="14" r="4" fill="rgba(255,255,255,0.65)"/>
+            <circle cx="44" cy="34" r="4" fill="rgba(255,255,255,0.55)"/>
+            <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta">
+          <span class="logo-card-label">Mono · White</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-mono-white')">SVG</button>
+        </div>
+        <svg id="enlysoft-mono-white" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="10" r="5" fill="rgba(255,255,255,0.9)"/>
+          <circle cx="28" cy="24" r="4" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="8" cy="38" r="5" fill="rgba(255,255,255,0.75)"/>
+          <circle cx="44" cy="14" r="4" fill="rgba(255,255,255,0.65)"/>
+          <circle cx="44" cy="34" r="4" fill="rgba(255,255,255,0.55)"/>
+          <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="logo-card bg-offwhite" style="border:1px solid rgba(0,0,0,0.07);">
+        <div class="logo-display" style="min-height:120px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="10" r="5" fill="rgba(26,26,26,0.8)"/>
+            <circle cx="28" cy="24" r="4" fill="rgba(26,26,26,0.4)"/>
+            <circle cx="8" cy="38" r="5" fill="rgba(26,26,26,0.65)"/>
+            <circle cx="44" cy="14" r="4" fill="rgba(26,26,26,0.6)"/>
+            <circle cx="44" cy="34" r="4" fill="rgba(26,26,26,0.5)"/>
+            <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(26,26,26,0.2)" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(26,26,26,0.2)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(26,26,26,0.15)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(26,26,26,0.15)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="logo-card-meta" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.07);">
+          <span class="logo-card-label" style="color:#888;">Mono · Black</span>
+          <button class="dl-btn" onclick="downloadSVG('enlysoft-mono-black')" style="border-color:rgba(0,0,0,0.2);color:#555;">SVG</button>
+        </div>
+        <svg id="enlysoft-mono-black" style="display:none" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="10" r="5" fill="rgba(26,26,26,0.85)"/>
+          <circle cx="28" cy="24" r="4" fill="rgba(26,26,26,0.45)"/>
+          <circle cx="8" cy="38" r="5" fill="rgba(26,26,26,0.7)"/>
+          <circle cx="44" cy="14" r="4" fill="rgba(26,26,26,0.65)"/>
+          <circle cx="44" cy="34" r="4" fill="rgba(26,26,26,0.55)"/>
+          <line x1="8" y1="10" x2="28" y2="24" stroke="rgba(26,26,26,0.2)" stroke-width="1.5"/>
+          <line x1="8" y1="38" x2="28" y2="24" stroke="rgba(26,26,26,0.2)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="14" stroke="rgba(26,26,26,0.15)" stroke-width="1.5"/>
+          <line x1="28" y1="24" x2="44" y2="34" stroke="rgba(26,26,26,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-spec-grid">
+    <div class="section-header" style="grid-column:1/-1;margin-bottom:0;"><h2>Color Specification</h2></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#080c12;border:1px solid rgba(255,255,255,0.1);"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Tech Dark</div><div class="spec-swatch-hex">#080c12</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#6B3FA0;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Tech Purple</div><div class="spec-swatch-hex">#6B3FA0</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#A78BFA;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Purple Light</div><div class="spec-swatch-hex">#A78BFA</div></div></div>
+    <div class="spec-swatch"><div class="spec-swatch-fill" style="background:#60A5FA;"></div><div class="spec-swatch-info"><div class="spec-swatch-name">Blue Accent</div><div class="spec-swatch-hex">#60A5FA</div></div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  JS                                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+// Tab switching
+const pills = document.querySelectorAll('.nav-pill');
+const sections = document.querySelectorAll('.brand-section');
+
+pills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    const b = pill.dataset.brand;
+    pills.forEach(p => p.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    pill.classList.add('active');
+    document.getElementById('brand-' + b).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// SVG download
+function downloadSVG(id) {
+  const el = document.getElementById(id);
+  if (!el) { alert('SVG not found: ' + id); return; }
+  const clone = el.cloneNode(true);
+  clone.removeAttribute('style');
+  clone.removeAttribute('id');
+
+  // Add XML namespace if missing
+  if (!clone.getAttribute('xmlns')) {
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  }
+
+  const serializer = new XMLSerializer();
+  let svgStr = serializer.serializeToString(clone);
+
+  // Ensure proper XML header
+  if (!svgStr.startsWith('<?xml')) {
+    svgStr = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgStr;
+  }
+
+  const blob = new Blob([svgStr], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = id + '.svg';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Download ALL SVGs for current active section
+function downloadAll() {
+  const activeSection = document.querySelector('.brand-section.active');
+  if (!activeSection) return;
+
+  const svgs = activeSection.querySelectorAll('svg[id]');
+  if (svgs.length === 0) { alert('No SVGs found in this section'); return; }
+
+  let delay = 0;
+  svgs.forEach(svg => {
+    setTimeout(() => downloadSVG(svg.id), delay);
+    delay += 350;
+  });
+}
+</script>
+</body>
+</html>

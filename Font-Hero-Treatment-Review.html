@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<title>Review — Wordmark Font & Hero Treatment Options</title>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400|inter:400,500,600,700|dm-mono:500,700|hanken-grotesk:700|space-grotesk:500,600,700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+body{margin:0;background:#EDEBE6}
+.frame{position:absolute;background:var(--white);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow-sm);padding:36px 40px;width:640px}
+.frame h2{font:700 11px/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.frame h3{font:400 20px/1.2 var(--font-serif);color:var(--ink);margin:0 0 20px}
+.opt{border:1px solid var(--rule);border-radius:8px;padding:22px 24px;margin-bottom:14px}
+.opt:last-child{margin-bottom:0}
+.opt .tag{font:600 9.5px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hr-blue);margin-bottom:10px}
+.opt .word{font-size:44px;line-height:1;color:var(--ink);margin-bottom:8px}
+.opt p{font:400 12px/1.5 var(--font-sans);color:var(--ink-3);margin:0}
+.chip{display:inline-block;font:500 10px/1 var(--font-sans);color:var(--ink-2);background:#EDECEA;padding:4px 9px;border-radius:3px;margin-top:8px}
+.hero-mini{border-radius:8px;overflow:hidden;border:1px solid var(--rule);height:220px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:8px}
+.stripe-side{background:var(--obsidian);display:flex;align-items:center;justify-content:center;position:relative}
+.copy-side{background:var(--off-white);display:flex;align-items:center;padding:0 22px}
+.copy-side p{font:400 12px/1.5 var(--font-serif);color:var(--ink)}
+.stripes{width:110px}
+.stripe{height:20px;margin-bottom:7px;border-radius:2px;transform:skewX(-18deg)}
+.glass .stripe{background:linear-gradient(135deg,rgba(45,91,227,.9),rgba(120,170,255,.5));box-shadow:0 6px 18px rgba(45,91,227,.35),inset 0 1px 4px rgba(255,255,255,.6);backdrop-filter:blur(2px)}
+.flat .stripe{background:var(--hr-blue)}
+.flat .stripe:nth-child(2){opacity:.58}
+.flat .stripe:nth-child(3){opacity:.26}
+.glass .stripe:nth-child(2){opacity:.75}
+.glass .stripe:nth-child(3){opacity:.5}
+.verdict{font:500 11px/1.5 var(--font-sans);color:var(--ink-3);border-top:1px solid var(--rule);padding-top:10px;margin-top:10px}
+.verdict b{color:var(--ink)}
+</style></head>
+<body>
+
+<div class="frame" style="left:60px;top:60px">
+<h2>01 · Observation</h2>
+<h3>Wordmark typeface — options</h3>
+
+<div class="opt">
+<div class="tag">Current — Inter 700</div>
+<div class="word" style="font-family:'Inter';font-weight:700">enlyst</div>
+<p>Humanist grotesque. Slightly wider apertures, warmer curves — matches the body-copy family already in use, so wordmark and paragraph text feel like one voice.</p>
+<span class="chip">In production today</span>
+</div>
+
+<div class="opt">
+<div class="tag">Your upload — closest open match: Hanken Grotesk 700</div>
+<div class="word" style="font-family:'Hanken Grotesk';font-weight:700">enlyst</div>
+<p>Straight-cut y tail (not curled, unlike Space Grotesk below), tight apertures, near-uniform stroke — the truest free match to the upload's cut. (Your source file may still be a licensed grotesque like Aktiv/Neue Haas/Suisse; Hanken is the nearest Bunny-hosted stand-in for comparison only.)</p>
+<span class="chip">Needs real font file to confirm license + Urdu numeral support</span>
+</div>
+
+<div class="opt">
+<div class="tag">Alternative — Space Grotesk 600</div>
+<div class="word" style="font-family:'Space Grotesk';font-weight:600">enlyst</div>
+<p>A middle path: geometric bones like the upload, but slightly more character in the terminals — less severe than Archivo, still distinct from Inter.</p>
+</div>
+</div>
+
+<div class="frame" style="left:60px;top:900px">
+<h2>02 · Observation</h2>
+<h3>Hero stripe rendering — treatment options</h3>
+
+<div class="opt">
+<div class="tag">Flat — matches brand law (restrained elevation)</div>
+<div class="hero-mini"><div class="stripe-side"><div class="stripes flat"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div></div><div class="copy-side"><p>No business fights alone.</p></div></div>
+<p>Solid HR Blue at 100/58/26% opacity — the documented rule. No shadows beyond the system's flat elevation scale.</p>
+<span class="chip">Consistent with colors_and_type.css</span>
+</div>
+
+<div class="opt">
+<div class="tag">Glass / PBR — from the pasted Three.js script</div>
+<div class="hero-mini"><div class="stripe-side"><div class="stripes glass"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div></div><div class="copy-side"><p>No business fights alone.</p></div></div>
+<p>Transmission, clearcoat, soft glow — a materially different, "premium tech" register. Reads closer to a generic 3D-hero trope than the editorial-print restraint the rest of the system uses.</p>
+<span class="chip">Departs from documented elevation rules</span>
+</div>
+
+<div class="verdict">My read: <b>Space Grotesk direction</b> for the wordmark is worth prototyping properly once you confirm the real font name; <b>flat stripes</b> for the hero — the glass version is well-executed craft but pulls the brand toward a different philosophy than what's written down. Nothing here has been applied — this file is for your review only.</div>
+</div>
+
+</body></html>

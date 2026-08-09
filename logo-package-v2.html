@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlystnow — Complete Logo Package</title>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#2D5BE3; --green:#1A7A4A; --amber:#C4620A; --purple:#6B3FA0;
+  --bg:#F2F1EE; --white:#FFFFFF; --ink:#111111;
+  --ink2:#4A4A4A; --ink3:#999999;
+  --border:#E0DED9; --surface:#FFFFFF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  height:58px;display:flex;align-items:center;
+  padding:0 48px;justify-content:space-between;
+}
+.tb-left{display:flex;align-items:center;gap:14px;}
+.tb-brand{font-family:var(--serif);font-size:18px;letter-spacing:-.02em;color:var(--ink);}
+.tb-brand em{font-style:normal;color:var(--blue);}
+.tb-tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding:3px 9px;border:1px solid var(--border);border-radius:100px;}
+.tb-right{display:flex;gap:10px;align-items:center;}
+.tb-btn{padding:7px 16px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:all .2s;font-family:var(--sans);}
+.tb-btn.outline{background:none;border:1px solid var(--border);color:var(--ink2);}
+.tb-btn.outline:hover{border-color:var(--ink);color:var(--ink);}
+.tb-btn.solid{background:var(--ink);color:#fff;border:1px solid var(--ink);}
+.tb-btn.solid:hover{opacity:.78;}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px;}
+.page{padding:56px 0 80px;}
+.sec{margin-bottom:72px;}
+
+/* ── SECTION LABEL ── */
+.sec-lbl{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);
+  display:flex;align-items:center;gap:14px;margin-bottom:24px;
+}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-lbl .badge{
+  padding:2px 10px;border-radius:100px;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;border:1px solid;
+}
+
+/* ── ENTITY BLOCK ── */
+.entity-block{
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  margin-bottom:4px;
+}
+.entity-head{
+  padding:16px 22px;background:var(--white);
+  display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid var(--border);
+}
+.e-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.e-name{font-family:var(--serif);font-size:21px;letter-spacing:-.02em;}
+.e-desc{font-size:12px;color:var(--ink3);margin-left:6px;}
+.e-role{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-left:auto;}
+
+/* ── LOGO GRID ── */
+.lg{display:grid;gap:1px;background:var(--border);}
+.lg.cols4{grid-template-columns:repeat(4,1fr);}
+.lg.cols3{grid-template-columns:repeat(3,1fr);}
+.lg.cols2{grid-template-columns:repeat(2,1fr);}
+.lg.cols6{grid-template-columns:repeat(6,1fr);}
+.lg.cols5{grid-template-columns:repeat(5,1fr);}
+
+.lc{background:var(--white);display:flex;flex-direction:column;}
+.lc.span2{grid-column:span 2;}
+
+.ld{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:32px 24px;min-height:106px;
+}
+.ld.col{flex-direction:column;gap:10px;}
+.ld.sm{min-height:88px;padding:20px 16px;}
+
+/* backgrounds */
+.bg-w{background:#FFFFFF;}
+.bg-f{background:#F7F6F3;}
+.bg-obs{background:#1A1A1A;}
+.bg-blk{background:#000000;}
+.bg-bl{background:#2D5BE3;}
+.bg-gr{background:#1A7A4A;}
+.bg-am{background:#C4620A;}
+.bg-pu{background:#6B3FA0;}
+.bg-td{background:#080c12;}
+.bg-fr{background:#0D1117;} /* framework dark */
+
+.lm{
+  padding:9px 14px;background:#FAFAF8;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.lv{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);}
+.dl{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;background:none;border:1px solid var(--border);
+  border-radius:3px;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);
+  cursor:pointer;transition:all .18s;
+}
+.dl:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+/* ── FRAMEWORK MARK ── */
+/* The framework uses a different geometry — a badge/seal approach */
+.fw-shield{
+  /* Hexagonal badge feel */
+}
+
+/* ── COLOUR CHIPS ── */
+.cc-row{display:flex;gap:10px;flex-wrap:wrap;}
+.cc{display:flex;flex-direction:column;gap:6px;min-width:90px;}
+.cs{height:44px;border-radius:6px;border:1px solid rgba(0,0,0,.06);}
+.cn{font-size:11px;font-weight:600;color:var(--ink);}
+.ch{font-family:var(--mono);font-size:10px;color:var(--ink3);}
+
+/* ── ARCHITECTURE MAP ── */
+.arch{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:32px;margin-bottom:28px;
+}
+.arch-title{font-family:var(--serif);font-size:28px;letter-spacing:-.02em;margin-bottom:6px;}
+.arch-sub{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:28px;max-width:560px;}
+.arch-tree{display:flex;flex-direction:column;gap:0;}
+/* umbrella row */
+.arch-umbrella{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 20px;background:var(--ink);border-radius:8px;
+  margin-bottom:12px;
+}
+.arch-umbrella-name{font-family:var(--serif);font-size:24px;color:#fff;letter-spacing:-.02em;}
+.arch-umbrella-tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-left:auto;}
+/* framework row */
+.arch-framework{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 20px;background:var(--bg);border:1px solid var(--border);
+  border-radius:8px;margin-bottom:12px;border-left:3px solid var(--ink);
+}
+.arch-framework-name{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:-.02em;font-style:italic;}
+.arch-framework-tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-left:auto;}
+/* divisions row */
+.arch-divs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.arch-div{
+  padding:12px 14px;border-radius:7px;border:1px solid;
+}
+.arch-div-name{font-family:var(--serif);font-size:16px;letter-spacing:-.01em;margin-bottom:2px;}
+.arch-div-role{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+
+/* ── NOTE ── */
+.note{
+  background:var(--white);border:1px solid var(--border);
+  border-left:3px solid var(--ink);border-radius:0 6px 6px 0;
+  padding:13px 18px;font-size:13px;color:var(--ink2);line-height:1.65;
+  margin-bottom:20px;
+}
+.note strong{color:var(--ink);}
+
+/* ── CODE BLOCK ── */
+.cb{
+  background:#1A1A1A;border-radius:8px;padding:20px 24px;
+  overflow-x:auto;font-family:var(--mono);font-size:11px;
+  line-height:1.75;color:#A0B0A8;position:relative;margin-bottom:16px;
+}
+.cb .kw{color:#6EE7A8;} .cb .at{color:#93C5FD;} .cb .vl{color:#FCA5A5;} .cb .cm{color:#4B5563;}
+.cpy{
+  position:absolute;top:12px;right:12px;padding:4px 12px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);
+  border-radius:3px;font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.55);
+  cursor:pointer;transition:all .2s;
+}
+.cpy:hover{background:rgba(255,255,255,.18);color:#fff;}
+
+/* ── USAGE TABLE ── */
+.ut{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:28px;}
+.ut th{text-align:left;padding:9px 14px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--border);background:#FAFAF8;}
+.ut td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--ink2);vertical-align:top;}
+.ut tr:last-child td{border-bottom:none;}
+.ut .em{font-family:var(--mono);font-size:11px;background:rgba(0,0,0,.04);color:var(--ink);padding:2px 6px;border-radius:3px;border:1px solid var(--border);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .wrap{padding:0 20px;}
+  .topbar{padding:0 20px;}
+  .lg.cols4,.lg.cols6,.lg.cols5{grid-template-columns:1fr 1fr;}
+  .lg.cols3{grid-template-columns:1fr 1fr;}
+  .arch-divs{grid-template-columns:1fr 1fr;}
+  .lc.span2{grid-column:span 2;}
+}
+@media print{
+  .topbar,.dl,.cpy,.tb-btn{display:none!important;}
+  .page{padding:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-left">
+    <svg width="22" height="24" viewBox="0 0 44 46" fill="none">
+      <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+      <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+      <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+    </svg>
+    <span class="tb-brand">enlyst<em>now</em></span>
+    <span class="tb-tag">Complete Logo Package · 2025</span>
+  </div>
+  <div class="tb-right">
+    <button class="tb-btn outline" onclick="window.print()">↓ PDF</button>
+    <button class="tb-btn solid" onclick="downloadAll()">↓ All SVGs</button>
+  </div>
+</div>
+
+
+<div class="page">
+<div class="wrap">
+
+
+<!-- ══════════════════════════════════════
+     BRAND ARCHITECTURE
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">Brand Architecture</div>
+
+  <div class="arch">
+    <h2 class="arch-title">The complete enlystnow ecosystem.</h2>
+    <p class="arch-sub">enlystnow is the umbrella. The Enlyst Framework is the adoption standard — any business that wishes to operate under the enlystnow umbrella adopts the Framework. The four divisions are the operating arms.</p>
+
+    <!-- Umbrella -->
+    <div class="arch-umbrella">
+      <svg width="24" height="26" viewBox="0 0 44 46" fill="none">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+        <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+        <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+      </svg>
+      <span class="arch-umbrella-name">enlystnow</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.4);font-family:var(--sans);">Umbrella Platform · Parent Brand · Consumer-facing holding identity</span>
+      <span class="arch-umbrella-tag">enlystnow.com</span>
+    </div>
+
+    <!-- Framework -->
+    <div style="display:flex;align-items:center;gap:8px;padding:0 20px;margin-bottom:10px;">
+      <div style="width:1px;height:24px;background:var(--border);margin-left:10px;"></div>
+      <span style="font-size:11px;color:var(--ink3);font-family:var(--mono);">membership standard</span>
+    </div>
+    <div class="arch-framework">
+      <!-- Framework mark inline -->
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <path d="M16 2 L30 9 L30 23 L16 30 L2 23 L2 9 Z" fill="none" stroke="#111" stroke-width="1.5"/>
+        <path d="M16 6 L27 12 L27 20 L16 26 L5 20 L5 12 Z" fill="#111" opacity=".06"/>
+        <text x="10" y="20" font-family="'Instrument Serif',Georgia,serif" font-size="10" fill="#111" font-weight="400">EF</text>
+      </svg>
+      <span class="arch-framework-name">Enlyst Framework</span>
+      <span style="font-size:12px;color:var(--ink3);">The operating standard. Adopted by businesses that join the enlystnow ecosystem.</span>
+      <span class="arch-framework-tag">Membership · Badge · Standard</span>
+    </div>
+
+    <!-- Divider -->
+    <div style="display:flex;align-items:center;gap:8px;padding:0 20px;margin-bottom:10px;">
+      <div style="width:1px;height:24px;background:var(--border);margin-left:10px;"></div>
+      <span style="font-size:11px;color:var(--ink3);font-family:var(--mono);">four operating divisions</span>
+    </div>
+
+    <!-- Divisions -->
+    <div class="arch-divs">
+      <div class="arch-div" style="border-color:rgba(45,91,227,.25);background:rgba(45,91,227,.04);">
+        <div class="arch-div-name" style="color:#2D5BE3;">enlyst</div>
+        <div class="arch-div-role" style="color:#2D5BE3;">HR &amp; Talent</div>
+      </div>
+      <div class="arch-div" style="border-color:rgba(26,122,74,.25);background:rgba(26,122,74,.04);">
+        <div class="arch-div-name" style="color:#1A7A4A;">enlysum</div>
+        <div class="arch-div-role" style="color:#1A7A4A;">Finance &amp; Accounting</div>
+      </div>
+      <div class="arch-div" style="border-color:rgba(196,98,10,.25);background:rgba(196,98,10,.04);">
+        <div class="arch-div-name" style="color:#C4620A;">enlybiz</div>
+        <div class="arch-div-role" style="color:#C4620A;">Marketing &amp; Growth</div>
+      </div>
+      <div class="arch-div" style="border-color:rgba(107,63,160,.25);background:rgba(107,63,160,.04);">
+        <div class="arch-div-name" style="color:#6B3FA0;" class="mono">enlysoft</div>
+        <div class="arch-div-role" style="color:#6B3FA0;">Cloud &amp; Technology</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     01 — ENLYSTNOW (UMBRELLA)
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">
+    01 — enlystnow
+    <span class="badge" style="color:#2D5BE3;border-color:rgba(45,91,227,.3);background:rgba(45,91,227,.06);">Umbrella · Parent Platform</span>
+  </div>
+
+  <div class="entity-block">
+    <div class="entity-head">
+      <div class="e-dot" style="background:linear-gradient(135deg,#2D5BE3,#6B3FA0);"></div>
+      <div class="e-name">enlystnow</div>
+      <div class="e-desc">Three-stripe mark · Instrument Serif · wordmark uses italic "now" treatment</div>
+      <div class="e-role">Umbrella Platform</div>
+    </div>
+
+    <div class="lg cols4">
+
+      <!-- Primary Light -->
+      <div class="lc">
+        <div class="ld bg-w">
+          <svg width="210" height="50" viewBox="0 0 210 50" fill="none" id="enlystnow-primary-light">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"/>
+            <text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#111111" letter-spacing="-1">enlyst</text>
+            <text x="148" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#2D5BE3" letter-spacing="-1" font-style="italic">now</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Primary · Light</span><button class="dl" onclick="dlSVG('enlystnow-primary-light','enlystnow-primary-light.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Primary Dark -->
+      <div class="lc">
+        <div class="ld bg-obs">
+          <svg width="210" height="50" viewBox="0 0 210 50" fill="none" id="enlystnow-primary-dark">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"/>
+            <text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+            <text x="148" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#2D5BE3" letter-spacing="-1" font-style="italic">now</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Primary · Dark</span><button class="dl" onclick="dlSVG('enlystnow-primary-dark','enlystnow-primary-dark.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Off white -->
+      <div class="lc">
+        <div class="ld bg-f">
+          <svg width="210" height="50" viewBox="0 0 210 50" fill="none" id="enlystnow-offwhite">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#2D5BE3" opacity="0.26"/>
+            <text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#111111" letter-spacing="-1">enlyst</text>
+            <text x="148" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#2D5BE3" letter-spacing="-1" font-style="italic">now</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Off-White BG</span><button class="dl" onclick="dlSVG('enlystnow-offwhite','enlystnow-off-white.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Mono Black -->
+      <div class="lc">
+        <div class="ld bg-f">
+          <svg width="210" height="50" viewBox="0 0 210 50" fill="none" id="enlystnow-mono-black">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#111111"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#111111" opacity="0.5"/>
+            <path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#111111" opacity="0.22"/>
+            <text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#111111" letter-spacing="-1">enlystnow</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Mono · Black</span><button class="dl" onclick="dlSVG('enlystnow-mono-black','enlystnow-mono-black.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Mono White -->
+      <div class="lc">
+        <div class="ld bg-blk">
+          <svg width="210" height="50" viewBox="0 0 210 50" fill="none" id="enlystnow-mono-white">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#FFFFFF"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#FFFFFF" opacity="0.55"/>
+            <path d="M16 38 L52 38 L44 50 L8 50 Z" fill="#FFFFFF" opacity="0.24"/>
+            <text x="60" y="35" font-family="'Instrument Serif',Georgia,serif" font-size="30" font-weight="400" fill="#FFFFFF" letter-spacing="-1">enlystnow</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Mono · White</span><button class="dl" onclick="dlSVG('enlystnow-mono-white','enlystnow-mono-white.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Stacked -->
+      <div class="lc">
+        <div class="ld bg-w col">
+          <svg width="40" height="42" viewBox="0 0 40 42" fill="none" id="enlystnow-stacked">
+            <path d="M0 2 L26 2 L20 12 L-6 12 Z" fill="#2D5BE3"/>
+            <path d="M6 16 L32 16 L26 26 L0 26 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M12 30 L38 30 L32 42 L6 42 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+          <svg width="96" height="22" viewBox="0 0 96 22" fill="none">
+            <text x="0" y="18" font-family="'Instrument Serif',Georgia,serif" font-size="16" fill="#111" letter-spacing="-.5">enlyst<tspan fill="#2D5BE3" font-style="italic">now</tspan></text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Stacked</span><button class="dl" onclick="dlSVG('enlystnow-stacked','enlystnow-stacked.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Favicon -->
+      <div class="lc">
+        <div class="ld bg-f">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlystnow-favicon">
+            <rect width="56" height="56" rx="13" fill="#111111"/>
+            <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#2D5BE3"/>
+            <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Favicon</span><button class="dl" onclick="dlSVG('enlystnow-favicon','enlystnow-favicon.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Icon -->
+      <div class="lc">
+        <div class="ld bg-w">
+          <svg width="46" height="48" viewBox="0 0 46 48" fill="none" id="enlystnow-icon">
+            <path d="M0 2 L28 2 L20 14 L-8 14 Z" fill="#2D5BE3"/>
+            <path d="M8 18 L36 18 L28 30 L0 30 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 34 L44 34 L36 48 L8 48 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Icon Only</span><button class="dl" onclick="dlSVG('enlystnow-icon','enlystnow-icon.svg')">↓ SVG</button></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     02 — ENLYST FRAMEWORK
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">
+    02 — Enlyst Framework
+    <span class="badge" style="color:#111;border-color:rgba(0,0,0,.2);background:rgba(0,0,0,.05);">Membership · Adoption Standard · Badge</span>
+  </div>
+
+  <div class="note"><strong>What the Framework mark is:</strong> This is not a division logo. It is the badge of adoption — any business that joins the enlystnow ecosystem and operates under its standard carries this mark. It signals belonging, accountability, and adherence to the Enlyst way of operating. Think of it as a quality seal or a membership badge.</div>
+
+  <div class="entity-block">
+    <div class="entity-head" style="background:#0D1117;border-color:#1e2530;">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <path d="M16 2 L30 9 L30 23 L16 30 L2 23 L2 9 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+        <path d="M16 6 L26 11.5 L26 20.5 L16 26 L6 20.5 L6 11.5 Z" fill="rgba(255,255,255,0.07)"/>
+        <text x="10.5" y="21" font-family="'Instrument Serif',Georgia,serif" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="400">EF</text>
+      </svg>
+      <div class="e-name" style="color:#fff;font-style:italic;">Enlyst Framework</div>
+      <div class="e-desc" style="color:rgba(255,255,255,.35);">Hexagonal badge mark · Instrument Serif italic · Obsidian / White / Gold variants</div>
+      <div class="e-role" style="color:rgba(255,255,255,.3);">Adoption Standard</div>
+    </div>
+
+    <div class="lg cols4">
+
+      <!-- Framework: Light BG -->
+      <div class="lc">
+        <div class="ld bg-w">
+          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" id="framework-light">
+            <!-- hexagon badge -->
+            <path d="M28 4 L48 4 L56 18 L48 32 L28 32 L20 18 Z" fill="#111111"/>
+            <path d="M28 8 L46 8 L53 18 L46 28 L28 28 L21 18 Z" fill="rgba(255,255,255,.07)"/>
+            <text x="29" y="23" font-family="'Instrument Serif',Georgia,serif" font-size="11" fill="#FFFFFF" font-weight="400" font-style="italic">EF</text>
+            <!-- wordmark -->
+            <text x="66" y="22" font-family="'Instrument Serif',Georgia,serif" font-size="20" font-weight="400" fill="#111111" letter-spacing="-.5">Enlyst</text>
+            <text x="66" y="42" font-family="'Instrument Serif',Georgia,serif" font-size="16" font-weight="400" fill="#111111" letter-spacing="-.3" font-style="italic">Framework</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Horizontal · Light</span><button class="dl" onclick="dlSVG('framework-light','enlyst-framework-light.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Framework: Dark BG -->
+      <div class="lc">
+        <div class="ld bg-fr">
+          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" id="framework-dark">
+            <path d="M28 4 L48 4 L56 18 L48 32 L28 32 L20 18 Z" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+            <text x="29" y="23" font-family="'Instrument Serif',Georgia,serif" font-size="11" fill="#FFFFFF" font-weight="400" font-style="italic">EF</text>
+            <text x="66" y="22" font-family="'Instrument Serif',Georgia,serif" font-size="20" font-weight="400" fill="#FFFFFF" letter-spacing="-.5">Enlyst</text>
+            <text x="66" y="42" font-family="'Instrument Serif',Georgia,serif" font-size="16" font-weight="400" fill="rgba(255,255,255,.65)" letter-spacing="-.3" font-style="italic">Framework</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Horizontal · Dark</span><button class="dl" onclick="dlSVG('framework-dark','enlyst-framework-dark.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Framework Badge: Seal -->
+      <div class="lc">
+        <div class="ld bg-f">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" id="framework-badge">
+            <!-- outer hex -->
+            <path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="#111111"/>
+            <!-- inner hex -->
+            <path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+            <!-- EF monogram -->
+            <text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#FFFFFF" font-weight="400" font-style="italic">EF</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Badge · Seal</span><button class="dl" onclick="dlSVG('framework-badge','enlyst-framework-badge.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Framework Badge: Gold / Prestige -->
+      <div class="lc">
+        <div class="ld bg-obs">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" id="framework-gold">
+            <path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"/>
+            <path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="rgba(196,162,74,.08)" stroke="#C4A24A" stroke-width=".7"/>
+            <text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#C4A24A" font-weight="400" font-style="italic">EF</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Badge · Gold</span><button class="dl" onclick="dlSVG('framework-gold','enlyst-framework-gold.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Framework Stamp: horizontal compact -->
+      <div class="lc span2">
+        <div class="ld bg-w">
+          <svg width="280" height="44" viewBox="0 0 280 44" fill="none" id="framework-stamp">
+            <!-- compact hex -->
+            <path d="M20 4 L34 4 L40 14 L34 24 L20 24 L14 14 Z" fill="#111111"/>
+            <text x="17.5" y="18" font-family="'Instrument Serif',Georgia,serif" font-size="9" fill="#FFFFFF" font-style="italic">EF</text>
+            <!-- full wordmark -->
+            <text x="50" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#111" letter-spacing="-.4">Enlyst</text>
+            <text x="112" y="19" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#111" letter-spacing="-.4" font-style="italic"> Framework</text>
+            <!-- tag -->
+            <text x="50" y="34" font-family="'DM Mono',monospace" font-size="8.5" fill="#999" letter-spacing=".14em">OPERATING STANDARD · enlystnow.com</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Stamp · Full Width</span><button class="dl" onclick="dlSVG('framework-stamp','enlyst-framework-stamp.svg')">↓ SVG</button></div>
+      </div>
+
+      <!-- Framework: White on enlystnow blue -->
+      <div class="lc">
+        <div class="ld bg-bl">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" id="framework-on-blue">
+            <path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+            <path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="none" stroke="rgba(255,255,255,.2)" stroke-width=".7"/>
+            <text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#FFFFFF" font-style="italic">EF</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Badge · Blue BG</span><button class="dl" onclick="dlSVG('framework-on-blue','enlyst-framework-blue.svg')">↓ SVG</button></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     03 — enlyst (HR DIVISION)
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">
+    03 — enlyst
+    <span class="badge" style="color:#2D5BE3;border-color:rgba(45,91,227,.25);background:rgba(45,91,227,.05);">HR &amp; Talent Division</span>
+  </div>
+
+  <div class="entity-block">
+    <div class="entity-head">
+      <div class="e-dot" style="background:#2D5BE3;"></div>
+      <div class="e-name" style="color:#2D5BE3;">enlyst</div>
+      <div class="e-desc">HR Blue #2D5BE3 · Instrument Serif · formerly the parent — now purely HR & Talent</div>
+      <div class="e-role">HR Division</div>
+    </div>
+    <div class="lg cols4">
+      <div class="lc">
+        <div class="ld bg-w">
+          <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-hr-light">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#2D5BE3" opacity="0.26"/>
+            <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" fill="#111111" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Primary · Light</span><button class="dl" onclick="dlSVG('enlyst-hr-light','enlyst-hr-primary-light.svg')">↓ SVG</button></div>
+      </div>
+      <div class="lc">
+        <div class="ld bg-obs">
+          <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-hr-dark">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#2D5BE3"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#2D5BE3" opacity="0.26"/>
+            <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Primary · Dark</span><button class="dl" onclick="dlSVG('enlyst-hr-dark','enlyst-hr-primary-dark.svg')">↓ SVG</button></div>
+      </div>
+      <div class="lc">
+        <div class="ld bg-bl">
+          <svg width="180" height="48" viewBox="0 0 180 48" fill="none" id="enlyst-hr-brand">
+            <path d="M0 2 L36 2 L28 16 L-8 16 Z" fill="#FFFFFF"/>
+            <path d="M8 20 L44 20 L36 34 L0 34 Z" fill="#FFFFFF" opacity="0.58"/>
+            <path d="M16 38 L52 38 L44 48 L8 48 Z" fill="#FFFFFF" opacity="0.26"/>
+            <text x="60" y="36" font-family="'Instrument Serif',Georgia,serif" font-size="32" fill="#FFFFFF" letter-spacing="-1">enlyst</text>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Brand BG</span><button class="dl" onclick="dlSVG('enlyst-hr-brand','enlyst-hr-brand-bg.svg')">↓ SVG</button></div>
+      </div>
+      <div class="lc">
+        <div class="ld bg-f">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlyst-hr-favicon">
+            <rect width="56" height="56" rx="12" fill="#2D5BE3"/>
+            <path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/>
+            <path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/>
+            <path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/>
+          </svg>
+        </div>
+        <div class="lm"><span class="lv">Favicon</span><button class="dl" onclick="dlSVG('enlyst-hr-favicon','enlyst-hr-favicon.svg')">↓ SVG</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     04–06 — THREE DIVISIONS (COMPACT)
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">04–06 — enlysum · enlybiz · enlysoft</div>
+
+  <!-- ENLYSUM -->
+  <div class="entity-block" style="margin-bottom:12px;">
+    <div class="entity-head">
+      <div class="e-dot" style="background:#1A7A4A;"></div>
+      <div class="e-name" style="color:#1A7A4A;">enlysum</div>
+      <div class="e-desc">Finance Green #1A7A4A · Instrument Serif</div>
+      <div class="e-role">Finance Division</div>
+    </div>
+    <div class="lg cols4">
+      <div class="lc"><div class="ld bg-w"><svg width="188" height="44" viewBox="0 0 188 44" fill="none" id="enlysum-lt"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#111" letter-spacing="-.6">enlysum</text></svg></div><div class="lm"><span class="lv">Light</span><button class="dl" onclick="dlSVG('enlysum-lt','enlysum-primary-light.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-obs"><svg width="188" height="44" viewBox="0 0 188 44" fill="none" id="enlysum-dk"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#1A7A4A"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#1A7A4A" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#1A7A4A" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#fff" letter-spacing="-.6">enlysum</text></svg></div><div class="lm"><span class="lv">Dark</span><button class="dl" onclick="dlSVG('enlysum-dk','enlysum-primary-dark.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-gr"><svg width="188" height="44" viewBox="0 0 188 44" fill="none" id="enlysum-bg"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#fff"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#fff" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#fff" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#fff" letter-spacing="-.6">enlysum</text></svg></div><div class="lm"><span class="lv">Brand BG</span><button class="dl" onclick="dlSVG('enlysum-bg','enlysum-brand-bg.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-f"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlysum-fav"><rect width="56" height="56" rx="12" fill="#1A7A4A"/><path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/><path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/><path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/></svg></div><div class="lm"><span class="lv">Favicon</span><button class="dl" onclick="dlSVG('enlysum-fav','enlysum-favicon.svg')">↓ SVG</button></div></div>
+    </div>
+  </div>
+
+  <!-- ENLYBIZ -->
+  <div class="entity-block" style="margin-bottom:12px;">
+    <div class="entity-head">
+      <div class="e-dot" style="background:#C4620A;"></div>
+      <div class="e-name" style="color:#C4620A;">enlybiz</div>
+      <div class="e-desc">Biz Amber #C4620A · Instrument Serif</div>
+      <div class="e-role">Marketing Division</div>
+    </div>
+    <div class="lg cols4">
+      <div class="lc"><div class="ld bg-w"><svg width="184" height="44" viewBox="0 0 184 44" fill="none" id="enlybiz-lt"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#111" letter-spacing="-.6">enlybiz</text></svg></div><div class="lm"><span class="lv">Light</span><button class="dl" onclick="dlSVG('enlybiz-lt','enlybiz-primary-light.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-obs"><svg width="184" height="44" viewBox="0 0 184 44" fill="none" id="enlybiz-dk"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#C4620A"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#C4620A" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#fff" letter-spacing="-.6">enlybiz</text></svg></div><div class="lm"><span class="lv">Dark</span><button class="dl" onclick="dlSVG('enlybiz-dk','enlybiz-primary-dark.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-am"><svg width="184" height="44" viewBox="0 0 184 44" fill="none" id="enlybiz-bg"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#fff"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#fff" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#fff" opacity="0.26"/><text x="58" y="30" font-family="'Instrument Serif',Georgia,serif" font-size="26" fill="#fff" letter-spacing="-.6">enlybiz</text></svg></div><div class="lm"><span class="lv">Brand BG</span><button class="dl" onclick="dlSVG('enlybiz-bg','enlybiz-brand-bg.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-f"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlybiz-fav"><rect width="56" height="56" rx="12" fill="#C4620A"/><path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/><path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/><path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/></svg></div><div class="lm"><span class="lv">Favicon</span><button class="dl" onclick="dlSVG('enlybiz-fav','enlybiz-favicon.svg')">↓ SVG</button></div></div>
+    </div>
+  </div>
+
+  <!-- ENLYSOFT -->
+  <div class="entity-block">
+    <div class="entity-head" style="background:#080c12;border-color:#1a2535;">
+      <div class="e-dot" style="background:#6B3FA0;"></div>
+      <div class="e-name" style="color:#A78BFA;font-family:var(--mono);font-size:17px;">enlysoft</div>
+      <div class="e-desc" style="color:rgba(255,255,255,.3);">Tech Purple #6B3FA0 · DM Mono wordmark (only exception) · dark-first</div>
+      <div class="e-role" style="color:rgba(255,255,255,.25);">Cloud Division</div>
+    </div>
+    <div class="lg cols4">
+      <div class="lc"><div class="ld bg-td"><svg width="196" height="44" viewBox="0 0 196 44" fill="none" id="enlysoft-dk"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"/><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#E2E8F0">enlysoft</text></svg></div><div class="lm"><span class="lv">Primary · Tech Dark</span><button class="dl" onclick="dlSVG('enlysoft-dk','enlysoft-primary-dark.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-f"><svg width="196" height="44" viewBox="0 0 196 44" fill="none" id="enlysoft-lt"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#6B3FA0"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#6B3FA0" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#6B3FA0" opacity="0.26"/><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#1A1A1A">enlysoft</text></svg></div><div class="lm"><span class="lv">Light</span><button class="dl" onclick="dlSVG('enlysoft-lt','enlysoft-primary-light.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-pu"><svg width="196" height="44" viewBox="0 0 196 44" fill="none" id="enlysoft-bg"><path d="M0 2 L34 2 L26 14 L-8 14 Z" fill="#fff"/><path d="M8 18 L42 18 L34 30 L0 30 Z" fill="#fff" opacity="0.58"/><path d="M16 34 L50 34 L42 44 L8 44 Z" fill="#fff" opacity="0.26"/><text x="58" y="29" font-family="'DM Mono',monospace" font-size="20" fill="#fff">enlysoft</text></svg></div><div class="lm"><span class="lv">Brand BG</span><button class="dl" onclick="dlSVG('enlysoft-bg','enlysoft-brand-bg.svg')">↓ SVG</button></div></div>
+      <div class="lc"><div class="ld bg-f"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" id="enlysoft-fav"><rect width="56" height="56" rx="12" fill="#6B3FA0"/><path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#fff"/><path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#fff" opacity=".58"/><path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#fff" opacity=".26"/></svg></div><div class="lm"><span class="lv">Favicon</span><button class="dl" onclick="dlSVG('enlysoft-fav','enlysoft-favicon.svg')">↓ SVG</button></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     07 — FULL FAMILY ON DARK
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">07 — Complete Family · All Marks Together</div>
+
+  <div style="background:#111;border-radius:12px;padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border:1px solid #2a2a2a;">
+
+    <!-- enlystnow — spans full row -->
+    <div style="grid-column:span 3;display:flex;align-items:center;justify-content:center;padding:20px 0 24px;border-bottom:1px solid #222;">
+      <svg width="240" height="56" viewBox="0 0 240 56" fill="none">
+        <path d="M0 2 L40 2 L32 18 L-8 18 Z" fill="#2D5BE3"/>
+        <path d="M8 22 L48 22 L40 38 L0 38 Z" fill="#2D5BE3" opacity="0.58"/>
+        <path d="M16 42 L56 42 L48 56 L8 56 Z" fill="#2D5BE3" opacity="0.26"/>
+        <text x="66" y="40" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#fff" letter-spacing="-1.2">enlyst</text>
+        <text x="168" y="40" font-family="'Instrument Serif',Georgia,serif" font-size="36" fill="#2D5BE3" letter-spacing="-1.2" font-style="italic">now</text>
+      </svg>
+    </div>
+
+    <!-- framework badge -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 0;">
+      <svg width="60" height="60" viewBox="0 0 80 80" fill="none">
+        <path d="M40 4 L70 20 L70 60 L40 76 L10 60 L10 20 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <path d="M40 12 L64 24 L64 56 L40 68 L16 56 L16 24 Z" fill="rgba(255,255,255,0.06)"/>
+        <text x="28" y="47" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="rgba(255,255,255,.8)" font-style="italic">EF</text>
+      </svg>
+      <div style="font-family:var(--serif);font-size:14px;color:rgba(255,255,255,.5);font-style:italic;text-align:center;">Enlyst<br/>Framework</div>
+    </div>
+
+    <!-- division marks -->
+    <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 0;">
+      <!-- enlyst HR -->
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+        <svg width="130" height="34" viewBox="0 0 130 34" fill="none">
+          <path d="M0 2 L24 2 L18 12 L-6 12 Z" fill="#2D5BE3"/>
+          <path d="M6 15 L30 15 L24 25 L0 25 Z" fill="#2D5BE3" opacity="0.58"/>
+          <path d="M12 28 L36 28 L30 34 L6 34 Z" fill="#2D5BE3" opacity="0.26"/>
+          <text x="42" y="25" font-family="'Instrument Serif',Georgia,serif" font-size="22" fill="#fff" letter-spacing="-.7">enlyst</text>
+        </svg>
+        <span style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;">HR &amp; Talent</span>
+      </div>
+      <!-- enlysum -->
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+        <svg width="140" height="34" viewBox="0 0 140 34" fill="none">
+          <path d="M0 2 L24 2 L18 12 L-6 12 Z" fill="#1A7A4A"/>
+          <path d="M6 15 L30 15 L24 25 L0 25 Z" fill="#1A7A4A" opacity="0.58"/>
+          <path d="M12 28 L36 28 L30 34 L6 34 Z" fill="#1A7A4A" opacity="0.26"/>
+          <text x="42" y="24" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#fff" letter-spacing="-.5">enlysum</text>
+        </svg>
+        <span style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;">Finance</span>
+      </div>
+      <!-- enlybiz -->
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+        <svg width="136" height="34" viewBox="0 0 136 34" fill="none">
+          <path d="M0 2 L24 2 L18 12 L-6 12 Z" fill="#C4620A"/>
+          <path d="M6 15 L30 15 L24 25 L0 25 Z" fill="#C4620A" opacity="0.58"/>
+          <path d="M12 28 L36 28 L30 34 L6 34 Z" fill="#C4620A" opacity="0.26"/>
+          <text x="42" y="24" font-family="'Instrument Serif',Georgia,serif" font-size="18" fill="#fff" letter-spacing="-.5">enlybiz</text>
+        </svg>
+        <span style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;">Marketing</span>
+      </div>
+      <!-- enlysoft -->
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+        <svg width="144" height="34" viewBox="0 0 144 34" fill="none">
+          <path d="M0 2 L24 2 L18 12 L-6 12 Z" fill="#6B3FA0"/>
+          <path d="M6 15 L30 15 L24 25 L0 25 Z" fill="#6B3FA0" opacity="0.58"/>
+          <path d="M12 28 L36 28 L30 34 L6 34 Z" fill="#6B3FA0" opacity="0.26"/>
+          <text x="42" y="23" font-family="'DM Mono',monospace" font-size="14" fill="#E2E8F0">enlysoft</text>
+        </svg>
+        <span style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;">Cloud &amp; Tech</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     08 — WHERE TO USE WHAT
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">08 — Where to Use What</div>
+
+  <table class="ut">
+    <tr>
+      <th>Surface</th>
+      <th>Mark to use</th>
+      <th>Variant</th>
+      <th>File name</th>
+    </tr>
+    <tr>
+      <td>Main website navbar</td>
+      <td>enlystnow</td>
+      <td>Primary · Light or Dark depending on nav BG</td>
+      <td><span class="em">enlystnow-primary-light.svg</span></td>
+    </tr>
+    <tr>
+      <td>Division websites (HR, Finance, etc.)</td>
+      <td>Division mark only</td>
+      <td>Primary · Light</td>
+      <td><span class="em">enlyst-hr-primary-light.svg</span></td>
+    </tr>
+    <tr>
+      <td>Email signature</td>
+      <td>enlystnow</td>
+      <td>Primary · Light</td>
+      <td><span class="em">enlystnow-primary-light.svg</span></td>
+    </tr>
+    <tr>
+      <td>Browser tab / favicon</td>
+      <td>enlystnow favicon</td>
+      <td>Favicon square</td>
+      <td><span class="em">enlystnow-favicon.svg</span></td>
+    </tr>
+    <tr>
+      <td>WhatsApp Business profile</td>
+      <td>enlystnow favicon</td>
+      <td>Favicon · export as PNG 400×400</td>
+      <td><span class="em">enlystnow-favicon.svg → PNG</span></td>
+    </tr>
+    <tr>
+      <td>LinkedIn company page</td>
+      <td>enlystnow</td>
+      <td>Primary · Light → PNG 300×300</td>
+      <td><span class="em">enlystnow-primary-light.svg → PNG</span></td>
+    </tr>
+    <tr>
+      <td>Investor / pitch deck cover</td>
+      <td>enlystnow</td>
+      <td>Primary · Dark (on dark slide) or Mono · Black</td>
+      <td><span class="em">enlystnow-primary-dark.svg</span></td>
+    </tr>
+    <tr>
+      <td>Printed documents / letterhead</td>
+      <td>enlystnow</td>
+      <td>Mono · Black</td>
+      <td><span class="em">enlystnow-mono-black.svg</span></td>
+    </tr>
+    <tr>
+      <td>Franchise / partner materials</td>
+      <td>Enlyst Framework badge</td>
+      <td>Stamp · Full Width or Badge · Seal</td>
+      <td><span class="em">enlyst-framework-stamp.svg</span></td>
+    </tr>
+    <tr>
+      <td>Partner website footer badge</td>
+      <td>Enlyst Framework</td>
+      <td>Badge · Gold (on dark) or Badge · Seal</td>
+      <td><span class="em">enlyst-framework-gold.svg</span></td>
+    </tr>
+    <tr>
+      <td>Legal documents</td>
+      <td>Text only — no logo</td>
+      <td>"Enlyst Smart Recruiting Pvt Ltd"</td>
+      <td>—</td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     09 — COLOUR REFERENCE
+══════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-lbl">09 — Colour Reference</div>
+  <div class="cc-row">
+    <div class="cc"><div class="cs" style="background:#2D5BE3;"></div><div class="cn">HR Blue</div><div class="ch">#2D5BE3</div></div>
+    <div class="cc"><div class="cs" style="background:#1A7A4A;"></div><div class="cn">Finance Green</div><div class="ch">#1A7A4A</div></div>
+    <div class="cc"><div class="cs" style="background:#C4620A;"></div><div class="cn">Biz Amber</div><div class="ch">#C4620A</div></div>
+    <div class="cc"><div class="cs" style="background:#6B3FA0;"></div><div class="cn">Tech Purple</div><div class="ch">#6B3FA0</div></div>
+    <div class="cc"><div class="cs" style="background:#1A1A1A;"></div><div class="cn">Obsidian</div><div class="ch">#1A1A1A</div></div>
+    <div class="cc"><div class="cs" style="background:#FFFFFF;border:1px solid #E0DED9;"></div><div class="cn">White</div><div class="ch">#FFFFFF</div></div>
+    <div class="cc"><div class="cs" style="background:#080c12;"></div><div class="cn">Tech Dark</div><div class="ch">#080c12</div></div>
+    <div class="cc"><div class="cs" style="background:#C4A24A;"></div><div class="cn">Framework Gold</div><div class="ch">#C4A24A</div></div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--border);padding:32px 0 8px;text-align:center;">
+  <p style="font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase;">enlystnow Logo Package · Daily Use Kit · info@enlystnow.com · 03000 340 036 · Suite M-3, Lahore Stock Exchange Plaza</p>
+</div>
+
+
+</div><!-- /wrap -->
+</div><!-- /page -->
+
+
+<script>
+function dlSVG(id, filename) {
+  const el = document.getElementById(id);
+  if (!el) { alert('Element not found: ' + id); return; }
+  const s = new XMLSerializer();
+  let svg = s.serializeToString(el);
+  if (!svg.includes('xmlns=')) svg = svg.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+  const blob = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function downloadAll() {
+  const items = [
+    ['enlystnow-primary-light','enlystnow-primary-light.svg'],
+    ['enlystnow-primary-dark','enlystnow-primary-dark.svg'],
+    ['enlystnow-mono-black','enlystnow-mono-black.svg'],
+    ['enlystnow-mono-white','enlystnow-mono-white.svg'],
+    ['enlystnow-favicon','enlystnow-favicon.svg'],
+    ['enlystnow-icon','enlystnow-icon.svg'],
+    ['framework-light','enlyst-framework-light.svg'],
+    ['framework-dark','enlyst-framework-dark.svg'],
+    ['framework-badge','enlyst-framework-badge.svg'],
+    ['framework-gold','enlyst-framework-gold.svg'],
+    ['framework-stamp','enlyst-framework-stamp.svg'],
+    ['enlyst-hr-light','enlyst-hr-primary-light.svg'],
+    ['enlyst-hr-dark','enlyst-hr-primary-dark.svg'],
+    ['enlyst-hr-favicon','enlyst-hr-favicon.svg'],
+    ['enlysum-lt','enlysum-primary-light.svg'],
+    ['enlysum-dk','enlysum-primary-dark.svg'],
+    ['enlysum-fav','enlysum-favicon.svg'],
+    ['enlybiz-lt','enlybiz-primary-light.svg'],
+    ['enlybiz-dk','enlybiz-primary-dark.svg'],
+    ['enlybiz-fav','enlybiz-favicon.svg'],
+    ['enlysoft-dk','enlysoft-primary-dark.svg'],
+    ['enlysoft-lt','enlysoft-primary-light.svg'],
+    ['enlysoft-fav','enlysoft-favicon.svg'],
+  ];
+  let i = 0;
+  const next = () => {
+    if (i >= items.length) return;
+    dlSVG(items[i][0], items[i][1]);
+    i++;
+    setTimeout(next, 300);
+  };
+  next();
+}
+</script>
+</body>
+</html>
