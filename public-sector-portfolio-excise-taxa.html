@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enlyst — Public Sector Portfolio | Excise & Taxation Punjab</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B4332;--pine:#2D6A4F;--sage:#52B788;--mint:#D8F3DC;
+  --navy:#0C2340;--sky:#185FA5;--skylight:#E6F1FB;
+  --ember:#993C1D;--amber:#EF9F27;--gold:#FAEEDA;
+  --grape:#3C3489;--lavender:#EEEDFE;
+  --ink:#1A1A1A;--muted:#6B6B6B;--subtle:#A0A0A0;
+  --border:#E5E5E5;--surface:#F8F8F6;--white:#FFFFFF;
+  --radius:12px;--radius-sm:8px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink);min-height:100vh}
+
+/* TOP NAV */
+.nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-brand{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-0.3px}
+.nav-brand span{color:var(--forest)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-client{font-size:12px;color:var(--muted);border-left:1px solid var(--border);padding-left:1.5rem}
+.nav-client strong{color:var(--ink);display:block;font-size:12px}
+.nav-badge{background:var(--mint);color:var(--forest);font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px}
+
+/* HERO */
+.hero{background:var(--white);border-bottom:1px solid var(--border);padding:3.5rem 3rem 3rem}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.6px;color:var(--sage);margin-bottom:1rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:40px;font-weight:600;line-height:1.15;color:var(--ink);margin-bottom:1rem;max-width:680px}
+.hero-title em{font-style:normal;color:var(--forest)}
+.hero-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2rem}
+.hero-meta{display:flex;align-items:center;gap:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.hero-stat{text-align:left}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:500;color:var(--ink)}
+.hero-stat-label{font-size:11px;color:var(--subtle);margin-top:2px}
+.hero-divider{width:1px;height:40px;background:var(--border)}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:3rem}
+
+/* SECTION LABEL */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+.section-count{font-size:12px;color:var(--subtle)}
+
+/* PROJECT GRID */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:3rem}
+
+.proj{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;transition:box-shadow 0.2s,border-color 0.2s}
+.proj:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);border-color:#ccc}
+.proj::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:0}
+.proj.p1::before{background:var(--forest)}
+.proj.p2::before{background:var(--sky)}
+.proj.p3::before{background:var(--ember)}
+.proj.p4::before{background:var(--pine)}
+.proj.p5::before{background:var(--grape)}
+.proj.p6::before{background:#BA7517}
+
+.proj-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.proj-num{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--subtle)}
+
+.badge{font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px}
+.badge-live{background:#D8F3DC;color:#1B4332}
+.badge-deployed{background:#E6F1FB;color:#0C447C}
+.badge-complete{background:#EEEDFE;color:#3C3489}
+.badge-active{background:#FAEEDA;color:#633806}
+
+.proj-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.tag{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--muted);background:var(--surface)}
+
+.proj-foot{border-top:1px solid var(--border);padding-top:12px;display:flex;align-items:baseline;justify-content:space-between}
+.proj-kpi-val{font-size:15px;font-weight:500;color:var(--ink)}
+.proj-kpi-label{font-size:11px;color:var(--subtle);margin-top:2px}
+.proj-arrow{font-size:18px;color:var(--border)}
+
+/* IMPACT STRIP */
+.impact{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem 2rem;margin-bottom:2rem}
+.impact-head{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin-bottom:1.25rem}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.impact-item{padding-left:14px;border-left:3px solid var(--border)}
+.impact-item.green{border-color:var(--sage)}
+.impact-item.blue{border-color:var(--sky)}
+.impact-item.purple{border-color:#7F77DD}
+.impact-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:5px}
+.impact-body{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* CTA ROW */
+.cta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:2.5rem}
+.cta-btn{padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--white);font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);cursor:pointer;font-weight:500;transition:background 0.12s,border-color 0.12s;text-align:center;line-height:1.4}
+.cta-btn:hover{background:var(--surface);border-color:#bbb}
+.cta-btn .arrow{display:block;font-size:11px;color:var(--subtle);margin-top:3px}
+
+/* FOOTER */
+.footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 3rem}
+.footer-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.footer-meta{font-size:12px;color:var(--muted);line-height:1.6}
+.footer-right{text-align:right}
+.footer-dept{font-size:12px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.footer-period{font-size:11px;color:var(--subtle)}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .projects{grid-template-columns:1fr}
+  .impact-grid{grid-template-columns:1fr}
+  .cta-row{grid-template-columns:1fr}
+  .nav{padding:0 1.25rem}
+  .hero{padding:2rem 1.25rem}
+  .main{padding:2rem 1.25rem}
+  .hero-title{font-size:28px}
+  .hero-meta{flex-wrap:wrap;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>Enlyst</span> Public Sector</div>
+  <div class="nav-right">
+    <div class="nav-client">
+      <strong>Excise &amp; Taxation Dept</strong>
+      Government of Punjab
+    </div>
+    <div class="nav-badge">Active Engagement</div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Enlyst × Excise &amp; Taxation Punjab</div>
+    <h1 class="hero-title">Technology &amp; intelligence<br>for <em>public sector reform</em></h1>
+    <p class="hero-sub">Enlyst has delivered six strategic technology projects for the Excise &amp; Taxation Department, Region-A, Government of Punjab — spanning enforcement intelligence, legal compliance, AI infrastructure, and civil service capacity building.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-label">Projects delivered</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">124,094</div>
+        <div class="hero-stat-label">Companies in tax intelligence DB</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">PKR 2.26T</div>
+        <div class="hero-stat-label">Capital pool mapped</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Feb–Apr 2026</div>
+        <div class="hero-stat-label">Engagement period</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-head">
+    <div class="section-label">Project portfolio</div>
+    <div class="section-count">6 of 6 deliverables</div>
+  </div>
+
+  <div class="projects">
+
+    <div class="proj p1">
+      <div class="proj-top">
+        <div class="proj-num">Project 01 · Tax Enforcement</div>
+        <div class="badge badge-live">Live</div>
+      </div>
+      <div class="proj-title">Tax Nexus Intelligence Dashboard</div>
+      <div class="proj-desc">Multi-view HTML enforcement command centre for Professional Tax Region-A. Six functional views with Chart.js analytics, legal framework integration under Punjab Finance Act 1977, and inspector-level circle data.</div>
+      <div class="proj-tags">
+        <span class="tag">HTML / JS</span>
+        <span class="tag">Chart.js</span>
+        <span class="tag">6 views</span>
+        <span class="tag">Punjab Finance Act 1977</span>
+        <span class="tag">Circle data</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">69,558 companies</div>
+          <div class="proj-kpi-label">Lahore enforcement universe</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="proj p2">
+      <div class="proj-top">
+        <div class="proj-num">Project 02 · AI Infrastructure</div>
+        <div class="badge badge-deployed">Deployed</div>
+      </div>
+      <div class="proj-title">SECP Punjab MCP Server</div>
+      <div class="proj-desc">Production-grade TypeScript MCP server connecting SECP's full Punjab company database to Claude.ai via Streamable HTTP transport. Three search tools enabling real-time company lookup by name, CNIC/NTN, and sector/locality.</div>
+      <div class="proj-tags">
+        <span class="tag">TypeScript</span>
+        <span class="tag">MCP Protocol</span>
+        <span class="tag">Streamable HTTP</span>
+        <span class="tag">Claude.ai</span>
+        <span class="tag">Zod validation</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">3 AI search tools</div>
+          <div class="proj-kpi-label">Name · CNIC/NTN · Sector/Locality</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="proj p3">
+      <div class="proj-top">
+        <div class="proj-num">Project 03 · Legal Intelligence</div>
+        <div class="badge badge-complete">Complete</div>
+      </div>
+      <div class="proj-title">Legal Enforcement Correspondence</div>
+      <div class="proj-desc">Legally rigorous contested challan reply (M/s Neat Foods, Rs. 1.6M, three chronological arguments) and formal show cause notice challenging Expo Centre Lahore's 2007 professional tax exemption claim on five statutory grounds.</div>
+      <div class="proj-tags">
+        <span class="tag">Punjab Finance Act</span>
+        <span class="tag">Land Revenue Act</span>
+        <span class="tag">Gazette analysis</span>
+        <span class="tag">Formal DOCX</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">5 legal grounds</div>
+          <div class="proj-kpi-label">Expo Centre exemption challenge</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="proj p4">
+      <div class="proj-top">
+        <div class="proj-num">Project 04 · Executive Intelligence</div>
+        <div class="badge badge-complete">Complete</div>
+      </div>
+      <div class="proj-title">Director Region-A Intelligence Report</div>
+      <div class="proj-desc">Comprehensive interactive HTML intelligence brief for Director Muhammad Mushtaq Faridi — 9 analytical sections covering sector breakdown (51 sectors), locality mapping, incorporation trends 2015–2025, capital brackets, and compliance revenue scenarios.</div>
+      <div class="proj-tags">
+        <span class="tag">Interactive HTML</span>
+        <span class="tag">9 sections</span>
+        <span class="tag">Revenue modelling</span>
+        <span class="tag">51 sectors</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">30/60/90/100% scenarios</div>
+          <div class="proj-kpi-label">Compliance revenue modelling</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="proj p5">
+      <div class="proj-top">
+        <div class="proj-num">Project 05 · Capacity Building</div>
+        <div class="badge badge-live">Live</div>
+      </div>
+      <div class="proj-title">MPDD Civil Service Exam Portal</div>
+      <div class="proj-desc">Full study portal for Punjab Government civil servants — dark-themed single-file HTML application with 1,170 MCQs across 35 clusters and 5 domains, quiz mode, practice papers, localStorage progress tracking, and PEEDA Act 2006 fully integrated.</div>
+      <div class="proj-tags">
+        <span class="tag">1,170 MCQs</span>
+        <span class="tag">35 clusters</span>
+        <span class="tag">PEEDA Act 2006</span>
+        <span class="tag">Quiz mode</span>
+        <span class="tag">localStorage</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">5 domains, 180 model answers</div>
+          <div class="proj-kpi-label">Punjab civil service exam readiness</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="proj p6">
+      <div class="proj-top">
+        <div class="proj-num">Project 06 · HR Intelligence</div>
+        <div class="badge badge-active">Active</div>
+      </div>
+      <div class="proj-title">Professional Credential Intelligence Report</div>
+      <div class="proj-desc">Synthesis of 214 LinkedIn certifications, 147 Credly badges, and 467K+ Google Skills points into a formal Word report — covering five professional perspectives, a 10-year trajectory, doctoral research integration, and global near-match analysis.</div>
+      <div class="proj-tags">
+        <span class="tag">GCP ACE / CDL</span>
+        <span class="tag">Credly Top Earner 2024</span>
+        <span class="tag">147 badges</span>
+        <span class="tag">10-year trajectory</span>
+        <span class="tag">DOCX</span>
+      </div>
+      <div class="proj-foot">
+        <div>
+          <div class="proj-kpi-val">8,879 learning activities</div>
+          <div class="proj-kpi-label">Verified Google Skills for Partners</div>
+        </div>
+        <div class="proj-arrow">→</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMPACT SECTION -->
+  <div class="impact">
+    <div class="impact-head">Strategic impact delivered</div>
+    <div class="impact-grid">
+      <div class="impact-item green">
+        <div class="impact-title">Enforcement intelligence</div>
+        <div class="impact-body">First systematic mapped view of Lahore's 69,558-company professional tax universe, enabling circle-level targeting and revenue gap quantification at PKR 2.26T capital base.</div>
+      </div>
+      <div class="impact-item blue">
+        <div class="impact-title">Legal precision &amp; risk reduction</div>
+        <div class="impact-body">Statutory correspondence citing Punjab Finance Act 1977, Land Revenue Act 1967, and Punjab Gazette analysis — reducing litigation exposure and establishing defensible paper trails.</div>
+      </div>
+      <div class="impact-item purple">
+        <div class="impact-title">Civil service capacity building</div>
+        <div class="impact-body">MPDD exam portal equips Punjab civil servants with 1,170 exam-ready MCQs and model answers across 35 clusters — directly supporting annual promotion and training cycles.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BUTTONS -->
+  <div class="cta-row">
+    <button class="cta-btn" onclick="alert('Draft a one-page project brief for the Tax Nexus dashboard suitable for Director Region-A')">
+      Generate project brief
+      <span class="arrow">For Director Region-A →</span>
+    </button>
+    <button class="cta-btn" onclick="alert('Create a formal Enlyst proposal document for the Excise and Taxation Department')">
+      Draft formal proposal
+      <span class="arrow">All 6 projects, scope &amp; impact →</span>
+    </button>
+    <button class="cta-btn" onclick="alert('Design an Enlyst capability statement for public sector clients')">
+      Capability statement
+      <span class="arrow">For new client presentations →</span>
+    </button>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Enlyst</div>
+      <div class="footer-meta">Lahore Stock Exchange, Suite M-3, Lahore<br>Wasim Hassan, Chairperson Board of Members</div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-dept">Excise &amp; Taxation Dept, Govt of Punjab</div>
+      <div class="footer-period">Engagement period: February – April 2026</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
