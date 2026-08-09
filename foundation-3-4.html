@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Foundation — enlystnow</title>
+<meta name="description" content="The Enlyst Foundation. Research, teaching, and reform. Because systems that fail the most vulnerable fail everyone."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* SHARED TOKEN LAYER — paste into every page */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#2D5BE3;--green:#1A7A4A;--amber:#C4620A;--purple:#6B3FA0;
+  --bg:#0A0A0F;--border:rgba(255,255,255,0.07);
+  --t1:#ffffff;--t2:rgba(255,255,255,0.55);--t3:rgba(255,255,255,0.28);
+  --s5:#64748b;--s6:#475569;--s7:#334155;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::selection{background:var(--blue);color:#fff;}
+a{color:inherit;text-decoration:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");}
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;animation:drift 20s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(60px,-40px);}
+}
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:62px;display:flex;align-items:center;padding:0 48px;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:11px;}
+.nav-wm{font-family:var(--serif);font-size:19px;letter-spacing:-.02em;}
+.nav-wm em{font-family:var(--sans);font-style:italic;color:var(--blue);font-size:14px;font-weight:400;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--s5);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a.active{border-bottom:1px solid rgba(45,91,227,.5);padding-bottom:2px;}
+.nav-cta{padding:7px 18px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;border-radius:100px;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 48px;position:relative;z-index:10;}
+section{position:relative;z-index:10;}
+.rule{border-top:1px solid var(--border);}
+.r{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.r.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:100ms;}.d2{transition-delay:200ms;}.d3{transition-delay:300ms;}.d4{transition-delay:400ms;}
+.serif{font-family:var(--serif);}
+.mono{font-family:var(--mono);}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.eyebrow::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,rgba(45,91,227,.4),transparent);}
+.grad{background:linear-gradient(100deg,var(--blue),#7b9ff5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.verse-section{padding:100px 0;}
+.verse{max-width:720px;margin:0 auto;text-align:center;padding:0 48px;}
+.verse-text{font-family:var(--serif);font-size:clamp(26px,3.5vw,44px);font-weight:400;line-height:1.25;letter-spacing:-.02em;color:var(--t1);}
+.verse-text.dim{color:rgba(255,255,255,.22);}
+.verse-subtext{font-size:16px;color:var(--t2);line-height:1.8;max-width:520px;margin:24px auto 0;}
+.glow-rule{height:1px;border:none;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.35;margin:0;}
+.pull{border-left:2px solid var(--blue);padding:16px 24px;background:rgba(45,91,227,.04);border-radius:0 8px 8px 0;font-family:var(--serif);font-style:italic;font-size:clamp(16px,2vw,20px);line-height:1.55;color:rgba(255,255,255,.75);}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;border-radius:100px;transition:opacity .2s;box-shadow:0 0 28px rgba(45,91,227,.3);}
+.btn-p:hover{opacity:.88;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;color:var(--s5);font-size:13px;font-weight:500;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s;}
+.btn-g:hover{color:#fff;border-color:rgba(255,255,255,.18);}
+.footer{border-top:1px solid var(--border);padding:48px 0 24px;position:relative;z-index:10;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px;}
+.foot-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--s7);margin-bottom:14px;}
+.foot-link{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--s6);margin-bottom:9px;transition:color .2s;}
+.foot-link:hover{color:#fff;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .nav{padding:0 24px;}
+  .wrap{padding:0 24px;}
+  .foot-grid{grid-template-columns:1fr;}
+  .verse{padding:0 24px;}
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 80px;}
+.h1{font-family:var(--serif);font-size:clamp(48px,6vw,80px);line-height:1.04;letter-spacing:-.04em;font-weight:400;}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:56px;}
+.stat-cell{background:var(--bg);padding:32px 24px;}
+.stat-num{font-family:var(--serif);font-size:44px;letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
+.stat-lbl{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--s6);line-height:1.5;}
+
+/* THREE TIER */
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;margin-top:56px;}
+.tier{background:var(--bg);padding:48px 36px;position:relative;overflow:hidden;}
+.tier-ghost{position:absolute;top:-16px;right:-8px;font-family:var(--serif);font-size:120px;color:var(--t1);opacity:.03;pointer-events:none;line-height:1;}
+.tier-num{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);margin-bottom:20px;}
+.tier-title{font-family:var(--serif);font-size:24px;color:var(--t1);margin-bottom:12px;line-height:1.2;}
+.tier-body{font-size:14px;color:var(--t2);line-height:1.8;}
+
+/* PIPELINE — dark panel */
+.pipeline{padding:100px 0;background:rgba(107,63,160,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.pipe-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.pipe-data{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pipe-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.pipe-card-num{font-family:var(--serif);font-size:40px;letter-spacing:-.04em;line-height:1;margin-bottom:6px;}
+.pipe-card-lbl{font-size:12px;color:var(--t2);line-height:1.55;}
+
+/* HIMAT VISUAL */
+.himat-card{background:rgba(107,63,160,.06);border:1px solid rgba(107,63,160,.2);border-radius:20px;padding:40px;position:relative;overflow:hidden;}
+.himat-glow{position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:#6B3FA0;opacity:.08;border-radius:50%;filter:blur(60px);pointer-events:none;}
+.himat-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:16px;}
+.himat-title{font-family:var(--serif);font-size:32px;color:var(--t1);line-height:1.15;margin-bottom:16px;letter-spacing:-.02em;}
+.himat-title em{font-style:italic;color:rgba(255,255,255,.35);}
+.himat-body{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:28px;}
+.himat-body strong{color:var(--t1);font-weight:500;}
+.himat-link{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:var(--purple);color:#fff;font-size:12px;font-weight:700;border-radius:100px;transition:opacity .2s;}
+.himat-link:hover{opacity:.85;}
+
+@media(max-width:900px){
+  .stat-bar,.pipe-data{grid-template-columns:1fr 1fr;}
+  .tier-grid{grid-template-columns:1fr;}
+  .pipe-inner{grid-template-columns:1fr;}
+  .hero{padding:120px 0 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="orb" style="width:700px;height:700px;background:#6B3FA0;opacity:.05;top:-250px;right:-200px;"></div>
+<div class="orb" style="width:350px;height:350px;background:#1A7A4A;opacity:.04;bottom:15%;left:-100px;animation-delay:-9s;"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <svg width="22" height="24" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+    <span class="nav-wm">enlyst<em>now</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="startup-framework.html">Startups</a>
+    <a href="foundation.html" class="active">Foundation</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Engage Us →</a>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow r">Enlyst Foundation</div>
+    <h1 class="h1 r d1">Research.<br>Teaching.<br><span style="background:linear-gradient(100deg,#6B3FA0,#9b6fd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Reform.</span></h1>
+    <p class="r d2" style="font-size:18px;color:var(--t2);line-height:1.8;max-width:540px;margin-top:24px;">The Enlyst Foundation exists because systems that fail the most vulnerable fail everyone eventually. We produce doctoral-grade research, build teacher capacity, and convert findings into policy — not reports that sit on shelves.</p>
+
+    <div class="stat-bar r d3">
+      <div class="stat-cell"><div class="stat-num" style="color:#6B3FA0;">37,100</div><div class="stat-lbl">Words of original field research</div></div>
+      <div class="stat-cell"><div class="stat-num" style="color:var(--t1);">6</div><div class="stat-lbl">Research chapters completed</div></div>
+      <div class="stat-cell"><div class="stat-num" style="color:#e05555;">24.3%</div><div class="stat-lbl">VI student attrition Gr. 8 → matric</div></div>
+      <div class="stat-cell"><div class="stat-num" style="color:var(--amber);">61%</div><div class="stat-lbl">Achievement variance by teacher variables</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section class="verse-section">
+  <div class="verse r">
+    <p class="verse-text">Sixty-one percent.</p>
+    <p class="verse-text dim" style="margin-top:12px;">Not student ability. Not family income.<br>Teacher variables.</p>
+    <p class="verse-subtext">61% of achievement variance among visually impaired students in Punjab is explained by teacher competency, training, and pedagogical understanding. This is a fixable problem. It requires will, a framework, and the architecture to deploy it.</p>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section class="pipeline">
+  <div class="wrap">
+    <div class="pipe-inner">
+      <div>
+        <div class="eyebrow r">The core finding</div>
+        <h2 class="r d1" style="font-family:var(--serif);font-size:clamp(32px,4vw,52px);letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;">The leaky<br>pipeline.</h2>
+        <div class="pull r d2">Government financial stipends are disbursed to visually impaired students without any corresponding investment in instructional capacity. Students receive money, but not knowledge. Teachers receive directives, but not training.</div>
+        <p class="r d3" style="font-size:14px;color:var(--t2);line-height:1.85;margin-top:24px;">The pipeline leaks — and Pakistan's most vulnerable learners fall through. 24.3% of VI students who reach Grade 8 do not reach matriculation. The more devastating finding is the 61% figure. <strong style="color:var(--t1);font-weight:500;">This is not an intractable problem.</strong> It is a solvable one that has simply not been solved because no one built the right framework.</p>
+      </div>
+      <div class="pipe-data r d2">
+        <div class="pipe-card">
+          <div class="pipe-card-num" style="color:#e05555;">24.3%</div>
+          <div class="pipe-card-lbl">VI student attrition between Grade 8 and matriculation</div>
+        </div>
+        <div class="pipe-card">
+          <div class="pipe-card-num" style="color:var(--amber);">61%</div>
+          <div class="pipe-card-lbl">Achievement variance explained by teacher-level variables</div>
+        </div>
+        <div class="pipe-card">
+          <div class="pipe-card-num" style="color:#6B3FA0;">37,100</div>
+          <div class="pipe-card-lbl">Words of original field research from direct engagement</div>
+        </div>
+        <div class="pipe-card">
+          <div class="pipe-card-num" style="color:var(--t1);">6</div>
+          <div class="pipe-card-lbl">Completed research chapters covering the full pipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section style="padding:100px 0;">
+  <div class="wrap">
+    <div class="eyebrow r">The proposed solution</div>
+    <h2 class="r d1" style="font-family:var(--serif);font-size:clamp(32px,4vw,52px);letter-spacing:-.03em;line-height:1.1;margin-bottom:14px;">Three-tier<br>reform framework.</h2>
+    <p class="r d2" style="font-size:15px;color:var(--t2);line-height:1.8;max-width:520px;margin-bottom:0;">Each tier addresses a distinct failure point — from the teacher standing in front of a class, to the administrator setting curriculum, to the evaluator measuring outcomes.</p>
+
+    <div class="tier-grid r d3">
+      <div class="tier">
+        <div class="tier-ghost">01</div>
+        <div class="tier-num">Tier 01</div>
+        <h3 class="tier-title">Teacher competency standards</h3>
+        <p class="tier-body">Defined, measurable standards for what a teacher of visually impaired students must know and be able to do — in mathematics specifically. Not general special education training, but VI-specific pedagogical competency.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-ghost">02</div>
+        <div class="tier-num">Tier 02</div>
+        <h3 class="tier-title">Curriculum adaptation protocols</h3>
+        <p class="tier-body">Structured protocols for adapting Punjab's standard mathematics curriculum to the instructional realities of VI students — covering tactile materials, spatial reasoning approaches, and assessment modification.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-ghost">03</div>
+        <div class="tier-num">Tier 03</div>
+        <h3 class="tier-title">Independent instructional assessment</h3>
+        <p class="tier-body">An assessment mechanism decoupled from stipend disbursement — so that whether a student receives financial support is entirely separate from whether their instruction is actually working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section style="padding:100px 0;">
+  <div class="wrap">
+    <div class="himat-card r">
+      <div class="himat-glow"></div>
+      <div class="himat-label">Primary research output</div>
+      <h2 class="himat-title">The Himat-Hikmat<br>Framework.<br><em>Courage and wisdom.</em></h2>
+      <p class="himat-body">An indigenous Pakistani theoretical model for mathematics education among visually impaired students in Punjab. The product of <strong>six years of field research</strong>, mixed-methods doctoral study, and direct engagement with students, teachers, and government administrators across Punjab's special education network.<br><br>It addresses a gap that existing frameworks — designed for Western, sighted, or English-medium contexts — cannot fill. Himat-Hikmat is grounded in the specific cultural, linguistic, and instructional realities of visually impaired learners in Pakistan.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="himat.hikmat.html" class="himat-link">Launch simulator →</a>
+        <a href="Himat-Hikatmat framework.html" class="btn-g" style="border-radius:100px;">Read the framework document</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section class="verse-section">
+  <div class="verse r">
+    <p class="verse-text">We are here to bandage<br>before the wound<br>becomes fatal.</p>
+    <p class="verse-subtext">The Foundation welcomes researchers, policymakers, and education administrators. If you are working on education reform in Punjab — we want to talk.</p>
+    <div style="margin-top:36px;display:flex;justify-content:center;">
+      <a href="contact.html" class="btn-p">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="20" height="22" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+          <span style="font-family:var(--serif);font-size:17px;">enlyst<em style="font-style:italic;color:var(--blue);">now</em></span>
+        </a>
+        <p style="font-size:13px;color:var(--s6);line-height:1.7;max-width:280px;">An independent institution. A genuine operating partner. Built for businesses that cannot afford to fail.</p>
+        <p style="font-size:12px;color:var(--s7);margin-top:12px;">Suite M-3, LSE Plaza, Lahore</p>
+      </div>
+      <div>
+        <div class="foot-label">Divisions</div>
+        <a href="https://enlystnow.com" class="foot-link"><span class="fdot" style="background:#2D5BE3;"></span>enlyst</a>
+        <a href="https://enlysum.com" class="foot-link"><span class="fdot" style="background:#1A7A4A;"></span>enlysum</a>
+        <a href="https://enlybiz.com" class="foot-link"><span class="fdot" style="background:#C4620A;"></span>enlybiz</a>
+        <a href="https://enlysoft.net" class="foot-link"><span class="fdot" style="background:#6B3FA0;"></span>enlysoft</a>
+      </div>
+      <div>
+        <div class="foot-label">Contact</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">info@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">recruiter@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:18px;">03000 340 036</div>
+        <a href="contact.html" style="font-size:13px;font-weight:600;color:var(--blue);">Engage us →</a>
+      </div>
+    </div>
+    <div class="rule" style="padding-top:24px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:12px;color:var(--s7);">© 2026 Enlyst Smart Recruiting Pvt Ltd · Lahore, Pakistan</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--s7);">enlystnow.com · enlysum.com · enlybiz.com · enlysoft.net</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

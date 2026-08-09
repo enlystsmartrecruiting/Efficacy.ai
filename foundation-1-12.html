@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Foundation | Enlyst Foundation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700,800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:["Inter","sans-serif"],serif:["Instrument Serif","serif"]}}}}</script>
+<style>
+body{font-family:"Inter",sans-serif;background-color:#F7F6F3;color:#1A1A1A}
+.iframe-scaler{width:400%;height:400%;transform:scale(0.25);transform-origin:top left;pointer-events:none;transition:transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.group:hover .iframe-scaler{transform:scale(0.26)}
+.auto-scroll{animation:panWebsite 25s ease-in-out infinite alternate}
+.delay-0{animation-delay:0s}.delay-1{animation-delay:-5s}.delay-2{animation-delay:-12s}.delay-3{animation-delay:-18s}
+@keyframes panWebsite{0%,5%{transform:translateY(0)}95%,100%{transform:translateY(-35%)}}
+.card-content h3,.card-content p,.card-content a{opacity:0.85;transform:translateY(10px);transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+.group:hover .card-content h3,.group:hover .card-content p,.group:hover .card-content a{opacity:1;transform:translateY(0)}
+.glass-overlay{background:linear-gradient(to top,#0A0A0F 10%,rgba(10,10,15,0.7) 40%,transparent 100%);transition:all 0.5s ease}
+.group:hover .glass-overlay{background:linear-gradient(to top,#0A0A0F 30%,rgba(10,10,15,0.85) 60%,transparent 100%)}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body class="antialiased selection:bg-blue-200">
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="flex items-center gap-3">
+        <div class="flex flex-col gap-0.5">
+          <span class="w-5 h-0.5 bg-blue-600 block"></span>
+          <span class="w-5 h-0.5 bg-green-600 block"></span>
+          <span class="w-5 h-0.5 bg-purple-600 block"></span>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-slate-900 font-serif">Enlyst <span class="font-normal text-slate-500">Framework</span></span>
+      </a>
+      <div class="hidden md:flex space-x-8">
+        <a href="/ecosystem/" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Ecosystem</a>
+        <a href="/methodology/" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Methodology</a>
+        <a href="/public-sector/" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Public Sector</a>
+        <a href="/foundation/" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Foundation</a>
+        <a href="/about-us/" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">About</a>
+      </div>
+      <a href="/contact-us/" class="bg-slate-900 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-slate-800 transition-colors shadow-sm">Access Portal</a>
+    </div>
+  </div>
+</nav>
+
+<section class="py-24 bg-slate-900 text-white relative overflow-hidden min-h-screen">
+  <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-purple-900/40 blur-[120px]"></div>
+  <div class="absolute bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-900/40 blur-[100px]"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-6">
+        <i data-lucide="heart-handshake" class="w-4 h-4"></i> Enlyst Foundation
+      </div>
+      <h1 class="text-4xl md:text-5xl font-serif mb-4">Policy, Research & Disability Studies.</h1>
+      <p class="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        The research arm applies advanced data visualization to systemic social issues. We move beyond theoretical welfare into measurable instructional capacity.
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-16 items-center">
+
+      <div class="md:w-1/2 w-full order-2 md:order-1">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-2 shadow-2xl group">
+          <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-700 h-96 flex flex-col relative">
+            <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+              <div class="iframe-scaler" style="transform:scale(0.35);transform-origin:top left;width:285%;height:285%;">
+                <iframe src="https://enlystnow.com/himat.hikmat.html" loading="lazy" class="w-full h-full border-none auto-scroll delay-2" title="Himat-Hikmat Simulator"></iframe>
+              </div>
+            </div>
+            <div class="h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2 relative z-20">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <div class="ml-4 text-xs text-slate-400 font-mono tracking-wider">himat.hikmat.html</div>
+            </div>
+            <div class="glass-overlay absolute inset-0 z-10 pointer-events-none mt-10"></div>
+            <div class="absolute bottom-6 left-6 z-20">
+              <a href="https://enlystnow.com/himat.hikmat.html" target="_blank" class="bg-purple-600 text-white px-5 py-2 rounded-lg text-xs font-semibold hover:bg-purple-500 transition-colors flex items-center gap-2">
+                Launch Simulator <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:w-1/2 order-1 md:order-2">
+        <div class="space-y-8">
+          <div class="flex gap-4">
+            <div class="mt-1 bg-purple-500/20 p-2.5 rounded-xl h-fit border border-purple-500/30"><i data-lucide="book-open" class="w-5 h-5 text-purple-400"></i></div>
+            <div>
+              <h4 class="text-lg font-bold text-white mb-2">The Himat-Hikmat Framework</h4>
+              <p class="text-sm text-slate-400 leading-relaxed">A comprehensive educational framework targeting Mathematics Education for the Visually Impaired (VI) in Punjab. It exposes the "Leaky Pipeline" where financial stipends without instructional capacity institutionalize inequality.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <a href="https://enlystnow.com/himat.hikmat.html" target="_blank" class="bg-white text-slate-900 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-colors inline-flex items-center gap-2">
+            Read the Framework Document <i data-lucide="file-text" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<footer class="bg-white border-t border-slate-200 pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-6">
+          <div class="flex flex-col gap-0.5">
+            <span class="w-5 h-0.5 bg-blue-600 block"></span>
+            <span class="w-5 h-0.5 bg-green-600 block"></span>
+            <span class="w-5 h-0.5 bg-purple-600 block"></span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 font-serif">Enlyst <span class="font-normal text-slate-500">Framework</span></span>
+        </div>
+        <p class="text-sm text-slate-600 max-w-sm leading-relaxed mb-6">Bridging the gap between commercial startup enablement, public sector governance, and philanthropic research.</p>
+        <div class="flex gap-4">
+          <a href="mailto:info@enlystnow.com" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+          <a href="tel:03000340036" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="phone" class="w-5 h-5"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Ecosystem</h4>
+        <ul class="space-y-4 text-sm text-slate-600">
+          <li><a href="https://enlystnow.com/enlyst-recruiter-app.html" class="hover:text-blue-600 font-medium">Enlyst HR</a></li>
+          <li><a href="https://enlysum.com" class="hover:text-green-600 font-medium">Enlysum Finance</a></li>
+          <li><a href="https://enlybiz.com" class="hover:text-orange-600 font-medium">Enlybiz Marketing</a></li>
+          <li><a href="https://enlysoft.net" class="hover:text-purple-600 font-medium">Enlysoft Tech</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Research & Gov</h4>
+        <ul class="space-y-4 text-sm text-slate-600">
+          <li><a href="/public-sector/" class="hover:text-slate-900">Public Sector Portfolio</a></li>
+          <li><a href="https://enlystnow.com/himat.hikmat.html" class="hover:text-slate-900">Himat-Hikmat Policy</a></li>
+          <li><a href="https://enlystnow.com/himat.hikmat.html" class="hover:text-slate-900">Disability Simulators</a></li>
+          <li><a href="#" class="hover:text-slate-900">GenAI Adoption Research</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-slate-200 text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>© 2026 Enlyst Smart Recruiting Pvt Ltd. All rights reserved.</p>
+      <p>Suite M-3, Lahore Stock Exchange Plaza, Pakistan</p>
+    </div>
+  </div>
+</footer>
+<script>lucide.createIcons();</script>
+</body></html>
