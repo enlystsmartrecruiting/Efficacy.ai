@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" data-arm="enlyst" data-intensity="standard">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Enlyst Ecosystem DS — ontology + 16 craft patterns</title>
+  <!-- Layer order is load-bearing — see docs/CONVENTIONS.md §3.
+       tokens/fonts.dev-fallback.css is deliberately NOT linked here: the default
+       state of this preview must tell the truth about whether the local font
+       binaries exist. Use the banner button to opt into the CDN fallback. -->
+  <link rel="stylesheet" href="../tokens/fonts.local.css" />
+  <link rel="stylesheet" href="../tokens/ecosystem.tokens.css" />
+  <link rel="stylesheet" href="../patterns/ecosystem-craft.css" />
+  <style>
+    body { margin: 0; }
+
+    .font-banner {
+      font-family: var(--font-mono); font-size: var(--fs-caption);
+      padding: 0.85rem var(--gutter-mobile); line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .font-banner.is-missing { background: var(--danger-pale); color: #7F1D1D; }
+    .font-banner.is-ok      { background: var(--success-pale); color: #14532D; }
+    .font-banner.is-fallback{ background: var(--warning-pale); color: #7C2D12; }
+    .font-banner-inner { max-width: var(--container-max); margin: 0 auto; }
+    .font-banner b { font-weight: 600; }
+    .font-banner button {
+      font-family: var(--font-mono); font-size: var(--fs-micro);
+      letter-spacing: var(--ls-mono); text-transform: uppercase;
+      margin-left: 0.75rem; padding: 0.4rem 0.7rem; cursor: pointer;
+      border: 1px solid currentColor; border-radius: var(--radius-md);
+      background: transparent; color: inherit;
+    }
+    .wrap { max-width: var(--container-max); margin: 0 auto; padding: var(--space-10) var(--gutter-mobile); }
+    @media (min-width: 900px) { .wrap { padding-left: var(--gutter); padding-right: var(--gutter); } }
+
+    .ds-nav {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(247, 246, 243, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem var(--gutter-mobile);
+    }
+    .ds-nav-inner {
+      max-width: var(--container-max); margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center;
+    }
+    .ds-nav a {
+      font-family: var(--font-mono); font-size: var(--fs-micro);
+      letter-spacing: var(--ls-mono); text-transform: uppercase;
+      color: var(--fg-3); text-decoration: none;
+    }
+    .ds-nav a:hover { color: var(--accent); }
+    .ds-nav .brand-wordmark { font-size: 1.35rem; color: var(--ink); margin-right: 0.5rem; }
+
+    .meta {
+      font-family: var(--font-mono); font-size: var(--fs-micro);
+      letter-spacing: var(--ls-mono); color: var(--fg-3); text-transform: uppercase;
+    }
+    .note { max-width: 44rem; color: var(--fg-2); margin: var(--space-4) 0; }
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--arm-enlyst-pale);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: var(--space-8) 0;
+      max-width: 48rem;
+    }
+    .callout strong { color: var(--ink); }
+    .wrong {
+      border-left-color: var(--danger);
+      background: var(--danger-pale);
+    }
+    .ontology-box {
+      background: var(--void); color: #fff; border-radius: 1.25rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem); margin: var(--space-8) 0 var(--space-12);
+      position: relative; overflow: hidden;
+    }
+    .ontology-box pre {
+      font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.7;
+      color: rgba(255,255,255,.72); white-space: pre-wrap; margin: 1rem 0 0;
+    }
+    .ontology-box h2 { color: #fff; margin: 0; }
+    .syn-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .syn-row span {
+      font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.35rem 0.65rem; border-radius: 4px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.55);
+    }
+
+    .grid-arms, .grid-doors {
+      display: grid; gap: var(--space-3);
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      margin: var(--space-6) 0 var(--space-12);
+    }
+    .grid-doors { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    .card {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); border-top: 3px solid var(--accent);
+      padding: var(--space-4);
+    }
+    .card strong { display: block; font-size: var(--fs-body-sm); color: var(--fg-1); margin-bottom: 4px; }
+    .card span, .hex {
+      font-size: var(--fs-caption); color: var(--fg-3); font-family: var(--font-mono);
+    }
+
+    .pattern-section {
+      margin: var(--space-16) 0;
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+    .pattern-section .pid {
+      font-family: var(--font-mono); font-size: var(--fs-micro);
+      letter-spacing: var(--ls-mono); color: var(--accent); text-transform: uppercase;
+    }
+    .demo-stage {
+      position: relative; margin-top: var(--space-6);
+      border-radius: 1.25rem; overflow: hidden;
+      min-height: 12rem;
+    }
+    .demo-stage.is-dark {
+      background: var(--void); color: #fff; padding: 1.5rem;
+    }
+    .demo-stage.is-sky {
+      background: var(--sky-void); color: #fff; padding: 2rem 1.5rem; min-height: 16rem;
+    }
+    .demo-label {
+      font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--fg-3); margin-bottom: 0.75rem;
+    }
+    .palette-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+    }
+    @media (max-width: 700px) { .palette-row { grid-template-columns: 1fr 1fr; } }
+    .palette-swatch {
+      border-radius: 0.75rem; padding: 1.25rem; min-height: 5rem;
+      border: 1px solid var(--border);
+    }
+    .intensity-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .intensity-chip {
+      font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.5rem 0.85rem; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--bg-surface); cursor: pointer;
+    }
+    .intensity-chip.is-on { border-color: var(--accent); color: var(--accent); background: var(--accent-pale); }
+    .doors-mini {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+    }
+    @media (max-width: 800px) { .doors-mini { grid-template-columns: 1fr; } }
+    .doors-mini .door-plane { min-height: 10rem; padding: 1.25rem; }
+    .doors-mini .door-plane h3 { font-size: 1.25rem; }
+    .toc {
+      columns: 2; gap: 2rem; font-size: var(--fs-body-sm); color: var(--fg-2);
+      margin: var(--space-6) 0 var(--space-12);
+    }
+    @media (max-width: 600px) { .toc { columns: 1; } }
+    .toc a { color: var(--accent); text-decoration: none; }
+    .toc li { margin-bottom: 0.35rem; }
+    footer.ds-foot {
+      margin-top: var(--space-24); padding: var(--space-12) 0;
+      border-top: 1px solid var(--border);
+      font-size: var(--fs-caption); color: var(--fg-3);
+    }
+  </style>
+</head>
+<body>
+  <div class="font-banner" id="font-banner" role="status">
+    <div class="font-banner-inner" id="font-banner-text">Checking font availability…</div>
+  </div>
+
+  <nav class="ds-nav" aria-label="DS preview">
+    <div class="ds-nav-inner">
+      <span class="brand-wordmark">enlyst</span>
+      <a href="#ontology">Ontology</a>
+      <a href="#practices">Practices</a>
+      <a href="#doors">18 doors</a>
+      <a href="#craft">16 craft</a>
+      <a href="../docs/OPUS_HANDOFF.md">Handoff</a>
+      <a href="../VISION.md">VISION.md</a>
+      <a href="../docs/GLOSSARY.md">Glossary</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header>
+      <p class="meta eyebrow-rule">Enlyst Ecosystem Design System · local preview</p>
+      <h1 class="h1" style="margin: 12px 0 8px">Ontology · tokens · 16 locked craft patterns</h1>
+      <p class="note body">
+        Binding vision lives in <code>VISION.md</code> and <code>docs/ENLYSTNOW_ONTOLOGY.md</code>.
+        <strong>Framework</strong> is the living constitution. Four <strong>practices</strong> create the
+        <strong>Ecosystem = Enlystnow</strong> environment. Showreel is the legacy craft name.
+        Never Holding. Never Enlystnow above the practices.
+      </p>
+      <div class="callout">
+        <strong>One line (authoritative):</strong>
+        Framework (constitution) → opens 18 doors → four practices under it create Ecosystem = Enlystnow (was Showreel).
+      </div>
+      <div class="callout wrong">
+        <strong>Wrong:</strong> Enlystnow / Ecosystem as a layer above the practices · Holding · consumer-brand Enlystnow on practice pages.
+      </div>
+    </header>
+
+    <!-- ════════════ ONTOLOGY ════════════ -->
+    <section id="ontology" class="pattern-section" style="border-top:none;margin-top:0;padding-top:0">
+      <p class="pid">VISION · locked</p>
+      <h2 class="h2">Authoritative ontology</h2>
+      <div class="ontology-box">
+        <h2 class="h2">Framework → practices → Ecosystem</h2>
+        <pre>Enlyst Framework (manifesto / living constitution)
+    ├── enables &amp; opens → 18 doors (gates · unique colors · motion &amp; craft)
+    └── under which four practices operate:
+            enlyst | enlysum | enlybiz | enlysoft
+                └── together create → Ecosystem environment = Enlystnow
+                    ├── legacy craft name: Showreel
+                    └── also appears as → Board of directors / founders hub
+                            Members: Technology · Marketing · HR · Healthcare · …
+
+Synonyms for Ecosystem / Enlystnow (never “above practices”):
+  environment · umbrella · entity · symbol · founders hub · board
+  philosophy · ideology · signpost
+
+Likely Member maps: HR↔enlyst · Technology↔enlysoft · Marketing↔enlybiz
+Open: Healthcare (no practice invented) · enlysum Finance (no Member named yet)</pre>
+        <div class="syn-row">
+          <span>environment</span><span>umbrella</span><span>entity</span><span>symbol</span>
+          <span>founders hub</span><span>board / Members</span><span>philosophy</span><span>ideology</span><span>signpost</span>
+        </div>
+      </div>
+      <p class="note body">
+        Public root <code>enlystnow.com</code> = <em>enlyst</em> practice (Smart Recruiting).
+        Showcase = <code>/ecosystem/</code>. Craft bar for practice pages = Enlystnow Ecosystem (16 patterns below).
+      </p>
+    </section>
+
+    <!-- ════════════ PRACTICES ════════════ -->
+    <section id="practices">
+      <h2 class="h2">Four practices</h2>
+      <p class="caption">Each keeps a unique color system and public voice. Together they create the Ecosystem.</p>
+      <div class="grid-arms">
+        <div class="card" data-arm="enlyst"><strong>enlyst</strong><span class="hex">#2D5BE3 · enlystnow.com</span></div>
+        <div class="card" data-arm="enlysum"><strong>enlysum</strong><span class="hex">#1A7A4A · /enlysum/</span></div>
+        <div class="card" data-arm="enlybiz"><strong>enlybiz</strong><span class="hex">#C4620A · enlybiz.com</span></div>
+        <div class="card" data-arm="enlysoft"><strong>enlysoft</strong><span class="hex">#6B3FA0 · enlysoft.net</span></div>
+      </div>
+      <h2 class="h2">Framework chrome</h2>
+      <div class="grid-arms">
+        <div class="card" data-arm="framework"><strong>Framework</strong><span class="hex">#C4A24A · constitution · badge never spins</span></div>
+        <div class="card" data-arm="enlystnow"><strong>Enlystnow = Ecosystem</strong><span class="hex">environment · not consumer brand</span></div>
+      </div>
+    </section>
+
+    <!-- ════════════ DOORS ════════════ -->
+    <section id="doors">
+      <h2 class="h2">Eighteen doors</h2>
+      <p class="caption">Framework opens the gates. Unique colour <em>and</em> unique pale tint per door — motion and craft apply here.</p>
+      <p class="caption" id="doors-count" style="color:var(--fg-3)"></p>
+      <div class="grid-doors" id="doors-list"></div>
+      <p class="caption">
+        Colour provenance: doors 01–05 verified against the Ecosystem snapshot; 06–18 DS-authored.
+        Full table in <code>07-DOORS.md</code>; registry in <code>tokens/doors.js</code>.
+      </p>
+    </section>
+
+    <!-- ════════════ CRAFT TOC ════════════ -->
+    <section id="craft">
+      <h2 class="h2">16 locked craft patterns</h2>
+      <p class="note body">
+        Enlystnow Ecosystem craft bar. Demo uses <code>patterns/ecosystem-craft.css</code> +
+        <code>patterns/ecosystem-motion.js</code>. Source elected home + Ecosystem snapshot (legacy Showreel folder).
+      </p>
+      <ol class="toc">
+        <li><a href="#p-bento">01 Bento grid</a></li>
+        <li><a href="#p-atmosphere">02 Atmosphere plane</a></li>
+        <li><a href="#p-brand">03 Living brand (nav-only)</a></li>
+        <li><a href="#p-chrome">04 Chrome windows</a></li>
+        <li><a href="#p-livepan">05 live-pan</a></li>
+        <li><a href="#p-doors">06 Door planes</a></li>
+        <li><a href="#p-telemetry">07 Telemetry strip</a></li>
+        <li><a href="#p-svg">08 Static system SVG</a></li>
+        <li><a href="#p-prose">09 Prose-cols</a></li>
+        <li><a href="#p-himat">10 Himat-Hikmat pills</a></li>
+        <li><a href="#p-spine">11 Spine / path nodes</a></li>
+        <li><a href="#p-portrait">12 Portrait plane</a></li>
+        <li><a href="#p-ticker">13 Ticker</a></li>
+        <li><a href="#p-reveal">14 Scroll reveal</a></li>
+        <li><a href="#p-palettes">15 Section-owned palettes</a></li>
+        <li><a href="#p-intensity">16 data-intensity</a></li>
+      </ol>
+    </section>
+
+    <!-- 1 Bento -->
+    <section class="pattern-section" id="p-bento">
+      <p class="pid">01 · bento</p>
+      <h2 class="h2">Bento grid</h2>
+      <p class="caption">12-col weighted spans — feature / quarter / wide.</p>
+      <div class="demo-stage is-dark">
+        <div class="bento">
+          <div class="b-cell b-c6"><span class="demo-label">span-6 feature</span><h3 class="h3" style="color:#fff;margin:0">Employers</h3></div>
+          <div class="b-cell b-c6"><span class="demo-label">span-6 feature</span><h3 class="h3" style="color:#fff;margin:0">Candidates</h3></div>
+          <div class="b-cell b-c4"><span class="demo-label">span-4</span><p style="margin:0;color:rgba(255,255,255,.5)">Quarter cell</p></div>
+          <div class="b-cell b-c4"><span class="demo-label">span-4</span><p style="margin:0;color:rgba(255,255,255,.5)">Quarter cell</p></div>
+          <div class="b-cell b-c4"><span class="demo-label">span-4</span><p style="margin:0;color:rgba(255,255,255,.5)">Quarter cell</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 Atmosphere -->
+    <section class="pattern-section" id="p-atmosphere">
+      <p class="pid">02 · atmosphere</p>
+      <h2 class="h2">Atmosphere plane</h2>
+      <p class="caption">Dot grid + soft orbs (orbDrift). Depth without particle carnival.</p>
+      <div class="demo-stage is-sky" style="position:relative">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <div class="atmosphere-grid"></div>
+          <div class="hero-orb hero-orb-a"></div>
+          <div class="hero-orb hero-orb-b"></div>
+        </div>
+        <div style="position:relative;z-index:1;padding-top:3rem">
+          <p class="eyebrow-rule meta" style="color:rgba(255,255,255,.5)">sky → void</p>
+          <h3 class="h2" style="color:#fff;margin:0.5rem 0">Atmosphere live</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Brand -->
+    <section class="pattern-section" id="p-brand">
+      <p class="pid">03 · living-brand-nav-only</p>
+      <h2 class="h2">Living brand stage</h2>
+      <p class="caption">Instrument Serif 400 only · font-synthesis none · static logo · nav-only on practice pages.</p>
+      <div class="demo-stage" style="padding:1.5rem;background:var(--cream);border:1px solid var(--border)">
+        <span class="brand-wordmark" style="font-size:2.5rem">enlyst</span>
+        <p class="caption" style="margin-top:0.75rem">Wordmark weight 400 — curly y must not ring. Motion lives elsewhere, not on the mark.</p>
+        <span class="framework-badge" style="display:inline-block;margin-top:1rem;padding:0.35rem 0.75rem;background:var(--gold-pale);color:var(--framework-gold);font-family:var(--font-mono);font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:4px">Framework badge · never spins</span>
+      </div>
+    </section>
+
+    <!-- 4–5 Chrome + live-pan -->
+    <section class="pattern-section" id="p-chrome">
+      <p class="pid">04–05 · chrome-windows · live-pan</p>
+      <h2 class="h2" id="p-livepan">Chrome windows + live-pan</h2>
+      <p class="caption">OS terminal theatre with faux UI scroll inside.</p>
+      <div class="demo-stage is-dark">
+        <div class="live-card" style="max-width:36rem">
+          <div class="live-card-chrome">
+            <div class="os-dot" style="background:#ef4444;opacity:.75"></div>
+            <div class="os-dot" style="background:#f59e0b;opacity:.75"></div>
+            <div class="os-dot" style="background:#22c55e;opacity:.75"></div>
+            <span class="live-card-file">pipeline.ats · enlyst · live</span>
+          </div>
+          <div class="live-card-body">
+            <div class="live-pan tech-live-rows">
+              <div style="display:grid;grid-template-columns:4.5rem 1fr 5rem;gap:.75rem;padding:.65rem .875rem;border-radius:.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-family:var(--font-mono);font-size:.6875rem;color:rgba(255,255,255,.6)">
+                <span>TF-047</span><span>Sr. Backend · Alchemative</span><span>94% match</span>
+              </div>
+              <div style="display:grid;grid-template-columns:4.5rem 1fr 5rem;gap:.75rem;padding:.65rem .875rem;border-radius:.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-family:var(--font-mono);font-size:.6875rem;color:rgba(255,255,255,.6)">
+                <span>TF-048</span><span>Product Lead · Brickclay</span><span>6d SLA</span>
+              </div>
+              <div style="display:grid;grid-template-columns:4.5rem 1fr 5rem;gap:.75rem;padding:.65rem .875rem;border-radius:.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-family:var(--font-mono);font-size:.6875rem;color:rgba(255,255,255,.6)">
+                <span>SZ-012</span><span>People Ops · Safe Zone</span><span>placed</span>
+              </div>
+              <div style="display:grid;grid-template-columns:4.5rem 1fr 5rem;gap:.75rem;padding:.65rem .875rem;border-radius:.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-family:var(--font-mono);font-size:.6875rem;color:rgba(255,255,255,.6)">
+                <span>TF-051</span><span>Data Analyst · Xeven</span><span>88% match</span>
+              </div>
+              <div style="display:grid;grid-template-columns:4.5rem 1fr 5rem;gap:.75rem;padding:.65rem .875rem;border-radius:.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-family:var(--font-mono);font-size:.6875rem;color:rgba(255,255,255,.6)">
+                <span>HR-203</span><span>Comp benchmark · Q2</span><span>22 roles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 Door planes -->
+    <section class="pattern-section" id="p-doors">
+      <p class="pid">06 · door-planes</p>
+      <h2 class="h2">Door planes</h2>
+      <p class="caption">data-door · unique colors · door-in · hover glow. Framework opens these gates.</p>
+      <div class="demo-stage is-dark">
+        <div class="doors-mini">
+          <a class="door-plane rv" data-door="01" href="#doors">
+            <div class="door-swatch-bar"></div>
+            <h3>enlyst</h3>
+            <p style="margin:0;font-size:.875rem;color:rgba(255,255,255,.5)">Door 01 · HR &amp; Talent</p>
+          </a>
+          <a class="door-plane rv" data-door="09" href="#doors">
+            <div class="door-swatch-bar"></div>
+            <h3>Talent Forge</h3>
+            <p style="margin:0;font-size:.875rem;color:rgba(255,255,255,.5)">Door 09 · kiln</p>
+          </a>
+          <a class="door-plane rv" data-door="05" href="#doors">
+            <div class="door-swatch-bar"></div>
+            <h3>Framework</h3>
+            <p style="margin:0;font-size:.875rem;color:rgba(255,255,255,.5)">Door 05 · constitution</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Telemetry -->
+    <section class="pattern-section" id="p-telemetry">
+      <p class="pid">07 · telemetry</p>
+      <h2 class="h2">Telemetry strip</h2>
+      <div class="demo-stage is-dark">
+        <div class="forge-tele rv" aria-label="Forge telemetry">
+          <div class="forge-tele-cell"><div class="forge-tele-n">94%</div><div class="forge-tele-l">match score</div></div>
+          <div class="forge-tele-cell"><div class="forge-tele-n">6d</div><div class="forge-tele-l">time to offer</div></div>
+          <div class="forge-tele-cell"><div class="forge-tele-n">12</div><div class="forge-tele-l">forge placed</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Static SVG -->
+    <section class="pattern-section" id="p-svg">
+      <p class="pid">08 · static-system-svg</p>
+      <h2 class="h2">Static system SVG</h2>
+      <p class="caption">Diagrams stay static — section chrome may move. No SVG dash spam.</p>
+      <div class="demo-stage is-dark">
+        <figure class="system-svg-wrap rv">
+          <svg class="system-svg triad-diagram" viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" aria-label="Think Act Protect triad">
+            <rect x="20" y="40" width="120" height="80" rx="12" fill="rgba(45,91,227,.2)" stroke="#2D5BE3"/>
+            <text x="80" y="88" text-anchor="middle" fill="#F5F4F1" font-family="Georgia, serif" font-size="18">Think</text>
+            <rect x="180" y="40" width="120" height="80" rx="12" fill="rgba(196,162,74,.2)" stroke="#C4A24A"/>
+            <text x="240" y="88" text-anchor="middle" fill="#F5F4F1" font-family="Georgia, serif" font-size="18">Act</text>
+            <rect x="340" y="40" width="120" height="80" rx="12" fill="rgba(26,122,74,.2)" stroke="#1A7A4A"/>
+            <text x="400" y="88" text-anchor="middle" fill="#F5F4F1" font-family="Georgia, serif" font-size="18">Protect</text>
+            <path d="M140 80 H180" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+            <path d="M300 80 H340" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+          </svg>
+          <figcaption>Think → Act → Protect · static triad</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 9 Prose-cols -->
+    <section class="pattern-section" id="p-prose">
+      <p class="pid">09 · prose-cols</p>
+      <h2 class="h2">Prose-cols</h2>
+      <div class="demo-stage is-dark">
+        <div class="prose-cols rv">
+          <p>The Framework is the living constitution — manifesto, method, and the gates to eighteen doors. It does not replace practice voice on the public web.</p>
+          <p>Under that constitution the four practices create the Ecosystem environment. That environment is Enlystnow. Showreel remains the legacy craft name on disk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Himat -->
+    <section class="pattern-section" id="p-himat">
+      <p class="pid">10 · himat-pills</p>
+      <h2 class="h2">Himat-Hikmat dual pills</h2>
+      <div class="demo-stage is-dark">
+        <div class="himat-duo rv">
+          <div class="himat-pill is-courage">
+            <div class="himat-pill-kicker">Himat · courage</div>
+            <h3>Move first</h3>
+            <p>Courage opens the gate. Invention over brochure shrugs.</p>
+          </div>
+          <div class="himat-pill is-wisdom">
+            <div class="himat-pill-kicker">Hikmat · wisdom</div>
+            <h3>Hold the line</h3>
+            <p>Wisdom keeps the constitution coherent across practices and doors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Spine -->
+    <section class="pattern-section" id="p-spine">
+      <p class="pid">11 · spine-nodes</p>
+      <h2 class="h2">Spine / learning path nodes</h2>
+      <div class="demo-stage is-dark" style="max-width:28rem">
+        <div class="b-spine rv">
+          <div class="b-spine-step"><div class="b-spine-node">01</div><div class="b-spine-t">Source with intent</div></div>
+          <div class="b-spine-step"><div class="b-spine-node">02</div><div class="b-spine-t">Screen with Agentic AI</div></div>
+          <div class="b-spine-step"><div class="b-spine-node">03</div><div class="b-spine-t">Forge the fit</div></div>
+          <div class="b-spine-step"><div class="b-spine-node">04</div><div class="b-spine-t">Protect the hire</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 Portrait -->
+    <section class="pattern-section" id="p-portrait">
+      <p class="pid">12 · portrait-plane</p>
+      <h2 class="h2">Portrait plane</h2>
+      <p class="caption">Design-native portrait theatre — no archive photo dump.</p>
+      <div class="demo-stage is-dark">
+        <div class="portrait-plane rv" style="max-width:28rem">
+          <div class="portrait-caption">Ambassador plane · design-native slot</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 Ticker -->
+    <section class="pattern-section" id="p-ticker">
+      <p class="pid">13 · ticker</p>
+      <h2 class="h2">Ticker</h2>
+      <div class="demo-stage is-dark" style="padding:0;overflow:hidden">
+        <div class="ticker-wrap" aria-hidden="true">
+          <div class="ticker-track">
+            <div class="ticker-item"><span class="ticker-dot"></span>Agentic AI screening · 94% match</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Offer accepted · 6 days time-to-offer</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Talent Forge cohort · 12 graduates placed</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Experience the ecosystem · /ecosystem/</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Agentic AI screening · 94% match</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Offer accepted · 6 days time-to-offer</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Talent Forge cohort · 12 graduates placed</div>
+            <div class="ticker-item"><span class="ticker-dot"></span>Experience the ecosystem · /ecosystem/</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 Scroll reveal -->
+    <section class="pattern-section" id="p-reveal">
+      <p class="pid">14 · scroll-reveal</p>
+      <h2 class="h2">Scroll reveal</h2>
+      <p class="caption">Intersection observer · <code>.rv</code> → <code>.rv.on</code>. Patterns above use it.</p>
+      <div class="demo-stage" style="padding:1.5rem;background:var(--arm-enlyst-pale);border:1px solid var(--border)">
+        <p class="rv body" style="margin:0">This line reveals on scroll via <code>ecosystem-motion.js</code>.</p>
+      </div>
+    </section>
+
+    <!-- 15 Palettes -->
+    <section class="pattern-section" id="p-palettes">
+      <p class="pid">15 · section-palettes</p>
+      <h2 class="h2">Section-owned palettes</h2>
+      <p class="caption">Cream · dark · sky · theatre — each band owns ink, accent, mood. ≥3 bands per practice page.</p>
+      <div class="palette-row">
+        <div class="palette-swatch band-cream"><strong>cream</strong><br /><span class="caption">ink on cream</span></div>
+        <div class="palette-swatch band-dark"><strong>dark</strong><br /><span class="caption">void theatre</span></div>
+        <div class="palette-swatch band-sky"><strong>sky</strong><br /><span class="caption">sky-0 band</span></div>
+        <div class="palette-swatch band-theatre"><strong>theatre</strong><br /><span class="caption">deep→void</span></div>
+      </div>
+    </section>
+
+    <!-- 16 Intensity -->
+    <section class="pattern-section" id="p-intensity">
+      <p class="pid">16 · data-intensity</p>
+      <h2 class="h2">data-intensity</h2>
+      <p class="caption">calm · standard · cinematic. Ecosystem showcase may use cinematic. Practice pages: calm or standard. Reduced-motion gates all.</p>
+      <div class="intensity-row" id="intensity-controls">
+        <button type="button" class="intensity-chip" data-set="calm">calm</button>
+        <button type="button" class="intensity-chip is-on" data-set="standard">standard</button>
+        <button type="button" class="intensity-chip" data-set="cinematic">cinematic</button>
+      </div>
+      <p class="caption" style="margin-top:1rem">Current: <code id="intensity-readout">standard</code> on <code>&lt;html&gt;</code></p>
+    </section>
+
+    <footer class="ds-foot">
+      <p><strong>Entry point:</strong> <code>docs/OPUS_HANDOFF.md</code> — summary, read order, file map, validation checklist</p>
+      <p><strong>Read first:</strong> <code>VISION.md</code> · <code>docs/GLOSSARY.md</code> · <code>docs/INVENTION_MANDATE.md</code></p>
+      <p><strong>Layers (never reorder):</strong> <code>tokens/fonts.local.css</code> → <code>tokens/ecosystem.tokens.css</code> → <code>patterns/ecosystem-craft.css</code> → <code>patterns/ecosystem-motion.js</code></p>
+      <p><strong>Machine SoT:</strong> <code>patterns/craft-stack.json</code> (patterns) · <code>tokens/doors.js</code> (doors)</p>
+      <p><strong>Project state:</strong> <code>D:\ENLYST PVT\Enlyst\MANDATE_ECOSYSTEM_INVENTION.md</code></p>
+      <p>Never Holding. Never invert Framework ↔ Ecosystem. Practices create the environment. Showreel = legacy craft name only.</p>
+      <p>DS v1.0.0 · 2026-08-04 · <code>noindex</code> preview</p>
+    </footer>
+  </div>
+
+  <!-- Door registry loads before motion — it is the single source of truth for
+       door data (see docs/CONVENTIONS.md "Door sync rule"). It throws on any
+       duplicate number, slug, colour or pale. -->
+  <script src="../tokens/doors.js"></script>
+  <script src="../patterns/ecosystem-motion.js"></script>
+  <script>
+    /* ── Door grid — rendered from tokens/doors.js, never from a local copy ── */
+    (function renderDoors() {
+      var root = document.getElementById('doors-list');
+      var doors = window.ENLYST_DOORS;
+      if (!root) return;
+      if (!doors) {
+        root.innerHTML =
+          '<p class="caption" style="color:var(--danger)">tokens/doors.js failed to load — ' +
+          'door grid cannot render. Check the relative path.</p>';
+        return;
+      }
+      doors.forEach(function (d) {
+        var el = document.createElement('div');
+        el.className = 'card';
+        el.setAttribute('data-door', d.n);
+        el.innerHTML =
+          '<strong>' + d.n + ' · ' + d.name + '</strong>' +
+          '<span class="hex">' + d.color + ' · ' + d.pale + '</span>' +
+          '<span class="hex" style="color:var(--fg-3)">' + d.status +
+          ' · steward ' + d.owner + '</span>';
+        root.appendChild(el);
+      });
+      var count = document.getElementById('doors-count');
+      if (count) {
+        count.textContent = doors.length + ' doors loaded from tokens/doors.js — ' +
+          'uniqueness of number, slug, colour and pale asserted at load.';
+      }
+    })();
+
+    /* ── Intensity switcher ── */
+    document.querySelectorAll('#intensity-controls .intensity-chip').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var v = btn.getAttribute('data-set');
+        document.documentElement.setAttribute('data-intensity', v);
+        document.getElementById('intensity-readout').textContent = v;
+        document.querySelectorAll('#intensity-controls .intensity-chip')
+          .forEach(function (b) { b.classList.remove('is-on'); });
+        btn.classList.add('is-on');
+      });
+    });
+
+    /* ── Font availability probe ──
+       Width comparison, not document.fonts.check(): a @font-face whose file
+       404s can still register as "available" in some engines. If the test
+       string measures the same in `'Instrument Serif', monospace` as it does in
+       plain monospace, the real face is not being applied.
+
+       This matters because the wordmark rule (weight 400 + font-synthesis:none)
+       exists to fix Instrument Serif's curly-y. Georgia's y has a straight
+       descender, so verifying the rule against a fallback proves nothing.
+       See docs/FONT_LOADING.md §5. */
+    (function fontProbe() {
+      var banner = document.getElementById('font-banner');
+      var text = document.getElementById('font-banner-text');
+      var usedFallback = false;
+
+      function measure(stack) {
+        var s = document.createElement('span');
+        s.textContent = 'enlyst wordmark curly y — 0123456789';
+        s.style.cssText =
+          'position:absolute;left:-9999px;top:-9999px;white-space:nowrap;' +
+          'font-size:96px;font-weight:400;font-family:' + stack;
+        document.body.appendChild(s);
+        var w = s.getBoundingClientRect().width;
+        document.body.removeChild(s);
+        return w;
+      }
+
+      function isLoaded() {
+        return Math.abs(measure('"Instrument Serif", monospace') - measure('monospace')) > 1;
+      }
+
+      function render() {
+        if (isLoaded()) {
+          banner.className = 'font-banner ' + (usedFallback ? 'is-fallback' : 'is-ok');
+          text.innerHTML = usedFallback
+            ? '<b>Instrument Serif active via CDN dev fallback.</b> ' +
+              'Local binaries are still missing. The curly-y is now inspectable, but ' +
+              'this fallback must never ship — production loads fonts locally. ' +
+              'See docs/FONT_LOADING.md §5.'
+            : '<b>Instrument Serif loaded locally.</b> ' +
+              'Typography is trustworthy — zoom the wordmark in section 03 to ≥400% and ' +
+              'confirm the y descender is an open curl, not a filled ring.';
+          return;
+        }
+        banner.className = 'font-banner is-missing';
+        text.innerHTML =
+          '<b>⚠ Local font binaries are missing.</b> ' +
+          'The ten .woff2 files declared in tokens/fonts.local.css are not on disk ' +
+          '(Design-Libraries/01-fonts/ is empty). Every surface below is falling back to ' +
+          'Georgia / system-ui / ui-monospace, so <b>the curly-y wordmark rule cannot be ' +
+          'verified from this page</b> — Georgia\'s y has a straight descender. Type scale ' +
+          'and letter-spacing will also look wrong; that is the fallback, not a design defect. ' +
+          'This is a known open blocker — see docs/FONT_LOADING.md §5.' +
+          '<button type="button" id="load-fallback">Load CDN fallback (dev only)</button>';
+
+        var btn = document.getElementById('load-fallback');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '../tokens/fonts.dev-fallback.css';
+            link.onload = function () {
+              usedFallback = true;
+              if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(function () { setTimeout(render, 120); });
+              } else {
+                setTimeout(render, 600);
+              }
+            };
+            document.head.appendChild(link);
+            btn.disabled = true;
+            btn.textContent = 'loading…';
+          });
+        }
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { setTimeout(render, 60); });
+      } else {
+        window.addEventListener('load', render);
+      }
+    })();
+  </script>
+</body>
+</html>

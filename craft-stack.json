@@ -1,0 +1,315 @@
+{
+  "$schema": "enlyst-ds/craft-stack/v1",
+  "version": "1.1.0",
+  "updated": "2026-08-06",
+
+  "_readme": [
+    "MACHINE SOURCE OF TRUTH for the 16 locked craft patterns and page minimums.",
+    "Prose law: ../docs/INVENTION_MANDATE.md. Ontology: ../VISION.md.",
+    "If this file and any prose doc disagree about pattern IDs, class names or page",
+    "minimums, THIS FILE WINS and the prose doc is the bug."
+  ],
+
+  "pathsRelativeTo": "00-enlyst-ds/",
+
+  "ontology": {
+    "doc": "VISION.md",
+    "canonicalTwin": "docs/ENLYSTNOW_ONTOLOGY.md",
+    "oneLine": "Enlyst Framework (manifesto / living constitution) opens 18 doors; four practices under it — enlyst, enlysum, enlybiz, enlysoft — together create the Ecosystem environment, which is Enlystnow (legacy craft name: Showreel; also board-of-directors / Members face — synonym, not a parent tier).",
+    "forbidden": [
+      "Ecosystem or Enlystnow depicted above the practices",
+      "Holding / mother-company framing",
+      "Board / Members framed as a Holding above the practices",
+      "Enlystnow sold as a consumer brand on practice pages",
+      "Framework described as merely a method rather than a living constitution",
+      "Invented practice brands for unmapped board seats (e.g. Healthcare)"
+    ]
+  },
+
+  "mandate": "docs/INVENTION_MANDATE.md",
+  "glossary": "docs/GLOSSARY.md",
+  "conventions": "docs/CONVENTIONS.md",
+  "pageSpecs": "docs/PAGE_SPECS.md",
+
+  "craftLayer": "Enlystnow Ecosystem",
+  "northStar": "../06-showreel-snapshot/from-F-Enlystnow-showreel/",
+  "northStarLabel": "Enlystnow Ecosystem snapshot (legacy 'showreel' folder name on disk)",
+  "electedHome": "D:\\ENLYST PVT\\Enlyst\\home\\index.html",
+  "electedHomeDate": "2026-08-04",
+
+  "implementation": {
+    "fonts": "tokens/fonts.local.css",
+    "tokens": "tokens/ecosystem.tokens.css",
+    "css": "patterns/ecosystem-craft.css",
+    "js": "patterns/ecosystem-motion.js",
+    "glossaryCss": "patterns/craft-stack-glossary.css",
+    "doorRegistry": "tokens/doors.js",
+    "preview": "preview/ds-index.html",
+    "importOrder": [
+      "tokens/fonts.local.css",
+      "tokens/ecosystem.tokens.css",
+      "patterns/ecosystem-craft.css",
+      "patterns/ecosystem-motion.js"
+    ]
+  },
+
+  "inventions": [
+    {
+      "n": 1,
+      "id": "bento",
+      "name": "Bento grid",
+      "classes": [".bento", ".bento-grid", ".b-cell", ".b-c3", ".b-c4", ".b-c5", ".b-c6", ".b-c7", ".b-c8", ".b-c12", ".b-r2"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-bento",
+      "description": "12-col weighted spans — feature (span-6), quarter (span-3/4), wide (span-12) hierarchy for dual-audience routing. Collapses to span-12 below 900px."
+    },
+    {
+      "n": 2,
+      "id": "atmosphere",
+      "name": "Atmosphere plane",
+      "classes": [".hero-atmosphere", ".atmosphere-grid", ".hero-grid", ".hero-orb", ".hero-orb-a", ".hero-orb-b"],
+      "keyframes": ["orbDrift"],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-atmosphere",
+      "description": "Radial dot grid (32px) + two soft blurred orbs drifting on orbDrift (16s / 20s, alternate). Depth without particle carnival. Requires a positioned ancestor."
+    },
+    {
+      "n": 3,
+      "id": "living-brand-nav-only",
+      "name": "Living brand stage",
+      "classes": [".brand-stage", ".brand-wordmark", ".nav-brand", ".footer-wordmark", ".hero-wordmark", "[class*=\"wordmark\"]"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-brand",
+      "description": "Nav-only wordmark on practice pages; Instrument Serif weight 400 with font-synthesis:none (curly-y fix). The mark itself is STATIC — motion lives elsewhere. No duplicate logo after the header.",
+      "hardRules": [
+        "Instrument Serif 400 only — never a heavier weight on the wordmark",
+        "font-synthesis: none and font-synthesis-weight: none",
+        "no text-shadow, -webkit-text-stroke or filter on the wordmark",
+        ".framework-badge never animates"
+      ]
+    },
+    {
+      "n": 4,
+      "id": "chrome-windows",
+      "name": "Chrome windows",
+      "classes": [".live-card", ".chrome-window", ".tech-live", ".live-card-chrome", ".live-card-file", ".live-card-body", ".os-dot"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-chrome",
+      "description": "Traffic-light OS terminal — faux filename bar, glass overlay, operational product theatre."
+    },
+    {
+      "n": 5,
+      "id": "live-pan",
+      "name": "live-pan",
+      "classes": [".live-pan", ".tech-live-rows", ".os-kanban"],
+      "keyframes": ["livePan"],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-livepan",
+      "description": "Faux UI scroll animation inside chrome — staggered row delays, panning queue / Kanban feel. Always nested inside pattern 4."
+    },
+    {
+      "n": 6,
+      "id": "door-planes",
+      "name": "Door planes",
+      "classes": [".door-plane", ".door-swatch-bar", "[data-door]"],
+      "keyframes": ["door-in"],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-doors",
+      "description": "Weighted feature + grid using the official 18-door tokens; door-in entrance, hover glow, swatch bar scale. Never a single shared accent across doors.",
+      "requiresRegistry": "tokens/doors.js"
+    },
+    {
+      "n": 7,
+      "id": "telemetry",
+      "name": "Telemetry strip",
+      "classes": [".forge-tele", ".telemetry-strip", ".forge-tele-cell", ".forge-tele-n", ".forge-tele-l"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-telemetry",
+      "description": "Numeric proof bands — large serif numbers + mono labels as data-forward UI chrome. 3-up, collapses to 1-up below 560px."
+    },
+    {
+      "n": 8,
+      "id": "static-system-svg",
+      "name": "Static system SVG",
+      "classes": [".system-svg", ".triad-diagram", ".kiln-pipeline", ".system-svg-wrap", ".forge-svg-wrap"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-svg",
+      "description": "Kiln pipeline, Think→Act→Protect triad — labelled mechanics as STATIC diagrams with a mono figcaption. No animated stroke-dash spam.",
+      "hardRules": ["diagram geometry never animates", "always paired with a figcaption"]
+    },
+    {
+      "n": 9,
+      "id": "prose-cols",
+      "name": "Prose-cols",
+      "classes": [".prose-cols"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-prose",
+      "description": "Dual-column narrative prose bands — cinematic readable density, not wall-of-card. Single column below 720px."
+    },
+    {
+      "n": 10,
+      "id": "himat-pills",
+      "name": "Himat-Hikmat dual pills",
+      "classes": [".himat-duo", ".himat-pill", ".is-courage", ".is-wisdom", ".himat-pill-kicker"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-himat",
+      "description": "Courage / wisdom contrast theatre — two bordered pills with mono kicker + serif thesis. is-courage uses Framework gold; is-wisdom uses enlyst blue."
+    },
+    {
+      "n": 11,
+      "id": "spine-nodes",
+      "name": "Spine / learning path nodes",
+      "classes": [".b-spine", ".b-spine-step", ".b-spine-node", ".spine-node", ".b-spine-t"],
+      "keyframes": ["spinePulse"],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-spine",
+      "description": "Numbered connected steps with pulse — vertical connector drawn from the node, staggered spinePulse delays for steps 2–6."
+    },
+    {
+      "n": 12,
+      "id": "portrait-plane",
+      "name": "Portrait plane",
+      "classes": [".portrait-plane", ".portrait-caption"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-portrait",
+      "description": "Full-bleed or large portrait theatre — design-native slots with a serif caption. No archive / day5 photo recycling.",
+      "hardRules": ["no day5 or archive photo dumps"]
+    },
+    {
+      "n": 13,
+      "id": "ticker",
+      "name": "Ticker",
+      "classes": [".ticker-wrap", ".ticker", ".ticker-track", ".ticker-item", ".ticker-dot"],
+      "keyframes": ["ticker"],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-ticker",
+      "description": "Live proof marquee — mono items, dot separators, infinite scroll, pause on hover. Track content must be duplicated once so the -50% translate loops seamlessly.",
+      "hardRules": ["duplicate the item set exactly once inside the track", "aria-hidden on decorative tickers"]
+    },
+    {
+      "n": 14,
+      "id": "scroll-reveal",
+      "name": "Scroll reveal",
+      "classes": [".rv", ".rv.on"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "drivenBy": "patterns/ecosystem-motion.js",
+      "demo": "preview/ds-index.html#p-reveal",
+      "description": "IntersectionObserver entrance — opacity + translateY. Falls back to revealing everything when intensity is calm, when reduced-motion is set, or when IntersectionObserver is unavailable."
+    },
+    {
+      "n": 15,
+      "id": "section-palettes",
+      "name": "Section-owned palettes",
+      "classes": [".band-cream", ".band-dark", ".band-sky", ".band-theatre"],
+      "keyframes": [],
+      "implementedIn": "patterns/ecosystem-craft.css",
+      "demo": "preview/ds-index.html#p-palettes",
+      "description": "Cream / dark / sky / theatre rhythm per band — each section owns ink, accent and mood. Minimum three distinct bands per practice page."
+    },
+    {
+      "n": 16,
+      "id": "data-intensity",
+      "name": "data-intensity",
+      "classes": ["html[data-intensity]", "[data-intensity]"],
+      "keyframes": [],
+      "implementedIn": "tokens/ecosystem.tokens.css",
+      "drivenBy": "patterns/ecosystem-motion.js",
+      "demo": "preview/ds-index.html#p-intensity",
+      "description": "Motion tiers. REQUIRED host is the <html> element; a nested stage wrapper may override for a sub-region. prefers-reduced-motion:reduce overrides every tier.",
+      "values": ["calm", "standard", "cinematic"],
+      "hardRules": [
+        "<html> must always carry an explicit data-intensity value",
+        "cinematic is reserved for /ecosystem/ and rare admin demos",
+        "practice pages use calm or standard"
+      ]
+    }
+  ],
+
+  "universalBaseline": {
+    "_note": "Mandatory on EVERY public practice page, no exceptions. Page entries below list only what each page adds on top of this baseline; the resolved arrays are precomputed in pageMinimums.",
+    "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity"]
+  },
+
+  "pageMinimums": {
+    "_note": "Resolved arrays = universalBaseline.required + page additions. 'required' is the audit gate; 'optional' is permitted but never sufficient.",
+
+    "home": {
+      "intensity": "standard",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "bento", "chrome-windows", "live-pan", "door-planes", "telemetry", "static-system-svg", "himat-pills", "spine-nodes", "portrait-plane", "ticker"],
+      "optional": ["prose-cols"],
+      "spec": "docs/PAGE_SPECS.md#home"
+    },
+    "about": {
+      "intensity": "standard",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "static-system-svg", "prose-cols", "himat-pills", "spine-nodes", "portrait-plane", "door-planes", "telemetry"],
+      "optional": ["ticker", "chrome-windows"],
+      "spec": "docs/PAGE_SPECS.md#about"
+    },
+    "services": {
+      "intensity": "standard",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "bento", "chrome-windows", "live-pan", "telemetry", "spine-nodes"],
+      "optional": ["door-planes", "static-system-svg", "prose-cols"],
+      "spec": "docs/PAGE_SPECS.md#services"
+    },
+    "blog": {
+      "intensity": "calm",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "prose-cols"],
+      "optional": ["telemetry", "ticker"],
+      "spec": "docs/PAGE_SPECS.md#blog"
+    },
+    "contact": {
+      "intensity": "calm",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "prose-cols"],
+      "optional": ["door-planes"],
+      "spec": "docs/PAGE_SPECS.md#contact"
+    },
+    "ecosystem": {
+      "_note": "The Enlystnow Ecosystem showcase at /ecosystem/ — the craft north star surface, not a practice page and not a brand homepage.",
+      "intensity": "cinematic",
+      "required": ["atmosphere", "living-brand-nav-only", "scroll-reveal", "section-palettes", "data-intensity", "bento", "chrome-windows", "live-pan", "door-planes", "telemetry", "static-system-svg", "himat-pills", "spine-nodes", "ticker"],
+      "optional": ["prose-cols", "portrait-plane"],
+      "spec": "docs/PAGE_SPECS.md#ecosystem"
+    }
+  },
+
+  "supportingChrome": {
+    "gradient": ["--sky-void", ".sky-void", ".sky-void-canvas", ".ecosystem-canvas"],
+    "glass": [".glass", ".glass-light", ".glass-blue"],
+    "glow": [".glow-soft", ".glow-mid", ".glow-strong", ".glow-brass", ".text-glow", ".mark-glow"],
+    "eyebrow": [".eyebrow", ".eyebrow-mono", ".eyebrow-rule"],
+    "typography": [".display", ".h1", ".h2", ".h3", ".h4", ".body-lg", ".body", ".body-sm", ".caption", ".serif", ".serif-i", ".mono", ".code-inline"],
+    "fonts": {
+      "serif": "Instrument Serif — display, H1–H3, wordmark (400 ONLY)",
+      "sans": "Inter — UI and body",
+      "mono": "DM Mono — micro labels, kickers, telemetry labels"
+    },
+    "sectionHeaderFormula": "eyebrow-rule kicker + serif H2 + lede paragraph"
+  },
+
+  "auditGate": {
+    "_note": "A page passes only if every item is true. Mirrors docs/OPUS_HANDOFF.md validation checklist.",
+    "checks": [
+      "html carries data-arm and an explicit data-intensity",
+      "every pattern in pageMinimums[page].required is present and rendering",
+      "at least 3 distinct section palette bands",
+      "wordmark appears in the nav only, Instrument Serif 400, font-synthesis none",
+      "no duplicate logo or wordmark after the header",
+      "door elements use per-door tokens, never one shared accent",
+      "prefers-reduced-motion:reduce neutralises every animation",
+      "no 'Holding', no 'mother company', no consumer-brand Enlystnow copy",
+      "no 'Showreel' in public-facing copy (legacy disk paths only)",
+      "practice voice preserved (enlyst = Smart Recruiting)",
+      "no day5 or archive photo recycling",
+      "fonts loaded locally, no CDN font import in production"
+    ]
+  }
+}

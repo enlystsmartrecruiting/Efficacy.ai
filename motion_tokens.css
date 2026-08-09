@@ -1,0 +1,138 @@
+/* ═══════════════════════════════════════════════════════════════
+   ENLYST DESIGN SYSTEM — motion & atmosphere tokens (EXPERIMENT)
+   ─────────────────────────────────────────────────────────────
+   Imported ONLY by experiments/atmosphere-lab/* for now.
+   Do not wire into production components until DS v1 review.
+
+   Depends on: colors_and_type.css (division accents, easings)
+   Spec:       MOTION_AND_ATMOSPHERE.md
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Intensity tier — set via data-intensity on <html> or body */
+  --motion-intensity: 1;          /* 0 = calm, 1 = standard, 2 = cinematic */
+  --motion-scale: 1;              /* multiplier for distances / durations */
+
+  /* Glow — always division accent (or brass/gold for Framework) */
+  --glow-color: var(--accent);
+  --glow-color-rgb: 45, 91, 227;  /* override per division scope */
+  --glow-soft: 0 0 24px rgba(var(--glow-color-rgb), 0.22);
+  --glow-mid:  0 0 40px rgba(var(--glow-color-rgb), 0.35),
+               0 0 2px  rgba(var(--glow-color-rgb), 0.5);
+  --glow-strong: 0 0 64px rgba(var(--glow-color-rgb), 0.45),
+                 0 0 12px rgba(var(--glow-color-rgb), 0.35),
+                 0 4px 24px rgba(196, 162, 74, 0.15); /* brass rim */
+
+  /* Brass / Framework accent for premium moments */
+  --glow-brass: 0 0 32px rgba(196, 162, 74, 0.35),
+                0 0 2px  rgba(196, 162, 74, 0.55);
+
+  /* Parallax */
+  --parallax-shift: 12px;         /* max translate at standard */
+  --parallax-depth-near: 1;
+  --parallax-depth-mid: 0.55;
+  --parallax-depth-far: 0.25;
+
+  /* Particles */
+  --particle-count: 40;           /* hint for JS; CSS alone cannot spawn */
+  --particle-opacity: 0.35;
+  --particle-size: 2px;
+  --particle-speed: 18s;          /* base drift duration */
+
+  /* Motion durations scaled by intensity */
+  --motion-dur-micro: calc(var(--dur-fast) * var(--motion-scale));
+  --motion-dur-ui:    calc(var(--dur-base) * var(--motion-scale));
+  --motion-dur-hero:  calc(var(--dur-slow) * var(--motion-scale));
+  --spin-duration: 14s;
+}
+
+/* ── Division RGB for glow compositing ── */
+[data-division="enlyst"], .scope-enlyst {
+  --glow-color: var(--hr-blue);
+  --glow-color-rgb: 45, 91, 227;
+}
+[data-division="enlysum"], .scope-enlysum {
+  --glow-color: var(--finance-green);
+  --glow-color-rgb: 26, 122, 74;
+}
+[data-division="enlybiz"], .scope-enlybiz {
+  --glow-color: var(--biz-amber);
+  --glow-color-rgb: 196, 98, 10;
+}
+[data-division="enlysoft"], .scope-enlysoft {
+  --glow-color: var(--tech-purple);
+  --glow-color-rgb: 107, 63, 160;
+}
+
+/* ── Intensity tiers ── */
+[data-intensity="calm"] {
+  --motion-intensity: 0;
+  --motion-scale: 0.65;
+  --parallax-shift: 0px;
+  --particle-count: 12;
+  --particle-opacity: 0.18;
+  --spin-duration: 0s; /* paused — JS also respects prefers-reduced-motion */
+  --glow-soft: none;
+  --glow-mid: var(--shadow-sm);
+  --glow-strong: var(--shadow-md);
+}
+
+[data-intensity="standard"] {
+  --motion-intensity: 1;
+  --motion-scale: 1;
+  --parallax-shift: 12px;
+  --particle-count: 40;
+  --particle-opacity: 0.35;
+  --spin-duration: 14s;
+}
+
+[data-intensity="cinematic"] {
+  --motion-intensity: 2;
+  --motion-scale: 1.35;
+  --parallax-shift: 28px;
+  --particle-count: 90;
+  --particle-opacity: 0.55;
+  --spin-duration: 9s;
+  --glow-soft: 0 0 32px rgba(var(--glow-color-rgb), 0.3);
+  --glow-mid:  0 0 56px rgba(var(--glow-color-rgb), 0.45),
+               0 0 4px  rgba(var(--glow-color-rgb), 0.6);
+  --glow-strong: 0 0 80px rgba(var(--glow-color-rgb), 0.55),
+                 0 0 16px rgba(var(--glow-color-rgb), 0.4),
+                 0 8px 32px rgba(196, 162, 74, 0.22);
+}
+
+/* OS-level reduced motion — force calm regardless of toggle */
+@media (prefers-reduced-motion: reduce) {
+  :root, [data-intensity] {
+    --motion-intensity: 0;
+    --motion-scale: 0.5;
+    --parallax-shift: 0px;
+    --particle-count: 0;
+    --particle-opacity: 0;
+    --spin-duration: 0s;
+    --glow-soft: none;
+    --glow-mid: var(--shadow-xs);
+    --glow-strong: var(--shadow-sm);
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility classes used by the lab */
+.glow-soft   { box-shadow: var(--glow-soft); }
+.glow-mid    { box-shadow: var(--glow-mid); }
+.glow-strong { box-shadow: var(--glow-strong); }
+.glow-brass  { box-shadow: var(--glow-brass); }
+
+.text-glow {
+  text-shadow: 0 0 24px rgba(var(--glow-color-rgb), 0.35);
+}
+
+.mark-glow {
+  filter: drop-shadow(0 0 18px rgba(var(--glow-color-rgb), 0.45));
+}

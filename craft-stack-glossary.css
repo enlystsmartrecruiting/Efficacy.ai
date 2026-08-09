@@ -1,0 +1,42 @@
+/*
+ * Enlyst DS — Locked craft stack class glossary
+ * Reference shelf + production-ready class map.
+ * Canonical law: VISION.md · docs/INVENTION_MANDATE.md · patterns/craft-stack.json
+ * Implementation CSS: patterns/ecosystem-craft.css
+ * Motion: patterns/ecosystem-motion.js
+ *
+ * Ontology (unequivocal):
+ *   Framework (living constitution) → opens 18 doors
+ *   → four practices create Ecosystem = Enlystnow
+ *   (legacy craft name: Showreel)
+ *
+ * ── 16 locked inventions ──────────────────────────────────────────
+ *
+ *  1. .bento / .bento-grid     — 12-col weighted bento (feature, quarter, wide)
+ *  2. .hero-atmosphere         — dot/radial grid + drifting orbs (orbDrift)
+ *  3. .brand-wordmark          — living brand; nav-only on practice pages; Instrument 400
+ *  4. .live-card / .chrome-window — OS terminal chrome (traffic-light bar)
+ *  5. .live-pan                — faux UI scroll inside chrome
+ *  6. .door-plane + [data-door] — 18-door weighted planes (door-in, hover glow)
+ *  7. .forge-tele / .telemetry-strip — numeric proof bands
+ *  8. .system-svg / .triad-diagram / .kiln-pipeline — static system diagrams
+ *  9. .prose-cols              — dual-column narrative prose
+ * 10. .himat-pill (.is-courage / .is-wisdom) — Himat-Hikmat dual pills
+ * 11. .b-spine / .spine-node   — learning-path numbered nodes (spinePulse)
+ * 12. .portrait-plane          — design-native portrait theatre
+ * 13. .ticker-wrap / .ticker   — infinite proof marquee
+ * 14. .rv / .rv.on             — scroll-reveal entrance
+ * 15. .band-cream|dark|sky|theatre — section-owned palettes
+ * 16. html[data-intensity]     — calm | standard | cinematic + reduced-motion
+ *
+ * ── Supporting chrome ─────────────────────────────────────────────
+ *
+ *  .sky-void-canvas / .ecosystem-canvas — sky→void gradient plane
+ *  .glass / .glass-light / .glass-blue  — glass utilities
+ *  .eyebrow-rule                        — mono kicker + accent bar
+ *  .framework-badge                     — NEVER spins
+ *  [data-door="01"…"18"]                — unique door accent tokens
+ *  --font-wordmark                      — Instrument Serif 400; font-synthesis: none
+ */
+
+/* This file is documentary. Import ecosystem-craft.css for live styles. */

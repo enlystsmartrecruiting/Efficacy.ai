@@ -1,0 +1,118 @@
+/* Shared chrome for atmosphere-lab experiments */
+@import url('../../colors_and_type.css');
+@import url('../../motion_tokens.css');
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: var(--bg-page);
+  color: var(--fg-1);
+}
+
+.lab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(247, 246, 243, 0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+.lab-bar a.back {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--fg-3);
+  text-decoration: none;
+}
+.lab-bar a.back:hover { color: var(--accent); }
+.lab-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.lab-controls label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-right: 4px;
+}
+.lab-controls button,
+.lab-controls select {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--fg-1);
+  cursor: pointer;
+}
+.lab-controls button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+  color: var(--accent);
+  box-shadow: var(--glow-soft);
+}
+.lab-stage {
+  padding: 32px 24px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.lab-notes {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 64px;
+  border-top: 1px solid var(--border);
+}
+.lab-notes h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+.lab-notes ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: var(--fg-2);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-base);
+}
+.lab-notes code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: rgba(17,17,17,0.04);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* Division swatch strip */
+.div-swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .lab-stage { padding: 20px 16px 40px; }
+  .lab-bar { padding: 10px 14px; }
+}
