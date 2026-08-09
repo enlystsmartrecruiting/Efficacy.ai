@@ -1,18 +1,18 @@
 <?php
 /**
- * Contact form handler — enlybiz.com
+ * Contact form handler — enlysum.com
  */
 
 $config = [
-    'site'      => 'enlybiz.com',
+    'site'      => 'enlysum.com',
     'to'        => 'recruiter@enlystnow.com',
-    'from'      => 'no-reply@enlybiz.com',
+    'from'      => 'no-reply@enlysum.com',
     'redirect'  => 'contact.html',
     'fields'    => [
         'name'    => ['Name', true],
-        'company' => ['Company', false],
+        'company' => ['Organisation', false],
         'email'   => ['Email', true],
-        'message' => ['What are you trying to grow?', false],
+        'message' => ['Your financial situation', false],
     ],
 ];
 
