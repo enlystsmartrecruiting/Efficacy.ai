@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>enlybiz — Media Kit 2025</title>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --amber:        #C4620A;
+  --amber-light:  #E8752D;
+  --amber-dark:   #9B4D08;
+  --amber-pale:   #FDF3EC;
+  --obsidian:     #1A1A1A;
+  --white:        #FFFFFF;
+  --off-white:    #F7F6F3;
+  --mid:          #888;
+  --border:       rgba(255,255,255,0.07);
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: #0d0a06;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.top-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,10,6,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(196,98,10,0.12);
+  padding: 0 52px; height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+}
+.nav-mark {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+}
+.nav-wordmark {
+  font-family: var(--serif);
+  font-size: 19px; letter-spacing: -0.02em;
+}
+.nav-wordmark em { font-style: normal; color: var(--amber-light); }
+.nav-divider {
+  width: 1px; height: 18px;
+  background: rgba(255,255,255,0.12);
+}
+.nav-sub {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+}
+.nav-print {
+  padding: 8px 20px; background: var(--amber); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; border: none; border-radius: 4px;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.nav-print:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  padding: 100px 52px 80px;
+  background: linear-gradient(135deg, #120800 0%, #1e0e00 50%, #0d0a06 100%);
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; top: -160px; right: -160px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: var(--amber); opacity: 0.05;
+  filter: blur(100px); pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute; bottom: -80px; left: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: var(--amber-dark); opacity: 0.04;
+  filter: blur(60px); pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase;
+  background: rgba(196,98,10,0.12); color: var(--amber-light);
+  border: 1px solid rgba(196,98,10,0.25);
+  padding: 5px 14px; border-radius: 3px;
+  margin-bottom: 40px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 88px);
+  line-height: 1; letter-spacing: -0.03em; font-weight: 400;
+  margin-bottom: 24px;
+  background: linear-gradient(130deg, #fff 50%, rgba(196,98,10,0.85));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: 17px; line-height: 1.7;
+  color: rgba(255,255,255,0.55); max-width: 520px;
+  margin-bottom: 44px;
+}
+.hero-meta {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.hero-meta-item label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 5px;
+}
+.hero-meta-item span { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); }
+
+/* stat strip in hero right */
+.hero-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  border-radius: 12px; overflow: hidden;
+}
+.hstat {
+  background: rgba(196,98,10,0.07);
+  border: 1px solid rgba(196,98,10,0.12);
+  padding: 28px 24px;
+  position: relative;
+}
+.hstat:first-child { grid-column: span 2; background: rgba(196,98,10,0.1); border-color: rgba(196,98,10,0.2); }
+.hstat-num {
+  font-family: var(--serif);
+  font-size: 48px; line-height: 1;
+  color: var(--amber-light); margin-bottom: 8px;
+}
+.hstat:first-child .hstat-num { font-size: 60px; }
+.hstat-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+}
+.hstat-sub { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+
+/* ── DIVIDERS ── */
+.divider { height: 1px; background: rgba(196,98,10,0.1); margin: 0 52px; }
+
+/* ── SECTION ── */
+.sec { padding: 64px 52px; }
+.sec-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 40px;
+}
+.sec-head h2 {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: rgba(196,98,10,0.6);
+  white-space: nowrap;
+}
+.sec-head::after {
+  content: ''; flex: 1; height: 1px; background: rgba(196,98,10,0.1);
+}
+
+/* ── TWO COL ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.four-col { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+
+/* ── CARDS ── */
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(196,98,10,0.1);
+  border-radius: 10px; padding: 28px;
+}
+.card h3 {
+  font-family: var(--serif); font-size: 22px;
+  font-weight: 400; margin-bottom: 12px;
+  color: var(--white);
+}
+.card p {
+  font-size: 14px; line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+
+.card-accent {
+  border-left: 3px solid var(--amber);
+  border-radius: 0 10px 10px 0;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  border-left: 3px solid var(--amber);
+  padding: 24px 32px;
+  background: rgba(196,98,10,0.04);
+  border-radius: 0 10px 10px 0;
+}
+.quote-block p {
+  font-family: var(--serif); font-size: 26px;
+  line-height: 1.4; font-style: italic;
+  color: rgba(255,255,255,0.9); margin-bottom: 16px;
+}
+.quote-block cite {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.07em; font-style: normal;
+  text-transform: uppercase;
+}
+
+/* ── SERVICE LIST ── */
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.svc-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.75);
+}
+.svc-list li::before {
+  content: '→'; color: var(--amber); flex-shrink: 0;
+  font-size: 13px; margin-top: 1px;
+}
+
+/* ── STAT CARD ── */
+.stat-card {
+  background: rgba(196,98,10,0.06);
+  border: 1px solid rgba(196,98,10,0.14);
+  border-radius: 10px; padding: 26px;
+}
+.stat-card .sn {
+  font-family: var(--serif); font-size: 44px;
+  line-height: 1; color: var(--amber-light); margin-bottom: 8px;
+}
+.stat-card .sl {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+}
+
+/* ── PROCESS TIMELINE ── */
+.process-steps { display: flex; flex-direction: column; gap: 0; }
+.pstep {
+  display: grid; grid-template-columns: 64px 1fr;
+  gap: 24px; align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(196,98,10,0.08);
+  position: relative;
+}
+.pstep:last-child { border-bottom: none; }
+.pstep-num {
+  font-family: var(--serif); font-size: 36px;
+  color: rgba(196,98,10,0.25); line-height: 1;
+  padding-top: 2px; text-align: right;
+  padding-right: 16px;
+  border-right: 1px solid rgba(196,98,10,0.15);
+}
+.pstep-content h4 {
+  font-size: 16px; font-weight: 600;
+  color: var(--white); margin-bottom: 8px;
+}
+.pstep-content p {
+  font-size: 14px; line-height: 1.65;
+  color: rgba(255,255,255,0.5);
+}
+.pstep-badge {
+  display: inline-block; margin-top: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 3px 10px;
+  background: rgba(196,98,10,0.12); color: var(--amber-light);
+  border: 1px solid rgba(196,98,10,0.2); border-radius: 3px;
+}
+
+/* ── TAG PILLS ── */
+.tag-pill {
+  display: inline-block; padding: 5px 13px;
+  border-radius: 100px; font-size: 12px; font-weight: 500;
+  background: rgba(196,98,10,0.08);
+  border: 1px solid rgba(196,98,10,0.18);
+  color: rgba(255,255,255,0.65); margin: 4px;
+}
+.tag-pill.amber { color: var(--amber-light); border-color: rgba(196,98,10,0.3); }
+
+/* ── COLOUR SWATCHES ── */
+.cswatch { border-radius: 8px; overflow: hidden; }
+.cswatch-fill { height: 68px; }
+.cswatch-info {
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(196,98,10,0.1);
+  border-top: none; border-radius: 0 0 8px 8px;
+}
+.cswatch-name { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: var(--white); }
+.cswatch-hex { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* ── LOGO SHOWCASE ── */
+.logo-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; border-radius: 10px; overflow: hidden; }
+.logo-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 28px; min-height: 130px;
+}
+.logo-cell.bg-dark   { background: #111; }
+.logo-cell.bg-cream  { background: #F7F6F3; }
+.logo-cell.bg-amber  { background: #C4620A; }
+.logo-cell-label {
+  padding: 11px 16px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(196,98,10,0.1);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+
+/* ── BOILERPLATE ── */
+.boilerplate {
+  background: rgba(196,98,10,0.05);
+  border: 1px solid rgba(196,98,10,0.12);
+  border-radius: 10px; padding: 32px;
+}
+.boilerplate p {
+  font-size: 15px; line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.contact-card {
+  background: rgba(196,98,10,0.06);
+  border: 1px solid rgba(196,98,10,0.14);
+  border-radius: 10px; padding: 24px;
+}
+.contact-role {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(196,98,10,0.6);
+  margin-bottom: 10px;
+}
+.contact-val { font-size: 15px; font-weight: 500; color: var(--white); }
+.contact-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+/* ── DIVISION STRIP ── */
+.division-strip {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 12px;
+}
+.div-card {
+  border-radius: 8px; padding: 18px 16px;
+  border: 1px solid;
+}
+.div-card-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.div-card-desc { font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.45); }
+.div-card-badge {
+  display: inline-block; margin-top: 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* ── FOOTER ── */
+.kit-foot {
+  padding: 28px 52px;
+  border-top: 1px solid rgba(196,98,10,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.kit-foot p { font-size: 12px; color: rgba(255,255,255,0.22); letter-spacing: 0.03em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero, .sec { padding: 48px 24px; }
+  .divider { margin: 0 24px; }
+  .hero-grid, .two-col, .three-col, .four-col,
+  .contact-grid, .division-strip { grid-template-columns: 1fr; }
+  .logo-row { grid-template-columns: 1fr 1fr; }
+  .kit-foot { flex-direction: column; gap: 6px; }
+}
+
+@media print {
+  .top-nav { display: none; }
+  body { background: white; color: black; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <!-- Option C amber mark -->
+    <div class="nav-mark">
+      <svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 2 L18 2 L14 10 L-4 10 Z" fill="#C4620A"/>
+        <path d="M4 13 L22 13 L18 21 L0 21 Z" fill="#C4620A" opacity="0.58"/>
+        <path d="M8 24 L26 24 L22 30 L4 30 Z" fill="#C4620A" opacity="0.26"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">enl<em>y</em>biz</span>
+    <div class="nav-divider"></div>
+    <span class="nav-sub">Media Kit 2025</span>
+  </div>
+  <button class="nav-print" onclick="window.print()">↓ Print Kit</button>
+</nav>
+
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <span class="hero-eyebrow">
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="4" fill="#C4620A"/></svg>
+    Marketing & Growth · Part of Enlyst · Media Kit 2025
+  </span>
+
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-title">Growth isn't<br/>accidental.</h1>
+      <p class="hero-desc">enlybiz is the marketing and growth division of Enlyst — delivering data-driven digital strategies, brand storytelling, and measurable revenue outcomes for startups and scaling businesses in Pakistan and beyond.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><label>Division</label><span>Marketing & Growth</span></div>
+        <div class="hero-meta-item"><label>Parent</label><span>Enlyst Platform</span></div>
+        <div class="hero-meta-item"><label>Domain</label><span>enlybiz.com</span></div>
+        <div class="hero-meta-item"><label>Founded</label><span>Lahore, 2023</span></div>
+      </div>
+    </div>
+
+    <div class="hero-stats-grid">
+      <div class="hstat">
+        <div class="hstat-num">3.8×</div>
+        <div class="hstat-label">Average Revenue Multiplier</div>
+        <div class="hstat-sub">across 12-month client engagements</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">120+</div>
+        <div class="hstat-label">Campaigns Delivered</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">94%</div>
+        <div class="hstat-label">Client Retention Rate</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">18</div>
+        <div class="hstat-label">Days to First Results</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">380%</div>
+        <div class="hstat-label">Average Campaign ROI</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">6</div>
+        <div class="hstat-label">Core Disciplines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>About enlybiz</h2></div>
+  <div class="two-col">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card card-accent">
+        <h3>What We Do</h3>
+        <p>enlybiz sits inside the Enlyst platform as the dedicated growth engine for client businesses. Rather than a standalone agency, enlybiz operates with full context of the client's HR, finance, and technology operations — making marketing decisions that align with the whole business, not just vanity metrics.</p>
+      </div>
+      <div class="card">
+        <h3>The Difference</h3>
+        <p>Most agencies deliver reports. We deliver revenue. Every strategy, channel selection, and budget decision is tied to a business outcome the client actually cares about. When your marketing team talks directly to your HR, finance, and tech teams, the results compound.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <blockquote class="quote-block">
+        <p>"Growth isn't accidental. We make it inevitable."</p>
+        <cite>— enlybiz positioning statement</cite>
+      </blockquote>
+      <div class="card">
+        <h3>The Enlyst Advantage</h3>
+        <p>enlybiz campaigns are informed by real-time financial data from enlysum, staffed by talent sourced by enlyst HR, and powered by infrastructure built by enlysoft. That level of integration no standalone agency can offer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Six disciplines — one unified growth engine</h2></div>
+  <div class="two-col">
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">01 — SEO & Search</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>Organic rankings that bring qualified buyers inbound</li>
+        <li>On-page, off-page, and technical SEO</li>
+        <li>Local search optimisation for Pakistan markets</li>
+        <li>Keyword research and content gap analysis</li>
+        <li>Monthly ranking and traffic reporting</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">02 — Social Media</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>LinkedIn, Instagram, Facebook, X — full management</li>
+        <li>Community building and audience engagement</li>
+        <li>Content calendars, copy, and creative direction</li>
+        <li>Influencer and creator partnerships</li>
+        <li>Paid social boosts and A/B testing</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">03 — Content Marketing</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>Blogs, whitepapers, case studies, and scripts</li>
+        <li>Thought leadership and editorial strategy</li>
+        <li>SEO-optimised long-form content at scale</li>
+        <li>Video scripts and podcast outlines</li>
+        <li>Authority building and PR placement</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">04 — PPC & Paid Ads</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>Google Ads, Meta Ads, LinkedIn campaigns</li>
+        <li>Precision targeting — zero wasted spend</li>
+        <li>Landing page optimisation and CRO</li>
+        <li>Budget allocation and daily bid management</li>
+        <li>Weekly ROI reporting and attribution</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">05 — Email & Automation</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>Drip sequences and re-engagement flows</li>
+        <li>Newsletters and promotional campaigns</li>
+        <li>CRM automation — HubSpot, Mailchimp, ActiveCampaign</li>
+        <li>Lead scoring and segmentation</li>
+        <li>Open rate and conversion optimisation</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(196,98,10,0.18);">
+      <h3 style="color:var(--amber-light);">06 — Brand Strategy</h3>
+      <ul class="svc-list" style="margin-top:14px;">
+        <li>Positioning and messaging architecture</li>
+        <li>Visual identity development and brand guidelines</li>
+        <li>Competitive analysis and market differentiation</li>
+        <li>Go-to-market strategy for new products</li>
+        <li>Brand audits and repositioning</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ KEY METRICS ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Performance metrics</h2></div>
+  <div class="four-col">
+    <div class="stat-card">
+      <div class="sn">3.8×</div>
+      <div class="sl">Avg. revenue multiplier across engagements</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">120+</div>
+      <div class="sl">Campaigns delivered since launch</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">94%</div>
+      <div class="sl">Client retention rate — year on year</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">18</div>
+      <div class="sl">Days to first measurable results</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">380%</div>
+      <div class="sl">Average campaign ROI across all paid channels</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">45+</div>
+      <div class="sl">Active clients across Pakistan and region</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">6</div>
+      <div class="sl">Core service disciplines under one retainer</div>
+    </div>
+    <div class="stat-card">
+      <div class="sn">PKR 30K</div>
+      <div class="sl">Retainer starting point — full marketing team</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ PROCESS ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>How we work — from brief to breakthrough</h2></div>
+  <div class="two-col">
+    <div class="process-steps">
+      <div class="pstep">
+        <div class="pstep-num">01</div>
+        <div class="pstep-content">
+          <h4>Discovery & Audit</h4>
+          <p>We map the client's current digital presence, competitive landscape, and revenue goals. Full audit completed in week one — no billable research phase.</p>
+          <span class="pstep-badge">Week 1</span>
+        </div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">02</div>
+        <div class="pstep-content">
+          <h4>Strategy Blueprint</h4>
+          <p>Channel selection, budget allocation, messaging architecture, and a 90-day growth roadmap — built to the client's specific goals and built to be shown to investors.</p>
+          <span class="pstep-badge">Week 2</span>
+        </div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">03</div>
+        <div class="pstep-content">
+          <h4>Launch & Execute</h4>
+          <p>Campaigns go live, content starts publishing, ads start running. First results visible within 18 days. Weekly check-ins, no monthly surprises.</p>
+          <span class="pstep-badge">Day 18</span>
+        </div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">04</div>
+        <div class="pstep-content">
+          <h4>Optimise & Scale</h4>
+          <p>Data from campaigns feeds back into strategy. What works gets budget. What doesn't gets cut. The engine compounds every month.</p>
+          <span class="pstep-badge">Month 2+</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card" style="border-color:rgba(196,98,10,0.2);background:rgba(196,98,10,0.06);">
+        <h3>Why this process works</h3>
+        <ul class="svc-list" style="margin-top:14px;">
+          <li>Refined across 120+ campaigns — no learning curve billed to clients</li>
+          <li>Startup-paced execution — campaigns live in days, not months</li>
+          <li>Iterations happen weekly, not quarterly</li>
+          <li>Every deliverable tied to a revenue or pipeline metric</li>
+          <li>Integrated with enlyst's HR, finance, and tech data — not siloed</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tools &amp; Platforms</h3>
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="tag-pill amber">Google Ads</span>
+          <span class="tag-pill amber">Meta Ads</span>
+          <span class="tag-pill amber">LinkedIn Ads</span>
+          <span class="tag-pill">HubSpot</span>
+          <span class="tag-pill">Mailchimp</span>
+          <span class="tag-pill">Semrush</span>
+          <span class="tag-pill">Ahrefs</span>
+          <span class="tag-pill">Google Analytics</span>
+          <span class="tag-pill">Canva Pro</span>
+          <span class="tag-pill">Buffer</span>
+          <span class="tag-pill">Hotjar</span>
+          <span class="tag-pill">Notion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ THE ENLYST ECOSYSTEM ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>The Enlyst ecosystem — why integration wins</h2></div>
+
+  <div class="card" style="margin-bottom:24px;background:rgba(196,98,10,0.06);border-color:rgba(196,98,10,0.2);">
+    <p style="font-size:16px;line-height:1.75;color:rgba(255,255,255,0.75);">enlybiz doesn't operate in isolation. As the marketing division of Enlyst, campaigns are informed by real-time financial data from enlysum, staffed by talent sourced by enlyst HR, and powered by infrastructure built by enlysoft. That is a level of integration no standalone agency can offer — and it directly impacts campaign performance because marketing, finance, people, and technology are aligned from day one.</p>
+  </div>
+
+  <div class="division-strip">
+    <div class="div-card" style="border-color:rgba(45,91,227,0.25);background:rgba(45,91,227,0.04);">
+      <div class="div-card-name" style="color:#7B9FF5;">enlyst</div>
+      <div class="div-card-desc">HR & talent — sources and builds your marketing team from the ground up</div>
+      <span class="div-card-badge" style="background:rgba(45,91,227,0.1);color:#7B9FF5;">HR · Talent</span>
+    </div>
+    <div class="div-card" style="border-color:rgba(26,122,74,0.25);background:rgba(26,122,74,0.04);">
+      <div class="div-card-name" style="color:#2ECC71;">enlysum</div>
+      <div class="div-card-desc">Finance & accounting — tracks ROI and campaign spend to the rupee</div>
+      <span class="div-card-badge" style="background:rgba(26,122,74,0.1);color:#2ECC71;">Finance</span>
+    </div>
+    <div class="div-card" style="border-color:rgba(196,98,10,0.4);background:rgba(196,98,10,0.08);">
+      <div class="div-card-name" style="color:var(--amber-light);">enlybiz ← you</div>
+      <div class="div-card-desc">Marketing & growth — the division that wins your market</div>
+      <span class="div-card-badge" style="background:rgba(196,98,10,0.15);color:var(--amber-light);">Marketing</span>
+    </div>
+    <div class="div-card" style="border-color:rgba(107,63,160,0.25);background:rgba(107,63,160,0.04);">
+      <div class="div-card-name" style="color:#A78BFA;">enlysoft</div>
+      <div class="div-card-desc">Cloud & tech — automates your marketing stack end-to-end</div>
+      <span class="div-card-badge" style="background:rgba(107,63,160,0.1);color:#A78BFA;">Tech</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ BRAND IDENTITY ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Brand identity</h2></div>
+  <div class="two-col">
+
+    <div>
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:18px;">Logo — Option C · Single hue · three-opacity system</p>
+
+      <!-- logo row -->
+      <div class="logo-row" style="margin-bottom:16px;">
+        <div>
+          <div class="logo-cell bg-dark">
+            <svg width="170" height="46" viewBox="0 0 170 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2 L34 2 L27 14 L-7 14 Z" fill="#C4620A"/>
+              <path d="M7 18 L41 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/>
+              <path d="M14 34 L48 34 L41 46 L7 46 Z" fill="#C4620A" opacity="0.26"/>
+              <text x="56" y="32" font-family="'Instrument Serif',Georgia,serif" font-size="28" fill="#FFFFFF" letter-spacing="-0.6">enlybiz</text>
+            </svg>
+          </div>
+          <div class="logo-cell-label">Dark</div>
+        </div>
+        <div>
+          <div class="logo-cell bg-cream">
+            <svg width="170" height="46" viewBox="0 0 170 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2 L34 2 L27 14 L-7 14 Z" fill="#C4620A"/>
+              <path d="M7 18 L41 18 L34 30 L0 30 Z" fill="#C4620A" opacity="0.58"/>
+              <path d="M14 34 L48 34 L41 46 L7 46 Z" fill="#C4620A" opacity="0.26"/>
+              <text x="56" y="32" font-family="'Instrument Serif',Georgia,serif" font-size="28" fill="#1A1A1A" letter-spacing="-0.6">enlybiz</text>
+            </svg>
+          </div>
+          <div class="logo-cell-label">Light</div>
+        </div>
+        <div>
+          <div class="logo-cell bg-amber">
+            <svg width="170" height="46" viewBox="0 0 170 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 2 L34 2 L27 14 L-7 14 Z" fill="#FFFFFF"/>
+              <path d="M7 18 L41 18 L34 30 L0 30 Z" fill="#FFFFFF" opacity="0.58"/>
+              <path d="M14 34 L48 34 L41 46 L7 46 Z" fill="#FFFFFF" opacity="0.26"/>
+              <text x="56" y="32" font-family="'Instrument Serif',Georgia,serif" font-size="28" fill="#FFFFFF" letter-spacing="-0.6">enlybiz</text>
+            </svg>
+          </div>
+          <div class="logo-cell-label">Brand BG</div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;line-height:1.65;color:rgba(255,255,255,0.4);">Three-stripe parallelogram mark. Single amber hue at 100% · 58% · 26% opacity. Same mark geometry across the entire Enlyst division family — only the hue changes per division.</p>
+    </div>
+
+    <div>
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:18px;">Colour palette</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+        <div class="cswatch">
+          <div class="cswatch-fill" style="background:#C4620A;"></div>
+          <div class="cswatch-info"><div class="cswatch-name">Biz Amber</div><div class="cswatch-hex">#C4620A</div></div>
+        </div>
+        <div class="cswatch">
+          <div class="cswatch-fill" style="background:#E8752D;"></div>
+          <div class="cswatch-info"><div class="cswatch-name">Amber Light</div><div class="cswatch-hex">#E8752D</div></div>
+        </div>
+        <div class="cswatch">
+          <div class="cswatch-fill" style="background:#9B4D08;"></div>
+          <div class="cswatch-info"><div class="cswatch-name">Amber Dark</div><div class="cswatch-hex">#9B4D08</div></div>
+        </div>
+        <div class="cswatch">
+          <div class="cswatch-fill" style="background:#1A1A1A;"></div>
+          <div class="cswatch-info"><div class="cswatch-name">Obsidian</div><div class="cswatch-hex">#1A1A1A</div></div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px;">Typography</p>
+      <div class="card" style="padding:20px 22px;">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;align-items:baseline;gap:20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.28);width:100px;flex-shrink:0;">Display / H1<br/>Instrument Serif</span>
+            <span style="font-family:var(--serif);font-size:28px;color:#fff;letter-spacing:-0.02em;">enlybiz</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:20px;">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.28);width:100px;flex-shrink:0;">Body / UI<br/>Inter</span>
+            <span style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;">Growth, engineered.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ CLIENTS ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Client portfolio</h2></div>
+  <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:24px;line-height:1.6;">Partial list of businesses served across the Enlyst platform. Names used with permission for press and media reference.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+    <span class="tag-pill amber">Alchemative</span>
+    <span class="tag-pill amber">Brickclay</span>
+    <span class="tag-pill amber">Paradigm</span>
+    <span class="tag-pill amber">Eccountant</span>
+    <span class="tag-pill amber">Karkao Studios</span>
+    <span class="tag-pill amber">White Leaf Group</span>
+    <span class="tag-pill amber">Swift Securities</span>
+    <span class="tag-pill amber">Lambda Logics</span>
+    <span class="tag-pill amber">Speridian Technologies</span>
+    <span class="tag-pill amber">Xeven Solutions</span>
+    <span class="tag-pill amber">Orcalo</span>
+    <span class="tag-pill amber">Adex 360</span>
+  </div>
+  <div class="three-col">
+    <div class="card" style="text-align:center;">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--amber-light);margin-bottom:8px;">Tech</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;">Primary sector</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--amber-light);margin-bottom:8px;">Startups</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;">Primary stage</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--amber-light);margin-bottom:8px;">Pakistan</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;">Primary market</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ POSITIONING ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Positioning & messaging</h2></div>
+  <div class="three-col">
+    <div class="card card-accent">
+      <h3>Primary Tagline</h3>
+      <p style="font-family:var(--serif);font-size:20px;color:var(--amber-light);font-style:italic;margin-top:8px;">"Growth isn't accidental. We make it inevitable."</p>
+    </div>
+    <div class="card">
+      <h3>Positioning</h3>
+      <p>The integrated marketing and growth division for startups — delivering data-driven digital marketing as a retainer service, fully embedded inside the client's operations via the Enlyst platform.</p>
+    </div>
+    <div class="card">
+      <h3>Key Differentiator</h3>
+      <p>enlybiz is the only marketing division in Pakistan whose work is directly informed by live HR, finance, and technology data from the same client — not siloed, not fragmented.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;">
+    <span class="tag-pill amber">Growth Marketing</span>
+    <span class="tag-pill amber">Data-First</span>
+    <span class="tag-pill amber">Retainer Model</span>
+    <span class="tag-pill amber">ROI-Tied</span>
+    <span class="tag-pill amber">Startup-Paced</span>
+    <span class="tag-pill amber">Integrated Operations</span>
+    <span class="tag-pill">SEO Specialists</span>
+    <span class="tag-pill">Content Engine</span>
+    <span class="tag-pill">Performance Marketing</span>
+    <span class="tag-pill">Brand Strategy</span>
+    <span class="tag-pill">Pakistan Market</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ BOILERPLATE ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Official boilerplate — for press use</h2></div>
+  <div class="boilerplate">
+    <p>enlybiz is the marketing and growth division of Enlyst, Pakistan's integrated operating partner platform for early-stage businesses. enlybiz delivers data-driven digital marketing services — including SEO, PPC, content strategy, social media management, email automation, and brand development — through a fractional retainer model that aligns every marketing activity with measurable business outcomes. Operating within the Enlyst ecosystem, enlybiz has direct access to the full operational context of each client, enabling growth strategies that are integrated with HR, finance, and technology decisions rather than siloed from them. enlybiz is headquartered at the Lahore Stock Exchange Plaza as part of the Enlyst Smart Recruiting Pvt Ltd group.</p>
+  </div>
+
+  <div style="margin-top:24px;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;">Short version (under 50 words)</p>
+    <div class="boilerplate" style="padding:20px 28px;">
+      <p style="font-size:14px;">enlybiz is the marketing and growth division of Enlyst — delivering SEO, PPC, content, social media, and brand strategy for startups on a retainer basis. Headquartered in Lahore, Pakistan.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<div class="sec">
+  <div class="sec-head"><h2>Media contact</h2></div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-role">General Enquiries</div>
+      <div class="contact-val">info@enlystnow.com</div>
+      <div class="contact-sub">03000 340 036</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-role">Website</div>
+      <div class="contact-val">enlybiz.com</div>
+      <div class="contact-sub">Marketing & Growth Division</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-role">Headquarters</div>
+      <div class="contact-val">Suite M-3</div>
+      <div class="contact-sub">Lahore Stock Exchange Plaza, Lahore</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="kit-foot">
+  <p>enlybiz · Marketing & Growth · Part of Enlyst · enlybiz.com</p>
+  <p>Media Kit 2025 — All rights reserved · Enlyst Smart Recruiting Pvt Ltd</p>
+</div>
+
+</body>
+</html>

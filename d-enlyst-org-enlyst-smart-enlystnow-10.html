@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup Framework | How to Work with Enlyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']}}}}</script>
+</head>
+<body class="antialiased overflow-x-hidden bg-white">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-sm">E</span></div>
+        <span class="font-bold text-slate-900 text-lg">Enlyst</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Home</a>
+        <a href="about.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">About</a>
+        <a href="mission.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Mission</a>
+        <a href="government-projects.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Government</a>
+        <a href="foundation.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Foundation</a>
+        <a href="graduates.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Graduates</a>
+        <a href="startup-framework.html" class="text-sm font-medium text-orange-600">Startups</a>
+        <a href="contact.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+      </div>
+      <a href="contact.html" class="hidden md:inline-flex bg-slate-900 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-slate-800 transition-colors items-center">Start a Conversation</a>
+      <button id="nav-toggle" class="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-slate-100">
+        <span class="block w-5 h-0.5 bg-slate-800" id="hb1"></span>
+        <span class="block w-5 h-0.5 bg-slate-800" id="hb2"></span>
+        <span class="block w-4 h-0.5 bg-slate-800" id="hb3"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+      <a href="index.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Home</a>
+      <a href="about.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">About</a>
+      <a href="mission.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Mission</a>
+      <a href="government-projects.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Government Projects</a>
+      <a href="foundation.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Foundation</a>
+      <a href="graduates.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Graduates</a>
+      <a href="startup-framework.html" class="text-sm font-medium text-orange-600 py-2 border-b border-slate-100">Startups</a>
+      <a href="contact.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Contact</a>
+      <a href="contact.html" class="mt-1 bg-slate-900 text-white text-center px-5 py-3 rounded-md text-sm font-semibold">Start a Conversation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="py-24 bg-gradient-to-br from-orange-900 via-orange-800 to-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="inline-flex items-center gap-2 text-xs uppercase tracking-widest bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-6">
+        <i data-lucide="rocket" class="w-3.5 h-3.5"></i> Startup Framework
+      </p>
+      <h1 class="text-4xl md:text-5xl font-serif mb-6 leading-tight">If you are a startup and you are ready to be serious — so are we.</h1>
+      <p class="text-lg text-orange-200 leading-relaxed max-w-2xl">
+        Enlyst is not a startup accelerator. It is not a co-working space, a pitch competition, or a mentorship programme. It is an operational partner — and for the right startup, that is worth more than all of those combined.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-8">
+        <a href="contact.html" class="bg-white text-orange-900 px-8 py-3.5 rounded-lg font-semibold hover:bg-orange-50 transition-colors flex items-center gap-2">
+          <i data-lucide="send" class="w-4 h-4"></i> Contact Enlyst
+        </a>
+        <a href="#how-it-works" class="border border-white/30 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center gap-2">
+          <i data-lucide="arrow-down" class="w-4 h-4"></i> How it Works
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE ARE NOT -->
+<section class="py-16 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-4">Let's be clear</p>
+        <h2 class="text-3xl font-serif text-slate-900 mb-4">What Enlyst is not.</h2>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-center text-slate-600"><i data-lucide="x" class="w-4 h-4 text-red-500 flex-shrink-0"></i> Not a startup accelerator with demo days and cohorts</div>
+          <div class="flex gap-3 items-center text-slate-600"><i data-lucide="x" class="w-4 h-4 text-red-500 flex-shrink-0"></i> Not a VC or angel investor taking equity for advice</div>
+          <div class="flex gap-3 items-center text-slate-600"><i data-lucide="x" class="w-4 h-4 text-red-500 flex-shrink-0"></i> Not a co-working space or incubation facility</div>
+          <div class="flex gap-3 items-center text-slate-600"><i data-lucide="x" class="w-4 h-4 text-red-500 flex-shrink-0"></i> Not a consultancy that delivers strategy decks and leaves</div>
+          <div class="flex gap-3 items-center text-slate-600"><i data-lucide="x" class="w-4 h-4 text-red-500 flex-shrink-0"></i> Not a one-size programme — we take very few startups</div>
+        </div>
+      </div>
+      <div>
+        <!-- Partnership visual -->
+        <div class="rounded-2xl overflow-hidden mb-6 shadow-md">
+          <img src="images/partnership.png" alt="Enlyst startup partnership" class="w-full object-cover" style="max-height:200px;">
+        </div>
+        <p class="text-xs uppercase tracking-widest text-orange-600 font-bold mb-4">What we are</p>
+        <h2 class="text-3xl font-serif text-slate-900 mb-4">What Enlyst does for startups.</h2>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-center text-slate-700"><i data-lucide="check" class="w-4 h-4 text-green-600 flex-shrink-0"></i> Build and operate your HR, finance, marketing, and tech functions</div>
+          <div class="flex gap-3 items-center text-slate-700"><i data-lucide="check" class="w-4 h-4 text-green-600 flex-shrink-0"></i> Replace 4 early hires with one integrated Enlyst retainer</div>
+          <div class="flex gap-3 items-center text-slate-700"><i data-lucide="check" class="w-4 h-4 text-green-600 flex-shrink-0"></i> Give you access to certified cloud infrastructure (GCP / Azure)</div>
+          <div class="flex gap-3 items-center text-slate-700"><i data-lucide="check" class="w-4 h-4 text-green-600 flex-shrink-0"></i> Hire your first 10 people through a proven behavioural pipeline</div>
+          <div class="flex gap-3 items-center text-slate-700"><i data-lucide="check" class="w-4 h-4 text-green-600 flex-shrink-0"></i> Run your marketing engine and CRM from day one</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-widest text-orange-600 font-bold mb-3">The Safe Zone for Startups</p>
+      <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-4">How it works when a company contacts us.</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto">Every startup engagement follows the same three-phase Safe Zone methodology — the same process we use for enterprises and government departments, calibrated for startup scale and speed.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="text-6xl font-serif text-slate-100 font-black absolute -top-2 -right-2 pointer-events-none">01</div>
+        <div class="bg-orange-100 rounded-xl p-3 w-fit mb-5 relative z-10"><i data-lucide="search" class="w-6 h-6 text-orange-600"></i></div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3 relative z-10">Discovery & Audit</h3>
+        <p class="text-slate-600 text-sm leading-relaxed relative z-10">Duration: 2–3 weeks.</p>
+        <p class="text-slate-600 text-sm leading-relaxed mt-2 relative z-10">We map everything you have — product state, team structure, cash position, tech debt, brand positioning, compliance gaps, and operational bottlenecks. No assumptions. We start from evidence.</p>
+        <ul class="mt-4 space-y-1.5 relative z-10">
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>HR and team gap analysis</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Finance and compliance audit</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Brand and digital presence review</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Technology infrastructure assessment</li>
+        </ul>
+      </div>
+      <div class="bg-orange-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
+        <div class="text-6xl font-serif text-orange-500/30 font-black absolute -top-2 -right-2 pointer-events-none">02</div>
+        <div class="bg-white/20 rounded-xl p-3 w-fit mb-5 relative z-10"><i data-lucide="wrench" class="w-6 h-6 text-white"></i></div>
+        <h3 class="text-xl font-bold text-white mb-3 relative z-10">The Safe Zone Build</h3>
+        <p class="text-orange-100 text-sm leading-relaxed relative z-10">Duration: 3–4 months.</p>
+        <p class="text-orange-100 text-sm leading-relaxed mt-2 relative z-10">Parallel execution across your critical functions. We do not sequence — we build everything at once using the holding company model. Your startup gets the operational backbone it needs without waiting 12 months to hire for each role.</p>
+        <ul class="mt-4 space-y-1.5 relative z-10">
+          <li class="text-xs text-orange-200 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Hire your first 5–10 people via Enlyst HR</li>
+          <li class="text-xs text-orange-200 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Set up finance systems via Enlysum</li>
+          <li class="text-xs text-orange-200 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Launch your growth engine via Enlybiz</li>
+          <li class="text-xs text-orange-200 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Deploy cloud infrastructure via Enlysoft</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+        <div class="text-6xl font-serif text-slate-100 font-black absolute -top-2 -right-2 pointer-events-none">03</div>
+        <div class="bg-slate-900 rounded-xl p-3 w-fit mb-5 relative z-10"><i data-lucide="shield-check" class="w-6 h-6 text-white"></i></div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3 relative z-10">Permanent Partnership</h3>
+        <p class="text-slate-600 text-sm leading-relaxed relative z-10">Duration: Ongoing retainer.</p>
+        <p class="text-slate-600 text-sm leading-relaxed mt-2 relative z-10">Transition to a sustained monthly retainer. Continuous KPI reviews, quarterly strategy alignment, AI infrastructure maintenance, and ongoing talent support. We are not a project vendor — we become embedded in your operations.</p>
+        <ul class="mt-4 space-y-1.5 relative z-10">
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Monthly KPI and financial review</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Ongoing talent pipeline access</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>AI infrastructure monitoring</li>
+          <li class="text-xs text-slate-500 flex gap-2"><i data-lucide="arrow-right" class="w-3 h-3 flex-shrink-0 mt-0.5"></i>Strategic advisory and policy navigation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS RIGHT FOR ENLYST -->
+<section class="py-20 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-4">What kind of startup is right for Enlyst.</h2>
+      <p class="text-slate-600 max-w-xl mx-auto">We are selective. We work with very few startups at any one time. This is intentional — we embed deeply, and that takes capacity.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-green-50 rounded-2xl p-8 border border-green-100">
+        <h3 class="text-xl font-bold text-slate-900 mb-5 flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i> A good fit for Enlyst</h3>
+        <ul class="space-y-3 text-slate-700 text-sm">
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You have a product or service with early traction — not a pre-revenue idea</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You want operational infrastructure built, not advice delivered</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You are in a sector where Enlyst has domain experience — tech, services, education, healthcare, or public-sector adjacent</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You are willing to commit to a structured engagement, not a short project</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You want your team built correctly the first time — using behavioural science, not CVs</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5"></i>You are open to cloud-native infrastructure and AI integration from the outset</li>
+        </ul>
+      </div>
+      <div class="bg-red-50 rounded-2xl p-8 border border-red-100">
+        <h3 class="text-xl font-bold text-slate-900 mb-5 flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-500"></i> Not a fit right now</h3>
+        <ul class="space-y-3 text-slate-600 text-sm">
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5"></i>You are at idea stage with no validation — speak to an accelerator first</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5"></i>You want a one-time deliverable — a logo, a website, a pitch deck</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5"></i>You expect Enlyst to work on success-only or equity-only terms</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5"></i>You want generic digital marketing without an operational backbone</li>
+          <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5"></i>You are not willing to share financial and operational data — the audit requires transparency</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT WHEN YOU CONTACT US -->
+<section class="py-20 bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-serif mb-4">What happens when you contact us.</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">A clear, no-pressure sequence — from first message to engagement decision.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="text-center">
+        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">1</div>
+        <h4 class="font-bold text-white mb-2">Initial Message</h4>
+        <p class="text-slate-400 text-sm">Email or call with a brief description of your company, where you are, and what you need. No deck required at this stage.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">2</div>
+        <h4 class="font-bold text-white mb-2">Scoping Call (30 min)</h4>
+        <p class="text-slate-400 text-sm">We speak with the founder directly. We ask about your product, your team, your financials, and your operational pain points. We are honest about whether we are the right fit.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">3</div>
+        <h4 class="font-bold text-white mb-2">Discovery Proposal</h4>
+        <p class="text-slate-400 text-sm">If the fit is right, we send a scoped Discovery & Audit proposal — fixed cost, defined timeline, and a clear deliverable: a full operational assessment of your company.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">4</div>
+        <h4 class="font-bold text-white mb-2">Engagement Decision</h4>
+        <p class="text-slate-400 text-sm">After the audit, both parties decide whether to proceed to the Safe Zone Build. If we do, we move immediately. No pitch rounds. No waiting.</p>
+      </div>
+    </div>
+    <div class="mt-14 text-center">
+      <a href="contact.html" class="inline-flex items-center gap-2 bg-orange-600 text-white px-10 py-4 rounded-xl font-semibold hover:bg-orange-500 transition-colors text-lg">
+        <i data-lucide="rocket" class="w-5 h-5"></i> Start the Conversation
+      </a>
+      <p class="text-slate-500 text-sm mt-4">We respond to all startup enquiries within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-2 md:col-span-1">
+          <a href="index.html" class="block mb-4">
+            <img src="images/enlyst-logo.png" alt="Enlyst" class="h-8 w-auto object-contain" style="max-width:130px; filter:brightness(0) invert(1);">
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">The institutional operating system for Pakistan's growth economy.</p>
+          <div class="flex items-center gap-4 mb-5 flex-wrap">
+            <a href="https://enlybiz.com" target="_blank" rel="noopener" title="Enlybiz">
+              <img src="images/enlybiz-logo.png" alt="Enlybiz" class="h-5 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="https://enlysoft.net" target="_blank" rel="noopener" title="Enlysoft">
+              <img src="images/enlysoft-icon.png" alt="Enlysoft" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </a>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://linkedin.com/company/enlyst" target="_blank" rel="noopener" aria-label="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-linkedin.png" alt="LinkedIn" class="w-5 h-5 object-contain" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="https://facebook.com/enlyst" target="_blank" rel="noopener" aria-label="Facebook" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-facebook.png" alt="Facebook" class="w-5 h-5 object-contain">
+            </a>
+            <a href="https://github.com/enlyst" target="_blank" rel="noopener" aria-label="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-github.png" alt="GitHub" class="w-5 h-5 object-contain" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="mailto:recruiter@enlystnow.com" aria-label="Email" class="opacity-60 hover:opacity-100 transition-opacity">
+              <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+            </a>
+          </div>
+        </div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Subsidiaries</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="index.html#live-ecosystem" class="hover:text-white transition-colors">Enlyst HR</a></li><li><a href="index.html#live-ecosystem" class="hover:text-white transition-colors">Enlysum</a></li><li><a href="https://enlybiz.com" target="_blank" class="hover:text-white transition-colors">Enlybiz</a></li><li><a href="https://enlysoft.net" target="_blank" class="hover:text-white transition-colors">Enlysoft</a></li></ul></div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Company</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li><li><a href="mission.html" class="hover:text-white transition-colors">Mission & Values</a></li><li><a href="government-projects.html" class="hover:text-white transition-colors">Government Projects</a></li><li><a href="foundation.html" class="hover:text-white transition-colors">Foundation</a></li></ul></div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Programs</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="graduates.html" class="hover:text-white transition-colors">Graduates Framework</a></li><li><a href="startup-framework.html" class="hover:text-white transition-colors">Startup Framework</a></li><li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li></ul></div>
+    </div>
+    <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+      <p>© 2026 Enlyst Holding Company. Lahore, Pakistan.</p>
+      <div class="flex items-center gap-4 flex-wrap justify-center"><a href="mailto:recruiter@enlystnow.com" class="hover:text-white transition-colors">recruiter@enlystnow.com</a><a href="tel:03000340036" class="hover:text-white transition-colors">0300 0340036</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+lucide.createIcons();
+(function(){const btn=document.getElementById('nav-toggle'),drawer=document.getElementById('mobile-nav'),hb1=document.getElementById('hb1'),hb2=document.getElementById('hb2'),hb3=document.getElementById('hb3');let open=false;if(btn&&drawer){btn.addEventListener('click',function(){open=!open;drawer.classList.toggle('hidden',!open);if(open){hb1.style.cssText='transform:translateY(8px) rotate(45deg)';hb2.style.cssText='opacity:0';hb3.style.cssText='transform:translateY(-8px) rotate(-45deg);width:1.25rem';}else{hb1.style.cssText='';hb2.style.cssText='';hb3.style.cssText='';}});}})();
+</script>
+</body>
+</html>
+

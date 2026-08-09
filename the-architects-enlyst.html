@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architects | Enlyst</title>
+  <link rel="icon" href="png.png" sizes="any">
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Instrument Serif', 'serif'] }, colors: { brand: { blue: '#2D5BE3', obsidian: '#050505' } } } } }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #050505; color: #fff; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+    .text-gradient { background: linear-gradient(135deg, #ffffff 0%, #718096 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .obs-hide { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .obs-show { opacity: 1; transform: translateY(0); }
+
+    /* Parallax Image Container */
+    .img-container { position: relative; overflow: hidden; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+    .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 10s ease-out; }
+    .img-container:hover img { transform: scale(1.1); }
+  </style>
+</head>
+<body class="selection:bg-brand-blue selection:text-white">
+
+<nav class="fixed top-0 w-full z-40 bg-[#050505]/50 backdrop-blur-2xl border-b border-white/5 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-24">
+    <a href="index.html" class="flex items-center gap-4 group">
+      <svg width="36" height="38" viewBox="0 0 44 46" fill="none">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+      </svg>
+      <span class="text-3xl text-white font-serif tracking-tight mt-1">enlyst<span class="font-sans font-light text-brand-blue italic text-xl">now</span></span>
+    </a>
+    <div class="hidden md:flex items-center space-x-10">
+      <a href="index.html" class="text-xs uppercase tracking-widest font-bold text-slate-400 hover:text-white transition-colors">Manifesto</a>
+      <a href="index.html#os" class="text-xs uppercase tracking-widest font-bold text-slate-400 hover:text-white transition-colors">The OS</a>
+      <a href="about.html" class="text-xs uppercase tracking-widest font-bold text-white border-b border-white pb-1">The Architects</a>
+    </div>
+    <div class="hidden md:flex items-center">
+      <a href="contact.html" class="px-8 py-3 border border-white/20 text-white hover:bg-white hover:text-black font-bold text-sm uppercase tracking-widest rounded-full transition-all duration-300">Seek Solace</a>
+    </div>
+  </div>
+</nav>
+
+<section class="pt-40 pb-20 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-20">
+      <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.3em] mb-6 animate-[fadeUp_1s_forwards]">Behind the Bulwark</p>
+      <h1 class="text-6xl md:text-8xl font-serif text-gradient leading-[1.05] max-w-4xl animate-[fadeUp_1.2s_forwards]">
+        We are the monks <br><span class="italic text-brand-blue">of modern business.</span>
+      </h1>
+    </div>
+
+    <div class="img-container h-[600px] w-full mb-32 obs-hide shadow-[0_30px_100px_rgba(45,91,227,0.15)]">
+      <img src="f0213816.jpg" alt="Enlyst Core Team" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+      <div class="absolute bottom-10 left-10">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-brand-blue mb-2">HQ: Lahore, Pakistan</p>
+        <p class="font-serif text-3xl text-white">The Enlyst Core Board</p>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-20 obs-hide">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+
+        <div class="md:col-span-4">
+          <h2 class="text-4xl font-serif text-white mb-6">The Architects</h2>
+          <p class="text-slate-400 font-light leading-relaxed">
+            A living infrastructure built by practitioners. We do not offer empty consultancy. We embed ourselves.
+          </p>
+        </div>
+
+        <div class="md:col-span-8 space-y-16">
+
+          <div class="flex flex-col md:flex-row gap-8 border-b border-white/5 pb-16 group">
+            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-brand-blue transition-colors duration-500">
+              <span class="font-serif text-3xl text-white">WH</span>
+            </div>
+            <div>
+              <h3 class="text-3xl font-serif text-white mb-2">Mr. Wasim Hassan</h3>
+              <p class="font-mono text-xs uppercase tracking-[0.15em] text-brand-blue mb-4">Chairperson, Board of Members</p>
+              <p class="text-slate-400 font-light leading-relaxed mb-6">
+                The philosophical and structural architect of Enlyst. With deep expertise across HR, GovTech, and cloud infrastructure, he designed the overarching framework that allows systems to protect processes.
+              </p>
+              <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-slate-300">Google Cloud Certified</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-8 border-b border-white/5 pb-16 group">
+            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#C4620A] transition-colors duration-500">
+              <img src="1729800049753.jpg" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Miss Fatima">
+            </div>
+            <div>
+              <h3 class="text-3xl font-serif text-white mb-2">Miss Fatima</h3>
+              <p class="font-mono text-xs uppercase tracking-[0.15em] text-[#C4620A] mb-4">Enlybiz Partner (CEO)</p>
+              <p class="text-slate-400 font-light leading-relaxed mb-6">
+                Leads the performance engine. She protects businesses from predatory marketing funnels by orchestrating transparent CRM automation, funnel engineering, and brand positioning across the enterprise portfolio.
+              </p>
+              <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-slate-300">Growth Strategy</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-8 group">
+            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-purple-500 transition-colors duration-500">
+              <span class="font-serif text-3xl text-white">IS</span>
+            </div>
+            <div>
+              <h3 class="text-3xl font-serif text-white mb-2">Dr. Imran Sabir</h3>
+              <p class="font-mono text-xs uppercase tracking-[0.15em] text-purple-400 mb-4">Research (Enlyst Foundation)</p>
+              <p class="text-slate-400 font-light leading-relaxed mb-6">
+                Spearheads the Enlyst Foundation. Dr. Sabir drives the doctoral-grade methodology behind our social impact frameworks, ensuring our work translates into actual educational and institutional reform.
+              </p>
+              <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-slate-300">Policy Formulation</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-[#020202] pt-20 pb-12 border-t border-white/10 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 font-mono tracking-widest uppercase">
+    <div class="flex items-center gap-3 mb-4 md:mb-0">
+      <svg width="20" height="22" viewBox="0 0 44 46" fill="none">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+      </svg>
+      <span>Enlyst Smart Recruiting Pvt Ltd</span>
+    </div>
+    <div class="flex gap-8">
+      <a href="contact.html" class="hover:text-white transition-colors">Initiate Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('obs-show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.obs-hide').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

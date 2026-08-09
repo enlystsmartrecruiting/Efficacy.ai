@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlyst Foundation | Research, Education & Social Impact</title>
+  <meta name="description" content="Enlyst Foundation drives research, education, and social impact programs that strengthen communities and long-term institutional capacity.">
+  <link rel="canonical" href="https://enlystnow.com/foundation.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <meta name="msapplication-TileColor" content="#2D5BE3">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  <link rel="icon" href="/png.png" sizes="any">
+  <link rel="apple-touch-icon" href="/png.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enlystnow.com/foundation.html">
+  <meta property="og:title" content="Enlyst Foundation | Research, Education & Social Impact">
+  <meta property="og:description" content="Research, education, and social impact through Enlyst Foundation.">
+  <meta property="og:image" content="https://enlystnow.com/png.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Enlyst Foundation | Research, Education & Social Impact">
+  <meta name="twitter:image" content="https://enlystnow.com/png.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']}}}}</script>
+</head>
+<body class="antialiased overflow-x-hidden bg-white">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="png.png" width="32" height="32" alt="Enlyst" class="w-8 h-8 object-contain rounded-lg" loading="lazy" decoding="async" />
+        <span class="font-bold text-slate-900 text-lg">Enlyst</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Home</a>
+        <a href="about.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">About</a>
+        <a href="mission.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Mission</a>
+        <a href="government-projects.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Government</a>
+        <a href="foundation.html" class="text-sm font-medium text-purple-600">Foundation</a>
+        <a href="graduates.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Graduates</a>
+        <a href="startup-framework.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Startups</a>
+        <a href="contact.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+      </div>
+      <a href="contact.html" class="hidden md:inline-flex bg-slate-900 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-slate-800 transition-colors items-center">Book Consultation</a>
+      <button type="button" id="nav-toggle" class="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-slate-100 transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="block w-5 h-0.5 bg-slate-800" id="hb1"></span>
+        <span class="block w-5 h-0.5 bg-slate-800" id="hb2"></span>
+        <span class="block w-4 h-0.5 bg-slate-800" id="hb3"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+      <a href="index.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Home</a>
+      <a href="about.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">About</a>
+      <a href="mission.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Mission</a>
+      <a href="government-projects.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Government Projects</a>
+      <a href="foundation.html" class="text-sm font-medium text-purple-600 py-2 border-b border-slate-100">Foundation</a>
+      <a href="graduates.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Graduates</a>
+      <a href="startup-framework.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Startups</a>
+      <a href="contact.html" class="text-sm font-medium text-slate-700 py-2 border-b border-slate-100">Contact</a>
+      <a href="contact.html" class="mt-1 bg-slate-900 text-white text-center px-5 py-3 rounded-md text-sm font-semibold">Book Consultation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="py-24 bg-gradient-to-br from-purple-950 via-violet-900 to-slate-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 20% 50%, #a855f7 0%, transparent 50%), radial-gradient(circle at 80% 20%, #6366f1 0%, transparent 40%);"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl">
+      <p class="inline-flex items-center gap-2 text-xs uppercase tracking-widest bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-6">
+        <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i> Enlyst Foundation
+      </p>
+      <h1 class="text-4xl md:text-5xl font-serif mb-6 leading-tight">Research. Teaching. Reform.</h1>
+      <p class="text-lg text-purple-200 leading-relaxed max-w-2xl">
+        The Enlyst Foundation is the research and social-impact arm of the Enlyst Holding Company. It exists to move beyond theoretical welfare into measurable instructional reform — producing doctoral-grade research, building teacher capacity, and converting findings into policy.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY NUMBERS -->
+<section class="py-10 bg-white border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div><p class="text-3xl font-serif text-purple-600 font-bold">37,100</p><p class="text-sm text-slate-600 mt-1">Words of original field research</p></div>
+      <div><p class="text-3xl font-serif text-blue-600 font-bold">6</p><p class="text-sm text-slate-600 mt-1">Research chapters completed</p></div>
+      <div><p class="text-3xl font-serif text-rose-600 font-bold">24.3%</p><p class="text-sm text-slate-600 mt-1">VI student attrition Grade 8 → matric</p></div>
+      <div><p class="text-3xl font-serif text-green-600 font-bold">61%</p><p class="text-sm text-slate-600 mt-1">Achievement variance explained by teacher variables</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIMAT-HIKMAT FRAMEWORK -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="lg:w-1/2">
+        <p class="text-xs uppercase tracking-widest text-purple-600 font-bold mb-4">Primary Research Output</p>
+        <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-6">The Himat-Hikmat Framework</h2>
+        <p class="text-slate-600 leading-relaxed mb-5">
+          <em>Himat-Hikmat</em> — Urdu for <em>Courage</em> and <em>Wisdom</em> — is a comprehensive indigenous Pakistani theoretical model for mathematics education among visually impaired (VI) students in Punjab. It is the product of six years of field research, mixed-methods doctoral study, and direct engagement with students, teachers, and government administrators.
+        </p>
+        <p class="text-slate-600 leading-relaxed mb-5">
+          The framework exposes a systemic "Leaky Pipeline" where government financial stipends are disbursed to VI students without any corresponding investment in instructional capacity. Students receive money, but not knowledge. Teachers receive directives, but not training. The pipeline leaks — and Pakistan's most vulnerable learners fall through.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          The Himat-Hikmat Framework proposes a three-tier reform: teacher competency standards, curriculum adaptation protocols, and independent instructional audits — all supported by an evidence base of 37,100 words across six research chapters.
+        </p>
+        <div class="mt-8">
+          <a href="Himat-Hikatmat framework.html" target="_blank" class="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors">
+            <i data-lucide="file-text" class="w-5 h-5"></i> Read the Full Framework Document
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/2 space-y-4">
+        <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100">
+          <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="trending-down" class="w-4 h-4 text-rose-600"></i> The Leaky Pipeline — Key Findings</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-rose-600 font-bold">•</span> 24.3% student attrition from Grade 8 to matriculation among VI learners</li>
+            <li class="flex gap-2"><span class="text-rose-600 font-bold">•</span> 34-percentage-point achievement gap across Punjab divisions</li>
+            <li class="flex gap-2"><span class="text-rose-600 font-bold">•</span> Teacher variables explain 61% of achievement variance</li>
+            <li class="flex gap-2"><span class="text-rose-600 font-bold">•</span> Only 21% of teachers meet competency thresholds (vs. 84% international benchmark)</li>
+            <li class="flex gap-2"><span class="text-rose-600 font-bold">•</span> Stipends disbursed but no structured instructional capacity in place</li>
+          </ul>
+        </div>
+        <div class="bg-green-50 rounded-2xl p-6 border border-green-100">
+          <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i> What the Framework Proposes</h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-green-600 font-bold">1.</span> Mandatory teacher competency standards for VI education across Punjab</li>
+            <li class="flex gap-2"><span class="text-green-600 font-bold">2.</span> Adapted mathematics curriculum aligned to Braille and tactile learning methods</li>
+            <li class="flex gap-2"><span class="text-green-600 font-bold">3.</span> Independent instructional audits separate from school administration</li>
+            <li class="flex gap-2"><span class="text-green-600 font-bold">4.</span> Provincial legislative proposal to codify these standards into law</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING TEACHERS PROGRAMME -->
+<section class="py-20 bg-slate-50 border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-widest text-purple-600 font-bold mb-3">Active Programme</p>
+      <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-4">Teaching Teachers of Disabled Students</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        The Foundation's most direct field activity — taking the Himat-Hikmat research into classrooms through structured capacity-building workshops for teachers working with visually impaired students across Punjab.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+        <div class="bg-purple-100 rounded-xl p-3 w-fit mb-5"><i data-lucide="presentation" class="w-6 h-6 text-purple-600"></i></div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3">Workshop Design</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Each workshop is built from the Himat-Hikmat Framework's evidence base. Sessions are structured around the specific competency gaps identified in the field research — not generic training, but targeted capacity building tied to measurable outcomes.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+        <div class="bg-blue-100 rounded-xl p-3 w-fit mb-5"><i data-lucide="users-2" class="w-6 h-6 text-blue-600"></i></div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3">Who Attends</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Teachers from government and government-assisted special education schools across Punjab. Priority cohorts include mathematics teachers at schools with high VI enrolment and low matric pass rates — the most critical intervention points in the pipeline.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+        <div class="bg-green-100 rounded-xl p-3 w-fit mb-5"><i data-lucide="clipboard-check" class="w-6 h-6 text-green-600"></i></div>
+        <h3 class="text-xl font-bold text-slate-900 mb-3">What We Measure</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Pre- and post-workshop competency assessments. Follow-up classroom observation visits. Student outcome tracking at six and twelve months. Every workshop produces a dataset that feeds back into the framework's evidence base — improving both the research and the training.</p>
+      </div>
+    </div>
+
+    <!-- Activities detail -->
+    <div class="mt-12 bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+      <h3 class="text-xl font-bold text-slate-900 mb-6">Personal Engagement — Foundation Activities</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex gap-4">
+          <div class="mt-1 bg-purple-100 p-2 rounded-lg h-fit"><i data-lucide="book-open" class="w-4 h-4 text-purple-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">Doctoral Field Research</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Six-chapter sequential explanatory mixed-methods study — combining quantitative data collection across Punjab schools with qualitative interviews of teachers, students, and administrators.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mt-1 bg-blue-100 p-2 rounded-lg h-fit"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">School Visits Across Punjab Divisions</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Direct classroom observation, student interviews, and administrator engagement across multiple Punjab divisions — documenting the 34-percentage-point achievement gap and its structural causes.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mt-1 bg-green-100 p-2 rounded-lg h-fit"><i data-lucide="mic" class="w-4 h-4 text-green-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">Teacher Capacity Workshops</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">In-person and blended-format workshops for teachers of VI students — structured to address the specific 79% competency gap documented in the research. Includes mathematics pedagogy for tactile learning, Braille curriculum alignment, and IEP (Individualised Education Plan) development.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mt-1 bg-orange-100 p-2 rounded-lg h-fit"><i data-lucide="file-bar-chart" class="w-4 h-4 text-orange-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">Data Visualisation & Policy Reports</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Translating complex field data into visual policy documents accessible to government administrators — bridging the gap between academic research and legislative decision-making.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mt-1 bg-violet-100 p-2 rounded-lg h-fit"><i data-lucide="landmark" class="w-4 h-4 text-violet-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">Government Liaison & Policy Advocacy</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Presenting research findings to Punjab Education Department officials and SECP stakeholders — building the case for legislative reform through evidence rather than advocacy alone.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mt-1 bg-rose-100 p-2 rounded-lg h-fit"><i data-lucide="pen-tool" class="w-4 h-4 text-rose-600"></i></div>
+          <div>
+            <h4 class="font-semibold text-slate-900 mb-1">Publication Preparation</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Preparing the Himat-Hikmat Framework for peer-reviewed academic journal submission and international conference presentation — establishing the research as a citable, reproducible contribution to inclusive education literature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="py-20 bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">Foundation Roadmap</p>
+      <h2 class="text-3xl md:text-4xl font-serif mb-4">Where the Enlyst Foundation is going.</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto">A five-year roadmap — from doctoral research to national policy impact.</p>
+    </div>
+
+    <div class="space-y-6">
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+          <span class="text-sm font-bold text-purple-400 uppercase tracking-widest">2026</span>
+        </div>
+        <div class="flex-1 bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2">Thesis Completion & Peer-Review Submission</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Complete the doctoral thesis (six chapters, 37,100+ words). Submit the Himat-Hikmat Framework to at least two peer-reviewed journals in inclusive education and educational psychology. Present at one international conference on disability-inclusive education.</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+          <span class="text-sm font-bold text-purple-400 uppercase tracking-widest">2027</span>
+        </div>
+        <div class="flex-1 bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2">Provincial Legislative Proposal</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Convert the framework's policy recommendations into a formal legislative proposal for the Punjab Assembly — mandating teacher competency standards, adapted curriculum, and independent audit mechanisms for VI education. Engage Punjab Education Department for pilot implementation across two divisions.</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+          <span class="text-sm font-bold text-purple-400 uppercase tracking-widest">2028</span>
+        </div>
+        <div class="flex-1 bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2">Scale Teacher Training Across All Punjab Divisions</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Expand the "Teaching Teachers" programme to all nine Punjab divisions — reaching every government special education school with structured capacity-building workshops, pre/post competency assessment, and ongoing mentoring support for VI mathematics teachers.</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+          <span class="text-sm font-bold text-purple-400 uppercase tracking-widest">2029</span>
+        </div>
+        <div class="flex-1 bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2">National Replication — All Four Provinces</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Replicate the Himat-Hikmat Framework across Sindh, KPK, and Balochistan — adapting for regional language and curriculum variations. Establish the Enlyst Foundation as Pakistan's leading independent research body for disability-inclusive education policy.</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-6 items-start">
+        <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+          <span class="text-sm font-bold text-purple-400 uppercase tracking-widest">2030</span>
+        </div>
+        <div class="flex-1 bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2">International Peer Recognition & South Asia Expansion</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Establish international partnerships with disability education bodies in the UK, UAE, and South Asia. Develop a replicable framework export model for deployment in comparable low-resource, high-VI-population contexts. Position Pakistan as a knowledge exporter in inclusive education — not just an aid recipient.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-purple-900 rounded-3xl p-8 md:p-12 text-white text-center">
+      <h2 class="text-3xl md:text-4xl font-serif mb-4">Support the Foundation's work.</h2>
+      <p class="text-purple-200 mb-8 max-w-xl mx-auto">Whether as a research partner, a school liaison, a policy advocate, or a funder — there is a role for institutions that believe in evidence-based equity.</p>
+      <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-purple-900 px-8 py-4 rounded-xl font-semibold hover:bg-purple-50 transition-colors">
+        <i data-lucide="heart-handshake" class="w-5 h-5"></i> Partner with the Foundation
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-2 md:col-span-1">
+          <a href="index.html" class="block mb-4">
+            <img src="images/enlyst-logo.png" alt="Enlyst" class="h-8 w-auto object-contain" style="max-width:130px; filter:brightness(0) invert(1);">
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">The institutional operating system for Pakistan's growth economy.</p>
+          <div class="flex items-center gap-4 mb-5 flex-wrap">
+            <a href="https://enlybiz.com" target="_blank" rel="noopener" title="Enlybiz">
+              <img src="images/enlybiz-logo.png" alt="Enlybiz" class="h-5 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="https://enlysoft.net" target="_blank" rel="noopener" title="Enlysoft">
+              <img src="images/enlysoft-icon.png" alt="Enlysoft" class="h-5 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </a>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://linkedin.com/company/enlyst" target="_blank" rel="noopener" aria-label="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-linkedin.png" alt="LinkedIn" class="w-5 h-5 object-contain" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="https://facebook.com/enlyst" target="_blank" rel="noopener" aria-label="Facebook" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-facebook.png" alt="Facebook" class="w-5 h-5 object-contain">
+            </a>
+            <a href="https://github.com/enlyst" target="_blank" rel="noopener" aria-label="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
+              <img src="images/icon-github.png" alt="GitHub" class="w-5 h-5 object-contain" style="filter:brightness(0) invert(1);">
+            </a>
+            <a href="mailto:recruiter@enlystnow.com" aria-label="Email" class="opacity-60 hover:opacity-100 transition-opacity">
+              <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+            </a>
+          </div>
+        </div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Subsidiaries</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="index.html#live-ecosystem" class="hover:text-white transition-colors">Enlyst HR</a></li><li><a href="index.html#live-ecosystem" class="hover:text-white transition-colors">Enlysum</a></li><li><a href="https://enlybiz.com" target="_blank" class="hover:text-white transition-colors">Enlybiz</a></li><li><a href="https://enlysoft.net" target="_blank" class="hover:text-white transition-colors">Enlysoft</a></li></ul></div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Company</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li><li><a href="mission.html" class="hover:text-white transition-colors">Mission & Values</a></li><li><a href="government-projects.html" class="hover:text-white transition-colors">Government Projects</a></li><li><a href="foundation.html" class="hover:text-white transition-colors">Foundation</a></li></ul></div>
+      <div><h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Programs</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="graduates.html" class="hover:text-white transition-colors">Graduates Framework</a></li><li><a href="startup-framework.html" class="hover:text-white transition-colors">Startup Framework</a></li><li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li></ul></div>
+    </div>
+    <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+      <p>© 2026 Enlyst Foundation / Enlyst Holding Company. Lahore, Pakistan.</p>
+      <div class="flex items-center gap-4 flex-wrap justify-center"><a href="mailto:recruiter@enlystnow.com" class="hover:text-white transition-colors">recruiter@enlystnow.com</a><a href="tel:03000340036" class="hover:text-white transition-colors">0300 0340036</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  function syncMobileNavAria() {
+    const btn = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('mobile-nav');
+    if (!btn || !drawer) return;
+    const expanded = !drawer.classList.contains('hidden');
+    btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    btn.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
+  }
+  function closeMobileNav() {
+    const drawer = document.getElementById('mobile-nav');
+    const hb1 = document.getElementById('hb1');
+    const hb2 = document.getElementById('hb2');
+    const hb3 = document.getElementById('hb3');
+    if (drawer) drawer.classList.add('hidden');
+    if (hb1) hb1.style.cssText = '';
+    if (hb2) hb2.style.cssText = '';
+    if (hb3) hb3.style.cssText = '';
+    syncMobileNavAria();
+  }
+  (function () {
+    const btn = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('mobile-nav');
+    const hb1 = document.getElementById('hb1');
+    const hb2 = document.getElementById('hb2');
+    const hb3 = document.getElementById('hb3');
+    const nav = drawer ? drawer.closest('nav') : null;
+    if (btn && drawer) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const willOpen = drawer.classList.contains('hidden');
+        drawer.classList.toggle('hidden', !willOpen);
+        if (willOpen) {
+          if (hb1) hb1.style.cssText = 'transform:translateY(8px) rotate(45deg)';
+          if (hb2) hb2.style.cssText = 'opacity:0';
+          if (hb3) hb3.style.cssText = 'transform:translateY(-8px) rotate(-45deg);width:1.25rem';
+        } else {
+          if (hb1) hb1.style.cssText = '';
+          if (hb2) hb2.style.cssText = '';
+          if (hb3) hb3.style.cssText = '';
+        }
+        syncMobileNavAria();
+      });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer && !drawer.classList.contains('hidden')) {
+        closeMobileNav();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (!drawer || drawer.classList.contains('hidden') || !nav) return;
+      if (!nav.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+  })();
+  if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+    try { lucide.createIcons(); } catch (e) { /* optional */ }
+  }
+</script>
+</body>
+</html>
+

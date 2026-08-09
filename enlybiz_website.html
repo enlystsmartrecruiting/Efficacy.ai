@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enlybiz - East Cloud Digital Marketing Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #507ABD;
+            --primary-yellow: #F7EC13;
+            --primary-green: #27AB4D;
+            --dark-bg: #0A0A0B;
+            --light-bg: #FFFFFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --text-dark: #1A1A1A;
+            --accent-gradient: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            --glow-green: rgba(39, 171, 77, 0.3);
+            --glow-blue: rgba(80, 122, 189, 0.3);
+        }
+
+        body {
+            font-family: 'Humanst521 BT', 'Inter', 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 11, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(39, 171, 77, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px var(--glow-green);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--glow-green);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Hero Visual with Logo */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-logo {
+            width: 350px;
+            height: auto;
+            filter: drop-shadow(0 0 30px var(--glow-green));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(10, 10, 11, 0.95) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        /* Mission, Vision, Values */
+        .mvv-section {
+            background: radial-gradient(ellipse at center, rgba(80, 122, 189, 0.1) 0%, transparent 70%);
+        }
+
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .mvv-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(39, 171, 77, 0.2);
+        }
+
+        .mvv-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mvv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--dark-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(39, 171, 77, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            background: linear-gradient(180deg, rgba(10, 10, 11, 0.95) 0%, var(--dark-bg) 100%);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .leader-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(80, 122, 189, 0.2);
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .leader-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .leader-role {
+            color: var(--primary-yellow);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Partnerships Section */
+        .partnerships {
+            background: radial-gradient(ellipse at center, rgba(39, 171, 77, 0.1) 0%, transparent 70%);
+        }
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0.8);
+        }
+
+        /* AI Assessment Tool */
+        .assessment-tool {
+            background: var(--dark-bg);
+        }
+
+        .assessment-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .assessment-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .assessment-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--glow-green);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chat-interface:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-container,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .mvv-grid,
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .hero-logo {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8IS0tIEVubHliaXogTG9nbyAtLT4KPGcgaWQ9ImVubHliaXotbG9nbyI+CjwhLS0gTG9nbyBJY29uIC0tPgo8ZyBpZD0ibG9nby1pY29uIj4KPHBhdGggZD0iTTEwIDEwSDE4QzIwLjIwOTEgMTAgMjIgMTEuNzkwOSAyMiAxNFYyMkgyNkMzMC40MTgzIDIyIDM0IDI1LjU4MTcgMzQgMzBWNDBIMTBWMTBaIiBmaWxsPSIjNTA3QUJEIi8+CjxwYXRoIGQ9Ik0xMCAyMkgyNkMzMC40MTgzIDIyIDM0IDI1LjU4MTcgMzQgMzBIMTBWMjJaIiBmaWxsPSIjRjdFQzEzIi8+CjxwYXRoIGQ9Ik0xMCAzMEgzNFY0MEMyNi44NDAzIDQ4IDIwIDQ4IDEwIDQwVjMwWiIgZmlsbD0iIzI3QUI0RCIvPgo8L2c+Cjx0ZXh0IHg9IjQ1IiB5PSIzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0ZGRkZGRiI+ZW5seWJpejwvdGV4dD4KPC9nPgo8L3N2Zz4=" alt="Enlybiz Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#partnerships">Partnerships</a></li>
+                <li><a href="#assessment">AI Assessment</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tagline">East Cloud Digital Marketing Agency</div>
+                <h1>The Agentic AI Marketing Revolution</h1>
+                <p class="hero-description">
+                    Transform your marketing from task execution to autonomous orchestration. 
+                    We architect intelligent marketing systems that deliver measurable business outcomes 
+                    across the fastest-growing digital economies of the Middle East and South Asia.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#assessment" class="btn-primary">Start AI Assessment</a>
+                    <a href="#services" class="btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDM1MCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwhLS0gRW5seWJpeiBIZXJvIExvZ28gLS0+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9Imhlcm9HcmFkaWVudCIgeDE9IjAiIHkxPSIwIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNTA3QUJEO3N0b3Atb3BhY2l0eToxIiAvPgo8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6I0Y3RUMxMztzdG9wLW9wYWNpdHk6MSIgLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMjdBQjREO3N0b3Atb3BhY2l0eToxIiAvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwLCA1MCkiPgo8IS0tIE1haW4gTG9nbyBTaGFwZSAtLT4KPHBhdGggZD0iTTUwIDUwSDEwMEM4LjQ4IDUwIDEyIDUzLjUyIDEyIDYwVjEyMEg2MEMxNDIgMTIwIDE1MCA1My41IDE1MCA2MFYxMDBINTBWNTBaIiBmaWxsPSJ1cmwoI2hlcm9HcmFkaWVudCkiLz4KPHA8dGggZD0iTTUwIDEwMEgxNTBWMTUwQzE0Mi4zIDE2MCAxMzAuOSAxNjAgOTAgMTYwSDUwVjEwMFoiIGZpbGw9InVybCgjaGVyb0dyYWRpZW50KSIvPgo8IS0tIExvZ28gVGV4dCAtLT4KPHR4dCB4PSIyMDAiIHk9IjEyMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0ZGRkZGRiI+ZW5seWJpejwvdGV4dD4KPC9nPgo8L3N2Zz4=" alt="Enlybiz Hero Logo" class="hero-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>About Enlybiz</h3>
+                    <p>
+                        Enlybiz stands at the forefront of the digital marketing revolution, pioneering the transition 
+                        from traditional generative AI to autonomous agentic AI systems. As an independent strategic 
+                        arm of Enlyst, we specialize in architecting intelligent marketing engines that operate 24/7 
+                        to deliver measurable business outcomes.
+                    </p>
+                    <p>
+                        Our "East Cloud" focus targets the world's most dynamic digital economies - the Middle East 
+                        and South Asia - where explosive growth in e-commerce, fintech, and digital transformation 
+                        creates unprecedented opportunities for AI-native marketing solutions.
+                    </p>
+                    <p>
+                        We don't just execute marketing tasks; we engineer autonomous systems that perceive, reason, 
+                        plan, and act to achieve your business objectives while you focus on strategic growth.
+                    </p>
+                </div>
+                <div class="about-visual">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImFib3V0R3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNTA3QUJEO3N0b3Atb3BhY2l0eTowLjgiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzI3QUI0RDtzdG9wLW9wYWNpdHk6MC44IiAvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjYWJvdXRHcmFkaWVudCkiLz4KPHR4dCB4PSIyMDAiIHk9IjE1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiPkFJIE1hcmtldGluZyBFeHBlcnRpc2U8L3R4dD4KPC9zdmc+" alt="About Enlybiz">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="mvv-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Foundation</h2>
+                <p>The principles that guide our transformation of digital marketing through agentic AI</p>
+            </div>
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="mvv-icon">🎯</div>
+                    <h3>Mission</h3>
+                    <p>To architect autonomous marketing engines that deliver measurable business outcomes, transforming how brands engage with customers across the high-growth digital economies of the Middle East and South Asia.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="mvv-icon">🔮</div>
+                    <h3>Vision</h3>
+                    <p>To be the definitive leader in agentic AI marketing, establishing the new paradigm where intelligent systems orchestrate personalize

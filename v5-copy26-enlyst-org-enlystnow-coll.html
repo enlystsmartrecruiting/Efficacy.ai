@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — enlyst · Smart Recruiting</title>
+<meta name="description" content="The philosophy, vision, mission, and values of Enlyst Smart Recruiting. Why we exist, what we believe, and how we build systems that protect people."/>
+<link rel="canonical" href="https://enlystnow.com/enlyst-hr/about.html"/>
+<meta name="theme-color" content="#0A0A0F"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════════
+   TOKENS — identical to homepage
+════════════════════════════════════ */
+:root {
+  --sky-0:#EBF2FF; --sky-1:#D4E5FF; --sky-2:#B8D2FF; --sky-3:#8FB8FF;
+  --mid-1:#5B8FE8; --mid-2:#2D5BE3;
+  --deep-1:#1A3580; --deep-2:#0D1A40; --deep-3:#060D20; --void:#0A0A0F;
+  --blue:#2D5BE3; --blue-lo:rgba(45,91,227,.12); --blue-hi:rgba(45,91,227,.3);
+  --gold:#C4A24A; --green:#1A7A4A; --amber:#C4620A; --purple:#6B3FA0;
+  --ink:#0D1A3A; --ink2:#3A4D7A; --ink3:#6B7FA8;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --max:1200px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --bar:2.25rem; --nav:4.5rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;}
+::selection{background:var(--blue);color:#fff;}
+
+/* ════════════════════════════════════
+   FIXED BG — inverted: dark top, sky trace at bottom
+   About page is the other side of the coin from homepage
+════════════════════════════════════ */
+.bg-gradient{
+  position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(
+    180deg,
+    var(--void)   0%,
+    var(--deep-3) 20%,
+    var(--deep-2) 40%,
+    var(--deep-1) 60%,
+    var(--mid-2)  78%,
+    var(--mid-1)  90%,
+    var(--sky-3) 100%
+  );
+}
+.bg-grid{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(45,91,227,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(45,91,227,.035) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.4) 50%,transparent 100%);
+}
+
+/* ════════════════════════════════════
+   GLOW ORBS
+════════════════════════════════════ */
+.glow-orb{position:fixed;border-radius:50%;filter:blur(130px);z-index:-1;pointer-events:none;animation:orb-float 22s ease-in-out infinite alternate;}
+.g1{width:700px;height:700px;top:-250px;right:-150px;background:rgba(107,63,160,.2);}
+.g2{width:600px;height:600px;bottom:10%;left:-180px;background:rgba(45,91,227,.15);animation-delay:-9s;animation-duration:28s;}
+.g3{width:450px;height:450px;top:40%;right:10%;background:rgba(196,162,74,.08);animation-delay:-5s;animation-duration:19s;}
+@keyframes orb-float{
+  0%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(3%,8%) scale(1.06);}
+  66%{transform:translate(-4%,4%) scale(.96);}
+  100%{transform:translate(5%,-5%) scale(1.03);}
+}
+
+/* ════════════════════════════════════
+   WRAP
+════════════════════════════════════ */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+
+/* ════════════════════════════════════
+   TOPBAR
+════════════════════════════════════ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  height:var(--bar);
+  background:rgba(10,10,15,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:center;justify-content:center;gap:1.25rem;
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+}
+.topbar a{color:var(--gold);font-weight:700;transition:color .2s;}
+.topbar a:hover{color:#fff;}
+.topbar-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2);}
+
+/* ════════════════════════════════════
+   NAV
+════════════════════════════════════ */
+.nav{
+  position:fixed;top:var(--bar);left:0;right:0;z-index:89;height:var(--nav);
+  background:rgba(10,10,15,.88);border-bottom:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(16px);
+}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;gap:2rem;}
+.brand{display:flex;align-items:center;gap:.75rem;flex-shrink:0;}
+.brand-wordmark{font-family:var(--serif);font-size:1.875rem;color:#fff;letter-spacing:-.02em;line-height:1;}
+.brand-div{width:1px;height:1.25rem;background:rgba(255,255,255,.15);}
+.brand-tag{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:.25rem;margin-left:auto;}
+.nav-btn{font-size:.875rem;font-weight:500;color:rgba(255,255,255,.55);padding:.5rem .875rem;border-radius:6px;transition:color .2s,background .2s;}
+.nav-btn:hover,.nav-btn.active{color:#fff;background:rgba(255,255,255,.07);}
+.nav-ext{font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:.5rem .875rem;border:1px solid rgba(196,162,74,.3);border-radius:6px;transition:color .2s,border-color .2s;white-space:nowrap;}
+.nav-ext:hover{color:#fff;border-color:var(--gold);}
+.nav-cta-btn{font-size:.875rem;font-weight:600;color:#fff;background:var(--blue);padding:.5625rem 1.25rem;border-radius:100px;box-shadow:0 4px 20px rgba(45,91,227,.3);transition:background .2s,transform .15s;flex-shrink:0;white-space:nowrap;}
+.nav-cta-btn:hover{background:#1E3FA8;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+.drawer{position:fixed;top:calc(var(--bar) + var(--nav));left:0;right:0;z-index:88;padding:1.5rem;background:rgba(10,10,15,.96);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:.5rem;transform:translateY(-120%);transition:transform .4s var(--ease);}
+.drawer.open{transform:translateY(0);}
+.drawer-btn{font-size:1rem;font-weight:500;color:rgba(255,255,255,.65);padding:.875rem 1rem;border-radius:8px;text-align:left;transition:background .2s,color .2s;}
+.drawer-btn:hover{background:rgba(255,255,255,.06);color:#fff;}
+.drawer-cta{margin-top:.5rem;background:var(--blue);color:#fff;font-size:.9375rem;font-weight:700;padding:1rem;border-radius:10px;text-align:center;}
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv-d1{transition-delay:.1s;}.rv-d2{transition-delay:.2s;}.rv-d3{transition-delay:.3s;}.rv-d4{transition-delay:.4s;}
+
+/* ════════════════════════════════════
+   SECTION PRIMITIVES
+════════════════════════════════════ */
+.s-eyebrow{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.875rem;color:#93B4FF;}
+.s-eyebrow-gold{color:var(--gold);}
+.s-title{font-family:var(--serif);font-size:clamp(2.25rem,4.5vw,3.5rem);font-weight:400;line-height:1.08;letter-spacing:-.025em;}
+.s-title em{font-style:italic;}
+.s-lead{font-size:1.0625rem;line-height:1.75;color:rgba(255,255,255,.55);max-width:38rem;margin-top:1rem;}
+
+/* ════════════════════════════════════
+   §1 PAGE HERO — STATEMENT
+════════════════════════════════════ */
+.page-hero{
+  padding:calc(var(--bar) + var(--nav) + 5rem) 0 0;
+  position:relative;
+}
+.hero-statement{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:end;padding-bottom:5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.hs-left h1{
+  font-family:var(--serif);
+  font-size:clamp(3.5rem,7vw,6.5rem);
+  line-height:1.0;letter-spacing:-.035em;color:#fff;
+  margin-bottom:2rem;
+}
+.hs-left h1 em{font-style:italic;color:rgba(255,255,255,.3);}
+.hs-left p{font-size:1.125rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:28rem;}
+.hs-right{display:flex;flex-direction:column;gap:1.5rem;padding-bottom:.5rem;}
+.hs-quote{
+  padding:2rem 2rem 2rem 1.75rem;
+  border-left:2px solid var(--blue);
+  background:rgba(45,91,227,.06);
+  border-radius:0 1rem 1rem 0;
+  backdrop-filter:blur(16px);
+}
+.hs-quote blockquote{
+  font-family:var(--serif);font-size:1.25rem;font-style:italic;
+  color:#fff;line-height:1.55;margin-bottom:.75rem;
+}
+.hs-quote cite{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);font-style:normal;}
+.hs-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
+}
+.hs-meta-item{
+  padding:1.125rem 1.25rem;border-radius:.875rem;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(12px);
+}
+.hs-meta-num{font-family:var(--serif);font-size:2rem;color:#fff;letter-spacing:-.025em;line-height:1;}
+.hs-meta-lbl{font-family:var(--mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.25rem;}
+
+/* ════════════════════════════════════
+   §2 ORIGIN — THE ARGUMENT
+════════════════════════════════════ */
+.section-origin{padding:7rem 0;}
+.origin-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;}
+.origin-left{}
+.origin-left .s-title{color:#fff;margin-bottom:1.5rem;}
+.origin-left .s-title em{color:#93B4FF;}
+.origin-body{font-size:1.0625rem;line-height:1.85;color:rgba(255,255,255,.5);}
+.origin-body p{margin-bottom:1.25rem;}
+.origin-body p:last-child{margin-bottom:0;}
+.origin-body strong{color:rgba(255,255,255,.8);font-weight:600;}
+.origin-right{display:flex;flex-direction:column;gap:1rem;}
+.origin-stat-card{
+  padding:1.75rem 1.875rem;border-radius:1rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  transition:background .3s,border-color .3s,transform .35s var(--ease);
+}
+.origin-stat-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);transform:translateY(-3px);}
+.osc-num{font-family:var(--serif);font-size:2.75rem;color:#fff;letter-spacing:-.03em;line-height:1;}
+.osc-lbl{font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.25rem;margin-bottom:.625rem;}
+.osc-desc{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;}
+.origin-framework-card{
+  padding:1.75rem 1.875rem;border-radius:1rem;
+  background:rgba(45,91,227,.1);border:1px solid rgba(45,91,227,.25);
+  backdrop-filter:blur(18px);
+}
+.ofc-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:#93B4FF;margin-bottom:.875rem;}
+.ofc-title{font-family:var(--serif);font-size:1.375rem;color:#fff;font-style:italic;margin-bottom:.625rem;}
+.ofc-desc{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;}
+
+/* ════════════════════════════════════
+   §3 VISION / MISSION — BENTO
+════════════════════════════════════ */
+.section-vm{padding:6rem 0;}
+.vm-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:3rem;}
+.b-c5{grid-column:span 5}.b-c7{grid-column:span 7}.b-c4{grid-column:span 4}.b-c6{grid-column:span 6}.b-c8{grid-column:span 8}.b-c12{grid-column:span 12}
+@media(max-width:900px){.b-c5,.b-c7,.b-c4,.b-c6,.b-c8,.b-c12{grid-column:span 12}}
+
+.vm-cell{
+  border-radius:1.25rem;padding:2.25rem 2rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;
+  transition:background .35s,border-color .35s,transform .35s var(--ease);
+}
+.vm-cell:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);}
+.vm-cell-vision{background:rgba(45,91,227,.1);border-color:rgba(45,91,227,.25);}
+.vm-cell-vision:hover{background:rgba(45,91,227,.16);border-color:rgba(45,91,227,.4);}
+.vm-cell-mission{background:rgba(196,162,74,.07);border-color:rgba(196,162,74,.18);}
+.vm-cell-mission:hover{background:rgba(196,162,74,.12);border-color:rgba(196,162,74,.3);}
+
+.vm-cell-label{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.25rem;display:inline-block;}
+.lbl-blue{color:#93B4FF;background:rgba(45,91,227,.15);padding:.25rem .75rem;border-radius:4px;}
+.lbl-gold{color:var(--gold);background:rgba(196,162,74,.12);padding:.25rem .75rem;border-radius:4px;}
+.lbl-white{color:rgba(255,255,255,.6);background:rgba(255,255,255,.07);padding:.25rem .75rem;border-radius:4px;}
+
+.vm-cell h2{font-family:var(--serif);font-size:clamp(1.625rem,2.5vw,2.25rem);color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:.875rem;}
+.vm-cell h2 em{font-style:italic;}
+.vm-cell p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;}
+.vm-cell p strong{color:rgba(255,255,255,.85);}
+
+.vm-ghost{
+  position:absolute;bottom:-24px;right:-8px;
+  font-family:var(--serif);font-style:italic;font-size:7rem;
+  line-height:1;opacity:.04;pointer-events:none;color:#fff;
+  letter-spacing:-.04em;
+}
+.vm-icon{width:3rem;height:3rem;border-radius:.875rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
+.vm-icon svg{width:24px;height:24px;fill:none;stroke-width:1.5;}
+
+/* ════════════════════════════════════
+   §4 PHILOSOPHY — DEEP DARK
+════════════════════════════════════ */
+.section-philosophy{padding:7rem 0;}
+.philosophy-lead{
+  max-width:52rem;margin-bottom:4rem;
+}
+.philosophy-lead h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);color:#fff;line-height:1.12;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.philosophy-lead h2 em{font-style:italic;color:#93B4FF;}
+.philosophy-lead p{font-size:1.0625rem;line-height:1.8;color:rgba(255,255,255,.5);}
+
+.philosophy-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:4rem;}
+@media(max-width:768px){.philosophy-pillars{grid-template-columns:1fr;}}
+.philo-card{
+  padding:2rem 1.875rem;border-radius:1rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  transition:background .3s,border-color .3s,transform .35s var(--ease);
+  position:relative;overflow:hidden;
+}
+.philo-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);transform:translateY(-4px);}
+.philo-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--blue);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.philo-card:hover::after{transform:scaleX(1);}
+.philo-num{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem;}
+.philo-icon{width:2.75rem;height:2.75rem;border-radius:.75rem;background:rgba(45,91,227,.12);border:1px solid rgba(45,91,227,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+.philo-icon svg{width:20px;height:20px;fill:none;stroke:rgba(147,180,255,.9);stroke-width:1.75;}
+.philo-card h3{font-family:var(--serif);font-size:1.375rem;color:#fff;margin-bottom:.625rem;}
+.philo-card p{font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.65;}
+
+/* Philosophy manifesto block */
+.philosophy-manifesto{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+  padding:3rem;border-radius:1.5rem;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(20px);
+}
+@media(max-width:768px){.philosophy-manifesto{grid-template-columns:1fr;}}
+.pm-left{border-right:1px solid rgba(255,255,255,.06);padding-right:3rem;}
+@media(max-width:768px){.pm-left{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding-right:0;padding-bottom:2rem;}}
+.pm-left blockquote{
+  font-family:var(--serif);font-size:clamp(1.375rem,2vw,1.875rem);
+  font-style:italic;color:#fff;line-height:1.45;margin-bottom:1.5rem;
+  padding-left:1.5rem;border-left:2px solid var(--blue);
+}
+.pm-left cite{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);font-style:normal;}
+.pm-right{display:flex;flex-direction:column;justify-content:center;gap:1.25rem;}
+.pm-point{display:flex;align-items:flex-start;gap:1rem;}
+.pm-point-icon{width:2rem;height:2rem;border-radius:.5rem;background:rgba(45,91,227,.12);border:1px solid rgba(45,91,227,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.125rem;}
+.pm-point-icon svg{width:14px;height:14px;stroke:rgba(147,180,255,.9);fill:none;stroke-width:2;}
+.pm-point-text h4{font-size:.9375rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+.pm-point-text p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;}
+
+/* ════════════════════════════════════
+   §5 VALUES — FEATURED
+════════════════════════════════════ */
+.section-values{padding:6rem 0;}
+.values-intro{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;}
+.values-intro-text{}
+.values-intro-text h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.25rem);color:#fff;line-height:1.1;letter-spacing:-.025em;}
+.values-intro-text h2 em{font-style:italic;color:#93B4FF;}
+.values-intro-text p{font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:34rem;margin-top:.875rem;}
+.values-intro-note{
+  padding:1.25rem 1.5rem;border-radius:.875rem;max-width:280px;
+  background:rgba(196,162,74,.08);border:1px solid rgba(196,162,74,.18);
+  backdrop-filter:blur(12px);flex-shrink:0;
+}
+.values-intro-note p{font-size:.8125rem;color:rgba(196,162,74,.8);line-height:1.6;font-style:italic;font-family:var(--serif);}
+
+.values-main-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:768px){.values-main-grid{grid-template-columns:1fr;}}
+.value-featured{
+  padding:2.5rem;border-radius:1.25rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;
+  transition:background .3s,border-color .3s,transform .35s var(--ease);
+}
+.value-featured:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);transform:translateY(-4px);}
+.value-featured::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--blue);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.value-featured:hover::before{transform:scaleX(1);}
+.value-featured-ghost{
+  position:absolute;bottom:-20px;right:-8px;
+  font-family:var(--serif);font-style:italic;font-size:6rem;
+  opacity:.04;pointer-events:none;color:#fff;letter-spacing:-.04em;line-height:1;
+}
+.vf-num{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem;}
+.vf-title{font-family:var(--serif);font-size:1.875rem;color:#fff;letter-spacing:-.02em;margin-bottom:.875rem;}
+.vf-desc{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.5rem;}
+.vf-principle{
+  padding:.875rem 1rem;border-radius:.625rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+  font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.6;
+  font-style:italic;font-family:var(--serif);
+}
+
+/* ════════════════════════════════════
+   §6 TEAM — PLACEHOLDER
+════════════════════════════════════ */
+.section-team{padding:6rem 0;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr;}}
+.team-card{
+  border-radius:1.25rem;overflow:hidden;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  transition:border-color .3s,transform .35s var(--ease);
+}
+.team-card:hover{border-color:rgba(255,255,255,.18);transform:translateY(-4px);}
+.team-photo{
+  height:280px;background:rgba(255,255,255,.04);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.team-photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:.75rem;
+  font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.2);text-align:center;
+}
+.team-photo-placeholder svg{width:40px;height:40px;opacity:.2;fill:none;stroke:rgba(255,255,255,.5);stroke-width:1;}
+.team-photo.has-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%);}
+.team-body{padding:1.625rem 1.5rem;}
+.team-name{font-family:var(--serif);font-size:1.375rem;color:#fff;margin-bottom:.25rem;}
+.team-role{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:#93B4FF;margin-bottom:.875rem;}
+.team-bio{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;}
+
+/* ════════════════════════════════════
+   §7 FOUNDING BELIEF — DARK STATEMENT
+════════════════════════════════════ */
+.section-belief{padding:8rem 0;}
+.belief-inner{
+  max-width:900px;margin:0 auto;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
+.belief-eyebrow{
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);
+  margin-bottom:2.5rem;
+  display:inline-flex;align-items:center;gap:.75rem;
+}
+.belief-eyebrow::before,.belief-eyebrow::after{content:'';display:block;width:40px;height:1px;background:rgba(255,255,255,.15);}
+.belief-headline{
+  font-family:var(--serif);
+  font-size:clamp(2.5rem,6vw,5rem);
+  color:#fff;line-height:1.06;letter-spacing:-.035em;
+  margin-bottom:2rem;
+}
+.belief-headline em{font-style:italic;color:rgba(255,255,255,.3);}
+.belief-body{font-size:1.0625rem;line-height:1.85;color:rgba(255,255,255,.5);max-width:560px;margin-bottom:3rem;}
+.belief-divider{width:2px;height:80px;background:linear-gradient(180deg,transparent,var(--blue),transparent);margin:0 auto 3rem;}
+.belief-sub{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.625rem);font-style:italic;color:rgba(255,255,255,.65);line-height:1.4;max-width:480px;}
+
+/* ════════════════════════════════════
+   §8 HIMAT-HIKMAT FRAMEWORK
+════════════════════════════════════ */
+.section-hh{padding:6rem 0;}
+.hh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem;}
+@media(max-width:768px){.hh-grid{grid-template-columns:1fr;}}
+.hh-card{
+  padding:2.25rem 2rem;border-radius:1.25rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);position:relative;overflow:hidden;
+  transition:background .3s,border-color .3s,transform .35s var(--ease);
+}
+.hh-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);transform:translateY(-4px);}
+.hh-word{
+  font-family:var(--serif);font-size:5rem;font-style:italic;
+  color:rgba(255,255,255,.05);line-height:1;
+  position:absolute;top:1rem;right:1.25rem;letter-spacing:-.04em;
+}
+.hh-tag{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:rgba(196,162,74,.1);border:1px solid rgba(196,162,74,.2);padding:.25rem .75rem;border-radius:4px;display:inline-block;margin-bottom:1.5rem;}
+.hh-card h3{font-family:var(--serif);font-size:2rem;color:#fff;letter-spacing:-.02em;margin-bottom:.75rem;}
+.hh-card h3 span{font-style:italic;color:var(--gold);}
+.hh-card p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.5rem;}
+.hh-pillars{display:flex;flex-direction:column;gap:.625rem;}
+.hh-pillar{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.625rem .875rem;border-radius:.625rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+}
+.hh-pillar-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.hh-pillar-text{font-size:.875rem;color:rgba(255,255,255,.55);}
+
+/* ════════════════════════════════════
+   CTA BAND
+════════════════════════════════════ */
+.cta-band{padding:5rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.cta-band h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.75rem);color:#fff;margin-bottom:.75rem;letter-spacing:-.02em;}
+.cta-band h2 em{font-style:italic;color:#93B4FF;}
+.cta-band p{color:rgba(255,255,255,.4);font-size:1.0625rem;max-width:28rem;margin:0 auto 2rem;line-height:1.7;}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;color:#fff;background:var(--blue);padding:.875rem 1.75rem;border-radius:100px;box-shadow:0 4px 24px rgba(45,91,227,.35);transition:background .2s,transform .15s;}
+.btn-primary:hover{background:#1E3FA8;transform:translateY(-2px);}
+.btn-ghost-white{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.75);padding:.875rem 1.75rem;border-radius:100px;border:1.5px solid rgba(255,255,255,.18);transition:color .2s,border-color .2s;}
+.btn-ghost-white:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+footer{border-top:1px solid rgba(255,255,255,.05);padding:4rem 0 calc(2.5rem + env(safe-area-inset-bottom));background:rgba(0,0,0,.4);}
+.footer-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;margin-bottom:2.5rem;}
+.footer-brand{flex:0 0 auto;max-width:22rem;}
+.footer-wordmark{font-family:var(--serif);font-size:1.75rem;color:#fff;letter-spacing:-.02em;}
+.footer-desc{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:.5rem;}
+.footer-desc a{color:var(--gold);}
+.footer-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;flex:1;}
+@media(max-width:768px){.footer-cols{grid-template-columns:repeat(2,1fr);}}
+.footer-col h4{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:1.125rem;}
+.footer-col li{margin-bottom:.5rem;list-style:none;}
+.footer-col a{font-size:.875rem;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.6875rem;color:rgba(255,255,255,.2);}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a:hover{color:#fff;}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-statement{grid-template-columns:1fr;gap:3rem;}
+  .origin-grid{grid-template-columns:1fr;gap:3rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .wrap{padding:0 1.25rem;}
+}
+@media(max-width:768px){
+  .topbar{display:none;}
+  .page-hero{padding-top:calc(var(--nav) + 3rem);}
+  .hs-meta{grid-template-columns:1fr 1fr;}
+  .values-main-grid{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .footer-top{flex-direction:column;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+}
+/* ════════════════════════════════════
+   CAROUSEL
+════════════════════════════════════ */
+.section-carousel{padding:6rem 0;}
+.carousel-wrap{margin-top:3rem;}
+.carousel-track{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+@media(max-width:768px){.carousel-track{grid-template-columns:1fr;}}
+.carousel-slide{
+  border-radius:1.25rem;overflow:hidden;
+  aspect-ratio:4/3;
+  transition:transform .35s var(--ease);
+}
+.carousel-slide:hover{transform:translateY(-4px);}
+.carousel-placeholder{
+  width:100%;height:100%;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:1.25rem;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:background .3s,border-color .3s;
+}
+.carousel-placeholder:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);}
+.carousel-placeholder::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(45,91,227,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.cp-inner{
+  display:flex;flex-direction:column;align-items:center;gap:.75rem;
+  position:relative;z-index:1;
+}
+.cp-inner svg{width:36px;height:36px;}
+.cp-inner span{font-family:var(--mono);font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.cp-sub{font-size:.5625rem !important;color:rgba(255,255,255,.18) !important;}
+.carousel-nav{
+  display:flex;align-items:center;justify-content:center;
+  gap:1.25rem;margin-top:1.75rem;
+}
+.carousel-btn{
+  width:2.75rem;height:2.75rem;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.6);cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.carousel-btn:hover{background:rgba(45,91,227,.2);border-color:rgba(45,91,227,.4);color:#fff;}
+.carousel-dots{display:flex;gap:.5rem;}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:background .2s,transform .2s;}
+.carousel-dot.active{background:var(--blue);transform:scale(1.35);}
+
+@media(prefers-reduced-motion:reduce){
+  .rv{transition:none;}
+  .glow-orb{animation:none;}
+  * {animation-duration:.01ms!important;transition-duration:.01ms!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- BG -->
+<div class="bg-gradient" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<!-- GLOW ORBS -->
+<div class="glow-orb g1" aria-hidden="true"></div>
+<div class="glow-orb g2" aria-hidden="true"></div>
+<div class="glow-orb g3" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Part of the</span>
+  <a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework ↗</a>
+  <span class="topbar-dot"></span>
+  <span>Practice 01 · HR &amp; Talent</span>
+  <span class="topbar-dot"></span>
+  <span>Lahore Stock Exchange</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" aria-label="enlyst home">
+      <div style="display:flex;align-items:center;">
+        <svg width="32" height="34" viewBox="0 0 44 46" fill="none" aria-hidden="true">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/>
+        </svg>
+      </div>
+      <span class="brand-wordmark">enlyst</span>
+      <div class="brand-div"></div>
+      <span class="brand-tag">Smart Recruiting</span>
+    </a>
+        <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="enlyst-about.html" class="nav-btn active">About</a>
+      <a href="enlyst-services.html" class="nav-btn">Services</a>
+      <a href="enlyst-articles.html" class="nav-btn">Articles</a>
+      <a href="enlyst-blog.html" class="nav-btn">Blog</a>
+      <a href="https://enlystnow.com" target="_blank" rel="noopener" class="nav-ext">enlystnow.com ↗</a>
+    </div>
+    <a href="enlyst-contact.html" class="nav-cta-btn">Get in Touch</a>
+    <button class="hamburger" aria-label="Open menu" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <a href="index.html" class="drawer-btn" onclick="closeDrawer()">Home</a>
+  <a href="enlyst-about.html" class="drawer-btn" onclick="closeDrawer()">About</a>
+  <a href="enlyst-services.html" class="drawer-btn" onclick="closeDrawer()">Services</a>
+  <a href="enlyst-articles.html" class="drawer-btn" onclick="closeDrawer()">Articles</a>
+  <a href="enlyst-blog.html" class="drawer-btn" onclick="closeDrawer()">Blog</a>
+  <a href="enlyst-contact.html" class="drawer-btn" onclick="closeDrawer()">Contact</a>
+  <a href="enlyst-contact.html" class="drawer-cta" onclick="closeDrawer()">Get in Touch</a>
+</div>
+
+<main>
+
+
+<main>
+
+<!-- §1 HERO -->
+<section class="page-hero" id="top">
+  <div class="wrap">
+    <div class="hero-statement">
+      <div class="rv">
+        <p style="font-family:var(--mono);font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;color:#93B4FF;margin-bottom:1.25rem;">About Us · Philosophy</p>
+        <h1>We exist to<br/>build systems<br/>so humans<br/>can be <em>good<br/>to each other.</em></h1>
+        <p style="font-size:1.0625rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:26rem;margin-top:1.75rem;">Enlyst began as a question: why does hiring in Pakistan still run on referrals, gut feel, and informal trust? We exist because the answer demanded a different kind of firm.</p>
+      </div>
+      <div class="rv rv-d1" style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div class="hs-quote">
+          <blockquote>"Every individual — no matter who he is or where he belongs — has the potential of a great businessman. We exist to build systems that protect and empower these owners."</blockquote>
+          <cite>Enlyst founding statement · Lahore</cite>
+        </div>
+        <div class="hs-meta">
+          <div class="hs-meta-item"><div class="hs-meta-num">6</div><div class="hs-meta-lbl">Years operating</div></div>
+          <div class="hs-meta-item"><div class="hs-meta-num">12+</div><div class="hs-meta-lbl">Companies served</div></div>
+          <div class="hs-meta-item"><div class="hs-meta-num">4</div><div class="hs-meta-lbl">Practice divisions</div></div>
+          <div class="hs-meta-item"><div class="hs-meta-num">100%</div><div class="hs-meta-lbl">Bias-free process</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §2 PHILOSOPHY — live site text -->
+<section class="section-philosophy" id="philosophy">
+  <div class="wrap">
+    <div class="philosophy-lead rv">
+      <p class="s-eyebrow">Our Philosophy</p>
+      <h2>The ecosystem that emerges from the framework of Enlyst is the <em>bulwark of security</em> and confidence.</h2>
+    </div>
+    <div class="philosophy-pillars">
+      <div class="philo-card rv rv-d1">
+        <div class="philo-num">01</div>
+        <div class="philo-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>The Owner Inside</h3>
+        <p>Every individual, no matter who he is or where he belongs, has the potential of a great businessman. Where everyone works, lives another person who once had an idea, tried, failed, and today is called an Owner. We exist to build systems that protect and empower these owners.</p>
+      </div>
+      <div class="philo-card rv rv-d2">
+        <div class="philo-num">02</div>
+        <div class="philo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Systems Protect Processes</h3>
+        <p>We seek the absolute elimination of human bias from the system. We strive to use technology in HR where a human can be a protector of another human — only if systems protect processes. Therefore, we lucubrate and meditate like monks before conceiving anything.</p>
+      </div>
+      <div class="philo-card rv rv-d3">
+        <div class="philo-num">03</div>
+        <div class="philo-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Genuine Friendship</h3>
+        <p>A less biased society produces more owners than employees, and ensures that employees take responsibility exactly like owners. We are here to bandage businessmen from the rigors of advancing technology — genuine friendship and consultancy without commercial consideration as the primary driver.</p>
+      </div>
+    </div>
+    <!-- manifesto block -->
+    <div class="philosophy-manifesto rv rv-d1">
+      <div class="pm-left">
+        <blockquote>"How can a process be automated so that humans can be good to each other?"</blockquote>
+        <cite>The question behind every system Enlyst builds</cite>
+      </div>
+      <div class="pm-right">
+        <div class="pm-point">
+          <div class="pm-point-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="pm-point-text"><h4>Behavioural science, not instinct</h4><p>Evaluation criteria set before candidates are met. Every screening built on pre-defined competency rubrics.</p></div>
+        </div>
+        <div class="pm-point">
+          <div class="pm-point-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="pm-point-text"><h4>Documented decisions</h4><p>Every shortlist, every rejection, every hire documented with justification. The process is always visible.</p></div>
+        </div>
+        <div class="pm-point">
+          <div class="pm-point-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="pm-point-text"><h4>Accountability at 90 days</h4><p>The placement is successful only when it is still working three months later — not when the invoice is paid.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 VISION & MISSION — BENTO -->
+<section class="section-vm" id="vision">
+  <div class="wrap">
+    <div class="rv">
+      <p class="s-eyebrow">Direction & Purpose</p>
+      <h2 class="s-title" style="color:#fff;">Vision. Mission.<br/><em>In writing.</em></h2>
+      <p class="s-lead">Not marketing language. The exact terms we evaluate every decision against.</p>
+    </div>
+    <div class="vm-bento">
+      <div class="vm-cell vm-cell-vision b-c7 rv rv-d1">
+        <span class="vm-ghost" aria-hidden="true">Vision</span>
+        <div class="vm-icon" style="background:rgba(45,91,227,.15);border:1px solid rgba(45,91,227,.2);">
+          <svg viewBox="0 0 24 24" stroke="rgba(147,180,255,.9)" stroke-width="1.75" fill="none"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <span class="vm-cell-label lbl-blue">Vision</span>
+        <h2>To become Pakistan's most <em>trusted</em> HR and talent institution — where every hire is a system, not a conversation.</h2>
+        <p>A Pakistan where capable people find roles on merit. Where businesses build teams on evidence. Where HR is a system, not a conversation — just and accessible to everyone, regardless of network or background.</p>
+      </div>
+      <div class="vm-cell b-c5 rv rv-d2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:220px;">
+        <div style="font-family:var(--serif);font-size:4rem;color:#fff;letter-spacing:-.04em;line-height:1;">254%</div>
+        <div style="font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin:.375rem 0 .75rem;">Client ROI</div>
+        <div style="font-size:.8125rem;color:rgba(255,255,255,.35);line-height:1.55;max-width:180px;">Return on recruiting investment measured across retained-search clients.</div>
+      </div>
+      <div class="vm-cell vm-cell-mission b-c5 rv rv-d1">
+        <span class="vm-ghost" aria-hidden="true">Mission</span>
+        <div class="vm-icon" style="background:rgba(196,162,74,.1);border:1px solid rgba(196,162,74,.2);">
+          <svg viewBox="0 0 24 24" stroke="rgba(196,162,74,.9)" stroke-width="1.75" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="vm-cell-label lbl-gold">Mission</span>
+        <h2>To arm businesses with the <em>expertise, resources,</em> and support they need to grow.</h2>
+        <p>We deliver end-to-end HR intelligence — from sourcing through screening to placement and follow-up — with documented process at every step.</p>
+      </div>
+      <div class="vm-cell b-c7 rv rv-d2" style="background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.06);">
+        <span class="vm-cell-label lbl-white">Core Belief</span>
+        <h2 style="font-size:clamp(1.375rem,2vw,1.875rem);">A less biased society produces <em>more owners than employees</em> — and ensures employees take responsibility exactly like owners.</h2>
+        <p style="margin-top:.75rem;">This is the ideological root of every process we design. Not a marketing claim. The actual criterion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §4 VALUES -->
+<section class="section-values" id="values">
+  <div class="wrap">
+    <div class="values-intro rv">
+      <div class="values-intro-text">
+        <p class="s-eyebrow">What we stand on</p>
+        <h2>Five values.<br/><em>Non-negotiable.</em></h2>
+        <p>These are not posted on a wall. They are the criteria against which every Enlyst decision is evaluated — by leadership, by every recruiter, and by the systems we build.</p>
+      </div>
+      <div class="values-intro-note rv rv-d2">
+        <p>"Commercial pressure does not override candour. Velocity does not override permanence. Every value is a hard constraint, not a preference."</p>
+      </div>
+    </div>
+    <div class="values-main-grid">
+      <div class="value-featured rv rv-d1">
+        <div class="value-featured-ghost" aria-hidden="true">01</div>
+        <div class="vf-num">Value 01</div>
+        <div class="vf-title">Belonging</div>
+        <div class="vf-desc">Every candidate we meet, every client we serve — they belong in this conversation. We are not gatekeepers. We are bridge-builders between capability and opportunity, regardless of who referred you, who you know, or where you come from.</div>
+        <div class="vf-principle">"No business fights alone — and no person should have to navigate the job market alone either."</div>
+      </div>
+      <div class="value-featured rv rv-d2">
+        <div class="value-featured-ghost" aria-hidden="true">02</div>
+        <div class="vf-num">Value 02</div>
+        <div class="vf-title">Clarity</div>
+        <div class="vf-desc">Vague feedback is a form of dishonesty. Every assessment, shortlist, and recommendation we provide is specific, justified, and legible. Candidates know exactly why they were screened. Clients know exactly what they are hiring and why.</div>
+        <div class="vf-principle">"The most dangerous thing in hiring is the unspoken criterion. We make every criterion explicit before the process begins."</div>
+      </div>
+      <div class="value-featured rv rv-d1">
+        <div class="value-featured-ghost" aria-hidden="true">03</div>
+        <div class="vf-num">Value 03</div>
+        <div class="vf-title">Permanence</div>
+        <div class="vf-desc">We build for longevity, not transaction velocity. The firms we place people in should still be benefiting five years later. We measure success at 90 days, not at offer acceptance. Retention is the real metric.</div>
+        <div class="vf-principle">"A placement that doesn't last isn't a success. It's a deferred failure with a fee attached."</div>
+      </div>
+      <div class="value-featured rv rv-d2">
+        <div class="value-featured-ghost" aria-hidden="true">04</div>
+        <div class="vf-num">Value 04</div>
+        <div class="vf-title">Honesty First</div>
+        <div class="vf-desc">We tell clients when we cannot fill a role. We tell candidates when they are not the right fit. Commercial pressure does not override candour — ever.</div>
+        <div class="vf-principle">"The recruiter who tells you what you want to hear is not your ally. The one who tells you what you need to hear is."</div>
+      </div>
+    </div>
+    <div class="value-featured rv rv-d1" style="margin-top:1rem;background:rgba(45,91,227,.08);border-color:rgba(45,91,227,.2);">
+      <div class="value-featured-ghost" aria-hidden="true">05</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;">
+        <div>
+          <div class="vf-num">Value 05</div>
+          <div class="vf-title">Service as Legacy</div>
+          <div class="vf-desc">We are here to be genuinely useful — not to extract fees. Every engagement should leave the client stronger than before we arrived. The engagement is complete only when the value is demonstrably delivered, not when the invoice is paid.</div>
+        </div>
+        <div>
+          <div class="vf-principle" style="background:rgba(45,91,227,.1);border:1px solid rgba(45,91,227,.2);font-size:1.0625rem;line-height:1.65;">"Is this client measurably better equipped than before? If the answer is uncertain, we have more work to do."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §5 ACTIVITY CAROUSEL -->
+<section class="section-carousel" id="activity">
+  <div class="wrap">
+    <div class="rv">
+      <p class="s-eyebrow">In the Field</p>
+      <h2 class="s-title" style="color:#fff;">Enlyst at work.</h2>
+      <p class="s-lead">From GITTC Lahore AI training deployments to client engagements — a glimpse into the Enlyst operating field.</p>
+    </div>
+    <div class="carousel-wrap rv rv-d1">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 01</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 02</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 03</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 04</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 05</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+        <div class="carousel-slide">
+          <div class="carousel-placeholder"><div class="cp-inner"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Photo 06</span><span class="cp-sub">Enlyst activity · Add image</span></div></div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+
+<!-- ══════════════════════════════════════════
+     §8 HIMAT-HIKMAT FRAMEWORK
+═══════════════════════════════════════════ -->
+<section class="section-hh" id="himat-hikmat">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;margin-bottom:3rem;">
+      <p class="s-eyebrow" style="color:var(--gold);">The Research Arm</p>
+      <h2 class="s-title" style="color:#fff;">Himat-Hikmat.<br/><em style="color:var(--gold);">Courage &amp; Wisdom.</em></h2>
+      <p class="s-lead" style="margin:1rem auto 0;">The research and intellectual framework that drives every Enlyst position on hiring, governance, and institutional reform in Pakistan.</p>
+    </div>
+    <div class="hh-grid">
+      <div class="hh-card rv rv-d1">
+        <div class="hh-word" aria-hidden="true">Himat</div>
+        <div class="hh-tag">Himat · Courage</div>
+        <h3>The courage to name <span>what is broken.</span></h3>
+        <p>Most HR and governance commentary describes symptoms. Himat-Hikmat names the structural causes — referral-dependent hiring, documentation barriers, informal exclusion criteria — and argues for their removal, not their management.</p>
+        <div class="hh-pillars">
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">Pakistan's AI Policy 2025 — what it means for HR systems</div></div>
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">Why hiring systems fail people before they apply</div></div>
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">The teacher shortage Pakistan isn't measuring</div></div>
+        </div>
+      </div>
+      <div class="hh-card rv rv-d2">
+        <div class="hh-word" aria-hidden="true">Hikmat</div>
+        <div class="hh-tag">Hikmat · Wisdom</div>
+        <h3>The wisdom to design <span>what replaces it.</span></h3>
+        <p>Evidence-based alternatives built from field research — at GITTC Lahore, inside Pakistan's formal labour market, and across four domains: policy, education, disability inclusion, and governance reform.</p>
+        <div class="hh-pillars">
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">7 published articles · 37,000+ words of field research</div></div>
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">4 domains: policy, education, disability, governance</div></div>
+          <div class="hh-pillar"><div class="hh-pillar-dot"></div><div class="hh-pillar-text">Applied to HR, GovTech, and public sector reform</div></div>
+        </div>
+        <a href="enlyst-articles.html" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);transition:color .2s;">
+          Read the Research →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Ready to work with a firm<br/>that <em>argues for its worldview?</em></h2>
+    <p>One conversation. No templates. We'll tell you exactly what we can and can't do — and why.</p>
+    <div class="cta-row">
+      <a href="enlyst-contact.html" class="btn-primary">Start a Conversation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="index.html" class="btn-ghost-white">Back to Home →</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.375rem;">
+          <svg width="28" height="30" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/></svg>
+          <div class="footer-wordmark">enlyst</div>
+        </div>
+        <div class="footer-desc">Smart Recruiting & HR Intelligence · Practice 01 of the <a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework</a>. Systems protect processes so humans can protect humans.</div>
+      </div>
+            <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="enlyst-about.html">About Us</a></li>
+            <li><a href="enlyst-about.html#philosophy">Philosophy</a></li>
+            <li><a href="enlyst-about.html#values">Values</a></li>
+            <li><a href="index.html#academy">Enlyst Academy</a></li>
+            <li><a href="enlyst-foundation.html">Foundation</a></li>
+            <li><a href="enlyst-articles.html">Himat-Hikmat</a></li>
+            <li><a href="enlyst-blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="enlyst-services.html#hiring">Hiring &amp; Recruitment</a></li>
+            <li><a href="enlyst-services.html#performance">Performance Management</a></li>
+            <li><a href="enlyst-services.html#training">Training &amp; Development</a></li>
+            <li><a href="index.html#ai-academy">Enlyst AI Academy</a></li>
+            <li><a href="https://app.enlystnow.com" target="_blank" rel="noopener">EnlyRecruit App ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ecosystem</h4>
+          <ul>
+            <li><a href="https://enlystnow.com" target="_blank" rel="noopener">enlystnow ↗</a></li>
+            <li><a href="https://enlystnow.com/enlyst-hr" target="_blank" rel="noopener">enlyst HR ↗</a></li>
+            <li><a href="index.html">enlyst (HR)</a></li>
+            <li><a href="https://enlysum.com" target="_blank" rel="noopener">enlysum ↗</a></li>
+            <li><a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz ↗</a></li>
+            <li><a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:recruiter@enlystnow.com">recruiter@enlystnow.com</a></li>
+            <li><a href="tel:03000340036">03000 340 036</a></li>
+            <li><a href="https://wa.me/923000340036" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+            <li><a href="enlyst-contact.html">Get in Touch</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Enlyst Smart Recruiting Pvt Ltd · Suite # 202, 2nd Floor, South Tower, Stock Exchange Plaza, Lahore, Punjab 54000</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="https://enlystnow.com" target="_blank" rel="noopener">enlystnow.com ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Scroll reveal */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+/* Smooth scroll */
+function s(hash){ const el=document.querySelector(hash); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+/* Mobile drawer */
+function toggleDrawer(){ document.getElementById('drawer').classList.toggle('open'); }
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); }
+
+/* Animated counters */
+document.querySelectorAll('.hs-meta-num, .osc-num').forEach(el => {
+  const raw = el.textContent.trim();
+  const num = parseFloat(raw.replace(/[^0-9.]/g,''));
+  if(!num || isNaN(num)) return;
+  const prefix = raw.match(/^[^0-9]*/)?.[0]||'';
+  const suffix = raw.match(/[^0-9.]+$/)?.[0]||'';
+  el.textContent = prefix+'0'+suffix;
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      let cur=0; const step=num/40;
+      const t = setInterval(() => {
+        cur = Math.min(cur+step, num);
+        el.textContent = prefix+(Number.isInteger(num)?Math.round(cur):cur.toFixed(1))+suffix;
+        if(cur>=num) clearInterval(t);
+      }, 35);
+      co.unobserve(el);
+    });
+  },{threshold:.5});
+  co.observe(el);
+});
+/* Carousel — desktop shows 3, mobile 1 */
+const slides = document.querySelectorAll(".carousel-slide");
+const dotsWrap = document.getElementById("carouselDots");
+const perView = () => window.innerWidth < 768 ? 1 : 3;
+let cur = 0;
+const total = slides.length;
+
+// Build dots
+for(let i=0;i<total;i++){const d=document.createElement("span");d.className="carousel-dot"+(i===0?" active":"");d.onclick=()=>goTo(i);dotsWrap.appendChild(d);}
+
+function goTo(n){
+  cur=Math.max(0,Math.min(n,total-perView()));
+  slides.forEach((s,i)=>{
+    s.style.display=(i>=cur&&i<cur+perView())?"":"none";
+  });
+  document.querySelectorAll(".carousel-dot").forEach((d,i)=>d.classList.toggle("active",i===cur));
+}
+function moveCarousel(dir){goTo(cur+dir);}
+// Initialise
+goTo(0);
+window.addEventListener("resize",()=>goTo(Math.min(cur,total-perView())));
+</script>
+</body>
+</html>

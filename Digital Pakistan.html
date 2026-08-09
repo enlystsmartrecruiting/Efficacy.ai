@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project IGNITE: Pakistan's Digital Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Overview (Slides 1-2): Text, key stats. Goal: Set Scene. Expanded intro.
+        - Challenge (Slide 3): Text, card layout for strengths/challenges. Goal: Define Problem. Expanded intro.
+        - Vision (Slide 4): Text, aspirational layout. Goal: Inspire. Expanded intro.
+        - Pillars (Slides 5-10): Text, accordion for initiatives. Goal: Detail Solutions. Expanded intro & pillar details.
+            - Pillar 1: Added "Generate AI Learning Path" button, input field, and result display. Gemini API call for text generation.
+            - Pillar 3: Added "Brainstorm Startup Ideas" button, dropdown for challenge areas, and result display. Gemini API call for text generation.
+        - Implementation (Slide 11):
+            - Phased Plan: HTML/CSS Timeline. Goal: Show Roadmap. Expanded intro.
+            - KPIs: Chart.js bar charts (IT Exports, VC Funding), Donut chart (Digital Literacy), Bar chart (GII). Goal: Quantify Success. Method: Chart.js.
+        - Impact (Slide 12): Text with icons. Goal: Show Benefits. Expanded intro & impact details.
+        - Call to Action (Slide 13): Text. Goal: Motivate.
+        - Interactions: Nav clicks show/hide sections. Pillar accordions expand/collapse. Gemini feature buttons trigger API calls and display results. Charts are static displays of target data.
+        - Justification: Focus on clarity and making dense text interactive and digestible. Charts for key metrics. Gemini integration adds value and engagement. Color scheme updated.
+        - NO SVG/Mermaid. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 (very light gray, almost white) */
+        }
+        .active-nav {
+            color: #047857; /* green-700 */
+            border-bottom: 2px solid #047857; /* green-700 */
+        }
+        .inactive-nav {
+            color: #334155; /* slate-700 */
+        }
+        .nav-link {
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #059669; /* green-600 */
+        }
+        .section-content {
+            display: none;
+        }
+        .section-content.active {
+            display: block;
+        }
+        .pillar-accordion-button {
+            transition: background-color 0.3s ease;
+        }
+        .pillar-accordion-button.open {
+            background-color: #d1fae5; /* green-100 (Tailwind's emerald-100, using as light green) */
+        }
+        .pillar-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .pillar-accordion-content.open {
+            max-height: 1500px; /* Increased for potentially more content including Gemini results */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem; 
+            border-left: 2px solid #34d399; /* green-400 */
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.575rem; 
+            top: 0.125rem;
+            height: 1rem;
+            width: 1rem;
+            background-color: #059669; /* green-600 */
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+         .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .pk-green-dark { color: #047857; } 
+        .pk-green-dark-bg { background-color: #047857; }
+        .pk-green-mid { color: #059669; } 
+        .pk-green-mid-bg { background-color: #059669; } 
+        .pk-green-light-bg { background-color: #d1fae5; } 
+        .pk-green-light-text { color: #a7f3d0; } 
+
+        .gemini-feature-card {
+            background-color: #f0fdf4; /* green-50 */
+            border: 1px solid #a7f3d0; /* green-200 */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .gemini-input {
+            border: 1px solid #9ca3af; /* gray-400 */
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        .gemini-button {
+            background-color: #059669; /* green-600 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s ease;
+        }
+        .gemini-button:hover {
+            background-color: #047857; /* green-700 */
+        }
+        .gemini-result {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background-color: white;
+            border-radius: 0.375rem;
+            white-space: pre-wrap; /* To preserve formatting from Gemini response */
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .loading-indicator {
+            font-style: italic;
+            color: #4b5563; /* gray-600 */
+        }
+
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold pk-green-dark">Project IGNITE</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#overview" class="nav-link active-nav">Overview</a>
+                        <a href="#challenge" class="nav-link inactive-nav">The Challenge</a>
+                        <a href="#vision" class="nav-link inactive-nav">The Vision</a>
+                        <a href="#pillars" class="nav-link inactive-nav">Strategic Pillars</a>
+                        <a href="#implementation" class="nav-link inactive-nav">Implementation</a>
+                        <a href="#impact" class="nav-link inactive-nav">Impact</a>
+                        <a href="#action" class="nav-link inactive-nav">Call to Action</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-700 hover:pk-green-mid focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <a href="#overview" class="block nav-link px-4 py-2 text-sm active-nav">Overview</a>
+            <a href="#challenge" class="block nav-link px-4 py-2 text-sm inactive-nav">The Challenge</a>
+            <a href="#vision" class="block nav-link px-4 py-2 text-sm inactive-nav">The Vision</a>
+            <a href="#pillars" class="block nav-link px-4 py-2 text-sm inactive-nav">Strategic Pillars</a>
+            <a href="#implementation" class="block nav-link px-4 py-2 text-sm inactive-nav">Implementation</a>
+            <a href="#impact" class="block nav-link px-4 py-2 text-sm inactive-nav">Impact</a>
+            <a href="#action" class="block nav-link px-4 py-2 text-sm inactive-nav">Call to Action</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <section id="overview" class="section-content active">
+            <div class="text-center py-12 bg-white rounded-lg shadow-lg">
+                <h2 class="text-4xl font-bold pk-green-dark mb-4">Forging Pakistan's Digital Future</h2>
+                <p class="text-xl text-slate-600 mb-6 max-w-3xl mx-auto">A National Technology & Youth Empowerment Roadmap for Global Competitiveness and Sustainable Prosperity. This initiative, "Project IGNITE," is designed to spark a transformative shift in Pakistan's technological landscape.</p>
+                <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left p-6">
+                    <div class="bg-green-50 p-6 rounded-lg shadow">
+                        <h3 class="text-2xl font-semibold pk-green-dark mb-3">The Defining Moment</h3>
+                        <p class="text-slate-700 mb-2">The Fourth Industrial Revolution (4IR), characterized by rapid advancements in AI, IoT, Cloud Computing, Data Science, and Biotechnology, is fundamentally reshaping global economies and societies. For Pakistan, this era presents both an urgent challenge and an unprecedented opportunity. Digital transformation is no longer a luxury but an essential prerequisite for national growth, operational efficiency, and maintaining sovereignty in an increasingly interconnected world.</p>
+                        <p class="text-slate-700 font-semibold">Nations that strategically embrace and lead in technology will define the contours of the future global order.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg shadow">
+                        <h3 class="text-2xl font-semibold text-slate-700 mb-3">The Pakistan Opportunity</h3>
+                        <p class="text-slate-700 mb-2"><strong class="pk-green-mid">A unique "Youth Bulge": ~64% of the population under 30</strong> – representing an immense reservoir of talent, energy, and adaptability, ready to be harnessed.</p>
+                        <p class="text-slate-700 mb-2">A nascent but resilient and growing IT sector, with internationally recognized successes in freelancing, software development, and IT-enabled services exports.</p>
+                        <p class="text-slate-700">Our strategic geographic location, coupled with a large and increasingly digitally-aware domestic market, offers significant, yet largely untapped, advantages for technological adoption and innovation-led growth.</p>
+                    </div>
+                </div>
+                 <p class="mt-6 text-slate-700 px-6">This interactive guide provides a comprehensive overview of Project IGNITE. It delves into the critical challenges we face, articulates a bold vision for our digital future, details the five strategic pillars of transformation, outlines a clear implementation plan with measurable KPIs, and highlights the profound economic and societal impact this initiative aims to achieve. We invite you to explore this roadmap for Pakistan's technological renaissance.</p>
+            </div>
+        </section>
+
+        <section id="challenge" class="section-content">
+            <h2 class="text-3xl font-bold text-center mb-2 pk-green-dark">Defining the Problem: An Honest Assessment</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">To forge a successful path forward, a candid and thorough assessment of our current landscape is paramount. Project IGNITE acknowledges Pakistan's inherent strengths, which provide a solid foundation for growth, while also identifying and preparing to address the critical challenges that hinder our technological advancement and full realization of our youth's potential.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold pk-green-mid mb-4">Strengths to Build Upon</h3>
+                    <ul class="list-disc list-inside space-y-3 text-slate-700">
+                        <li><strong class="font-medium">Youth Demographics:</strong> An exceptionally young population that is energetic, adaptable, and demonstrates a high aptitude for adopting new technologies.</li>
+                        <li><strong class="font-medium">Existing IT Footprint:</strong> A proven track record in IT services exports, a steadily growing number of IT graduates annually, and globally recognized Pakistani IT companies.</li>
+                        <li><strong class="font-medium">Freelancing Powerhouse:</strong> Pakistan is consistently ranked among the top countries for freelance IT professionals, showcasing individual talent and entrepreneurial spirit.</li>
+                        <li><strong class="font-medium">Emerging Startup Scene:</strong> Growing pockets of innovation with dynamic startups tackling local and global challenges, supported by an increasing number of incubators and accelerators.</li>
+                        <li><strong class="font-medium">Government Focus:</strong> Existing national strategies and initiatives like the Digital Pakistan Policy provide a foundational layer and demonstrate governmental commitment to the digital agenda.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-red-600 mb-4">Critical Challenges to Address</h3>
+                    <ul class="list-disc list-inside space-y-3 text-slate-700">
+                        <li><strong class="font-medium">Human Capital Development Gap:</strong> Outdated educational curricula and traditional teaching methodologies struggle to keep pace with rapidly evolving industry skill requirements (especially in AI, Cloud, Data Science, Cybersecurity). This is compounded by a shortage of high-quality, industry-experienced faculty and advanced research facilities.</li>
+                        <li><strong class="font-medium">Infrastructure Deficiencies:</strong> Inconsistent, expensive, and low-penetration internet connectivity, particularly in rural and underserved areas. Limited Tier-III data center infrastructure and slower adoption of cloud services hinder scalability. Unreliable power supply remains a significant operational challenge.</li>
+                        <li><strong class="font-medium">Policy & Regulatory Bottlenecks:</strong> Complex and lengthy processes for business registration, taxation, and intellectual property (IP) protection can stifle entrepreneurship. Challenges with international payment gateways and foreign currency retention for IT firms and freelancers impede global business operations. A lack of a cohesive, consistently implemented long-term R&D and innovation policy.</li>
+                        <li><strong class="font-medium">Innovation & Entrepreneurship Ecosystem Gaps:</strong> Limited access to crucial early-stage and venture capital funding (the "valley of death"). Weak and often formalistic industry-academia linkages for collaborative R&D and effective commercialization of research. A generally risk-averse culture and insufficient mentorship opportunities for aspiring entrepreneurs.</li>
+                        <li><strong class="font-medium">Digital Divide & Inclusivity:</strong> Significant disparities in digital literacy and access to technology persist along urban-rural and gender lines. The ongoing challenge of "brain drain," where top tech talent seeks opportunities abroad, depletes the local talent pool.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision" class="section-content">
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <h2 class="text-3xl font-bold pk-green-dark mb-2">Our Vision: Pakistan 2035 – A Global Technology Powerhouse</h2>
+                <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Project IGNITE envisions a transformed Pakistan by 2035 – a nation recognized globally for its technological prowess, innovation, and digitally empowered citizenry. This vision is not merely about economic gain but about fostering sustainable prosperity, enhancing national capabilities, and ensuring that technology serves as a powerful tool for inclusive development and societal advancement.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                    <div class="bg-green-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold pk-green-dark mb-2">Global IT Exporter & Innovation Hub</h3>
+                        <p class="text-slate-700">Pakistan will rank among the Top 10 global IT exporters, renowned not just for services but as a hub for innovation in specialized, high-value technology domains such as Artificial Intelligence, FinTech, HealthTech, and sustainable technologies. We will be a preferred destination for cutting-edge product development.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold pk-green-dark mb-2">Digitally Empowered & Inclusive Nation</h3>
+                        <p class="text-slate-700">Every citizen will have widespread, equitable, and affordable access to digital technologies and their benefits. Daily life will be enhanced by seamless e-governance services, universal digital literacy, and accessible digital platforms for education, healthcare, and economic participation, bridging current divides.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold pk-green-dark mb-2">Dynamic Knowledge-Based Economy</h3>
+                        <p class="text-slate-700">Our economy will be driven by high-value services, indigenous product innovation, and a thriving, globally connected startup ecosystem. This signifies a structural shift from reliance on traditional sectors to a sustainable model fueled by intellectual capital and technological advancement.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold pk-green-dark mb-2">Premier Destination for Tech Talent</h3>
+                        <p class="text-slate-700">Pakistan will be a magnet for top-tier domestic and international tech talent. We will foster a vibrant culture of creativity, research, and excellence that not only retains our best minds but also attracts skilled professionals from around the world, reversing brain drain.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow col-span-1 md:col-span-2 lg:col-span-1">
+                        <h3 class="text-xl font-semibold pk-green-dark mb-2">Technology as a Catalyst for National Solutions</h3>
+                        <p class="text-slate-700">Technology will be a key enabler for effectively addressing Pakistan's most pressing national challenges in education (personalized EdTech), healthcare (AI-driven diagnostics, telemedicine), governance (transparent and efficient smart cities), agriculture (precision AgriTech for food security), and environmental sustainability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillars" class="section-content">
+            <h2 class="text-3xl font-bold text-center mb-2 pk-green-dark">The Five Pillars of Transformation</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Project IGNITE's comprehensive strategy for national digital rejuvenation is built upon five interconnected and mutually reinforcing strategic pillars. Each pillar encompasses specific objectives and a suite of key initiatives designed to systematically address identified challenges and propel Pakistan towards its envisioned technological future. Click on each pillar to explore its detailed components and action plans, including new AI-powered tools to help you brainstorm and plan.</p>
+            <div class="space-y-4">
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="pillar-accordion-button w-full text-left p-4 font-semibold text-xl pk-green-dark hover:pk-green-light-bg flex justify-between items-center">
+                        Pillar 1: Future-Ready Human Capital
+                        <span class="arrow transform transition-transform duration-300">&#9654;</span> </button>
+                    <div class="pillar-accordion-content px-4 text-slate-700">
+                        <p class="font-medium mb-3 text-lg">Objective: To cultivate a globally competitive, agile, and innovative talent pool equipped with cutting-edge skills in emerging and future technologies, ensuring our youth are prepared for the demands of the 4th Industrial Revolution.</p>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li><strong>National Curriculum Overhaul (K-16):</strong> Comprehensive reform from primary school through higher education to integrate computational thinking, data science fundamentals, AI literacy, cybersecurity awareness, and critical problem-solving skills. Introduce mandatory, structured tech internships and industry-capstone projects.</li>
+                            <li><strong>"Skills for a Digital Pakistan" Program:</strong> Establish and operationalize 50 National Centers of Excellence (CoEs) focused on specialized training in AI, Cloud Computing, Cybersecurity, Data Analytics, IoT, and Game Development. Forge robust public-private partnerships for industry-aligned bootcamps and vocational training. Ambitious Target: Train 1 million youth in high-demand digital skills within 5 years, with clear certification pathways.</li>
+                            <li><strong>Faculty Development Academies & Research Enhancement:</strong> Create dedicated academies to upskill and re-skill university and college faculty in emerging technologies through intensive training programs, international exchange opportunities, and research collaborations. Provide grants for applied research.</li>
+                            <li><strong>National Digital Literacy Mission 2.0:</strong> Launch an aggressive, nationwide campaign to ensure baseline digital literacy for all citizens, with a special focus on empowering women, rural communities, and marginalized groups with practical digital skills for daily life and economic participation.</li>
+                            <li><strong>"Tech Talent Retention & Attraction" Fund (IGNITE Scholars):</strong> Implement a comprehensive fund offering competitive research grants, startup seed funding, international fellowships for PhDs, and incentives for top Pakistani tech talent working abroad to return and contribute to the local ecosystem.</li>
+                        </ul>
+                        <div class="gemini-feature-card">
+                            <h4 class="text-lg font-semibold pk-green-mid mb-2">✨ AI Learning Path Generator</h4>
+                            <p class="text-sm text-slate-600 mb-2">Enter a tech skill you're interested in (e.g., "AI Specialist", "Cloud Architect") to get a customized learning path outline.</p>
+                            <div class="flex flex-col sm:flex-row gap-2 items-center">
+                                <input type="text" id="techSkillInput" class="gemini-input flex-grow" placeholder="e.g., AI Specialist">
+                                <button id="generateLearningPathBtn" class="gemini-button">Generate Path</button>
+                            </div>
+                            <div id="learningPathResult" class="gemini-result mt-3 hidden"></div>
+                            <div id="learningPathLoading" class="loading-indicator mt-2 hidden">Generating learning path... please wait.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="pillar-accordion-button w-full text-left p-4 font-semibold text-xl pk-green-dark hover:pk-green-light-bg flex justify-between items-center">
+                        Pillar 2: Ubiquitous Digital Infrastructure
+                        <span class="arrow transform transition-transform duration-300">&#9654;</span>
+                    </button>
+                    <div class="pillar-accordion-content px-4 text-slate-700">
+                        <p class="font-medium mb-3 text-lg">Objective: To ensure the availability of affordable, reliable, high-speed, and resilient digital infrastructure across the entirety of Pakistan, forming the robust backbone necessary for a thriving digital economy and society.</p>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li><strong>"Digital Connectivity for All" Program (Pakistan Connects):</strong> Accelerate nationwide fiber optic cable deployment through strategic public-private partnerships, targeting underserved areas. Expedite the rollout of 5G services with a focus on industrial use cases, smart cities, and innovation hubs. Optimize and expand the Universal Service Fund (USF) for enhanced rural and remote area connectivity.</li>
+                            <li><strong>National Data Center & Cloud Policy:</strong> Incentivize the establishment of multiple Tier-III and Tier-IV certified data centers through fiscal benefits and streamlined approvals. Aggressively promote a "Cloud-First" strategy for government services and SMEs to enhance efficiency and scalability. Ensure robust data sovereignty frameworks while facilitating partnerships with global cloud service providers.</li>
+                            <li><strong>Special Economic Zones for Technology (Tech SEZs) & Digital Parks:</strong> Designate and develop state-of-the-art Tech SEZs in major cities and emerging tech towns, providing uninterrupted power, redundant high-speed internet connectivity, and plug-and-play facilities for IT companies and startups.</li>
+                            <li><strong>National Digital Payments Backbone Enhancement:</strong> Strengthen, modernize, and expand secure, interoperable digital payment systems (e.g., Raast) to foster a cashless economy, improve financial inclusion, and facilitate e-commerce growth.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="pillar-accordion-button w-full text-left p-4 font-semibold text-xl pk-green-dark hover:pk-green-light-bg flex justify-between items-center">
+                        Pillar 3: Innovation & Entrepreneurship Ecosystem
+                        <span class="arrow transform transition-transform duration-300">&#9654;</span>
+                    </button>
+                    <div class="pillar-accordion-content px-4 text-slate-700">
+                        <p class="font-medium mb-3 text-lg">Objective: To cultivate a vibrant, dynamic, and self-sustaining national ecosystem that actively fosters innovation, supports entrepreneurs from ideation through to global scaling, and positions Pakistan as a hub for creative technological solutions.</p>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li><strong>Pakistan National Innovation Fund (PNIF):</strong> Establish a significant, professionally managed co-investment fund (e.g., USD $500 million initial corpus, with public-private contributions) dedicated to early-stage startups, applied R&D projects, and ventures in deep technologies like AI, biotech, and advanced materials.</li>
+                            <li><strong>"Startup Pakistan" Revitalization & Scale-up Program:</strong> Overhaul and empower the Startup Pakistan initiative with true one-window operations for business registration, IP filing, and regulatory compliance. Establish and support a National Incubator & Accelerator Network with standardized quality benchmarks, performance-based funding, and strong international linkages for global exposure. Develop robust mentorship platforms.</li>
+                            <li><strong>Industry-Academia R&D Grand Challenges:</strong> Launch government and industry-sponsored "Grand Challenges" focused on leveraging technology to solve critical national problems (e.g., water scarcity, energy efficiency, healthcare access), offering substantial grants, and clear pathways for commercialization support.</li>
+                            <li><strong>Intellectual Property (IP) Regime Reform & Commercialization:</strong> Modernize and strengthen IP laws to align with global best practices. Create fast-track IP courts and specialized IP enforcement units. Establish and fund Technology Transfer Offices (TTOs) / IP commercialization offices within leading universities to facilitate the patenting and licensing of academic research.</li>
+                            <li><strong>Promote "Made in Pakistan" Tech & Local Content:</strong> Implement government procurement policies that give preference to indigenous technology solutions and services. Launch campaigns to encourage the development and adoption of local digital content and applications.</li>
+                        </ul>
+                        <div class="gemini-feature-card">
+                            <h4 class="text-lg font-semibold pk-green-mid mb-2">✨ AI Startup Idea Generator</h4>
+                            <p class="text-sm text-slate-600 mb-2">Select a national challenge area to brainstorm tech startup ideas.</p>
+                            <div class="flex flex-col sm:flex-row gap-2 items-center">
+                                <select id="challengeAreaSelect" class="gemini-input flex-grow">
+                                    <option value="water scarcity">Water Scarcity</option>
+                                    <option value="energy efficiency">Energy Efficiency</option>
+                                    <option value="healthcare access">Healthcare Access</option>
+                                    <option value="EdTech for rural schools">EdTech for Rural Schools</option>
+                                    <option value="agricultural productivity">Agricultural Productivity</option>
+                                    <option value="financial inclusion">Financial Inclusion</option>
+                                </select>
+                                <button id="generateStartupIdeasBtn" class="gemini-button">Brainstorm Ideas</button>
+                            </div>
+                            <div id="startupIdeasResult" class="gemini-result mt-3 hidden"></div>
+                            <div id="startupIdeasLoading" class="loading-indicator mt-2 hidden">Brainstorming ideas... please wait.</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md">
+                    <button class="pillar-accordion-button w-full text-left p-4 font-semibold text-xl pk-green-dark hover:pk-green-light-bg flex justify-between items-center">
+                        Pillar 4: Agile Governance & Enabling Policy
+                        <span class="arrow transform transition-transform duration-300">&#9654;</span>
+                    </button>
+                    <div class="pillar-accordion-content px-4 text-slate-700">
+                        <p class="font-medium mb-3 text-lg">Objective: To create and maintain a stable, transparent, predictable, and forward-looking policy and regulatory environment that boosts investor confidence, significantly facilitates the ease of doing business for tech enterprises, and positions the government as an agile enabler of digital transformation.</p>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li><strong>Empowered National Digital Transformation Authority (NDTA):</strong> Establish and empower a single, high-level NDTA with representation from all key ministries, provincial governments, and significant private sector stakeholders. This body will oversee, coordinate, monitor, and drive the national digital agenda with direct reporting to the Prime Minister's Office to ensure accountability and swift decision-making.</li>
+                            <li><strong>Modern Tech-Friendly Legislation & Regulatory Sandboxes:</strong> Enact a comprehensive Data Protection Act aligned with global standards (e.g., GDPR) balancing privacy with innovation. Develop and implement a National Cybersecurity Framework and establish a competent enforcement agency. Introduce regulatory sandboxes for emerging technologies like FinTech and AI to allow innovation under controlled conditions. Implement a simplified, favorable tax regime for the IT/ITES sector, freelancers, and startups, including potential tax holidays and reduced sales tax on essential IT equipment and services.</li>
+                            <li><strong>Ease of Doing Business for Tech Sector:</strong> Streamline foreign exchange regulations for IT exporters and startups, enabling easier inward/outward remittances and higher retention limits for foreign currency earnings. Simplify processes for attracting foreign tech investment and skilled international talent.</li>
+                            <li><strong>International Tech Diplomacy & Proactive Marketing:</strong> Develop and execute a strategy for international tech diplomacy to forge strategic partnerships, attract investment, and promote Pakistani tech capabilities globally. Proactively brand Pakistan as an attractive and competitive tech destination through targeted marketing campaigns and participation in global tech events.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md">
+                    <button class="pillar-accordion-button w-full text-left p-4 font-semibold text-xl pk-green-dark hover:pk-green-light-bg flex justify-between items-center">
+                        Pillar 5: Inclusive Digitalization – Technology for All
+                        <span class="arrow transform transition-transform duration-300">&#9654;</span>
+                    </button>
+                    <div class="pillar-accordion-content px-4 text-slate-700">
+                        <p class="font-medium mb-3 text-lg">Objective: To ensure that the manifold benefits of digital transformation reach every citizen and all regions of Pakistan, actively working to bridge the digital divide and foster an inclusive digital society where no one is left behind.</p>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                             <li><strong>" ہر شہری، بااختیار شہری " (Har Shehri, Ba-ikhtiyar Shehri - Every Citizen, Empowered Citizen) Digital Literacy Program:</strong> A massive, targeted digital literacy drive focusing on women, rural communities, out-of-school youth, and marginalized groups. Deploy mobile digital literacy vans and establish community digital learning centers. Content to be localized and practical.</li>
+                            <li><strong>Women in Technology (WiT) Initiative & Gender Parity:</strong> Launch comprehensive programs including scholarships, mentorship networks, coding camps specifically for girls and women, and incentives for companies that hire, retain, and promote women in technology roles. Ambitious Target: Increase female participation in the IT workforce to at least 35% within 5 years.</li>
+                            <li><strong>Tech for Social Impact Fund & Civic Tech:</strong> Establish a dedicated fund to support and scale technological innovations that address pressing social challenges in education (EdTech for remote learning), healthcare (HealthTech for rural access), agriculture (AgriTech for smallholders), and climate sustainability. Promote civic tech initiatives for citizen engagement.</li>
+                            <li><strong>Regional Tech Hub Development Program:</strong> Strategically establish and support tech incubation centers, co-working spaces, and provide targeted support to IT businesses in secondary cities and less developed regions to foster balanced regional growth and create local opportunities.</li>
+                            <li><strong>Assistive Technologies Program for Inclusivity:</strong> Promote the development, localization, and adoption of assistive technologies for persons with disabilities, ensuring they can fully participate in and benefit from the digital economy and society.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation" class="section-content">
+            <h2 class="text-3xl font-bold text-center mb-2 pk-green-dark">Implementation Framework & Governance</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Translating the ambitious vision of Project IGNITE into tangible reality requires a meticulously planned, robust, and adaptable implementation framework coupled with strong governance. This section details the phased approach to execution, the Key Performance Indicators (KPIs) that will track our progress towards measurable success, the high-level governance structure designed for effective oversight, and the comprehensive strategy for mobilizing the necessary resources.</p>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                <h3 class="text-2xl font-semibold pk-green-mid mb-4">Phased Implementation Plan: A Decade of Transformation</h3>
+                 <div class="relative">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-semibold text-lg pk-green-dark">Phase 1 (Years 1-2): Foundational Setup & Quick Wins</h4>
+                        <p class="text-slate-600">Focus on critical policy reforms, establishment and operationalization of the National Digital Transformation Authority (NDTA), launch of flagship skilling programs, initiation of high-impact infrastructure projects, and securing early successes to build momentum and public confidence.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-semibold text-lg pk-green-dark">Phase 2 (Years 3-5): Scaling & Consolidation</h4>
+                        <p class="text-slate-600">Nationwide expansion of successful skilling initiatives, completion of major digital infrastructure rollouts, significant growth and maturation of the startup ecosystem, and a demonstrable surge in IT exports and digital service adoption. Focus on institutionalizing reforms.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-semibold text-lg pk-green-dark">Phase 3 (Years 6-10): Global Leadership & Sustained Innovation</h4>
+                        <p class="text-slate-600">Position Pakistan as a recognized global leader in specific technology niches, fostering a culture of deep tech innovation and R&D. Achieve widespread societal digital transformation, with technology seamlessly integrated into all aspects of life and governance. Ensure sustainability of the ecosystem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+                <h3 class="text-2xl font-semibold pk-green-mid mb-6 text-center">Key Performance Indicators (KPIs) - Measuring Our Ascent</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="kpi-card text-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">IT Exports Target</h4>
+                        <div class="chart-container mx-auto h-64 sm:h-72 md:h-80"><canvas id="itExportsChart"></canvas></div>
+                        <p class="text-sm text-slate-500 mt-2">Aiming for $15 Billion by 2028, and $30 Billion by 2032.</p>
+                    </div>
+                    <div class="kpi-card text-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">Venture Capital Investment</h4>
+                        <div class="chart-container mx-auto h-64 sm:h-72 md:h-80"><canvas id="vcInvestmentChart"></canvas></div>
+                        <p class="text-sm text-slate-500 mt-2">Targeting $1 Billion annually in VC funding into tech startups by 2028.</p>
+                    </div>
+                    <div class="kpi-card text-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">Digital Literacy Rate</h4>
+                        <div class="chart-container mx-auto h-64 sm:h-72 md:h-80"><canvas id="digitalLiteracyChart"></canvas></div>
+                         <p class="text-sm text-slate-500 mt-2">Achieve 75% national digital literacy (functional skills) by 2030.</p>
+                    </div>
+                    <div class="kpi-card text-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">Global Innovation Index</h4>
+                         <div class="chart-container mx-auto h-64 sm:h-72 md:h-80"><canvas id="giiChart"></canvas></div>
+                        <p class="text-sm text-slate-500 mt-2">Improve Pakistan's ranking by at least 30 positions by 2030.</p>
+                    </div>
+                     <div class="kpi-card text-center flex flex-col justify-center items-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">Tech Sector Employment</h4>
+                        <p class="text-4xl font-bold pk-green-mid">1 Million+</p>
+                        <p class="text-slate-600">Creation of new direct & indirect jobs in the tech sector by 2030.</p>
+                    </div>
+                    <div class="kpi-card text-center flex flex-col justify-center items-center">
+                        <h4 class="text-lg font-semibold pk-green-dark mb-2">Tech Startups Growth</h4>
+                        <p class="text-4xl font-bold pk-green-mid">10,000+</p>
+                        <p class="text-slate-600">New registered and operational tech startups by 2030.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold pk-green-mid mb-3">High-Level National Task Force</h3>
+                    <p class="text-slate-700 mb-2">To ensure dedicated oversight and drive, a National Task Force will be chaired by the Prime Minister/President.</p>
+                    <p class="text-slate-700 mb-2"><strong class="font-medium">Key Members:</strong> Relevant Federal Ministers (IT, Finance, Planning, Education, Science & Tech), Provincial Chief Ministers (or their nominees), Head of the NDTA, prominent Industry Leaders from the IT sector, Vice-Chancellors of leading Universities, and selected Youth Representatives.</p>
+                    <p class="text-slate-700"><strong class="font-medium">Mandate:</strong> To champion Project IGNITE, drive its implementation across all levels of government, monitor progress against KPIs, swiftly remove inter-ministerial bottlenecks, and ensure effective cross-sectoral coordination and resource alignment.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold pk-green-mid mb-3">Resource Mobilization Strategy</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700">
+                        <li>Dedicated and ring-fenced government budgetary allocations within the national and provincial budgets.</li>
+                        <li>Strategic leveraging of Public-Private Partnerships (PPPs) for large-scale infrastructure development and specialized skilling programs.</li>
+                        <li>Proactive attraction of Foreign Direct Investment (FDI) into the tech sector through targeted international roadshows, policy incentives, and investment facilitation.</li>
+                        <li>Engaging an international advisory council comprising global tech leaders and experts to provide strategic guidance and access to global networks.</li>
+                        <li>Exploring innovative financing mechanisms, including blended finance and impact investment funds.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="section-content">
+            <h2 class="text-3xl font-bold text-center mb-2 pk-green-dark">The Economic & Societal Impact: A Transformed Nation</h2>
+            <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">The successful execution of Project IGNITE is poised to unleash a wave of transformative benefits across Pakistan. This initiative is not merely an economic strategy but a comprehensive plan for societal upliftment, aiming to catalyze sustainable economic growth, create widespread opportunities for our youth, enhance the efficiency and transparency of governance, and significantly elevate Pakistan's standing on the global stage.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                    <span class="text-3xl pk-green-mid">&#128200;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Robust Economic Growth</h3>
+                        <p class="text-slate-600">The tech sector will become a primary driver of GDP growth, fueled by a significant increase in high-value IT exports, a burgeoning domestic digital economy, and substantial foreign exchange earnings, strengthening macroeconomic stability.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                     <span class="text-3xl pk-green-mid">&#128188;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Massive Job Creation</h3>
+                        <p class="text-slate-600">Creation of over a million direct and indirect employment opportunities for youth across diverse skill levels, ranging from software development and data science to digital marketing and IT support, significantly reducing unemployment.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                    <span class="text-3xl pk-green-mid">&#127758;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Poverty Reduction & Enhanced Livelihoods</h3>
+                        <p class="text-slate-600">Empowerment of individuals and communities, particularly in underserved areas, through access to market-relevant digital skills, freelance opportunities, and avenues for tech-enabled entrepreneurship, leading to improved income levels and livelihoods.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                    <span class="text-3xl pk-green-mid">&#128187;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Improved Governance & Service Delivery</h3>
+                        <p class="text-slate-600">Enhanced efficiency, transparency, accountability, and citizen-centricity in public service delivery through the comprehensive adoption of e-governance solutions, data-driven decision-making, and smart city initiatives.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                     <span class="text-3xl pk-green-mid">&#127941;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Enhanced Global Standing & Soft Power</h3>
+                        <p class="text-slate-600">Pakistan will be recognized internationally as a technologically advanced, innovative, and competitive nation, attracting global investment, partnerships, and talent, thereby enhancing its soft power and influence on the world stage.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex items-start space-x-4">
+                    <span class="text-3xl pk-green-mid">&#129504;</span> <div>
+                        <h3 class="text-xl font-semibold pk-green-dark mb-1">Empowered & Engaged Youth</h3>
+                        <p class="text-slate-600">The boundless energy, creativity, and potential of Pakistan's youth will be channeled towards productive, innovative, and nation-building activities, fostering a generation filled with hope, skills, and opportunities to shape their own future and that of the country.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="action" class="section-content">
+            <div class="pk-green-mid-bg text-white p-10 rounded-lg shadow-2xl text-center">
+                <h2 class="text-4xl font-bold mb-3">The Call to Action: A Unified National Effort</h2>
+                <p class="text-xl mb-6 leading-relaxed max-w-3xl mx-auto pk-green-light-text">Project IGNITE is far more than an IT policy or an economic plan; it is a **national rejuvenation mission**, a call to awaken the latent potential of our great nation. The confluence of rapid global technological shifts and Pakistan's immense youth potential presents a historic, once-in-a-generation opportunity that we must seize with courage, conviction, and collective will.</p>
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-3">What is Imperatively Required:</h3>
+                    <ul class="list-none space-y-2 inline-block text-left text-lg">
+                        <li class="flex items-center"><span class="text-2xl mr-2 text-yellow-300">&#10004;</span> Unwavering Political Will & Sustained Top-Level Commitment.</li>
+                        <li class="flex items-center"><span class="text-2xl mr-2 text-yellow-300">&#10004;</span> A True Collaborative Spirit: Government, industry, academia, and civil society working in complete unison, breaking down silos.</li>
+                        <li class="flex items-center"><span class="text-2xl mr-2 text-yellow-300">&#10004;</span> A Long-Term, Strategic Vision & Consistent, Accountable Execution that transcends political cycles.</li>
+                        <li class="flex items-center"><span class="text-2xl mr-2 text-yellow-300">&#10004;</span> The Courage to Undertake Bold Reforms & Foster a Culture of Continuous Innovation.</li>
+                    </ul>
+                </div>
+                <p class="text-2xl font-semibold">Let us commit today, with unified resolve, to <strong class="text-yellow-300">IGNITE</strong> Pakistan's potential and collaboratively build a prosperous, equitable, and technologically advanced future for all our generations to come.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 py-8 text-center mt-12">
+        <p>&copy; 2025 Project IGNITE. A Report by Wasim Hassan, Chairperson Enlyst Board of Members.</p>
+        <p>Forging Pakistan's Digital Future.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navLinks = document.querySelectorAll('nav a.nav-link, #mobile-menu a.nav-link');
+        const sections = document.querySelectorAll('.section-content');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function updateActiveNav(targetId) {
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                link.classList.add('inactive-nav');
+                if (link.getAttribute('href') === `#${targetId}`) {
+                    link.classList.add('active-nav');
+                    link.classList.remove('inactive-nav');
+                }
+            });
+        }
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            updateActiveNav(targetId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+                if (mobileMenu.classList.contains('hidden') === false) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        const accordionButtons = document.querySelectorAll('.pillar-accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('.arrow');
+                
+                button.classList.toggle('open');
+                content.classList.toggle('open');
+                if (content.classList.contains('open')) {
+                    arrow.style.transform = 'rotate(90deg)';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        const initialHash = window.location.hash.substring(1);
+        if (initialHash && document.getElementById(initialHash)) {
+            showSection(initialHash);
+        } else {
+            showSection('overview');
+        }
+
+        const chartLabelColor = '#334155'; 
+        const chartGridColor = '#e2e8f0'; 
+        const chartFont = { family: 'Inter, sans-serif', size: 12 };
+        const pkGreenPrimary = 'rgba(4, 120, 87, 0.7)'; 
+        const pkGreenSecondary = 'rgba(5, 150, 105, 0.7)';
+        const pkLightGreenAccent = 'rgba(167, 243, 208, 0.7)';
+
+
+        function createChart(ctx, type, data, options) {
+            return new Chart(ctx, { type, data, options });
+        }
+        
+        const commonOptions = (titleText) => ({
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { 
+                    position: 'top', 
+                    labels: { color: chartLabelColor, font: chartFont }
+                },
+                title: { 
+                    display: true, 
+                    text: titleText, 
+                    color: '#065f46', 
+                    font: { ...chartFont, size: 16, weight: 'bold' } 
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: { ...chartFont, weight: 'bold'},
+                    bodyFont: chartFont,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                                if (titleText.includes("IT Exports") || titleText.includes("VC Investment")) label += 'B USD';
+                                if (titleText.includes("Global Innovation Index")) label += ' Pos. Gain';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: chartLabelColor, font: chartFont },
+                    grid: { color: chartGridColor }
+                },
+                x: {
+                    ticks: { color: chartLabelColor, font: chartFont },
+                    grid: { display: false }
+                }
+            }
+        });
+        
+        const commonPieDonutOptions = (titleText) => ({
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { 
+                    position: 'bottom', 
+                    labels: { color: chartLabelColor, font: chartFont }
+                },
+                title: { 
+                    display: true, 
+                    text: titleText, 
+                    color: '#065f46', 
+                    font: { ...chartFont, size: 16, weight: 'bold' } 
+                },
+                 tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFont: { ...chartFont, weight: 'bold'},
+                    bodyFont: chartFont,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed + '%';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        });
+
+        const itExportsCtx = document.getElementById('itExportsChart')?.getContext('2d');
+        if (itExportsCtx) {
+            createChart(itExportsCtx, 'bar', {
+                labels: ['2028 Target', '2032 Target'],
+                datasets: [{
+                    label: 'IT Exports (Billion USD)',
+                    data: [15, 30],
+                    backgroundColor: [pkGreenPrimary, pkGreenSecondary],
+                    borderColor: ['#065f46', '#047857'],
+                    borderWidth: 1
+                }]
+            }, commonOptions('IT Exports Targets'));
+        }
+
+        const vcInvestmentCtx = document.getElementById('vcInvestmentChart')?.getContext('2d');
+        if (vcInvestmentCtx) {
+            createChart(vcInvestmentCtx, 'bar', {
+                labels: ['2028 Target'],
+                datasets: [{
+                    label: 'VC Investment (Billion USD)',
+                    data: [1],
+                    backgroundColor: [pkGreenPrimary],
+                    borderColor: ['#065f46'],
+                    borderWidth: 1
+                }]
+            }, commonOptions('VC Investment Target'));
+        }
+        
+        const digitalLiteracyCtx = document.getElementById('digitalLiteracyChart')?.getContext('2d');
+        if (digitalLiteracyCtx) {
+            createChart(digitalLiteracyCtx, 'doughnut', {
+                labels: ['Target Achieved (75%)', 'Remaining (25%)'],
+                datasets: [{
+                    label: 'Digital Literacy Rate by 2030',
+                    data: [75, 25],
+                    backgroundColor: [pkGreenSecondary, '#e5e7eb'], 
+                    borderColor: [pkGreenSecondary, '#d1d5db'], 
+                    borderWidth: 1
+                }]
+            }, commonPieDonutOptions('Digital Literacy Rate Target (2030)'));
+        }
+
+        const giiCtx = document.getElementById('giiChart')?.getContext('2d');
+         if (giiCtx) {
+            createChart(giiCtx, 'bar', {
+                labels: ['Target Improvement'],
+                datasets: [{
+                    label: 'Position Gain by 2030',
+                    data: [30], 
+                    backgroundColor: [pkLightGreenAccent], 
+                    borderColor: [pkGreenSecondary],
+                    borderWidth: 1
+                }]
+            }, commonOptions('Global Innovation Index Improvement Target'));
+        }
+
+        async function callGeminiAPI(prompt, resultElement, loadingElement) {
+            loadingElement.classList.remove('hidden');
+            resultElement.classList.add('hidden');
+            resultElement.textContent = '';
+
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    resultElement.textContent = text;
+                } else {
+                    resultElement.textContent = 'No content received from API, or unexpected response structure.';
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                resultElement.textContent = 'Error generating content. Please try again. Details: ' + error.message;
+            } finally {
+                loadingElement.classList.add('hidden');
+                resultElement.classList.remove('hidden');
+            }
+        }
+
+        const generateLearningPathBtn = document.getElementById('generateLearningPathBtn');
+        const techSkillInput = document.getElementById('techSkillInput');
+        const learningPathResult = document.getElementById('learningPathResult');
+        const learningPathLoading = document.getElementById('learningPathLoading');
+
+        if (generateLearningPathBtn) {
+            generateLearningPathBtn.addEventListener('click', () => {
+                const skill = techSkillInput.value.trim();
+                if (skill) {
+                    const prompt = `Generate a concise learning path outline for someone in Pakistan aspiring to become a "${skill}". Include 3-4 key areas of study, 1-2 suggested certifications (if applicable and internationally recognized), and 2-3 important soft skills. Focus on resources and approaches relevant to the Pakistani context. Keep the entire response under 150 words. Format with clear headings for each section (Areas of Study, Certifications, Soft Skills).`;
+                    callGeminiAPI(prompt, learningPathResult, learningPathLoading);
+                } else {
+                    learningPathResult.textContent = 'Please enter a tech skill.';
+                    learningPathResult.classList.remove('hidden');
+                }
+            });
+        }
+
+        const generateStartupIdeasBtn = document.getElementById('generateStartupIdeasBtn');
+        const challengeAreaSelect = document.getElementById('challengeAreaSelect');
+        const startupIdeasResult = document.getElementById('startupIdeasResult');
+        const startupIdeasLoading = document.getElementById('startupIdeasLoading');
+
+        if (generateStartupIdeasBtn) {
+            generateStartupIdeasBtn.addEventListener('click', () => {
+                const challengeArea = challengeAreaSelect.value;
+                if (challengeArea) {
+                    const prompt = `Brainstorm 2 innovative tech startup ideas relevant to Pakistan that address the challenge of "${challengeArea}". For each idea, provide a brief concept (1-2 sentences), target audience (1 sentence), and potential key technology (1 sentence). Keep the entire response under 200 words. Format with a clear heading for each startup idea.`;
+                    callGeminiAPI(prompt, startupIdeasResult, startupIdeasLoading);
+                }
+            });
+        }
+
+    });
+</script>
+</body>
+</html>

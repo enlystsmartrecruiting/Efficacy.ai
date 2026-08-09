@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Enlystnow Recruiter — pipeline intelligence, behavioral match scores, and team workflows.">
+  <title>Recruiter · Enlystnow</title>
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], serif: ['Instrument Serif', 'Georgia', 'serif'] },
+          colors: {
+            brand: { blue: '#2D5BE3', obsidian: '#050505', surface: '#0A0A0C', line: 'rgba(255,255,255,0.08)' },
+          },
+          boxShadow: {
+            panel: '0 25px 50px -12px rgba(0,0,0,0.65), 0 0 0 1px rgba(45,91,227,0.12)',
+            glow: '0 0 40px rgba(45,91,227,0.15)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --brand: #2D5BE3;
+      --bg: #050505;
+      --surface: #0A0A0C;
+      --muted: #94a3b8;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #e2e8f0; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+    .app-shell { position: relative; z-index: 1; }
+    .nav-active { background: rgba(45, 91, 227, 0.14); color: #fff; border: 1px solid rgba(45,91,227,0.35); }
+    .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgba(45,91,227,0.35) transparent; }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(45,91,227,0.4); border-radius: 99px; }
+    @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+    .live-dot { animation: pulse-soft 2s ease-in-out infinite; }
+    @keyframes slide-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-in { animation: slide-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @media (prefers-reduced-motion: reduce) {
+      .live-dot { animation: none; }
+      .animate-in { animation: none; }
+    }
+    .pipeline-card { transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+    .pipeline-card:hover { transform: translateY(-2px); border-color: rgba(45,91,227,0.45); box-shadow: 0 12px 40px -12px rgba(0,0,0,0.8); }
+    .score-ring { --p: 0; background: conic-gradient(#2D5BE3 calc(var(--p) * 1%), rgba(255,255,255,0.08) 0); border-radius: 50%; }
+    [data-view] { display: none; }
+    [data-view].is-visible { display: block; }
+    tr:focus-within td { background: rgba(45,91,227,0.08); }
+    .toast-enter { animation: toastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .job-card { transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+    .job-card:hover { transform: translateY(-4px); border-color: rgba(45,91,227,0.45); box-shadow: 0 24px 48px -16px rgba(0,0,0,0.75), 0 0 0 1px rgba(45,91,227,0.15); }
+    .modal-open { overflow: hidden; }
+    .prose-docs p { margin-bottom: 0.75rem; line-height: 1.65; color: #cbd5e1; }
+    .prose-docs h3 { font-family: Instrument Serif, Georgia, serif; color: #fff; font-size: 1.125rem; margin: 1.25rem 0 0.5rem; }
+    .prose-docs ul { list-style: disc; padding-left: 1.25rem; color: #94a3b8; font-size: 0.875rem; }
+    .kbd { font-family: ui-monospace, monospace; font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.35); }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white min-h-screen">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-full focus:font-semibold">Skip to workspace</a>
+
+  <div class="app-shell flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex w-64 shrink-0 flex-col border-r border-white/10 bg-black/40 backdrop-blur-xl" aria-label="Primary">
+      <div class="p-5 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <svg width="28" height="30" viewBox="0 0 44 46" fill="none" aria-hidden="true">
+            <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+            <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+            <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+          </svg>
+          <div>
+            <div class="font-serif text-lg text-white tracking-tight leading-none">enlyst<span class="text-brand-blue italic font-sans font-light text-base">now</span></div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500 mt-1">Recruiter</div>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 p-3 space-y-0.5 overflow-y-auto scrollbar-thin" id="side-nav">
+        <button type="button" data-nav="overview" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i> Overview
+        </button>
+        <button type="button" data-nav="requisitions" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="briefcase" class="w-4 h-4 shrink-0"></i> Requisitions
+        </button>
+        <button type="button" data-nav="jobs" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="globe" class="w-4 h-4 shrink-0"></i> Job board
+        </button>
+        <button type="button" data-nav="applications" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="inbox" class="w-4 h-4 shrink-0"></i> Applications
+        </button>
+        <button type="button" data-nav="pipeline" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="columns-3" class="w-4 h-4 shrink-0"></i> Pipeline
+        </button>
+        <button type="button" data-nav="talent" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="users" class="w-4 h-4 shrink-0"></i> Talent pool
+        </button>
+        <button type="button" data-nav="analytics" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+          <i data-lucide="line-chart" class="w-4 h-4 shrink-0"></i> Analytics
+        </button>
+        <div class="pt-4 mt-4 border-t border-white/10">
+          <button type="button" data-nav="guide" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+            <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i> Guide &amp; roadmap
+          </button>
+          <button type="button" data-nav="settings" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors text-left">
+            <i data-lucide="settings" class="w-4 h-4 shrink-0"></i> Settings
+          </button>
+        </div>
+      </nav>
+      <div class="p-4 border-t border-white/10">
+        <div class="rounded-xl bg-white/5 border border-white/10 p-3">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="live-dot w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Agent online</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed" id="agent-tip">Calibrating signals from your open reqs…</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050505]/85 backdrop-blur-2xl">
+        <div class="flex items-center gap-3 px-4 sm:px-6 h-14">
+          <button type="button" id="mobile-menu" class="lg:hidden p-2 rounded-lg hover:bg-white/10 text-slate-400" aria-expanded="false" aria-controls="mobile-drawer">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+          <div class="flex-1 flex items-center gap-3 min-w-0">
+            <label class="sr-only" for="global-search">Search candidates and jobs</label>
+            <div class="relative max-w-xl w-full">
+              <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"></i>
+              <input type="search" id="global-search" autocomplete="off" placeholder="Search roles, people, skills…"
+                class="w-full pl-10 pr-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue/40 transition-shadow" />
+            </div>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 text-xs text-slate-500">
+            <span id="save-status" class="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-slate-500" title="Local save status">Saved</span>
+            <span class="px-2 py-1 rounded-md bg-white/5 border border-white/10 font-mono">enlystnow.com</span>
+          </div>
+          <button type="button" id="btn-help" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/10 border border-white/10" title="Shortcuts (?)" aria-label="Help and shortcuts">
+            <i data-lucide="help-circle" class="w-4 h-4"></i> Help
+          </button>
+          <button type="button" class="relative p-2 rounded-full hover:bg-white/10 text-slate-400" aria-label="Notifications">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-blue rounded-full"></span>
+          </button>
+          <div class="flex items-center gap-2 pl-2 border-l border-white/10">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-indigo-600 flex items-center justify-center text-xs font-bold text-white">WA</div>
+            <div class="hidden md:block text-left">
+              <div class="text-xs font-semibold text-white leading-tight">Workspace</div>
+              <div class="text-[10px] text-slate-500">Hiring lead</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" class="flex-1 overflow-y-auto scrollbar-thin">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+          <!-- Overview -->
+          <section data-view="overview" class="is-visible space-y-8" aria-labelledby="overview-heading">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 animate-in">
+              <div>
+                <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand-blue mb-2">Today</p>
+                <h1 id="overview-heading" class="text-3xl sm:text-4xl font-serif text-white tracking-tight">Hiring command center</h1>
+                <p class="text-slate-400 mt-2 max-w-xl">Live pipeline health, match quality, and recruiter capacity — tuned for institutional hiring at Enlyst.</p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" id="btn-new-req" class="px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-200 transition-colors shadow-glow flex items-center gap-2">
+                  <i data-lucide="plus" class="w-4 h-4"></i> New requisition
+                </button>
+                <button type="button" data-jump="pipeline" class="px-5 py-2.5 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition-colors">
+                  Open pipeline
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4" id="kpi-row"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm shadow-panel overflow-hidden animate-in" style="animation-delay: 0.05s">
+                <div class="px-5 py-4 border-b border-white/10 flex items-center justify-between">
+                  <h2 class="font-serif text-xl text-white">Priority requisitions</h2>
+                  <button type="button" data-jump="requisitions" class="text-xs font-semibold text-brand-blue hover:underline">View all</button>
+                </div>
+                <div class="overflow-x-auto" id="req-table-wrap"></div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm shadow-panel p-5 animate-in" style="animation-delay: 0.1s">
+                <h2 class="font-serif text-xl text-white mb-4">Activity</h2>
+                <ul class="space-y-4" id="activity-feed"></ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Requisitions -->
+          <section data-view="requisitions" class="space-y-6" aria-labelledby="req-heading" hidden>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 id="req-heading" class="text-3xl font-serif text-white">Requisitions</h1>
+                <p class="text-slate-400 text-sm mt-1">Open roles, SLA status, and hiring-manager alignment.</p>
+              </div>
+              <div class="flex gap-2">
+                <select id="req-filter" class="rounded-xl bg-white/5 border border-white/10 text-sm text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-blue/40" aria-label="Filter by department">
+                  <option value="all">All departments</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Product">Product</option>
+                  <option value="Go-to-market">Go-to-market</option>
+                  <option value="Operations">Operations</option>
+                </select>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden shadow-panel">
+              <div class="overflow-x-auto" id="requisitions-full"></div>
+            </div>
+          </section>
+
+          <!-- Job board (Indeed-style listings) -->
+          <section data-view="jobs" class="space-y-6" aria-labelledby="jobs-heading" hidden>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-blue mb-2">Public-facing</p>
+                <h1 id="jobs-heading" class="text-3xl font-serif text-white">Job board</h1>
+                <p class="text-slate-400 text-sm mt-1">Open roles as candidates see them — apply flows into Applications and Pipeline.</p>
+              </div>
+              <button type="button" id="btn-preview-note" class="text-xs text-slate-500 border border-white/10 rounded-full px-4 py-2 hover:bg-white/5">
+                Same tab = demo · Production = unique URL per job
+              </button>
+            </div>
+            <div id="job-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+          </section>
+
+          <!-- Applications inbox -->
+          <section data-view="applications" class="space-y-6" aria-labelledby="apps-heading" hidden>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 id="apps-heading" class="text-3xl font-serif text-white">Applications</h1>
+                <p class="text-slate-400 text-sm mt-1">Inbound applies from the job board (stored in this browser — see Settings for backup).</p>
+              </div>
+              <select id="app-filter-req" class="rounded-xl bg-white/5 border border-white/10 text-sm text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-blue/40" aria-label="Filter by job">
+                <option value="all">All jobs</option>
+              </select>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden shadow-panel">
+              <div class="overflow-x-auto" id="applications-table"></div>
+            </div>
+          </section>
+
+          <!-- Pipeline -->
+          <section data-view="pipeline" class="space-y-6" aria-labelledby="pipe-heading" hidden>
+            <div>
+              <h1 id="pipe-heading" class="text-3xl font-serif text-white">Pipeline</h1>
+              <p class="text-slate-400 text-sm mt-1">Kanban by stage — open a card for profile, match score, and stage actions (demo).</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 overflow-x-auto pb-2 scrollbar-thin" id="kanban"></div>
+          </section>
+
+          <!-- Talent -->
+          <section data-view="talent" class="space-y-6" aria-labelledby="talent-heading" hidden>
+            <div>
+              <h1 id="talent-heading" class="text-3xl font-serif text-white">Talent pool</h1>
+              <p class="text-slate-400 text-sm mt-1">Searchable roster with agentic match scores (illustrative).</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden shadow-panel">
+              <div class="overflow-x-auto" id="talent-table"></div>
+            </div>
+          </section>
+
+          <!-- Analytics -->
+          <section data-view="analytics" class="space-y-6" aria-labelledby="analytics-heading" hidden>
+            <div>
+              <h1 id="analytics-heading" class="text-3xl font-serif text-white">Analytics</h1>
+              <p class="text-slate-400 text-sm mt-1">Outcome metrics aligned with your public ROI story on enlystnow.com.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="analytics-grid"></div>
+          </section>
+
+          <!-- Guide -->
+          <section data-view="guide" class="space-y-6" aria-labelledby="guide-heading" hidden>
+            <div>
+              <h1 id="guide-heading" class="text-3xl font-serif text-white">How to use this workspace</h1>
+              <p class="text-slate-400 text-sm mt-1">Operator guide, storage, and the path to Indeed-class hiring — all in one place.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="lg:col-span-2 space-y-4">
+                <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-panel prose-docs">
+                  <h3>Quick start (5 minutes)</h3>
+                  <p>Open <strong class="text-white">Job board</strong> to see published reqs. Click <strong class="text-white">Apply</strong> to simulate a candidate; the person appears under <strong class="text-white">Applications</strong> and as <strong class="text-white">Sourced</strong> in <strong class="text-white">Pipeline</strong>.</p>
+                  <p>Use <strong class="text-white">Talent pool</strong> for search across people; open a profile and <strong class="text-white">Advance</strong> stages as you would in a full ATS.</p>
+                  <h3>Storage &amp; backup</h3>
+                  <p>Data lives in <strong class="text-white">localStorage</strong> on this browser. Use <strong class="text-white">Settings → Export backup</strong> before clearing cache or switching machines. <strong class="text-white">Import</strong> restores a prior snapshot.</p>
+                  <ul>
+                    <li>Not suitable for regulated PII at scale until you add a backend (see roadmap file).</li>
+                    <li>Typical limit ~5 MB per site origin.</li>
+                  </ul>
+                  <h3>Files shipped with this demo</h3>
+                  <ul>
+                    <li><code class="text-brand-blue text-xs">enlyst-recruiter-README.md</code> — deployment &amp; workflow reference</li>
+                    <li><code class="text-brand-blue text-xs">enlyst-recruiter-ROADMAP.md</code> — phases to Indeed-level product</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-panel h-fit">
+                <h3 class="font-serif text-lg text-white mb-4">Keyboard</h3>
+                <dl class="space-y-3 text-sm">
+                  <div class="flex justify-between gap-2"><dt class="text-slate-400">Open help</dt><dd><span class="kbd">?</span></dd></div>
+                  <div class="flex justify-between gap-2"><dt class="text-slate-400">Close modal / drawer</dt><dd><span class="kbd">Esc</span></dd></div>
+                  <div class="flex justify-between gap-2"><dt class="text-slate-400">Search talent</dt><dd><span class="kbd">/</span> focus search</dd></div>
+                </dl>
+                <p class="text-[11px] text-slate-600 mt-6 leading-relaxed">Host markdown docs beside this HTML on your server so HR leaders can open them in Git or Notion mirrors.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Settings -->
+          <section data-view="settings" class="space-y-6 max-w-3xl" aria-labelledby="settings-heading" hidden>
+            <div>
+              <h1 id="settings-heading" class="text-3xl font-serif text-white">Workspace &amp; data</h1>
+              <p class="text-slate-400 text-sm mt-1">Organisation profile, privacy toggles, and <strong class="text-slate-300">storage / backup</strong> for this browser.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 space-y-5 shadow-panel">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2" for="set-org">Organisation name</label>
+                <input type="text" id="set-org" class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-sm text-white focus:ring-2 focus:ring-brand-blue/40 focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2" for="set-tz">Default time zone</label>
+                <input type="text" id="set-tz" readonly class="w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-sm text-slate-500" value="Asia/Karachi (PKT)" />
+              </div>
+              <div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-brand-blue/10 border border-brand-blue/25">
+                <div>
+                  <div class="font-semibold text-white text-sm">Bias-aware screening</div>
+                  <div class="text-xs text-slate-400 mt-1">Structured scorecards &amp; redacted identifiers in review mode (UI flag for production).</div>
+                </div>
+                <button type="button" id="toggle-bias" role="switch" aria-checked="true" class="relative w-11 h-6 rounded-full bg-brand-blue transition-colors shrink-0">
+                  <span class="absolute top-1 right-1 w-4 h-4 bg-white rounded-full shadow knub"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 space-y-4 shadow-panel">
+              <h2 class="font-serif text-xl text-white flex items-center gap-2">
+                <i data-lucide="database" class="w-5 h-5 text-emerald-400"></i> Storage &amp; portability
+              </h2>
+              <p class="text-sm text-slate-400">Everything is stored locally in <span class="text-white font-mono text-xs">localStorage['enlyst-recruiter-v1']</span>. Export regularly if this is beyond a pure demo.</p>
+              <div id="storage-meta" class="text-xs font-mono text-slate-500 border border-white/10 rounded-xl p-4 bg-black/30"></div>
+              <div class="flex flex-wrap gap-3">
+                <button type="button" id="btn-export" class="px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-200 flex items-center gap-2">
+                  <i data-lucide="download" class="w-4 h-4"></i> Export JSON backup
+                </button>
+                <label class="px-5 py-2.5 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 cursor-pointer inline-flex items-center gap-2">
+                  <i data-lucide="upload" class="w-4 h-4"></i> Import backup
+                  <input type="file" id="file-import" accept=".json,application/json" class="hidden" />
+                </label>
+                <button type="button" id="btn-reset" class="px-5 py-2.5 rounded-full border border-red-500/40 text-red-300 text-sm font-semibold hover:bg-red-500/10">
+                  Reset to demo data
+                </button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-drawer" class="fixed inset-0 z-[60] hidden" aria-hidden="true">
+    <button type="button" class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-drawer aria-label="Close menu"></button>
+    <div class="absolute left-0 top-0 bottom-0 w-72 bg-[#080808] border-r border-white/10 p-4 flex flex-col shadow-2xl">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-serif text-white">Menu</span>
+        <button type="button" data-close-drawer class="p-2 rounded-lg hover:bg-white/10"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <nav class="space-y-1 flex-1" id="mobile-nav"></nav>
+    </div>
+  </div>
+
+  <!-- Detail drawer -->
+  <div id="detail-backdrop" class="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm hidden" aria-hidden="true"></div>
+  <aside id="detail-panel" class="fixed top-0 right-0 z-[80] h-full w-full max-w-md bg-[#080808] border-l border-white/10 shadow-2xl translate-x-full transition-transform duration-300 ease-out" aria-hidden="true" aria-labelledby="detail-title">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex justify-between items-start mb-6">
+        <h2 id="detail-title" class="font-serif text-2xl text-white pr-8">Candidate</h2>
+        <button type="button" id="detail-close" class="p-2 rounded-lg hover:bg-white/10 text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto scrollbar-thin space-y-6 text-sm" id="detail-body"></div>
+      <div class="pt-4 border-t border-white/10 flex gap-2">
+        <button type="button" class="flex-1 py-3 rounded-xl bg-brand-blue text-white font-semibold text-sm hover:opacity-95">Schedule interview</button>
+        <button type="button" class="px-4 py-3 rounded-xl border border-white/15 font-semibold text-sm hover:bg-white/5">Archive</button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="toast-host" class="fixed bottom-6 right-6 z-[200] flex flex-col gap-2 items-end pointer-events-none"></div>
+
+  <div id="app-modal" class="fixed inset-0 z-[150] hidden" aria-hidden="true">
+    <button type="button" class="absolute inset-0 bg-black/75 backdrop-blur-sm" id="modal-scrim" aria-label="Close"></button>
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg max-h-[min(90vh,640px)] overflow-y-auto rounded-2xl border border-white/15 bg-[#0a0a0c] shadow-2xl p-6 scrollbar-thin" role="dialog" aria-modal="true" id="modal-panel" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-start gap-4 mb-5">
+        <h2 id="modal-title" class="font-serif text-2xl text-white pr-6">Modal</h2>
+        <button type="button" id="modal-x" class="p-2 rounded-lg hover:bg-white/10 text-slate-400 shrink-0"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div id="modal-body" class="text-sm text-slate-300"></div>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  const STAGES = ['Sourced', 'Screen', 'Interview', 'Offer', 'Hired'];
+  const DEPTS = ['Engineering', 'Product', 'Go-to-market', 'Operations'];
+
+  const reqs = [
+    { id: 'REQ-1042', title: 'Staff Backend Engineer', dept: 'Engineering', loc: 'Hybrid · Lahore', open: 14, candidates: 38, sla: 'on_track', hm: 'A. Rahman', priority: 'P0' },
+    { id: 'REQ-1038', title: 'Product Manager — Talent Cloud', dept: 'Product', loc: 'Remote · PKT', open: 21, candidates: 22, sla: 'at_risk', hm: 'S. Khan', priority: 'P1' },
+    { id: 'REQ-1031', title: 'Head of Growth Marketing', dept: 'Go-to-market', loc: 'On-site', open: 9, candidates: 45, sla: 'on_track', hm: 'N. Vohra', priority: 'P0' },
+    { id: 'REQ-1027', title: 'People Operations Lead', dept: 'Operations', loc: 'Hybrid', open: 7, candidates: 19, sla: 'on_track', hm: 'H. Malik', priority: 'P2' },
+  ];
+
+  const candidates = [
+    { id: 'c1', name: 'Zara H.', role: 'Backend Engineer', stage: 1, match: 94, skills: ['Go', 'Postgres', 'Kafka'], source: 'referral', tag: 'warm intro' },
+    { id: 'c2', name: 'Omar S.', role: 'Product Manager', stage: 2, match: 91, skills: ['Discovery', 'SQL', 'B2B'], source: 'outbound', tag: 'exec fast-track' },
+    { id: 'c3', name: 'Leena K.', role: 'Growth Lead', stage: 0, match: 88, skills: ['Performance', 'Attribution', 'CRM'], source: 'inbound', tag: '' },
+    { id: 'c4', name: 'Bilal A.', role: 'People Ops', stage: 3, match: 96, skills: ['HRIS', 'Policy', 'Data'], source: 'agency', tag: 'vetted' },
+    { id: 'c5', name: 'Fariha M.', role: 'Backend Engineer', stage: 2, match: 89, skills: ['Rust', 'K8s', 'gRPC'], source: 'linkedin', tag: '' },
+    { id: 'c6', name: 'Hassan T.', role: 'Product Manager', stage: 4, match: 92, skills: ['Roadmaps', 'API products'], source: 'referral', tag: 'offer draft' },
+  ];
+
+  const activities = [
+    { t: '8 min ago', msg: 'Agent surfaced 3 behavioral-fit matches for REQ-1042.', type: 'ai' },
+    { t: '26 min ago', msg: 'Omar S. advanced to Interview — scorecard synced.', type: 'move' },
+    { t: '1 hr ago', msg: 'HM feedback requested on Zara H. (REQ-1042).', type: 'hm' },
+    { t: '3 hr ago', msg: 'SLA reminder: REQ-1038 first screen overdue by 1 business day.', type: 'risk' },
+  ];
+
+  const agentTips = [
+    'Tip: Tie every screen to a scorecard dimension — quality of hire rises when criteria are explicit.',
+    'Lowering time-to-offer? Batch HM slots and auto-send prep packs after interview confirmation.',
+    'Your warm-intro channel is outperforming inbound by 2.1× on onsite conversion (demo metric).',
+  ];
+
+  let view = 'overview';
+  let tipIdx = 0;
+
+  function el(tag, cls, html) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+
+  function setView(next) {
+    view = next;
+    document.querySelectorAll('[data-view]').forEach(section => {
+      const match = section.getAttribute('data-view') === view;
+      section.hidden = !match;
+      section.classList.toggle('is-visible', match);
+    });
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      const on = btn.getAttribute('data-nav') === view;
+      btn.classList.toggle('nav-active', on);
+      btn.setAttribute('aria-current', on ? 'page' : 'false');
+    });
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function slaPill(sla) {
+    if (sla === 'at_risk') return '<span class="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">At risk</span>';
+    return '<span class="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">On track</span>';
+  }
+
+  function renderKpis() {
+    const row = document.getElementById('kpi-row');
+    const data = [
+      { label: 'Active reqs', val: '12', delta: '+2 vs last week', icon: 'briefcase' },
+      { label: 'Median time in screen', val: '3.2d', delta: '−18% QoQ', icon: 'timer' },
+      { label: 'Offer acceptance', val: '91%', delta: 'Top quartile', icon: 'badge-check' },
+      { label: 'Agent hours saved', val: '47h', delta: 'This month', icon: 'sparkles' },
+    ];
+    row.innerHTML = data.map((k, i) => `
+      <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-5 shadow-panel animate-in" style="animation-delay: ${i * 0.04}s">
+        <div class="flex items-start justify-between gap-2 mb-3">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">${k.label}</span>
+          <i data-lucide="${k.icon}" class="w-4 h-4 text-brand-blue opacity-80"></i>
+        </div>
+        <div class="font-serif text-3xl text-white mb-1">${k.val}</div>
+        <div class="text-xs text-slate-500">${k.delta}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderReqTable(compact) {
+    const head = `
+      <thead>
+        <tr class="text-left text-[10px] uppercase tracking-widest text-slate-500 border-b border-white/10">
+          <th class="px-5 py-3 font-semibold">Req</th>
+          <th class="px-5 py-3 font-semibold">Role</th>
+          <th class="px-5 py-3 font-semibold">Dept</th>
+          <th class="px-5 py-3 font-semibold">Pipeline</th>
+          <th class="px-5 py-3 font-semibold">SLA</th>
+          <th class="px-5 py-3 font-semibold">HM</th>
+        </tr>
+      </thead>`;
+    const body = reqs.map(r => `
+      <tr class="border-b border-white/5 hover:bg-white/[0.03] transition-colors text-sm">
+        <td class="px-5 py-4 font-mono text-xs text-brand-blue">${r.id}</td>
+        <td class="px-5 py-4 text-white font-medium">${r.title}</td>
+        <td class="px-5 py-4 text-slate-400">${r.dept}</td>
+        <td class="px-5 py-4 text-slate-300">${r.candidates} active</td>
+        <td class="px-5 py-4">${slaPill(r.sla)}</td>
+        <td class="px-5 py-4 text-slate-400">${r.hm}</td>
+      </tr>
+    `).join('');
+    return `<table class="w-full min-w-[640px]">${head}<tbody>${body}</tbody></table>`;
+  }
+
+  function renderActivity() {
+    const ul = document.getElementById('activity-feed');
+    ul.innerHTML = activities.map(a => {
+      const color = a.type === 'risk' ? 'text-amber-400' : a.type === 'ai' ? 'text-brand-blue' : 'text-slate-300';
+      return `<li class="flex gap-3">
+        <div class="w-1 rounded-full shrink-0 mt-1.5 ${a.type === 'risk' ? 'bg-amber-400' : 'bg-brand-blue'} opacity-70"></div>
+        <div>
+          <p class="text-sm ${color} leading-snug">${a.msg}</p>
+          <p class="text-[10px] text-slate-600 mt-1 font-mono uppercase tracking-wide">${a.t}</p>
+        </div>
+      </li>`;
+    }).join('');
+  }
+
+  function renderRequisitionsFull(filterDept) {
+    const list = filterDept === 'all' ? reqs : reqs.filter(r => r.dept === filterDept);
+    document.getElementById('requisitions-full').innerHTML = `
+      <table class="w-full min-w-[720px] text-sm">
+        <thead>
+          <tr class="text-left text-[10px] uppercase tracking-widest text-slate-500 border-b border-white/10">
+            <th class="px-5 py-3">ID</th><th class="px-5 py-3">Role</th><th class="px-5 py-3">Location</th>
+            <th class="px-5 py-3">Days open</th><th class="px-5 py-3">Priority</th><th class="px-5 py-3">SLA</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${list.map(r => `
+            <tr class="border-b border-white/5 hover:bg-white/[0.03]">
+              <td class="px-5 py-4 font-mono text-xs text-brand-blue">${r.id}</td>
+              <td class="px-5 py-4 text-white font-medium">${r.title}</td>
+              <td class="px-5 py-4 text-slate-400">${r.loc}</td>
+              <td class="px-5 py-4">${r.open}</td>
+              <td class="px-5 py-4"><span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${r.priority === 'P0' ? 'border-brand-blue text-brand-blue' : 'border-white/20 text-slate-400'}">${r.priority}</span></td>
+              <td class="px-5 py-4">${slaPill(r.sla)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  function renderKanban() {
+    const board = document.getElementById('kanban');
+    board.innerHTML = STAGES.map((stage, si) => {
+      const col = candidates.filter(c => c.stage === si);
+      const cards = col.map(c => {
+        return `
+          <button type="button" class="pipeline-card w-full text-left rounded-xl border border-white/10 bg-black/40 p-3 mb-2 candidate-card" data-id="${c.id}">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <div class="font-semibold text-white text-sm">${c.name}</div>
+              <div class="score-ring w-9 h-9 shrink-0 flex items-center justify-center text-[10px] font-bold text-white" style="--p: ${c.match}">
+                <span class="rounded-full w-7 h-7 bg-[#0c0c0e] flex items-center justify-center">${c.match}</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-500 mb-2">${c.role}</div>
+            <div class="flex flex-wrap gap-1">
+              ${c.skills.slice(0, 2).map(s => `<span class="text-[9px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400">${s}</span>`).join('')}
+            </div>
+            ${c.tag ? `<div class="mt-2 text-[10px] text-brand-blue font-semibold">${c.tag}</div>` : ''}
+          </button>`;
+      }).join('');
+      return `
+        <div class="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/[0.02] p-3 flex flex-col max-h-[70vh]">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">${stage}</span>
+            <span class="text-xs text-slate-600 font-mono">${col.length}</span>
+          </div>
+          <div class="flex-1 overflow-y-auto scrollbar-thin pr-1">${cards || '<p class="text-xs text-slate-600 px-1 py-4">No candidates</p>'}</div>
+        </div>`;
+    }).join('');
+
+    board.querySelectorAll('.candidate-card').forEach(btn => {
+      btn.addEventListener('click', () => openDetail(btn.getAttribute('data-id')));
+      btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(btn.getAttribute('data-id')); } });
+    });
+  }
+
+  function advanceCandidate(id) {
+    const c = candidates.find(x => x.id === id);
+    if (!c || c.stage >= STAGES.length - 1) return;
+    c.stage += 1;
+    renderKanban();
+    lucide.createIcons();
+  }
+
+  function renderTalentTable(filterText) {
+    const q = (filterText || '').toLowerCase();
+    const rows = candidates.filter(c =>
+      !q || c.name.toLowerCase().includes(q) || c.role.toLowerCase().includes(q) || c.skills.some(s => s.toLowerCase().includes(q))
+    );
+    document.getElementById('talent-table').innerHTML = `
+      <table class="w-full min-w-[680px] text-sm">
+        <thead>
+          <tr class="text-left text-[10px] uppercase tracking-widest text-slate-500 border-b border-white/10">
+            <th class="px-5 py-3">Candidate</th><th class="px-5 py-3">Target role</th><th class="px-5 py-3">Stage</th>
+            <th class="px-5 py-3">Match</th><th class="px-5 py-3">Source</th><th class="px-5 py-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(c => `
+            <tr class="border-b border-white/5 hover:bg-white/[0.03]">
+              <td class="px-5 py-4 font-medium text-white">${c.name}</td>
+              <td class="px-5 py-4 text-slate-400">${c.role}</td>
+              <td class="px-5 py-4 text-slate-300">${STAGES[c.stage]}</td>
+              <td class="px-5 py-4"><span class="font-mono text-brand-blue">${c.match}</span></td>
+              <td class="px-5 py-4 capitalize text-slate-500">${c.source}</td>
+              <td class="px-5 py-4 text-right">
+                <button type="button" class="text-brand-blue text-xs font-semibold hover:underline open-cand" data-id="${c.id}">Profile</button>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+    document.querySelectorAll('.open-cand').forEach(b => b.addEventListener('click', () => openDetail(b.getAttribute('data-id'))));
+  }
+
+  function renderAnalytics() {
+    document.getElementById('analytics-grid').innerHTML = `
+      <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-panel">
+        <h3 class="font-serif text-lg text-white mb-4">Funnel conversion</h3>
+        <div class="space-y-4">
+          ${[
+            ['Screen → Interview', 72],
+            ['Interview → Offer', 41],
+            ['Offer → Hired', 91],
+          ].map(([label, pct]) => `
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span class="text-slate-400">${label}</span><span class="text-white font-mono">${pct}%</span></div>
+              <div class="h-2 rounded-full bg-white/5 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-blue" style="width:${pct}%"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <p class="text-[11px] text-slate-600 mt-4">Illustrative demo data — wire to your warehouse for live charts.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-panel">
+        <h3 class="font-serif text-lg text-white mb-4">Hiring equity</h3>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li class="flex gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>Structured prompts reduce variance in written feedback.</li>
+          <li class="flex gap-2"><i data-lucide="eye-off" class="w-4 h-4 text-brand-blue shrink-0"></i>Blind review mode available for first screen.</li>
+          <li class="flex gap-2"><i data-lucide="scale" class="w-4 h-4 text-slate-400 shrink-0"></i>Audit trail retained 24 months (configure in production).</li>
+        </ul>
+      </div>`;
+  }
+
+  function openDetail(id) {
+    const c = candidates.find(x => x.id === id);
+    if (!c) return;
+    document.getElementById('detail-title').textContent = c.name;
+    document.getElementById('detail-body').innerHTML = `
+      <div class="flex items-center gap-4">
+        <div class="score-ring w-16 h-16 flex items-center justify-center text-lg font-bold text-white" style="--p: ${c.match}">
+          <span class="rounded-full w-14 h-14 bg-[#0c0c0e] flex items-center justify-center">${c.match}</span>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest text-slate-500">Agentic match</div>
+          <div class="text-white font-medium">Strong fit on culture + craft signals</div>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Stage</div>
+        <div class="text-white">${STAGES[c.stage]} — <button type="button" id="advance-btn" class="text-brand-blue font-semibold hover:underline">Advance</button></div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Skills</div>
+        <div class="flex flex-wrap gap-2">${c.skills.map(s => `<span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">${s}</span>`).join('')}</div>
+      </div>
+      <div class="rounded-xl bg-white/5 border border-white/10 p-4 text-slate-300 leading-relaxed">
+        Notes are synthesized for demo purposes. In production, connect your scorecards, transcripts, and HRIS for a single candidate record.
+      </div>`;
+    document.getElementById('detail-backdrop').classList.remove('hidden');
+    document.getElementById('detail-panel').classList.remove('translate-x-full');
+    document.getElementById('detail-panel').setAttribute('aria-hidden', 'false');
+    document.getElementById('advance-btn')?.addEventListener('click', () => { advanceCandidate(id); openDetail(id); });
+    lucide.createIcons();
+  }
+
+  function closeDetail() {
+    document.getElementById('detail-backdrop').classList.add('hidden');
+    document.getElementById('detail-panel').classList.add('translate-x-full');
+    document.getElementById('detail-panel').setAttribute('aria-hidden', 'true');
+  }
+
+  function wireNav() {
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      btn.addEventListener('click', () => setView(btn.getAttribute('data-nav')));
+    });
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileNav.innerHTML = document.getElementById('side-nav').innerHTML;
+    mobileNav.querySelectorAll('.nav-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setView(btn.getAttribute('data-nav'));
+        closeMobile();
+      });
+    });
+    document.querySelectorAll('[data-jump]').forEach(btn => {
+      btn.addEventListener('click', () => setView(btn.getAttribute('data-jump')));
+    });
+  }
+
+  const drawer = document.getElementById('mobile-drawer');
+  function openMobile() {
+    drawer.classList.remove('hidden');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.getElementById('mobile-menu').setAttribute('aria-expanded', 'true');
+  }
+  function closeMobile() {
+    drawer.classList.add('hidden');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.getElementById('mobile-menu').setAttribute('aria-expanded', 'false');
+  }
+  document.getElementById('mobile-menu').addEventListener('click', openMobile);
+  drawer.querySelectorAll('[data-close-drawer]').forEach(b => b.addEventListener('click', closeMobile));
+
+  document.getElementById('global-search').addEventListener('input', e => {
+    const v = e.target.value;
+    if (view === 'talent') renderTalentTable(v);
+    else if (v.length > 1) { setView('talent'); renderTalentTable(v); }
+  });
+
+  document.getElementById('req-filter').addEventListener('change', e => renderRequisitionsFull(e.target.value));
+
+  document.getElementById('detail-close').addEventListener('click', closeDetail);
+  document.getElementById('detail-backdrop').addEventListener('click', closeDetail);
+
+  function init() {
+    renderKpis();
+    document.getElementById('req-table-wrap').innerHTML = renderReqTable(true);
+    renderActivity();
+    renderRequisitionsFull('all');
+    renderKanban();
+    renderTalentTable('');
+    renderAnalytics();
+    wireNav();
+    setView('overview');
+
+    setInterval(() => {
+      tipIdx = (tipIdx + 1) % agentTips.length;
+      const tip = document.getElementById('agent-tip');
+      if (tip) tip.textContent = agentTips[tipIdx];
+    }, 9000);
+
+    lucide.createIcons();
+  }
+
+  init();
+})();
+  </script>
+</body>
+</html>
