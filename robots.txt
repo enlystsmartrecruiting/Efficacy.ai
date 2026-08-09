@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://enlysoft.net/sitemap.xml
+Sitemap: https://enlysum.com/sitemap.xml
