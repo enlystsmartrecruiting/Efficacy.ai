@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Himat-Hikmat | Doctoral Research Hub · Punjab Education · Enlyst Foundation</title>
+<meta name="description" content="The complete Himat-Hikmat research hub — interactive thesis simulator, policy analysis, disability education framework, self-efficacy instrument, and theoretical architecture. N=37,214. University of Punjab."/>
+<meta name="theme-color" content="#07060E"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=cormorant:300,300i,400,400i,500,600,700|syne:400,500,600,700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   TOKENS — Himat-Hikmat Palette
+   Deeper violet · More scholarly · Urdu resonance
+═══════════════════════════════════════ */
+:root{
+  --void:   #07060E;
+  --abyss:  #0C0A18;
+  --ink:    #130F22;
+  --coal:   #1C1733;
+  --slate:  #2A2245;
+
+  --vi:     #7C3AED;
+  --vi-d:   #5B21B6;
+  --vi-l:   #A78BFA;
+  --vi-g:   rgba(124,58,237,0.08);
+  --vi-b:   rgba(124,58,237,0.22);
+
+  /* Research data colours */
+  --gold:   #C4A24A;
+  --gold-l: #E0C070;
+  --amber:  #C4820A;
+  --green:  #1A7A4A;
+  --green-l:#3AB877;
+  --red:    #DC4A4A;
+
+  --text:   #F2EEF8;
+  --text-2: rgba(242,238,248,0.65);
+  --text-3: rgba(242,238,248,0.38);
+  --text-4: rgba(242,238,248,0.15);
+
+  --serif: 'Cormorant', Georgia, serif;
+  --sans:  'Syne', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --max:   1320px;
+  --nav-h: 4rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;color:inherit;}
+input,select,textarea{font-family:var(--sans);}
+::selection{background:var(--vi);color:#fff;}
+
+body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+.bg-field{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 70% 60% at 5% -5%,rgba(124,58,237,.2) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 40% at 95% 105%,rgba(45,91,227,.1) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,rgba(124,58,237,.04) 0%,transparent 65%),
+    var(--void);
+}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(124,58,237,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 60%,transparent 100%);
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;border-bottom:1px solid var(--text-4);background:rgba(7,6,14,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:border-color .3s;}
+.nav-inner{max-width:var(--max);width:100%;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-mark{display:flex;align-items:center;gap:.75rem;}
+.nav-wordmark{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.01em;line-height:1;}
+.nav-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vi-l);border:1px solid var(--vi-b);padding:.2rem .6rem;border-radius:100px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);padding:.4rem .85rem;border-radius:.5rem;transition:color .25s,background .25s;}
+.nav-link:hover{color:var(--text);background:var(--vi-g);}
+.nav-cta{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.5rem 1.25rem;background:var(--vi);border-radius:.5rem;transition:background .25s;}
+.nav-cta:hover{background:var(--vi-l);}
+.container{max-width:var(--max);margin:0 auto;padding:0 2.5rem;}
+
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 8rem) 0 4rem;position:relative;overflow:hidden;}
+.hero-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vi-l);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--vi);}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.8rem,9vw,9rem);font-weight:300;line-height:.9;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .9s var(--ease) .35s forwards;}
+.hero-h1 em{font-style:italic;color:var(--text-3);}
+.hero-h1 span{color:var(--vi-l);}
+.hero-urdu{font-family:var(--serif);font-size:1.2rem;font-weight:300;font-style:italic;color:var(--text-3);letter-spacing:.06em;margin-bottom:2rem;opacity:0;animation:fadeUp .9s var(--ease) .45s forwards;}
+.hero-sub{font-size:1rem;line-height:1.85;color:var(--text-2);max-width:54ch;margin-bottom:3rem;opacity:0;animation:fadeUp .9s var(--ease) .55s forwards;}
+.hero-meta{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--text-3);display:flex;gap:2rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s var(--ease) .65s forwards;}
+.hero-meta span{display:flex;align-items:center;gap:.5rem;}
+.hero-meta span::before{content:'·';color:var(--vi-l);}
+
+/* NAV ANCHORS */
+.research-nav{border-top:1px solid var(--text-4);border-bottom:1px solid var(--text-4);padding:.9rem 0;overflow-x:auto;opacity:0;animation:fadeIn .8s var(--ease) .8s forwards;}
+.research-nav-inner{max-width:var(--max);margin:0 auto;padding:0 2.5rem;display:flex;gap:1.5rem;min-width:max-content;}
+.rnav-item{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:.35rem .85rem;border-radius:100px;border:1px solid transparent;transition:color .25s,border-color .25s,background .25s;white-space:nowrap;}
+.rnav-item:hover{color:var(--vi-l);border-color:var(--vi-b);background:var(--vi-g);}
+
+/* SECTION UTILITIES */
+.sec-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vi-l);display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;}
+.sec-label::before{content:'';display:block;width:2rem;height:1px;background:var(--vi);}
+.sec-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.08;letter-spacing:-.015em;}
+.sec-title em{font-style:italic;color:var(--text-3);}
+.section-divider{border-top:1px solid var(--text-4);padding:8rem 0;}
+
+/* BTNs */
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.85rem 2rem;background:var(--vi);border-radius:.5rem;transition:background .3s,transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(124,58,237,.3);}
+.btn-primary:hover{background:var(--vi-l);transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:.85rem 1.5rem;border:1px solid var(--text-4);border-radius:.5rem;transition:color .3s,border-color .3s;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text-2);}
+
+/* ═══ THESIS SIMULATOR ═══ */
+.simulator{background:var(--abyss);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.sim-header{background:var(--ink);border-bottom:1px solid var(--text-4);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.sim-dots{display:flex;gap:.4rem;}
+.sim-dot{width:10px;height:10px;border-radius:50%;}
+.sim-url{flex:1;background:var(--coal);border:1px solid var(--text-4);border-radius:.4rem;padding:.35rem .85rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-3);display:flex;align-items:center;gap:.5rem;}
+.sim-url-icon{width:8px;height:8px;border-radius:50%;background:var(--green-l);flex-shrink:0;}
+.sim-body{display:grid;grid-template-columns:1fr 1.4fr;min-height:420px;}
+.sim-controls{border-right:1px solid var(--text-4);padding:2rem;}
+.sim-control-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.25rem;}
+.sim-btns{display:flex;flex-direction:column;gap:.5rem;}
+.sim-btn{background:var(--coal);border:1px solid var(--text-4);border-radius:.5rem;padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;text-align:left;transition:background .25s,border-color .25s;font-family:var(--sans);}
+.sim-btn:hover{background:var(--slate);border-color:var(--vi-b);}
+.sim-btn.active{background:var(--vi-g);border-color:var(--vi-b);}
+.sim-btn-num{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;color:var(--text-3);flex-shrink:0;width:2rem;}
+.sim-btn-label{font-size:.8rem;font-weight:500;color:var(--text-2);}
+.sim-btn.active .sim-btn-label{color:var(--text);}
+.sim-output{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;transition:opacity .2s;}
+.sim-stat{font-family:var(--serif);font-size:5rem;font-weight:300;line-height:1;color:var(--vi-l);margin-bottom:.5rem;}
+.sim-finding-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vi);margin-bottom:1.5rem;}
+.sim-progress-wrap{margin-bottom:1.75rem;}
+.sim-progress-bar{background:var(--coal);border-radius:100px;height:4px;overflow:hidden;}
+.sim-progress-fill{height:100%;background:linear-gradient(90deg,var(--vi),var(--vi-l));border-radius:100px;transition:width .6s var(--ease);}
+.sim-desc{font-size:.88rem;line-height:1.82;color:var(--text-2);margin-bottom:1.25rem;}
+.sim-cite{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--text-4);padding-top:.85rem;}
+.sim-note{background:var(--ink);border-top:1px solid var(--text-4);padding:1.25rem 1.5rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--text-3);line-height:1.65;}
+.sim-note strong{color:var(--text);}
+
+/* ═══ FRAMEWORK ═══ */
+.framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
+.theory-strands{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;}
+.strand{background:var(--abyss);padding:2rem;transition:background .3s;}
+.strand:hover{background:var(--ink);}
+.strand-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--vi-l);margin-bottom:.5rem;}
+.strand-source{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--text-3);margin-top:.65rem;}
+.strand-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.strand-desc{font-size:.8rem;line-height:1.7;color:var(--text-3);}
+.framework-aside{}
+.framework-aside-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;margin-bottom:1.25rem;}
+.framework-aside-title em{font-style:italic;color:var(--text-3);}
+.framework-aside-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1.25rem;}
+.framework-aside-body strong{color:var(--text);}
+.method-panel{background:var(--abyss);border:1px solid var(--text-4);border-radius:1rem;padding:1.75rem;margin-top:1.75rem;}
+.method-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vi-l);margin-bottom:.85rem;}
+.method-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.mstat{text-align:center;}
+.mstat-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--vi-l);line-height:1;margin-bottom:.3rem;}
+.mstat-lbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);}
+
+/* ═══ POLICY ANALYSIS — Himat/Hikmat ═══ */
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.policy-side{background:var(--abyss);padding:2.5rem;}
+.policy-side-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;}
+.policy-side-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;line-height:1.1;margin-bottom:.75rem;}
+.policy-side-status{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px;border:1px solid;display:inline-block;margin-bottom:1.25rem;}
+.policy-items{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.policy-items li{font-size:.82rem;color:var(--text-2);display:flex;gap:.75rem;align-items:flex-start;}
+.policy-items li::before{content:'✓';flex-shrink:0;font-size:.7rem;}
+.policy-items li.warn::before{content:'⚠';color:var(--amber);}
+.policy-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border-top:1.5px solid var(--text-4);grid-column:span 2;}
+.pnum{background:var(--abyss);padding:1.75rem;text-align:center;transition:background .3s;}
+.pnum:hover{background:var(--ink);}
+.pnum-val{font-family:var(--serif);font-size:2.5rem;font-weight:300;line-height:1;margin-bottom:.35rem;}
+.pnum-lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+/* Slider */
+.policy-slider-section{grid-column:span 2;background:var(--ink);border-top:1.5px solid var(--text-4);padding:2.25rem;}
+.slider-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:.5rem;}
+.slider-sub{font-size:.82rem;color:var(--text-3);margin-bottom:1.75rem;}
+.slider-wrap{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:center;}
+input[type=range].hikmat-slider{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:var(--coal);border-radius:100px;outline:none;}
+input[type=range].hikmat-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--vi-l);cursor:pointer;box-shadow:0 0 10px rgba(167,139,250,.5);}
+input[type=range].hikmat-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--vi-l);cursor:pointer;border:none;}
+.slider-pct{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--vi-l);margin-bottom:.35rem;margin-top:.75rem;}
+.slider-readout{background:var(--abyss);border:1px solid var(--text-4);border-radius:.75rem;padding:1.25rem;}
+.sr-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;}
+.sr-val{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text);margin-bottom:.35rem;}
+.sr-status{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--text-3);}
+.sr-status.good{color:var(--green-l);}
+.sr-recs{border-top:1.5px solid var(--text-4);padding-top:1.5px;}
+
+/* Recommendations */
+.rec-row{background:var(--abyss);padding:1.5rem 2rem;display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start;border-top:1.5px solid var(--text-4);transition:background .3s;}
+.rec-row:hover{background:var(--ink);}
+.rec-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--vi-l);padding-top:.1rem;}
+.rec-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.rec-desc{font-size:.78rem;line-height:1.65;color:var(--text-3);}
+
+/* ═══ DISABILITY STATS ═══ */
+.disability-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.dstat{background:var(--abyss);padding:2rem;transition:background .3s;}
+.dstat:hover{background:var(--ink);}
+.dstat-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;}
+.dstat-val{font-family:var(--serif);font-size:3.5rem;font-weight:300;line-height:1;margin-bottom:.4rem;}
+.dstat-desc{font-size:.8rem;line-height:1.68;color:var(--text-3);}
+.dstat-source{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:var(--text-3);margin-top:.65rem;border-top:1px solid var(--text-4);padding-top:.5rem;}
+
+/* ═══ SELF-EFFICACY INSTRUMENT ═══ */
+.assess-panel{background:var(--abyss);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.assess-header{background:var(--ink);border-bottom:1px solid var(--text-4);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.assess-header-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;line-height:1;}
+.assess-header-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--text-3);}
+.subscales{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border-bottom:1px solid var(--text-4);}
+.subscale{background:var(--abyss);padding:2rem;transition:background .3s;}
+.subscale:hover{background:var(--ink);}
+.subscale-letter{font-family:var(--serif);font-size:3rem;font-weight:300;line-height:1;color:var(--vi-l);margin-bottom:.5rem;}
+.subscale-name{font-size:.88rem;font-weight:600;margin-bottom:.75rem;}
+.subscale-items{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.subscale-items li{font-size:.77rem;color:var(--text-3);display:flex;gap:.65rem;align-items:flex-start;}
+.subscale-items li::before{content:'→';color:var(--vi);flex-shrink:0;font-family:var(--mono);font-size:.62rem;}
+.subscale-count{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:1rem;border-top:1px solid var(--text-4);padding-top:.65rem;}
+.assess-bands{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border-top:1px solid var(--text-4);}
+.band{background:var(--abyss);padding:1.75rem;transition:background .3s;}
+.band:hover{background:var(--ink);}
+.band-range{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vi-l);margin-bottom:.35rem;}
+.band-name{font-size:.85rem;font-weight:600;margin-bottom:.35rem;}
+.band-desc{font-size:.78rem;line-height:1.65;color:var(--text-3);}
+.assess-cta{padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.assess-cta-text{font-size:.88rem;line-height:1.75;color:var(--text-2);max-width:48ch;}
+.assess-badges{display:flex;gap:.5rem;flex-wrap:wrap;}
+.assess-badge{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;border:1px solid var(--text-4);color:var(--text-3);}
+
+/* ═══ RESEARCH MAP ═══ */
+.research-map{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.rmap-card{background:var(--abyss);padding:1.75rem;display:flex;flex-direction:column;gap:.85rem;transition:background .35s;text-decoration:none;color:inherit;position:relative;overflow:hidden;}
+.rmap-card::after{content:'↗';position:absolute;bottom:1.25rem;right:1.25rem;font-size:.85rem;color:var(--text-4);transition:color .3s,transform .3s;}
+.rmap-card:hover{background:var(--ink);}
+.rmap-card:hover::after{color:var(--vi-l);transform:translate(3px,-3px);}
+.rmap-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--text-3);}
+.rmap-title{font-family:var(--serif);font-size:1.25rem;font-weight:300;line-height:1.15;}
+.rmap-desc{font-size:.75rem;line-height:1.62;color:var(--text-3);}
+.rmap-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:100px;border:1px solid var(--vi-b);color:var(--vi-l);background:var(--vi-g);width:fit-content;margin-top:auto;}
+
+/* ═══ FINALE ═══ */
+.finale{padding:9rem 0 7rem;border-top:1px solid var(--text-4);text-align:center;position:relative;}
+.finale::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:6rem;background:linear-gradient(180deg,transparent,var(--vi));}
+.finale-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vi-l);margin-bottom:2rem;}
+.finale-heading{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6.5rem);font-weight:300;line-height:.93;letter-spacing:-.025em;margin-bottom:1.75rem;}
+.finale-heading em{font-style:italic;color:var(--text-3);}
+.finale-sub{font-size:.95rem;color:var(--text-2);line-height:1.75;max-width:44ch;margin:0 auto 3rem;}
+.finale-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--text-4);padding:3rem 0 2.5rem;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{font-family:var(--serif);font-size:1.15rem;font-weight:300;}
+.footer-links-row{display:flex;gap:1.5rem;}
+.footer-links-row a{font-size:.75rem;color:var(--text-3);transition:color .25s;}
+.footer-links-row a:hover{color:var(--text);}
+.footer-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-4);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .sim-body{grid-template-columns:1fr;}
+  .sim-controls{border-right:none;border-bottom:1px solid var(--text-4);}
+  .framework-grid{grid-template-columns:1fr;gap:3.5rem;}
+  .policy-grid{grid-template-columns:1fr;}
+  .policy-numbers{grid-column:span 1;grid-template-columns:1fr 1fr;}
+  .policy-slider-section{grid-column:span 1;}
+  .slider-wrap{grid-template-columns:1fr;gap:1.5rem;}
+  .disability-grid{grid-template-columns:1fr 1fr;}
+  .subscales{grid-template-columns:1fr;}
+  .assess-bands{grid-template-columns:1fr 1fr;}
+  .research-map{grid-template-columns:1fr 1fr;}
+  .pnum-val{font-size:2rem;}
+}
+@media(max-width:600px){
+  .container{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .research-map{grid-template-columns:1fr;}
+  .disability-grid{grid-template-columns:1fr;}
+  .assess-bands{grid-template-columns:1fr;}
+  .policy-numbers{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark" aria-label="enlyst home">
+      <svg width="22" height="24" viewBox="0 0 44 50" fill="none" aria-hidden="true">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#7C3AED"/>
+        <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#7C3AED" opacity="0.58"/>
+        <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#7C3AED" opacity="0.26"/>
+      </svg>
+      <span class="nav-wordmark">Himat-Hikmat</span>
+      <span class="nav-tag">Research Hub</span>
+    </a>
+    <div class="nav-links">
+      <a href="enlyst-foundation.html" class="nav-link">Foundation</a>
+      <a href="enlyst-education.html" class="nav-link">Education</a>
+      <a href="enlyst-govtech.html" class="nav-link">GovTech</a>
+      <a href="index.html" class="nav-link">Framework</a>
+      <a href="enlyst-contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="selfefficacy-ai.html" class="nav-cta">Take Assessment</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Himat-Hikmat · Doctoral Research Hub · University of Punjab</div>
+    <h1 class="hero-h1">
+      حمت · حکمت<br>
+      <em>Courage</em> &amp;<br>
+      <span>Wisdom.</span>
+    </h1>
+    <p class="hero-urdu">Himat — courage to name the truth. Hikmat — wisdom to make it useful.</p>
+    <p class="hero-sub">Pakistan's most rigorous doctoral-grade investigation into public education inequality. Five research instruments — simulator, framework, policy analysis, disability dashboard, and a validated self-efficacy instrument — all in one place.</p>
+    <div class="hero-meta">
+      <span>N=37,214 students</span>
+      <span>N=200+ teacher interviews</span>
+      <span>University of Punjab</span>
+      <span>Supervisor: Dr. Imran Sabir</span>
+      <span>2022–2025 field research</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH NAV -->
+<div class="research-nav" aria-label="Research sections">
+  <div class="research-nav-inner">
+    <a href="#simulator" class="rnav-item">01 · Thesis Simulator</a>
+    <a href="#framework" class="rnav-item">02 · Theoretical Framework</a>
+    <a href="#policy" class="rnav-item">03 · Policy Analysis</a>
+    <a href="#disability" class="rnav-item">04 · Disability Dashboard</a>
+    <a href="#selfefficacy" class="rnav-item">05 · Self-Efficacy Instrument</a>
+    <a href="#map" class="rnav-item">06 · Research Map</a>
+  </div>
+</div>
+
+<!-- RESEARCH MAP OVERVIEW -->
+<section class="section-divider" id="map" style="padding-top:6rem;">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Research Map · Five Instruments</div>
+      <h2 class="sec-title">One doctoral study.<br><em>Five research surfaces.</em></h2>
+    </div>
+    <div class="research-map reveal d1" role="list">
+      <a href="#simulator" class="rmap-card" role="listitem">
+        <div class="rmap-num">01</div>
+        <div class="rmap-title">Interactive Thesis Simulator</div>
+        <p class="rmap-desc">Six findings. Explore the statistical evidence, field methodology, and policy implications for each. Select a finding to drill down.</p>
+        <div class="rmap-tag">Live · Interactive</div>
+      </a>
+      <a href="#framework" class="rmap-card" role="listitem">
+        <div class="rmap-num">02</div>
+        <div class="rmap-title">Theoretical Framework</div>
+        <p class="rmap-desc">Three theoretical strands — Sen/Nussbaum capability approach, TPACK pedagogy, and Lipsky street-level bureaucracy — synthesised into one interpretive architecture.</p>
+        <div class="rmap-tag">Academic · Peer Review</div>
+      </a>
+      <a href="#policy" class="rmap-card" role="listitem">
+        <div class="rmap-num">03</div>
+        <div class="rmap-title">Himat Without Hikmat</div>
+        <p class="rmap-desc">PKR 8.6 billion spent on access. PKR 1.8 million needed for quality. The policy paradox dashboard with an interactive budget slider.</p>
+        <div class="rmap-tag">Interactive · Policy</div>
+      </a>
+      <a href="#disability" class="rmap-card" role="listitem">
+        <div class="rmap-num">04</div>
+        <div class="rmap-title">Disability Education Data</div>
+        <p class="rmap-desc">Resource scarcity, teacher proficiency crisis, and the leaky pipeline — field statistics from Punjab's 36 special education schools.</p>
+        <div class="rmap-tag">Field Data · Punjab</div>
+      </a>
+      <a href="#selfefficacy" class="rmap-card" role="listitem">
+        <div class="rmap-num">05</div>
+        <div class="rmap-title">SelfEfficacy.ai Instrument</div>
+        <p class="rmap-desc">36-item validated teacher self-efficacy assessment across three subscales. Free. Eight minutes. A complete profile and development plan.</p>
+        <div class="rmap-tag">Free · Validated</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — THESIS SIMULATOR -->
+<section class="section-divider" id="simulator">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">01 · Thesis Simulator</div>
+      <h2 class="sec-title">Explore the<br><em>doctoral data.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">Select a research finding to explore the statistical evidence, field methodology, and policy implications. These are fixed empirical findings — they are not estimates or approximations.</p>
+    </div>
+    <div class="simulator reveal d1" aria-label="Interactive thesis simulator">
+      <div class="sim-header">
+        <div class="sim-dots" aria-hidden="true">
+          <div class="sim-dot" style="background:#EF4444;opacity:.7;"></div>
+          <div class="sim-dot" style="background:#F59E0B;opacity:.7;"></div>
+          <div class="sim-dot" style="background:#22C55E;opacity:.7;"></div>
+        </div>
+        <div class="sim-url">
+          <div class="sim-url-icon" aria-hidden="true"></div>
+          himat-hikmat.html · Interactive Thesis Simulator
+        </div>
+      </div>
+      <div class="sim-body">
+        <div class="sim-controls">
+          <div class="sim-control-label">Select a Finding</div>
+          <div class="sim-btns" role="tablist" aria-label="Research findings">
+            <button class="sim-btn active" onclick="showFinding(0,this)" role="tab" aria-selected="true"><span class="sim-btn-num">01</span><span class="sim-btn-label">The Leaky Pipeline</span></button>
+            <button class="sim-btn" onclick="showFinding(1,this)" role="tab" aria-selected="false"><span class="sim-btn-num">02</span><span class="sim-btn-label">The Central Effect</span></button>
+            <button class="sim-btn" onclick="showFinding(2,this)" role="tab" aria-selected="false"><span class="sim-btn-num">03</span><span class="sim-btn-label">AI Readiness Gap</span></button>
+            <button class="sim-btn" onclick="showFinding(3,this)" role="tab" aria-selected="false"><span class="sim-btn-num">04</span><span class="sim-btn-label">Research Scope</span></button>
+            <button class="sim-btn" onclick="showFinding(4,this)" role="tab" aria-selected="false"><span class="sim-btn-num">05</span><span class="sim-btn-label">Policy Pathway</span></button>
+            <button class="sim-btn" onclick="showFinding(5,this)" role="tab" aria-selected="false"><span class="sim-btn-num">06</span><span class="sim-btn-label">Governance Void</span></button>
+          </div>
+        </div>
+        <div class="sim-output" id="sim-output" role="tabpanel">
+          <div id="sim-content">
+            <div class="sim-stat">24.3%</div>
+            <div class="sim-finding-label">The Leaky Pipeline</div>
+            <div class="sim-progress-wrap">
+              <div class="sim-progress-bar"><div class="sim-progress-fill" id="sim-progress" style="width:24%"></div></div>
+            </div>
+            <p class="sim-desc">24.3% of children in the lowest infrastructure quartile show measurable learning deficiencies against national curriculum benchmarks — after controlling for socioeconomic background, teacher experience, and class size. The deficiency is structural, not demographic. Resource allocation at district level explains this variance, not individual effort.</p>
+            <div class="sim-cite">Controlled regression model · N=37,214 · p&lt;0.001 · Punjab school divisions</div>
+          </div>
+        </div>
+      </div>
+      <div class="sim-note">
+        <strong>Research integrity note.</strong> All statistics are drawn from primary field research across Punjab school divisions. Mixed-methods: quantitative regression (N=37,214) + qualitative interviews (N=200+). Supervisor: Dr. Imran Sabir, University of Punjab. These figures are fixed empirical findings — they must not be altered or approximated.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — THEORETICAL FRAMEWORK -->
+<section class="section-divider" id="framework">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">02 · Theoretical Framework · Sen · TPACK · Lipsky</div>
+      <h2 class="sec-title">Three bodies<br><em>of evidence.</em></h2>
+    </div>
+    <div class="framework-grid reveal d1">
+      <div class="theory-strands">
+        <div class="strand">
+          <div class="strand-num">Strand 01 · Institutional Economics</div>
+          <div class="strand-title">Capability-Based Development</div>
+          <p class="strand-desc">Drawing on Sen's capability approach and Nussbaum's central human capabilities, the framework argues that educational outcomes should be assessed not by test scores alone but by the capabilities they enable. The 24.3% deficiency is a capability deficit, not merely an academic gap.</p>
+          <div class="strand-source">Sen, A.K. (1999) · Development as Freedom · Nussbaum, M. (2011) · Creating Capabilities</div>
+        </div>
+        <div class="strand">
+          <div class="strand-num">Strand 02 · Technology in Education</div>
+          <div class="strand-title">TPACK — Pedagogical Content Knowledge</div>
+          <p class="strand-desc">The TPACK framework provides the lens for analysing teacher readiness. The research operationalises TPACK competency against the specific constraints of Pakistan's government school environment — procurement restrictions, data sensitivity, and infrastructure limitations that commercial TPACK literature does not address.</p>
+          <div class="strand-source">Mishra &amp; Koehler (2006) · TPACK Framework · Adapted for developing-economy constraints</div>
+        </div>
+        <div class="strand">
+          <div class="strand-num">Strand 03 · Governance &amp; Accountability</div>
+          <div class="strand-title">Street-Level Bureaucracy — Lipsky</div>
+          <p class="strand-desc">Lipsky's theory explains why top-down educational policies systematically fail to reach the classroom in the intended form. Teachers are not passive implementers — they are active discretion-exercisers operating under resource constraints. The governance lens applies this to Punjab's education inspection and reporting systems.</p>
+          <div class="strand-source">Lipsky, M. (1980) · Street-Level Bureaucracy · Applied to Punjab Education Department</div>
+        </div>
+      </div>
+      <div class="framework-aside">
+        <h3 class="framework-aside-title">The name is a<br><em>positioning statement.</em></h3>
+        <p class="framework-aside-body">In Urdu, Himat means courage — the willingness to look at an uncomfortable truth and name it precisely. Hikmat means wisdom — the capacity to move from that truth toward workable, durable solutions. The framework requires <strong>both simultaneously.</strong></p>
+        <p class="framework-aside-body">The research was not designed to produce comfortable conclusions. It was designed to produce useful ones — ones that can survive political and institutional contact without losing their integrity.</p>
+        <div class="method-panel">
+          <div class="method-label">Research Methodology</div>
+          <p style="font-size:.8rem;line-height:1.72;color:var(--text-2);margin-bottom:1.25rem;">Mixed-methods design: quantitative regression on primary student outcome dataset combined with qualitative structured teacher interviews and institutional document analysis. Government-reported aggregate data used only as baseline comparison.</p>
+          <div class="method-stats">
+            <div class="mstat"><div class="mstat-num">37,214</div><div class="mstat-lbl">Students sampled</div></div>
+            <div class="mstat"><div class="mstat-num">200+</div><div class="mstat-lbl">Teacher interviews</div></div>
+            <div class="mstat"><div class="mstat-num">3</div><div class="mstat-lbl">Divisions covered</div></div>
+            <div class="mstat"><div class="mstat-num">4</div><div class="mstat-lbl">Infrastructure quartiles</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — POLICY ANALYSIS -->
+<section class="section-divider" id="policy">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">03 · Himat Without Hikmat · Policy Analysis</div>
+      <h2 class="sec-title">PKR 8.6 billion<br><em>in. PKR 1.8 million</em><br>missing.</h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">Financial courage without educational wisdom. Punjab's disability education policy paradox — the hardware of access versus the software of learning.</p>
+    </div>
+    <div class="policy-grid reveal d1">
+      <div class="policy-side">
+        <div class="policy-side-label" style="color:var(--vi-l);">Himat — Financial Courage</div>
+        <div class="policy-side-title">The Hardware: Access</div>
+        <span class="policy-side-status" style="border-color:var(--green-l);color:var(--green-l);">Abundant &amp; Visible</span>
+        <ul class="policy-items">
+          <li>PKR 10,500 monthly stipends (Himmat Card)</li>
+          <li>Biometric verification — 100% transparency</li>
+          <li>+18% enrolment increase post-launch</li>
+          <li>72,847 students in the programme</li>
+          <li>PKR 8.6 billion annual allocation</li>
+        </ul>
+      </div>
+      <div class="policy-side" style="background:rgba(196,130,10,.04);">
+        <div class="policy-side-label" style="color:var(--amber-l);">Hikmat — Educational Wisdom</div>
+        <div class="policy-side-title">The Software: Learning</div>
+        <span class="policy-side-status" style="border-color:var(--amber);color:var(--amber-l);">Scarce &amp; Invisible</span>
+        <ul class="policy-items">
+          <li class="warn">Only 21.1% of teachers proficient in pedagogy</li>
+          <li class="warn">73.3% lack Nemeth Code (Braille math) skills</li>
+          <li class="warn">86.7% of schools lack Braille Embossers</li>
+          <li class="warn">74.4% lack Taylor Frames for mathematics</li>
+          <li class="warn">80.0% lack Nemeth Code reference materials</li>
+        </ul>
+      </div>
+      <div class="policy-numbers">
+        <div class="pnum">
+          <div class="pnum-val" style="color:var(--red);">24.3%</div>
+          <div class="pnum-lbl">Student dropout / fail rate Gr.8→10</div>
+        </div>
+        <div class="pnum">
+          <div class="pnum-val" style="color:var(--amber-l);">21.1%</div>
+          <div class="pnum-lbl">Teachers meeting proficiency threshold</div>
+        </div>
+        <div class="pnum">
+          <div class="pnum-val" style="color:var(--vi-l);">0.021%</div>
+          <div class="pnum-lbl">Budget needed to fix the classroom gap</div>
+        </div>
+      </div>
+      <div class="policy-slider-section">
+        <div class="slider-title">The 0.021% Solution</div>
+        <p class="slider-sub">The total annual welfare budget is PKR 8.6 Billion. To provide every special school with a full mathematics kit costs just PKR 1.8 Million — use the slider to balance the investment and see the outcome shift.</p>
+        <div class="slider-wrap">
+          <div>
+            <input type="range" min="0" max="100" value="0" class="hikmat-slider" id="hikmat-slider" oninput="updateSlider(this.value)" aria-label="Hikmat investment allocation percentage"/>
+            <div class="slider-pct" id="slider-pct">0.000% allocation to Hikmat</div>
+          </div>
+          <div class="slider-readout">
+            <div class="sr-label">Hikmat Investment (PKR)</div>
+            <div class="sr-val" id="sr-val">PKR 0</div>
+            <div class="sr-status" id="sr-status">⛔ Dependency Trap — students enrol but cannot learn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Recommendations -->
+    <div style="display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.25rem;overflow:hidden;margin-top:1.5px;" class="reveal d2">
+      <div class="rec-row">
+        <div class="rec-num">01</div>
+        <div>
+          <div class="rec-title">Immediate: Resource Provision</div>
+          <p class="rec-desc">Allocate PKR 1.8M (0.021% of budget) to equip all 36 schools with Abacuses, Taylor Frames, Braille Embossers, and Nemeth Code reference materials. The cost asymmetry is not a budget problem — it is a priority problem.</p>
+        </div>
+      </div>
+      <div class="rec-row">
+        <div class="rec-num">02</div>
+        <div>
+          <div class="rec-title">Medium-Term: Teacher Proficiency</div>
+          <p class="rec-desc">Shift from generic professional development workshops to specialised Nemeth Braille Code training and pedagogical content knowledge for disability education. Credentials without competency is the training illusion — the data makes it measurable.</p>
+        </div>
+      </div>
+      <div class="rec-row">
+        <div class="rec-num">03</div>
+        <div>
+          <div class="rec-title">Long-Term: Systemic Accountability</div>
+          <p class="rec-desc">Establish instructional observation systems and tie departmental accountability to learning outcomes, not just enrolment records. Success is not children inside the school — it is children who leave with skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — DISABILITY EDUCATION DATA -->
+<section class="section-divider" id="disability">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">04 · Disability Education Data · Punjab</div>
+      <h2 class="sec-title">The leaky pipeline.<br><em>By the numbers.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">Field statistics from Punjab's 36 government special education schools — primary data, not government-reported aggregates. Every number was counted in a classroom.</p>
+    </div>
+    <div class="disability-grid reveal d1" role="list">
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Welfare Coverage</div>
+        <div class="dstat-val" style="color:var(--green-l);">100%</div>
+        <p class="dstat-desc">Welfare stipend reach among enrolled students. The financial access problem has been solved. Enrolment grew 18% post Himmat Card launch. Students are physically present.</p>
+        <div class="dstat-source">Himat Card Programme · Punjab Special Education Dept · 2024</div>
+      </div>
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Teacher Proficiency</div>
+        <div class="dstat-val" style="color:var(--red);">21.1%</div>
+        <p class="dstat-desc">Teachers meeting the proficiency threshold for disability-specific pedagogy. Four in five teachers cannot deliver the specialised instruction their students require — despite holding BEd and MEd credentials.</p>
+        <div class="dstat-source">Primary field survey · N=90 teachers · Punjab special schools · 2024</div>
+      </div>
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Classroom Tool Availability</div>
+        <div class="dstat-val" style="color:var(--amber-l);">13.3%</div>
+        <p class="dstat-desc">Schools with adequate mathematics teaching tools (Taylor Frames, Braille Embossers, Nemeth Code materials). The remaining 86.7% teach mathematics verbally — without the tools the curriculum assumes exist.</p>
+        <div class="dstat-source">School audit · 36 government special education schools · Punjab · 2024</div>
+      </div>
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Nemeth Code Proficiency</div>
+        <div class="dstat-val" style="color:var(--red);">73.3%</div>
+        <p class="dstat-desc">Teachers lacking Nemeth Braille Code skills — the essential system for mathematical notation in Braille. Without Nemeth proficiency, mathematics instruction for visually impaired students is structurally impossible beyond primary level.</p>
+        <div class="dstat-source">Teacher competency assessment · Himat-Hikmat field research · 2024</div>
+      </div>
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Secondary Attrition</div>
+        <div class="dstat-val" style="color:var(--red);">24.3%</div>
+        <p class="dstat-desc">Students who drop out or fail between Grade 8 and Grade 10 matriculation. The stipend kept them enrolled through primary — but the absence of Hikmat means they cannot succeed at secondary level and remain lifetime welfare dependents.</p>
+        <div class="dstat-source">Controlled regression · N=37,214 · p&lt;0.001 · University of Punjab</div>
+      </div>
+      <div class="dstat" role="listitem">
+        <div class="dstat-label">Geographic Disparity</div>
+        <div class="dstat-val" style="color:var(--vi-l);">38.3%</div>
+        <p class="dstat-desc">Gap in pass rates between central divisions (Lahore: ~100%) and peripheral divisions (Bahawalpur: 58.3%). Structural inequality is not random — it follows the resource gradient from centre to periphery with brutal consistency.</p>
+        <div class="dstat-source">Divisional analysis · 9 Punjab divisions · Himat-Hikmat research · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — SELF-EFFICACY INSTRUMENT -->
+<section class="section-divider" id="selfefficacy">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">05 · SelfEfficacy.ai · Teacher Assessment Instrument</div>
+      <h2 class="sec-title">Your student cannot see.<br><em>Can you reach them?</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">A validated 36-item instrument measuring teacher self-efficacy across three dimensions of inclusive teaching. Eight minutes. A complete profile. Free forever.</p>
+    </div>
+    <div class="assess-panel reveal d1">
+      <div class="assess-header">
+        <div>
+          <div class="assess-header-title">Self-Efficacy Assessment · Visual Impairment</div>
+          <div class="assess-header-meta">36 items · Three subscales · 9-point Likert scale · Himat-Hikmat Framework · University of Punjab</div>
+        </div>
+        <a href="selfefficacy-ai.html" class="btn-primary" style="white-space:nowrap;">Begin Assessment →</a>
+      </div>
+      <div class="subscales" role="list">
+        <div class="subscale" role="listitem">
+          <div class="subscale-letter" aria-hidden="true">A</div>
+          <div class="subscale-name">Instructional Strategies</div>
+          <ul class="subscale-items">
+            <li>Adapting materials into accessible formats</li>
+            <li>Teaching without reliance on visual demonstration</li>
+            <li>Using tactile and auditory substitutes</li>
+            <li>Modifying assessments appropriately</li>
+          </ul>
+          <div class="subscale-count">12 items · Subscale A</div>
+        </div>
+        <div class="subscale" role="listitem">
+          <div class="subscale-letter" aria-hidden="true">B</div>
+          <div class="subscale-name">Classroom Management</div>
+          <ul class="subscale-items">
+            <li>Physical environment and safe navigation</li>
+            <li>Routines enabling independent participation</li>
+            <li>Managing peer dynamics and inclusion culture</li>
+            <li>Coordinating with support staff in-lesson</li>
+          </ul>
+          <div class="subscale-count">12 items · Subscale B</div>
+        </div>
+        <div class="subscale" role="listitem">
+          <div class="subscale-letter" aria-hidden="true">C</div>
+          <div class="subscale-name">Student Engagement</div>
+          <ul class="subscale-items">
+            <li>Motivating persistence through challenge</li>
+            <li>Building trust and genuine inclusion</li>
+            <li>Developing independence over dependency</li>
+            <li>Social integration with peers</li>
+          </ul>
+          <div class="subscale-count">12 items · Subscale C</div>
+        </div>
+      </div>
+      <div class="assess-bands" role="list">
+        <div class="band" role="listitem">
+          <div class="band-range" style="color:var(--amber-l);">1–3.9</div>
+          <div class="band-name">Developing</div>
+          <p class="band-desc">Beginning. Uncertain in unfamiliar inclusive situations. The most common starting point — and the most important one to identify and address.</p>
+        </div>
+        <div class="band" role="listitem">
+          <div class="band-range" style="color:var(--vi-l);">4–6.9</div>
+          <div class="band-name">Emerging</div>
+          <p class="band-desc">Foundation built. Inconsistent across subscales. Targeted development moves you fastest from here — knowing your specific weakest subscale is the key.</p>
+        </div>
+        <div class="band" role="listitem">
+          <div class="band-range" style="color:var(--green-l);">7–9</div>
+          <div class="band-name">Proficient</div>
+          <p class="band-desc">Genuine confidence across all three dimensions. Adapts independently. A model for colleagues — and a resource for the school's peer development structure.</p>
+        </div>
+      </div>
+      <div class="assess-cta">
+        <p class="assess-cta-text">Extends the Teachers Sense of Efficacy Scale (Tschannen-Moran &amp; Hoy, 2001) — the most widely cited teacher self-efficacy instrument in educational research. Results directly comparable to international TSES-based studies. Data contributes to the research dataset with consent.</p>
+        <div>
+          <div class="assess-badges" style="margin-bottom:1rem;">
+            <span class="assess-badge">36 validated items</span>
+            <span class="assess-badge">9-point Likert</span>
+            <span class="assess-badge">Immediate results</span>
+            <span class="assess-badge">Free forever</span>
+          </div>
+          <a href="selfefficacy-ai.html" class="btn-primary">Take the Assessment →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="container">
+    <div class="finale-eyebrow">Himat-Hikmat · Doctoral Research · University of Punjab · 2022–2025</div>
+    <h2 class="finale-heading reveal">
+      Evidence before<br>
+      <em>policy. Always.</em>
+    </h2>
+    <p class="finale-sub reveal d1">The research is not designed to sit in a university archive. It is designed to move — from doctoral defence to provincial legislation to national standard. The data is ours. The obligation cannot be outsourced.</p>
+    <div class="finale-btns reveal d2">
+      <a href="selfefficacy-ai.html" class="btn-primary">Take the Assessment →</a>
+      <a href="enlyst-foundation.html" class="btn-ghost">Foundation Overview</a>
+      <a href="enlyst-contact.html" class="btn-ghost">Research Partnerships</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Himat-Hikmat Research Hub</div>
+      <div class="footer-links-row">
+        <a href="enlyst-foundation.html">Foundation</a>
+        <a href="enlyst-education.html">Education</a>
+        <a href="enlyst-methodology.html">Methodology</a>
+        <a href="selfefficacy-ai.html">SelfEfficacy.ai</a>
+        <a href="enlyst-contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">© 2026 Enlyst Smart Recruiting Pvt Ltd · Foundation Division · University of Punjab · Dr. Imran Sabir</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ THESIS SIMULATOR ═══ */
+const findings=[
+  {stat:"24.3%",label:"The Leaky Pipeline",desc:"24.3% of children in the lowest infrastructure quartile show measurable learning deficiencies against national curriculum benchmarks — after controlling for socioeconomic background, teacher experience, and class size. The deficiency is structural, not demographic. Resource allocation at district level explains this variance, not individual effort.",method:"Controlled regression model · N=37,214 · p<0.001 · Punjab school divisions",progress:24},
+  {stat:"55%",label:"The Central Effect",desc:"55% of surveyed government school teachers report zero exposure to AI-assisted lesson planning or classroom delivery tools. Of the 45% with any exposure, fewer than 12% use such tools consistently. Infrastructure, time, and confidence are the three dominant barriers cited — in that order.",method:"GITTC Lahore teacher survey · N=200+ · 2024–2025 cohorts",progress:55},
+  {stat:"<12%",label:"AI Readiness Gap",desc:"Fewer than 12% of government school teachers with AI tool exposure use those tools consistently in classroom delivery. The gap between awareness and practice is not a motivation problem — it is a structural support problem. Teachers who do consistently use AI tools cite dedicated practice time and peer support as the decisive factors.",method:"GITTC Lahore cohort analysis · Qualitative follow-up interviews",progress:12},
+  {stat:"37,214",label:"Research Scope",desc:"The primary research sample covers 37,214 children across Punjab school divisions — spanning Lahore, Sheikhupura, and Gujranwala. Schools were stratified by infrastructure rating and teacher qualification level, ensuring cross-environment representativeness. This is one of the largest primary field samples in recent Punjab education research.",method:"Mixed-methods field study · University of Punjab · 2022–2025",progress:74},
+  {stat:"2027",label:"Policy Pathway",desc:"The research proposes mandatory AI literacy standards for all new government school teacher appointments from 2027 — embedded into PPSC testing criteria and BISE curriculum review cycles. The 5-year roadmap: thesis defence (2026) → provincial policy submission (2027) → pilot implementation at GITTC (2028) → national replication proposal (2029–2030).",method:"Policy recommendation · Punjab Education Commission submission window · 2026",progress:40},
+  {stat:"68%",label:"Governance Void",desc:"Infrastructure quartile alone explains 68% of the variance in primary school outcomes across the research sample — after all teacher-level and student-level controls are applied. This is the governance accountability finding: the system is measuring the wrong things, incentivising the wrong behaviours, and allocating resources in ways that compound the deficiency rather than correct it.",method:"Multi-level regression · R² = 0.68 · Fixed effects for district and year",progress:68}
+];
+
+function showFinding(idx,btn){
+  document.querySelectorAll('.sim-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
+  const f=findings[idx];
+  const out=document.getElementById('sim-output');
+  out.style.opacity='0';
+  setTimeout(()=>{
+    document.getElementById('sim-content').innerHTML=`
+      <div class="sim-stat">${f.stat}</div>
+      <div class="sim-finding-label">${f.label}</div>
+      <div class="sim-progress-wrap"><div class="sim-progress-bar"><div class="sim-progress-fill" style="width:${f.progress}%"></div></div></div>
+      <p class="sim-desc">${f.desc}</p>
+      <div class="sim-cite">${f.method}</div>
+    `;
+    out.style.opacity='1';
+  },150);
+}
+
+/* ═══ POLICY SLIDER ═══ */
+function updateSlider(val){
+  const pct=(val/100*0.042).toFixed(3);
+  const pkr=Math.round((val/100)*1800000);
+  const fmtPKR='PKR '+pkr.toLocaleString('en-PK');
+  document.getElementById('slider-pct').textContent=pct+'% allocation to Hikmat';
+  document.getElementById('sr-val').textContent=fmtPKR;
+  const status=document.getElementById('sr-status');
+  if(val===0){status.textContent='⛔ Dependency Trap — students enrol but cannot learn';status.className='sr-status';}
+  else if(val<30){status.textContent='⚠ Partial provision — some tools, not all schools';status.className='sr-status';}
+  else if(val<70){status.textContent='→ Improving — most schools equipped';status.className='sr-status';}
+  else{status.textContent='✓ Balanced policy — all 36 schools fully equipped';status.className='sr-status good';}
+}
+
+/* ═══ SCROLL REVEAL ═══ */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>obs.observe(el));
+  const nav=document.querySelector('.nav');
+  window.addEventListener('scroll',()=>{nav.style.borderBottomColor=window.scrollY>40?'rgba(242,238,248,0.1)':'rgba(242,238,248,0.06)';},{passive:true});
+})();
+</script>
+</body>
+</html>

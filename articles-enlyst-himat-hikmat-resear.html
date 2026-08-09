@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Articles — enlyst · Himat-Hikmat Research</title>
+<meta name="description" content="Research from the Himat-Hikmat Framework. Evidence on bias, governance, disability inclusion, and the human cost of broken institutional structures."/>
+<link rel="canonical" href="https://enlystnow.com/enlyst-articles.html"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet"/>
+<style>
+:root{--sky-0:#EBF2FF;--sky-1:#D4E5FF;--sky-2:#B8D2FF;--sky-3:#8FB8FF;--mid-1:#5B8FE8;--mid-2:#2D5BE3;--deep-1:#1A3580;--deep-2:#0D1A40;--deep-3:#060D20;--void:#0A0A0F;--blue:#2D5BE3;--gold:#C4A24A;--ink:#0D1A3A;--ink2:#3A4D7A;--ink3:#6B7FA8;--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace;--max:1200px;--ease:cubic-bezier(.16,1,.3,1);--bar:2.25rem;--nav:4.5rem;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;}
+::selection{background:var(--blue);color:#fff;}
+.bg-gradient{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,var(--sky-0) 0%,var(--sky-1) 7%,var(--sky-2) 14%,var(--sky-3) 22%,var(--mid-1) 33%,var(--mid-2) 44%,var(--deep-1) 56%,var(--deep-2) 70%,var(--deep-3) 84%,var(--void) 100%);}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(45,91,227,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,91,227,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.6) 30%,rgba(0,0,0,.6) 70%,transparent 100%);}
+.glow-orb{position:fixed;border-radius:50%;filter:blur(130px);z-index:-1;pointer-events:none;animation:orb-float 20s ease-in-out infinite alternate;}
+.g1{width:700px;height:700px;top:-200px;right:-150px;background:rgba(107,63,160,.2);}
+.g2{width:600px;height:600px;bottom:5%;left:-180px;background:rgba(45,91,227,.15);animation-delay:-9s;animation-duration:28s;}
+.g3{width:400px;height:400px;top:45%;right:8%;background:rgba(196,162,74,.07);animation-delay:-5s;animation-duration:18s;}
+@keyframes orb-float{0%{transform:translate(0,0) scale(1);}50%{transform:translate(3%,7%) scale(1.06);}100%{transform:translate(-4%,-4%) scale(.97);}}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+/* Nav/topbar/drawer — shared */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:90;height:var(--bar);background:rgba(235,242,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,91,227,.12);display:flex;align-items:center;justify-content:center;gap:1.25rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);}
+.topbar a{color:var(--blue);font-weight:700;}.topbar-dot{width:3px;height:3px;border-radius:50%;background:var(--blue);opacity:.5;}
+.nav{position:fixed;top:var(--bar);left:0;right:0;z-index:89;height:var(--nav);transition:background .3s,box-shadow .3s;}
+.nav.scrolled{background:rgba(10,10,15,.88);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,.4);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;gap:2rem;}
+.brand{display:flex;align-items:center;gap:.75rem;flex-shrink:0;}
+.brand-wordmark{font-family:var(--serif);font-size:1.875rem;color:var(--ink);letter-spacing:-.02em;line-height:1;transition:color .3s;}
+.nav.scrolled .brand-wordmark{color:#fff;}
+.brand-div{width:1px;height:1.25rem;background:currentColor;opacity:.2;}
+.brand-tag{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);transition:color .3s;white-space:nowrap;}
+.nav.scrolled .brand-tag{color:rgba(255,255,255,.35);}
+.nav-links{display:flex;align-items:center;gap:.25rem;margin-left:auto;}
+.nav-btn{font-size:.875rem;font-weight:500;color:var(--ink2);padding:.5rem .875rem;border-radius:6px;transition:color .2s,background .2s;}
+.nav.scrolled .nav-btn{color:rgba(255,255,255,.55);}
+.nav-btn:hover,.nav-btn.active{color:var(--blue);background:rgba(45,91,227,.08);}
+.nav.scrolled .nav-btn:hover,.nav.scrolled .nav-btn.active{color:#fff;background:rgba(255,255,255,.07);}
+.nav-ext{font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:.5rem .875rem;border:1px solid rgba(196,162,74,.3);border-radius:6px;white-space:nowrap;}
+.nav-cta-btn{font-size:.875rem;font-weight:600;color:#fff;background:var(--blue);padding:.5625rem 1.25rem;border-radius:100px;box-shadow:0 4px 20px rgba(45,91,227,.3);}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+.nav.scrolled .hamburger span{background:#fff;}
+.drawer{position:fixed;top:calc(var(--bar) + var(--nav));left:0;right:0;z-index:88;padding:1.5rem;background:rgba(10,10,15,.96);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:.5rem;transform:translateY(-120%);transition:transform .4s var(--ease);}
+.drawer.open{transform:translateY(0);}
+.drawer-btn{font-size:1rem;font-weight:500;color:rgba(255,255,255,.65);padding:.875rem 1rem;border-radius:8px;text-align:left;}
+.drawer-cta{margin-top:.5rem;background:var(--blue);color:#fff;font-size:.9375rem;font-weight:700;padding:1rem;border-radius:10px;text-align:center;}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s var(--ease),transform .65s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv-d1{transition-delay:.1s;}.rv-d2{transition-delay:.2s;}.rv-d3{transition-delay:.3s;}
+.s-eyebrow{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.875rem;color:#93B4FF;}
+.s-eyebrow-gold{color:var(--gold);}
+
+/* PAGE HERO */
+.articles-hero{
+  padding:calc(var(--bar) + var(--nav) + 5rem) 0 5.5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.articles-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;}
+@media(max-width:900px){.articles-hero-inner{grid-template-columns:1fr;gap:2.5rem;}}
+.ah-h1{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);line-height:1.04;letter-spacing:-.03em;color:var(--ink);margin-bottom:1.25rem;}
+.ah-h1 em{font-style:italic;color:var(--blue);}
+.ah-sub{font-size:1.0625rem;line-height:1.8;color:var(--ink2);max-width:28rem;}
+.ah-right{display:flex;flex-direction:column;gap:.875rem;}
+.ah-framework-card{padding:2rem;border-radius:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);}
+.ahf-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.875rem;}
+.ahf-title{font-family:var(--serif);font-size:1.375rem;font-style:italic;color:var(--ink);margin-bottom:.625rem;}
+.ahf-desc{font-size:.9rem;color:var(--ink2);line-height:1.65;}
+.ah-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+.ah-stat{padding:1.25rem;border-radius:.875rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);text-align:center;}
+.ah-stat-num{font-family:var(--serif);font-size:1.875rem;color:var(--ink);letter-spacing:-.025em;line-height:1;}
+.ah-stat-lbl{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:.25rem;}
+
+/* FILTER BAR */
+.filter-bar{padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;position:sticky;top:calc(var(--bar) + var(--nav));z-index:40;background:rgba(10,10,15,.92);backdrop-filter:blur(16px);padding-left:1.5rem;padding-right:1.5rem;}
+.filter-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-right:.375rem;flex-shrink:0;}
+.filter-btn{font-family:var(--mono);font-size:.5875rem;letter-spacing:.1em;text-transform:uppercase;padding:.375rem .875rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);background:none;cursor:pointer;transition:background .2s,border-color .2s,color .2s;}
+.filter-btn:hover,.filter-btn.active{background:rgba(45,91,227,.15);border-color:rgba(45,91,227,.35);color:#93B4FF;}
+
+/* FEATURED ARTICLE */
+.section{padding:5rem 0;}
+.featured-card{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-radius:1.25rem;overflow:hidden;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(18px);margin-bottom:2rem;
+  transition:border-color .35s,transform .35s var(--ease);
+}
+.featured-card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-3px);}
+@media(max-width:768px){.featured-card{grid-template-columns:1fr;}}
+.featured-visual{background:rgba(0,0,0,.3);padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:340px;position:relative;overflow:hidden;}
+.fv-ghost{position:absolute;bottom:-20px;right:-10px;font-family:var(--serif);font-style:italic;font-size:9rem;opacity:.04;color:#fff;letter-spacing:-.04em;line-height:1;}
+.fv-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2rem;}
+.fv-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;position:relative;z-index:1;}
+.fv-stat-num{font-family:var(--serif);font-size:2.5rem;color:var(--blue);letter-spacing:-.03em;line-height:1;}
+.fv-stat-lbl{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.25rem;line-height:1.5;}
+.featured-body{padding:2.5rem;}
+.featured-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
+.fc-tag{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .75rem;border-radius:4px;}
+.fc-time{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;color:rgba(255,255,255,.3);}
+.featured-body h2{font-family:var(--serif);font-size:clamp(1.375rem,2.5vw,2rem);color:#fff;line-height:1.25;letter-spacing:-.015em;font-style:italic;margin-bottom:1rem;}
+.featured-body p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.75rem;}
+.rc-read{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);transition:gap .2s;}
+.rc-read:hover{gap:.875rem;}
+
+/* ARTICLE GRID */
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.25rem;}
+@media(max-width:1024px){.article-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.article-grid{grid-template-columns:1fr;}}
+.article-card{
+  border-radius:1rem;overflow:hidden;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;
+  transition:background .35s,border-color .35s,transform .35s var(--ease);
+}
+.article-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);transform:translateY(-4px);}
+.ac-accent{height:3px;}
+.ac-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;}
+.ac-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;}
+.ac-tag{font-family:var(--mono);font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .625rem;border-radius:3px;}
+.ac-time{font-family:var(--mono);font-size:.5rem;letter-spacing:.08em;color:rgba(255,255,255,.25);}
+.article-card h3{font-family:var(--serif);font-size:1.0625rem;color:#fff;line-height:1.35;font-style:italic;margin-bottom:.75rem;flex:1;}
+.article-card p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:1.25rem;}
+.ac-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);}
+.ac-read{font-family:var(--mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:.375rem;transition:gap .2s;}
+.article-card:hover .ac-read{gap:.625rem;}
+.ac-min{font-family:var(--mono);font-size:.5rem;letter-spacing:.08em;color:rgba(255,255,255,.2);}
+
+/* Tag colours */
+.t-policy{background:rgba(124,58,237,.2);color:#a78bfa;}
+.t-edu{background:rgba(5,150,105,.2);color:#34d399;}
+.t-dis{background:rgba(196,162,74,.15);color:var(--gold);}
+.t-gov{background:rgba(45,91,227,.2);color:#93B4FF;}
+.t-research{background:rgba(219,39,119,.15);color:#f472b6;}
+
+/* CTA / Footer */
+.cta-band{padding:5rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.cta-band h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:.75rem;letter-spacing:-.02em;}
+.cta-band h2 em{font-style:italic;color:#93B4FF;}
+.cta-band p{color:rgba(255,255,255,.4);font-size:1rem;max-width:28rem;margin:0 auto 2rem;line-height:1.7;}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;color:#fff;background:var(--blue);padding:.875rem 1.75rem;border-radius:100px;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:#1E3FA8;transform:translateY(-2px);}
+.btn-ghost-white{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.75);padding:.875rem 1.75rem;border-radius:100px;border:1.5px solid rgba(255,255,255,.18);transition:color .2s,border-color .2s;}
+.btn-ghost-white:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+footer{border-top:1px solid rgba(255,255,255,.05);padding:4rem 0 calc(2.5rem + env(safe-area-inset-bottom));background:rgba(0,0,0,.4);}
+.footer-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;margin-bottom:2.5rem;}
+.footer-brand{flex:0 0 auto;max-width:22rem;}
+.footer-wordmark{font-family:var(--serif);font-size:1.75rem;color:#fff;letter-spacing:-.02em;}
+.footer-desc{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:.5rem;}
+.footer-desc a{color:var(--gold);}
+.footer-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;flex:1;}
+@media(max-width:768px){.footer-cols{grid-template-columns:repeat(2,1fr);}}
+.footer-col h4{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:1.125rem;}
+.footer-col li{margin-bottom:.5rem;list-style:none;}
+.footer-col a{font-size:.875rem;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.6875rem;color:rgba(255,255,255,.2);}
+.footer-legal{display:flex;gap:1.5rem;}.footer-legal a:hover{color:#fff;}
+@media(max-width:1024px){.nav-links{display:none;}.hamburger{display:flex;}}
+@media(max-width:768px){.topbar{display:none;}.footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}}
+
+@media(prefers-reduced-motion:reduce){
+  .rv{transition:none;}
+  .glow-orb{animation:none;}
+  * {animation-duration:.01ms!important;transition-duration:.01ms!important;}
+}
+</style>
+</head>
+<body>
+<div class="bg-gradient" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="glow-orb g1" aria-hidden="true"></div>
+<div class="glow-orb g2" aria-hidden="true"></div>
+<div class="glow-orb g3" aria-hidden="true"></div>
+
+<div class="topbar">
+  <span>Part of the</span><a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework ↗</a>
+  <span class="topbar-dot"></span><span>Practice 01 · HR &amp; Talent</span>
+  <span class="topbar-dot"></span><span>Himat-Hikmat Research</span>
+</div>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><svg width="32" height="34" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/></svg></div>
+      <span class="brand-wordmark">enlyst</span><div class="brand-div"></div><span class="brand-tag">Smart Recruiting</span>
+    </a>
+        <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="enlyst-about.html" class="nav-btn">About</a>
+      <a href="enlyst-services.html" class="nav-btn">Services</a>
+      <a href="enlyst-articles.html" class="nav-btn active">Articles</a>
+      <a href="enlyst-blog.html" class="nav-btn">Blog</a>
+      <a href="https://enlystnow.com" target="_blank" rel="noopener" class="nav-ext">enlystnow.com ↗</a>
+    </div>
+    <a href="enlyst-contact.html" class="nav-cta-btn">Get in Touch</a>
+    <button class="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href="index.html" class="drawer-btn" onclick="closeDrawer()">Home</a>
+  <a href="enlyst-about.html" class="drawer-btn" onclick="closeDrawer()">About</a>
+  <a href="enlyst-services.html" class="drawer-btn" onclick="closeDrawer()">Services</a>
+  <a href="enlyst-articles.html" class="drawer-btn" onclick="closeDrawer()">Articles</a>
+  <a href="enlyst-blog.html" class="drawer-btn" onclick="closeDrawer()">Blog</a>
+  <a href="enlyst-contact.html" class="drawer-btn" onclick="closeDrawer()">Contact</a>
+  <a href="enlyst-contact.html" class="drawer-cta" onclick="closeDrawer()">Get in Touch</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="articles-hero" id="top">
+  <div class="wrap">
+    <div class="articles-hero-inner">
+      <div class="rv">
+        <p class="s-eyebrow">Research & Articles</p>
+        <h1 class="ah-h1">Evidence.<br/><em>Argument.</em><br/>Clarity.</h1>
+        <p class="ah-sub">Drawn from the Himat-Hikmat Framework — research on bias, governance, inclusive systems, and the human cost of broken institutional structures.</p>
+      </div>
+      <div class="ah-right rv rv-d1">
+        <div class="ah-framework-card">
+          <div class="ahf-label">The Himat-Hikmat Framework</div>
+          <div class="ahf-title">Courage · Wisdom</div>
+          <p class="ahf-desc">Combining the courage to confront systemic failure honestly with the wisdom to design evidence-based alternatives. Applied to HR, governance, disability inclusion, and public-sector reform.</p>
+        </div>
+        <div class="ah-stats">
+          <div class="ah-stat"><div class="ah-stat-num">7</div><div class="ah-stat-lbl">Articles</div></div>
+          <div class="ah-stat"><div class="ah-stat-num">4</div><div class="ah-stat-lbl">Domains</div></div>
+          <div class="ah-stat"><div class="ah-stat-num">37k+</div><div class="ah-stat-lbl">Research words</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter</span>
+  <button class="filter-btn active" onclick="filterArticles('all',this)">All</button>
+  <button class="filter-btn" onclick="filterArticles('policy',this)">Policy</button>
+  <button class="filter-btn" onclick="filterArticles('education',this)">Education</button>
+  <button class="filter-btn" onclick="filterArticles('disability',this)">Disability</button>
+  <button class="filter-btn" onclick="filterArticles('governance',this)">Governance</button>
+  <button class="filter-btn" onclick="filterArticles('research',this)">Research Methods</button>
+</div>
+
+<!-- FEATURED -->
+<section class="section">
+  <div class="wrap">
+    <p class="s-eyebrow rv" style="margin-bottom:1.5rem;">Featured</p>
+    <div class="featured-card rv rv-d1">
+      <div class="featured-visual">
+        <div class="fv-ghost" aria-hidden="true">01</div>
+        <div class="fv-label">Himat-Hikmat Research Series · Featured</div>
+        <div class="fv-stats">
+          <div><div class="fv-stat-num">24.3%</div><div class="fv-stat-lbl">Productivity uplift in bias-reduced hiring</div></div>
+          <div><div class="fv-stat-num">37k+</div><div class="fv-stat-lbl">Words of field research</div></div>
+        </div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-meta">
+          <span class="fc-tag t-gov">Governance</span>
+          <span class="fc-time">12 min read</span>
+        </div>
+        <h2>Why hiring systems fail people before they apply — and what structural reform looks like.</h2>
+        <p>In Pakistan's formal labour market, the barriers to employment begin long before an interview. Documentation requirements, informal screening criteria, and referral-dependent pipelines collectively exclude entire categories of capable workers. This article maps the structural failures and argues for process reform at the institutional level.</p>
+        <a href="#" class="rc-read">Read Article →</a>
+      </div>
+    </div>
+
+    <!-- ARTICLE GRID -->
+    <div class="article-grid" id="articleGrid">
+
+      <div class="article-card rv rv-d1" data-cat="education">
+        <div class="ac-accent" style="background:#059669;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-edu">Education</span><span class="ac-time">9 min</span></div>
+          <h3>The teacher shortage Pakistan isn't measuring — and why GITTC data tells a different story.</h3>
+          <p>AI-assisted feedback systems reveal qualitative gaps that headcount metrics miss entirely. Field data from GITTC Lahore.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d2" data-cat="disability">
+        <div class="ac-accent" style="background:#d97706;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-dis">Disability</span><span class="ac-time">11 min</span></div>
+          <h3>The 55% silence: what Pakistan's disability employment data cannot tell us.</h3>
+          <p>Official statistics suggest 55% of registered disabled persons in Punjab remain outside formal employment. This article interrogates the measurement framework.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d3" data-cat="policy">
+        <div class="ac-accent" style="background:#7c3aed;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-policy">Policy</span><span class="ac-time">8 min</span></div>
+          <h3>Pakistan's National AI Policy 2025 — what it means for HR systems and workforce planning.</h3>
+          <p>An operational reading for HR practitioners. What commitments exist, what mechanisms are absent, and where private sector must step in.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d1" data-cat="governance">
+        <div class="ac-accent" style="background:var(--blue);"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-gov">Governance</span><span class="ac-time">14 min</span></div>
+          <h3>Excise and Taxation as a data infrastructure problem: the case for GIS-linked property systems in Punjab.</h3>
+          <p>Property tax collection in Punjab suffers not from policy failure but from data fragmentation. Using Zone 18, Lahore as the working example.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d2" data-cat="research">
+        <div class="ac-accent" style="background:#db2777;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-research">Research</span><span class="ac-time">16 min</span></div>
+          <h3>Khanna-Palepu and Williamson in practice: applying institutional economics to Pakistani HR market failures.</h3>
+          <p>The academic argument for why structured HR intermediaries are economically necessary — not merely commercially useful.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d3" data-cat="disability">
+        <div class="ac-accent" style="background:#d97706;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-dis">Disability</span><span class="ac-time">10 min</span></div>
+          <h3>From registration to employment: mapping the institutional gap in Punjab's disability policy pipeline.</h3>
+          <p>Punjab has a registration system, a quota policy, and formal employer obligations. What it lacks is the infrastructure to connect these three.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+      <div class="article-card rv rv-d1" data-cat="education">
+        <div class="ac-accent" style="background:#059669;"></div>
+        <div class="ac-body">
+          <div class="ac-meta"><span class="ac-tag t-edu">Education</span><span class="ac-time">7 min</span></div>
+          <h3>AI-assisted teacher feedback at scale: what the GITTC pilot tells us about government AI adoption.</h3>
+          <p>A field report from deploying AI-driven feedback forms at GITTC Lahore. What worked, what resistance looked like, and what the data revealed.</p>
+          <a href="#" class="ac-read">Read →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Questions about<br/>the <em>research?</em></h2>
+    <p>We collaborate with researchers, practitioners, and policymakers working on related questions.</p>
+    <div class="cta-row">
+      <a href="enlyst-contact.html?type=general" class="btn-primary">Start a Conversation →</a>
+      <a href="enlyst-blog.html" class="btn-ghost-white">Blog — Coming Soon</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.375rem;"><svg width="28" height="30" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/></svg><div class="footer-wordmark">enlyst</div></div>
+        <div class="footer-desc">Smart Recruiting & HR Intelligence · Practice 01 of the <a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework</a>.</div>
+      </div>
+            <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="enlyst-about.html">About Us</a></li>
+            <li><a href="enlyst-about.html#philosophy">Philosophy</a></li>
+            <li><a href="enlyst-about.html#values">Values</a></li>
+            <li><a href="index.html#academy">Enlyst Academy</a></li>
+            <li><a href="enlyst-foundation.html">Foundation</a></li>
+            <li><a href="enlyst-articles.html">Himat-Hikmat</a></li>
+            <li><a href="enlyst-blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="enlyst-services.html#hiring">Hiring &amp; Recruitment</a></li>
+            <li><a href="enlyst-services.html#performance">Performance Management</a></li>
+            <li><a href="enlyst-services.html#training">Training &amp; Development</a></li>
+            <li><a href="index.html#ai-academy">Enlyst AI Academy</a></li>
+            <li><a href="https://app.enlystnow.com" target="_blank" rel="noopener">EnlyRecruit App ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ecosystem</h4>
+          <ul>
+            <li><a href="https://enlystnow.com" target="_blank" rel="noopener">enlystnow ↗</a></li>
+            <li><a href="index.html">enlyst (HR)</a></li>
+            <li><a href="https://enlysum.com" target="_blank" rel="noopener">enlysum ↗</a></li>
+            <li><a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz ↗</a></li>
+            <li><a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:recruiter@enlystnow.com">recruiter@enlystnow.com</a></li>
+            <li><a href="tel:03000340036">03000 340 036</a></li>
+            <li><a href="https://wa.me/923000340036" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+            <li><a href="enlyst-contact.html">Get in Touch</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Enlyst Smart Recruiting Pvt Ltd · Suite # 202, 2nd Floor, South Tower, Stock Exchange Plaza, Lahore, Punjab 54000</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="https://enlystnow.com" target="_blank">enlystnow.com ↗</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target);}});},{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
+function filterArticles(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.article-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';});
+}
+</script>
+</body>
+</html>
