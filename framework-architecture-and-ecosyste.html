@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlyst Framework | Architecture & Ecosystem</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-200">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-3">
+          <div class="flex flex-col gap-0.5">
+            <span class="w-5 h-0.5 bg-blue-600"></span>
+            <span class="w-5 h-0.5 bg-green-600"></span>
+            <span class="w-5 h-0.5 bg-purple-600"></span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900">
+            Enlyst <span className="font-normal text-slate-500">Framework</span>
+          </span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#architecture" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Architecture</a>
+          <a href="#sectors" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Sectors</a>
+          <a href="#research" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Research & Policy</a>
+          <a href="#foundation" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Foundation</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="text-sm font-medium text-blue-600 hover:text-blue-700">Documentation</button>
+          <button class="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition-colors">
+            Access Ecosystem
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative bg-white border-b border-slate-200 overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230f172a\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-6">
+        <i data-lucide="network" class="w-4 h-4"></i> Version 2.0 Ecosystem
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 max-w-4xl leading-tight">
+        The unified framework for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">institutional evolution.</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mb-10 leading-relaxed">
+        A comprehensive, data-driven methodology bridging Public Sector Governance, Enterprise Manufacturing, Startup Operations, and Philanthropic Policy.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 flex items-center gap-2 transition-all shadow-sm">
+          Explore the Framework <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+        <button class="bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-medium hover:bg-slate-50 flex items-center gap-2 transition-all">
+          <i data-lucide="book-open" class="w-4 h-4"></i> Read the Whitepaper
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section id="architecture" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Ecosystem Architecture</h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+          The Enlyst Framework operates across five interconnected pillars, enabling knowledge transfer between civic duty, commercial scale, and academic research.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 h-full">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-green-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+          <i data-lucide="landmark" class="w-10 h-10 text-green-600 mb-4 relative z-10"></i>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 relative z-10">Public Sector & GovTech</h3>
+          <p class="text-sm text-slate-600 mb-6 relative z-10">Data-driven governance, AI compliance infrastructure, and civil service capacity building.</p>
+          <ul class="text-xs text-slate-500 space-y-3 relative z-10">
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-green-600 rounded-full"></div> Tax Nexus Intelligence</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-green-600 rounded-full"></div> SECP AI Integrations</li>
+            <li class="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-green-600 rounded-full"></div> MPDD Exam Portals</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-slate-100 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+          <i data-lucide="factory" class="w-10 h-10 text-slate-700 mb-4 relative z-10"></i>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 relative z-10">Industry & Logistics</h3>
+          <p class="text-sm text-slate-600 mb-6 relative z-10">Supply chain automation, data governance, and manufacturing tech stack modernization.</p>
+          <ul class="text-xs text-slate-500 space-y-3 relative z-10">
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div> Supply Chain Automation</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div> Document RPA</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div> IoT Integration</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+          <i data-lucide="rocket" class="w-10 h-10 text-blue-600 mb-4 relative z-10"></i>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 relative z-10">Startup Enablement</h3>
+          <p class="text-sm text-slate-600 mb-6 relative z-10">The "Safe Zone" operational backbone covering HR, Finance, Marketing, and Technology.</p>
+          <ul class="text-xs text-slate-500 space-y-3 relative z-10">
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Monthly Retainer Model</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Enlyst / Enlysum / Enlybiz</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div> Enlysoft Cloud Dev</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+          <i data-lucide="brain-circuit" class="w-10 h-10 text-purple-600 mb-4 relative z-10"></i>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 relative z-10">Research & Foundation</h3>
+          <p class="text-sm text-slate-600 mb-6 relative z-10">Philanthropic policy frameworks, disability studies, and educational simulators.</p>
+          <ul class="text-xs text-slate-500 space-y-3 relative z-10">
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div> Himat-Hikmat Framework</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div> "Leaky Pipeline" Sims</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-purple-600 rounded-full"></div> VI Education Policy</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-orange-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+          <i data-lucide="graduation-cap" class="w-10 h-10 text-orange-600 mb-4 relative z-10"></i>
+          <h3 class="text-lg font-bold text-slate-900 mb-2 relative z-10">Talent Forge</h3>
+          <p class="text-sm text-slate-600 mb-6 relative z-10">Practical, cross-division internship pipelines bridging academia and enterprise reality.</p>
+          <ul class="text-xs text-slate-500 space-y-3 relative z-10">
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-orange-600 rounded-full"></div> 100+ Graduate Interns</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-orange-600 rounded-full"></div> Live Client Rotations</li>
+            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-orange-600 rounded-full"></div> Entrepreneur Incubation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+      <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-purple-900/40 blur-[120px]"></div>
+      <div class="absolute bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-900/40 blur-[100px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+        <div class="md:w-1/2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-6">
+            <i data-lucide="heart-handshake" class="w-4 h-4"></i> Enlyst Foundation
+          </div>
+          <h2 class="text-4xl font-bold mb-6">Policy, Research & Disability Studies</h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            The research arm of the framework applies advanced data visualization and AI to systemic social issues. We move beyond theoretical welfare into measurable instructional capacity.
+          </p>
+
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div class="mt-1 bg-purple-500/20 p-2.5 rounded-lg h-fit"><i data-lucide="book-open" class="w-5 h-5 text-purple-400"></i></div>
+              <div>
+                <h4 class="text-lg font-semibold text-white">The Himat-Hikmat Framework</h4>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">A comprehensive educational framework targeting Mathematics Education for the Visually Impaired (VI) in Punjab, shifting focus from financial stipends (Himat) to actual instructional wisdom (Hikmat).</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="mt-1 bg-blue-500/20 p-2.5 rounded-lg h-fit"><i data-lucide="line-chart" class="w-5 h-5 text-blue-400"></i></div>
+              <div>
+                <h4 class="text-lg font-semibold text-white">The "Leaky Pipeline" Simulators</h4>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">Interactive data visualizations tracking teacher training (PCK) vs. resources, designed for executive decision-makers in public education to pinpoint exact institutional failures.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+              View Policy Dashboards
+            </button>
+          </div>
+        </div>
+
+        <div class="md:w-1/2 w-full">
+          <div class="bg-slate-800 border border-slate-700 rounded-xl p-2 shadow-2xl">
+            <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700 h-96 flex flex-col">
+              <div class="h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <div class="ml-4 text-xs text-slate-400 font-mono">himat.hikmat.simulator.html</div>
+              </div>
+              <div class="flex-1 p-6 flex flex-col justify-center items-center text-center">
+                <i data-lucide="network" class="w-16 h-16 text-purple-500 mb-6 opacity-50"></i>
+                <div class="text-slate-300 font-medium mb-3 text-lg">Systemic Disconnect Visualized</div>
+                <div class="w-64 h-3 bg-slate-700 rounded-full overflow-hidden">
+                  <div class="w-1/3 h-full bg-blue-500"></div>
+                </div>
+                <div class="flex justify-between w-64 text-xs text-slate-500 mt-3 font-mono">
+                  <span>Resources (33%)</span>
+                  <span>Instr. Capacity (67% gap)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sectors" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row-reverse gap-16 items-center">
+
+        <div class="md:w-1/2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-semibold uppercase tracking-wider mb-6">
+            <i data-lucide="shield-check" class="w-4 h-4"></i> Public Sector & GovTech
+          </div>
+          <h2 class="text-4xl font-bold text-slate-900 mb-6">Technology for Public Sector Reform</h2>
+          <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+            Applying modern enterprise architecture to government operations. Enlyst has delivered strategic technology projects for the Excise & Taxation Department and National Infrastructure tracking.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="border border-slate-200 rounded-lg p-5 hover:border-green-300 transition-colors">
+              <i data-lucide="database" class="w-6 h-6 text-green-600 mb-3"></i>
+              <h4 class="font-bold text-slate-900 text-sm">Tax Nexus Dashboard</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Multi-view enforcement center tracking 69,000+ companies.</p>
+            </div>
+            <div class="border border-slate-200 rounded-lg p-5 hover:border-blue-300 transition-colors">
+              <i data-lucide="server" class="w-6 h-6 text-blue-600 mb-3"></i>
+              <h4 class="font-bold text-slate-900 text-sm">SECP MCP Server</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">AI infrastructure connecting SECP databases to LLMs.</p>
+            </div>
+            <div class="border border-slate-200 rounded-lg p-5 hover:border-cyan-300 transition-colors">
+              <i data-lucide="globe" class="w-6 h-6 text-cyan-600 mb-3"></i>
+              <h4 class="font-bold text-slate-900 text-sm">National Infra Dashboard</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Tracking mega-projects like Mohmand Dam & K-IV.</p>
+            </div>
+            <div class="border border-slate-200 rounded-lg p-5 hover:border-purple-300 transition-colors">
+              <i data-lucide="code" class="w-6 h-6 text-purple-600 mb-3"></i>
+              <h4 class="font-bold text-slate-900 text-sm">Civil Service Exams</h4>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">MPDD portal with 1,170 MCQs for civil servant capacity building.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:w-1/2 w-full">
+           <div class="grid grid-cols-2 gap-4">
+              <div class="bg-slate-50 rounded-xl p-8 border border-slate-200 flex flex-col justify-center">
+                <div class="text-5xl font-extrabold text-green-600 mb-2">124k+</div>
+                <div class="text-sm font-semibold text-slate-900">Companies Mapped</div>
+                <div class="text-xs text-slate-500 mt-1">In tax intelligence DB</div>
+              </div>
+              <div class="bg-slate-50 rounded-xl p-8 border border-slate-200 flex flex-col justify-center">
+                <div class="text-5xl font-extrabold text-blue-600 mb-2">2.26T</div>
+                <div class="text-sm font-semibold text-slate-900">PKR Capital Pool</div>
+                <div class="text-xs text-slate-500 mt-1">Enforcement universe</div>
+              </div>
+              <div class="bg-slate-50 rounded-xl p-8 border border-slate-200 flex flex-col justify-center col-span-2">
+                <div class="text-lg font-bold text-slate-900 mb-2">GenAI Adoption Research</div>
+                <div class="text-sm text-slate-600 leading-relaxed">Continuous surveying and framework generation on the adoption of Generative AI in day-to-day government and civic life, guiding future policy deployment.</div>
+              </div>
+           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-slate-50 border-t border-slate-200">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">Adoption & Implementation Methodology</h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Whether deploying for a pre-Series A startup or a public sector department, the Enlyst framework follows a strict, phased lifecycle.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+           <div class="bg-white p-10 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+              <div class="text-8xl font-black text-slate-50 absolute -top-4 -right-4 pointer-events-none">01</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Discovery & Audit</h3>
+              <p class="text-slate-600 text-sm relative z-10 leading-relaxed">Comprehensive mapping of existing infrastructure, legal compliance (e.g., Punjab Finance Act), HR gaps, and brand positioning.</p>
+           </div>
+           <div class="bg-white p-10 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+              <div class="text-8xl font-black text-blue-50 absolute -top-4 -right-4 pointer-events-none">02</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">The Safe Zone Build</h3>
+              <p class="text-slate-600 text-sm relative z-10 leading-relaxed">Parallel execution across four workstreams (Finance, HR, Marketing, Tech) to build an operational backbone within 3 to 4 months.</p>
+           </div>
+           <div class="bg-white p-10 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+              <div class="text-8xl font-black text-slate-50 absolute -top-4 -right-4 pointer-events-none">03</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Permanent Partnership</h3>
+              <p class="text-slate-600 text-sm relative z-10 leading-relaxed">Transition to a sustained operational retainer, integrating continuous KPI reviews, AI infrastructure maintenance, and intern pipelines.</p>
+           </div>
+        </div>
+     </div>
+  </section>
+
+  <footer class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+           <div class="flex items-center gap-3 mb-6">
+            <div class="flex flex-col gap-0.5">
+              <span class="w-5 h-0.5 bg-blue-500"></span>
+              <span class="w-5 h-0.5 bg-green-500"></span>
+              <span class="w-5 h-0.5 bg-purple-500"></span>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-white">
+              Enlyst <span class="font-normal text-slate-400">Framework</span>
+            </span>
+          </div>
+          <p class="text-sm text-slate-400 max-w-md leading-relaxed">
+            Bridging the gap between commercial startup enablement, public sector governance, and philanthropic research. An integrated ecosystem for institutional evolution.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Ecosystem</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-white transition-colors">Enlyst Holding</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Enlysoft Tech</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Public Sector Portfolio</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Student Boost Program</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Research</h4>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="#" class="hover:text-white transition-colors">Enlyst Foundation</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Himat-Hikmat Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Disability Studies</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">GenAI Adoption Reports</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-slate-800 text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center">
+        <p>© 2026 Enlyst Ecosystem Framework. All rights reserved.</p>
+        <p class="mt-2 md:mt-0">Lahore, Punjab, Pakistan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

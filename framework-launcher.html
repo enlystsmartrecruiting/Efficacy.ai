@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Framework — The Institutional Operating System</title>
+<meta name="description" content="Enlyst is Pakistan's institutional operating system — bridging commercial startup enablement, public sector AI transformation, policy research, and philanthropic impact under one unified framework."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=fraunces:300,400,400i,600,700,900|dm-sans:300,400,500,600,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #F7F6F3;
+  --obsidian: #0D0D0D;
+  --obsidian-soft: #1A1A1A;
+  --white: #FFFFFF;
+  --border: #E8E6E1;
+  --mid: #8A8782;
+  --hr: #2D5BE3;
+  --fin: #1A7A4A;
+  --mkt: #C4620A;
+  --tch: #6B3FA0;
+  --gov: #0F4C75;
+  --research: #8B1A1A;
+  --phil: #4A3728;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--obsidian);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--obsidian);border-radius:3px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:64px;padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(247,246,243,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow 0.3s;
+}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.06);}
+
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-stripes{display:flex;flex-direction:column;gap:3px;}
+.nav-stripes span{display:block;width:20px;height:2.5px;border-radius:2px;}
+.nav-wordmark{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--obsidian);letter-spacing:-0.02em;}
+.nav-wordmark em{font-style:normal;font-weight:300;color:var(--mid);}
+
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--obsidian);}
+.nav-cta{background:var(--obsidian)!important;color:var(--white)!important;padding:9px 20px;border-radius:6px;font-weight:600!important;font-size:0.82rem!important;}
+.nav-cta:hover{opacity:0.85;}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--obsidian);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:2px solid var(--obsidian);padding:1.5rem 5%;z-index:99;flex-direction:column;gap:1rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{text-decoration:none;color:var(--obsidian);font-weight:500;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding-top:64px;
+  background:var(--obsidian);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding-left:5%;padding-right:5%;
+  position:relative;overflow:hidden;
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.hero-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 40% at 25% 60%, rgba(45,91,227,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 75% 40%, rgba(107,63,160,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 50% 20%, rgba(26,122,74,0.08) 0%, transparent 60%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.6);font-size:0.7rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:6px 16px;border-radius:100px;margin-bottom:2.5rem;
+  position:relative;z-index:2;
+  animation:fadeUp 0.8s ease both;
+}
+.badge-pip{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pip 2s infinite;}
+@keyframes pip{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5);}50%{box-shadow:0 0 0 6px rgba(34,197,94,0);}}
+
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,7vw,6.5rem);
+  font-weight:900;line-height:0.95;
+  color:var(--white);
+  margin-bottom:2rem;
+  position:relative;z-index:2;
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+.hero-title em{font-style:italic;font-weight:300;}
+.hero-title .word-gov{
+  display:inline-block;
+  background:linear-gradient(135deg,#4A9EFF,#A78BFA);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-sub{
+  font-size:clamp(1rem,1.8vw,1.25rem);color:rgba(255,255,255,0.5);
+  line-height:1.7;max-width:680px;margin:0 auto 3rem;font-weight:300;
+  position:relative;z-index:2;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero-sub strong{color:rgba(255,255,255,0.8);font-weight:500;}
+
+/* Four layer pills */
+.layer-pills{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:3rem;position:relative;z-index:2;
+  animation:fadeUp 0.8s 0.3s ease both;
+}
+.layer-pill{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 16px;border-radius:100px;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.05em;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);
+  color:rgba(255,255,255,0.7);
+  transition:all 0.3s;cursor:default;
+}
+.layer-pill:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:var(--white);}
+.pill-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+.hero-actions{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:2;
+  animation:fadeUp 0.8s 0.4s ease both;
+}
+.btn-hero-primary{
+  background:var(--white);color:var(--obsidian);padding:14px 32px;
+  border-radius:8px;font-weight:700;font-size:0.9rem;text-decoration:none;
+  transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);
+}
+.btn-hero-primary:hover{background:var(--bg);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.3);}
+.btn-hero-ghost{
+  border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);
+  padding:14px 32px;border-radius:8px;font-weight:500;font-size:0.9rem;
+  text-decoration:none;transition:all 0.25s;font-family:var(--font-body);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.5);color:var(--white);}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(255,255,255,0.25);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  z-index:2;animation:fadeUp 1s 0.8s ease both;
+}
+.scroll-arrow{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.3),transparent);margin-top:4px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── DIVIDER STRIP ── */
+.divider-strip{
+  background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:1.5rem 5%;overflow:hidden;
+}
+.divider-inner{display:flex;gap:0;animation:ticker 40s linear infinite;width:max-content;}
+.divider-item{display:inline-flex;align-items:center;gap:0.75rem;padding:0 3rem;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);white-space:nowrap;}
+.divider-item::before{content:'·';font-size:1.2rem;opacity:0.3;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECTIONS ── */
+section{padding:7rem 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.eyebrow{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem;}
+.section-title em{font-style:italic;font-weight:300;}
+.section-sub{font-size:1rem;line-height:1.75;max-width:580px;font-weight:300;color:var(--mid);}
+
+/* ── FOUR LAYERS ── */
+.layers{background:var(--bg);}
+.layers-header{margin-bottom:4rem;}
+.layers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--border);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;}
+.layer-card{
+  background:var(--white);padding:3rem 2.5rem;
+  position:relative;overflow:hidden;transition:background 0.3s;
+}
+.layer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;transition:opacity 0.3s;}
+.layer-card:hover{background:var(--bg);}
+.layer-card:hover::before{opacity:1;}
+.layer-1::before{background:linear-gradient(90deg,var(--hr),var(--fin),var(--mkt),var(--tch));opacity:0;}
+.layer-2::before{background:var(--gov);opacity:0;}
+.layer-3::before{background:var(--research);opacity:0;}
+.layer-4::before{background:var(--phil);opacity:0;}
+
+.layer-number{font-family:var(--font-display);font-size:5rem;font-weight:900;line-height:1;opacity:0.06;position:absolute;top:1rem;right:1.5rem;}
+.layer-tag{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:1.5rem;}
+.layer-name{font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:0.75rem;line-height:1.2;}
+.layer-desc{font-size:0.875rem;color:var(--mid);line-height:1.7;margin-bottom:1.5rem;}
+.layer-items{display:flex;flex-direction:column;gap:0.5rem;}
+.layer-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;line-height:1.5;}
+.layer-item::before{content:'→';flex-shrink:0;font-weight:700;margin-top:1px;}
+.layer-divs{display:flex;gap:6px;margin-top:1.5rem;flex-wrap:wrap;}
+.layer-div-badge{padding:4px 12px;border-radius:6px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+
+/* Layer 1 — Commercial */
+.layer-1 .layer-tag{background:rgba(45,91,227,0.08);color:var(--hr);}
+.layer-1 .layer-item::before{color:var(--hr);}
+/* Layer 2 — GovTech */
+.layer-2 .layer-tag{background:rgba(15,76,117,0.08);color:var(--gov);}
+.layer-2 .layer-item::before{color:var(--gov);}
+/* Layer 3 — Research */
+.layer-3 .layer-tag{background:rgba(139,26,26,0.08);color:var(--research);}
+.layer-3 .layer-item::before{color:var(--research);}
+/* Layer 4 — Philanthropy */
+.layer-4 .layer-tag{background:rgba(74,55,40,0.08);color:var(--phil);}
+.layer-4 .layer-item::before{color:var(--phil);}
+
+/* ── AI POLICY SECTION ── */
+.ai-policy{background:var(--obsidian);padding:7rem 5%;}
+.ai-policy-inner{max-width:1200px;margin:0 auto;}
+.ai-policy-header{margin-bottom:4rem;}
+.policy-eyebrow{color:rgba(255,255,255,0.4);}
+.policy-title{color:var(--white);}
+.policy-sub{color:rgba(255,255,255,0.45);}
+
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:3rem;}
+.policy-stat{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:2rem;transition:border-color 0.3s,background 0.3s;
+}
+.policy-stat:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);}
+.policy-stat:first-child{grid-column:span 2;background:rgba(45,91,227,0.06);border-color:rgba(45,91,227,0.2);}
+.ps-num{font-family:var(--font-display);font-size:3.5rem;font-weight:900;color:var(--white);line-height:1;}
+.ps-label{font-size:0.78rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.1em;margin-top:6px;}
+.ps-context{font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:4px;line-height:1.5;}
+
+.policy-opportunity{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:2rem;
+}
+.policy-opp-title{font-weight:700;color:var(--white);margin-bottom:1.25rem;font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;}
+.opp-table{width:100%;border-collapse:collapse;}
+.opp-table td{padding:10px 0;font-size:0.82rem;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;}
+.opp-table td:first-child{color:rgba(255,255,255,0.7);width:55%;}
+.opp-table td:nth-child(2){color:rgba(255,255,255,0.35);width:25%;font-size:0.75rem;}
+.opp-table td:last-child{text-align:right;}
+.opp-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+.opp-badge.high{background:rgba(34,197,94,0.15);color:#4ade80;}
+.opp-badge.med{background:rgba(251,191,36,0.15);color:#fbbf24;}
+
+/* ── LIVE ECOSYSTEM ── */
+.ecosystem{background:var(--white);}
+.eco-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
+.eco-card{
+  border-radius:16px;overflow:hidden;border:1px solid var(--border);
+  position:relative;transition:box-shadow 0.3s,transform 0.3s;
+  background:var(--bg);
+}
+.eco-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08);}
+.eco-card-browser{
+  background:var(--obsidian);padding:10px 14px;
+  display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.browser-dots{display:flex;gap:5px;}
+.browser-dots span{width:10px;height:10px;border-radius:50%;}
+.browser-url{flex:1;background:rgba(255,255,255,0.06);border-radius:4px;padding:4px 10px;font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:monospace;}
+.eco-card-preview{
+  height:200px;overflow:hidden;position:relative;
+}
+.eco-card-preview-inner{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:3rem;font-weight:900;opacity:0.06;
+  position:relative;
+}
+.eco-preview-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;
+}
+.eco-label-name{font-family:var(--font-display);font-size:1.4rem;font-weight:700;}
+.eco-label-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;}
+.eco-card-footer{padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.eco-card-info .eco-domain{font-weight:700;font-size:0.875rem;}
+.eco-card-info .eco-desc{font-size:0.75rem;color:var(--mid);margin-top:2px;}
+.eco-visit{padding:8px 16px;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;}
+
+/* Colour per division */
+.eco-hr .eco-card-browser{background:#0a0f1e;}
+.eco-hr .eco-card-preview-inner{background:linear-gradient(135deg,rgba(45,91,227,0.05),rgba(45,91,227,0.02));}
+.eco-hr .eco-label-name{color:var(--hr);}
+.eco-hr .eco-visit{background:var(--hr);color:white;}
+
+.eco-fin .eco-card-browser{background:#071410;}
+.eco-fin .eco-card-preview-inner{background:linear-gradient(135deg,rgba(26,122,74,0.05),rgba(26,122,74,0.02));}
+.eco-fin .eco-label-name{color:var(--fin);}
+.eco-fin .eco-visit{background:var(--fin);color:white;}
+
+.eco-mkt .eco-card-browser{background:#1a0d00;}
+.eco-mkt .eco-card-preview-inner{background:linear-gradient(135deg,rgba(196,98,10,0.05),rgba(196,98,10,0.02));}
+.eco-mkt .eco-label-name{color:var(--mkt);}
+.eco-mkt .eco-visit{background:var(--mkt);color:white;}
+
+.eco-tch .eco-card-browser{background:#0e0514;}
+.eco-tch .eco-card-preview-inner{background:linear-gradient(135deg,rgba(107,63,160,0.05),rgba(107,63,160,0.02));}
+.eco-tch .eco-label-name{color:var(--tch);}
+.eco-tch .eco-visit{background:var(--tch);color:white;}
+
+/* ── SAFE ZONE ── */
+.safezone{background:var(--bg);}
+.sz-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin-top:4rem;}
+.sz-timeline::before{content:'';position:absolute;top:28px;left:16%;right:16%;height:1px;background:var(--border);z-index:0;}
+.sz-step{text-align:center;padding:0 1.5rem;position:relative;z-index:1;}
+.sz-num{
+  width:56px;height:56px;
+  background:var(--white);border:1.5px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--obsidian);
+  margin:0 auto 1.25rem;transition:all 0.3s;
+}
+.sz-step:hover .sz-num{background:var(--obsidian);color:var(--white);border-color:var(--obsidian);}
+.sz-scope{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);background:var(--border);padding:3px 10px;border-radius:100px;margin-bottom:0.75rem;}
+.sz-title{font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;}
+.sz-text{font-size:0.82rem;color:var(--mid);line-height:1.65;}
+
+/* ── RESEARCH / GOVTECH CARDS ── */
+.govtech{background:var(--white);}
+.gt-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;}
+.gt-card{
+  border-radius:16px;padding:2rem;border:1px solid var(--border);
+  transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
+}
+.gt-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.15);}
+.gt-delivered{border-left:3px solid #22c55e;}
+.gt-pipeline{border-left:3px solid var(--hr);border-style:dashed;}
+.gt-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:1rem;}
+.gt-badge.delivered{background:rgba(34,197,94,0.1);color:#16a34a;}
+.gt-badge.pipeline{background:rgba(45,91,227,0.1);color:var(--hr);}
+.gt-badge.research{background:rgba(139,26,26,0.1);color:var(--research);}
+.gt-title{font-weight:700;font-size:1rem;margin-bottom:0.5rem;}
+.gt-text{font-size:0.82rem;color:var(--mid);line-height:1.65;}
+.gt-dept{font-size:0.72rem;color:var(--mid);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);}
+
+/* ── PHILANTHROPY ── */
+.philanthropy{background:var(--obsidian);padding:7rem 5%;}
+.phil-inner{max-width:1200px;margin:0 auto;}
+.phil-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;}
+.phil-content .section-title{color:var(--white);}
+.phil-content .section-sub{color:rgba(255,255,255,0.45);}
+.phil-quote{
+  font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.7rem);font-style:italic;
+  font-weight:400;color:var(--white);line-height:1.4;margin:2rem 0;
+  padding-left:1.5rem;border-left:2px solid rgba(255,255,255,0.2);
+}
+.phil-facts{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.phil-fact{display:flex;align-items:flex-start;gap:10px;font-size:0.875rem;color:rgba(255,255,255,0.55);line-height:1.6;}
+.phil-fact::before{content:'◆';color:rgba(255,255,255,0.2);flex-shrink:0;font-size:0.5rem;margin-top:5px;}
+
+.phil-card{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;padding:2.5rem;
+}
+.phil-card-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.25rem;}
+.phil-card-title{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;line-height:1.2;}
+.phil-card-text{font-size:0.875rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:1.5rem;}
+.phil-card-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.6);font-size:0.82rem;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;transition:all 0.2s;}
+.phil-card-link:hover{color:var(--white);border-color:rgba(255,255,255,0.5);}
+
+/* ── CTA ── */
+.cta-section{background:var(--bg);padding:7rem 5%;text-align:center;}
+.cta-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--obsidian);margin-bottom:1.5rem;line-height:1.05;}
+.cta-title em{font-style:italic;font-weight:300;}
+.cta-sub{font-size:1rem;color:var(--mid);max-width:540px;margin:0 auto 3rem;line-height:1.75;}
+.cta-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-cta-dark{background:var(--obsidian);color:var(--white);padding:15px 36px;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.25s;font-family:var(--font-body);border:none;cursor:pointer;}
+.btn-cta-dark:hover{opacity:0.85;transform:translateY(-2px);}
+.btn-cta-outline{border:1.5px solid var(--border);color:var(--obsidian);padding:15px 36px;border-radius:8px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.25s;font-family:var(--font-body);background:none;}
+.btn-cta-outline:hover{border-color:var(--obsidian);}
+.cta-contact{font-size:0.82rem;color:var(--mid);}
+.cta-contact a{color:var(--obsidian);font-weight:600;text-decoration:none;border-bottom:1px solid var(--border);}
+.cta-contact a:hover{border-color:var(--obsidian);}
+
+/* ── FOOTER ── */
+footer{background:var(--obsidian);padding:4rem 5% 2.5rem;color:rgba(255,255,255,0.4);}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:2rem;}
+.footer-logo-text{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;display:block;}
+.footer-tagline{font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.3);max-width:240px;}
+.footer-col-title{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{text-decoration:none;color:rgba(255,255,255,0.35);font-size:0.82rem;transition:color 0.2s;}
+.footer-links a:hover{color:rgba(255,255,255,0.7);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;}
+.footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .layers-grid{grid-template-columns:1fr;}
+  .eco-grid{grid-template-columns:1fr;}
+  .gt-grid{grid-template-columns:1fr;}
+  .phil-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .policy-grid{grid-template-columns:1fr;}
+  .policy-stat:first-child{grid-column:span 1;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  section{padding:5rem 5%;}
+  .hero-title{font-size:3rem;}
+  .sz-timeline{grid-template-columns:1fr;gap:2rem;}
+  .sz-timeline::before{display:none;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-stripes">
+      <span style="background:var(--hr)"></span>
+      <span style="background:var(--fin)"></span>
+      <span style="background:var(--tch)"></span>
+    </div>
+    <span class="nav-wordmark">Enlyst <em>Framework</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#layers">Architecture</a></li>
+    <li><a href="#ai-policy">AI Policy</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
+    <li><a href="#govtech">GovTech</a></li>
+    <li><a href="#philanthropy">Research</a></li>
+    <li><a href="#contact" class="nav-cta">Access Portal</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#layers">Architecture</a>
+  <a href="#ai-policy">AI Policy</a>
+  <a href="#ecosystem">Ecosystem</a>
+  <a href="#govtech">GovTech</a>
+  <a href="#philanthropy">Research & Philanthropy</a>
+  <a href="#contact">Access Portal →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-badge">
+    <span class="badge-pip"></span>
+    Framework v2.0 — AI Policy 2025 Integrated
+  </div>
+
+  <h1 class="hero-title">
+    The institutional<br/>
+    operating system<br/>
+    for <span class="word-gov">Pakistan's</span><br/>
+    <em>digital economy.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Enlyst bridges <strong>commercial startup enablement</strong>, <strong>public sector AI transformation</strong>, <strong>policy research</strong>, and <strong>philanthropic impact</strong> — four layers of one unified institutional framework.
+  </p>
+
+  <div class="layer-pills">
+    <div class="layer-pill">
+      <span class="pill-dot" style="background:var(--hr)"></span>
+      Commercial Ecosystem
+    </div>
+    <div class="layer-pill">
+      <span class="pill-dot" style="background:var(--gov)"></span>
+      Public Sector & GovTech
+    </div>
+    <div class="layer-pill">
+      <span class="pill-dot" style="background:var(--research)"></span>
+      Policy & Research
+    </div>
+    <div class="layer-pill">
+      <span class="pill-dot" style="background:var(--phil)"></span>
+      Philanthropy
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#layers" class="btn-hero-primary">
+      Explore the Framework
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3l5 5-5 5M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#ecosystem" class="btn-hero-ghost">
+      View live ecosystem
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    Scroll to explore
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- DIVIDER STRIP -->
+<div class="divider-strip">
+  <div class="divider-inner">
+    <span class="divider-item">HR & AI Talent</span>
+    <span class="divider-item">Financial Intelligence</span>
+    <span class="divider-item">Growth Marketing</span>
+    <span class="divider-item">Cloud & GovTech</span>
+    <span class="divider-item">National AI Policy 2025</span>
+    <span class="divider-item">SECP Infrastructure</span>
+    <span class="divider-item">Excise & Taxation</span>
+    <span class="divider-item">Himat-Hikmat Framework</span>
+    <span class="divider-item">GenAI Research</span>
+    <span class="divider-item">Power BI Dashboards</span>
+    <span class="divider-item">Google Cloud Partner</span>
+    <span class="divider-item">Workforce Development</span>
+    <span class="divider-item">HR & AI Talent</span>
+    <span class="divider-item">Financial Intelligence</span>
+    <span class="divider-item">Growth Marketing</span>
+    <span class="divider-item">Cloud & GovTech</span>
+    <span class="divider-item">National AI Policy 2025</span>
+    <span class="divider-item">SECP Infrastructure</span>
+    <span class="divider-item">Excise & Taxation</span>
+    <span class="divider-item">Himat-Hikmat Framework</span>
+    <span class="divider-item">GenAI Research</span>
+    <span class="divider-item">Power BI Dashboards</span>
+    <span class="divider-item">Google Cloud Partner</span>
+    <span class="divider-item">Workforce Development</span>
+  </div>
+</div>
+
+<!-- FOUR LAYERS -->
+<section class="layers" id="layers">
+  <div class="section-inner">
+    <div class="layers-header reveal">
+      <span class="eyebrow" style="color:var(--mid);">Framework Architecture</span>
+      <h2 class="section-title">Four layers.<br/><em>One institution.</em></h2>
+      <p class="section-sub">Unlike single-service firms, Enlyst operates across four distinct but interconnected layers — each reinforcing the others, all governed by the same values and methodology.</p>
+    </div>
+
+    <div class="layers-grid">
+      <!-- Layer 1 Commercial -->
+      <div class="layer-card layer-1 reveal">
+        <div class="layer-number">01</div>
+        <div class="layer-tag">Commercial Ecosystem</div>
+        <div class="layer-name">Startup & Enterprise Operating Partner</div>
+        <div class="layer-desc">Four integrated service divisions providing the complete operational infrastructure for startups and scaling businesses — HR, finance, marketing, and technology under one roof.</div>
+        <div class="layer-items">
+          <div class="layer-item" style="--c:var(--hr)"><span>enlyst — HR, talent & AI workforce development</span></div>
+          <div class="layer-item"><span>enlysum — Real-time financial intelligence & CFO advisory</span></div>
+          <div class="layer-item"><span>enlybiz — Data-driven marketing & growth</span></div>
+          <div class="layer-item"><span>enlysoft — Cloud, AI infrastructure & automation</span></div>
+        </div>
+        <div class="layer-divs">
+          <span class="layer-div-badge" style="background:rgba(45,91,227,0.1);color:var(--hr);">enlyst</span>
+          <span class="layer-div-badge" style="background:rgba(26,122,74,0.1);color:var(--fin);">enlysum</span>
+          <span class="layer-div-badge" style="background:rgba(196,98,10,0.1);color:var(--mkt);">enlybiz</span>
+          <span class="layer-div-badge" style="background:rgba(107,63,160,0.1);color:var(--tch);">enlysoft</span>
+        </div>
+      </div>
+
+      <!-- Layer 2 GovTech -->
+      <div class="layer-card layer-2 reveal reveal-delay-1">
+        <div class="layer-number">02</div>
+        <div class="layer-tag">Public Sector & GovTech</div>
+        <div class="layer-name">Government AI Transformation Partner</div>
+        <div class="layer-desc">Applying modern enterprise architecture to government operations. Enlyst delivers AI infrastructure, digital transformation, and workforce development for public sector institutions — aligned with Pakistan's National AI Policy 2025.</div>
+        <div class="layer-items">
+          <div class="layer-item"><span>SECP MCP Server — AI connected to SECP databases</span></div>
+          <div class="layer-item"><span>Excise & Taxation Department — strategic technology projects</span></div>
+          <div class="layer-item"><span>AI Centres of Excellence — cloud infrastructure</span></div>
+          <div class="layer-item"><span>10,000 government official AI training (MoITT pipeline)</span></div>
+          <div class="layer-item"><span>National AI data repository architecture</span></div>
+        </div>
+        <div class="layer-divs">
+          <span class="layer-div-badge" style="background:rgba(15,76,117,0.1);color:var(--gov);">MoITT Aligned</span>
+          <span class="layer-div-badge" style="background:rgba(15,76,117,0.1);color:var(--gov);">PPRA Vendor</span>
+        </div>
+      </div>
+
+      <!-- Layer 3 Research -->
+      <div class="layer-card layer-3 reveal reveal-delay-2">
+        <div class="layer-number">03</div>
+        <div class="layer-tag">Policy & Research</div>
+        <div class="layer-name">AI Adoption Intelligence & Framework Generation</div>
+        <div class="layer-desc">Continuous surveying, framework generation, and policy advisory on AI adoption across government and civic life. Enlyst contributes to the intellectual infrastructure Pakistan's AI economy requires.</div>
+        <div class="layer-items">
+          <div class="layer-item"><span>GenAI Adoption Research — government & civic deployment</span></div>
+          <div class="layer-item"><span>AI Workforce Readiness Index — Pakistan (annual)</span></div>
+          <div class="layer-item"><span>National AI Policy 2025 implementation advisory</span></div>
+          <div class="layer-item"><span>Startup AI Adoption Report (annual)</span></div>
+          <div class="layer-item"><span>NCAI contributing private sector partner</span></div>
+        </div>
+        <div class="layer-divs">
+          <span class="layer-div-badge" style="background:rgba(139,26,26,0.1);color:var(--research);">Research</span>
+          <span class="layer-div-badge" style="background:rgba(139,26,26,0.1);color:var(--research);">Policy Advisory</span>
+        </div>
+      </div>
+
+      <!-- Layer 4 Philanthropy -->
+      <div class="layer-card layer-4 reveal reveal-delay-3">
+        <div class="layer-number">04</div>
+        <div class="layer-tag">Philanthropy & Social Policy</div>
+        <div class="layer-name">Inclusive Digital Economy</div>
+        <div class="layer-desc">Enlyst's social impact arm ensures Pakistan's AI transformation reaches everyone — not just those already connected. The Himat-Hikmat Framework exposes structural inequality in education and proposes systemic solutions.</div>
+        <div class="layer-items">
+          <div class="layer-item"><span>Himat-Hikmat Framework — Mathematics Education for VI in Punjab</span></div>
+          <div class="layer-item"><span>Exposes "Leaky Pipeline" of stipend-without-instruction inequality</span></div>
+          <div class="layer-item"><span>Accessible AI tools and standards research</span></div>
+          <div class="layer-item"><span>Rural-urban AI literacy gap research</span></div>
+          <div class="layer-item"><span>Inclusive digital economy frameworks</span></div>
+        </div>
+        <div class="layer-divs">
+          <span class="layer-div-badge" style="background:rgba(74,55,40,0.1);color:var(--phil);">Punjab</span>
+          <span class="layer-div-badge" style="background:rgba(74,55,40,0.1);color:var(--phil);">Education Policy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI POLICY SECTION -->
+<section class="ai-policy" id="ai-policy">
+  <div class="ai-policy-inner">
+    <div class="ai-policy-header reveal">
+      <span class="eyebrow policy-eyebrow">National AI Policy 2025</span>
+      <h2 class="section-title policy-title">Pakistan's AI ambition is <em>historic.</em><br/>The execution gap is real.</h2>
+      <p class="section-sub policy-sub">Cabinet-approved July 2025. Six pillars. Rs 24.9 trillion GDP potential by 2030. The policy exists. The organisation that can deliver it — across HR, technology, finance, and communications simultaneously — is exactly what Enlyst is built to be.</p>
+    </div>
+
+    <div class="policy-grid">
+      <div class="policy-stat reveal">
+        <div class="ps-num">1,000,000</div>
+        <div class="ps-label">AI professionals to train by 2030</div>
+        <div class="ps-context">From a base where &lt;10% of Pakistan's IT workforce is currently AI-skilled</div>
+      </div>
+      <div class="policy-stat reveal reveal-delay-1">
+        <div class="ps-num">10,000</div>
+        <div class="ps-label">New AI trainers needed by 2027</div>
+        <div class="ps-context">Train-the-Trainer programme — enlyst positioned as delivery partner</div>
+      </div>
+      <div class="policy-stat reveal reveal-delay-2">
+        <div class="ps-num">50,000</div>
+        <div class="ps-label">AI-driven civic projects over 5 years</div>
+        <div class="ps-context">Government procurement pipeline — enlysoft qualified to bid</div>
+      </div>
+      <div class="policy-stat reveal reveal-delay-3">
+        <div class="ps-num">$2.7B</div>
+        <div class="ps-label">Projected AI sector size by 2030</div>
+        <div class="ps-context">Growing at ~22% annually — Enlyst positioned at market formation stage</div>
+      </div>
+    </div>
+
+    <div class="policy-opportunity reveal">
+      <div class="policy-opp-title">Enlyst × AI Policy — Opportunity Map</div>
+      <table class="opp-table">
+        <tr>
+          <td>AI Training Partner — 10,000 government officials</td>
+          <td>enlyst</td>
+          <td><span class="opp-badge high">High Priority</span></td>
+        </tr>
+        <tr>
+          <td>AI CoE Cloud Infrastructure Implementation</td>
+          <td>enlysoft</td>
+          <td><span class="opp-badge high">High Priority</span></td>
+        </tr>
+        <tr>
+          <td>AI Venture Fund Financial Advisory</td>
+          <td>enlysum</td>
+          <td><span class="opp-badge high">High Priority</span></td>
+        </tr>
+        <tr>
+          <td>Ministry AI Awareness Communications</td>
+          <td>enlybiz</td>
+          <td><span class="opp-badge med">Active Pipeline</span></td>
+        </tr>
+        <tr>
+          <td>National AI Data Repository Architecture</td>
+          <td>enlysoft</td>
+          <td><span class="opp-badge med">Active Pipeline</span></td>
+        </tr>
+        <tr>
+          <td>AI Workforce Readiness Index Publication</td>
+          <td>Research Layer</td>
+          <td><span class="opp-badge med">In Progress</span></td>
+        </tr>
+        <tr>
+          <td>HEC Graduate AI Programme Partnership</td>
+          <td>enlyst</td>
+          <td><span class="opp-badge med">Active Pipeline</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE ECOSYSTEM -->
+<section class="ecosystem" id="ecosystem">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--mid);">Live Ecosystem</span>
+      <h2 class="section-title">Four sites. <em>Fully operational.</em></h2>
+      <p class="section-sub">The commercial layer is live. Each division has its own site, brand identity, and service offering — all connected back to the Enlyst framework.</p>
+    </div>
+
+    <div class="eco-grid">
+      <div class="eco-card eco-hr reveal reveal-delay-1">
+        <div class="eco-card-browser">
+          <div class="browser-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#22c55e"></span></div>
+          <div class="browser-url">enlystnow.com</div>
+        </div>
+        <div class="eco-card-preview">
+          <div class="eco-card-preview-inner">HR</div>
+          <div class="eco-preview-label">
+            <div class="eco-label-name">enlyst</div>
+            <div class="eco-label-tag">HR & Talent · AI Workforce</div>
+          </div>
+        </div>
+        <div class="eco-card-footer">
+          <div class="eco-card-info">
+            <div class="eco-domain">enlystnow.com</div>
+            <div class="eco-desc">Smart Recruiting & AI Workforce Development</div>
+          </div>
+          <a href="https://www.enlystnow.com" target="_blank" class="eco-visit" style="background:var(--hr);color:white;">Visit ↗</a>
+        </div>
+      </div>
+
+      <div class="eco-card eco-fin reveal reveal-delay-2">
+        <div class="eco-card-browser">
+          <div class="browser-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#22c55e"></span></div>
+          <div class="browser-url">enlysum.com</div>
+        </div>
+        <div class="eco-card-preview">
+          <div class="eco-card-preview-inner">FIN</div>
+          <div class="eco-preview-label">
+            <div class="eco-label-name" style="color:var(--fin);">enlysum</div>
+            <div class="eco-label-tag">Finance · Power BI · AI Insights</div>
+          </div>
+        </div>
+        <div class="eco-card-footer">
+          <div class="eco-card-info">
+            <div class="eco-domain">enlysum.com</div>
+            <div class="eco-desc">Live Financial Intelligence & CFO Advisory</div>
+          </div>
+          <a href="https://enlysum.com" target="_blank" class="eco-visit" style="background:var(--fin);color:white;">Visit ↗</a>
+        </div>
+      </div>
+
+      <div class="eco-card eco-mkt reveal reveal-delay-3">
+        <div class="eco-card-browser">
+          <div class="browser-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#22c55e"></span></div>
+          <div class="browser-url">enlybiz.com</div>
+        </div>
+        <div class="eco-card-preview">
+          <div class="eco-card-preview-inner">MKT</div>
+          <div class="eco-preview-label">
+            <div class="eco-label-name" style="color:var(--mkt);">enlybiz</div>
+            <div class="eco-label-tag">Marketing · Growth · Brand</div>
+          </div>
+        </div>
+        <div class="eco-card-footer">
+          <div class="eco-card-info">
+            <div class="eco-domain">enlybiz.com</div>
+            <div class="eco-desc">Data-Driven Marketing & Growth Engine</div>
+          </div>
+          <a href="https://enlybiz.com" target="_blank" class="eco-visit" style="background:var(--mkt);color:white;">Visit ↗</a>
+        </div>
+      </div>
+
+      <div class="eco-card eco-tch reveal reveal-delay-4">
+        <div class="eco-card-browser">
+          <div class="browser-dots"><span style="background:#ef4444"></span><span style="background:#f59e0b"></span><span style="background:#22c55e"></span></div>
+          <div class="browser-url">enlysoft.net</div>
+        </div>
+        <div class="eco-card-preview">
+          <div class="eco-card-preview-inner">TCH</div>
+          <div class="eco-preview-label">
+            <div class="eco-label-name" style="color:var(--tch);">enlysoft</div>
+            <div class="eco-label-tag">Cloud · AI Infrastructure · GovTech</div>
+          </div>
+        </div>
+        <div class="eco-card-footer">
+          <div class="eco-card-info">
+            <div class="eco-domain">enlysoft.net</div>
+            <div class="eco-desc">Cloud Architecture & GovTech Microservices</div>
+          </div>
+          <a href="https://enlysoft.net" target="_blank" class="eco-visit" style="background:var(--tch);color:white;">Visit ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFE ZONE -->
+<section class="safezone" id="methodology">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:0;">
+      <span class="eyebrow" style="color:var(--mid);">The Methodology</span>
+      <h2 class="section-title">The Safe Zone — <em>for any institution.</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Originally designed for startups, the Safe Zone methodology now scales to enterprises, government departments, and institutional transformation projects.</p>
+    </div>
+    <div class="sz-timeline">
+      <div class="sz-step reveal reveal-delay-1">
+        <div class="sz-num">01</div>
+        <div class="sz-scope">Weeks 1–4</div>
+        <div class="sz-title">Discovery & Audit</div>
+        <div class="sz-text">Comprehensive mapping of infrastructure, legal compliance (Punjab Finance Act, FBR, SECP), HR gaps, brand positioning, and technology architecture. For government: regulatory and data governance audit.</div>
+      </div>
+      <div class="sz-step reveal reveal-delay-2">
+        <div class="sz-num">02</div>
+        <div class="sz-scope">Months 2–5</div>
+        <div class="sz-title">Safe Zone Build</div>
+        <div class="sz-text">All four divisions deploy simultaneously — financial systems, talent infrastructure, communications strategy, and technology stack. The Safe Zone is achieved when the organisation operates without existential risk.</div>
+      </div>
+      <div class="sz-step reveal reveal-delay-3">
+        <div class="sz-num">03</div>
+        <div class="sz-scope">Month 6 onwards</div>
+        <div class="sz-title">Permanent Partnership</div>
+        <div class="sz-text">Sustained operational retainer — KPI reviews, AI infrastructure maintenance, intern pipeline integration, and continuous policy alignment. The relationship deepens as the institution scales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVTECH DELIVERED -->
+<section class="govtech" id="govtech">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--gov);">Public Sector Track Record</span>
+      <h2 class="section-title">Government work. <em>Delivered.</em></h2>
+      <p class="section-sub">Enlyst has already moved from concept to delivery in the public sector. The track record exists. The pipeline is building.</p>
+    </div>
+    <div class="gt-grid">
+      <div class="gt-card gt-delivered reveal reveal-delay-1">
+        <div class="gt-badge delivered">✓ Delivered</div>
+        <div class="gt-title">SECP MCP Server</div>
+        <div class="gt-text">AI infrastructure connecting Securities & Exchange Commission of Pakistan databases to large language models. Enables AI-powered querying of regulatory and corporate data at institutional scale.</div>
+        <div class="gt-dept">Department: SECP &nbsp;·&nbsp; Division: enlysoft &nbsp;·&nbsp; Type: AI Infrastructure</div>
+      </div>
+      <div class="gt-card gt-delivered reveal reveal-delay-2">
+        <div class="gt-badge delivered">✓ Delivered</div>
+        <div class="gt-title">Excise & Taxation Department</div>
+        <div class="gt-text">Strategic technology projects for Punjab's Excise & Taxation Department — evaluation, monitoring, and modernisation within government systems. Wasim Hassan's institutional expertise applied at the systems level.</div>
+        <div class="gt-dept">Department: Punjab E&T &nbsp;·&nbsp; Division: enlysoft &nbsp;·&nbsp; Type: GovTech</div>
+      </div>
+      <div class="gt-card gt-pipeline reveal reveal-delay-1">
+        <div class="gt-badge pipeline">Active Pipeline</div>
+        <div class="gt-title">MoITT AI Training Programme</div>
+        <div class="gt-text">Enlyst positioned as private sector delivery partner for the Ministry of IT & Telecom's 10,000 government official AI training initiative. Competency framework design, trainer placement, and progress dashboards.</div>
+        <div class="gt-dept">Department: MoITT &nbsp;·&nbsp; Division: enlyst &nbsp;·&nbsp; Aligned: AI Policy 2025</div>
+      </div>
+      <div class="gt-card gt-pipeline reveal reveal-delay-2">
+        <div class="gt-badge research">Research</div>
+        <div class="gt-title">GenAI Adoption Research</div>
+        <div class="gt-text">Continuous surveying and framework generation on adoption of Generative AI in day-to-day government and civic life. Guides future policy deployment. Published in partnership with international research bodies.</div>
+        <div class="gt-dept">Layer: Research &nbsp;·&nbsp; Output: Annual Index &nbsp;·&nbsp; Partners: NCAI, IGC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILANTHROPY -->
+<section class="philanthropy" id="philanthropy">
+  <div class="phil-inner">
+    <div class="phil-grid">
+      <div class="phil-content reveal">
+        <span class="eyebrow" style="color:rgba(255,255,255,0.3);">Philanthropy Layer</span>
+        <h2 class="section-title policy-title">The framework that <em>no one else built.</em></h2>
+        <div class="phil-quote">
+          "Financial stipends without instructional capacity institutionalise inequality rather than resolve it."
+        </div>
+        <p class="section-sub policy-sub">The Himat-Hikmat Framework confronts what most organisations avoid — the systemic failure at the intersection of disability, education, and public funding in Punjab.</p>
+        <div class="phil-facts">
+          <div class="phil-fact">Targets Mathematics Education for the Visually Impaired in Punjab</div>
+          <div class="phil-fact">Exposes the "Leaky Pipeline" — where well-intentioned stipend programmes produce dependence, not capability</div>
+          <div class="phil-fact">Proposes instructional investment frameworks alongside financial support</div>
+          <div class="phil-fact">Connected to Pakistan's AI Policy 2025 — inclusive AI requires accessible design from the foundation</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="phil-card">
+          <div class="phil-card-label">Published Research</div>
+          <div class="phil-card-title">The Himat-Hikmat Framework</div>
+          <div class="phil-card-text">A comprehensive educational policy framework targeting Mathematics Education for the Visually Impaired (VI) in Punjab. Published and submitted to educational policy working groups. Lays the groundwork for inclusive digital economy participation.</div>
+          <a href="Himat-Hikatmat framework.html" class="phil-card-link" target="_blank">
+            Read the Framework
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="phil-card" style="margin-top:1rem;background:rgba(255,255,255,0.03);">
+          <div class="phil-card-label">Active Research</div>
+          <div class="phil-card-title">Inclusive AI — Accessibility Standards</div>
+          <div class="phil-card-text">As Pakistan deploys AI across health, education, and governance — Enlyst is mapping what accessibility standards must be embedded from the start, not retrofitted. This work feeds directly into the National AI Policy implementation advisory.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-inner">
+    <h2 class="cta-title reveal">
+      One framework.<br/>
+      Four layers of <em>impact.</em>
+    </h2>
+    <p class="cta-sub reveal reveal-delay-1">
+      Whether you are a startup founder, a government department, a research institution, or a policy maker — there is a layer of Enlyst built for you. The access portal brings it all together.
+    </p>
+    <div class="cta-actions reveal reveal-delay-2">
+      <a href="mailto:info@enlystnow.com" class="btn-cta-dark">Access the Framework</a>
+      <a href="https://www.enlystnow.com" class="btn-cta-outline">Visit enlystnow.com</a>
+    </div>
+    <div class="cta-contact reveal reveal-delay-3">
+      <a href="mailto:info@enlystnow.com">info@enlystnow.com</a>
+      &nbsp;·&nbsp;
+      <a href="tel:+9203000340036">03000340036</a>
+      &nbsp;·&nbsp; Suite M-3, Lahore Stock Exchange Plaza
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo-text">Enlyst Framework</span>
+        <p class="footer-tagline">Pakistan's institutional operating system — bridging commercial, government, research, and philanthropic impact.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Commercial</div>
+        <ul class="footer-links">
+          <li><a href="https://www.enlystnow.com" target="_blank">enlyst — HR & Talent</a></li>
+          <li><a href="https://enlysum.com" target="_blank">enlysum — Finance</a></li>
+          <li><a href="https://enlybiz.com" target="_blank">enlybiz — Marketing</a></li>
+          <li><a href="https://enlysoft.net" target="_blank">enlysoft — Cloud</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Government</div>
+        <ul class="footer-links">
+          <li><a href="#govtech">SECP MCP Server</a></li>
+          <li><a href="#govtech">E&T Department</a></li>
+          <li><a href="#ai-policy">AI Policy 2025</a></li>
+          <li><a href="#govtech">MoITT Partnership</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-links">
+          <li><a href="#philanthropy">Himat-Hikmat</a></li>
+          <li><a href="#philanthropy">GenAI Adoption</a></li>
+          <li><a href="#ai-policy">AI Workforce Index</a></li>
+          <li><a href="#philanthropy">Inclusive AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@enlystnow.com">info@enlystnow.com</a></li>
+          <li><a href="tel:+9203000340036">+92 300 034 0036</a></li>
+          <li><a href="#contact">Suite M-3, LSE Plaza</a></li>
+          <li><a href="#contact">Lahore, Pakistan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Enlyst Smart Recruiting Pvt Ltd. All rights reserved.</div>
+      <div>Framework v2.0 — AI Policy 2025 Integrated</div>
+      <div><a href="https://www.enlystnow.com" target="_blank">enlystnow.com</a> &nbsp;·&nbsp; <a href="https://enlysum.com" target="_blank">enlysum.com</a> &nbsp;·&nbsp; <a href="https://enlybiz.com" target="_blank">enlybiz.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

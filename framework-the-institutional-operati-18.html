@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlyst Framework | The Institutional Operating System</title>
+  <meta name="description" content="A services-sector diversified group for Pakistan's institutional voids: integrated HR, finance, marketing, and cloud—plus GovTech delivery and a ring-fenced foundation. Systems protect processes, so humans can protect humans.">
+  <meta name="theme-color" content="#2D5BE3">
+  <meta property="og:title" content="Enlyst Framework | The Institutional Operating System">
+  <meta property="og:description" content="Integrated professional services for Pakistan's institutional voids—HR, finance, growth, cloud, GovTech, and a ring-fenced foundation.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="png.png" sizes="any">
+
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Instrument Serif', 'serif'] },
+          colors: { brand: { blue: '#2D5BE3', obsidian: '#050505', offwhite: '#F8F9FA', border: 'rgba(255,255,255,0.1)' } },
+          animation: {
+            'glow-drift': 'drift 15s ease-in-out infinite alternate',
+            'fade-up': 'fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'float': 'float 8s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'pan': 'pan 14s ease-in-out infinite',
+          },
+          keyframes: {
+            drift: { '0%': { transform: 'translate(0, 0) scale(1)' }, '100%': { transform: 'translate(30px, 30px) scale(1.1)' } },
+            fadeUp: { '0%': { opacity: 0, transform: 'translateY(40px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } },
+            pan: {
+              '0%, 100%': { transform: 'translate(0, 0)' },
+              '50%': { transform: 'translate(-1.5%, -1%)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root { --brand-offwhite: #F8F9FA; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--brand-offwhite); color: #1A1A1A; overflow-x: hidden; }
+
+    .noise-overlay::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    .bento-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .bento-card:hover { transform: translateY(-8px); border-color: rgba(45, 91, 227, 0.4); box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(45, 91, 227, 0.1); }
+
+    .bento-dark {
+      background: rgba(8, 8, 14, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .bento-dark:hover { border-color: rgba(45, 91, 227, 0.35); }
+
+    .text-gradient { background: linear-gradient(135deg, #ffffff 0%, #718096 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .obs-hide { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .obs-show { opacity: 1; transform: translateY(0); }
+
+    .browser-window { background: #050505; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(45, 91, 227, 0.2); }
+    .browser-header { background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 16px; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(10px); }
+    .iframe-scaler { width: 400%; height: 400%; transform: scale(0.25); transform-origin: top left; pointer-events: none; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .group:hover .iframe-scaler { transform: scale(0.255); }
+    .glass-gradient { background: linear-gradient(to top, #0A0A0F 10%, rgba(10,10,15,0.7) 40%, transparent 100%); transition: all 0.5s ease; }
+    .group:hover .glass-gradient { background: linear-gradient(to top, #0A0A0F 30%, rgba(10,10,15,0.85) 60%, transparent 100%); }
+    .card-content-hover { opacity: 0.85; transform: translateY(10px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .group:hover .card-content-hover { opacity: 1; transform: translateY(0); }
+
+    .hero-bg-grid { background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px); background-size: 32px 32px; }
+
+    .delay-pan-1 { animation-delay: 0.15s; }
+    .delay-pan-2 { animation-delay: 0.3s; }
+    .delay-pan-3 { animation-delay: 0.45s; }
+
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float,
+      .animate-fade-up,
+      .animate-pan,
+      .animate-pulse-slow { animation: none !important; }
+      .obs-hide { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-blue selection:text-white">
+
+<a href="#methodology" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-24 focus:z-[60] focus:rounded-lg focus:bg-brand-blue focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white focus:shadow-lg">Skip to main content</a>
+
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-200 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-20">
+    <a href="index.html" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-sm">
+        <img src="png.png" alt="" width="40" height="40" decoding="async" class="h-full w-full object-cover" onerror="this.style.display='none'; var el=this.nextElementSibling; if(el) el.style.display='flex';" />
+        <div class="hidden flex-col gap-0.5" style="display: none" aria-hidden="true">
+          <span class="w-4 h-0.5 bg-blue-600 rounded-full"></span>
+          <span class="w-4 h-0.5 bg-green-600 rounded-full"></span>
+          <span class="w-4 h-0.5 bg-purple-600 rounded-full"></span>
+        </div>
+      </div>
+      <span class="text-xl sm:text-2xl text-slate-900 font-serif tracking-tight mt-0.5 sm:mt-1">enlyst<span class="font-sans font-light text-brand-blue italic text-base sm:text-lg"> framework</span></span>
+    </a>
+
+    <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 justify-end">
+      <div class="flex items-center gap-3 sm:gap-4 lg:gap-5 overflow-x-auto no-scrollbar max-w-[62vw] sm:max-w-none justify-end py-1">
+        <a href="#methodology" class="shrink-0 text-[10px] sm:text-xs uppercase tracking-widest font-bold text-slate-600 hover:text-brand-blue transition-colors">Methodology</a>
+        <a href="#public-sector" class="shrink-0 text-[10px] sm:text-xs uppercase tracking-widest font-bold text-slate-600 hover:text-brand-blue transition-colors">Public Sector</a>
+        <a href="#foundation" class="shrink-0 text-[10px] sm:text-xs uppercase tracking-widest font-bold text-slate-600 hover:text-brand-blue transition-colors">Foundation</a>
+        <a href="about.html" class="shrink-0 text-[10px] sm:text-xs uppercase tracking-widest font-bold text-slate-600 hover:text-brand-blue transition-colors">About Enlyst</a>
+        <a href="#contact" class="shrink-0 text-[10px] sm:text-xs uppercase tracking-widest font-bold text-brand-blue hover:text-blue-700 transition-colors">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden z-10 bg-[#F8F9FA]">
+  <div class="absolute inset-0 hero-bg-grid opacity-50 pointer-events-none"></div>
+
+  <div class="absolute top-10 right-10 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] animate-pulse-slow pointer-events-none"></div>
+  <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-green-400/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mt-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="max-w-2xl text-center lg:text-left animate-fade-up">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-brand-blue text-[11px] font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span> The Institutional Operating System
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-[76px] font-serif text-slate-900 mb-6 leading-[1.05] tracking-tight">
+          The unified framework for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-purple-600 italic pr-2">institutional evolution.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0 font-light">
+          A services-sector translation of the diversified business group—integrated HR, finance, marketing, and cloud on retainer—built for Pakistan's institutional voids: thin intermediaries, fragmented professional services, and execution risk when boutiques do not share a balance sheet.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+          <a href="#methodology" class="bg-brand-blue text-white text-base font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-all shadow-[0_0_20px_rgba(45,91,227,0.3)] flex items-center gap-2 hover:-translate-y-1">
+            The Methodology <i data-lucide="arrow-down" class="w-5 h-5"></i>
+          </a>
+          <a href="#live-ecosystem" class="bg-white text-slate-800 border border-slate-200 text-base font-bold px-8 py-4 rounded-full hover:bg-slate-50 transition-all flex items-center gap-2 hover:-translate-y-1 shadow-sm">
+            <i data-lucide="layers" class="w-5 h-5 text-brand-blue"></i> Live Ecosystem
+          </a>
+          <a href="#demo" class="bg-white/80 text-slate-800 border border-slate-200/80 text-base font-bold px-8 py-4 rounded-full hover:bg-white transition-all flex items-center gap-2 hover:-translate-y-1 shadow-sm backdrop-blur-sm">
+            <i data-lucide="monitor-play" class="w-5 h-5 text-brand-blue"></i> Watch OS Demo
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-slate-500 max-w-lg mx-auto lg:mx-0 font-light">
+          <a href="framework-assessment.html" class="text-brand-blue font-semibold hover:underline">Doctoral assessment</a> · <a href="#manifesto" class="hover:text-brand-blue transition-colors">Ethos</a> · <a href="#demo" class="hover:text-brand-blue transition-colors">Recruiter OS</a>
+        </p>
+      </div>
+
+      <div class="relative w-full h-[600px] flex justify-center lg:justify-end animate-fade-up" style="animation-delay: 0.2s;">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white rounded-full blur-[60px] shadow-[0_0_80px_rgba(45,91,227,0.2)] z-0 pointer-events-none"></div>
+
+        <img src="Capture.webp" alt="Enlyst Smart Recruiting Professional" width="550" height="620" decoding="async" fetchpriority="high" class="relative z-10 w-full max-w-[550px] h-auto object-contain object-center animate-float drop-shadow-2xl" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="methodology" class="py-24 md:py-32 bg-[#EEF0F4] relative z-20 border-b border-slate-200 scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl obs-hide mb-16">
+      <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.2em] mb-4">Methodology · Institutional economics</p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-slate-900 mb-6 leading-[1.08]">
+        An architecture in search of its limits.
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed font-light">
+        The Enlyst Framework is best read as a <strong class="font-medium text-slate-800">professional-services diversified group</strong>—the same organisational form that produced Tata, Koç, and the Aga Khan Development Network—applied to Pakistan's <em>institutional voids in services</em> rather than to smokestack industry. Where contract enforcement is costly and reputation markets are thin, bundling HR, finance, growth, and cloud under one retainer internalises coordination risk and builds brand-specific trust that atomised vendors struggle to replicate.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-16">
+      <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-10 shadow-sm obs-hide">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+            <i data-lucide="git-merge" class="w-6 h-6 text-brand-blue"></i>
+          </div>
+          <h3 class="text-xl font-serif text-slate-900">Why integration outperforms boutiques here</h3>
+        </div>
+        <ul class="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+          <li class="flex gap-3"><span class="text-brand-blue font-mono text-xs mt-1 shrink-0">01</span><span><strong class="text-slate-800">Transaction costs.</strong> Search, contracting, and coordination across four siloed vendors explode when enforcement is weak—Williamson's logic predicts hierarchical alignment for repeated, uncertain, co-specialised work.</span></li>
+          <li class="flex gap-3"><span class="text-brand-blue font-mono text-xs mt-1 shrink-0">02</span><span><strong class="text-slate-800">Institutional voids.</strong> Khanna &amp; Palepu's emerging-markets evidence: diversified groups add value by substituting for missing intermediaries—credit depth, certification, talent markets—when those voids are wide, as in Pakistan.</span></li>
+          <li class="flex gap-3"><span class="text-brand-blue font-mono text-xs mt-1 shrink-0">03</span><span><strong class="text-slate-800">A rare bundle.</strong> The integrated four-function retainer, with cross-pollinating data and shared client memory, is plausibly valuable, rare, and socially complex to imitate—classic VRIN logic.</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl border border-slate-700 p-8 md:p-10 text-slate-300 obs-hide">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/25 flex items-center justify-center">
+            <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-400"></i>
+          </div>
+          <h3 class="text-xl font-serif text-white">Design constraints we treat as law, not PR</h3>
+        </div>
+        <ul class="space-y-4 text-sm md:text-base leading-relaxed text-slate-400">
+          <li><strong class="text-white">Penrose bandwidth.</strong> Managerial absorptive capacity is the binding resource—architecture without senior-team capacity does not survive contact with execution.</li>
+          <li><strong class="text-white">Audit vs. advisory.</strong> Global trajectory separates audit from consulting; we structurally foreclose audit inside the holding to avoid Andersen-class conflicts.</li>
+          <li><strong class="text-white">Hybrid drift.</strong> The foundation must be board-protected, metric-distinct, and preferably endowed—commercial P&amp;L cannot silently consume the social arm.</li>
+          <li><strong class="text-white">Legibility.</strong> Category-spanning organisations pay a storytelling tax; we invest in clear offers for startups, enterprises, government, and donors.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 bg-white rounded-2xl border border-slate-200 px-8 py-6 obs-hide">
+      <p class="text-slate-600 text-sm md:text-base max-w-2xl">
+        <span class="font-serif text-lg text-slate-900 italic">Verdict in one line:</span>
+        viable and well-targeted, <strong class="text-slate-800">conditionally scalable</strong>—the literature endorses the architecture and names the failure modes. The honest position is <strong class="text-slate-800">defensible synthesis, not novelty theatre</strong>.
+      </p>
+      <a href="framework-assessment.html" class="shrink-0 inline-flex items-center gap-2 bg-brand-obsidian text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:bg-slate-800 transition-colors">
+        Read the assessment <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="manifesto" class="py-32 bg-[#020202] noise-overlay border-y border-white/5 relative z-20 scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-4xl mx-auto obs-hide">
+      <i data-lucide="shield" class="w-14 h-14 text-brand-blue/60 mx-auto mb-10 animate-pulse-slow"></i>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] text-gradient mb-10">
+        "The ecosystem that emerges from the framework of Enlyst is the bulwark of security and confidence."
+      </h2>
+      <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8">
+        Every individual, no matter who he is or where he belongs, has the potential of a great businessman. It is not the lack of opportunities; solace is ultimately sought in getting settled through a job. But where everyone works, lives another person who once had an idea, tried, failed, and today is called an <strong>Owner</strong>. We exist to build systems that protect and empower these owners.
+      </p>
+      <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-8">
+        We seek the absolute elimination of human bias from the system. We strive to use technology in the HR space where a human can be a protector of another human <strong>only if systems protect processes.</strong>
+      </p>
+      <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+        Therefore, we lucubrate and meditate like monks before conceiving anything: How can a process be automated so that humans can be good to each other? A less biased society produces more owners than employees, and ensures that employees take responsibility exactly like owners. We are here to bandage businessmen from the rigors of advancing technology—genuine friendship and consultancy without commercial consideration as the primary driver.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem" class="py-32 relative z-30 bg-[#050505] noise-overlay">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="mb-20 obs-hide text-center md:text-left">
+      <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.2em] mb-4">The Architecture</p>
+      <h2 class="text-5xl md:text-6xl font-serif text-white">Four practices.<br><span class="italic text-slate-500">One retainer-grade holding.</span></h2>
+      <p class="mt-6 text-slate-400 text-lg font-light max-w-3xl leading-relaxed">
+        No Pakistani firm today offers HR + finance + marketing + cloud as a single integrated engagement for SMEs, startups, and public-sector programmes. Partial diversification underperforms; <strong class="text-slate-300 font-medium">full integration</strong> is how void-filling premiums show up in the data.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="bento-card p-10 flex flex-col justify-between group obs-hide border-l-4 border-l-blue-500 hover:border-blue-500">
+        <div class="flex justify-between items-start mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><i data-lucide="users" class="w-8 h-8 text-brand-blue"></i></div>
+          <span class="font-mono text-xs text-slate-500 tracking-widest uppercase">01 / HR & Talent</span>
+        </div>
+        <div>
+          <h3 class="text-3xl font-serif text-white mb-4">enlyst</h3>
+          <p class="text-base text-slate-400 leading-relaxed mb-6">
+            People systems that reduce search and moral-hazard costs in thin labour markets—behavioural screening, pipeline governance, and collaboration surfaces that make hiring auditable, not anecdotal.
+          </p>
+          <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">Agentic Sourcing Active</span>
+        </div>
+      </div>
+
+      <div class="bento-card p-10 flex flex-col justify-between group obs-hide border-l-4 border-l-green-500 hover:border-green-500">
+        <div class="flex justify-between items-start mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><i data-lucide="pie-chart" class="w-8 h-8 text-green-400"></i></div>
+          <span class="font-mono text-xs text-slate-500 tracking-widest uppercase">02 / Finance</span>
+        </div>
+        <div>
+          <h3 class="text-3xl font-serif text-white mb-4">enlysum</h3>
+          <p class="text-base text-slate-400 leading-relaxed mb-6">
+            Finance intelligence without pretending to be a statutory auditor—cash, burn, tax posture, and board-ready reporting structured for <strong class="text-slate-300">consulting and advisory</strong>, not independence conflicts.
+          </p>
+          <span class="text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded-full border border-green-400/20">Real-Time Clarity</span>
+        </div>
+      </div>
+
+      <div class="bento-card p-10 flex flex-col justify-between group obs-hide border-l-4 border-l-orange-500 hover:border-orange-500">
+        <div class="flex justify-between items-start mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><i data-lucide="megaphone" class="w-8 h-8 text-orange-400"></i></div>
+          <span class="font-mono text-xs text-slate-500 tracking-widest uppercase">03 / Growth</span>
+        </div>
+        <div>
+          <h3 class="text-3xl font-serif text-white mb-4">enlybiz</h3>
+          <p class="text-base text-slate-400 leading-relaxed mb-6">
+            Growth engineering aligned to finance reality—CRM, attribution, and creative that survive finance's revenue recognition and HR's talent plans, not growth theatre disconnected from operations.
+          </p>
+          <span class="text-xs font-bold text-orange-400 bg-orange-400/10 px-3 py-1 rounded-full border border-orange-400/20">Data-Driven Growth</span>
+        </div>
+      </div>
+
+      <div class="bento-card p-10 flex flex-col justify-between group obs-hide border-l-4 border-l-purple-500 hover:border-purple-500">
+        <div class="flex justify-between items-start mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500"><i data-lucide="terminal" class="w-8 h-8 text-purple-400"></i></div>
+          <span class="font-mono text-xs text-slate-500 tracking-widest uppercase">04 / Cloud Tech</span>
+        </div>
+        <div>
+          <h3 class="text-3xl font-serif text-white mb-4">enlysoft</h3>
+          <p class="text-base text-slate-400 leading-relaxed mb-6">
+            Cloud, data, and AI platforms that connect to delivery—not shelfware—plus GovTech patterns suitable for shoulder-to-shoulder public-sector transformation.
+          </p>
+          <span class="text-xs font-bold text-purple-400 bg-purple-400/10 px-3 py-1 rounded-full border border-purple-400/20">GCP Certified Partners</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="public-sector" class="py-24 md:py-32 relative z-30 bg-[#0a0a0c] noise-overlay border-t border-white/5 scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+      <div class="obs-hide">
+        <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.2em] mb-4">Public sector · GovTech</p>
+        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">
+          Foreign-grade platforms with domestic execution discipline.
+        </h2>
+        <p class="text-lg text-slate-400 font-light leading-relaxed mb-6">
+          In asymmetric regulatory environments, delivery advantage goes to teams that can <strong class="text-slate-200 font-medium">combine external technology with local implementation</strong>—licensing stacks, navigating procurement, and shipping working services inside ministries and authorities. That is the same political-relational capability literature associates with groups that repeatedly open new sectors in emerging markets.
+        </p>
+        <p class="text-slate-500 text-base leading-relaxed mb-8">
+          We treat government work as a <strong class="text-slate-300">ring-fenced practice</strong>: jurisdictional clarity, documented independence where interests could collide, and artefacts that survive election cycles—not slide decks that die in handover.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="government-projects.html" class="inline-flex items-center gap-2 bg-brand-blue text-white font-bold text-xs uppercase tracking-widest px-7 py-3.5 rounded-full hover:bg-blue-600 transition-colors shadow-[0_0_24px_rgba(45,91,227,0.35)]">
+            GovTech portfolio <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+          <a href="Enlyst_Portfolio.html" class="inline-flex items-center gap-2 border border-white/20 text-white font-bold text-xs uppercase tracking-widest px-7 py-3.5 rounded-full hover:bg-white/10 transition-colors">
+            Public-sector cases
+          </a>
+        </div>
+      </div>
+      <div class="space-y-6 obs-hide">
+        <div class="bento-card border-emerald-500/20 p-8 bg-gradient-to-br from-emerald-950/30 to-transparent">
+          <h3 class="text-lg font-serif text-white mb-3 flex items-center gap-2">
+            <i data-lucide="landmark" class="w-5 h-5 text-emerald-400"></i>
+            Why the void is wider in services
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Industrial policy historically rewarded physical assets; professional services did not capture the same rents. Conglomerates internalise HR, finance, and IT <em>captively</em>, shrinking the market for independent integrated providers. Enlyst targets the <strong class="text-slate-300">SME, startup, and agency gap</strong> those dynamics left open.
+          </p>
+        </div>
+        <div class="bento-card border-slate-600/40 p-8">
+          <h3 class="text-lg font-serif text-white mb-3 flex items-center gap-2">
+            <i data-lucide="scale" class="w-5 h-5 text-slate-400"></i>
+            Compliance surface area
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            SBP, FBR, provincial revenue authorities, SECP, PTA, and sector regulators compound faster for a four-function holding than for a single-shop competitor. We build <strong class="text-slate-300">playbooks and controls</strong> as first-class artefacts—not improvisation at month-end.
+          </p>
+        </div>
+        <div class="bento-card border-purple-500/25 p-8 bg-gradient-to-br from-purple-950/25 to-transparent">
+          <h3 class="text-lg font-serif text-white mb-3 flex items-center gap-2">
+            <i data-lucide="activity" class="w-5 h-5 text-purple-400"></i>
+            Linked to the foundation, not laundering reputation
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Disability-inclusive education policy is a natural public-sector adjacency to Himat–Hikmat-style evidence. The commercial stack funds rigour; the foundation holds <a href="#foundation" class="text-purple-300 hover:underline">outcome metrics donors and departments can audit</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="py-32 relative z-30 bg-[#020202] border-t border-white/5 noise-overlay scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 obs-hide">
+      <div>
+        <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.2em] mb-4">The Execution</p>
+        <h2 class="text-5xl font-serif text-white">The Enlyst Recruiter OS</h2>
+      </div>
+      <p class="text-slate-400 max-w-md text-right hidden md:block">
+        Interact directly with the systems built to protect your processes. Fully functional UI demo.
+      </p>
+    </div>
+
+    <div class="browser-window h-[800px] mx-auto w-full relative group obs-hide shadow-[0_0_100px_rgba(45,91,227,0.15)]">
+      <div class="browser-header">
+        <div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div><div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div><div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+        <div class="mx-auto bg-black/50 border border-white/10 rounded-md px-6 py-1.5 text-[11px] text-slate-400 font-mono tracking-widest flex items-center gap-3">
+          <i data-lucide="lock" class="w-3 h-3 text-green-400"></i> os.enlystnow.com/secure-terminal
+        </div>
+      </div>
+      <div class="w-full h-[calc(100%-3rem)] bg-white relative">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex flex-col items-center justify-center pointer-events-none">
+          <div class="w-20 h-20 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-[0_0_40px_rgba(45,91,227,0.8)] mb-6">
+            <i data-lucide="mouse-pointer-click" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl text-white font-serif mb-2">Engage the System</h3>
+          <p class="text-slate-300 font-mono text-sm tracking-widest uppercase">Scroll & Click to Explore</p>
+        </div>
+        <iframe src="enlyst-recruiter-app.html" title="Enlyst OS" loading="lazy" class="w-full h-full border-none relative z-10 grayscale-[15%] group-hover:grayscale-0 transition-all duration-700"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="live-ecosystem" class="py-24 bg-[#050505] relative z-20 border-t border-white/5 noise-overlay scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="text-center mb-16 obs-hide">
+      <h2 class="text-4xl md:text-6xl font-serif text-white mb-6">
+        Don't just imagine the infrastructure.<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 to-purple-400 italic">Watch it work.</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">
+        Four operating companies sharing methodology and governance—what diversified groups do with steel and cement, we do with <strong class="text-slate-300 font-medium">process integrity across professional services</strong>. Preview the live surfaces below.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <div class="bento-card bento-dark lg:col-span-2 lg:row-span-2 min-h-[500px] obs-hide group">
+        <div class="absolute top-0 left-0 w-full h-12 bg-slate-900/90 backdrop-blur border-b border-slate-800 flex items-center px-4 gap-2 z-20">
+          <div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div>
+          <div class="ml-3 text-[11px] text-slate-500 font-mono tracking-widest flex items-center gap-2">
+            <i data-lucide="lock" class="w-3 h-3"></i> enlyst-recruiter-app.html
+          </div>
+        </div>
+        <div class="absolute top-12 left-0 w-full bottom-0 z-0 overflow-hidden">
+          <div class="iframe-scaler">
+            <iframe src="enlyst-recruiter-app.html" title="Preview: Enlyst recruiting platform" loading="lazy" class="w-full h-full border-none animate-pan"></iframe>
+          </div>
+        </div>
+        <div class="glass-gradient absolute inset-0 z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-full p-10 z-20">
+          <div class="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+            <i data-lucide="users" class="w-6 h-6 text-blue-400"></i>
+          </div>
+          <div class="card-content-hover">
+            <span class="text-xs font-bold tracking-widest uppercase text-blue-400 mb-2 block">enlyst · People Powered</span>
+            <h3 class="text-3xl text-white font-serif mb-3">Smart Recruiting Platform</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6 max-w-md">Behavioral science candidate screening, Kanban tracking, and real-time team collaboration in one ATS.</p>
+            <a href="enlyst-recruiter-app.html" target="_blank" rel="noopener noreferrer" class="bg-brand-blue text-white font-semibold text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 shadow-[0_0_15px_rgba(45,91,227,0.3)] hover:shadow-[0_0_25px_rgba(45,91,227,0.5)] transition-all pointer-events-auto">
+              Launch Dashboard <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-dark lg:col-span-1 lg:row-span-2 min-h-[500px] obs-hide group">
+        <div class="absolute top-0 left-0 w-full h-12 bg-slate-900/90 backdrop-blur border-b border-slate-800 flex items-center px-4 gap-2 z-20">
+          <div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div>
+          <div class="ml-3 text-[11px] text-slate-500 font-mono tracking-widest flex items-center gap-2">
+            <i data-lucide="lock" class="w-3 h-3"></i> enlysum.html
+          </div>
+        </div>
+        <div class="absolute top-12 left-0 w-full bottom-0 z-0 overflow-hidden">
+          <div class="iframe-scaler">
+            <iframe src="enlysum.html" title="Preview: Enlysum finance dashboards" loading="lazy" class="w-full h-full border-none animate-pan delay-pan-1"></iframe>
+          </div>
+        </div>
+        <div class="glass-gradient absolute inset-0 z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8 z-20">
+          <div class="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+            <i data-lucide="pie-chart" class="w-6 h-6 text-green-400"></i>
+          </div>
+          <div class="card-content-hover">
+            <span class="text-xs font-bold tracking-widest uppercase text-green-400 mb-2 block">enlysum · Finance</span>
+            <h3 class="text-2xl text-white font-serif mb-3">Financial Intelligence</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">Live dashboards for cash flow, burn rate, and tax compliance.</p>
+            <a href="enlysum.html" target="_blank" rel="noopener noreferrer" class="bg-white/10 text-white font-semibold text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 border border-white/20 hover:bg-white/20 transition-all pointer-events-auto">
+              View Live <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-dark lg:col-span-1 lg:row-span-2 min-h-[500px] obs-hide group">
+        <div class="absolute top-0 left-0 w-full h-12 bg-slate-900/90 backdrop-blur border-b border-slate-800 flex items-center px-4 gap-2 z-20">
+          <div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div>
+          <div class="ml-3 text-[11px] text-slate-500 font-mono tracking-widest flex items-center gap-2">
+            <i data-lucide="lock" class="w-3 h-3"></i> enlybiz.html
+          </div>
+        </div>
+        <div class="absolute top-12 left-0 w-full bottom-0 z-0 overflow-hidden">
+          <div class="iframe-scaler">
+            <iframe src="enlybiz.html" title="Preview: Enlybiz marketing dashboard" loading="lazy" class="w-full h-full border-none animate-pan delay-pan-2"></iframe>
+          </div>
+        </div>
+        <div class="glass-gradient absolute inset-0 z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8 z-20">
+          <div class="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+            <i data-lucide="megaphone" class="w-6 h-6 text-orange-400"></i>
+          </div>
+          <div class="card-content-hover">
+            <span class="text-xs font-bold tracking-widest uppercase text-orange-400 mb-2 block">enlybiz · Growth</span>
+            <h3 class="text-2xl text-white font-serif mb-3">Performance Marketing</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">Data-driven growth engines connecting CRM and conversion tracking.</p>
+            <a href="enlybiz.html" target="_blank" rel="noopener noreferrer" class="bg-white/10 text-white font-semibold text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 border border-white/20 hover:bg-white/20 transition-all pointer-events-auto">
+              View Live <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-dark lg:col-span-2 lg:row-span-2 min-h-[500px] obs-hide group">
+        <div class="absolute top-0 left-0 w-full h-12 bg-slate-900/90 backdrop-blur border-b border-slate-800 flex items-center px-4 gap-2 z-20">
+          <div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div>
+          <div class="ml-3 text-[11px] text-slate-500 font-mono tracking-widest flex items-center gap-2">
+            <i data-lucide="lock" class="w-3 h-3"></i> enlysoft-complete.html
+          </div>
+        </div>
+        <div class="absolute top-12 left-0 w-full bottom-0 z-0 overflow-hidden">
+          <div class="iframe-scaler">
+            <iframe src="enlysoft-complete.html" title="Preview: Enlysoft cloud architecture" loading="lazy" class="w-full h-full border-none animate-pan delay-pan-3"></iframe>
+          </div>
+        </div>
+        <div class="glass-gradient absolute inset-0 z-10 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-full p-10 z-20">
+          <div class="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+            <i data-lucide="terminal" class="w-6 h-6 text-purple-400"></i>
+          </div>
+          <div class="card-content-hover">
+            <span class="text-xs font-bold tracking-widest uppercase text-purple-400 mb-2 block">enlysoft · Cloud Tech</span>
+            <h3 class="text-3xl text-white font-serif mb-3">Enterprise Cloud Architecture</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6 max-w-md">Scalable AWS/Azure infrastructure, GenAI integrations, and GovTech microservices.</p>
+            <a href="enlysoft-complete.html" target="_blank" rel="noopener noreferrer" class="bg-[#A78BFA] text-black font-semibold text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-2 hover:bg-purple-400 transition-colors shadow-[0_0_15px_rgba(167,139,250,0.4)] pointer-events-auto">
+              Inspect Architecture <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="foundation" class="py-32 relative z-30 bg-[#050505] noise-overlay border-t border-white/5 scroll-mt-24">
+  <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-purple-900/40 blur-[150px] pointer-events-none"></div>
+  <div class="absolute bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-900/40 blur-[120px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="order-2 lg:order-1 obs-hide">
+        <div class="bento-card border-purple-500/30 p-10 bg-gradient-to-br from-purple-900/20 to-transparent">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
+              <i data-lucide="book-open" class="w-7 h-7 text-purple-400"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-serif text-white">Himat-Hikmat Framework</h3>
+              <p class="text-[10px] font-mono text-purple-400 uppercase tracking-widest mt-1">Doctoral Research Output</p>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl font-serif text-white w-24 text-right">24.3%</div>
+              <p class="text-sm text-slate-400 leading-relaxed flex-1"><strong>The Leaky Pipeline:</strong> Attrition rate of visually impaired students from Grade 8 to Matriculation. We expose how financial stipends without instructional capacity institutionalize inequality.</p>
+            </div>
+            <div class="w-full h-px bg-white/10"></div>
+            <div class="flex items-start gap-4">
+              <div class="text-4xl font-serif text-white w-24 text-right">55%</div>
+              <p class="text-sm text-slate-400 leading-relaxed flex-1"><strong>The Central Effect:</strong> Variance in student achievement explained solely by teacher efficacy and PCK. Proof that empowering the human element transforms outcomes.</p>
+            </div>
+            <div class="w-full h-px bg-white/10"></div>
+            <div class="flex items-start gap-4">
+              <div class="text-4xl font-serif text-white w-24 text-right">37k+</div>
+              <p class="text-sm text-slate-400 leading-relaxed flex-1">Words of rigorous, mixed-methods field research constituting the empirical foundation of our policy recommendations for public sector reform.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2 obs-hide">
+        <p class="text-brand-blue font-mono text-xs uppercase tracking-[0.2em] mb-4">Philanthropic Policy</p>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-[1.05]">Data-Driven Policy &<br>Disability Studies.</h2>
+        <p class="text-lg text-slate-400 mb-8 leading-relaxed font-light">
+          The foundation is the <strong class="text-slate-200 font-medium">constitutive social column</strong>—not a CSR line item. Retainer revenue cross-subsidises disability-inclusive education research with twin-track inclusion logic and capability-based outcomes. That design is powerful and fragile: it demands ring-fenced governance so commercial cycles do not silently starve the mission.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="himat.hikmat.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-black px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-slate-200 transition-colors shadow-lg">
+            Interactive Thesis Simulator <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+          <a href="Himat-Hikatmat framework.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/20 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-white/10 transition-colors">
+            Read Framework
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="bg-[#020202] pt-32 pb-12 border-t border-white/10 relative overflow-hidden z-30 noise-overlay scroll-mt-24">
+
+  <div class="absolute top-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.015] flex justify-center select-none">
+    <span class="text-[200px] md:text-[280px] font-serif font-bold whitespace-nowrap text-white leading-none">ENLYSTNOW</span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="text-center mb-24 obs-hide">
+      <h2 class="text-5xl md:text-7xl font-serif text-white mb-6">Ready to build the bulwark?</h2>
+      <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto font-light">We are looking for founders and policymakers who want to build ethical, bias-free, and unstoppable institutions.</p>
+
+      <a href="contact.html" class="inline-flex items-center gap-3 bg-brand-blue text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(45,91,227,0.3)]">
+        Initiate Contact <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16 border-t border-white/10 pt-16 obs-hide">
+
+      <div class="col-span-2 md:col-span-1">
+        <a href="index.html" class="flex items-center gap-3 mb-6 group">
+          <div class="w-10 h-10 border border-slate-700 rounded-xl flex items-center justify-center overflow-hidden bg-white/5 group-hover:bg-white/10 transition-colors">
+            <img src="png.png" alt="" width="40" height="40" decoding="async" class="h-full w-full object-cover opacity-90 group-hover:opacity-100" onerror="this.style.display='none'; var el=this.nextElementSibling; if(el) el.style.display='flex';" />
+            <div class="hidden flex-col gap-0.5" style="display: none" aria-hidden="true">
+              <span class="w-4 h-[2px] bg-blue-500"></span>
+              <span class="w-4 h-[2px] bg-green-500"></span>
+              <span class="w-4 h-[2px] bg-purple-500"></span>
+            </div>
+          </div>
+          <span class="text-2xl text-white font-serif tracking-tight">enlyst<span class="font-sans font-light text-brand-blue italic text-lg">now</span></span>
+        </a>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6 pr-4">
+          The institutional operating system for Pakistan's growth economy. Systems protect processes, so humans can protect humans.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="mailto:recruiter@enlystnow.com" aria-label="Email" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-blue hover:text-white transition-all"><i data-lucide="mail" class="w-4 h-4"></i></a>
+          <a href="tel:03000340036" aria-label="Phone" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-blue hover:text-white transition-all"><i data-lucide="phone" class="w-4 h-4"></i></a>
+          <a href="contact.html" aria-label="Location" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-brand-blue hover:text-white transition-all"><i data-lucide="map-pin" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest border-l-2 border-brand-blue pl-3">The Divisions</h4>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="enlyst-recruiter-app.html" class="hover:text-blue-400 transition-colors flex items-center gap-2"><i data-lucide="users" class="w-3.5 h-3.5"></i> Enlyst HR</a></li>
+          <li><a href="enlysum.html" class="hover:text-green-400 transition-colors flex items-center gap-2"><i data-lucide="pie-chart" class="w-3.5 h-3.5"></i> Enlysum Finance</a></li>
+          <li><a href="enlybiz.html" class="hover:text-orange-400 transition-colors flex items-center gap-2"><i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Enlybiz Growth</a></li>
+          <li><a href="enlysoft-complete.html" class="hover:text-purple-400 transition-colors flex items-center gap-2"><i data-lucide="terminal" class="w-3.5 h-3.5"></i> Enlysoft Cloud</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest border-l-2 border-orange-500 pl-3">Solutions</h4>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="startup-framework.html" class="hover:text-white transition-colors">Startup Safe Zone</a></li>
+          <li><a href="government-projects.html" class="hover:text-white transition-colors">GovTech & Public Sector</a></li>
+          <li><a href="Enlyst_Portfolio.html" class="hover:text-white transition-colors">Public Sector Portfolio</a></li>
+          <li><a href="graduates.html" class="hover:text-white transition-colors">Talent Forge (Graduates)</a></li>
+          <li><a href="enlyst-fortress.html" class="hover:text-white transition-colors">The Fortress Model</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest border-l-2 border-purple-500 pl-3">Research</h4>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="foundation.html" class="hover:text-white transition-colors">Enlyst Foundation</a></li>
+          <li><a href="himat.hikmat.html" class="hover:text-white transition-colors">Himat-Hikmat Simulator</a></li>
+          <li><a href="Himat-Hikatmat framework.html" class="hover:text-white transition-colors">Research Framework</a></li>
+          <li><a href="framework-assessment.html" class="hover:text-white transition-colors">Doctoral Framework Assessment</a></li>
+          <li><a href="enlyst-media-kits.html" class="hover:text-white transition-colors">Media Kits 2026</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest border-l-2 border-green-500 pl-3">Company</h4>
+        <ul class="space-y-4 text-sm text-slate-400">
+          <li><a href="about.html" class="hover:text-white transition-colors">The Architects (About)</a></li>
+          <li><a href="mission.html" class="hover:text-white transition-colors">Mission & Values</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-colors">Seek Solace (Contact)</a></li>
+          <li><a href="enlyst-blended.html" class="hover:text-white transition-colors">Unified Platform View</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-[10px] text-slate-500 font-mono tracking-widest uppercase obs-hide">
+      <div class="mb-4 md:mb-0 text-center md:text-left">
+        <p>© 2026 Enlyst Smart Recruiting Pvt Ltd. All rights reserved.</p>
+        <p class="mt-1 opacity-60">Suite M-3, Lahore Stock Exchange Plaza, Lahore, Pakistan.</p>
+      </div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+        <a href="#" class="hover:text-white transition-colors">Data Governance</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('obs-show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.obs-hide').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>

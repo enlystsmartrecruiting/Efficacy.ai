@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Enlyst Framework | Pakistan's Institutional Operating System</title>
+<meta name="description" content="Four practices. Six pillars. One governance standard. The Enlyst Framework is how Pakistan's most capable businesses stop fighting on multiple fronts alone — and start operating as a single, reinforced institution."/>
+<meta name="theme-color" content="#08090C"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=cormorant:300,300i,400,400i,500,600,700|syne:400,500,600,700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   TOKENS — Framework Palette
+   Deep steel · Gold authority
+   Prospectus weight. Institutional gravity.
+═══════════════════════════════════════ */
+:root{
+  --void:   #08090C;
+  --abyss:  #0D0F14;
+  --ink:    #14161D;
+  --coal:   #1C1F28;
+  --slate:  #262A36;
+
+  /* Gold — authority, the EF medallion, institutional permanence */
+  --gold:   #C4A24A;
+  --gold-d: #9A7E35;
+  --gold-l: #E0C070;
+  --gold-g: rgba(196,162,74,0.07);
+  --gold-b: rgba(196,162,74,0.22);
+
+  /* Practice colours */
+  --blue:   #2D5BE3;
+  --blue-l: #5B82F0;
+  --green:  #1A7A4A;
+  --green-l:#3AB877;
+  --amber:  #C4720A;
+  --amber-l:#E8A040;
+  --purple: #6B3FA0;
+  --purple-l:#9B6EE0;
+
+  --text:   #F0EDE8;
+  --text-2: rgba(240,237,232,0.65);
+  --text-3: rgba(240,237,232,0.38);
+  --text-4: rgba(240,237,232,0.15);
+
+  --serif: 'Cormorant', Georgia, serif;
+  --sans:  'Syne', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --max:   1320px;
+  --nav-h: 4rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;color:inherit;}
+::selection{background:var(--gold);color:var(--void);}
+
+body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+.bg-field{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 0%,rgba(196,162,74,.1) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 100%,rgba(45,91,227,.07) 0%,transparent 55%),
+    var(--void);
+}
+/* Fine gold grid — like a luxury prospectus paper */
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(196,162,74,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(196,162,74,.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 65%,transparent 100%);
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;border-bottom:1px solid var(--text-4);background:rgba(8,9,12,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:border-color .3s;}
+.nav-inner{max-width:var(--max);width:100%;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-mark{display:flex;align-items:center;gap:.85rem;}
+.nav-wordmark{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.01em;line-height:1;}
+.nav-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-b);padding:.2rem .65rem;border-radius:.2rem;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);padding:.4rem .85rem;border-radius:.4rem;transition:color .25s,background .25s;}
+.nav-link:hover,.nav-link.active{color:var(--text);background:var(--gold-g);}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--void);padding:.5rem 1.25rem;background:var(--gold);border-radius:.3rem;transition:background .25s;}
+.nav-cta:hover{background:var(--gold-l);}
+.container{max-width:var(--max);margin:0 auto;padding:0 2.5rem;}
+
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 7rem) 0 5rem;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.hero-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--gold);}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,8vw,7.5rem);font-weight:300;line-height:.92;letter-spacing:-.025em;margin-bottom:2rem;opacity:0;animation:fadeUp .9s var(--ease) .35s forwards;}
+.hero-h1 em{font-style:italic;color:var(--text-3);}
+.hero-h1 strong{font-weight:300;color:var(--gold-l);display:block;}
+.hero-sub{font-size:.98rem;line-height:1.85;color:var(--text-2);max-width:46ch;margin-bottom:2.5rem;opacity:0;animation:fadeUp .9s var(--ease) .5s forwards;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s var(--ease) .62s forwards;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--void);padding:.85rem 2rem;background:var(--gold);border-radius:.3rem;transition:background .3s,transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(196,162,74,.25);}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 28px rgba(196,162,74,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:.85rem 1.5rem;border:1px solid var(--text-4);border-radius:.3rem;transition:color .3s,border-color .3s;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text-2);}
+/* Hero right — metric grid + verdict */
+.hero-right{opacity:0;animation:fadeUp .9s var(--ease) .5s forwards;}
+.hero-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.25rem;overflow:hidden;margin-bottom:1.5px;}
+.hero-metric{background:var(--abyss);padding:1.5rem;transition:background .3s;}
+.hero-metric:hover{background:var(--ink);}
+.hm-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;line-height:1;color:var(--gold-l);margin-bottom:.35rem;}
+.hm-lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+.hero-verdict{background:var(--abyss);border:1px solid var(--gold-b);border-radius:1.25rem;padding:1.75rem;}
+.hv-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.hv-text{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;line-height:1.55;color:var(--text-2);}
+
+/* TICKER */
+.ticker-wrap{border-top:1px solid var(--text-4);border-bottom:1px solid var(--text-4);padding:.9rem 0;overflow:hidden;opacity:0;animation:fadeIn 1s var(--ease) .9s forwards;margin-top:4rem;}
+.ticker-track{display:flex;gap:0;width:max-content;animation:ticker 65s linear infinite;}
+.ticker-item{display:flex;align-items:center;gap:2rem;padding:0 2.5rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;}
+.ticker-dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* SECTION UTILS */
+.sec-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;}
+.sec-label::before{content:'';display:block;width:2rem;height:1px;background:var(--gold);}
+.sec-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.08;letter-spacing:-.015em;}
+.sec-title em{font-style:italic;color:var(--text-3);}
+.section{padding:8rem 0;border-top:1px solid var(--text-4);}
+
+/* ACADEMIC GROUNDING */
+.academic-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start;margin-top:3.5rem;}
+.arguments{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;}
+.argument{background:var(--abyss);padding:2rem;transition:background .3s;position:relative;overflow:hidden;}
+.argument:hover{background:var(--ink);}
+.arg-letter{position:absolute;top:1rem;right:1.25rem;font-family:var(--serif);font-size:5rem;font-weight:700;color:var(--gold-g);line-height:1;pointer-events:none;user-select:none;}
+.arg-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--gold);margin-bottom:.5rem;}
+.arg-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.arg-desc{font-size:.8rem;line-height:1.7;color:var(--text-3);margin-bottom:.6rem;}
+.arg-cite{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--text-4);padding-top:.5rem;}
+.academic-aside{}
+.academic-aside-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;margin-bottom:1.25rem;}
+.academic-aside-title em{font-style:italic;color:var(--text-3);}
+.academic-aside-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1.25rem;}
+.academic-aside-body strong{color:var(--text);}
+.verdict-panel{background:var(--abyss);border:1px solid var(--gold-b);border-radius:1rem;padding:1.75rem;margin-top:2rem;}
+.verdict-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.verdict-text{font-family:var(--serif);font-size:1.15rem;font-weight:300;font-style:italic;line-height:1.55;color:var(--text-2);}
+
+/* FOUR PRACTICES */
+.practices-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.75rem;overflow:hidden;margin-top:3.5rem;}
+.practice{background:var(--abyss);padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;transition:background .35s;position:relative;overflow:hidden;}
+.practice:hover{background:var(--ink);}
+.practice::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;}
+.practice:hover::before{opacity:1;}
+.p-hr{grid-column:span 6;}.p-hr::before{background:radial-gradient(circle at 0% 0%,rgba(45,91,227,.1) 0%,transparent 55%);}
+.p-fin{grid-column:span 6;}.p-fin::before{background:radial-gradient(circle at 0% 0%,rgba(26,122,74,.1) 0%,transparent 55%);}
+.p-mkt{grid-column:span 5;}.p-mkt::before{background:radial-gradient(circle at 0% 0%,rgba(196,114,10,.08) 0%,transparent 55%);}
+.p-tech{grid-column:span 7;}.p-tech::before{background:radial-gradient(circle at 0% 0%,rgba(107,63,160,.1) 0%,transparent 55%);}
+.practice-top{display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1;}
+.practice-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--text-3);}
+.practice-mark{width:28px;height:30px;flex-shrink:0;}
+.practice-bottom{position:relative;z-index:1;}
+.practice-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.75rem;}
+.practice-name{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;letter-spacing:-.01em;margin-bottom:.65rem;}
+.practice-domain{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--text-3);margin-bottom:.85rem;}
+.practice-desc{font-size:.82rem;line-height:1.7;color:var(--text-3);margin-bottom:1rem;}
+.practice-services{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+.practice-services li{font-size:.77rem;color:var(--text-2);display:flex;gap:.6rem;align-items:flex-start;}
+.practice-services li::before{content:'→';flex-shrink:0;font-family:var(--mono);font-size:.62rem;}
+.practice-link{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-top:auto;padding-top:1rem;border-top:1px solid var(--text-4);transition:color .25s,gap .25s;}
+.practice:hover .practice-link{gap:.6rem;}
+
+/* TWO PILLARS — FOUNDATION + EDUCATION */
+.pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.pillar{background:var(--abyss);padding:2.75rem;transition:background .3s;position:relative;overflow:hidden;}
+.pillar:hover{background:var(--ink);}
+.pillar-letter{position:absolute;top:-1.5rem;right:1.5rem;font-family:var(--serif);font-size:10rem;font-weight:700;line-height:1;pointer-events:none;user-select:none;}
+.pillar-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.25rem;position:relative;z-index:1;}
+.pillar-name{font-family:var(--serif);font-size:2.2rem;font-weight:300;line-height:1.05;margin-bottom:.75rem;position:relative;z-index:1;}
+.pillar-tagline{font-family:var(--serif);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--text-3);margin-bottom:1.25rem;position:relative;z-index:1;}
+.pillar-desc{font-size:.85rem;line-height:1.75;color:var(--text-2);margin-bottom:1.5rem;position:relative;z-index:1;}
+.pillar-stats{list-style:none;display:flex;flex-direction:column;gap:.5rem;position:relative;z-index:1;}
+.pillar-stats li{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--text-3);display:flex;gap:.65rem;align-items:flex-start;}
+.pillar-stats li::before{content:'◆';font-size:.4rem;flex-shrink:0;padding-top:.25rem;}
+.pillar-link{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin-top:1.5rem;position:relative;z-index:1;transition:gap .25s;}
+.pillar:hover .pillar-link{gap:.65rem;}
+
+/* FAILURE MODES */
+.failure-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.failure{background:var(--abyss);padding:2.25rem;transition:background .3s;}
+.failure:hover{background:var(--ink);}
+.failure-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--text-3);margin-bottom:.75rem;}
+.failure-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.5rem;}
+.failure-desc{font-size:.82rem;line-height:1.72;color:var(--text-3);}
+
+/* GOVTECH */
+.govtech-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;margin-top:3.5rem;}
+.govtech-products{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.25rem;overflow:hidden;}
+.govtech-product{background:var(--abyss);padding:1.5rem;display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;transition:background .3s;}
+.govtech-product:hover{background:var(--ink);}
+.gp-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--gold);padding-top:.1rem;}
+.gp-name{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.gp-desc{font-size:.78rem;line-height:1.65;color:var(--text-3);}
+.govtech-aside{}
+.govtech-aside-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;margin-bottom:1.25rem;}
+.govtech-aside-title em{font-style:italic;color:var(--text-3);}
+.govtech-aside-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1.25rem;}
+.govtech-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1rem;overflow:hidden;margin-top:1.75rem;}
+.gs{background:var(--abyss);padding:1.5rem;text-align:center;}
+.gs-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--gold-l);line-height:1;margin-bottom:.35rem;}
+.gs-lbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+.tech-partners{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem;}
+.tp-chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border-radius:.2rem;border:1px solid var(--gold-b);color:var(--gold-l);background:var(--gold-g);}
+
+/* ENGAGEMENT */
+.engagement-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.engage-step{background:var(--abyss);padding:2.25rem;transition:background .3s;position:relative;overflow:hidden;}
+.engage-step:hover{background:var(--ink);}
+.engage-ghost{position:absolute;bottom:-1rem;right:.75rem;font-family:var(--serif);font-size:7rem;font-weight:700;color:var(--text-4);line-height:1;pointer-events:none;user-select:none;}
+.engage-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--gold);margin-bottom:.85rem;position:relative;z-index:1;}
+.engage-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;line-height:1.1;margin-bottom:.65rem;position:relative;z-index:1;}
+.engage-desc{font-size:.8rem;line-height:1.72;color:var(--text-3);position:relative;z-index:1;}
+
+/* FINALE */
+.finale{padding:10rem 0 8rem;border-top:1px solid var(--text-4);text-align:center;position:relative;}
+.finale::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:6rem;background:linear-gradient(180deg,transparent,var(--gold));}
+.finale-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:2rem;}
+.finale-heading{font-family:var(--serif);font-size:clamp(3rem,7vw,7.5rem);font-weight:300;line-height:.92;letter-spacing:-.025em;margin-bottom:2rem;}
+.finale-heading em{font-style:italic;color:var(--text-3);}
+.finale-sub{font-size:.95rem;color:var(--text-2);line-height:1.75;max-width:44ch;margin:0 auto 3rem;}
+.finale-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--text-4);padding:3rem 0 2.5rem;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{font-family:var(--serif);font-size:1.15rem;font-weight:300;}
+.footer-links-row{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links-row a{font-size:.75rem;color:var(--text-3);transition:color .25s;}
+.footer-links-row a:hover{color:var(--text);}
+.footer-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-4);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero-grid,.academic-grid,.govtech-grid{grid-template-columns:1fr;gap:3.5rem;}
+  .practices-grid{display:flex;flex-direction:column;}
+  .pillars-grid{grid-template-columns:1fr;}
+  .failure-grid{grid-template-columns:1fr;}
+  .engagement-grid{grid-template-columns:1fr 1fr;}
+  .govtech-stats{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .container{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .engagement-grid{grid-template-columns:1fr;}
+  .hero-metrics{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark" aria-label="enlyst home">
+      <svg width="22" height="24" viewBox="0 0 44 50" fill="none" aria-hidden="true">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4A24A"/>
+        <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4A24A" opacity="0.58"/>
+        <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4A24A" opacity="0.26"/>
+      </svg>
+      <span class="nav-wordmark">enlyst</span>
+      <span class="nav-tag">Framework</span>
+    </a>
+    <div class="nav-links">
+      <a href="enlyst-about.html" class="nav-link">About</a>
+      <a href="enlyst-services.html" class="nav-link">Services</a>
+      <a href="enlyst-methodology.html" class="nav-link">Methodology</a>
+      <a href="enlyst-govtech.html" class="nav-link">GovTech</a>
+      <a href="enlyst-foundation.html" class="nav-link">Foundation</a>
+      <a href="enlyst-contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="enlyst-contact.html" class="nav-cta">Adopt the Framework</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">The Enlyst Framework · Institutional Operating System</div>
+        <h1 class="hero-h1">
+          No business<br>
+          <em>fights alone.</em><br>
+          <strong>No system works<br>in isolation.</strong>
+        </h1>
+        <p class="hero-sub">Four practices. Six pillars. One governance standard. The Enlyst Framework is how Pakistan's most capable businesses stop fighting on multiple fronts alone — and start operating as a single, reinforced institution.</p>
+        <div class="hero-actions">
+          <a href="#practices" class="btn-primary">See the Practices →</a>
+          <a href="enlyst-methodology.html" class="btn-ghost">The Safe Zone</a>
+          <a href="startup-framework.html" class="btn-ghost">Startup Engagement</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-metrics">
+          <div class="hero-metric"><div class="hm-num">6</div><div class="hm-lbl">Years operating</div></div>
+          <div class="hero-metric"><div class="hm-num">4</div><div class="hm-lbl">Practice divisions</div></div>
+          <div class="hero-metric"><div class="hm-num">6</div><div class="hm-lbl">Framework pillars</div></div>
+          <div class="hero-metric"><div class="hm-num">12+</div><div class="hm-lbl">Companies served</div></div>
+        </div>
+        <div class="hero-verdict">
+          <div class="hv-label">The Thesis</div>
+          <div class="hv-text">"Pakistan's businesses do not fail for lack of talent, capital, or ambition. They fail because they face institutional complexity alone. The Framework ends that."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot"></span>Transaction Cost Reduction — Williamson 1985</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Institutional Void Strategy — Khanna &amp; Palepu 1997</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>VRIN Resource Advantage — Barney 1991</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>enlyst · enlysum · enlybiz · enlysoft</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Himat-Hikmat Foundation · Doctoral Research</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Safe Zone Build · 3–6 Months · Four Workstreams</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>GCP Certified · Microsoft Gold · Intel IPA</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>124K+ Companies Mapped · 2.26T PKR Tracked</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Transaction Cost Reduction — Williamson 1985</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Institutional Void Strategy — Khanna &amp; Palepu 1997</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>VRIN Resource Advantage — Barney 1991</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>enlyst · enlysum · enlybiz · enlysoft</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Himat-Hikmat Foundation · Doctoral Research</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Safe Zone Build · 3–6 Months · Four Workstreams</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>GCP Certified · Microsoft Gold · Intel IPA</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>124K+ Companies Mapped · 2.26T PKR Tracked</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC GROUNDING -->
+<section class="section" id="grounding">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Academic Grounding</div>
+      <h2 class="sec-title">Three bodies of evidence.<br><em>One practical answer.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">The Framework is not a marketing construct. It is the operational response to three decades of institutional economics literature applied to Pakistan's market conditions.</p>
+    </div>
+    <div class="academic-grid reveal d1">
+      <div class="arguments">
+        <div class="argument">
+          <div class="arg-letter" aria-hidden="true">T</div>
+          <div class="arg-num">Argument 01</div>
+          <div class="arg-title">Transaction Cost Reduction</div>
+          <p class="arg-desc">Firms using separate vendors for HR, finance, marketing, and technology pay a coordination premium — search costs, contract costs, and enforcement costs — on every transaction boundary. A single governance layer eliminates these costs systematically.</p>
+          <div class="arg-cite">Williamson, O.E. (1985) · The Economic Institutions of Capitalism · Transaction Cost Theory</div>
+        </div>
+        <div class="argument">
+          <div class="arg-letter" aria-hidden="true">V</div>
+          <div class="arg-num">Argument 02</div>
+          <div class="arg-title">Institutional Void Strategy</div>
+          <p class="arg-desc">Pakistan's professional services market is characterised by absent credentialing systems, opaque pricing, and low accountability. The Framework operates as a private institutional substitute — creating the reliability structures the market has not produced.</p>
+          <div class="arg-cite">Khanna &amp; Palepu (1997) · Why Focused Strategies May Be Wrong for Emerging Markets · HBR</div>
+        </div>
+        <div class="argument">
+          <div class="arg-letter" aria-hidden="true">R</div>
+          <div class="arg-num">Argument 03</div>
+          <div class="arg-title">VRIN Resource Advantage</div>
+          <p class="arg-desc">The combination of HR intelligence, financial oversight, growth operations, and technology delivery under shared memory and governance is Valuable, Rare, non-Imitable, and non-Substitutable. This is a durable competitive position, not a service bundle.</p>
+          <div class="arg-cite">Barney, J.B. (1991) · Firm Resources and Sustained Competitive Advantage · Journal of Management</div>
+        </div>
+      </div>
+      <div class="academic-aside">
+        <h3 class="academic-aside-title">Not a service<br><em>bundle. An institution.</em></h3>
+        <p class="academic-aside-body">The same organisational form that produced Tata, Koç, and the Aga Khan Development Network — applied to Pakistan's institutional voids in professional services. <strong>Diversified groups add value precisely where market intermediaries are absent.</strong></p>
+        <p class="academic-aside-body">The Framework does not work because it bundles services cheaply. It works because it eliminates the coordination failures that destroy businesses in thin, low-trust markets — and replaces them with a single governance standard that compounds over time.</p>
+        <div class="verdict-panel">
+          <div class="verdict-label">Honest Academic Verdict</div>
+          <div class="verdict-text">"Viable and well-targeted, conditionally scalable — the literature endorses the architecture and names the failure modes. Defensible synthesis, not novelty theatre."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PRACTICES -->
+<section class="section" id="practices">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">The Four Practices</div>
+      <h2 class="sec-title">Every discipline.<br><em>One standard.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:56ch;">Each practice is a fully independent professional service. Together, they share methodology, client memory, governance protocol, and a single accountability framework. No practice competes with another. All four reinforce each other.</p>
+    </div>
+    <div class="practices-grid reveal d1" role="list">
+
+      <div class="practice p-hr" role="listitem">
+        <div class="practice-top">
+          <span class="practice-num">Practice 01</span>
+          <svg class="practice-mark" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/></svg>
+        </div>
+        <div class="practice-bottom">
+          <div class="practice-tag" style="color:var(--blue-l);">HR &amp; Talent</div>
+          <div class="practice-name">enlyst</div>
+          <div class="practice-domain">enlystnow.com</div>
+          <p class="practice-desc">HR and talent systems that reduce search costs, moral-hazard costs, and early turnover in thin labour markets. Agentic sourcing, behavioural screening, EOBI compliance.</p>
+          <ul class="practice-services">
+            <li>Hiring &amp; Recruitment</li>
+            <li>Performance Management</li>
+            <li>Training &amp; Development</li>
+            <li>Recruiter OS / EnlyRecruit</li>
+          </ul>
+          <a href="enlyst-hr-platform.html" class="practice-link" style="color:var(--blue-l);">Visit Practice →</a>
+        </div>
+      </div>
+
+      <div class="practice p-fin" role="listitem">
+        <div class="practice-top">
+          <span class="practice-num">Practice 02</span>
+          <svg class="practice-mark" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#1A7A4A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#1A7A4A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#1A7A4A" opacity=".26"/></svg>
+        </div>
+        <div class="practice-bottom">
+          <div class="practice-tag" style="color:var(--green-l);">Finance &amp; Intelligence</div>
+          <div class="practice-name">enlysum</div>
+          <div class="practice-domain">enlysum.com</div>
+          <p class="practice-desc">Finance intelligence without audit conflicts. Cash, burn, tax posture, SECP filings, and board-ready reporting for companies that need clarity, not compliance theatre.</p>
+          <ul class="practice-services">
+            <li>Financial Reporting</li>
+            <li>Tax Intelligence</li>
+            <li>SECP Compliance</li>
+            <li>Board-Ready Analytics</li>
+          </ul>
+          <a href="https://enlysum.com" class="practice-link" style="color:var(--green-l);">Visit Practice →</a>
+        </div>
+      </div>
+
+      <div class="practice p-mkt" role="listitem">
+        <div class="practice-top">
+          <span class="practice-num">Practice 03</span>
+          <svg class="practice-mark" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity=".26"/></svg>
+        </div>
+        <div class="practice-bottom">
+          <div class="practice-tag" style="color:var(--amber-l);">Marketing &amp; Growth</div>
+          <div class="practice-name">enlybiz</div>
+          <div class="practice-domain">enlybiz.com</div>
+          <p class="practice-desc">Growth engineering aligned to finance reality. CRM architecture, attribution systems, and creative strategy that survives scrutiny — no vanity metrics, no hollow campaigns.</p>
+          <ul class="practice-services">
+            <li>CRM &amp; Attribution</li>
+            <li>Brand &amp; Creative</li>
+            <li>Growth Strategy</li>
+            <li>Content Systems</li>
+          </ul>
+          <a href="https://enlybiz.com" class="practice-link" style="color:var(--amber-l);">Visit Practice →</a>
+        </div>
+      </div>
+
+      <div class="practice p-tech" role="listitem">
+        <div class="practice-top">
+          <span class="practice-num">Practice 04</span>
+          <svg class="practice-mark" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#6B3FA0"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#6B3FA0" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#6B3FA0" opacity=".26"/></svg>
+        </div>
+        <div class="practice-bottom">
+          <div class="practice-tag" style="color:var(--purple-l);">Cloud &amp; Technology</div>
+          <div class="practice-name">enlysoft</div>
+          <div class="practice-domain">enlysoft.net</div>
+          <p class="practice-desc">Cloud, data, and AI platforms — plus GovTech infrastructure for public-sector transformation at scale. GCP-certified delivery, Microsoft partnership, Intel IPA Gold.</p>
+          <ul class="practice-services">
+            <li>Cloud Architecture</li>
+            <li>AI &amp; Data Platforms</li>
+            <li>GovTech Delivery</li>
+            <li>Enterprise Integration</li>
+          </ul>
+          <a href="https://enlysoft.net" class="practice-link" style="color:var(--purple-l);">Visit Practice →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND COMMERCIAL — TWO PILLARS -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Beyond Commercial Practice</div>
+      <h2 class="sec-title">Two pillars that make<br><em>the Framework complete.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">Commercial success without social obligation is incomplete. The Foundation and Education arms ensure the Framework builds institutions that outlast transactions.</p>
+    </div>
+    <div class="pillars-grid reveal d1">
+
+      <div class="pillar" style="background:rgba(124,58,237,.04);">
+        <div class="pillar-letter" style="color:rgba(124,58,237,.06);" aria-hidden="true">F</div>
+        <div class="pillar-label" style="color:#A78BFA;">Enlyst Foundation · Pillar 05</div>
+        <div class="pillar-name">Himat-Hikmat.<br>Research with conscience.</div>
+        <div class="pillar-tagline">Doctoral-grade field research on Pakistan's public education crisis.</div>
+        <p class="pillar-desc">Three years of data from Punjab schools, GITTC Lahore, and teacher training cohorts — converted into policy-grade evidence and legislative proposals. The research is ring-fenced from commercial revenue. The Foundation is the enabler, not the author.</p>
+        <ul class="pillar-stats">
+          <li>24.3% of Punjab school children show measurable learning deficiencies attributable to structural inequality</li>
+          <li>55% of sampled government school teachers lack AI readiness for modern curriculum delivery</li>
+          <li>37,000+ children in the primary research catchment across Punjab divisions</li>
+          <li>5-year legislative roadmap: thesis → provincial proposal → national replication</li>
+        </ul>
+        <a href="enlyst-foundation.html" class="pillar-link" style="color:#A78BFA;">Explore the Foundation →</a>
+      </div>
+
+      <div class="pillar" style="background:rgba(16,179,122,.04);">
+        <div class="pillar-letter" style="color:rgba(16,179,122,.06);" aria-hidden="true">E</div>
+        <div class="pillar-label" style="color:#34C993;">Enlyst Education · Pillar 06</div>
+        <div class="pillar-name">Academy, AI,<br>and Talent Forge.</div>
+        <div class="pillar-tagline">Converting graduates and mid-career professionals into placement-ready talent.</div>
+        <p class="pillar-desc">Three structured programmes — Enlyst Academy, AI Academy, and Talent Forge — with documented competency records. Not attendance certificates. Evidence of capability, built through the same structured, bias-eliminated methodology that drives the HR practice.</p>
+        <ul class="pillar-stats">
+          <li>Enlyst Academy: structured onboarding, HR, and professional competency curricula</li>
+          <li>Enlyst AI Academy: AI literacy, GovTech delivery, and digital transformation readiness</li>
+          <li>Talent Forge: cohort-based graduate programme — 12 graduates placed per cohort</li>
+          <li>GITTC Lahore: government AI training delivery to civil service officers</li>
+        </ul>
+        <a href="enlyst-education.html" class="pillar-link" style="color:#34C993;">Explore Education →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAILURE MODES -->
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">What We Guard Against</div>
+      <h2 class="sec-title">Four failure modes.<br><em>Named and managed.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">The Framework is deliberately designed around the most common reasons professional service models collapse. These are not risks we mitigate. They are constraints we engineer out.</p>
+    </div>
+    <div class="failure-grid reveal d1" role="list">
+      <div class="failure" role="listitem">
+        <div class="failure-num">Failure Mode 01</div>
+        <div class="failure-title">Audit Conflict</div>
+        <p class="failure-desc">Finance and HR divisions are structurally separated from each other's delivery. enlysum never audits a client that enlyst has placed in. The same person cannot hold accountability in both practices simultaneously. This is architecture, not policy.</p>
+      </div>
+      <div class="failure" role="listitem">
+        <div class="failure-num">Failure Mode 02</div>
+        <div class="failure-title">Cross-Subsidy Capture</div>
+        <p class="failure-desc">Foundation and commercial revenues are ring-fenced. No commercial revenue is used to subsidise research. No research output is used as marketing collateral without the researcher's documented consent.</p>
+      </div>
+      <div class="failure" role="listitem">
+        <div class="failure-num">Failure Mode 03</div>
+        <div class="failure-title">Scale Without Governance</div>
+        <p class="failure-desc">Each practice maintains its own quality standard before the next scales. The Framework does not grow headcount in one division to compensate for revenue shortfall in another. Discipline over velocity — always.</p>
+      </div>
+      <div class="failure" role="listitem">
+        <div class="failure-num">Failure Mode 04</div>
+        <div class="failure-title">Informal Client Memory</div>
+        <p class="failure-desc">Client context is documented, not held in individual recruiter heads. If a relationship manager leaves, the client relationship does not leave with them. All institutional knowledge lives in the system, not the person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVTECH LAYER -->
+<section class="section" id="govtech">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">GovTech Layer</div>
+      <h2 class="sec-title">Where the Framework<br><em>meets public infrastructure.</em></h2>
+    </div>
+    <div class="govtech-grid reveal d1">
+      <div class="govtech-products">
+        <div class="govtech-product">
+          <div class="gp-num">01</div>
+          <div>
+            <div class="gp-name">Zone-4 Property Tax Arrears Recovery</div>
+            <p class="gp-desc">Lahore arrears recovery system — highest-priority commercial opportunity in the 2026 roadmap.</p>
+          </div>
+        </div>
+        <div class="govtech-product">
+          <div class="gp-num">02</div>
+          <div>
+            <div class="gp-name">Tax Nexus Dashboard · PT Nexus</div>
+            <p class="gp-desc">Punjab tax intelligence dashboard — multi-view enforcement centre tracking 69,000+ companies.</p>
+          </div>
+        </div>
+        <div class="govtech-product">
+          <div class="gp-num">03</div>
+          <div>
+            <div class="gp-name">SECP AI Infrastructure</div>
+            <p class="gp-desc">Entity registry modernisation — AI infrastructure connecting SECP databases to LLMs via MCP server.</p>
+          </div>
+        </div>
+        <div class="govtech-product">
+          <div class="gp-num">04</div>
+          <div>
+            <div class="gp-name">GITTC AI Training</div>
+            <p class="gp-desc">Civil service officer programme — AI literacy delivery to government school teachers and civil servants.</p>
+          </div>
+        </div>
+        <div class="govtech-product">
+          <div class="gp-num">05</div>
+          <div>
+            <div class="gp-name">Punjab Education Data System</div>
+            <p class="gp-desc">Himat-Hikmat research layer — field data converted into policy-grade evidence for legislative submission.</p>
+          </div>
+        </div>
+      </div>
+      <div class="govtech-aside">
+        <h3 class="govtech-aside-title">Active GovTech<br><em>pipeline.</em></h3>
+        <p class="govtech-aside-body">The Enlyst Framework's technology division operates a dedicated public sector modernisation practice. Four active GovTech products, certified partner infrastructure, and direct government deployment capability — artefacts that survive election cycles, not slide decks that die in handover.</p>
+        <div class="govtech-stats">
+          <div class="gs"><div class="gs-num">124k+</div><div class="gs-lbl">Companies mapped</div></div>
+          <div class="gs"><div class="gs-num">2.26T</div><div class="gs-lbl">PKR tracked</div></div>
+          <div class="gs"><div class="gs-num">69k+</div><div class="gs-lbl">Tax entities</div></div>
+          <div class="gs"><div class="gs-num">1,170</div><div class="gs-lbl">Civil service MCQs</div></div>
+        </div>
+        <div class="tech-partners">
+          <span class="tp-chip">Microsoft · Official Partner</span>
+          <span class="tp-chip">Intel · IPA ID 30000027303</span>
+          <span class="tp-chip">Google · GCP DRP ENLWHUGZ3</span>
+        </div>
+        <div style="margin-top:1.75rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="enlyst-govtech.html" class="btn-ghost" style="font-size:.72rem;padding:.7rem 1.35rem;">Full GovTech Portfolio →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE ENGAGE -->
+<section class="section" id="engage">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">How We Engage</div>
+      <h2 class="sec-title">Operating partner.<br><em>Not a vendor.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">The Framework operates on a retainer model — not project-by-project. This is not a service bundle. It is an ongoing institutional relationship with long-term equity trajectory for clients who adopt the full Framework.</p>
+    </div>
+    <div class="engagement-grid reveal d1" role="list">
+      <div class="engage-step" role="listitem">
+        <span class="engage-ghost" aria-hidden="true">01</span>
+        <div class="engage-num">Step 01</div>
+        <div class="engage-title">Framework Adoption</div>
+        <p class="engage-desc">The client formally adopts the Enlyst Framework standard — agreeing to documented process, governance protocol, and measurement cadence across engaged practices.</p>
+      </div>
+      <div class="engage-step" role="listitem">
+        <span class="engage-ghost" aria-hidden="true">02</span>
+        <div class="engage-num">Step 02</div>
+        <div class="engage-title">Retained Practices</div>
+        <p class="engage-desc">One to four practices activated on retainer. Each practice maintains its own deliverable schedule, quality checkpoint, and reporting line. Billed separately. Governed jointly.</p>
+      </div>
+      <div class="engage-step" role="listitem">
+        <span class="engage-ghost" aria-hidden="true">03</span>
+        <div class="engage-num">Step 03</div>
+        <div class="engage-title">Shared Memory</div>
+        <p class="engage-desc">Client context is held across all activated practices. When a new hire affects cash flow, enlysum knows. When a campaign requires headcount, enlyst is already briefed. No re-briefing. No lost context.</p>
+      </div>
+      <div class="engage-step" role="listitem">
+        <span class="engage-ghost" aria-hidden="true">04</span>
+        <div class="engage-num">Step 04</div>
+        <div class="engage-title">Equity Trajectory</div>
+        <p class="engage-desc">Long-term Framework partners enter an incubator track — access to shared infrastructure, partner introductions, and co-investment consideration for businesses that commit to the full standard.</p>
+      </div>
+    </div>
+    <div style="margin-top:1.5px;background:var(--abyss);border:1px solid var(--text-4);border-top:none;border-radius:0 0 1.5rem 1.5rem;padding:2rem;" class="reveal d2">
+      <p style="font-size:.85rem;line-height:1.8;color:var(--text-2);max-width:72ch;">The Framework does not work for every business. It works for founders and leaders who want institutional infrastructure — not a collection of vendors they have to manage separately. If you are currently managing HR, finance, and technology decisions personally, the Framework is probably overdue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="container">
+    <div class="finale-eyebrow">The Enlyst Framework · Lahore Stock Exchange Plaza</div>
+    <h2 class="finale-heading reveal">
+      Ready to adopt<br>
+      <em>the Framework?</em>
+    </h2>
+    <p class="finale-sub reveal d1">Every enquiry is reviewed personally. Every response is specific to your situation. No boilerplate. No sales sequence.</p>
+    <div class="finale-btns reveal d2">
+      <a href="enlyst-contact.html" class="btn-primary">Start the Conversation →</a>
+      <a href="startup-framework.html" class="btn-ghost">Startup Safe Zone</a>
+      <a href="enlyst-methodology.html" class="btn-ghost">The Methodology</a>
+      <a href="enlyst-about.html" class="btn-ghost">About enlyst</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">enlyst Framework</div>
+      <div class="footer-links-row">
+        <a href="enlyst-about.html">About</a>
+        <a href="enlyst-services.html">Services</a>
+        <a href="enlyst-methodology.html">Methodology</a>
+        <a href="enlyst-govtech.html">GovTech</a>
+        <a href="enlyst-foundation.html">Foundation</a>
+        <a href="himat-hikmat-hub.html">Research</a>
+        <a href="academy-index.html">Academy</a>
+        <a href="enlyst-contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">© 2026 Enlyst Smart Recruiting Pvt Ltd · Lahore Stock Exchange Plaza</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>obs.observe(el));
+  const nav=document.querySelector('.nav');
+  window.addEventListener('scroll',()=>{nav.style.borderBottomColor=window.scrollY>40?'rgba(240,237,232,0.1)':'rgba(240,237,232,0.06)';},{passive:true});
+})();
+</script>
+</body>
+</html>

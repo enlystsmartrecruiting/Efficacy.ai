@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlyst Framework | The Institutional OS</title>
+  <meta name="description" content="Pakistan's institutional operating system — bridging commercial startup enablement, public sector AI transformation, policy research, and philanthropic impact.">
+  
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=instrument-serif:400|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+            mono: ['DM Mono', 'monospace'],
+          },
+          colors: {
+            enlyst: {
+              obsidian: '#1A1A1A',
+              gold: '#C4A24A',
+              white: '#FFFFFF',
+              hr: '#2D5BE3',
+              fin: '#1A7A4A',
+              mkt: '#C4620A',
+              tech: '#6B3FA0',
+              border: 'rgba(255,255,255,0.08)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #1A1A1A; color: #FFFFFF; overflow-x: hidden; }
+    
+    /* Institutional Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(196, 162, 74, 0.3); /* Gold hover state */
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Base Plate Placeholder for AI Image */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 80% 50%, rgba(196, 162, 74, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 100% 20%, rgba(45, 91, 227, 0.05) 0%, transparent 40%);
+      /* NOTE TO TEAM: Drop the Midjourney Obsidian/Gold macro-photography render here. 
+         Ensure the image leaves the left 60% as pure #1A1A1A negative space. */
+    }
+
+    /* Typography Overrides */
+    .text-serif-upper {
+      font-family: 'Instrument Serif', serif;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: transparent;
+      border: 1px solid #C4A24A;
+      color: #C4A24A;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      background: rgba(196, 162, 74, 0.1);
+      box-shadow: 0 0 20px rgba(196, 162, 74, 0.15);
+    }
+
+    /* Ticker */
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .animate-ticker { animation: ticker 40s linear infinite; }
+    
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1A1A1A; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  </style>
+</head>
+<body class="antialiased selection:bg-enlyst-gold selection:text-enlyst-obsidian">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 bg-[#1A1A1A]/80 backdrop-blur-xl border-b border-enlyst-border">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- EF Hexagonal Badge -->
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <path d="M16 2 L30 9 L30 23 L16 30 L2 23 L2 9 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"/>
+          <path d="M16 6 L27 12 L27 20 L16 26 L5 20 L5 12 Z" fill="rgba(196,162,74,0.1)" />
+          <text x="10" y="20" font-family="'Instrument Serif', serif" font-size="10" fill="#C4A24A" font-style="italic">EF</text>
+        </svg>
+        <span class="text-serif-upper text-xl tracking-tight text-white mt-1">ENLYST FRAMEWORK</span>
+      </div>
+      <div class="hidden md:flex gap-8 items-center">
+        <a href="#architecture" class="text-xs font-mono tracking-widest uppercase text-white/50 hover:text-enlyst-gold transition-colors">Architecture</a>
+        <a href="#ecosystem" class="text-xs font-mono tracking-widest uppercase text-white/50 hover:text-enlyst-gold transition-colors">Ecosystem</a>
+        <a href="#public-sector" class="text-xs font-mono tracking-widest uppercase text-white/50 hover:text-enlyst-gold transition-colors">Public Sector</a>
+        <a href="mailto:info@enlystnow.com" class="btn-gold">Access Portal</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-12 gap-6">
+      
+      <!-- 60% Negative Space strictly enforced on the left -->
+      <div class="col-span-12 md:col-span-8 lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-enlyst-gold/10 border border-enlyst-gold/20 mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-enlyst-gold animate-pulse"></span>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-enlyst-gold">v2.0 · AI Policy 2025 Integrated</span>
+        </div>
+        
+        <h1 class="text-5xl sm:text-6xl md:text-[5rem] text-serif-upper leading-[1.05] mb-8 text-white">
+          THE ARCHITECTURE<br>OF <span class="text-enlyst-gold">TRUST.</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl font-light text-white/60 leading-relaxed max-w-xl mb-12">
+          Turning invisible operational quality into visible, tradable trust. Enlyst is Pakistan's institutional operating system — bridging commercial startup enablement, public sector AI transformation, policy research, and philanthropic impact.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#architecture" class="bg-white text-enlyst-obsidian px-8 py-4 rounded font-sans font-bold text-sm tracking-wide hover:bg-white/90 transition-colors">
+            Explore the Framework
+          </a>
+          <span class="text-xs font-mono tracking-widest text-white/30 uppercase px-4">No business fights alone.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- DIVIDER STRIP -->
+  <div class="w-full overflow-hidden border-y border-enlyst-border bg-white/5 py-4 backdrop-blur-md">
+    <div class="whitespace-nowrap inline-flex animate-ticker text-white/40 text-xs font-mono uppercase tracking-[0.2em]">
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> HR & AI Talent</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Financial Intelligence</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Growth Marketing</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Cloud & GovTech</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> National AI Policy 2025</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> SECP Infrastructure</div>
+      <!-- Duplicate for loop -->
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> HR & AI Talent</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Financial Intelligence</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Growth Marketing</div>
+      <div class="inline-flex items-center gap-6 px-6"><span class="w-1 h-1 rounded-full bg-enlyst-gold"></span> Cloud & GovTech</div>
+    </div>
+  </div>
+
+  <!-- FRAMEWORK ARCHITECTURE (4 LAYERS) -->
+  <section id="architecture" class="py-32 max-w-7xl mx-auto px-6">
+    <div class="max-w-2xl mb-20">
+      <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-enlyst-gold mb-4 block">Architecture</span>
+      <h2 class="text-4xl md:text-5xl text-serif-upper text-white mb-6">FOUR LAYERS.<br>ONE INSTITUTION.</h2>
+      <p class="text-white/50 text-lg leading-relaxed">Unlike single-service firms, Enlyst operates across four distinct but interconnected layers — each reinforcing the others, all governed by the same strict values and methodology.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Layer 1 -->
+      <div class="glass-panel p-10 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-5xl font-mono text-white/5 font-bold">01</span>
+            <span class="text-[9px] font-mono tracking-widest uppercase px-3 py-1 rounded border border-white/10 text-white/40 group-hover:border-enlyst-gold/50 group-hover:text-enlyst-gold transition-colors">Commercial</span>
+          </div>
+          <h3 class="text-2xl text-serif-upper text-white mb-4">Startup & Enterprise<br>Operating Partner</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-8">Four integrated service divisions providing the complete operational infrastructure for scaling businesses — HR, finance, marketing, and technology under one roof.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[10px] font-mono px-2 py-1 rounded bg-enlyst-hr/10 text-blue-400 border border-enlyst-hr/20">enlyst</span>
+          <span class="text-[10px] font-mono px-2 py-1 rounded bg-enlyst-fin/10 text-green-400 border border-enlyst-fin/20">enlysum</span>
+          <span class="text-[10px] font-mono px-2 py-1 rounded bg-enlyst-mkt/10 text-orange-400 border border-enlyst-mkt/20">enlybiz</span>
+          <span class="text-[10px] font-mono px-2 py-1 rounded bg-enlyst-tech/10 text-purple-400 border border-enlyst-tech/20">enlysoft</span>
+        </div>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="glass-panel p-10 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-5xl font-mono text-white/5 font-bold">02</span>
+            <span class="text-[9px] font-mono tracking-widest uppercase px-3 py-1 rounded border border-white/10 text-white/40 group-hover:border-enlyst-gold/50 group-hover:text-enlyst-gold transition-colors">GovTech</span>
+          </div>
+          <h3 class="text-2xl text-serif-upper text-white mb-4">Government AI<br>Transformation</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-8">Applying modern enterprise architecture to government operations. Delivering AI infrastructure and workforce development aligned with Pakistan's National AI Policy 2025.</p>
+        </div>
+        <ul class="space-y-2 text-xs text-white/60 font-medium">
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> SECP MCP Server Integration</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> Excise & Taxation Strategic Tech</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> 10,000 Official AI Training Pipeline</li>
+        </ul>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="glass-panel p-10 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-5xl font-mono text-white/5 font-bold">03</span>
+            <span class="text-[9px] font-mono tracking-widest uppercase px-3 py-1 rounded border border-white/10 text-white/40 group-hover:border-enlyst-gold/50 group-hover:text-enlyst-gold transition-colors">Research</span>
+          </div>
+          <h3 class="text-2xl text-serif-upper text-white mb-4">AI Adoption<br>Intelligence</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-8">Continuous surveying, framework generation, and policy advisory on AI adoption across government and civic life. Building the intellectual infrastructure for the AI economy.</p>
+        </div>
+        <ul class="space-y-2 text-xs text-white/60 font-medium">
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> GenAI Adoption Reports</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> AI Workforce Readiness Index</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> National AI Policy Advisory</li>
+        </ul>
+      </div>
+
+      <!-- Layer 4 -->
+      <div class="glass-panel p-10 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-5xl font-mono text-white/5 font-bold">04</span>
+            <span class="text-[9px] font-mono tracking-widest uppercase px-3 py-1 rounded border border-white/10 text-white/40 group-hover:border-enlyst-gold/50 group-hover:text-enlyst-gold transition-colors">Philanthropy</span>
+          </div>
+          <h3 class="text-2xl text-serif-upper text-white mb-4">Inclusive Digital<br>Economy</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-8">Ensuring Pakistan's AI transformation reaches everyone. The Himat-Hikmat Framework exposes structural inequality in education and proposes systemic, data-driven solutions.</p>
+        </div>
+        <ul class="space-y-2 text-xs text-white/60 font-medium">
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> Mathematics Education for VI</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> Addressing the "Leaky Pipeline"</li>
+          <li class="flex items-center gap-2"><span class="text-enlyst-gold">→</span> Accessible AI Standards</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM PREVIEW -->
+  <section id="ecosystem" class="py-32 border-t border-enlyst-border bg-[#141414]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-20">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/40 mb-4 block">The Commercial Layer</span>
+        <h2 class="text-4xl text-serif-upper text-white mb-6">FOUR SITES.<br>FULLY OPERATIONAL.</h2>
+        <p class="text-white/50 text-sm">Each division maintains its own brand identity and service offering, governed by the central Enlyst Framework standard.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- enlyst HR -->
+        <a href="https://enlystnow.com" target="_blank" class="block glass-panel p-6 border-enlyst-hr/20 hover:border-enlyst-hr/60 transition-colors group">
+          <div class="flex items-center justify-between mb-8">
+            <svg width="24" height="24" viewBox="0 0 44 46" fill="none" class="opacity-50 group-hover:opacity-100 transition-opacity">
+              <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/>
+              <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/>
+              <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/>
+            </svg>
+            <span class="text-[10px] font-mono uppercase text-enlyst-hr">HR & Talent</span>
+          </div>
+          <h4 class="text-xl text-serif-upper text-white mb-2">enlyst</h4>
+          <p class="text-xs text-white/40 font-mono">enlystnow.com ↗</p>
+        </a>
+
+        <!-- enlysum Fin -->
+        <a href="https://enlysum.com" target="_blank" class="block glass-panel p-6 border-enlyst-fin/20 hover:border-enlyst-fin/60 transition-colors group">
+          <div class="flex items-center justify-between mb-8">
+            <svg width="24" height="24" viewBox="0 0 44 46" fill="none" class="opacity-50 group-hover:opacity-100 transition-opacity">
+              <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#1A7A4A"/>
+              <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#1A7A4A" opacity="0.58"/>
+              <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#1A7A4A" opacity="0.26"/>
+            </svg>
+            <span class="text-[10px] font-mono uppercase text-enlyst-fin">Finance</span>
+          </div>
+          <h4 class="text-xl text-serif-upper text-white mb-2">enlysum</h4>
+          <p class="text-xs text-white/40 font-mono">enlysum.com ↗</p>
+        </a>
+
+        <!-- enlybiz Mkt -->
+        <a href="https://enlybiz.com" target="_blank" class="block glass-panel p-6 border-enlyst-mkt/20 hover:border-enlyst-mkt/60 transition-colors group">
+          <div class="flex items-center justify-between mb-8">
+            <svg width="24" height="24" viewBox="0 0 44 46" fill="none" class="opacity-50 group-hover:opacity-100 transition-opacity">
+              <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/>
+              <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity="0.58"/>
+              <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity="0.26"/>
+            </svg>
+            <span class="text-[10px] font-mono uppercase text-enlyst-mkt">Growth</span>
+          </div>
+          <h4 class="text-xl text-serif-upper text-white mb-2">enlybiz</h4>
+          <p class="text-xs text-white/40 font-mono">enlybiz.com ↗</p>
+        </a>
+
+        <!-- enlysoft Tech -->
+        <a href="https://enlysoft.net" target="_blank" class="block glass-panel p-6 border-enlyst-tech/20 hover:border-enlyst-tech/60 transition-colors group">
+          <div class="flex items-center justify-between mb-8">
+            <svg width="24" height="24" viewBox="0 0 44 46" fill="none" class="opacity-50 group-hover:opacity-100 transition-opacity">
+              <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#6B3FA0"/>
+              <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#6B3FA0" opacity="0.58"/>
+              <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#6B3FA0" opacity="0.26"/>
+            </svg>
+            <span class="text-[10px] font-mono uppercase text-enlyst-tech">Cloud</span>
+          </div>
+          <h4 class="text-xl font-mono text-white mb-2">enlysoft</h4>
+          <p class="text-xs text-white/40 font-mono">enlysoft.net ↗</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-enlyst-border py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+          <path d="M16 2 L30 9 L30 23 L16 30 L2 23 L2 9 Z" fill="none" stroke="#C4A24A" stroke-width="1.5"/>
+          <text x="10" y="20" font-family="'Instrument Serif', serif" font-size="10" fill="#C4A24A" font-style="italic">EF</text>
+        </svg>
+        <span class="text-serif-upper text-lg text-white">ENLYST FRAMEWORK</span>
+      </div>
+      <div class="text-[10px] font-mono text-white/30 uppercase tracking-widest text-center">
+        © 2026 Enlyst Smart Recruiting Pvt Ltd.<br>Lahore Stock Exchange Plaza
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

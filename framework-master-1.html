@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Enlyst Framework — The Institutional Operating System</title>
+<meta name="description" content="Four practices. Eighteen fronts. One framework. The complete Enlyst institutional operating system for Pakistan — HR, Finance, Marketing, Technology, GovTech, and Himat-Hikmat Research, unified.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          serif: ['Instrument Serif', 'serif'],
+          mono: ['DM Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  :root {
+    --hr-blue: #2D5BE3;
+    --fin-green: #1A7A4A;
+    --biz-amber: #C4620A;
+    --tech-purple: #6B3FA0;
+    --fw-gold: #C4A24A;
+    --obsidian: #1A1A1A;
+    --cream: #F7F6F3;
+    --cream-dim: #EFEDE7;
+    --tech-dark: #080C12;
+    --line: #E8E6E1;
+
+    /* soft pastel washes — same practice hues, heavily desaturated toward warm off-white,
+       used as section backgrounds for tonal rhythm instead of stark white/dark jumps */
+    --wash-blue: color-mix(in srgb, var(--hr-blue) 7%, var(--cream));
+    --wash-green: color-mix(in srgb, var(--fin-green) 7%, var(--cream));
+    --wash-amber: color-mix(in srgb, var(--biz-amber) 8%, var(--cream));
+    --wash-purple: color-mix(in srgb, var(--tech-purple) 6%, var(--cream));
+  }
+
+  * { -webkit-font-smoothing: antialiased; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--obsidian);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* paper grain — lightweight tiled data-URI, not a live SVG filter (avoids full-viewport feTurbulence repaint cost) */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.03; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+
+  .mono { font-family: 'DM Mono', monospace; letter-spacing: 0.02em; }
+  .serif { font-family: 'Instrument Serif', serif; font-weight: 400; }
+
+  /* pill CTAs — fully rounded, generous horizontal padding, soft lift on hover */
+  .pill { border-radius: 999px; transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, background .3s ease; }
+  .pill:hover { transform: translateY(-2px); }
+  .pill-primary { background: var(--obsidian); color: white; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .pill-primary:hover { box-shadow: 0 14px 28px -10px rgba(26,26,26,.35); }
+  .pill-ghost { background: white; color: var(--obsidian); border: 1.5px solid var(--line); }
+  .pill-ghost:hover { border-color: var(--obsidian); box-shadow: 0 10px 24px -12px rgba(0,0,0,.15); }
+
+  ::selection { background: var(--hr-blue); color: white; }
+
+  /* reveal-on-scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+  .reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.03s} .reveal-stagger.in > *:nth-child(2){transition-delay:.09s}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.15s} .reveal-stagger.in > *:nth-child(4){transition-delay:.21s}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.27s} .reveal-stagger.in > *:nth-child(6){transition-delay:.33s}
+  .reveal-stagger.in > *:nth-child(7){transition-delay:.39s} .reveal-stagger.in > *:nth-child(8){transition-delay:.45s}
+
+  /* gradient mesh hero backdrop */
+  .mesh {
+    background:
+      radial-gradient(ellipse 700px 500px at 12% -10%, color-mix(in srgb, var(--hr-blue) 14%, transparent), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 100% 10%, color-mix(in srgb, var(--tech-purple) 12%, transparent), transparent 60%),
+      radial-gradient(ellipse 500px 400px at 50% 100%, color-mix(in srgb, var(--fin-green) 8%, transparent), transparent 60%);
+  }
+
+  .bg-grid { background-image: radial-gradient(#d8d5cd 1px, transparent 1px); background-size: 28px 28px; }
+
+  /* glass nav */
+  .glass { background: color-mix(in srgb, var(--cream) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); }
+
+  /* traveling pulse along svg path */
+  .pulse-dot { offset-rotate: 0deg; animation: travel 4.5s linear infinite; }
+  @keyframes travel { from { offset-distance: 0%; opacity: 0 } 5% { opacity: 1 } 95% { opacity: 1 } to { offset-distance: 100%; opacity: 0 } }
+
+  .draw { stroke-dasharray: 400; stroke-dashoffset: 400; transition: stroke-dashoffset 1.6s cubic-bezier(.16,1,.3,1); }
+  .draw.in { stroke-dashoffset: 0; }
+
+  /* practice tabs */
+  .tab-btn { position: relative; transition: color .3s ease; }
+  .tab-btn[aria-selected="true"] { color: var(--obsidian); }
+  .tab-btn[aria-selected="true"]::after { content:''; position:absolute; left:0; right:0; bottom:-13px; height:2px; background: var(--accent, var(--obsidian)); }
+
+  .panel { display: none; }
+  .panel.active { display: grid; }
+
+  /* card container query */
+  .cards-grid { container-type: inline-size; }
+
+  .init-card {
+    background: white; border: 1px solid var(--line); border-radius: 1rem; padding: 1.6rem;
+    transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease, border-color .3s ease;
+    position: relative; overflow: hidden;
+  }
+  .init-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(135deg, var(--accent, var(--line)), transparent 40%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .4s ease;
+  }
+  .init-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -20px rgba(0,0,0,.18); }
+  .init-card:hover::before { opacity: 1; }
+
+  .node-dot { transition: r .3s ease, filter .3s ease; }
+  .node-group:hover .node-dot { r: 9; filter: drop-shadow(0 0 10px var(--accent, var(--obsidian))); }
+
+  .badge-gold { background: color-mix(in srgb, var(--fw-gold) 16%, white); color: color-mix(in srgb, var(--fw-gold) 60%, var(--obsidian)); border: 1px solid color-mix(in srgb, var(--fw-gold) 40%, transparent); }
+
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .spin-slow { animation: spin-slow 40s linear infinite; }
+
+  .cursor-glow { position: fixed; width: 420px; height: 420px; border-radius: 50%; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle, color-mix(in srgb, var(--hr-blue) 7%, transparent), transparent 70%);
+    transform: translate(-50%,-50%); transition: opacity .4s ease; opacity: 0; }
+
+  /* ---- Bento grid + glassmorphism (Solutions section) ---- */
+  .mesh-vivid {
+    background:
+      radial-gradient(ellipse 800px 600px at 8% 0%, color-mix(in srgb, var(--hr-blue) 32%, transparent), transparent 55%),
+      radial-gradient(ellipse 700px 550px at 92% 20%, color-mix(in srgb, var(--tech-purple) 30%, transparent), transparent 55%),
+      radial-gradient(ellipse 650px 550px at 65% 95%, color-mix(in srgb, var(--biz-amber) 24%, transparent), transparent 55%),
+      radial-gradient(ellipse 600px 500px at 15% 90%, color-mix(in srgb, var(--fin-green) 26%, transparent), transparent 55%),
+      var(--obsidian);
+  }
+
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 156px;
+    gap: 1.1rem;
+  }
+  @media (max-width: 768px) {
+    .bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .bento > * { grid-column: auto !important; grid-row: auto !important; min-height: 190px; }
+  }
+
+  .glass-card {
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(22px) saturate(1.6);
+    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.14);
+    border-radius: 1.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform .45s cubic-bezier(.16,1,.3,1), background .35s ease, border-color .35s ease;
+  }
+  .glass-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
+  .glass-card::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.35), transparent 45%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  .glass-card .glass-icon { backdrop-filter: blur(6px); background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.2); }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass border-b" style="border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-6 h-18 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <svg width="34" height="26" viewBox="0 0 34 26" class="shrink-0">
+        <rect x="0" y="14" width="34" height="4" rx="2" fill="var(--hr-blue)" transform="skewX(-18)"/>
+        <rect x="0" y="7" width="34" height="4" rx="2" fill="var(--hr-blue)" opacity="0.58" transform="skewX(-18)"/>
+        <rect x="0" y="0" width="34" height="4" rx="2" fill="var(--hr-blue)" opacity="0.26" transform="skewX(-18)"/>
+      </svg>
+      <span class="text-lg font-semibold tracking-tight">enlyst <span class="font-normal text-slate-500 serif italic text-xl">framework</span></span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+      <a href="#solutions" class="hover:text-[var(--hr-blue)] transition-colors">Solutions</a>
+      <a href="#system" class="hover:text-[var(--hr-blue)] transition-colors">Full System</a>
+      <a href="#ecosystem" class="hover:text-[var(--hr-blue)] transition-colors">Ecosystem</a>
+      <a href="#methodology" class="hover:text-[var(--hr-blue)] transition-colors">Methodology</a>
+      <a href="#foundation" class="hover:text-[var(--hr-blue)] transition-colors">Research</a>
+    </div>
+    <span class="hidden sm:inline-flex items-center gap-1.5 mono text-[11px] px-3 py-1.5 rounded-full badge-gold uppercase tracking-widest">
+      <i data-lucide="sparkle" class="w-3 h-3"></i> Framework v3.0
+    </span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative mesh bg-grid pt-32 pb-20 overflow-hidden border-b" style="border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="reveal-stagger reveal" data-reveal>
+      <div class="inline-flex items-center gap-2 mono text-xs px-3 py-1.5 rounded-full bg-white border mb-8" style="border-color:var(--line)">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--fin-green)] animate-pulse"></span> 4 practices · 14 initiatives · live
+      </div>
+      <h1 class="serif text-[15vw] sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-8 max-w-4xl">
+        One framework.<br><span class="italic" style="color:var(--hr-blue)">Eighteen fronts.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed mb-10">
+        Enlyst is not four companies bundled by accounting convenience. It is a single institutional operating system — HR, Finance, Marketing and Technology, plus fourteen named initiatives spanning startups, government, education and research — built to make Pakistani organizations legible, auditable, and hard to break.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#system" class="pill pill-primary inline-flex items-center gap-2 px-8 py-4 font-semibold">
+          See the full system <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+        <a href="#solutions" class="pill pill-ghost inline-flex items-center gap-2 px-8 py-4 font-semibold">
+          Find my practice
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SOLUTIONS (pain-point selector) — bento grid + glassmorphism over a vivid mesh -->
+<section id="solutions" class="py-24 mesh-vivid relative border-b" style="border-color:#000">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="mb-14 reveal" data-reveal>
+      <span class="mono text-xs uppercase tracking-widest" style="color:#e8b4ff">Start here</span>
+      <h2 class="serif text-4xl md:text-5xl mt-3 text-white">What challenge are we solving today?</h2>
+      <p class="text-white/60 mt-3 max-w-xl">Four practices, one bundled retainer if you need all of them at once.</p>
+    </div>
+
+    <div class="bento reveal-stagger reveal" data-reveal>
+
+      <a href="../../../enlyst/websites/enlyst-hr/index.html" class="glass-card group flex flex-col justify-between p-8" style="grid-column:1/3; grid-row:1/3">
+        <div>
+          <div class="glass-icon w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="users" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-white group-hover:opacity-80">&ldquo;I need a high-performing team.&rdquo;</h3>
+          <p class="text-white/70 text-sm leading-relaxed max-w-sm">Behavioral-science recruitment, EOBI-compliant HR, performance systems.</p>
+        </div>
+        <span class="mono text-xs font-semibold" style="color:#8fb0ff">→ ENLYST · HR &amp; TALENT</span>
+      </a>
+
+      <a href="../../../enlysum/websites/deploy-72/index.html" class="glass-card group flex flex-col justify-between p-6" style="grid-column:3; grid-row:1">
+        <div class="glass-icon w-10 h-10 rounded-lg flex items-center justify-center">
+          <i data-lucide="pie-chart" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white leading-snug mb-1">Financial clarity</h3>
+          <span class="mono text-[10px]" style="color:#8fe0b4">ENLYSUM</span>
+        </div>
+      </a>
+
+      <a href="../../../enlybiz/websites/deploy-72/index.html" class="glass-card group flex flex-col justify-between p-6" style="grid-column:4; grid-row:1">
+        <div class="glass-icon w-10 h-10 rounded-lg flex items-center justify-center">
+          <i data-lucide="megaphone" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white leading-snug mb-1">Market visibility</h3>
+          <span class="mono text-[10px]" style="color:#f0b878">ENLYBIZ</span>
+        </div>
+      </a>
+
+      <a href="../deploy-72/enlystnow/the-fortress.html" class="glass-card group flex flex-col justify-center p-6" style="grid-column:3/5; grid-row:2">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-white mb-1">Need all four?</h3>
+            <p class="text-white/60 text-xs">Bundle every practice into one Fortress retainer.</p>
+          </div>
+          <i data-lucide="shield-check" class="w-8 h-8 shrink-0" style="color:var(--fw-gold)"></i>
+        </div>
+      </a>
+
+      <a href="../../../enlysoft/websites/deploy-72/index.html" class="glass-card group flex items-center justify-between p-8" style="grid-column:1/5; grid-row:3">
+        <div class="flex items-center gap-6">
+          <div class="glass-icon w-14 h-14 rounded-xl flex items-center justify-center shrink-0">
+            <i data-lucide="terminal" class="w-7 h-7 text-white"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-1">&ldquo;I need to scale my tech.&rdquo;</h3>
+            <p class="text-white/60 text-sm">Cloud infrastructure, AI platforms, enterprise integration, GovTech delivery.</p>
+          </div>
+        </div>
+        <span class="mono text-xs font-semibold shrink-0 hidden sm:block" style="color:#c9a8f0">→ ENLYSOFT · TECHNOLOGY</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FULL SYSTEM: systems map + 18-subject catalog -->
+<section id="system" class="py-28 relative" style="background:var(--wash-purple)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-6 reveal" data-reveal>
+      <span class="mono text-xs uppercase tracking-widest" style="color:var(--fw-gold)">The complete system</span>
+      <h2 class="serif text-4xl md:text-5xl mt-3 mb-4">Four practices. Fourteen initiatives.</h2>
+      <p class="text-slate-600 max-w-2xl">Every named front of the Enlyst Framework, mapped from the central methodology out to what you can walk into today. Nothing here is conceptual — every node below links to a real, built page.</p>
+    </div>
+
+    <!-- systems map -->
+    <div class="reveal my-16" data-reveal>
+      <svg viewBox="0 0 1000 260" class="w-full h-auto" id="sysmap" style="overflow:visible">
+        <defs>
+          <path id="pA" d="M500,130 C 400,130 300,60 150,50"/>
+          <path id="pB" d="M500,130 C 430,130 380,150 350,180"/>
+          <path id="pC" d="M500,130 C 570,130 620,150 650,180"/>
+          <path id="pD" d="M500,130 C 600,130 700,60 850,50"/>
+        </defs>
+        <use href="#pA" fill="none" stroke="var(--hr-blue)" stroke-width="1.5" class="draw map-line" data-delay="0"/>
+        <use href="#pB" fill="none" stroke="var(--fin-green)" stroke-width="1.5" class="draw map-line" data-delay="120"/>
+        <use href="#pC" fill="none" stroke="var(--biz-amber)" stroke-width="1.5" class="draw map-line" data-delay="240"/>
+        <use href="#pD" fill="none" stroke="var(--tech-purple)" stroke-width="1.5" class="draw map-line" data-delay="360"/>
+
+        <circle class="pulse-dot" r="3.5" fill="var(--hr-blue)" style="offset-path:path('M500,130 C 400,130 300,60 150,50')"/>
+        <circle class="pulse-dot" r="3.5" fill="var(--tech-purple)" style="offset-path:path('M500,130 C 600,130 700,60 850,50'); animation-delay:2.2s"/>
+
+        <g class="node-group">
+          <circle cx="500" cy="130" r="26" fill="var(--obsidian)"/>
+          <text x="500" y="126" text-anchor="middle" fill="white" class="mono" font-size="9" letter-spacing="1">ENLYST</text>
+          <text x="500" y="138" text-anchor="middle" fill="var(--fw-gold)" class="mono" font-size="8" letter-spacing="1">FRAMEWORK</text>
+        </g>
+
+        <g class="node-group cursor-pointer" onclick="document.querySelector('[data-tab=pathways]').click(); document.getElementById('system').scrollIntoView({behavior:'smooth'})">
+          <circle class="node-dot" cx="150" cy="50" r="6" fill="var(--hr-blue)" style="--accent:var(--hr-blue)"/>
+          <text x="150" y="34" text-anchor="middle" class="mono" font-size="11" font-weight="500" fill="var(--obsidian)">Pathways</text>
+        </g>
+        <g class="node-group cursor-pointer" onclick="document.querySelector('[data-tab=talent]').click(); document.getElementById('system').scrollIntoView({behavior:'smooth'})">
+          <circle class="node-dot" cx="350" cy="180" r="6" fill="var(--fin-green)" style="--accent:var(--fin-green)"/>
+          <text x="350" y="200" text-anchor="middle" class="mono" font-size="11" font-weight="500" fill="var(--obsidian)">Talent &amp; Education</text>
+        </g>
+        <g class="node-group cursor-pointer" onclick="document.querySelector('[data-tab=public]').click(); document.getElementById('system').scrollIntoView({behavior:'smooth'})">
+          <circle class="node-dot" cx="650" cy="180" r="6" fill="var(--biz-amber)" style="--accent:var(--biz-amber)"/>
+          <text x="650" y="200" text-anchor="middle" class="mono" font-size="11" font-weight="500" fill="var(--obsidian)">Public Sector &amp; Research</text>
+        </g>
+        <g class="node-group cursor-pointer" onclick="document.querySelector('[data-tab=platform]').click(); document.getElementById('system').scrollIntoView({behavior:'smooth'})">
+          <circle class="node-dot" cx="850" cy="50" r="6" fill="var(--tech-purple)" style="--accent:var(--tech-purple)"/>
+          <text x="850" y="34" text-anchor="middle" class="mono" font-size="11" font-weight="500" fill="var(--obsidian)">Platform &amp; Brand</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- tabs -->
+    <div class="flex flex-wrap gap-8 border-b mb-10 reveal" data-reveal style="border-color:var(--line)">
+      <button data-tab="pathways" class="tab-btn pb-4 text-sm font-semibold" style="--accent:var(--hr-blue)" aria-selected="true">01 · Client Pathways</button>
+      <button data-tab="talent" class="tab-btn pb-4 text-sm font-semibold text-slate-500" style="--accent:var(--fin-green)" aria-selected="false">02 · Talent &amp; Education</button>
+      <button data-tab="public" class="tab-btn pb-4 text-sm font-semibold text-slate-500" style="--accent:var(--biz-amber)" aria-selected="false">03 · Public Sector &amp; Research</button>
+      <button data-tab="platform" class="tab-btn pb-4 text-sm font-semibold text-slate-500" style="--accent:var(--tech-purple)" aria-selected="false">04 · Platform &amp; Brand</button>
+    </div>
+
+    <div class="cards-grid">
+      <div class="panel active grid-cols-1 md:grid-cols-3 gap-6" data-panel="pathways">
+        <a href="../deploy-72/enlystnow/startup-safe-zone.html" class="init-card" style="--accent:var(--hr-blue)">
+          <span class="mono text-[10px] uppercase" style="color:var(--hr-blue)">Initiative 01</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Startup Safe Zone</h3>
+          <p class="text-sm text-slate-600">Four-practice parallel build for early-stage startups — operational infrastructure in one motion.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/the-fortress.html" class="init-card" style="--accent:var(--hr-blue)">
+          <span class="mono text-[10px] uppercase" style="color:var(--hr-blue)">Initiative 02</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">The Fortress</h3>
+          <p class="text-sm text-slate-600">All four practices bundled into one predictable, permanent retainer partnership.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/entrepreneurial-route.html" class="init-card" style="--accent:var(--hr-blue)">
+          <span class="mono text-[10px] uppercase" style="color:var(--hr-blue)">Initiative 03</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Entrepreneurial Route</h3>
+          <p class="text-sm text-slate-600">For founders with ideas, not CVs. Mentorship into Safe Zone and Fortress pathways.</p>
+        </a>
+      </div>
+
+      <div class="panel grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-panel="talent">
+        <a href="../deploy-72/enlystnow/graduates.html" class="init-card" style="--accent:var(--fin-green)">
+          <span class="mono text-[10px] uppercase" style="color:var(--fin-green)">Initiative 04</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Talent Forge</h3>
+          <p class="text-sm text-slate-600">8-week cohorts, 12 seats each, employer matching, Credly-verified credentials.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/enlyst-recruiter-app.html" class="init-card" style="--accent:var(--fin-green)">
+          <span class="mono text-[10px] uppercase" style="color:var(--fin-green)">Initiative 05</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">EnlyRecruit</h3>
+          <p class="text-sm text-slate-600">3-role recruiting SaaS: Kanban pipeline, bias-excluded matching, EOBI-compliant.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/enlyst-education.html" class="init-card" style="--accent:var(--fin-green)">
+          <span class="mono text-[10px] uppercase" style="color:var(--fin-green)">Initiative 06</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Enlyst Education</h3>
+          <p class="text-sm text-slate-600">Academy, AI Academy, Intel Partner University — verified professional learning.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/special-education.html" class="init-card" style="--accent:var(--fin-green)">
+          <span class="mono text-[10px] uppercase" style="color:var(--fin-green)">Initiative 07</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Special Education</h3>
+          <p class="text-sm text-slate-600">Inclusive education and disability employment pathways.</p>
+        </a>
+      </div>
+
+      <div class="panel grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-panel="public">
+        <a href="../deploy-72/enlystnow/govtech.html" class="init-card" style="--accent:var(--biz-amber)">
+          <span class="mono text-[10px] uppercase" style="color:var(--biz-amber)">Initiative 08</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">GovTech</h3>
+          <p class="text-sm text-slate-600">Zone-4, PT Nexus, SECP MCP Server, GITTC training — institutional delivery.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/foundation.html" class="init-card" style="--accent:var(--biz-amber)">
+          <span class="mono text-[10px] uppercase" style="color:var(--biz-amber)">Initiative 09</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Enlyst Foundation</h3>
+          <p class="text-sm text-slate-600">The Himat-Hikmat Research umbrella — policy, evidence, and structural reform.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/himat-hikmat.html" class="init-card" style="--accent:var(--biz-amber)">
+          <span class="mono text-[10px] uppercase" style="color:var(--biz-amber)">Initiative 10</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Himat-Hikmat</h3>
+          <p class="text-sm text-slate-600">Teacher self-efficacy assessment for visual-impairment education.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/himat-hikmat-framework.html" class="init-card" style="--accent:var(--biz-amber)">
+          <span class="mono text-[10px] uppercase" style="color:var(--biz-amber)">Initiative 11</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Himat-Hikmat Framework</h3>
+          <p class="text-sm text-slate-600">The academic research framework: Sen, TPACK, Lipsky — Pakistan education research.</p>
+        </a>
+      </div>
+
+      <div class="panel grid-cols-1 md:grid-cols-3 gap-6" data-panel="platform">
+        <a href="../deploy-72/enlystnow/the-framework.html" class="init-card" style="--accent:var(--tech-purple)">
+          <span class="mono text-[10px] uppercase" style="color:var(--tech-purple)">Initiative 12</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">The Framework</h3>
+          <p class="text-sm text-slate-600">The institutional-economics theory underneath everything: Williamson VRIN, applied.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/unified-platform.html" class="init-card" style="--accent:var(--tech-purple)">
+          <span class="mono text-[10px] uppercase" style="color:var(--tech-purple)">Initiative 13</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Unified Platform</h3>
+          <p class="text-sm text-slate-600">The ecosystem view — four practices, twelve initiatives, one dashboard.</p>
+        </a>
+        <a href="../deploy-72/enlystnow/media-kit.html" class="init-card" style="--accent:var(--tech-purple)">
+          <span class="mono text-[10px] uppercase" style="color:var(--tech-purple)">Initiative 14</span>
+          <h3 class="text-lg font-bold mt-2 mb-2">Media Kit</h3>
+          <p class="text-sm text-slate-600">Press boilerplate and brand assets for partners and journalists.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE ECOSYSTEM (dark) -->
+<section id="ecosystem" class="py-24 relative overflow-hidden border-b" style="background:var(--tech-dark); border-color:#1a1a1a">
+  <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-20 spin-slow" style="background:var(--tech-purple)"></div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal" data-reveal>
+      <span class="mono text-xs uppercase tracking-widest text-purple-400">Not a mockup</span>
+      <h2 class="serif text-4xl md:text-5xl text-white mt-3">Watch it work.</h2>
+      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Four operational practices. One holding company. This is the live architecture, right now.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger reveal" data-reveal>
+      <a href="../../../enlyst/websites/enlyst-hr/index.html" class="group rounded-2xl overflow-hidden border" style="border-color:#2a2a2a">
+        <div class="p-5" style="background:#111"><span class="mono text-[10px]" style="color:var(--hr-blue)">ENLYST · PEOPLE POWERED</span><h4 class="text-white font-semibold mt-1">Smart Recruiting</h4></div>
+      </a>
+      <a href="../../../enlysum/websites/deploy-72/index.html" class="group rounded-2xl overflow-hidden border" style="border-color:#2a2a2a">
+        <div class="p-5" style="background:#111"><span class="mono text-[10px]" style="color:var(--fin-green)">ENLYSUM · FINANCE</span><h4 class="text-white font-semibold mt-1">Financial Intelligence</h4></div>
+      </a>
+      <a href="../../../enlybiz/websites/deploy-72/index.html" class="group rounded-2xl overflow-hidden border" style="border-color:#2a2a2a">
+        <div class="p-5" style="background:#111"><span class="mono text-[10px]" style="color:var(--biz-amber)">ENLYBIZ · GROWTH</span><h4 class="text-white font-semibold mt-1">Performance Marketing</h4></div>
+      </a>
+      <a href="../../../enlysoft/websites/deploy-72/index.html" class="group rounded-2xl overflow-hidden border" style="border-color:#2a2a2a">
+        <div class="p-5" style="background:#111"><span class="mono text-[10px]" style="color:#b48ce0">ENLYSOFT · CLOUD TECH</span><h4 class="text-white font-semibold mt-1">Enterprise Architecture</h4></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="py-24 border-b" style="background:var(--wash-blue); border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal" data-reveal>
+      <h2 class="serif text-4xl md:text-5xl">The Safe Zone Methodology</h2>
+      <p class="text-slate-600 mt-3 max-w-xl mx-auto">A strict, phased lifecycle — whether deploying for a startup or a public sector department.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger reveal" data-reveal>
+      <div class="p-10 rounded-2xl border relative overflow-hidden" style="background:var(--cream-dim); border-color:var(--line)">
+        <div class="serif text-8xl absolute -top-4 -right-2 opacity-10">01</div>
+        <h3 class="text-xl font-bold mb-3 relative">Discovery &amp; Audit</h3>
+        <p class="text-sm text-slate-600 relative">Comprehensive mapping of infrastructure, legal compliance, HR gaps, and brand positioning.</p>
+      </div>
+      <div class="p-10 rounded-2xl border relative overflow-hidden" style="background:color-mix(in srgb, var(--hr-blue) 6%, white); border-color:color-mix(in srgb, var(--hr-blue) 25%, white)">
+        <div class="serif text-8xl absolute -top-4 -right-2 opacity-10" style="color:var(--hr-blue)">02</div>
+        <h3 class="text-xl font-bold mb-3 relative">The Safe Zone Build</h3>
+        <p class="text-sm text-slate-600 relative">Parallel execution across Finance, HR, Marketing, Tech — backbone in 3 to 4 months.</p>
+      </div>
+      <div class="p-10 rounded-2xl relative overflow-hidden text-white" style="background:var(--obsidian)">
+        <div class="serif text-8xl absolute -top-4 -right-2 opacity-10">03</div>
+        <h3 class="text-xl font-bold mb-3 relative">Permanent Partnership</h3>
+        <p class="text-sm text-slate-300 relative">Sustained retainer, continuous KPI reviews, AI infrastructure maintenance, intern pipelines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDATION / RESEARCH -->
+<section id="foundation" class="py-24 text-white relative overflow-hidden" style="background:var(--obsidian)">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="reveal" data-reveal>
+      <span class="mono text-xs uppercase tracking-widest badge-gold px-3 py-1 rounded-full">Himat-Hikmat Research</span>
+      <h2 class="serif text-4xl md:text-5xl mt-5 mb-4">Evidence. Argument. Clarity.</h2>
+      <p class="text-slate-400 max-w-2xl mb-12">Research on bias, governance, inclusive systems, and the human cost of broken institutional structures — the academic backbone beneath the Framework's commercial front.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger reveal" data-reveal>
+      <a href="../deploy-72/enlystnow/foundation.html" class="p-8 rounded-2xl border hover:-translate-y-1 transition-transform" style="border-color:#2a2a2a; background:#111">
+        <i data-lucide="landmark" class="w-6 h-6 mb-4" style="color:var(--fw-gold)"></i>
+        <h4 class="font-bold mb-2">Enlyst Foundation</h4>
+        <p class="text-sm text-slate-400">The research umbrella and policy arm.</p>
+      </a>
+      <a href="../deploy-72/enlystnow/himat-hikmat.html" class="p-8 rounded-2xl border hover:-translate-y-1 transition-transform" style="border-color:#2a2a2a; background:#111">
+        <i data-lucide="eye" class="w-6 h-6 mb-4" style="color:var(--fw-gold)"></i>
+        <h4 class="font-bold mb-2">Himat-Hikmat</h4>
+        <p class="text-sm text-slate-400">Teacher self-efficacy assessment, visual impairment.</p>
+      </a>
+      <a href="../deploy-72/enlystnow/himat-hikmat-framework.html" class="p-8 rounded-2xl border hover:-translate-y-1 transition-transform" style="border-color:#2a2a2a; background:#111">
+        <i data-lucide="book-open" class="w-6 h-6 mb-4" style="color:var(--fw-gold)"></i>
+        <h4 class="font-bold mb-2">The Research Framework</h4>
+        <p class="text-sm text-slate-400">Sen, TPACK, Lipsky — the academic model.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <svg width="26" height="20" viewBox="0 0 34 26"><rect x="0" y="14" width="34" height="4" rx="2" fill="var(--obsidian)" transform="skewX(-18)"/><rect x="0" y="7" width="34" height="4" rx="2" fill="var(--obsidian)" opacity="0.5" transform="skewX(-18)"/><rect x="0" y="0" width="34" height="4" rx="2" fill="var(--obsidian)" opacity="0.25" transform="skewX(-18)"/></svg>
+      <span class="mono text-xs text-slate-500">© Enlyst Framework — built for institutions that don't get to fail quietly.</span>
+    </div>
+    <div class="flex gap-6 text-sm text-slate-500">
+      <a href="../deploy-72/enlystnow/media-kit.html" class="hover:text-[var(--obsidian)]">Media Kit</a>
+      <a href="#top" class="hover:text-[var(--obsidian)]">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // systems map lines draw when in view
+  const mapEl = document.getElementById('sysmap');
+  if (mapEl) {
+    const mio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.map-line').forEach(line => {
+            const delay = parseInt(line.dataset.delay || 0);
+            setTimeout(() => line.classList.add('in'), delay);
+          });
+          mio.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    mio.observe(mapEl);
+  }
+
+  // tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.setAttribute('aria-selected','false'); b.classList.add('text-slate-500'); });
+      btn.setAttribute('aria-selected','true'); btn.classList.remove('text-slate-500');
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  // cursor glow (desktop only, respects reduced motion)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.getElementById('glow');
+    document.addEventListener('mousemove', (e) => {
+      glow.style.opacity = '1';
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+</script>
+</body>
+</html>

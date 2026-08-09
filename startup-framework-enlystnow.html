@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Startup Framework — enlystnow</title>
+<meta name="description" content="If you are ready to build something that lasts — so are we. Enlyst is not an accelerator. It is an operating partner."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* SHARED TOKEN LAYER — paste into every page */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#2D5BE3;--green:#1A7A4A;--amber:#C4620A;--purple:#6B3FA0;
+  --bg:#0A0A0F;--border:rgba(255,255,255,0.07);
+  --t1:#ffffff;--t2:rgba(255,255,255,0.55);--t3:rgba(255,255,255,0.28);
+  --s5:#64748b;--s6:#475569;--s7:#334155;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::selection{background:var(--blue);color:#fff;}
+a{color:inherit;text-decoration:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");}
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;animation:drift 20s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(60px,-40px);}
+}
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:62px;display:flex;align-items:center;padding:0 48px;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:11px;}
+.nav-wm{font-family:var(--serif);font-size:19px;letter-spacing:-.02em;}
+.nav-wm em{font-family:var(--sans);font-style:italic;color:var(--blue);font-size:14px;font-weight:400;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--s5);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a.active{border-bottom:1px solid rgba(45,91,227,.5);padding-bottom:2px;}
+.nav-cta{padding:7px 18px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;border-radius:100px;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 48px;position:relative;z-index:10;}
+section{position:relative;z-index:10;}
+.rule{border-top:1px solid var(--border);}
+.r{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.r.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:100ms;}.d2{transition-delay:200ms;}.d3{transition-delay:300ms;}.d4{transition-delay:400ms;}
+.serif{font-family:var(--serif);}
+.mono{font-family:var(--mono);}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.eyebrow::after{content:'';flex:1;max-width:56px;height:1px;background:linear-gradient(90deg,rgba(45,91,227,.4),transparent);}
+.grad{background:linear-gradient(100deg,var(--blue),#7b9ff5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.verse-section{padding:100px 0;}
+.verse{max-width:720px;margin:0 auto;text-align:center;padding:0 48px;}
+.verse-text{font-family:var(--serif);font-size:clamp(26px,3.5vw,44px);font-weight:400;line-height:1.25;letter-spacing:-.02em;color:var(--t1);}
+.verse-text.dim{color:rgba(255,255,255,.22);}
+.verse-subtext{font-size:16px;color:var(--t2);line-height:1.8;max-width:520px;margin:24px auto 0;}
+.glow-rule{height:1px;border:none;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.35;margin:0;}
+.pull{border-left:2px solid var(--blue);padding:16px 24px;background:rgba(45,91,227,.04);border-radius:0 8px 8px 0;font-family:var(--serif);font-style:italic;font-size:clamp(16px,2vw,20px);line-height:1.55;color:rgba(255,255,255,.75);}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;border-radius:100px;transition:opacity .2s;box-shadow:0 0 28px rgba(45,91,227,.3);}
+.btn-p:hover{opacity:.88;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;color:var(--s5);font-size:13px;font-weight:500;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s;}
+.btn-g:hover{color:#fff;border-color:rgba(255,255,255,.18);}
+.footer{border-top:1px solid var(--border);padding:48px 0 24px;position:relative;z-index:10;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px;}
+.foot-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--s7);margin-bottom:14px;}
+.foot-link{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--s6);margin-bottom:9px;transition:color .2s;}
+.foot-link:hover{color:#fff;}
+.fdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .nav{padding:0 24px;}
+  .wrap{padding:0 24px;}
+  .foot-grid{grid-template-columns:1fr;}
+  .verse{padding:0 24px;}
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 80px;}
+.h1{font-family:var(--serif);font-size:clamp(48px,6vw,80px);line-height:1.04;letter-spacing:-.04em;font-weight:400;}
+
+/* NOT / IS columns */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border-radius:20px;overflow:hidden;margin-top:64px;}
+.split-col{background:var(--bg);padding:48px;}
+.split-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:28px;}
+.split-label.not{color:var(--s7);}
+.split-label.is{color:var(--amber);}
+.split-item{font-size:15px;color:var(--t2);line-height:1.6;padding:14px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;}
+.split-item:last-child{border-bottom:none;}
+.split-item.not-item{color:rgba(255,255,255,.25);}
+.split-item.is-item{color:var(--t1);}
+.split-mark{font-family:var(--mono);font-size:12px;flex-shrink:0;margin-top:1px;color:var(--s7);}
+.split-item.is-item .split-mark{color:var(--amber);}
+
+/* SAFE ZONE */
+.sz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;}
+.sz-step{background:var(--bg);padding:36px 28px;}
+.sz-num{font-family:var(--serif);font-size:56px;color:rgba(255,255,255,.06);line-height:1;margin-bottom:20px;}
+.sz-phase{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.sz-title{font-family:var(--serif);font-size:20px;color:var(--t1);margin-bottom:8px;}
+.sz-dur{font-family:var(--mono);font-size:9px;color:var(--s7);margin-bottom:20px;}
+.sz-list{list-style:none;}
+.sz-list li{font-size:13px;color:var(--t2);line-height:1.6;padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;}
+.sz-list li:last-child{border-bottom:none;}
+.sz-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:8px;}
+
+/* OFFER CARD */
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;}
+.offer-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .3s;}
+.offer-card:hover{border-color:rgba(196,98,10,.3);}
+.offer-stripe{height:2px;border-radius:1px;margin-bottom:20px;}
+.offer-name{font-family:var(--serif);font-size:20px;color:var(--t1);margin-bottom:6px;}
+.offer-role{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s6);margin-bottom:14px;}
+.offer-desc{font-size:13px;color:var(--t2);line-height:1.7;}
+
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;}
+  .sz-grid{grid-template-columns:1fr 1fr;}
+  .offer-grid{grid-template-columns:1fr 1fr;}
+  .hero{padding:120px 0 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="orb" style="width:600px;height:600px;background:#C4620A;opacity:.04;top:-200px;right:-200px;"></div>
+<div class="orb" style="width:400px;height:400px;background:#2D5BE3;opacity:.04;bottom:20%;left:-150px;animation-delay:-10s;"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <svg width="22" height="24" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+    <span class="nav-wm">enlyst<em>now</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="startup-framework.html" class="active">Startups</a>
+    <a href="foundation.html">Foundation</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Engage Us →</a>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow r">Startup framework</div>
+    <h1 class="h1 r d1">If you are ready<br>to be serious —<br><span class="grad">so are we.</span></h1>
+    <p class="r d2" style="font-size:18px;color:var(--t2);line-height:1.8;max-width:540px;margin-top:24px;">Enlyst is not a startup accelerator. Not a co-working space. Not a pitch competition. It is an operational partner — and for the right startup, that is worth more than all of those combined.</p>
+    <div style="display:flex;gap:14px;margin-top:40px;" class="r d3">
+      <a href="contact.html" class="btn-p">Start a conversation →</a>
+      <a href="#safezone" class="btn-g">See how it works</a>
+    </div>
+
+    <div class="split r d4">
+      <div class="split-col">
+        <div class="split-label not">What we are not</div>
+        <div class="split-item not-item"><span class="split-mark">—</span>A startup accelerator with demo days and cohorts</div>
+        <div class="split-item not-item"><span class="split-mark">—</span>A VC or angel investor taking equity for advice</div>
+        <div class="split-item not-item"><span class="split-mark">—</span>A co-working space or incubation facility</div>
+        <div class="split-item not-item"><span class="split-mark">—</span>A consultancy that delivers decks and leaves</div>
+        <div class="split-item not-item"><span class="split-mark">—</span>A one-size programme — we take very few</div>
+      </div>
+      <div class="split-col">
+        <div class="split-label is">What we actually do</div>
+        <div class="split-item is-item"><span class="split-mark">→</span>Build and operate your HR, finance, marketing, and tech</div>
+        <div class="split-item is-item"><span class="split-mark">→</span>Replace 4 early hires with one integrated retainer</div>
+        <div class="split-item is-item"><span class="split-mark">→</span>Give you certified cloud infrastructure from day one</div>
+        <div class="split-item is-item"><span class="split-mark">→</span>Hire your first 10 through a behavioural pipeline</div>
+        <div class="split-item is-item"><span class="split-mark">→</span>Run your marketing engine and CRM immediately</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section class="verse-section">
+  <div class="verse r">
+    <p class="verse-text">Most startups don't fail<br>because the idea was wrong.</p>
+    <p class="verse-text dim" style="margin-top:12px;">They fail because the infrastructure was never built.</p>
+    <p class="verse-subtext">Finance on spreadsheets. HR on WhatsApp. Marketing on a freelancer. Technology duct-taped together. Enlyst walks in and fixes all four — simultaneously — before the wound becomes fatal.</p>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section id="safezone" style="padding:100px 0;">
+  <div class="wrap">
+    <div class="eyebrow r">The safe zone methodology</div>
+    <h2 class="r d1" style="font-family:var(--serif);font-size:clamp(32px,4vw,52px);letter-spacing:-.03em;line-height:1.1;margin-bottom:14px;">How it works<br>when you contact us.</h2>
+    <p class="r d2" style="font-size:15px;color:var(--t2);line-height:1.8;max-width:480px;margin-bottom:56px;">Every engagement follows the same four-phase process — calibrated for startup scale and speed, not enterprise timelines.</p>
+    <div class="sz-grid r d3">
+      <div class="sz-step">
+        <div class="sz-num">01</div>
+        <div class="sz-phase">Phase one</div>
+        <h3 class="sz-title">Discovery &amp; audit</h3>
+        <div class="sz-dur">2–3 weeks</div>
+        <ul class="sz-list">
+          <li>Product state and team structure</li>
+          <li>Cash position and tech debt</li>
+          <li>Brand and compliance gaps</li>
+          <li>Operational bottlenecks</li>
+          <li>No assumptions. Evidence first.</li>
+        </ul>
+      </div>
+      <div class="sz-step">
+        <div class="sz-num">02</div>
+        <div class="sz-phase">Phase two</div>
+        <h3 class="sz-title">The safe zone build</h3>
+        <div class="sz-dur">3–4 months</div>
+        <ul class="sz-list">
+          <li>All four functions in parallel</li>
+          <li>HR pipeline activated immediately</li>
+          <li>Finance and compliance running</li>
+          <li>Marketing engine live</li>
+          <li>Cloud infrastructure deployed</li>
+        </ul>
+      </div>
+      <div class="sz-step">
+        <div class="sz-num">03</div>
+        <div class="sz-phase">Phase three</div>
+        <h3 class="sz-title">Permanent retainer</h3>
+        <div class="sz-dur">Ongoing</div>
+        <ul class="sz-list">
+          <li>Monthly KPI reviews</li>
+          <li>AI infrastructure maintained</li>
+          <li>Talent pipeline sustained</li>
+          <li>Strategy from real data</li>
+          <li>Scale with evidence</li>
+        </ul>
+      </div>
+      <div class="sz-step">
+        <div class="sz-num">04</div>
+        <div class="sz-phase">The decision</div>
+        <h3 class="sz-title">Mutual commitment</h3>
+        <div class="sz-dur">After phase one</div>
+        <ul class="sz-list">
+          <li>Both parties review the audit</li>
+          <li>Decision is mutual — not one-sided</li>
+          <li>If we proceed, we move immediately</li>
+          <li>No pitch rounds</li>
+          <li>No waiting lists</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section style="padding:100px 0;">
+  <div class="wrap">
+    <div class="eyebrow r">The retainer covers</div>
+    <h2 class="r d1" style="font-family:var(--serif);font-size:clamp(32px,4vw,52px);letter-spacing:-.03em;line-height:1.1;">Four functions.<br>One bill.</h2>
+    <div class="offer-grid r d2">
+      <div class="offer-card">
+        <div class="offer-stripe" style="background:#2D5BE3;"></div>
+        <div class="offer-name">enlyst</div>
+        <div class="offer-role">HR &amp; Talent</div>
+        <div class="offer-desc">Hiring, behavioural screening, onboarding, and workforce management. Your people function — fully operated.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-stripe" style="background:#1A7A4A;"></div>
+        <div class="offer-name">enlysum</div>
+        <div class="offer-role">Finance &amp; Accounting</div>
+        <div class="offer-desc">Cash flow, burn rate, tax compliance, and CFO-level advisory. The shield against financial chaos.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-stripe" style="background:#C4620A;"></div>
+        <div class="offer-name">enlybiz</div>
+        <div class="offer-role">Marketing &amp; Growth</div>
+        <div class="offer-desc">CRM, performance marketing, brand strategy, and conversion tracking. Visibility built on evidence.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-stripe" style="background:#6B3FA0;"></div>
+        <div class="offer-name">enlysoft</div>
+        <div class="offer-role">Cloud &amp; Technology</div>
+        <div class="offer-desc">AWS, Azure, GCP infrastructure. GenAI integrations. The backbone that makes everything else possible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="glow-rule"/>
+
+<section class="verse-section">
+  <div class="verse r">
+    <p class="verse-text">No business<br>fights alone.</p>
+    <p class="verse-subtext">We respond to all startup enquiries within 48 hours. No pitch decks required.</p>
+    <div style="margin-top:36px;display:flex;justify-content:center;gap:14px;">
+      <a href="contact.html" class="btn-p">Contact Enlyst →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="20" height="22" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+          <span style="font-family:var(--serif);font-size:17px;">enlyst<em style="font-style:italic;color:var(--blue);">now</em></span>
+        </a>
+        <p style="font-size:13px;color:var(--s6);line-height:1.7;max-width:280px;">An independent institution. A genuine operating partner. Built for businesses that cannot afford to fail.</p>
+        <p style="font-size:12px;color:var(--s7);margin-top:12px;">Suite M-3, LSE Plaza, Lahore</p>
+      </div>
+      <div>
+        <div class="foot-label">Divisions</div>
+        <a href="https://enlystnow.com" class="foot-link"><span class="fdot" style="background:#2D5BE3;"></span>enlyst</a>
+        <a href="https://enlysum.com" class="foot-link"><span class="fdot" style="background:#1A7A4A;"></span>enlysum</a>
+        <a href="https://enlybiz.com" class="foot-link"><span class="fdot" style="background:#C4620A;"></span>enlybiz</a>
+        <a href="https://enlysoft.net" class="foot-link"><span class="fdot" style="background:#6B3FA0;"></span>enlysoft</a>
+      </div>
+      <div>
+        <div class="foot-label">Contact</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">info@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:7px;">recruiter@enlystnow.com</div>
+        <div style="font-size:13px;color:var(--s6);margin-bottom:18px;">03000 340 036</div>
+        <a href="contact.html" style="font-size:13px;font-weight:600;color:var(--blue);">Engage us →</a>
+      </div>
+    </div>
+    <div class="rule" style="padding-top:24px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:12px;color:var(--s7);">© 2026 Enlyst Smart Recruiting Pvt Ltd · Lahore, Pakistan</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--s7);">enlystnow.com · enlysum.com · enlybiz.com · enlysoft.net</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

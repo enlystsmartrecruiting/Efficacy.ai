@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Enlyst Framework | The Architects</title>
+<meta name="description" content="Why Enlyst exists, what we believe, and how we build systems that protect people. The philosophy, vision, mission, and values of Enlyst Smart Recruiting."/>
+<meta name="theme-color" content="#080911"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=cormorant:300,300i,400,400i,500,600,700|syne:400,500,600,700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#080911;--abyss:#0C0D14;--ink:#12141E;--coal:#1C1F2E;--slate:#2A2D3E;
+  --blue:#2D5BE3;--blue-d:#1A3BAF;--blue-l:#5B82F0;--blue-g:rgba(45,91,227,0.08);--blue-b:rgba(45,91,227,0.18);
+  --amber:#C4720A;--amber-l:#E8A040;--gold:#B89840;--green:#1A7A4A;--purple:#6B3FA0;
+  --text:#F0F2FF;--text-2:rgba(240,242,255,0.65);--text-3:rgba(240,242,255,0.38);--text-4:rgba(240,242,255,0.18);
+  --serif:'Cormorant',Georgia,serif;--sans:'Syne',system-ui,sans-serif;--mono:'DM Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);--max:1320px;--nav-h:4rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;color:inherit;}
+::selection{background:var(--blue);color:#fff;}
+body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+.bg-field{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 80% 60% at 20% -5%,rgba(45,91,227,.12) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 80% 110%,rgba(107,63,160,.08) 0%,transparent 60%),var(--void);}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(45,91,227,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,91,227,.04) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 70%,transparent 100%);}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;border-bottom:1px solid var(--text-4);background:rgba(8,9,17,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.nav-inner{max-width:var(--max);width:100%;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-mark{display:flex;align-items:center;gap:.75rem;}
+.nav-wordmark{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.01em;line-height:1;}
+.nav-wordmark em{font-style:normal;color:var(--blue-l);}
+.nav-links{display:flex;align-items:center;gap:.25rem;}
+.nav-link{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);padding:.4rem .9rem;border-radius:.5rem;transition:color .25s,background .25s;}
+.nav-link:hover,.nav-link.active{color:var(--text);background:var(--blue-g);}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.5rem 1.25rem;background:var(--blue);border-radius:.5rem;transition:background .25s;}
+.nav-cta:hover{background:var(--blue-l);}
+/* LAYOUT */
+.container{max-width:var(--max);margin:0 auto;padding:0 2.5rem;}
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 7rem) 0 7rem;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.hero-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-l);display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--blue);}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;line-height:.95;letter-spacing:-.02em;margin-bottom:2rem;}
+.hero-h1 em{font-style:italic;color:var(--text-3);}
+.hero-lead{font-size:1rem;line-height:1.8;color:var(--text-2);max-width:42ch;}
+.hero-right{display:flex;flex-direction:column;gap:1.5rem;}
+.hero-quote{font-family:var(--serif);font-size:1.4rem;font-weight:300;font-style:italic;line-height:1.55;color:var(--text-2);border-left:2px solid var(--blue);padding-left:1.75rem;}
+.hero-quote cite{display:block;font-family:var(--mono);font-size:.6rem;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:.75rem;}
+.hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1rem;overflow:hidden;}
+.metric{background:var(--abyss);padding:1.25rem 1rem;text-align:center;}
+.metric-num{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;color:var(--blue-l);}
+.metric-lbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:.4rem;}
+/* PHILOSOPHY */
+.philosophy{padding:8rem 0;border-top:1px solid var(--text-4);}
+.sec-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;}
+.sec-label::before{content:'';display:block;width:2rem;height:1px;background:var(--blue);}
+.sec-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.6rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;}
+.sec-title em{font-style:italic;color:var(--text-3);}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.phil-card{background:var(--abyss);padding:2.25rem;transition:background .3s;}
+.phil-card:hover{background:var(--ink);}
+.phil-n{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--blue);margin-bottom:1rem;}
+.phil-title{font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:.75rem;line-height:1.1;}
+.phil-desc{font-size:.82rem;line-height:1.72;color:var(--text-3);}
+.phil-manifesto{margin-top:1.5px;background:var(--abyss);border-top:1.5px solid var(--text-4);border-radius:0 0 1.5rem 1.5rem;}
+.pm-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;padding:2.5rem;}
+.pm-quote{font-family:var(--serif);font-size:1.55rem;font-weight:300;font-style:italic;line-height:1.5;color:var(--text-2);border-left:2px solid var(--blue);padding-left:1.75rem;}
+.pm-quote cite{display:block;font-family:var(--mono);font-size:.6rem;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:.75rem;}
+.pm-points{display:flex;flex-direction:column;gap:1.25rem;}
+.pm-point{display:flex;gap:1rem;align-items:flex-start;}
+.pm-check{width:16px;height:16px;border-radius:50%;background:var(--blue-g);border:1px solid var(--blue-b);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;}
+.pm-check svg{width:8px;height:8px;stroke:var(--blue-l);stroke-width:2.5;fill:none;}
+.pm-point-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.2rem;}
+.pm-point-desc{font-size:.78rem;line-height:1.65;color:var(--text-3);}
+/* VISION MISSION */
+.vm{padding:8rem 0;border-top:1px solid var(--text-4);}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.vm-card{background:var(--abyss);padding:2.75rem;transition:background .3s;}
+.vm-card:hover{background:var(--ink);}
+.vm-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.25rem;}
+.vm-statement{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.25;letter-spacing:-.01em;}
+.vm-statement em{font-style:italic;color:var(--blue-l);}
+.vm-desc{font-size:.82rem;line-height:1.72;color:var(--text-3);margin-top:1.25rem;}
+.vm-creed{grid-column:span 2;background:var(--abyss);padding:2.75rem;}
+.vm-creed-inner{display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
+.vm-creed-quote{font-family:var(--serif);font-size:1.3rem;font-style:italic;font-weight:300;line-height:1.5;color:var(--text-2);flex:1;min-width:280px;}
+.vm-creed-sep{width:1px;height:5rem;background:var(--text-4);flex-shrink:0;}
+.vm-creed-meta{font-size:.8rem;line-height:1.7;color:var(--text-3);flex:1;min-width:280px;}
+/* VALUES */
+.values{padding:8rem 0;border-top:1px solid var(--text-4);}
+.val-grid{margin-top:3.5rem;display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;}
+.val-row{background:var(--abyss);display:grid;grid-template-columns:3rem 1fr 1.8fr;gap:2rem;align-items:start;padding:2.25rem;transition:background .3s;}
+.val-row:hover{background:var(--ink);}
+.val-num{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:var(--blue);padding-top:.2rem;}
+.val-name{font-family:var(--serif);font-size:1.7rem;font-weight:400;line-height:1;}
+.val-body{}
+.val-desc{font-size:.85rem;line-height:1.72;color:var(--text-2);margin-bottom:.9rem;}
+.val-principle{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--text-3);border-left:1px solid var(--text-4);padding-left:1rem;}
+.val-row.featured{background:rgba(45,91,227,.04);border-top:1.5px solid var(--text-4);}
+/* FINALE */
+.finale{padding:8rem 0 7rem;border-top:1px solid var(--text-4);text-align:center;position:relative;}
+.finale::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:5rem;background:linear-gradient(180deg,transparent,var(--blue));}
+.finale-heading{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:300;line-height:.95;letter-spacing:-.025em;margin-bottom:1.75rem;}
+.finale-heading em{font-style:italic;color:var(--text-3);}
+.finale-sub{font-size:.95rem;color:var(--text-2);line-height:1.75;max-width:44ch;margin:0 auto 2.5rem;}
+.finale-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.85rem 2rem;background:var(--blue);border-radius:.5rem;transition:background .3s,box-shadow .3s,transform .3s;}
+.btn-primary:hover{background:var(--blue-l);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,91,227,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:.85rem 1.5rem;border:1px solid var(--text-4);border-radius:.5rem;transition:color .3s,border-color .3s,background .3s;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text-2);background:rgba(240,242,255,.04);}
+/* FOOTER */
+.footer{border-top:1px solid var(--text-4);padding:3rem 0 2.5rem;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{font-family:var(--serif);font-size:1.15rem;font-weight:300;}
+.footer-brand em{font-style:normal;color:var(--blue-l);}
+.footer-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-4);}
+.footer-links-row{display:flex;gap:1.5rem;}
+.footer-links-row a{font-size:.75rem;color:var(--text-3);transition:color .25s;}
+.footer-links-row a:hover{color:var(--text);}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+.hero-eyebrow,.hero-h1,.hero-lead{opacity:0;animation:fadeUp .9s var(--ease) forwards;}
+.hero-eyebrow{animation-delay:.2s;}
+.hero-h1{animation-delay:.38s;}
+.hero-lead{animation-delay:.52s;}
+.hero-right{opacity:0;animation:fadeUp .9s var(--ease) .65s forwards;}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid,.vm-grid,.phil-grid{grid-template-columns:1fr;}
+  .hero-metrics{grid-template-columns:1fr 1fr;}
+  .pm-inner{grid-template-columns:1fr;}
+  .val-row{grid-template-columns:2rem 1fr;}
+  .val-body{grid-column:span 2;}
+  .vm-creed{grid-column:span 1;}
+  .vm-creed-sep{display:none;}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:1rem;}
+}
+@media(max-width:600px){
+  .container{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .phil-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark" aria-label="Enlystnow home">
+      <svg width="22" height="24" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+      <span class="nav-wordmark">Enlyst<em>now</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Framework</a>
+      <a href="enlyst-services.html" class="nav-link">Services</a>
+      <a href="enlyst-about.html" class="nav-link active">About</a>
+      <a href="enlyst-contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="enlyst-contact.html" class="nav-cta">Initiate Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">About Us · The Architects</div>
+        <h1 class="hero-h1">
+          We exist to<br>
+          build systems<br>
+          so humans can<br>
+          be <em>good to<br>each other.</em>
+        </h1>
+        <p class="hero-lead">Enlyst began as a question: why does hiring in Pakistan still run on referrals, gut feel, and informal trust? We exist because the answer demanded a different kind of firm.</p>
+      </div>
+      <div class="hero-right">
+        <blockquote class="hero-quote">
+          "Every individual — no matter who he is or where he belongs — has the potential of a great businessman. We exist to build systems that protect and empower these owners."
+          <cite>Enlyst founding statement · Lahore · 2020</cite>
+        </blockquote>
+        <div class="hero-metrics">
+          <div class="metric"><div class="metric-num">6</div><div class="metric-lbl">Years operating</div></div>
+          <div class="metric"><div class="metric-num">350+</div><div class="metric-lbl">Orgs served</div></div>
+          <div class="metric"><div class="metric-num">4</div><div class="metric-lbl">Practice divisions</div></div>
+          <div class="metric"><div class="metric-num">100%</div><div class="metric-lbl">Bias-free process</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Our Philosophy</div>
+      <h2 class="sec-title">The bulwark of<br><em>security and confidence.</em></h2>
+    </div>
+    <div class="phil-grid reveal d1">
+      <div class="phil-card">
+        <div class="phil-n">01</div>
+        <div class="phil-title">The Owner Inside</div>
+        <p class="phil-desc">Every individual, no matter who he is or where he belongs, has the potential of a great businessman. Where everyone works, lives another person who once had an idea, tried, failed, and today is called an Owner. We exist to build systems that protect and empower these owners.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-n">02</div>
+        <div class="phil-title">Systems Protect Processes</div>
+        <p class="phil-desc">We seek the absolute elimination of human bias from the system. Technology in the HR space should let a human be a protector of another human — only if systems protect processes first. We lucubrate and meditate like monks before conceiving anything.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-n">03</div>
+        <div class="phil-title">Genuine Friendship</div>
+        <p class="phil-desc">A less biased society produces more owners than employees, and ensures that employees take responsibility exactly like owners. We are here to bandage businessmen from the rigors of advancing technology — genuine friendship and consultancy without commercial consideration as the primary driver.</p>
+      </div>
+      <div class="phil-manifesto" style="grid-column:span 3;">
+        <div class="pm-inner">
+          <blockquote class="pm-quote">
+            "How can a process be automated so that humans can be good to each other?"
+            <cite>The question behind every system Enlyst builds</cite>
+          </blockquote>
+          <div class="pm-points">
+            <div class="pm-point">
+              <div class="pm-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+              <div><div class="pm-point-title">Behavioural science, not instinct</div><div class="pm-point-desc">Evaluation criteria set before candidates are met. Every screening built on pre-defined competency rubrics — invisible bias has no room to operate.</div></div>
+            </div>
+            <div class="pm-point">
+              <div class="pm-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+              <div><div class="pm-point-title">Documented decisions</div><div class="pm-point-desc">Every shortlist, every rejection, every hire documented with justification. The process is always visible, always auditable.</div></div>
+            </div>
+            <div class="pm-point">
+              <div class="pm-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+              <div><div class="pm-point-title">Accountability at 90 days</div><div class="pm-point-desc">The placement is successful only when it is still working three months later — not when the invoice is paid.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & MISSION -->
+<section class="vm">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Direction &amp; Purpose</div>
+      <h2 class="sec-title">Vision. Mission.<br><em>In writing.</em></h2>
+      <p style="font-size:.9rem;color:var(--text-3);margin-top:.75rem;max-width:50ch;">Not marketing language. The exact terms we evaluate every decision against.</p>
+    </div>
+    <div class="vm-grid reveal d2">
+      <div class="vm-card">
+        <div class="vm-label">Vision</div>
+        <div class="vm-statement">To become the <em>shield</em> that protects businesses from financial chaos and regulatory storms.</div>
+        <p class="vm-desc">Every SME in Pakistan deserves access to the institutional infrastructure that large conglomerates build captively. We are building that infrastructure as a shared service — integrated, retainer-grade, and honest.</p>
+      </div>
+      <div class="vm-card">
+        <div class="vm-label">Mission</div>
+        <div class="vm-statement">To arm businesses with the <em>expertise, resources,</em> and support they need to grow.</div>
+        <p class="vm-desc">Through HR, finance, growth, and cloud — combined under one retainer — we eliminate the coordination cost that fragments and weakens small institutions operating in thin professional markets.</p>
+      </div>
+      <div class="vm-creed">
+        <div class="vm-creed-inner">
+          <div class="vm-creed-quote">"A less biased society produces more owners than employees — and ensures employees take responsibility exactly like owners."</div>
+          <div class="vm-creed-sep" aria-hidden="true"></div>
+          <div class="vm-creed-meta">This is the political economy behind our operating model. It is not aspiration. It is the thesis we test every year against the hiring data we accumulate, the client outcomes we track, and the doctoral research that anchors the Himat-Hikmat Foundation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">What We Stand On</div>
+      <h2 class="sec-title">Five values.<br><em>Non-negotiable.</em></h2>
+      <p style="font-size:.9rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">These are not posted on a wall. They are the criteria against which every Enlyst decision is evaluated — by leadership, by every recruiter, and by the systems we build.</p>
+    </div>
+    <div class="val-grid reveal d2">
+      <div class="val-row">
+        <div class="val-num">01</div>
+        <div class="val-name">Belonging</div>
+        <div class="val-body">
+          <p class="val-desc">Every candidate we meet, every client we serve — they belong in this conversation. We are not gatekeepers. We are bridge-builders between capability and opportunity, regardless of who referred you, who you know, or where you come from.</p>
+          <div class="val-principle">"No business fights alone — and no person should have to navigate the job market alone either."</div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-num">02</div>
+        <div class="val-name">Clarity</div>
+        <div class="val-body">
+          <p class="val-desc">Vague feedback is a form of dishonesty. Every assessment, shortlist, and recommendation we provide is specific, justified, and legible. Candidates know exactly why they were screened. Clients know exactly what they are hiring and why.</p>
+          <div class="val-principle">"The most dangerous thing in hiring is the unspoken criterion. We make every criterion explicit before the process begins."</div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-num">03</div>
+        <div class="val-name">Permanence</div>
+        <div class="val-body">
+          <p class="val-desc">We build for longevity, not transaction velocity. The firms we place people in should still be benefiting five years later. We measure success at 90 days, not at offer acceptance. Retention is the real metric.</p>
+          <div class="val-principle">"A placement that doesn't last isn't a success. It's a deferred failure with a fee attached."</div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-num">04</div>
+        <div class="val-name">Honesty First</div>
+        <div class="val-body">
+          <p class="val-desc">We tell clients when we cannot fill a role. We tell candidates when they are not the right fit. Commercial pressure does not override candour — ever.</p>
+          <div class="val-principle">"The recruiter who tells you what you want to hear is not your ally. The one who tells you what you need to hear is."</div>
+        </div>
+      </div>
+      <div class="val-row featured">
+        <div class="val-num">05</div>
+        <div class="val-name">Service as Legacy</div>
+        <div class="val-body">
+          <p class="val-desc">We are here to be genuinely useful — not to extract fees. Every engagement should leave the client stronger than before we arrived. The engagement is complete only when the value is demonstrably delivered, not when the invoice is paid.</p>
+          <div class="val-principle">"Is this client measurably better equipped than before? If the answer is uncertain, we have more work to do."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="container">
+    <div class="finale-heading reveal">
+      Ready to work with a firm<br><em>that argues for its worldview?</em>
+    </div>
+    <p class="finale-sub reveal d1">Two paths in. One standard of work out.</p>
+    <div class="finale-btns reveal d2">
+      <a href="enlyst-contact.html?type=employer" class="btn-primary">I'm an Employer →</a>
+      <a href="enlyst-contact.html?type=candidate" class="btn-ghost">I'm a Candidate →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Enlyst<em>now</em></div>
+      <div class="footer-links-row">
+        <a href="enlyst-services.html">Services</a>
+        <a href="enlyst-hr-final.html">HR Platform</a>
+        <a href="https://enlystnow.com/foundation.html">Foundation</a>
+        <a href="enlyst-contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">© 2026 Enlyst Smart Recruiting Pvt Ltd · Lahore</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+  els.forEach(el=>obs.observe(el));
+  const nav=document.querySelector('.nav');
+  window.addEventListener('scroll',()=>{nav.style.borderBottomColor=window.scrollY>40?'rgba(240,242,255,0.1)':'rgba(240,242,255,0.06)';},{passive:true});
+})();
+</script>
+</body>
+</html>

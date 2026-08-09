@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlyst Framework | The Institutional Operating System</title>
+  <meta name="description" content="Systems protect processes, so humans can protect humans. The institutional operating partner for founders.">
+  <link rel="icon" href="png.png" sizes="any">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+          },
+          colors: {
+            enlyst: {
+              bg: '#F7F6F3',
+              obsidian: '#1A1A1A',
+              border: '#E8E6E1',
+              hr: '#2D5BE3',
+              fin: '#1A7A4A',
+              mkt: '#C4620A',
+              tch: '#6B3FA0'
+            }
+          },
+          animation: {
+            'pan': 'panWebsite 25s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            panWebsite: {
+              '0%, 5%': { transform: 'translateY(0)' },
+              '95%, 100%': { transform: 'translateY(-35%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #F7F6F3; color: #1A1A1A; overflow-x: hidden; }
+
+    .bg-grid { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px; }
+
+    /* Bento Cards */
+    .bento-card {
+      background: #ffffff; border: 1px solid var(--border); border-radius: 24px; overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 24px -12px rgba(0, 0, 0, 0.05); position: relative;
+    }
+    .bento-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.12); border-color: #cbd5e1; }
+
+    .bento-dark {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px);
+    }
+    .bento-dark:hover { border-color: rgba(45, 91, 227, 0.4); box-shadow: 0 20px 40px -10px rgba(45, 91, 227, 0.2); }
+
+    /* Iframe & Overlays */
+    .iframe-scaler { width: 400%; height: 400%; transform: scale(0.25); transform-origin: top left; pointer-events: none; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .group:hover .iframe-scaler { transform: scale(0.26); }
+    .auto-scroll { animation: panWebsite 25s ease-in-out infinite alternate; }
+    .delay-0 { animation-delay: 0s; } .delay-1 { animation-delay: -5s; } .delay-2 { animation-delay: -12s; } .delay-3 { animation-delay: -18s; }
+
+    .card-content h3, .card-content p, .card-content a { opacity: 0.85; transform: translateY(10px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .group:hover .card-content h3, .group:hover .card-content p, .group:hover .card-content a { opacity: 1; transform: translateY(0); }
+    .glass-overlay { background: linear-gradient(to top, #0A0A0F 10%, rgba(10,10,15,0.7) 40%, transparent 100%); transition: all 0.5s ease; }
+    .group:hover .glass-overlay { background: linear-gradient(to top, #0A0A0F 30%, rgba(10,10,15,0.85) 60%, transparent 100%); }
+
+    /* Text Gradients & Reveals */
+    .text-gradient { background: linear-gradient(135deg, #ffffff 0%, #718096 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased selection:bg-blue-200">
+
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="flex items-center cursor-pointer group">
+          <div class="flex items-center gap-3">
+            <div class="flex flex-col gap-0.5 group-hover:scale-110 transition-transform">
+              <span class="w-5 h-0.5 bg-blue-600"></span>
+              <span class="w-5 h-0.5 bg-green-600"></span>
+              <span class="w-5 h-0.5 bg-purple-600"></span>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-slate-900">
+              Enlyst <span class="font-normal text-slate-500">Framework</span>
+            </span>
+          </div>
+        </a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#manifesto" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Philosophy</a>
+          <a href="#live-ecosystem" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Ecosystem</a>
+          <a href="#methodology" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Methodology</a>
+          <a href="#foundation" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Foundation</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="contact.html" class="bg-slate-900 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-slate-800 transition-colors shadow-sm">
+            Access Portal
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative bg-white border-b border-slate-200 overflow-hidden pt-20 pb-0 lg:pt-24 z-10">
+    <div class="absolute inset-0 bg-grid opacity-50"></div>
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+
+        <div class="lg:w-1/2 w-full text-center lg:text-left pb-16 lg:pb-24">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm">
+            <i data-lucide="network" class="w-4 h-4"></i> Framework v2.0
+          </div>
+
+          <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.05]">
+            The unified framework for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">institutional evolution.</span>
+          </h1>
+
+          <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+            A comprehensive, data-driven methodology bridging Public Sector Governance, Enterprise Operations, Startup Infrastructure, and Philanthropic Policy.
+          </p>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-6">
+            <button onclick="togglePanel('arch-panel')" class="bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 flex items-center gap-2 transition-all shadow-lg shadow-blue-600/20">
+              View Live Architecture <i data-lucide="layout" class="w-4 h-4"></i>
+            </button>
+            <button onclick="togglePanel('white-panel')" class="bg-white text-slate-700 border border-slate-300 px-8 py-3.5 rounded-lg font-semibold hover:bg-slate-50 flex items-center gap-2 transition-all shadow-sm">
+              <i data-lucide="book-open" class="w-4 h-4"></i> Read Whitepaper
+            </button>
+          </div>
+
+          <div id="arch-panel" class="hidden mt-2 rounded-2xl border border-blue-100 bg-slate-950 overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                <span class="ml-3 text-xs font-mono text-slate-400">enlyst-architecture.live</span>
+              </div>
+              <button onclick="togglePanel('arch-panel')" class="text-slate-500 hover:text-white text-xs">✕ close</button>
+            </div>
+            <div class="p-5 overflow-auto" style="max-height:420px;">
+              <div class="text-center mb-5">
+                <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Enlyst Institutional Operating System — Live Architecture</span>
+              </div>
+              <div class="flex justify-center mb-3">
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-6 py-2.5 rounded-xl shadow-lg tracking-wide">
+                  ENLYST HOLDING COMPANY
+                </div>
+              </div>
+              <div class="flex justify-center mb-3"><div class="w-px h-6 bg-slate-600"></div></div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                <div class="bg-blue-900/40 border border-blue-700/50 rounded-xl p-3 text-center">
+                  <div class="text-blue-400 text-xs font-bold mb-1">ENLYST HR</div>
+                  <div class="text-slate-400 text-[10px] leading-relaxed">Smart Recruiting · Behavioral Screening</div>
+                  <div class="mt-2 w-2 h-2 rounded-full bg-green-400 mx-auto" title="Live"></div>
+                </div>
+                <div class="bg-green-900/40 border border-green-700/50 rounded-xl p-3 text-center">
+                  <div class="text-green-400 text-xs font-bold mb-1">ENLYSUM</div>
+                  <div class="text-slate-400 text-[10px] leading-relaxed">Finance · Cash Flow · Tax Compliance</div>
+                  <div class="mt-2 w-2 h-2 rounded-full bg-green-400 mx-auto" title="Live"></div>
+                </div>
+                <div class="bg-orange-900/40 border border-orange-700/50 rounded-xl p-3 text-center">
+                  <div class="text-orange-400 text-xs font-bold mb-1">ENLYBIZ</div>
+                  <div class="text-slate-400 text-[10px] leading-relaxed">Growth Marketing · Conversion Funnels</div>
+                  <div class="mt-2 w-2 h-2 rounded-full bg-green-400 mx-auto" title="Live"></div>
+                </div>
+                <div class="bg-purple-900/40 border border-purple-700/50 rounded-xl p-3 text-center">
+                  <div class="text-purple-400 text-xs font-bold mb-1">ENLYSOFT</div>
+                  <div class="text-slate-400 text-[10px] leading-relaxed">Cloud Tech · GenAI · GovTech · AWS</div>
+                  <div class="mt-2 w-2 h-2 rounded-full bg-green-400 mx-auto" title="Live"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="white-panel" class="hidden mt-2 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-50 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i>
+                <span class="text-xs font-semibold text-slate-600 tracking-wide">ENLYST FRAMEWORK — WHITEPAPER v2.0</span>
+              </div>
+              <button onclick="togglePanel('white-panel')" class="text-slate-400 hover:text-slate-700 text-xs">✕ close</button>
+            </div>
+            <div class="p-6 overflow-auto text-slate-700" style="max-height:460px; font-family: Georgia, serif;">
+              <h2 style="font-size:1.4rem; font-weight:700; color:#0f172a; margin-bottom:0.25rem; font-family: Inter, sans-serif;">The Enlyst Institutional Operating System</h2>
+              <p style="font-size:0.75rem; color:#94a3b8; margin-bottom:1.5rem; font-family: Inter, sans-serif;">Whitepaper v2.0 · Enlyst Holding Company · Lahore, Pakistan · 2026</p>
+              <h3 style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#3b82f6; margin-bottom:0.5rem; font-family: Inter, sans-serif;">Executive Summary</h3>
+              <p style="font-size:0.88rem; line-height:1.75; margin-bottom:1.25rem;">
+                Enlyst is a holding company operating as an institutional operating system — a unified infrastructure that simultaneously enables commercial startups, reforms public sector operations, and drives policy through philanthropic research.
+              </p>
+              <div style="border-top:1px solid #e2e8f0; padding-top:1rem; margin-top:0.5rem;">
+                <p style="font-size:0.78rem; color:#94a3b8; line-height:1.6;">
+                  <strong style="color:#64748b;">Contact:</strong> wasim@enlystnow.com &nbsp;·&nbsp; enlystnow.com<br>
+                  © 2026 Enlyst Holding Company. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lg:w-1/2 w-full flex items-end justify-center lg:justify-end self-end">
+          <img
+            src="data:image/webp;base64,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"
+                alt="Enlyst Smart Recruiting"
+                class="w-full max-w-lg object-contain object-bottom block"
+                style="max-height: 560px;"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#050505] text-white pt-24 pb-32">
+
+          <section id="manifesto" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 text-center reveal">
+            <i data-lucide="quote" class="w-12 h-12 text-brand-blue/50 mx-auto mb-10"></i>
+            <h2 class="text-4xl md:text-6xl font-serif leading-tight text-gradient mb-10">
+              "Every individual, no matter who he is or where he belongs, has the potential of a great businessman."
+            </h2>
+            <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-4xl mx-auto">
+              It is not the lack of opportunities, the economic condition of the country, or the psyche of a nation that makes people seek solace solely in getting a job. Where everyone works, lives another person who once had an idea, tried, failed, tried again, and today is called an <strong>Owner</strong>. We exist to build systems that protect these owners.
+            </p>
+          </section>
+
+          <section id="philosophy-bento" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <div class="bento-card bento-dark p-10 reveal delay-100 flex flex-col justify-center border-l-4 border-l-purple-500 hover:border-purple-400">
+                <i data-lucide="brain" class="w-10 h-10 text-purple-400 mb-6"></i>
+                <h3 class="text-3xl font-serif mb-4 text-white">We meditate like monks.</h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  We lucubrate and meditate before conceiving anything: How can a process be automated so that human beings can be good to each other? Systems protect processes, so humans can protect humans. The line between the corporate world and the ethical world is very thin.
+                </p>
+              </div>
+
+              <div class="bento-card bento-dark p-10 reveal delay-200 flex flex-col justify-center border-l-4 border-l-brand-blue hover:border-brand-blue">
+                <i data-lucide="scale" class="w-10 h-10 text-brand-blue mb-6"></i>
+                <h3 class="text-3xl font-serif mb-4 text-white">Eliminating Bias.</h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  We seek the absolute elimination of human bias from the system. A less biased society produces more owners than employees, and ensures that when they are employees, they take responsibility exactly like owners.
+                </p>
+              </div>
+
+              <div class="bento-card bento-dark p-10 reveal delay-300 flex flex-col justify-center border-l-4 border-l-orange-500 hover:border-orange-400">
+                <i data-lucide="shield-alert" class="w-10 h-10 text-orange-400 mb-6"></i>
+                <h3 class="text-3xl font-serif mb-4 text-white">Bandaging Business.</h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  We are here to protect and bandage businessmen from the rigors of everyday advancing technology and predatory digital marketing—money funneled only to tell a founder after a few months that he is on the verge of bankruptcy.
+                </p>
+              </div>
+
+              <div class="bento-card bento-dark p-10 reveal delay-100 flex flex-col justify-center border-l-4 border-l-green-500 hover:border-green-400">
+                <i data-lucide="handshake" class="w-10 h-10 text-green-400 mb-6"></i>
+                <h3 class="text-3xl font-serif mb-4 text-white">Genuine Friendship.</h3>
+                <p class="text-slate-400 leading-relaxed text-sm">
+                  Business works like a science; it has principles, and people govern the business world. We collaborate through technology, genuine friendship, and consultancy without commercial consideration as the primary driver.
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          <section id="live-ecosystem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+              <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">
+                Don't just imagine the infrastructure.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-green-400 to-purple-400 italic">Watch it work.</span>
+              </h2>
+              <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Four fully operational subsidiaries. One unified holding company. See the live architecture currently deployed across our network.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              <div class="group relative h-[450px] bg-slate-900 rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl reveal">
+                <div class="absolute top-0 left-0 w-full h-10 bg-slate-900/90 backdrop-blur border-b border-slate-700/50 flex items-center px-4 gap-2 z-20">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div class="ml-3 text-[11px] text-slate-400 font-mono tracking-widest flex items-center gap-2">
+                    <i data-lucide="lock" class="w-3 h-3"></i> enlyst-recruiter-app.html
+                  </div>
+                </div>
+                <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+                  <div class="iframe-scaler">
+                    <iframe src="enlyst-recruiter-app.html" title="Enlyst HR" class="w-full h-full border-none auto-scroll delay-0"></iframe>
+                  </div>
+                </div>
+                <div class="glass-overlay absolute inset-0 z-10 pointer-events-none"></div>
+                <div class="card-content absolute bottom-0 left-0 w-full p-10 z-20">
+                  <div class="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+                    <i data-lucide="users" class="w-6 h-6 text-blue-400"></i>
+                  </div>
+                  <span class="text-xs font-bold tracking-widest uppercase text-blue-400 mb-2 block">enlyst · People Powered</span>
+                  <h3 class="text-3xl text-white font-serif mb-4">Smart Recruiting Platform</h3>
+                  <a href="enlyst-recruiter-app.html" target="_blank" class="w-fit bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-500 transition-colors flex items-center gap-2">
+                    Launch Dashboard <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="group relative h-[450px] bg-slate-900 rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl reveal delay-100">
+                <div class="absolute top-0 left-0 w-full h-10 bg-slate-900/90 backdrop-blur border-b border-slate-700/50 flex items-center px-4 gap-2 z-20">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div class="ml-3 text-[11px] text-slate-400 font-mono tracking-widest flex items-center gap-2">
+                    <i data-lucide="lock" class="w-3 h-3"></i> enlysum.html
+                  </div>
+                </div>
+                <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+                  <div class="iframe-scaler">
+                    <iframe src="enlysum.html" title="Enlysum Finance" class="w-full h-full border-none auto-scroll delay-1"></iframe>
+                  </div>
+                </div>
+                <div class="glass-overlay absolute inset-0 z-10 pointer-events-none"></div>
+                <div class="card-content absolute bottom-0 left-0 w-full p-10 z-20">
+                  <div class="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+                    <i data-lucide="pie-chart" class="w-6 h-6 text-green-400"></i>
+                  </div>
+                  <span class="text-xs font-bold tracking-widest uppercase text-green-400 mb-2 block">enlysum · Finance</span>
+                  <h3 class="text-3xl text-white font-serif mb-4">Financial Intelligence</h3>
+                  <a href="enlysum.html" target="_blank" class="w-fit bg-green-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-green-500 transition-colors flex items-center gap-2">
+                    View Financials <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="group relative h-[450px] bg-slate-900 rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl reveal delay-200">
+                <div class="absolute top-0 left-0 w-full h-10 bg-slate-900/90 backdrop-blur border-b border-slate-700/50 flex items-center px-4 gap-2 z-20">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div class="ml-3 text-[11px] text-slate-400 font-mono tracking-widest flex items-center gap-2">
+                    <i data-lucide="lock" class="w-3 h-3"></i> enlybiz.html
+                  </div>
+                </div>
+                <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+                  <div class="iframe-scaler">
+                    <iframe src="enlybiz.html" title="Enlybiz Marketing" class="w-full h-full border-none auto-scroll delay-2"></iframe>
+                  </div>
+                </div>
+                <div class="glass-overlay absolute inset-0 z-10 pointer-events-none"></div>
+                <div class="card-content absolute bottom-0 left-0 w-full p-10 z-20">
+                  <div class="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+                    <i data-lucide="megaphone" class="w-6 h-6 text-orange-400"></i>
+                  </div>
+                  <span class="text-xs font-bold tracking-widest uppercase text-orange-400 mb-2 block">enlybiz · Growth</span>
+                  <h3 class="text-3xl text-white font-serif mb-4">Performance Marketing</h3>
+                  <a href="enlybiz.html" target="_blank" class="w-fit bg-orange-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-orange-500 transition-colors flex items-center gap-2">
+                    Explore Marketing <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="group relative h-[450px] bg-slate-900 rounded-3xl overflow-hidden border border-slate-700/50 shadow-2xl reveal delay-300">
+                <div class="absolute top-0 left-0 w-full h-10 bg-slate-900/90 backdrop-blur border-b border-slate-700/50 flex items-center px-4 gap-2 z-20">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div class="ml-3 text-[11px] text-slate-400 font-mono tracking-widest flex items-center gap-2">
+                    <i data-lucide="lock" class="w-3 h-3"></i> enlysoft-complete.html
+                  </div>
+                </div>
+                <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+                  <div class="iframe-scaler">
+                    <iframe src="enlysoft-complete.html" title="Enlysoft Tech" class="w-full h-full border-none auto-scroll delay-3"></iframe>
+                  </div>
+                </div>
+                <div class="glass-overlay absolute inset-0 z-10 pointer-events-none"></div>
+                <div class="card-content absolute bottom-0 left-0 w-full p-10 z-20">
+                  <div class="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+                    <i data-lucide="terminal" class="w-6 h-6 text-purple-400"></i>
+                  </div>
+                  <span class="text-xs font-bold tracking-widest uppercase text-purple-400 mb-2 block">enlysoft · Cloud Tech</span>
+                  <h3 class="text-3xl text-white font-serif mb-4">Enterprise Cloud Architecture</h3>
+                  <a href="enlysoft-complete.html" target="_blank" class="w-fit bg-purple-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-purple-500 transition-colors flex items-center gap-2">
+                    Inspect Architecture <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </div>
+        <section id="methodology" class="py-24 bg-white border-b border-slate-200">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <h2 class="text-4xl font-serif text-slate-900 mb-4">The Safe Zone Methodology</h2>
+              <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Whether deploying for a startup or a public sector department, the Enlyst framework follows a strict, phased lifecycle.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-slate-50 p-10 rounded-2xl border border-slate-200 relative overflow-hidden transition-all hover:shadow-lg reveal">
+                <div class="text-8xl font-black text-slate-200 absolute -top-4 -right-4 pointer-events-none">01</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Discovery & Audit</h3>
+                <p class="text-slate-600 text-sm relative z-10 leading-relaxed">Comprehensive mapping of existing infrastructure, legal compliance (e.g., Punjab Finance Act), HR gaps, and brand positioning.</p>
+              </div>
+              <div class="bg-blue-50 p-10 rounded-2xl border border-blue-100 relative overflow-hidden transition-all hover:shadow-lg reveal delay-100">
+                <div class="text-8xl font-black text-blue-100 absolute -top-4 -right-4 pointer-events-none">02</div>
+                <h3 class="text-xl font-bold text-blue-900 mb-4 relative z-10">The Safe Zone Build</h3>
+                <p class="text-blue-800 text-sm relative z-10 leading-relaxed">Parallel execution across four workstreams (Finance, HR, Marketing, Tech) to build an operational backbone within 3 to 4 months.</p>
+              </div>
+              <div class="bg-slate-900 p-10 rounded-2xl border border-slate-800 relative overflow-hidden transition-all hover:shadow-lg reveal delay-200">
+                <div class="text-8xl font-black text-slate-800 absolute -top-4 -right-4 pointer-events-none">03</div>
+                <h3 class="text-xl font-bold text-white mb-4 relative z-10">Permanent Partnership</h3>
+                <p class="text-slate-400 text-sm relative z-10 leading-relaxed">Transition to a sustained operational retainer, integrating continuous KPI reviews, AI infrastructure maintenance, and intern pipelines.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="public-sector" class="py-24 bg-slate-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+
+              <div class="md:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 border border-green-200 text-green-800 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i> Public Sector & GovTech
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif text-slate-900 mb-6">Technology deployed inside government. Not beside it.</h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                  Applying modern enterprise architecture to government operations. Enlyst has delivered strategic technology projects for the Excise & Taxation Department and National Infrastructure tracking.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-white border border-slate-200 rounded-xl p-5 hover:border-green-300 transition-colors shadow-sm">
+                    <i data-lucide="database" class="w-6 h-6 text-green-600 mb-3"></i>
+                    <h4 class="font-bold text-slate-900 text-sm">Tax Nexus Dashboard</h4>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">Multi-view enforcement center tracking 69,000+ companies.</p>
+                  </div>
+                  <div class="bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-300 transition-colors shadow-sm">
+                    <i data-lucide="server" class="w-6 h-6 text-blue-600 mb-3"></i>
+                    <h4 class="font-bold text-slate-900 text-sm">SECP MCP Server</h4>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">AI infrastructure connecting SECP databases to LLMs.</p>
+                  </div>
+                </div>
+                <div class="mt-8">
+                  <a href="Enlyst_Portfolio.html" target="_blank" class="text-green-700 font-semibold hover:text-green-800 flex items-center gap-2">
+                    View Public Sector Portfolio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="md:w-1/2 w-full">
+                 <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col justify-center reveal">
+                      <div class="text-5xl font-serif text-green-600 mb-2">124k+</div>
+                      <div class="text-sm font-semibold text-slate-900">Companies Mapped</div>
+                      <div class="text-xs text-slate-500 mt-1">In tax intelligence DB</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col justify-center reveal delay-100">
+                      <div class="text-5xl font-serif text-blue-600 mb-2">2.26T</div>
+                      <div class="text-sm font-semibold text-slate-900">PKR Capital Pool</div>
+                      <div class="text-xs text-slate-500 mt-1">Enforcement universe</div>
+                    </div>
+                    <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-lg flex flex-col justify-center col-span-2 reveal delay-200">
+                      <div class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <i data-lucide="file-search" class="w-5 h-5 text-purple-400"></i> GenAI Adoption Research
+                      </div>
+                      <div class="text-sm text-slate-400 leading-relaxed">Continuous surveying and framework generation on the adoption of Generative AI in day-to-day government and civic life, guiding future policy deployment.</div>
+                    </div>
+                 </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="foundation" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+          <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-purple-900/40 blur-[120px]"></div>
+          <div class="absolute bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-900/40 blur-[100px]"></div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+
+              <div class="md:w-1/2 w-full order-2 md:order-1 reveal">
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-2 shadow-2xl group">
+                  <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-700 h-96 flex flex-col relative">
+
+                    <div class="absolute top-10 left-0 w-full h-full z-0 overflow-hidden">
+                      <div class="iframe-scaler" style="transform: scale(0.35); transform-origin: top left; width: 285%; height: 285%;">
+                        <iframe src="himat.hikmat.html" class="w-full h-full border-none auto-scroll delay-2"></iframe>
+                      </div>
+                    </div>
+
+                    <div class="h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2 relative z-20">
+                      <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                      <div class="ml-4 text-xs text-slate-400 font-mono tracking-wider">himat.hikmat.html</div>
+                    </div>
+
+                    <div class="glass-overlay absolute inset-0 z-10 pointer-events-none mt-10"></div>
+
+                    <div class="absolute bottom-6 left-6 z-20">
+                      <a href="himat.hikmat.html" target="_blank" class="bg-purple-600 text-white px-5 py-2 rounded-lg text-xs font-semibold hover:bg-purple-500 transition-colors flex items-center gap-2">
+                        Launch Simulator <i data-lucide="external-link" class="w-3 h-3"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="md:w-1/2 order-1 md:order-2 reveal delay-100">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                  <i data-lucide="heart-handshake" class="w-4 h-4"></i> Enlyst Foundation
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif mb-6">Policy, Research & Disability Studies.</h2>
+                <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                  The research arm applies advanced data visualization to systemic social issues. We move beyond theoretical welfare into measurable instructional capacity.
+                </p>
+
+                <div class="space-y-8">
+                  <div class="flex gap-4">
+                    <div class="mt-1 bg-purple-500/20 p-2.5 rounded-xl h-fit border border-purple-500/30"><i data-lucide="book-open" class="w-5 h-5 text-purple-400"></i></div>
+                    <div>
+                      <h4 class="text-lg font-bold text-white mb-2">The Himat-Hikmat Framework</h4>
+                      <p class="text-sm text-slate-400 leading-relaxed">A comprehensive educational framework targeting Mathematics Education for the Visually Impaired (VI) in Punjab. It exposes the "Leaky Pipeline" where financial stipends without instructional capacity institutionalize inequality.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-10">
+                  <a href="Himat-Hikatmat framework.html" target="_blank" class="bg-white text-slate-900 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-colors inline-flex items-center gap-2">
+                    Read the Framework Document <i data-lucide="file-text" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+  <footer class="bg-slate-950 text-white pt-16 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="flex flex-col gap-0.5">
+              <span class="w-5 h-0.5 bg-blue-600"></span>
+              <span class="w-5 h-0.5 bg-green-600"></span>
+              <span class="w-5 h-0.5 bg-purple-600"></span>
+            </div>
+            <span class="font-bold text-white text-xl font-serif tracking-tight">enlyst<span class="font-sans font-normal italic text-slate-400"> framework</span></span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">The institutional operating system for Pakistan's growth economy.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest">Platform</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#live-ecosystem" class="hover:text-white transition-colors">Ecosystem View</a></li>
+            <li><a href="#methodology" class="hover:text-white transition-colors">Safe Zone Methodology</a></li>
+            <li><a href="#" onclick="togglePanel('white-panel')" class="hover:text-white transition-colors">Framework Whitepaper</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest">Solutions</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="startup-framework.html" class="hover:text-white transition-colors">Startups</a></li>
+            <li><a href="government-projects.html" class="hover:text-white transition-colors">Public Sector</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Enterprise EOR</a></li>
+            <li><a href="graduates.html" class="hover:text-white transition-colors">Talent Forge</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-6 text-xs uppercase tracking-widest">Enlyst Umbrella</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">The Holding Group</a></li>
+            <li><a href="enlyst-recruiter-app.html" class="hover:text-blue-400 transition-colors">Enlyst HR</a></li>
+            <li><a href="enlysum.html" class="hover:text-green-400 transition-colors">Enlysum Finance</a></li>
+            <li><a href="enlybiz.html" class="hover:text-orange-400 transition-colors">Enlybiz Marketing</a></li>
+            <li><a href="enlysoft-complete.html" class="hover:text-purple-400 transition-colors">Enlysoft Cloud</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <p>© 2026 Enlyst Smart Recruiting Pvt Ltd. All rights reserved.</p>
+        <p>Suite M-3, Lahore Stock Exchange Plaza, Pakistan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Toggle inline panels for Hero
+    function togglePanel(id) {
+      const panel = document.getElementById(id);
+      const other = id === 'arch-panel' ? 'white-panel' : 'arch-panel';
+      const otherPanel = document.getElementById(other);
+
+      if (otherPanel && !otherPanel.classList.contains('hidden')) {
+        otherPanel.classList.add('hidden');
+      }
+
+      if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      } else {
+        panel.classList.add('hidden');
+      }
+    }
+
+    // Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
