@@ -1,18 +1,23 @@
 <?php
 /**
- * Contact form handler — enlysum.com
+ * Contact form handler — enlystnow.com
+ * Receives the "Initiate Contact" form POST, emails it to the team,
+ * and replies with JSON for the fetch-based JS in enlyst-contact.js
+ * (falls back to a redirect if JS is unavailable).
  */
 
 $config = [
-    'site'      => 'enlysum.com',
+    'site'      => 'enlystnow.com',
     'to'        => 'recruiter@enlystnow.com',
-    'from'      => 'no-reply@enlysum.com',
+    'from'      => 'no-reply@enlystnow.com',
     'redirect'  => 'contact.html',
     'fields'    => [
-        'name'    => ['Name', true],
-        'company' => ['Organisation', false],
-        'email'   => ['Email', true],
-        'message' => ['Your financial situation', false],
+        // POST key => human-readable label, required?
+        'name'         => ['Full Name', true],
+        'company'      => ['Organisation', false],
+        'email'        => ['Email Address', true],
+        'enquiry_type' => ['Nature of Enquiry', false],
+        'message'      => ['Your Situation', false],
     ],
 ];
 

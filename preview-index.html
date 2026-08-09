@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst 72-Page Preview Index</title>
+<link rel="stylesheet" href="_assets/enlyst-page.css"/>
+<style>
+body{padding:3rem 1.5rem 4rem;max-width:960px;margin:0 auto}
+h1{font-family:var(--serif);font-size:2.5rem;margin-bottom:.5rem;color:#fff}
+p{color:rgba(255,255,255,.5);margin-bottom:2rem}
+.domain{margin-bottom:2.5rem}
+.domain h2{font-family:var(--serif);font-size:1.5rem;color:var(--accent);margin-bottom:.75rem}
+ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.5rem}
+a{display:block;padding:.6rem .85rem;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:.875rem;color:rgba(255,255,255,.75);transition:.2s}
+a:hover{border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+.tag{font-family:var(--mono);font-size:.625rem;opacity:.6;margin-left:.35rem}
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div><div class="bg-grid"></div>
+<h1>Enlyst site preview</h1>
+<p>Local preview of all 72 rebuilt pages. Pick a domain, open any page.</p>
+<div class="domain"><h2 style="color:#C4A24A">enlystnow (22)</h2><ul id="now"></ul></div>
+<div class="domain"><h2 style="color:#C4620A">enlybiz (16)</h2><ul id="biz"></ul></div>
+<div class="domain"><h2 style="color:#6B3FA0">enlysoft (16)</h2><ul id="soft"></ul></div>
+<div class="domain"><h2 style="color:#1A7A4A">enlysum (18)</h2><ul id="sum"></ul></div>
+<script>
+const pages={
+now:['index.html','about.html','mission.html','contact.html','the-framework.html','foundation.html','govtech.html','startup-safe-zone.html','the-fortress.html','graduates.html','assessment.html','portfolio.html','media-kit.html','enlyst-recruiter-app.html','enlyst-education.html','himat-hikmat.html','himat-hikmat-framework.html','special-education.html','unified-platform.html','entrepreneurial-route.html','blog.html','privacy.html'],
+biz:['index.html','about.html','services.html','contact.html','go-to-market.html','brand-architecture.html','case-studies.html','ecosystem.html','performance-marketing.html','roi-velocity.html','for-startups.html','for-government.html','for-social-sector.html','for-enterprise.html','blog.html','privacy.html'],
+soft:['index.html','about.html','services.html','contact.html','cloud-infrastructure.html','govtech.html','ai-platforms.html','partners.html','enlyrecruit-platform.html','enterprise-integration.html','security.html','for-government.html','for-startups.html','case-studies.html','blog.html','privacy.html'],
+sum:['index.html','about.html','services.html','contact.html','fractional-cfo.html','burn-rate-control.html','compliance.html','framework-integration.html','for-startups.html','for-enterprise.html','for-government.html','erp-integration.html','treasury-management.html','vc-readiness.html','case-studies.html','tools.html','blog.html','privacy.html']
+};
+const gen=new Set(['entrepreneurial-route.html','blog.html','privacy.html','enlyrecruit-platform.html','enterprise-integration.html','security.html','framework-integration.html','erp-integration.html','treasury-management.html','tools.html']);
+for(const [id,domain] of [['now','enlystnow'],['biz','enlybiz'],['soft','enlysoft'],['sum','enlysum']]){
+  const ul=document.getElementById(id);
+  pages[id].forEach(f=>{
+    const li=document.createElement('li');
+    const a=document.createElement('a');
+    a.href=`${domain}/${f}`;
+    a.textContent=f.replace('.html','');
+    if(gen.has(f)) a.innerHTML+=`<span class="tag">NEW</span>`;
+    li.appendChild(a); ul.appendChild(li);
+  });
+}
+</script>
+</body>
+</html>
