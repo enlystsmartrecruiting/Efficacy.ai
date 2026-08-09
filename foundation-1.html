@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Foundation | Research, Teaching & Reform — Enlystnow</title>
+<meta name="description" content="The Enlyst Foundation drives doctoral-grade research, teacher capacity building, and education policy reform in Punjab, Pakistan."/>
+<link rel="canonical" href="https://enlystnow.com/foundation.html"/>
+<link rel="icon" href="/png.png" sizes="any"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:400,500,600,700|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Inter',system-ui,sans-serif;background:#F2F1EE;color:#111;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+:root{--blue:#2D5BE3;--green:#1A7A4A;--purple:#6B3FA0;--ink:#111;--bg:#F2F1EE;--white:#fff;--border:#E0DED9;--ink2:#4A4A4A;--ink3:#888;--serif:'Instrument Serif',Georgia,serif;--mono:'DM Mono',monospace;}
+
+/* NAV — Enlystnow brand */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;padding:0 56px;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-brand{font-family:var(--serif);font-size:18px;letter-spacing:-.02em;color:var(--ink);}
+.nav-brand em{font-style:normal;color:var(--blue);}
+.nav-tag{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding:3px 9px;border:1px solid var(--border);border-radius:100px;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:12px;color:var(--ink3);transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--purple);}
+.nav-cta{padding:7px 18px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:4px;font-family:var(--mono);background:var(--ink);color:#fff;border:none;cursor:pointer;}
+
+/* HERO */
+.hero{background:var(--white);border-bottom:1px solid var(--border);padding:88px 56px 80px;position:relative;overflow:hidden;}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(#CECBC4 1px,transparent 1px);background-size:28px 28px;opacity:.5;pointer-events:none;}
+.hero-glow{position:absolute;top:20%;right:10%;width:500px;height:400px;background:rgba(107,63,160,.06);border-radius:50%;filter:blur(80px);pointer-events:none;}
+.wrap{max-width:1080px;margin:0 auto;}
+.hero-inner{position:relative;z-index:1;}
+.sec-lbl{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+h1{font-family:var(--serif);font-size:54px;letter-spacing:-.04em;line-height:1.08;color:var(--ink);margin-bottom:14px;}
+.hero-sub{font-size:15px;color:var(--ink2);line-height:1.8;max-width:520px;margin-bottom:48px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:720px;}
+.stat{background:var(--bg);padding:22px 20px;text-align:center;}
+.stat-num{font-family:var(--serif);font-size:32px;letter-spacing:-.03em;color:var(--purple);line-height:1;margin-bottom:4px;}
+.stat-lbl{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.4;}
+
+/* FRAMEWORK */
+.framework{background:var(--white);padding:80px 56px;border-bottom:1px solid var(--border);}
+.fw-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.fw-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;}
+.fw-heading{font-family:var(--serif);font-size:36px;letter-spacing:-.03em;color:var(--ink);line-height:1.12;margin-bottom:14px;}
+.fw-sub{font-size:14px;color:var(--ink2);line-height:1.8;margin-bottom:28px;}
+.fw-body{font-size:14px;color:var(--ink2);line-height:1.85;}
+.fw-body p{margin-bottom:16px;}
+.fw-body p:last-child{margin-bottom:0;}
+.fw-body strong{color:var(--ink);font-weight:500;}
+
+/* LEAKY PIPELINE (dark panel) */
+.pipeline{background:#0A0A0F;padding:72px 56px;}
+.pipeline-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start;}
+.pipeline-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;}
+.pipeline-heading{font-family:var(--serif);font-size:28px;color:#fff;line-height:1.2;letter-spacing:-.02em;}
+.pipeline-heading em{font-style:italic;color:rgba(255,255,255,.35);}
+.pipeline-body{font-size:14px;color:rgba(255,255,255,.5);line-height:1.85;}
+.pipeline-body p{margin-bottom:16px;}
+.pipeline-body p:last-child{margin-bottom:0;}
+.pipeline-body strong{color:rgba(255,255,255,.8);font-weight:500;}
+
+/* THREE-TIER REFORM */
+.reform{background:var(--bg);padding:80px 56px;border-bottom:1px solid var(--border);}
+.reform-inner{max-width:1080px;margin:0 auto;}
+.reform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+.reform-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:28px;position:relative;overflow:hidden;}
+.reform-num{position:absolute;top:-10px;right:0;font-family:var(--serif);font-size:96px;color:var(--ink);opacity:.04;pointer-events:none;line-height:1;}
+.reform-title{font-family:var(--serif);font-size:20px;color:var(--ink);margin-bottom:8px;}
+.reform-desc{font-size:13px;color:var(--ink2);line-height:1.75;}
+
+/* DATA */
+.data{background:var(--white);padding:80px 56px;border-bottom:1px solid var(--border);}
+.data-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:72px;align-items:center;}
+.data-findings{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.finding{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:22px;}
+.finding-num{font-family:var(--serif);font-size:36px;letter-spacing:-.03em;margin-bottom:4px;}
+.finding-num.purple{color:var(--purple);}
+.finding-num.green{color:var(--green);}
+.finding-num.blue{color:var(--blue);}
+.finding-num.red{color:#DC2626;}
+.finding-lbl{font-size:12px;color:var(--ink2);line-height:1.55;}
+.data-cta{background:var(--ink);border-radius:12px;padding:32px;}
+.data-cta h3{font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:10px;}
+.data-cta p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:24px;}
+.data-cta a{display:inline-block;background:#fff;color:var(--ink);padding:10px 22px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--border);padding:40px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-name{font-family:var(--serif);font-size:18px;color:var(--ink);}
+.footer-name em{font-style:normal;color:var(--blue);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:12px;color:var(--ink3);}
+.footer-links a:hover{color:var(--ink);}
+.footer-copy{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;}
+
+@media(max-width:900px){
+  nav{padding:0 20px;}.nav-links{display:none;}
+  .hero{padding:56px 20px;} h1{font-size:38px;}
+  .framework{padding:56px 20px;}.fw-inner{grid-template-columns:1fr;}
+  .pipeline{padding:56px 20px;}.pipeline-inner{grid-template-columns:1fr;}
+  .reform{padding:56px 20px;}.reform-grid{grid-template-columns:1fr;}
+  .data{padding:56px 20px;}.data-inner{grid-template-columns:1fr;}
+  .data-findings{grid-template-columns:1fr 1fr;}
+  footer{padding:28px 20px;flex-direction:column;align-items:flex-start;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="enlystnow-framework.html">
+      <svg width="20" height="22" viewBox="0 0 44 46" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+    </a>
+    <a href="enlystnow-framework.html" class="nav-brand">Enlyst<em>now</em></a>
+    <span class="nav-tag">Foundation</span>
+  </div>
+  <nav class="nav-links" style="display:flex;gap:24px;">
+    <a href="enlystnow-framework.html">Framework</a>
+    <a href="government-projects.html">Government</a>
+    <a href="foundation.html" class="active">Foundation</a>
+    <a href="startup-framework.html">Startups</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html" class="nav-cta">Book consultation</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-inner">
+    <div class="sec-lbl">Enlyst Foundation</div>
+    <h1>Research.<br>Teaching.<br>Reform.</h1>
+    <p class="hero-sub">The Enlyst Foundation is the research and social-impact arm of the Enlystnow ecosystem. It exists to move beyond theoretical welfare into measurable instructional reform — producing doctoral-grade research, building teacher capacity, and converting findings into policy.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">37,100</div><div class="stat-lbl">Words of original field research</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-lbl">Research chapters completed</div></div>
+      <div class="stat"><div class="stat-num">24.3%</div><div class="stat-lbl">VI student attrition Gr.8 → matric</div></div>
+      <div class="stat"><div class="stat-num">61%</div><div class="stat-lbl">Achievement variance by teacher variables</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="framework">
+  <div class="fw-inner" style="max-width:1080px;margin:0 auto;">
+    <div>
+      <div class="fw-label">Primary research output</div>
+      <h2 class="fw-heading">The Himat-Hikmat Framework</h2>
+      <p class="fw-sub">Himat-Hikmat — Urdu for Courage and Wisdom — is a comprehensive indigenous Pakistani theoretical model for mathematics education among visually impaired students in Punjab.</p>
+      <a href="himat.hikmat.html" target="_blank" style="display:inline-block;background:#6B3FA0;color:#fff;padding:11px 24px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Mono',monospace;">Launch simulator &rarr;</a>
+    </div>
+    <div class="fw-body">
+      <p>The framework is the product of <strong>six years of field research</strong>, mixed-methods doctoral study, and direct engagement with students, teachers, and government administrators across Punjab's special education network.</p>
+      <p>It addresses a gap that existing frameworks — designed for Western, sighted, or English-medium contexts — cannot fill. The Himat-Hikmat model is indigenously grounded, accounting for the specific cultural, linguistic, and instructional realities of visually impaired learners in Pakistan.</p>
+      <p>The framework proposes <strong>three-tier reform</strong>: teacher competency standards, curriculum adaptation protocols, and independent instructional assessments — all anchored in the data, not in assumptions about what poor students need.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pipeline">
+  <div class="pipeline-inner">
+    <div>
+      <div class="pipeline-label">The core finding</div>
+      <h2 class="pipeline-heading">The leaky<br>pipeline.<br><em>And why it stays broken.</em></h2>
+    </div>
+    <div class="pipeline-body">
+      <p>Government financial stipends are disbursed to visually impaired students without any corresponding investment in instructional capacity. <strong>Students receive money, but not knowledge. Teachers receive directives, but not training.</strong> The pipeline leaks — and Pakistan's most vulnerable learners fall through.</p>
+      <p>The data is clear: 24.3% of VI students who reach Grade 8 do not reach matriculation. But the more devastating finding is the 61% figure — <strong>sixty-one percent of achievement variance among VI students is explained not by student ability, not by family income, but by teacher variables</strong>. Competency. Training. Pedagogical understanding of the learner's specific condition.</p>
+      <p>This is a fixable problem. It requires will, a framework, and the institutional architecture to deploy it. That is what the Himat-Hikmat model provides.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reform">
+  <div class="reform-inner">
+    <div class="sec-lbl">The proposed solution</div>
+    <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:36px;letter-spacing:-.03em;color:#111;margin-bottom:10px;">Three-tier reform framework.</h2>
+    <p style="font-size:14px;color:#4A4A4A;line-height:1.8;max-width:560px;">Each tier addresses a distinct failure point in the existing system — from the teacher standing in front of a class, to the administrator setting curriculum, to the evaluator measuring outcomes.</p>
+    <div class="reform-grid">
+      <div class="reform-card">
+        <div class="reform-num">01</div>
+        <h3 class="reform-title">Teacher competency standards</h3>
+        <p class="reform-desc">Defined, measurable standards for what a teacher of visually impaired students must know and be able to do — in mathematics specifically. Not general "special education" training, but VI-specific pedagogical competency.</p>
+      </div>
+      <div class="reform-card">
+        <div class="reform-num">02</div>
+        <h3 class="reform-title">Curriculum adaptation protocols</h3>
+        <p class="reform-desc">Structured protocols for adapting Punjab's standard mathematics curriculum to the instructional realities of VI students — covering tactile materials, spatial reasoning approaches, and assessment modification.</p>
+      </div>
+      <div class="reform-card">
+        <div class="reform-num">03</div>
+        <h3 class="reform-title">Independent instructional assessment</h3>
+        <p class="reform-desc">An independent assessment mechanism decoupled from stipend disbursement — so that whether a student receives financial support is separate from whether their instruction is actually working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="data">
+  <div class="data-inner" style="max-width:1080px;margin:0 auto;">
+    <div>
+      <div class="sec-lbl" style="font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#888;display:flex;align-items:center;gap:16px;margin-bottom:20px;">Key data findings<span style="flex:1;height:1px;background:#E0DED9;display:block;"></span></div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;letter-spacing:-.03em;color:#111;margin-bottom:32px;">Numbers that<br>demand a response.</h2>
+      <div class="data-findings">
+        <div class="finding"><div class="finding-num purple">24.3%</div><div class="finding-lbl">VI student attrition rate between Grade 8 and matriculation</div></div>
+        <div class="finding"><div class="finding-num green">61%</div><div class="finding-lbl">Of achievement variance explained by teacher-level variables</div></div>
+        <div class="finding"><div class="finding-num blue">37,100</div><div class="finding-lbl">Words of original field research generated from direct engagement</div></div>
+        <div class="finding"><div class="finding-num red">6</div><div class="finding-lbl">Research chapters completed — covering the full pipeline from policy to classroom</div></div>
+      </div>
+    </div>
+    <div class="data-cta">
+      <h3>Read the framework document.</h3>
+      <p>The full Himat-Hikmat Framework document is available for researchers, policymakers, and education administrators.</p>
+      <a href="Himat-Hikatmat framework.html" target="_blank">Read the framework &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="18" height="20" viewBox="0 0 44 46" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity="0.58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+    <span class="footer-name">Enlyst<em>now</em></span>
+  </div>
+  <div class="footer-links">
+    <a href="enlystnow-framework.html">Framework</a>
+    <a href="government-projects.html">Government</a>
+    <a href="startup-framework.html">Startups</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Enlystnow. Lahore, Pakistan.</span>
+</footer>
+
+</body>
+</html>

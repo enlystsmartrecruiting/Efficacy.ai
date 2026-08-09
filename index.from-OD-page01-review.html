@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Enlystnow — No Business Fights Alone | The Enlyst Framework</title>
+<meta name="description" content="Enlystnow is Pakistan's institutional operating partner — four practices (HR, Finance, Marketing, Technology), one framework. Plus Foundation, Education, GovTech, and the Himat-Hikmat research mandate. No business fights alone."/>
+<meta name="theme-color" content="#0A0A0F"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://enlystnow.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://enlystnow.com/"/>
+<meta property="og:site_name" content="Enlystnow"/>
+<meta property="og:title" content="Enlystnow — No Business Fights Alone"/>
+<meta property="og:description" content="Four practices. One framework. The institutional operating partner for Pakistan's growth-stage businesses, government institutions, and social sector organisations."/>
+<meta property="og:locale" content="en_PK"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Enlystnow — No Business Fights Alone"/>
+<meta name="twitter:description" content="Four practices. One framework. Pakistan's institutional operating partner — HR, Finance, Marketing, and Technology under one standard."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://enlystnow.com/#organization",
+      "name": "Enlystnow",
+      "legalName": "Enlyst Smart Recruiting Pvt Ltd",
+      "url": "https://enlystnow.com/",
+      "email": "info@enlystnow.com",
+      "telephone": "+92-300-0340036",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite M-3, Lahore Stock Exchange Plaza",
+        "addressLocality": "Lahore",
+        "postalCode": "54000",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://enlysum.com",
+        "https://enlybiz.com",
+        "https://enlysoft.net"
+      ],
+      "slogan": "No business fights alone.",
+      "description": "Pakistan's institutional operating partner — four integrated practices delivering HR, finance, marketing, and technology as one coherent system."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://enlystnow.com/#website",
+      "url": "https://enlystnow.com/",
+      "name": "Enlystnow",
+      "publisher": { "@id": "https://enlystnow.com/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://enlystnow.com/#webpage",
+      "url": "https://enlystnow.com/",
+      "name": "Enlystnow — No Business Fights Alone | The Enlyst Framework",
+      "isPartOf": { "@id": "https://enlystnow.com/#website" },
+      "about": { "@id": "https://enlystnow.com/#organization" },
+      "description": "Enlystnow is Pakistan's institutional operating partner — four practices, one framework, one standard of delivery."
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════ */
+:root {
+  --sky-0:   #EBF2FF;
+  --sky-1:   #D4E5FF;
+  --sky-2:   #B8D2FF;
+  --sky-3:   #8FB8FF;
+  --mid-1:   #5B8FE8;
+  --mid-2:   #2D5BE3;
+  --deep-1:  #1A3580;
+  --deep-2:  #0D1A40;
+  --deep-3:  #060D20;
+  --void:    #0A0A0F;
+
+  --blue:    #2D5BE3;
+  --blue-lo: rgba(45,91,227,.12);
+  --blue-hi: rgba(45,91,227,.3);
+  --gold:    #C4A24A;
+  --green:   #1A7A4A;
+  --amber:   #C4620A;
+  --purple:  #6B3FA0;
+
+  --ink:     #0D1A3A;
+  --ink2:    #3A4D7A;
+  --ink3:    #6B7FA8;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+
+  --max:  1200px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --bar:  2.25rem;
+  --nav:  4.5rem;
+}
+
+
+@media(max-width:640px){
+  .topbar-dot:nth-child(n+3), .topbar span:nth-child(n+4){display:none;}
+}
+@media(max-width:480px){
+  .topbar{gap:.75rem;font-size:.5625rem;}
+}
+/* ════════════════════════════════════════
+   RESET
+════════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--void); color:#fff;
+       overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+img,svg { display:block; max-width:100%; }
+button { cursor:pointer; font-family:var(--sans); border:none; background:none; }
+::selection { background:var(--blue); color:#fff; }
+
+/* ════════════════════════════════════════
+   FIXED GRADIENT CANVAS
+════════════════════════════════════════ */
+.bg-gradient {
+  position:fixed; inset:0; z-index:-2;
+  background: linear-gradient(
+    180deg,
+    var(--sky-0)  0%,
+    var(--sky-1)  7%,
+    var(--sky-2)  14%,
+    var(--sky-3)  22%,
+    var(--mid-1)  33%,
+    var(--mid-2)  44%,
+    var(--deep-1) 56%,
+    var(--deep-2) 70%,
+    var(--deep-3) 84%,
+    var(--void)  100%
+  );
+}
+.bg-grid {
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(45,91,227,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,91,227,.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.6) 30%, rgba(0,0,0,.6) 70%, transparent 100%);
+}
+
+/* ════════════════════════════════════════
+   WRAP / LAYOUT
+════════════════════════════════════════ */
+.wrap { max-width:var(--max); margin:0 auto; padding:0 1.5rem; }
+
+/* ════════════════════════════════════════
+   GLASS UTILITY
+════════════════════════════════════════ */
+.glass {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.glass-light {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--ink);
+}
+.glass-blue {
+  background: rgba(45,91,227,.12);
+  border: 1px solid rgba(45,91,227,.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ════════════════════════════════════════
+   TOPBAR
+════════════════════════════════════════ */
+.topbar {
+  position:fixed; top:0; left:0; right:0; z-index:90;
+  height: var(--bar);
+  background: rgba(235,242,255,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(45,91,227,.12);
+  display: flex; align-items:center; justify-content:center;
+  gap: 1.25rem;
+  font-family: var(--mono); font-size:.625rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color: var(--ink2);
+}
+.topbar a { color:var(--blue); font-weight:700; transition:color .2s; }
+.topbar a:hover { color:var(--ink); }
+.topbar-dot { width:3px; height:3px; border-radius:50%; background:var(--blue); opacity:.5; }
+
+/* ════════════════════════════════════════
+   NAV
+════════════════════════════════════════ */
+.nav {
+  position:fixed; top:var(--bar); left:0; right:0; z-index:89;
+  height: var(--nav);
+  transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.nav.scrolled {
+  background: rgba(10,10,15,.88);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.4);
+}
+.nav-inner {
+  max-width:var(--max); margin:0 auto; padding:0 1.5rem;
+  height:100%; display:flex; align-items:center; gap:2rem;
+}
+.brand {
+  display:flex; align-items:center; gap:.75rem; flex-shrink:0;
+}
+.brand-mark { display:flex; align-items:center; }
+.brand-wordmark {
+  font-family:var(--serif); font-size:1.875rem;
+  color:var(--ink); letter-spacing:-.02em; line-height:1;
+  transition: color .3s;
+}
+.nav.scrolled .brand-wordmark { color:#fff; }
+.brand-div { width:1px; height:1.25rem; background:currentColor; opacity:.2; }
+.brand-tag {
+  font-family:var(--mono); font-size:.5625rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink3); transition:color .3s;
+  white-space:nowrap;
+}
+.nav.scrolled .brand-tag { color:rgba(255,255,255,.35); }
+.nav-links {
+  display:flex; align-items:center; gap:.25rem; margin-left:auto;
+}
+.nav-btn {
+  font-size:.875rem; font-weight:500; color:var(--ink2);
+  padding:.5rem .875rem; border-radius:6px;
+  transition:color .2s, background .2s;
+}
+.nav.scrolled .nav-btn { color:rgba(255,255,255,.55); }
+.nav-btn:hover { color:var(--blue); background:rgba(45,91,227,.08); }
+.nav.scrolled .nav-btn:hover { color:#fff; background:rgba(255,255,255,.07); }
+.nav-ext {
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--gold); padding:.5rem .875rem;
+  border:1px solid rgba(196,162,74,.3); border-radius:6px;
+  transition:color .2s, border-color .2s;
+  white-space:nowrap;
+}
+.nav-ext:hover { color:#fff; border-color:var(--gold); }
+.nav-cta-btn {
+  font-size:.875rem; font-weight:600; color:#fff;
+  background:var(--blue); padding:.5625rem 1.25rem; border-radius:100px;
+  box-shadow:0 4px 20px rgba(45,91,227,.3);
+  transition:background .2s, transform .15s, box-shadow .2s;
+  flex-shrink:0; white-space:nowrap;
+}
+.nav-cta-btn:hover {
+  background:#1E3FA8; transform:translateY(-1px);
+  box-shadow:0 8px 28px rgba(45,91,227,.4);
+}
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  padding:.5rem; margin-left:auto;
+}
+.hamburger span {
+  display:block; width:22px; height:1.5px;
+  background:var(--ink); transition:.3s;
+}
+.nav.scrolled .hamburger span { background:#fff; }
+
+/* Mobile drawer */
+.drawer {
+  position:fixed; top:calc(var(--bar) + var(--nav)); left:0; right:0;
+  z-index:88; padding:1.5rem;
+  background:rgba(10,10,15,.96); border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  display:flex; flex-direction:column; gap:.5rem;
+  transform:translateY(-120%); transition:transform .4s var(--ease);
+}
+.drawer.open { transform:translateY(0); }
+.drawer-btn {
+  font-size:1rem; font-weight:500; color:rgba(255,255,255,.65);
+  padding:.875rem 1rem; border-radius:8px;
+  text-align:left; transition:background .2s, color .2s;
+}
+.drawer-btn:hover { background:rgba(255,255,255,.06); color:#fff; }
+.drawer-cta {
+  margin-top:.5rem; background:var(--blue); color:#fff;
+  font-size:.9375rem; font-weight:700; padding:1rem;
+  border-radius:10px; text-align:center;
+}
+
+/* ════════════════════════════════════════
+   SECTION PRIMITIVES
+════════════════════════════════════════ */
+.s-eyebrow {
+  font-family:var(--mono); font-size:.6875rem; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase; margin-bottom:.875rem;
+  color:#93B4FF;
+}
+.s-title {
+  font-family:var(--serif); font-size:clamp(2.25rem,4.5vw,3.5rem);
+  font-weight:400; line-height:1.08; letter-spacing:-.025em;
+}
+.s-title em { font-style:italic; }
+.s-lead {
+  font-size:1.0625rem; line-height:1.75; color:rgba(255,255,255,.55);
+  max-width:38rem; margin-top:1rem;
+}
+
+/* Scroll reveal */
+.rv { opacity:0; transform:translateY(22px);
+      transition:opacity .65s var(--ease), transform .65s var(--ease); }
+.rv.on { opacity:1; transform:none; }
+
+/* ════════════════════════════════════════
+   §1 HERO
+════════════════════════════════════════ */
+.hero {
+  position:relative;
+  min-height:100vh; min-height:100dvh;
+  padding-top:calc(var(--bar) + var(--nav));
+  display:flex; align-items:center; overflow:hidden;
+}
+.hero-inner {
+  display:grid; grid-template-columns:1fr;
+  gap:3rem; align-items:center;
+  padding:5rem 0 7rem;
+}
+@media(min-width:960px){ .hero-inner{grid-template-columns:1fr 1fr;gap:4rem;} }
+
+/* Hero text — dark on sky */
+.hero-pill {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.375rem .875rem; border-radius:9999px;
+  background:rgba(45,91,227,.09); border:1px solid rgba(45,91,227,.22);
+  font-family:var(--mono); font-size:.625rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:1.5rem;
+}
+.hero-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:#22C55E; box-shadow:0 0 8px #22C55E;
+  animation:blink 2.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+@media(prefers-reduced-motion: reduce){
+  .ticker-track{animation:none;}
+  .glow-orb{animation:none;}
+  .rv{transition:none;}
+}
+
+
+.hero h1 {
+  font-family:var(--serif);
+  font-size:clamp(2.75rem,6vw,5rem);
+  font-weight:400; line-height:1.04; letter-spacing:-.03em;
+  color:var(--ink); margin-bottom:1.25rem;
+}
+.hero h1 em { font-style:italic; color:var(--blue); }
+.hero-sub {
+  font-size:clamp(1rem,2vw,1.1875rem);
+  color:var(--ink2); line-height:1.75;
+  max-width:30rem; margin-bottom:2rem;
+}
+.hero-actions { display:flex; flex-wrap:wrap; gap:.875rem; margin-bottom:2.25rem; }
+
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.9375rem; font-weight:700; color:#fff;
+  background:var(--blue); padding:.875rem 1.75rem; border-radius:100px;
+  box-shadow:0 4px 24px rgba(45,91,227,.35);
+  transition:background .2s, transform .15s, box-shadow .2s;
+}
+.btn-primary:hover{background:#1E3FA8;transform:translateY(-2px);box-shadow:0 8px 32px rgba(45,91,227,.4);}
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.9375rem; font-weight:600;
+  color:var(--ink2); padding:.875rem 1.75rem; border-radius:100px;
+  border:1.5px solid rgba(13,26,58,.18);
+  transition:color .2s, border-color .2s, background .2s;
+}
+.btn-ghost:hover{color:var(--ink);border-color:rgba(13,26,58,.35);background:rgba(13,26,58,.04);}
+.btn-ghost-white {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.9375rem; font-weight:600; color:rgba(255,255,255,.75);
+  padding:.875rem 1.75rem; border-radius:100px;
+  border:1.5px solid rgba(255,255,255,.18);
+  transition:color .2s, border-color .2s, background .2s;
+}
+.btn-ghost-white:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06);}
+
+/* Hero proof strip */
+.hero-proof {
+  display:flex; flex-wrap:wrap; gap:1.75rem;
+  padding-top:1.75rem;
+  border-top:1px solid rgba(45,91,227,.15);
+  margin-top:2.25rem;
+}
+.hero-stat strong {
+  display:block; font-family:var(--serif);
+  font-size:1.875rem; font-weight:400;
+  color:var(--ink); line-height:1.15;
+}
+.hero-stat span {
+  font-family:var(--mono); font-size:.6875rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink3);
+}
+
+/* Hero visual — Capture.webp transparent */
+.hero-visual {
+  position:relative; display:flex;
+  justify-content:center; align-items:flex-start;
+}
+.hero-img-wrap {
+  position:relative; width:100%; max-width:420px;
+  aspect-ratio:3/4;
+}
+.hero-img-wrap img {
+  width:100%; height:100%; object-fit:contain; object-position:top center;
+  filter:drop-shadow(0 24px 48px rgba(13,26,58,.35));
+  transition:transform .8s var(--ease);
+}
+.hero-img-wrap:hover img { transform:scale(1.02) translateY(-4px); }
+/* Floating glass cards on image */
+.hero-float {
+  position:absolute; bottom:1.75rem; left:-1.5rem;
+  border-radius:.875rem; padding:.875rem 1.125rem;
+  box-shadow:0 12px 36px rgba(13,26,58,.2), 0 0 0 1px rgba(45,91,227,.12);
+  border-left:3px solid var(--blue);
+  max-width:210px; z-index:2;
+  animation:hfloat 7s ease-in-out infinite alternate;
+}
+@keyframes hfloat{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+.hero-float strong {
+  display:block; font-size:.8125rem; font-weight:700;
+  color:var(--ink); margin-bottom:.125rem;
+}
+.hero-float span {
+  font-family:var(--mono); font-size:.625rem;
+  color:var(--ink3); letter-spacing:.04em;
+}
+.hero-badge {
+  position:absolute; top:1.75rem; right:-1.25rem;
+  background:var(--blue); border-radius:.75rem;
+  padding:.75rem 1rem; z-index:2;
+  box-shadow:0 8px 24px rgba(45,91,227,.45);
+  animation:hfloat 9s ease-in-out 1s infinite alternate-reverse;
+  text-align:center;
+}
+.hero-badge .hb-n { font-family:var(--serif); font-size:1.5rem; color:#fff; line-height:1; }
+.hero-badge .hb-l { font-family:var(--mono); font-size:.5rem; color:rgba(255,255,255,.65); letter-spacing:.12em; text-transform:uppercase; margin-top:.25rem; }
+
+/* ════════════════════════════════════════
+   TICKER
+════════════════════════════════════════ */
+.ticker-wrap {
+  overflow:hidden; padding:.75rem 0;
+  border-top:1px solid rgba(45,91,227,.12);
+  border-bottom:1px solid rgba(45,91,227,.12);
+  background:rgba(235,242,255,.25); backdrop-filter:blur(8px);
+}
+.ticker-track {
+  display:flex; white-space:nowrap; width:max-content;
+  animation:ticker 50s linear infinite;
+}
+.ticker-track:hover { animation-play-state:paused; }
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item {
+  display:inline-flex; align-items:center; gap:.625rem;
+  padding:0 2.5rem; font-family:var(--mono); font-size:.6875rem;
+  color:var(--ink2); letter-spacing:.03em;
+}
+.ticker-dot { width:5px; height:5px; border-radius:50%; background:var(--blue); flex-shrink:0; }
+
+/* ════════════════════════════════════════
+   §2 PHILOSOPHY — mid blue zone
+════════════════════════════════════════ */
+.section-philosophy { padding:7rem 0 6rem; }
+.pillar-grid {
+  display:grid; grid-template-columns:1fr;
+  gap:1rem; margin-top:2.5rem;
+}
+@media(min-width:640px){.pillar-grid{grid-template-columns:repeat(3,1fr);}}
+.pillar-card {
+  padding:1.75rem; border-radius:1rem;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px);
+  transition:background .3s, border-color .3s, transform .35s var(--ease);
+}
+.pillar-card:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);transform:translateY(-4px);}
+.pillar-icon {
+  width:2.75rem; height:2.75rem; border-radius:.75rem;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.14);
+  display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem;
+}
+.pillar-card h3 { font-family:var(--serif); font-size:1.375rem; color:#fff; margin-bottom:.5rem; }
+.pillar-card p { font-size:.9375rem; color:rgba(255,255,255,.55); line-height:1.65; }
+
+/* ════════════════════════════════════════
+   §3 EMPLOYER / CANDIDATE — BENTO GRID
+════════════════════════════════════════ */
+.section-paths { padding:5rem 0; }
+.paths-intro { margin-bottom:3rem; }
+.paths-intro h2 { font-family:var(--serif); font-size:clamp(2rem,4vw,3rem); font-weight:400; line-height:1.1; letter-spacing:-.025em; color:#fff; }
+.paths-intro h2 em { font-style:italic; color:#93B4FF; }
+.paths-intro p { font-size:1.0625rem; color:rgba(255,255,255,.5); line-height:1.75; max-width:34rem; margin-top:.875rem; }
+
+/* 12-col bento */
+.bento {
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1rem;
+}
+.b-c4{grid-column:span 4}
+.b-c5{grid-column:span 5}
+.b-c6{grid-column:span 6}
+.b-c7{grid-column:span 7}
+.b-c8{grid-column:span 8}
+.b-c12{grid-column:span 12}
+.b-r2{grid-row:span 2}
+@media(max-width:900px){.b-c4,.b-c5,.b-c6,.b-c7,.b-c8,.b-c12{grid-column:span 12}}
+
+@media(min-width:640px) and (max-width:900px){
+  .b-c4{grid-column:span 6}
+  .b-c5{grid-column:span 6}
+  .b-c7{grid-column:span 12}
+  .b-c8{grid-column:span 12}
+  .b-r2{grid-row:span 1}
+}
+
+
+.b-cell {
+  border-radius:1.25rem; padding:2rem 1.875rem;
+  position:relative; overflow:hidden;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(18px);
+  transition:background .35s, border-color .35s, transform .35s var(--ease), box-shadow .35s;
+}
+.b-cell:hover{background:rgba(255,255,255,.08);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.3);}
+
+/* Employer cell — blue tint */
+.b-employer {
+  background:rgba(45,91,227,.1);
+  border-color:rgba(45,91,227,.25);
+}
+.b-employer:hover{background:rgba(45,91,227,.16);border-color:rgba(45,91,227,.4);box-shadow:0 20px 48px rgba(45,91,227,.2);}
+
+/* Candidate cell — lighter glass */
+.b-candidate {
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.14);
+}
+.b-candidate:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);}
+
+.b-cell .ghost-num {
+  position:absolute; bottom:-20px; right:-8px;
+  font-family:var(--serif); font-style:italic; font-size:8rem;
+  line-height:1; opacity:.04; pointer-events:none; color:#fff;
+}
+.b-tag {
+  font-family:var(--mono); font-size:.5625rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  padding:.25rem .625rem; border-radius:4px;
+  margin-bottom:1.25rem; display:inline-block;
+}
+.b-tag-blue { background:rgba(45,91,227,.18); color:rgba(147,180,255,.9); }
+.b-tag-white { background:rgba(255,255,255,.1); color:rgba(255,255,255,.7); }
+.b-tag-gold { background:rgba(196,162,74,.15); color:var(--gold); }
+
+.b-cell h3 { font-family:var(--serif); font-size:1.75rem; font-weight:400; color:#fff; letter-spacing:-.02em; margin-bottom:.625rem; line-height:1.15; }
+.b-cell h3 em { font-style:italic; }
+.b-cell p { font-size:.9375rem; color:rgba(255,255,255,.5); line-height:1.65; margin-bottom:1.25rem; }
+
+.b-checklist { list-style:none; display:flex; flex-direction:column; gap:.5rem; margin-bottom:1.5rem; }
+.b-checklist li {
+  display:flex; align-items:flex-start; gap:.625rem;
+  font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.5;
+}
+.b-checklist li::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:#93B4FF; flex-shrink:0; margin-top:.45rem;
+}
+
+.b-cta {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.875rem; font-weight:700; color:#fff;
+  background:var(--blue); padding:.75rem 1.5rem; border-radius:100px;
+  transition:background .2s, transform .15s;
+}
+.b-cta:hover{background:#1E3FA8;transform:translateY(-1px);}
+.b-cta-ghost {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.875rem; font-weight:600; color:rgba(255,255,255,.7);
+  padding:.75rem 1.5rem; border-radius:100px;
+  border:1.5px solid rgba(255,255,255,.18);
+  transition:color .2s, border-color .2s;
+}
+.b-cta-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+
+/* Stat cells inside bento */
+.b-stat-num { font-family:var(--serif); font-size:2.75rem; color:#fff; line-height:1; letter-spacing:-.03em; }
+.b-stat-lbl { font-family:var(--mono); font-size:.625rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-top:.375rem; }
+.b-stat-sub { font-size:.8125rem; color:rgba(255,255,255,.4); margin-top:.5rem; line-height:1.5; }
+
+/* Mini process steps */
+.b-steps { display:flex; flex-direction:column; gap:.625rem; margin-top:1.25rem; }
+.b-step {
+  display:flex; align-items:center; gap:.75rem;
+  padding:.625rem .875rem; border-radius:.625rem;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.07);
+}
+.b-step-n { font-family:var(--mono); font-size:.5625rem; letter-spacing:.1em; color:rgba(255,255,255,.3); flex-shrink:0; width:1.5rem; }
+.b-step-t { font-size:.8125rem; color:rgba(255,255,255,.65); }
+
+/* Recruiter OS terminal */
+.os-terminal {
+  background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.07);
+  border-radius:.875rem; overflow:hidden; margin-top:1.25rem;
+}
+.os-chrome {
+  display:flex; align-items:center; gap:.5rem;
+  padding:.75rem 1rem; background:rgba(0,0,0,.4);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.os-dot { width:.625rem; height:.625rem; border-radius:50%; }
+.os-title { font-family:var(--mono); font-size:.5625rem; color:rgba(255,255,255,.25); margin-left:.5rem; letter-spacing:.06em; }
+.os-body { padding:.875rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; }
+.os-stat {
+  padding:.625rem; border-radius:.5rem;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.05);
+  text-align:center;
+}
+.os-stat-n { font-family:var(--serif); font-size:1.375rem; color:#fff; }
+.os-stat-l { font-family:var(--mono); font-size:.5rem; text-transform:uppercase; letter-spacing:.1em; color:rgba(255,255,255,.3); }
+.os-kanban { padding:.875rem; padding-top:0; display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; }
+.os-col { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); border-radius:.5rem; padding:.5rem; }
+.os-col-h { font-family:var(--mono); font-size:.5rem; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.3); margin-bottom:.375rem; }
+.os-card-sm { height:1.25rem; border-radius:.25rem; margin-bottom:.25rem; }
+
+/* ════════════════════════════════════════
+   §4 SERVICES BENTO
+════════════════════════════════════════ */
+.section-services { padding:6rem 0; }
+.srv-grid {
+  display:grid; grid-template-columns:1fr; gap:1rem; margin-top:3rem;
+}
+@media(min-width:640px){.srv-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.srv-grid{grid-template-columns:repeat(3,1fr);}}
+
+.srv-card {
+  padding:2rem 1.75rem; border-radius:1rem;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+  position:relative; overflow:hidden;
+  backdrop-filter:blur(16px);
+  transition:background .35s, border-color .35s, transform .35s var(--ease);
+}
+.srv-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--blue); transform:scaleX(0); transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.srv-card:hover{background:rgba(255,255,255,.08);border-color:rgba(45,91,227,.3);transform:translateY(-4px);}
+.srv-card:hover::before{transform:scaleX(1);}
+.srv-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem;}
+.srv-icon{width:2.75rem;height:2.75rem;border-radius:.75rem;background:rgba(45,91,227,.15);border:1px solid rgba(45,91,227,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+.srv-card h3{font-family:var(--serif);font-size:1.375rem;color:#fff;margin-bottom:.625rem;}
+.srv-card p{font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.25rem;}
+.srv-tags{display:flex;flex-wrap:wrap;gap:.375rem;}
+.srv-tag{font-family:var(--mono);font-size:.6875rem;padding:.25rem .625rem;border-radius:4px;background:rgba(45,91,227,.18);color:rgba(147,180,255,.9);letter-spacing:.04em;}
+
+/* ════════════════════════════════════════
+   §5 FRAMEWORK / ECOSYSTEM
+════════════════════════════════════════ */
+.section-framework { padding:6rem 0; }
+.fw-grid {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:1rem; margin-top:3rem;
+}
+@media(min-width:768px){.fw-grid{grid-template-columns:repeat(4,1fr);}}
+.fw-card {
+  padding:1.5rem; border-radius:.875rem;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+  transition:background .3s, border-color .3s, transform .3s var(--ease);
+}
+.fw-card:hover{background:rgba(255,255,255,.06);transform:translateY(-3px);}
+.fw-card.active{background:rgba(45,91,227,.1);border-color:rgba(45,91,227,.3);}
+.fw-num{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.fw-card.active .fw-num{color:#93B4FF;}
+.fw-name{font-family:var(--serif);font-size:1.25rem;color:#fff;margin:.5rem 0 .25rem;}
+.fw-desc{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;}
+.fw-link{display:inline-block;margin-top:.875rem;font-family:var(--mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .2s;}
+.fw-link:hover{color:#93B4FF;}
+
+.fw-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem;}
+@media(min-width:640px){.fw-metrics{grid-template-columns:repeat(4,1fr);}}
+.fw-met{padding:1.25rem;text-align:center;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:.875rem;}
+.fw-met-val{font-family:var(--serif);font-size:2.25rem;color:#fff;line-height:1;}
+.fw-met-lbl{font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.375rem;}
+
+/* ════════════════════════════════════════
+   §6 PARTNERS
+════════════════════════════════════════ */
+.section-partners { padding:5rem 0; }
+.partners-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1rem; margin-top:2.5rem;
+}
+@media(max-width:640px){.partners-grid{grid-template-columns:1fr;}}
+.partner-card {
+  padding:2rem; border-radius:1rem;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  transition:background .3s, border-color .3s, transform .3s var(--ease);
+}
+.partner-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);transform:translateY(-3px);}
+.partner-name{font-family:var(--serif);font-size:1.875rem;color:#fff;letter-spacing:-.02em;margin-bottom:.5rem;}
+.partner-role{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:#93B4FF;margin-bottom:.875rem;}
+.partner-desc{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;}
+
+/* ════════════════════════════════════════
+   §7 RESEARCH / ARTICLES TEASER
+════════════════════════════════════════ */
+.section-research { padding:6rem 0; }
+.research-grid {
+  display:grid; grid-template-columns:1fr; gap:1rem; margin-top:3rem;
+}
+@media(min-width:768px){.research-grid{grid-template-columns:repeat(3,1fr);}}
+.research-card {
+  border-radius:1rem; overflow:hidden;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  transition:transform .35s var(--ease), border-color .35s, background .35s;
+}
+.research-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.06);}
+.rc-accent { height:3px; }
+.rc-body { padding:1.5rem; }
+.rc-tag{display:inline-block;font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .625rem;border-radius:4px;margin-bottom:1rem;}
+.rc-tag-policy{background:rgba(124,58,237,.2);color:#a78bfa;}
+.rc-tag-edu{background:rgba(5,150,105,.2);color:#34d399;}
+.rc-tag-gov{background:rgba(45,91,227,.2);color:#93B4FF;}
+.research-card h3{font-family:var(--serif);font-size:1.125rem;font-weight:400;color:#fff;line-height:1.35;margin-bottom:.5rem;}
+.research-card p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:1rem;}
+.rc-read{display:inline-flex;align-items:center;gap:.375rem;font-size:.8125rem;font-weight:600;color:#93B4FF;transition:color .2s;}
+.rc-read:hover{color:#fff;}
+
+/* ════════════════════════════════════════
+   §8 CONTACT — darkest zone
+════════════════════════════════════════ */
+.section-contact { padding:6rem 0 5rem; }
+.contact-grid {
+  display:grid; grid-template-columns:1fr; gap:4rem;
+  align-items:start; margin-top:3.5rem;
+}
+@media(min-width:900px){.contact-grid{grid-template-columns:1fr 1.1fr;}}
+.ci-row {
+  display:flex; align-items:center; gap:1rem;
+  padding:1rem 1.25rem; border-radius:.875rem;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);
+  margin-bottom:.875rem;
+  transition:background .25s;
+}
+.ci-row:hover{background:rgba(255,255,255,.06);}
+.ci-icon{width:2.5rem;height:2.5rem;border-radius:.625rem;background:rgba(45,91,227,.12);border:1px solid rgba(45,91,227,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ci-label{display:block;font-size:.8125rem;font-weight:600;color:#fff;margin-bottom:.125rem;}
+.ci-val{font-size:.8125rem;color:rgba(255,255,255,.45);}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:.625rem;
+  background:#25D366;color:#fff;padding:.875rem 1.5rem;
+  border-radius:100px;font-size:.9375rem;font-weight:700;
+  margin-top:1.5rem;transition:background .2s;
+}
+.wa-btn:hover{background:#1da851;}
+.clients-strip{margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.07);}
+.clients-strip p{font-family:var(--mono);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem;}
+.client-names{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;}
+.client-names span{font-family:var(--serif);font-size:1rem;color:rgba(255,255,255,.2);transition:color .2s;cursor:default;}
+.client-names span:hover{color:rgba(255,255,255,.6);}
+
+/* Contact form */
+.form-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:2.25rem;backdrop-filter:blur(16px);}
+.form-title{font-family:var(--serif);font-size:1.75rem;color:#fff;margin-bottom:.375rem;}
+.form-sub{font-size:.9rem;color:rgba(255,255,255,.4);margin-bottom:2rem;line-height:1.6;}
+.f-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.75rem;}
+.f-tab{padding:.625rem 1rem;font-family:var(--sans);font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.4);border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:color .2s,border-color .2s;}
+.f-tab:hover{color:rgba(255,255,255,.75);}
+.f-tab.on{color:#fff;border-bottom-color:#fff;}
+.f-form{display:none;}
+.f-form.on{display:block;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.field{margin-bottom:1rem;}
+.field label{display:block;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:.375rem;letter-spacing:.02em;}
+.field input,.field select,.field textarea{width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:.625rem;color:#fff;font-family:var(--sans);font-size:.875rem;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;min-height:44px;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,91,227,.15);}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.2);}
+.field select option{background:#141820;color:#fff;}
+.field textarea{resize:vertical;min-height:6.5rem;line-height:1.6;}
+.f-submit{width:100%;margin-top:.5rem;padding:.9375rem;background:var(--blue);color:#fff;border-radius:.625rem;font-size:.9375rem;font-weight:700;transition:background .2s;}
+.f-submit:hover{background:#1E3FA8;}
+.f-note{font-size:.6875rem;color:rgba(255,255,255,.2);text-align:center;margin-top:.875rem;font-family:var(--mono);letter-spacing:.04em;}
+.f-success{display:none;text-align:center;padding:3rem 1rem;}
+.f-success.on{display:block;}
+.f-success-icon{width:4rem;height:4rem;border-radius:50%;background:rgba(45,91,227,.15);border:1px solid rgba(45,91,227,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;}
+.f-success h3{font-family:var(--serif);font-size:1.75rem;color:#fff;margin-bottom:.625rem;}
+.f-success p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:22rem;margin:0 auto;}
+
+/* ════════════════════════════════════════
+   CTA BAND
+════════════════════════════════════════ */
+.cta-band{padding:5rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.cta-band h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.75rem);color:#fff;margin-bottom:.75rem;letter-spacing:-.02em;}
+.cta-band h2 em{font-style:italic;color:#93B4FF;}
+.cta-band p{color:rgba(255,255,255,.4);font-size:1.0625rem;max-width:28rem;margin:0 auto 2rem;line-height:1.7;}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer{border-top:1px solid rgba(255,255,255,.05);padding:4rem 0 calc(2.5rem + env(safe-area-inset-bottom));background:rgba(0,0,0,.4);}
+.footer-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem;margin-bottom:2.5rem;}
+.footer-brand{flex:0 0 auto;max-width:22rem;}
+.footer-wordmark{font-family:var(--serif);font-size:1.75rem;color:#fff;letter-spacing:-.02em;margin-bottom:.375rem;}
+.footer-desc{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:.5rem;}
+.footer-desc a{color:var(--gold);}
+.footer-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;flex:1;}
+@media(min-width:768px){.footer-cols{grid-template-columns:repeat(4,1fr);}}
+.footer-col h4{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:1.125rem;}
+.footer-col li{margin-bottom:.5rem;list-style:none;}
+.footer-col a{font-size:.875rem;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.6875rem;color:rgba(255,255,255,.2);}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a:hover{color:#fff;}
+/* ════════════════════════════════════════
+   GLOW ORBS — ambient atmosphere
+════════════════════════════════════════ */
+.glow-orb {
+  position:fixed; border-radius:50%;
+  filter:blur(130px); z-index:-1; pointer-events:none;
+  animation:orb-float 20s ease-in-out infinite alternate;
+}
+.glow-orb-1 { width:700px; height:700px; top:-200px; left:-150px; background:rgba(45,91,227,.18); animation-duration:22s; }
+.glow-orb-2 { width:600px; height:600px; top:40%; right:-180px; background:rgba(107,63,160,.15); animation-delay:-7s; animation-duration:26s; }
+.glow-orb-3 { width:500px; height:500px; bottom:-100px; left:25%; background:rgba(196,98,10,.08); animation-delay:-13s; animation-duration:30s; }
+.glow-orb-4 { width:400px; height:400px; top:60%; left:45%; background:rgba(26,122,74,.07); animation-delay:-4s; animation-duration:18s; }
+@keyframes orb-float {
+  0%   { transform:translate(0,0) scale(1); }
+  33%  { transform:translate(4%,8%) scale(1.08); }
+  66%  { transform:translate(-3%,5%) scale(.95); }
+  100% { transform:translate(5%,-6%) scale(1.04); }
+}
+
+/* ════════════════════════════════════════
+   VALUES SECTION
+════════════════════════════════════════ */
+.section-values { padding:6rem 0; }
+.values-grid {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:1rem; margin-top:3rem;
+}
+@media(max-width:1024px){.values-grid{grid-template-columns:repeat(3,1fr);}}
+
+@media(max-width:640px){
+  .values-grid{grid-template-columns:1fr 1fr;}
+  .value-card:last-child{grid-column:span 2;}
+}
+@media(max-width:400px){
+  .values-grid{grid-template-columns:1fr;}
+  .value-card:last-child{grid-column:span 1;}
+}
+
+.value-card {
+  padding:1.75rem 1.5rem; border-radius:1rem;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  position:relative; overflow:hidden;
+  transition:background .3s, border-color .3s, transform .35s var(--ease);
+}
+.value-card:hover { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.16); transform:translateY(-4px); }
+.value-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--blue); transform:scaleX(0); transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.value-card:hover::before { transform:scaleX(1); }
+.value-num { font-family:var(--mono); font-size:.5625rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); margin-bottom:1.25rem; }
+.value-card h3 { font-family:var(--serif); font-size:1.25rem; color:#fff; margin-bottom:.5rem; }
+.value-card p { font-size:.875rem; color:rgba(255,255,255,.45); line-height:1.65; }
+
+/* ════════════════════════════════════════
+   BLOG PLACEHOLDER SECTION
+════════════════════════════════════════ */
+.section-blog { padding:6rem 0; }
+.blog-coming-hero {
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:5rem 2rem; border-radius:1.5rem;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(20px);
+  position:relative; overflow:hidden;
+}
+.blog-coming-hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(45,91,227,.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+.blog-coming-hero h2 { font-family:var(--serif); font-size:clamp(2rem,4vw,3.25rem); color:#fff; line-height:1.1; letter-spacing:-.025em; margin-bottom:1rem; position:relative; z-index:1; }
+.blog-coming-hero h2 em { font-style:italic; color:#93B4FF; }
+.blog-coming-hero p { font-size:1.0625rem; color:rgba(255,255,255,.45); max-width:30rem; line-height:1.7; margin-bottom:2rem; position:relative; z-index:1; }
+.blog-sub-form { display:flex; gap:0; max-width:400px; width:100%; border-radius:.625rem; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.4); position:relative; z-index:1; }
+.blog-sub-form input { flex:1; font-family:var(--sans); font-size:.875rem; padding:.875rem 1.125rem; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.12); border-right:none; border-radius:.625rem 0 0 .625rem; color:#fff; outline:none; transition:border-color .2s; }
+.blog-sub-form input:focus { border-color:rgba(45,91,227,.5); }
+.blog-sub-form input::placeholder { color:rgba(255,255,255,.25); }
+.blog-sub-form button { background:var(--blue); color:#fff; padding:.875rem 1.5rem; font-size:.875rem; font-weight:700; border:none; cursor:pointer; border-radius:0 .625rem .625rem 0; white-space:nowrap; transition:background .2s; }
+.blog-sub-form button:hover { background:#1E3FA8; }
+.blog-placeholder-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+@media(max-width:768px){
+  .hero-float,.hero-badge{display:none;}
+  .hero-visual{justify-content:center;}
+  .hero-img-wrap{max-width:320px;margin:0 auto;}
+  .blog-placeholder-grid{grid-template-columns:1fr;}}
+.blog-ph-card {
+  padding:1.5rem; border-radius:1rem;
+  background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+  opacity:.45; pointer-events:none;
+}
+.blog-ph-tag { font-family:var(--mono); font-size:.5625rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:.875rem; display:block; }
+.blog-ph-title { font-family:var(--serif); font-size:1.125rem; color:rgba(255,255,255,.6); line-height:1.35; margin-bottom:.5rem; font-style:italic; }
+.blog-ph-desc { font-size:.8125rem; color:rgba(255,255,255,.25); line-height:1.6; }
+.blog-topics { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:2.5rem; }
+.blog-topic { font-family:var(--mono); font-size:.625rem; letter-spacing:.1em; text-transform:uppercase; padding:.375rem .875rem; border-radius:100px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.5); transition:background .2s, border-color .2s, color .2s; }
+.blog-topic:hover { background:rgba(45,91,227,.12); border-color:rgba(45,91,227,.25); color:#93B4FF; }
+
+/* ════════════════════════════════════════
+   §5b ENLYST ACADEMY SECTION
+════════════════════════════════════════ */
+.section-academy { padding:6rem 0; }
+.academy-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:3rem;
+}
+@media(max-width:768px){ .academy-grid{grid-template-columns:1fr;} }
+.academy-card {
+  padding:2.25rem 2rem; border-radius:1.25rem;
+  position:relative; overflow:hidden;
+  backdrop-filter:blur(18px);
+  transition:background .35s, border-color .35s, transform .35s var(--ease), box-shadow .35s;
+}
+.academy-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.3);}
+.academy-card-main {
+  background:rgba(45,91,227,.1); border:1px solid rgba(45,91,227,.25);
+  grid-row:span 2;
+}
+.academy-card-main:hover{background:rgba(45,91,227,.16);border-color:rgba(45,91,227,.4);box-shadow:0 20px 48px rgba(45,91,227,.2);}
+.academy-card-stat {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+}
+.academy-card-ai {
+  background:rgba(107,63,160,.1); border:1px solid rgba(107,63,160,.25);
+}
+.academy-card-ai:hover{background:rgba(107,63,160,.16);border-color:rgba(107,63,160,.4);}
+.academy-ghost {
+  position:absolute; bottom:-24px; right:-8px;
+  font-family:var(--serif); font-style:italic; font-size:8rem;
+  line-height:1; opacity:.04; pointer-events:none; color:#fff;
+}
+.academy-tag {
+  font-family:var(--mono); font-size:.5625rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  padding:.25rem .625rem; border-radius:4px;
+  margin-bottom:1.25rem; display:inline-block;
+}
+.atag-blue{background:rgba(45,91,227,.18);color:rgba(147,180,255,.9);}
+.atag-purple{background:rgba(107,63,160,.2);color:#c4b5fd;}
+.atag-gold{background:rgba(196,162,74,.15);color:var(--gold);}
+.academy-card h3{font-family:var(--serif);font-size:1.75rem;font-weight:400;color:#fff;letter-spacing:-.02em;margin-bottom:.625rem;line-height:1.15;}
+.academy-card h3 em{font-style:italic;}
+.academy-card p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.25rem;}
+.academy-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;}
+.academy-list li{display:flex;align-items:flex-start;gap:.625rem;font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.5;}
+.academy-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:#93B4FF;flex-shrink:0;margin-top:.45rem;}
+.academy-stat-num{font-family:var(--serif);font-size:3rem;color:#fff;line-height:1;letter-spacing:-.03em;}
+.academy-stat-lbl{font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.375rem;}
+.academy-stat-sub{font-size:.8125rem;color:rgba(255,255,255,.4);margin-top:.5rem;line-height:1.5;}
+.intel-badge-row{display:flex;align-items:center;gap:.625rem;padding:.75rem 1rem;border-radius:.625rem;background:rgba(0,71,171,.15);border:1px solid rgba(0,71,171,.3);margin-top:1.25rem;}
+.intel-badge-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(147,180,255,.8);}
+
+/* ════════════════════════════════════════
+   §5c FOUNDATION SECTION
+════════════════════════════════════════ */
+.section-foundation{padding:6rem 0;}
+.foundation-inner{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center;
+  padding:3.5rem 3rem;border-radius:1.5rem;
+  background:rgba(196,162,74,.06);border:1px solid rgba(196,162,74,.18);
+  backdrop-filter:blur(18px);position:relative;overflow:hidden;
+}
+@media(max-width:768px){.foundation-inner{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 1.75rem;}}
+.foundation-inner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.foundation-eyebrow{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.875rem;color:var(--gold);}
+.foundation-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;letter-spacing:-.025em;color:#fff;margin-bottom:1rem;}
+.foundation-title em{font-style:italic;color:var(--gold);}
+.foundation-body{font-size:1rem;line-height:1.8;color:rgba(255,255,255,.5);margin-bottom:1.75rem;}
+.foundation-pillars{display:flex;flex-direction:column;gap:.625rem;}
+.foundation-pillar{display:flex;align-items:center;gap:.75rem;padding:.625rem .875rem;border-radius:.625rem;background:rgba(196,162,74,.06);border:1px solid rgba(196,162,74,.12);}
+.foundation-pillar-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.foundation-pillar-text{font-size:.875rem;color:rgba(255,255,255,.6);}
+.foundation-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;color:var(--void);background:var(--gold);padding:.875rem 1.75rem;border-radius:100px;box-shadow:0 4px 24px rgba(196,162,74,.3);transition:background .2s,transform .15s;margin-top:1.5rem;}
+.foundation-cta:hover{background:#a88730;transform:translateY(-2px);}
+.foundation-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.foundation-stat{padding:1.5rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(196,162,74,.12);text-align:center;}
+.foundation-stat-num{font-family:var(--serif);font-size:2.25rem;color:var(--gold);line-height:1;letter-spacing:-.025em;}
+.foundation-stat-lbl{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.375rem;}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — MOBILE CRITICAL
+════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .wrap { padding:0 1.25rem; }
+}
+@media(max-width:768px){
+  .topbar { display:none; }
+  .hero-float, .hero-badge { display:none; }
+  .hero-visual { justify-content:center; }
+  .hero-img-wrap { max-width:320px; margin:0 auto; }
+  .hero h1 { font-size:clamp(2.25rem,8vw,3.5rem); }
+  .footer-top { flex-direction:column; }
+  .footer-bottom { flex-direction:column; gap:.5rem; text-align:center; }
+  .academy-grid { grid-template-columns:1fr; }
+  .foundation-inner { grid-template-columns:1fr; gap:2.5rem; padding:2.5rem 1.75rem; }
+  .foundation-stat-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .contact-grid { grid-template-columns:1fr; }
+  .partners-grid { grid-template-columns:1fr; }
+  .fw-grid { grid-template-columns:1fr 1fr; }
+  .research-grid { grid-template-columns:1fr; }
+}
+@media(max-width:480px){
+  .academy-stat-num { font-size:2.25rem; }
+  .foundation-stat-num { font-size:1.75rem; }
+  .b-cell { padding:1.5rem 1.25rem; }
+  .hero-proof { gap:1.25rem; }
+  .hero-stat strong { font-size:1.5rem; }
+}
+
+/* ══════════════════════════════════════════
+   ENLYSTNOW MOTHER BRAND — FULL DESIGN
+══════════════════════════════════════════ */
+
+/* ── HERO ──────────────────────────────── */
+.enw-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: calc(var(--bar) + var(--nav) + 4rem) 0 5rem;
+}
+.enw-hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(196,162,74,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 30%, rgba(45,91,227,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 60% 80%, rgba(107,63,160,.06) 0%, transparent 50%);
+}
+.enw-hero-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+@media(max-width:960px){ .enw-hero-inner { grid-template-columns:1fr; gap:3rem; } }
+
+/* Hero text */
+.enw-pill {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .375rem .875rem; border-radius: 9999px;
+  background: rgba(196,162,74,.1); border: 1px solid rgba(196,162,74,.25);
+  font-family: var(--mono); font-size: .625rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: #C4A24A;
+  margin-bottom: 1.75rem;
+}
+.enw-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #C4A24A; box-shadow: 0 0 8px #C4A24A;
+  animation: blink 2.5s ease-in-out infinite;
+}
+.enw-h1 {
+  font-family: var(--serif);
+  font-size: clamp(3.25rem,6.5vw,5.75rem);
+  font-weight: 400; line-height: 1.0; letter-spacing: -.04em;
+  color: #fff; margin-bottom: 1.5rem;
+}
+.enw-h1 em { font-style: italic; color: #C4A24A; }
+.enw-lead {
+  font-size: 1.125rem; line-height: 1.85;
+  color: rgba(255,255,255,.5);
+  max-width: 32rem; margin-bottom: 2.25rem;
+}
+.enw-hero-actions { display: flex; flex-wrap: wrap; gap: .875rem; }
+
+/* Hero right — four practice cards */
+.enw-practices {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: .875rem;
+}
+.enw-practice {
+  padding: 1.625rem 1.5rem; border-radius: 1.125rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(16px);
+  transition: background .3s, border-color .3s, transform .35s var(--ease);
+  cursor: default;
+}
+.enw-practice:hover {
+  background: rgba(255,255,255,.08);
+  transform: translateY(-3px);
+}
+.enw-practice-num {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.2); margin-bottom: .75rem;
+}
+.enw-practice-name {
+  font-family: var(--serif); font-size: 1.375rem;
+  color: #fff; line-height: 1; margin-bottom: .375rem;
+}
+.enw-practice-domain {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: .875rem;
+}
+.enw-practice-desc {
+  font-size: .8125rem; color: rgba(255,255,255,.4); line-height: 1.6;
+}
+.enw-practice-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  display: inline-block; margin-bottom: .5rem;
+}
+
+/* ── TAGLINE BAND ──────────────────────── */
+.enw-band {
+  padding: 2.5rem 0;
+  background: rgba(255,255,255,.025);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+}
+.enw-band-track {
+  display: flex; gap: 0;
+  animation: ticker 45s linear infinite;
+  width: max-content;
+}
+.enw-band-item {
+  display: inline-flex; align-items: center; gap: .75rem;
+  padding: 0 2.5rem;
+  font-family: var(--mono); font-size: .5625rem;
+  font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,255,.2); white-space: nowrap;
+}
+.enw-band-item::before { content: '·'; margin-right: .5rem; opacity: .4; }
+
+/* ── FRAMEWORK STORY ───────────────────── */
+.enw-story {
+  padding: 7rem 0;
+}
+.enw-story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+@media(max-width:960px){ .enw-story-grid { grid-template-columns:1fr; gap:3rem; } }
+
+.enw-eyebrow {
+  font-family: var(--mono); font-size: .6875rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #C4A24A; margin-bottom: .875rem;
+}
+.enw-section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.25rem,4.5vw,3.5rem);
+  font-weight: 400; line-height: 1.08;
+  letter-spacing: -.025em; color: #fff;
+  margin-bottom: 1.25rem;
+}
+.enw-section-title em { font-style: italic; color: #C4A24A; }
+.enw-body-text {
+  font-size: 1.0625rem; line-height: 1.85;
+  color: rgba(255,255,255,.5);
+}
+.enw-body-text p { margin-bottom: 1.25rem; }
+.enw-body-text p:last-child { margin-bottom: 0; }
+.enw-body-text strong { color: rgba(255,255,255,.8); font-weight: 600; }
+.enw-body-text em { font-style: italic; color: #C4A24A; }
+
+/* Four layer pillars */
+.enw-pillars {
+  display: flex; flex-direction: column; gap: .875rem;
+}
+.enw-pillar {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.25rem 1.5rem; border-radius: 1rem;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  transition: background .3s, border-color .3s, transform .3s var(--ease);
+}
+.enw-pillar:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(196,162,74,.2);
+  transform: translateX(4px);
+}
+.enw-pillar-icon {
+  width: 2.25rem; height: 2.25rem; border-radius: .625rem;
+  flex-shrink: 0; display: flex; align-items: center;
+  justify-content: center;
+}
+.enw-pillar-text h4 {
+  font-family: var(--serif); font-size: 1rem; color: #fff;
+  margin-bottom: .25rem;
+}
+.enw-pillar-text p {
+  font-size: .8125rem; color: rgba(255,255,255,.4); line-height: 1.6;
+}
+
+/* ── FOUR PRACTICES DEEP ───────────────── */
+.enw-practices-section { padding: 6rem 0; }
+.enw-practices-header { max-width: 44rem; margin-bottom: 4rem; }
+.enw-practices-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media(max-width:900px){ .enw-practices-grid { grid-template-columns:1fr; } }
+
+.enw-pcard {
+  padding: 2.5rem 2.25rem; border-radius: 1.375rem;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(16px);
+  position: relative; overflow: hidden;
+  transition: background .35s, border-color .35s, transform .35s var(--ease);
+}
+.enw-pcard:hover {
+  background: rgba(255,255,255,.07);
+  transform: translateY(-4px);
+}
+.enw-pcard::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+}
+.enw-pcard.hr { border-color: rgba(45,91,227,.18); }
+.enw-pcard.hr::before { background: #2D5BE3; }
+.enw-pcard.hr:hover { border-color: rgba(45,91,227,.35); }
+.enw-pcard.fin { border-color: rgba(26,122,74,.18); }
+.enw-pcard.fin::before { background: #1A7A4A; }
+.enw-pcard.fin:hover { border-color: rgba(26,122,74,.35); }
+.enw-pcard.biz { border-color: rgba(196,98,10,.18); }
+.enw-pcard.biz::before { background: #C4620A; }
+.enw-pcard.biz:hover { border-color: rgba(196,98,10,.35); }
+.enw-pcard.tch { border-color: rgba(107,63,160,.18); }
+.enw-pcard.tch::before { background: #6B3FA0; }
+.enw-pcard.tch:hover { border-color: rgba(107,63,160,.35); }
+
+.enw-pcard-practice {
+  font-family: var(--mono); font-size: .5rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: .875rem;
+}
+.enw-pcard-name {
+  font-family: var(--serif); font-size: 2rem;
+  font-weight: 400; color: #fff; margin-bottom: .25rem;
+  letter-spacing: -.025em;
+}
+.enw-pcard-domain {
+  font-family: var(--mono); font-size: .5625rem;
+  letter-spacing: .1em; color: rgba(255,255,255,.3);
+  margin-bottom: 1.25rem;
+}
+.enw-pcard-body {
+  font-size: .9rem; color: rgba(255,255,255,.45);
+  line-height: 1.7; margin-bottom: 1.5rem;
+}
+.enw-pcard-services {
+  display: flex; flex-direction: column; gap: .5rem;
+  margin-bottom: 1.625rem;
+}
+.enw-pcard-svc {
+  display: flex; align-items: flex-start; gap: .75rem;
+  font-size: .8125rem; color: rgba(255,255,255,.5); line-height: 1.5;
+}
+.svc-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0; margin-top: .375rem;
+}
+.enw-pcard-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono); font-size: .5625rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .625rem 1.125rem; border-radius: .5rem;
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.6);
+  transition: color .2s, border-color .2s, background .2s;
+  text-decoration: none;
+}
+.enw-pcard-link:hover {
+  color: #fff; border-color: rgba(255,255,255,.4);
+  background: rgba(255,255,255,.05);
+}
+
+/* ── AI POLICY BAND ────────────────────── */
+.enw-ai-section {
+  padding: 6rem 0;
+  background: rgba(45,91,227,.04);
+  border-top: 1px solid rgba(45,91,227,.1);
+  border-bottom: 1px solid rgba(45,91,227,.1);
+}
+.enw-ai-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+@media(max-width:900px){ .enw-ai-grid { grid-template-columns:1fr; gap:3rem; } }
+
+.enw-ai-stats { display: grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.enw-ai-stat {
+  padding: 1.75rem 1.5rem; border-radius: 1rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  transition: background .3s, transform .3s var(--ease);
+}
+.enw-ai-stat:hover { background: rgba(255,255,255,.07); transform: translateY(-3px); }
+.enw-ai-stat.wide { grid-column: span 2; background: rgba(45,91,227,.06); border-color: rgba(45,91,227,.2); }
+.enw-ai-num {
+  font-family: var(--serif); font-size: 2.5rem;
+  color: #93B4FF; line-height: 1; letter-spacing: -.03em;
+  margin-bottom: .375rem;
+}
+.enw-ai-lbl {
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); line-height: 1.5;
+}
+
+.enw-opp-table {
+  display: flex; flex-direction: column; gap: .625rem;
+  margin-top: 2rem;
+}
+.enw-opp-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .875rem 1.25rem; border-radius: .75rem;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.enw-opp-name { font-size: .875rem; color: rgba(255,255,255,.6); }
+.enw-opp-div { font-family: var(--mono); font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); }
+.enw-opp-tag {
+  font-family: var(--mono); font-size: .5rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .2rem .625rem; border-radius: .25rem;
+}
+.enw-opp-tag.hi { background: rgba(34,197,94,.12); color: #4ade80; }
+.enw-opp-tag.med { background: rgba(251,191,36,.12); color: #fbbf24; }
+
+/* ── GOVTECH ───────────────────────────── */
+.enw-govtech { padding: 6rem 0; }
+.enw-govtech-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.25rem; margin-top: 3rem;
+}
+@media(max-width:768px){ .enw-govtech-grid { grid-template-columns:1fr; } }
+.enw-gt {
+  padding: 2rem 1.875rem; border-radius: 1.25rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: background .3s, border-color .3s, transform .35s var(--ease);
+}
+.enw-gt:hover { background: rgba(255,255,255,.07); transform: translateY(-3px); }
+.enw-gt.delivered { border-left: 3px solid #22c55e; border-left-color: #22c55e; }
+.enw-gt.pipeline { border-left: 3px solid #2D5BE3; border-left-style: dashed; }
+.enw-gt-badge {
+  display: inline-flex; align-items: center; gap: .375rem;
+  font-family: var(--mono); font-size: .5rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .25rem .625rem; border-radius: .375rem;
+  margin-bottom: .875rem;
+}
+.enw-gt-badge.del { background: rgba(34,197,94,.1); color: #22c55e; }
+.enw-gt-badge.pip { background: rgba(45,91,227,.1); color: #93B4FF; }
+.enw-gt h3 { font-family: var(--serif); font-size: 1.25rem; color: #fff; margin-bottom: .5rem; }
+.enw-gt p { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.7; }
+.enw-gt-meta {
+  font-family: var(--mono); font-size: .5rem; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.2);
+  margin-top: .875rem; padding-top: .875rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+/* ── FOUNDATION ────────────────────────── */
+.enw-foundation {
+  padding: 6rem 0;
+  background: rgba(196,162,74,.04);
+  border-top: 1px solid rgba(196,162,74,.1);
+}
+.enw-found-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+@media(max-width:900px){ .enw-found-grid { grid-template-columns:1fr; gap:3rem; } }
+.enw-found-quote {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.25rem,2.5vw,1.625rem);
+  color: #fff; line-height: 1.5; margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid rgba(196,162,74,.35);
+}
+.enw-found-facts { display: flex; flex-direction: column; gap: .75rem; margin-top: 1.5rem; }
+.enw-found-fact {
+  display: flex; align-items: flex-start; gap: .875rem;
+  font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.65;
+}
+.enw-found-fact::before {
+  content: '◆'; color: #C4A24A; font-size: .4rem;
+  flex-shrink: 0; margin-top: .375rem; opacity: .7;
+}
+.enw-found-cards { display: flex; flex-direction: column; gap: 1rem; }
+.enw-found-card {
+  padding: 2rem; border-radius: 1.25rem;
+  background: rgba(196,162,74,.06);
+  border: 1px solid rgba(196,162,74,.15);
+  transition: background .3s, border-color .3s;
+}
+.enw-found-card:hover { background: rgba(196,162,74,.1); border-color: rgba(196,162,74,.25); }
+.enw-found-card-label {
+  font-family: var(--mono); font-size: .5rem; letter-spacing: .14em;
+  text-transform: uppercase; color: #C4A24A; margin-bottom: .75rem;
+}
+.enw-found-card h4 {
+  font-family: var(--serif); font-size: 1.25rem; color: #fff;
+  margin-bottom: .5rem;
+}
+.enw-found-card p {
+  font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.7;
+}
+
+/* ── SAFE ZONE ─────────────────────────── */
+.enw-safezone { padding: 6rem 0; }
+.enw-sz-steps {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+@media(max-width:768px){ .enw-sz-steps { grid-template-columns:1fr; } }
+.enw-sz-step {
+  padding: 2.5rem 2.25rem;
+  background: rgba(255,255,255,.02);
+  transition: background .3s;
+}
+.enw-sz-step:hover { background: rgba(255,255,255,.05); }
+.enw-sz-num {
+  font-family: var(--serif); font-size: 3rem;
+  color: rgba(196,162,74,.15); line-height: 1;
+  font-weight: 400; margin-bottom: .75rem;
+}
+.enw-sz-scope {
+  font-family: var(--mono); font-size: .5rem; letter-spacing: .14em;
+  text-transform: uppercase; color: #C4A24A;
+  margin-bottom: .625rem;
+}
+.enw-sz-step h3 {
+  font-family: var(--serif); font-size: 1.25rem; color: #fff;
+  margin-bottom: .625rem;
+}
+.enw-sz-step p {
+  font-size: .875rem; color: rgba(255,255,255,.4); line-height: 1.7;
+}
+
+/* ── CTA FINAL ─────────────────────────── */
+.enw-final-cta {
+  padding: 7rem 0; text-align: center;
+}
+.enw-cta-inner {
+  padding: 5rem 3.5rem; border-radius: 2rem;
+  background: rgba(196,162,74,.07);
+  border: 1px solid rgba(196,162,74,.2);
+  position: relative; overflow: hidden;
+  max-width: 52rem; margin: 0 auto;
+}
+.enw-cta-inner::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #C4A24A, transparent);
+}
+.enw-cta-ghost {
+  position: absolute; bottom: -2rem; right: -1rem;
+  font-family: var(--serif); font-style: italic;
+  font-size: 14rem; line-height: 1;
+  opacity: .03; color: #fff; pointer-events: none;
+  letter-spacing: -.04em;
+}
+.enw-cta-inner h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.25rem,5vw,3.75rem);
+  color: #fff; margin-bottom: .875rem;
+  letter-spacing: -.03em;
+}
+.enw-cta-inner h2 em { font-style: italic; color: #C4A24A; }
+.enw-cta-inner p {
+  font-size: 1.125rem; color: rgba(255,255,255,.45);
+  max-width: 28rem; margin: 0 auto 2.5rem; line-height: 1.75;
+}
+.enw-cta-actions {
+  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+}
+.enw-btn-gold {
+  display: inline-flex; align-items: center; gap: .625rem;
+  font-size: .9375rem; font-weight: 700;
+  color: #0A0A0F; background: #C4A24A;
+  padding: 1rem 2.25rem; border-radius: 100px;
+  box-shadow: 0 4px 24px rgba(196,162,74,.3);
+  transition: background .2s, transform .15s, box-shadow .2s;
+  text-decoration: none;
+}
+.enw-btn-gold:hover {
+  background: #a88730; transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(196,162,74,.4);
+}
+
+/* ── FOOTER ENLYSUM ────────────────────── */
+.enw-footer {
+  background: #050508; padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.enw-footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.enw-footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  margin-bottom: 2rem;
+}
+@media(max-width:1024px){ .enw-footer-top { grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){ .enw-footer-top { grid-template-columns:1fr; } }
+.enw-footer-brand-name {
+  font-family: var(--serif); font-size: 1.375rem;
+  font-weight: 400; color: #C4A24A; margin-bottom: .5rem;
+  letter-spacing: -.015em;
+}
+.enw-footer-tagline {
+  font-size: .8125rem; color: rgba(255,255,255,.3);
+  line-height: 1.7; max-width: 20rem;
+}
+.enw-footer-col h4 {
+  font-family: var(--mono); font-size: .5rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.2); margin-bottom: 1rem;
+}
+.enw-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.enw-footer-col ul li a {
+  font-size: .8125rem; color: rgba(255,255,255,.3);
+  text-decoration: none; transition: color .2s;
+}
+.enw-footer-col ul li a:hover { color: rgba(255,255,255,.7); }
+.enw-footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-family: var(--mono); font-size: .5rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+}
+.enw-footer-bottom a { color: rgba(255,255,255,.25); text-decoration: none; }
+.enw-footer-bottom a:hover { color: rgba(255,255,255,.5); }
+
+/* ── RESPONSIVE ESSENTIALS ─────────────── */
+@media(max-width:1024px){
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .wrap { padding: 0 1.25rem; }
+}
+@media(max-width:768px){
+  .topbar { display: none; }
+  .enw-practices { grid-template-columns: 1fr; }
+  .enw-ai-stats { grid-template-columns: 1fr; }
+  .enw-ai-stat.wide { grid-column: span 1; }
+  .footer-top { flex-direction: column; }
+}
+@media(max-width:640px){
+  .enw-practices { grid-template-columns: 1fr 1fr; }
+}
+@media(prefers-reduced-motion:reduce){
+  .rv { transition: none; }
+  .glow-orb { animation: none; }
+  .enw-pill-dot { animation: none; }
+  .enw-band-track { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- BG -->
+<div class="bg-gradient" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="glow-orb glow-orb-1" aria-hidden="true" style="background:rgba(196,162,74,.1);top:-120px;left:-80px;"></div>
+<div class="glow-orb glow-orb-2" aria-hidden="true" style="background:rgba(45,91,227,.08);top:40%;right:-150px;"></div>
+<div class="glow-orb glow-orb-3" aria-hidden="true" style="background:rgba(107,63,160,.07);bottom:-80px;left:30%;"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Enlyst Framework</span>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <span>Pakistan&rsquo;s Institutional Operating Partner</span>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="mailto:info@enlystnow.com">info@enlystnow.com</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav scrolled" id="mainNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Enlystnow home">
+      <div class="brand-mark">
+        <svg width="32" height="34" viewBox="0 0 44 46" fill="none" aria-hidden="true">
+          <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4A24A"/>
+          <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4A24A" opacity=".58"/>
+          <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4A24A" opacity=".26"/>
+        </svg>
+      </div>
+      <span class="brand-wordmark" style="color:#C4A24A;">Enlystnow</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#framework" class="nav-btn" onclick="scrollToSection('#framework');return false;">Framework</a>
+      <a href="#practices" class="nav-btn" onclick="scrollToSection('#practices');return false;">Practices</a>
+      <a href="#ai-policy" class="nav-btn" onclick="scrollToSection('#ai-policy');return false;">AI Policy</a>
+      <a href="#govtech" class="nav-btn" onclick="scrollToSection('#govtech');return false;">GovTech</a>
+      <a href="#foundation" class="nav-btn" onclick="scrollToSection('#foundation');return false;">Foundation</a>
+      <a href="https://www.enlystnow.com/enlyst-contact.html" target="_blank" rel="noopener" class="nav-ext">Contact ↗</a>
+    </div>
+    <a href="contact.html" class="nav-cta-btn" style="background:#C4A24A;color:#0A0A0F;">Get in Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <a href="#framework" class="drawer-btn" onclick="scrollToSection('#framework');closeDrawer()">Framework</a>
+  <a href="#practices" class="drawer-btn" onclick="scrollToSection('#practices');closeDrawer()">Practices</a>
+  <a href="#ai-policy" class="drawer-btn" onclick="scrollToSection('#ai-policy');closeDrawer()">AI Policy</a>
+  <a href="#govtech" class="drawer-btn" onclick="scrollToSection('#govtech');closeDrawer()">GovTech</a>
+  <a href="#foundation" class="drawer-btn" onclick="scrollToSection('#foundation');closeDrawer()">Foundation</a>
+  <a href="contact.html" class="drawer-btn" onclick="closeDrawer()">Contact</a>
+  <a href="contact.html" class="drawer-cta" onclick="closeDrawer()" style="background:#C4A24A;color:#0A0A0F;">Get in Touch</a>
+</div>
+
+<main>
+
+<!-- §1 HERO -->
+<section class="enw-hero" id="top">
+  <div class="wrap">
+    <div class="enw-hero-inner">
+
+      <!-- LEFT: headline -->
+      <div class="rv">
+        <div class="enw-pill">
+          <span class="enw-pill-dot" aria-hidden="true"></span>
+          Enlyst Framework &middot; Four Practices &middot; One Standard
+        </div>
+        <h1 class="enw-h1">
+          No business<br/>
+          <em>fights alone.</em>
+        </h1>
+        <p class="enw-lead">Pakistan&rsquo;s institutional operating partner &mdash; four integrated practices delivering HR, finance, marketing, and technology as one coherent system. From seed-stage startups to government departments to social sector organisations.</p>
+        <div class="enw-hero-actions">
+          <a href="#framework" class="btn-primary" style="background:#C4A24A;color:#0A0A0F;" onclick="scrollToSection('#framework');return false;">
+            The Framework
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#practices" class="btn-ghost-white" onclick="scrollToSection('#practices');return false;">Explore Practices →</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: four practice cards -->
+      <div class="enw-practices rv">
+        <div class="enw-practice rv rv-d1">
+          <div class="enw-practice-dot" style="background:#2D5BE3;box-shadow:0 0 8px rgba(45,91,227,.4);"></div>
+          <div class="enw-practice-num">Practice 01</div>
+          <div class="enw-practice-name">enlyst</div>
+          <div class="enw-practice-domain">enlystnow.com</div>
+          <div class="enw-practice-desc">HR &amp; Talent. Bias-free pipelines, agentic sourcing, EOBI-compliant hiring, and AI workforce development.</div>
+        </div>
+        <div class="enw-practice rv rv-d2">
+          <div class="enw-practice-dot" style="background:#1A7A4A;box-shadow:0 0 8px rgba(26,122,74,.4);"></div>
+          <div class="enw-practice-num">Practice 02</div>
+          <div class="enw-practice-name">enlysum</div>
+          <div class="enw-practice-domain">enlysum.com</div>
+          <div class="enw-practice-desc">Finance &amp; CFO Advisory. Real-time financial intelligence, burn control, FBR &amp; SECP compliance, board-ready reporting.</div>
+        </div>
+        <div class="enw-practice rv rv-d3">
+          <div class="enw-practice-dot" style="background:#C4620A;box-shadow:0 0 8px rgba(196,98,10,.4);"></div>
+          <div class="enw-practice-num">Practice 03</div>
+          <div class="enw-practice-name">enlybiz</div>
+          <div class="enw-practice-domain">enlybiz.com</div>
+          <div class="enw-practice-desc">Marketing Engine. Attribution-first campaigns, brand architecture, ROI velocity, and institutional communications.</div>
+        </div>
+        <div class="enw-practice rv rv-d1">
+          <div class="enw-practice-dot" style="background:#6B3FA0;box-shadow:0 0 8px rgba(107,63,160,.4);"></div>
+          <div class="enw-practice-num">Practice 04</div>
+          <div class="enw-practice-name">enlysoft</div>
+          <div class="enw-practice-domain">enlysoft.net</div>
+          <div class="enw-practice-desc">Cloud &amp; Technology. GCP, Azure, AWS-certified. AI platforms, GovTech microservices, and production infrastructure.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TICKER BAND -->
+<div class="enw-band" aria-hidden="true">
+  <div class="enw-band-track">
+    <span class="enw-band-item">No Business Fights Alone</span>
+    <span class="enw-band-item">HR &amp; Talent</span>
+    <span class="enw-band-item">Financial Intelligence</span>
+    <span class="enw-band-item">Marketing Engine</span>
+    <span class="enw-band-item">Cloud &amp; GovTech</span>
+    <span class="enw-band-item">National AI Policy 2025</span>
+    <span class="enw-band-item">Himat-Hikmat Framework</span>
+    <span class="enw-band-item">Intel Gold Partner</span>
+    <span class="enw-band-item">GCP DRP ENLWHUGZ3</span>
+    <span class="enw-band-item">FBR &amp; SECP Compliant</span>
+    <span class="enw-band-item">SECP MCP Server</span>
+    <span class="enw-band-item">Zone-4 arrears · PKR 2.3M flagged · Punjab E&amp;T</span>
+    <span class="enw-band-item">Enlyst Framework v2.0</span>
+    <span class="enw-band-item">No Business Fights Alone</span>
+    <span class="enw-band-item">HR &amp; Talent</span>
+    <span class="enw-band-item">Financial Intelligence</span>
+    <span class="enw-band-item">Marketing Engine</span>
+    <span class="enw-band-item">Cloud &amp; GovTech</span>
+    <span class="enw-band-item">National AI Policy 2025</span>
+    <span class="enw-band-item">Himat-Hikmat Framework</span>
+    <span class="enw-band-item">Intel Gold Partner</span>
+    <span class="enw-band-item">GCP DRP ENLWHUGZ3</span>
+    <span class="enw-band-item">FBR &amp; SECP Compliant</span>
+  </div>
+</div>
+
+<!-- §2 FRAMEWORK STORY -->
+<section class="enw-story" id="framework">
+  <div class="wrap">
+    <div class="enw-story-grid">
+
+      <!-- LEFT: text -->
+      <div class="rv rv-d1">
+        <p class="enw-eyebrow">The Enlyst Framework</p>
+        <h2 class="enw-section-title">One institution.<br/><em>Four layers of impact.</em></h2>
+        <div class="enw-body-text">
+          <p>Enlyst is not a services firm with four departments. It is a <strong>framework</strong> &mdash; a governing architecture that ensures every practice operates to the same standards, shares the same institutional memory, and serves the same client across all four domains simultaneously.</p>
+          <p>What conglomerates do with industry, Enlyst does with professional services. The result is an operating partner that is structurally incapable of giving conflicting advice &mdash; because the same framework governs HR, finance, marketing, and technology decisions from a single point of institutional authority.</p>
+          <p>The framework operates across <em>four layers</em>, each reinforcing the others. The commercial layer serves startups and enterprises. The public sector layer delivers AI transformation to government institutions. The research layer produces the evidence that shapes policy. And the philanthropic layer ensures Pakistan&rsquo;s digital economy includes its most excluded communities.</p>
+        </div>
+        <a href="#practices" class="hh-read-btn" style="color:#C4A24A;border-color:rgba(196,162,74,.3);margin-top:2rem;" onclick="scrollToSection('#practices');return false;">
+          Explore the Four Practices
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- RIGHT: four pillars -->
+      <div class="rv rv-d2">
+        <div class="enw-pillars">
+          <div class="enw-pillar">
+            <div class="enw-pillar-icon" style="background:rgba(45,91,227,.1);border:1px solid rgba(45,91,227,.2);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D5BE3" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="enw-pillar-text">
+              <h4 style="color:#93B4FF;">Layer 01 &mdash; Commercial Ecosystem</h4>
+              <p>Four practices serving startups and enterprises &mdash; HR, finance, marketing, and technology &mdash; integrated under one governance standard and one institutional memory.</p>
+            </div>
+          </div>
+          <div class="enw-pillar">
+            <div class="enw-pillar-icon" style="background:rgba(15,76,117,.1);border:1px solid rgba(15,76,117,.2);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A9EFF" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="enw-pillar-text">
+              <h4 style="color:#4A9EFF;">Layer 02 &mdash; Public Sector &amp; GovTech</h4>
+              <p>Applied to government operations &mdash; SECP, Excise &amp; Taxation, AI infrastructure for departments. Aligned to Pakistan&rsquo;s National AI Policy 2025.</p>
+            </div>
+          </div>
+          <div class="enw-pillar">
+            <div class="enw-pillar-icon" style="background:rgba(139,26,26,.1);border:1px solid rgba(139,26,26,.2);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="1.75"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="enw-pillar-text">
+              <h4 style="color:#f87171;">Layer 03 &mdash; Policy &amp; Research</h4>
+              <p>GenAI adoption research, AI Workforce Readiness Index, National AI Policy implementation advisory, and contribution to Pakistan&rsquo;s institutional policy literature.</p>
+            </div>
+          </div>
+          <div class="enw-pillar">
+            <div class="enw-pillar-icon" style="background:rgba(196,162,74,.1);border:1px solid rgba(196,162,74,.2);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A24A" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="enw-pillar-text">
+              <h4 style="color:#C4A24A;">Layer 04 &mdash; Philanthropy</h4>
+              <p>The Himat-Hikmat Framework for Mathematics Education for the Visually Impaired in Punjab. Structural reform proposals backed by doctoral field research.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- §3 FOUR PRACTICES DEEP -->
+<section class="enw-practices-section" id="practices">
+  <div class="wrap">
+    <div class="enw-practices-header rv">
+      <p class="enw-eyebrow">The Four Practices</p>
+      <h2 class="enw-section-title">One framework.<br/><em>Four specialists.</em></h2>
+      <p class="fd-lead" style="font-size:1.0625rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:38rem;margin-top:1rem;">Each practice has its own domain, its own design language, and its own service depth &mdash; but all four operate under the same governance standard, share the same client context, and work together when the client requires more than one.</p>
+    </div>
+    <div class="enw-practices-grid">
+
+      <!-- Practice 01 — enlyst -->
+      <div class="enw-pcard hr rv rv-d1">
+        <div class="enw-pcard-practice" style="color:#2D5BE3;">Practice 01 &middot; HR &amp; Talent</div>
+        <div class="enw-pcard-name">enlyst</div>
+        <div class="enw-pcard-domain">enlystnow.com</div>
+        <div class="enw-pcard-body">Smart recruiting and AI workforce development for Pakistan&rsquo;s most demanding hiring assignments. Behavioural science, bias-free pipelines, and AI-aligned talent strategy.</div>
+        <div class="enw-pcard-services">
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#2D5BE3;"></span>Hiring &amp; executive search &mdash; end-to-end, documented, measurable</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#2D5BE3;"></span>AI trainer recruitment for the National AI Policy pipeline</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#2D5BE3;"></span>Performance management, KPI frameworks, training design</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#2D5BE3;"></span>EnlyRecruit OS &mdash; three-role Kanban ATS platform</div>
+        </div>
+        <a href="https://www.enlystnow.com" target="_blank" rel="noopener" class="enw-pcard-link">Visit enlystnow.com ↗</a>
+      </div>
+
+      <!-- Practice 02 — enlysum -->
+      <div class="enw-pcard fin rv rv-d2">
+        <div class="enw-pcard-practice" style="color:#1A7A4A;">Practice 02 &middot; Finance &amp; Accounting</div>
+        <div class="enw-pcard-name">enlysum</div>
+        <div class="enw-pcard-domain">enlysum.com</div>
+        <div class="enw-pcard-body">Institutional finance without audit conflicts. Real-time financial intelligence, CFO-level thinking at fractional cost, and the Andersen principle embedded in the architecture.</div>
+        <div class="enw-pcard-services">
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#1A7A4A;"></span>Fractional CFO &mdash; monthly model, weekly burn report, board decks</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#1A7A4A;"></span>Burn control &mdash; 18-month runway target, three-scenario modelling</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#1A7A4A;"></span>FBR &amp; SECP compliance &mdash; no internal audit (Andersen principle)</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#1A7A4A;"></span>Investor data room &mdash; 48-hour turnaround, due-diligence grade</div>
+        </div>
+        <a href="https://enlysum.com" target="_blank" rel="noopener" class="enw-pcard-link">Visit enlysum.com ↗</a>
+      </div>
+
+      <!-- Practice 03 — enlybiz -->
+      <div class="enw-pcard biz rv rv-d3">
+        <div class="enw-pcard-practice" style="color:#C4620A;">Practice 03 &middot; Marketing &amp; Growth</div>
+        <div class="enw-pcard-name">enlybiz</div>
+        <div class="enw-pcard-domain">enlybiz.com</div>
+        <div class="enw-pcard-body">Marketing driven by measurement, not intuition. Go-to-market architecture, brand positioning, and performance systems for all four commercial archetypes.</div>
+        <div class="enw-pcard-services">
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#C4620A;"></span>Go-to-market framework &mdash; audience, message, channel, conversion</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#C4620A;"></span>Brand architecture &mdash; positioning, language system, proof points</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#C4620A;"></span>Performance marketing &mdash; attribution engineering, CAC modelling</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#C4620A;"></span>Government &amp; institutional communications for AI Policy alignment</div>
+        </div>
+        <a href="https://enlybiz.com" target="_blank" rel="noopener" class="enw-pcard-link">Visit enlybiz.com ↗</a>
+      </div>
+
+      <!-- Practice 04 — enlysoft -->
+      <div class="enw-pcard tch rv rv-d1">
+        <div class="enw-pcard-practice" style="color:#6B3FA0;font-family:var(--mono);">Practice 04 &middot; Cloud &amp; Technology</div>
+        <div class="enw-pcard-name" style="font-family:var(--mono);font-size:1.625rem;font-weight:700;">enlysoft</div>
+        <div class="enw-pcard-domain">enlysoft.net</div>
+        <div class="enw-pcard-body">Infrastructure as strategic advantage. Production AI systems, GovTech microservices, and certified cloud delivery &mdash; not demos, not pilots.</div>
+        <div class="enw-pcard-services">
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#6B3FA0;"></span>GCP (DRP ENLWHUGZ3) &middot; Azure Gold &middot; AWS Advanced Partner</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#6B3FA0;"></span>Intel Partner Alliance Gold &mdash; Business ID 30000027303</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#6B3FA0;"></span>SECP MCP Server &mdash; AI connected to regulatory databases (delivered)</div>
+          <div class="enw-pcard-svc"><span class="svc-dot" style="background:#6B3FA0;"></span>AI Centres of Excellence &mdash; cloud infrastructure design &amp; delivery</div>
+        </div>
+        <a href="https://enlysoft.net" target="_blank" rel="noopener" class="enw-pcard-link">Visit enlysoft.net ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- §4 AI POLICY 2025 -->
+<section class="enw-ai-section" id="ai-policy">
+  <div class="wrap">
+    <div class="enw-ai-grid">
+
+      <!-- LEFT: text + opportunity table -->
+      <div class="rv rv-d1">
+        <p class="enw-eyebrow">National AI Policy 2025</p>
+        <h2 class="enw-section-title">Pakistan&rsquo;s AI ambition<br/><em>is historic.</em></h2>
+        <div class="enw-body-text" style="margin-bottom:2rem;">
+          <p>Cabinet-approved July 2025. Six pillars. One million AI professionals by 2030. Rs 24.9 trillion GDP potential unlocked. <strong>The policy exists. The execution gap is real.</strong></p>
+          <p>The organisation that can close it &mdash; simultaneously across HR, technology, finance, and communications &mdash; is exactly what the Enlyst Framework was built to be. <em>No single-service vendor can do this. Enlyst can.</em></p>
+        </div>
+        <div class="enw-opp-table">
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">AI Training Partner &mdash; 10,000 government officials</span>
+            <span class="enw-opp-div">enlyst</span>
+            <span class="enw-opp-tag hi">High Priority</span>
+          </div>
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">AI CoE Cloud Infrastructure</span>
+            <span class="enw-opp-div">enlysoft</span>
+            <span class="enw-opp-tag hi">High Priority</span>
+          </div>
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">AI Venture Fund Financial Advisory</span>
+            <span class="enw-opp-div">enlysum</span>
+            <span class="enw-opp-tag hi">High Priority</span>
+          </div>
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">Ministry AI Awareness Communications</span>
+            <span class="enw-opp-div">enlybiz</span>
+            <span class="enw-opp-tag med">Active Pipeline</span>
+          </div>
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">National AI Data Repository Architecture</span>
+            <span class="enw-opp-div">enlysoft</span>
+            <span class="enw-opp-tag med">Active Pipeline</span>
+          </div>
+          <div class="enw-opp-row">
+            <span class="enw-opp-name">HEC Graduate AI Programme Partnership</span>
+            <span class="enw-opp-div">enlyst</span>
+            <span class="enw-opp-tag med">Active Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: four stats -->
+      <div class="enw-ai-stats rv rv-d2">
+        <div class="enw-ai-stat wide">
+          <div class="enw-ai-num">1,000,000</div>
+          <div class="enw-ai-lbl">AI professionals to train by 2030<br/>From a base where &lt;10% of Pakistan&rsquo;s IT workforce is AI-skilled</div>
+        </div>
+        <div class="enw-ai-stat">
+          <div class="enw-ai-num">10,000</div>
+          <div class="enw-ai-lbl">New AI trainers needed by 2027<br/>enlyst positioned as delivery partner</div>
+        </div>
+        <div class="enw-ai-stat">
+          <div class="enw-ai-num">50,000</div>
+          <div class="enw-ai-lbl">Civic AI projects over 5 years<br/>enlysoft qualified to bid</div>
+        </div>
+        <div class="enw-ai-stat">
+          <div class="enw-ai-num">$2.7B</div>
+          <div class="enw-ai-lbl">Projected AI sector size by 2030<br/>22% annual growth rate</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- §5 GOVTECH -->
+<section class="enw-govtech" id="govtech">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="enw-eyebrow">Public Sector Track Record</p>
+      <h2 class="enw-section-title">Government work.<br/><em>Delivered.</em></h2>
+      <p class="fd-lead" style="font-size:1.0625rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:38rem;margin-top:1rem;">Enlyst has already moved from concept to delivery in Pakistan&rsquo;s public sector. Not pilot projects. Not proposals. Running systems in live government environments.</p>
+    </div>
+    <div class="enw-govtech-grid">
+
+      <div class="enw-gt delivered rv rv-d1">
+        <div class="enw-gt-badge del">&#10003; Delivered</div>
+        <h3>SECP MCP Server</h3>
+        <p>AI infrastructure connecting Securities &amp; Exchange Commission of Pakistan databases to large language models. Enables AI-powered querying of regulatory and corporate data at institutional scale.</p>
+        <div class="enw-gt-meta">Department: SECP &nbsp;&middot;&nbsp; Practice: enlysoft &nbsp;&middot;&nbsp; Type: AI Infrastructure</div>
+      </div>
+
+      <div class="enw-gt delivered rv rv-d2">
+        <div class="enw-gt-badge del">&#10003; Delivered</div>
+        <h3>Excise &amp; Taxation Department</h3>
+        <p>Strategic technology projects for Punjab&rsquo;s Excise &amp; Taxation Department &mdash; evaluation, monitoring, and modernisation of assessment workflows and field operations. Zone 18 Lahore intelligence dashboard.</p>
+        <div class="enw-gt-meta">Department: Punjab E&amp;T &nbsp;&middot;&nbsp; Practice: enlysoft &nbsp;&middot;&nbsp; Type: GovTech</div>
+      </div>
+
+      <div class="enw-gt delivered rv rv-d3">
+        <div class="enw-gt-badge del">&#10003; Delivered</div>
+        <h3>GITTC AI Training Platform</h3>
+        <p>Government IT Training Centre Lahore &mdash; AI literacy curriculum delivery system for public sector officers. Intel Partner University curriculum integrated. 800+ courses, 30+ certifications available.</p>
+        <div class="enw-gt-meta">Department: GITTC Lahore &nbsp;&middot;&nbsp; Practice: enlyst &nbsp;&middot;&nbsp; Cert: Intel Gold 30000027303</div>
+      </div>
+
+      <div class="enw-gt pipeline rv rv-d1">
+        <div class="enw-gt-badge pip">Active Pipeline</div>
+        <h3>MoITT AI Training Programme</h3>
+        <p>Enlyst positioned as private sector delivery partner for the Ministry of IT &amp; Telecom&rsquo;s 10,000 government official AI training initiative. Competency frameworks, trainer placement, and progress dashboards.</p>
+        <div class="enw-gt-meta">Department: MoITT &nbsp;&middot;&nbsp; Practice: enlyst &nbsp;&middot;&nbsp; Aligned: AI Policy 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- §6 SAFE ZONE METHODOLOGY -->
+<section class="enw-safezone" id="methodology">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;margin-bottom:0;">
+      <p class="enw-eyebrow">The Methodology</p>
+      <h2 class="enw-section-title">The Safe Zone.<br/><em>For any institution.</em></h2>
+      <p class="fd-lead" style="font-size:1.0625rem;line-height:1.8;color:rgba(255,255,255,.5);margin-top:1rem;max-width:38rem;">Originally designed for seed-stage startups, the Safe Zone methodology now scales to enterprise groups, government departments, and institutional transformation programmes.</p>
+    </div>
+    <div class="enw-sz-steps rv">
+      <div class="enw-sz-step">
+        <div class="enw-sz-num">01</div>
+        <div class="enw-sz-scope">Weeks 1&ndash;4</div>
+        <h3>Discovery &amp; Audit</h3>
+        <p>Comprehensive mapping of infrastructure, legal compliance (FBR, SECP, Punjab Finance Act), HR gaps, brand positioning, and technology architecture. Government clients: regulatory and data governance audit included.</p>
+      </div>
+      <div class="enw-sz-step">
+        <div class="enw-sz-num">02</div>
+        <div class="enw-sz-scope">Months 2&ndash;5</div>
+        <h3>Safe Zone Build</h3>
+        <p>All four practices deploy simultaneously &mdash; financial systems, talent infrastructure, communications strategy, and technology stack. The Safe Zone is achieved when the organisation operates without existential risk in any dimension.</p>
+      </div>
+      <div class="enw-sz-step">
+        <div class="enw-sz-num">03</div>
+        <div class="enw-sz-scope">Month 6 onwards</div>
+        <h3>Permanent Partnership</h3>
+        <p>Sustained operational retainer &mdash; continuous KPI reviews, AI infrastructure maintenance, intern pipeline integration, and policy alignment updates. The relationship deepens as the institution scales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §7 FOUNDATION -->
+<section class="enw-foundation" id="foundation">
+  <div class="wrap">
+    <div class="enw-found-grid">
+
+      <!-- LEFT: text -->
+      <div class="rv rv-d1">
+        <p class="enw-eyebrow">The Enlyst Foundation</p>
+        <h2 class="enw-section-title">The framework no<br/><em>one else built.</em></h2>
+        <div class="enw-found-quote">
+          &ldquo;Financial stipends without instructional capacity institutionalise inequality rather than resolve it.&rdquo;
+        </div>
+        <div class="enw-body-text" style="margin-bottom:1.5rem;">
+          <p>The Himat-Hikmat Framework confronts what most organisations avoid &mdash; the systemic failure at the intersection of disability, education, and public funding in Punjab. Courage and wisdom. Six years of doctoral field research. Four legislative reform proposals.</p>
+        </div>
+        <div class="enw-found-facts">
+          <div class="enw-found-fact">24.3% attrition of VI students from Grade 8 to matriculation &mdash; documented field data</div>
+          <div class="enw-found-fact">37,000+ children in the primary research catchment across Punjab divisions</div>
+          <div class="enw-found-fact">55% of teachers lack AI curriculum readiness &mdash; doctoral field observation</div>
+          <div class="enw-found-fact">Four legislative proposals: teacher standards, Braille curriculum, independent audits, and provincial law</div>
+        </div>
+        <a href="https://www.enlystnow.com/enlyst-foundation.html" class="hh-read-btn" style="color:#C4A24A;border-color:rgba(196,162,74,.3);margin-top:2rem;">
+          Read the Research
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- RIGHT: cards -->
+      <div class="enw-found-cards rv rv-d2">
+        <div class="enw-found-card">
+          <div class="enw-found-card-label">Primary Research Output</div>
+          <h4>The Himat-Hikmat Framework</h4>
+          <p>37,100 words of original doctoral field research. Six chapters. A comprehensive indigenous Pakistani theoretical model for mathematics education among visually impaired students in Punjab.</p>
+        </div>
+        <div class="enw-found-card">
+          <div class="enw-found-card-label">Active Programme</div>
+          <h4>Teaching Teachers of Disabled Students</h4>
+          <p>Structured capacity-building workshops for VI mathematics teachers across Punjab &mdash; directly targeting the 79% competency gap documented in the field research.</p>
+        </div>
+        <div class="enw-found-card">
+          <div class="enw-found-card-label">Roadmap 2026&ndash;2030</div>
+          <h4>From Thesis to National Policy</h4>
+          <p>Thesis completion &rarr; Punjab Assembly legislative proposal &rarr; province-wide teacher training &rarr; national replication across all four provinces &rarr; South Asia expansion.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- §8 CTA -->
+<section class="enw-final-cta" id="contact">
+  <div class="wrap">
+    <div class="enw-cta-inner rv">
+      <div class="enw-cta-ghost" aria-hidden="true">E</div>
+      <p class="enw-eyebrow" style="display:flex;justify-content:center;">Start Here</p>
+      <h2>One framework.<br/>Four layers of <em>impact.</em></h2>
+      <p>Whether you are a startup founder, a government department, a research institution, or a policy maker &mdash; there is a layer of the Enlyst Framework built for you.</p>
+      <div class="enw-cta-actions">
+        <a href="contact.html" class="enw-btn-gold">
+          Get in Touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#practices" class="btn-ghost-white" onclick="scrollToSection('#practices');return false;">Explore Practices →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="enw-footer">
+  <div class="enw-footer-inner">
+    <div class="enw-footer-top">
+      <div>
+        <div class="enw-footer-brand-name">Enlystnow</div>
+        <p class="enw-footer-tagline">Pakistan&rsquo;s institutional operating partner. Four practices, one framework, one standard of delivery. No business fights alone.</p>
+      </div>
+      <div class="enw-footer-col">
+        <h4>Practices</h4>
+        <ul>
+          <li><a href="https://www.enlystnow.com" target="_blank" rel="noopener">enlyst &mdash; HR &amp; Talent ↗</a></li>
+          <li><a href="https://enlysum.com" target="_blank" rel="noopener">enlysum &mdash; Finance ↗</a></li>
+          <li><a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz &mdash; Marketing ↗</a></li>
+          <li><a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft &mdash; Cloud ↗</a></li>
+        </ul>
+      </div>
+      <div class="enw-footer-col">
+        <h4>Framework</h4>
+        <ul>
+          <li><a href="the-framework.html">The Framework</a></li>
+          <li><a href="govtech.html">GovTech</a></li>
+          <li><a href="startup-safe-zone.html">Safe Zone</a></li>
+          <li><a href="foundation.html">Foundation</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+        </ul>
+      </div>
+      <div class="enw-footer-col">
+        <h4>Research</h4>
+        <ul>
+          <li><a href="himat-hikmat.html">Himat-Hikmat</a></li>
+          <li><a href="himat-hikmat-framework.html">Himat-Hikmat Framework</a></li>
+          <li><a href="assessment.html">Assessment</a></li>
+          <li><a href="blog.html">Articles</a></li>
+          <li><a href="#ai-policy" onclick="scrollToSection('#ai-policy');return false;">AI Workforce Index</a></li>
+        </ul>
+      </div>
+      <div class="enw-footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@enlystnow.com">info@enlystnow.com</a></li>
+          <li><a href="tel:03000340036">03000 340 036</a></li>
+          <li><a href="https://wa.me/923000340036" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+          <li><a href="contact.html">Get in Touch</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="enw-footer-bottom">
+      <span>&copy; 2026 Enlyst Smart Recruiting Pvt Ltd &middot; Suite M-3, Lahore Stock Exchange Plaza, Lahore 54000</span>
+      <span>Framework v2.0 &middot; AI Policy 2025 Integrated</span>
+      <div>
+        <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+        <a href="#" title="Terms page pending legal copy — do not invent">Terms</a> &nbsp;&middot;&nbsp;
+        <a href="https://www.enlystnow.com" target="_blank" rel="noopener">enlystnow.com ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Blog subscribe ── */
+function blogSubscribe() {
+  const email = document.getElementById('blog-email').value;
+  const confirm = document.getElementById('blog-confirm');
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('blog-email').style.borderColor = 'rgba(239,68,68,.6)';
+    return;
+  }
+  document.getElementById('blog-email').style.borderColor = 'rgba(74,222,128,.5)';
+  confirm.style.display = 'block';
+}
+
+/* ── Nav scroll state ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ── Scroll reveal ── */
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); }
+  });
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+
+/* ── Smooth scroll helper ── */
+function scrollToSection(hash) {
+  const el = document.querySelector(hash);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ── Mobile drawer ── */
+let drawerOpen = false;
+function toggleDrawer(){
+  drawerOpen = !drawerOpen;
+  document.getElementById('drawer').classList.toggle('open', drawerOpen);
+}
+function closeDrawer(){
+  drawerOpen = false;
+  document.getElementById('drawer').classList.remove('open');
+}
+
+/* ── Contact form tabs ── */
+function setTab(tab) {
+  ['employer','candidate','cv'].forEach(t => {
+    document.getElementById('tab-'+t)?.classList.remove('on');
+    document.getElementById('form-'+t)?.classList.remove('on');
+    const s = document.getElementById(t+'-success');
+    if(s){ s.classList.remove('on'); }
+  });
+  const tabBtn = document.getElementById('tab-'+tab);
+  if(tabBtn) tabBtn.classList.add('on');
+  const form = document.getElementById('form-'+tab);
+  if(form) form.classList.add('on');
+}
+
+function submitForm(successId) {
+  const tab = successId.replace('-success','');
+  const form = document.getElementById('form-'+tab);
+  if(!form) return;
+  // Basic validation
+  const required = form.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(f => {
+    f.style.borderColor = f.value.trim() ? 'rgba(255,255,255,.1)' : 'rgba(239,68,68,.6)';
+    if(!f.value.trim()) valid = false;
+  });
+  if(!valid) return;
+  // Simulate submit
+  form.style.opacity = '.5';
+  setTimeout(() => {
+    form.style.opacity = '1';
+    form.style.display = 'none';
+    document.getElementById(successId).classList.add('on');
+  }, 900);
+}
+
+/* ── CV file label ── */
+function updateFileName(input){
+  const label = document.getElementById('cv-label');
+  if(label && input.files[0]) label.textContent = '✓ ' + input.files[0].name;
+}
+
+/* ── Read URL param for contact tab ── */
+const urlTab = new URLSearchParams(window.location.search).get('tab');
+if(urlTab && ['employer','candidate','cv'].includes(urlTab)) setTab(urlTab);
+
+/* ── Animated counters on stats ── */
+document.querySelectorAll('.b-stat-num, .fw-met-val, .hero-stat strong, .value-num').forEach(el => {
+  const raw = el.textContent.trim();
+  const num = parseFloat(raw.replace(/[^0-9.]/g,''));
+  if(!num || isNaN(num) || num < 10) return;
+  const prefix = raw.match(/^[^0-9]*/)?.[0] || '';
+  const suffix = raw.match(/[^0-9.]+$/)?.[0] || '';
+  el.textContent = prefix + '0' + suffix;
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      let start = 0; const step = num / 40;
+      const timer = setInterval(() => {
+        start = Math.min(start + step, num);
+        el.textContent = prefix + (Number.isInteger(num) ? Math.round(start) : start.toFixed(1)) + suffix;
+        if(start >= num) clearInterval(timer);
+      }, 35);
+      cObs.unobserve(el);
+    });
+  }, {threshold:.5});
+  cObs.observe(el);
+});
+</script>
+
+</body>
+</html>

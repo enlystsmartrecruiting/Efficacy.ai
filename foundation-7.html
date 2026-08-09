@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Foundation | Himat-Hikmat · Courage &amp; Wisdom in Service of Children Who Wait</title>
+<meta name="description" content="The non-commercial research arm of Enlyst. Three years of Punjab field data, 37,000+ children sampled, and one unflinching argument for educational reform."/>
+<meta name="theme-color" content="#09080F"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=cormorant:300,300i,400,400i,500,600,700|syne:400,500,600,700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   TOKENS — Foundation Palette
+   Void tilted violet · Scholar purple
+   Warm, heavy, serious
+═══════════════════════════════════════ */
+:root{
+  --void:   #09080F;
+  --abyss:  #0E0C17;
+  --ink:    #15121F;
+  --coal:   #1E1A2C;
+  --slate:  #2C2640;
+
+  /* Violet — scholarly, Urdu resonance, wisdom */
+  --vi:     #7C3AED;
+  --vi-d:   #5B21B6;
+  --vi-l:   #A78BFA;
+  --vi-g:   rgba(124,58,237,0.08);
+  --vi-b:   rgba(124,58,237,0.22);
+
+  /* Secondary accents */
+  --gold:   #B89840;
+  --gold-l: #D4B45A;
+  --blue:   #2D5BE3;
+  --green:  #1A7A4A;
+  --green-l:#3AB877;
+
+  --text:   #F0EDF8;
+  --text-2: rgba(240,237,248,0.65);
+  --text-3: rgba(240,237,248,0.38);
+  --text-4: rgba(240,237,248,0.16);
+
+  --serif: 'Cormorant', Georgia, serif;
+  --sans:  'Syne', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --max:   1320px;
+  --nav-h: 4rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;color:inherit;}
+::selection{background:var(--vi);color:#fff;}
+
+/* Grain */
+body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+/* Background — violet-shifted void, heavy */
+.bg-field{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 65% 55% at 10% -5%,rgba(124,58,237,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 45% 40% at 90% 110%,rgba(45,91,227,.08) 0%,transparent 55%),
+    radial-gradient(ellipse 30% 30% at 50% 50%,rgba(124,58,237,.04) 0%,transparent 70%),
+    var(--void);
+}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(124,58,237,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,58,237,.04) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.18) 60%,transparent 100%);
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav-h);display:flex;align-items:center;border-bottom:1px solid var(--text-4);background:rgba(9,8,15,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:border-color .3s;}
+.nav-inner{max-width:var(--max);width:100%;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-mark{display:flex;align-items:center;gap:.75rem;}
+.nav-wordmark{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.01em;line-height:1;}
+.nav-tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vi-l);border:1px solid var(--vi-b);padding:.2rem .6rem;border-radius:100px;}
+.nav-links{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);padding:.4rem .85rem;border-radius:.5rem;transition:color .25s,background .25s;}
+.nav-link:hover,.nav-link.active{color:var(--text);background:var(--vi-g);}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.5rem 1.25rem;background:var(--vi);border-radius:.5rem;transition:background .25s;}
+.nav-cta:hover{background:var(--vi-l);}
+.container{max-width:var(--max);margin:0 auto;padding:0 2.5rem;}
+
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 8rem) 0 6rem;position:relative;overflow:hidden;}
+.hero-inner{max-width:820px;}
+.hero-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vi-l);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--vi);}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,8vw,8rem);font-weight:300;line-height:.92;letter-spacing:-.025em;margin-bottom:2rem;opacity:0;animation:fadeUp .9s var(--ease) .35s forwards;}
+.hero-h1 em{font-style:italic;color:var(--text-3);}
+.hero-h1 span{color:var(--vi-l);display:block;}
+.hero-urdu{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--text-3);margin-bottom:2rem;opacity:0;animation:fadeUp .9s var(--ease) .45s forwards;letter-spacing:.04em;}
+.hero-sub{font-size:1rem;line-height:1.85;color:var(--text-2);max-width:52ch;margin-bottom:2.5rem;opacity:0;animation:fadeUp .9s var(--ease) .55s forwards;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s var(--ease) .66s forwards;}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;padding:.85rem 2rem;background:var(--vi);border-radius:.5rem;transition:background .3s,transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(124,58,237,.3);}
+.btn-primary:hover{background:var(--vi-l);transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:.85rem 1.5rem;border:1px solid var(--text-4);border-radius:.5rem;transition:color .3s,border-color .3s;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text-2);}
+
+/* Hero stats strip */
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.25rem;overflow:hidden;margin-top:4rem;opacity:0;animation:fadeUp .9s var(--ease) .75s forwards;}
+.hero-stat{background:var(--abyss);padding:2rem;transition:background .3s;}
+.hero-stat:hover{background:var(--ink);}
+.hero-stat-num{font-family:var(--serif);font-size:3.2rem;font-weight:300;line-height:1;color:var(--vi-l);margin-bottom:.4rem;}
+.hero-stat-label{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.hero-stat-desc{font-size:.75rem;line-height:1.6;color:var(--text-3);}
+
+/* SECTION UTILS */
+.sec-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vi-l);display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;}
+.sec-label::before{content:'';display:block;width:2rem;height:1px;background:var(--vi);}
+.sec-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.08;letter-spacing:-.015em;}
+.sec-title em{font-style:italic;color:var(--text-3);}
+
+/* FINDINGS STRIP */
+.findings{padding:2rem 0;border-top:1px solid var(--text-4);border-bottom:1px solid var(--text-4);overflow:hidden;}
+.findings-track{display:flex;gap:0;width:max-content;animation:ticker 55s linear infinite;}
+.finding-item{display:flex;align-items:center;gap:1.5rem;padding:0 2.5rem;white-space:nowrap;}
+.finding-num{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--vi-l);}
+.finding-text{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);}
+.finding-sep{width:1px;height:1.5rem;background:var(--text-4);flex-shrink:0;}
+
+/* FRAMEWORK */
+.framework{padding:8rem 0;border-top:1px solid var(--text-4);}
+.framework-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start;}
+.framework-left{}
+.framework-pull{font-family:var(--serif);font-size:1.45rem;font-weight:300;font-style:italic;line-height:1.55;color:var(--text-2);border-left:2px solid var(--vi);padding-left:1.75rem;margin-bottom:2rem;}
+.framework-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1.25rem;}
+.framework-body strong{color:var(--text);}
+.lenses{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;}
+.lens{background:var(--abyss);padding:2rem;transition:background .3s;position:relative;overflow:hidden;}
+.lens:hover{background:var(--ink);}
+.lens::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;background:radial-gradient(circle at 0% 0%,rgba(124,58,237,.1) 0%,transparent 55%);}
+.lens:hover::before{opacity:1;}
+.lens-roman{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--vi-b);line-height:1;margin-bottom:.5rem;position:relative;z-index:1;}
+.lens-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vi-l);margin-bottom:.6rem;position:relative;z-index:1;}
+.lens-title{font-family:var(--serif);font-size:1.4rem;font-weight:400;line-height:1.1;margin-bottom:.6rem;position:relative;z-index:1;}
+.lens-desc{font-size:.78rem;line-height:1.68;color:var(--text-3);position:relative;z-index:1;}
+
+/* FIELD DATA */
+.field{padding:8rem 0;border-top:1px solid var(--text-4);}
+.field-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
+.field-stats{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;}
+.fstat{background:var(--abyss);padding:2rem;display:grid;grid-template-columns:8rem 1fr;gap:1.5rem;align-items:center;transition:background .3s;}
+.fstat:hover{background:var(--ink);}
+.fstat-num{font-family:var(--serif);font-size:3rem;font-weight:300;line-height:1;text-align:right;}
+.fstat-num.vi{color:var(--vi-l);}
+.fstat-num.gold{color:var(--gold-l);}
+.fstat-num.green{color:var(--green-l);}
+.fstat-body{}
+.fstat-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+.fstat-source{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;color:var(--text-3);margin-bottom:.4rem;}
+.fstat-desc{font-size:.77rem;line-height:1.62;color:var(--text-3);}
+.field-aside{}
+.field-aside-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.015em;margin-bottom:1.25rem;}
+.field-aside-title em{font-style:italic;color:var(--text-3);}
+.field-aside-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1rem;}
+.field-aside-body strong{color:var(--text);}
+.field-citation{margin-top:1.75rem;padding:1.25rem 1.5rem;background:var(--vi-g);border:1px solid var(--vi-b);border-radius:.75rem;}
+.field-citation-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vi-l);margin-bottom:.5rem;}
+.field-citation-text{font-size:.8rem;line-height:1.65;color:var(--text-2);}
+
+/* ROADMAP */
+.roadmap{padding:8rem 0;border-top:1px solid var(--text-4);}
+.roadmap-items{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.roadmap-item{background:var(--abyss);padding:2rem 2.25rem;display:grid;grid-template-columns:12rem 1fr auto;gap:2rem;align-items:start;transition:background .3s;}
+.roadmap-item:hover{background:var(--ink);}
+.roadmap-item.active{background:var(--vi-g);border-left:2px solid var(--vi);}
+.rm-year{font-family:var(--serif);font-size:1.6rem;font-weight:300;line-height:1;color:var(--text-3);}
+.rm-year.active{color:var(--vi-l);}
+.rm-body{}
+.rm-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.rm-desc{font-size:.8rem;line-height:1.68;color:var(--text-3);}
+.rm-badge{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;flex-shrink:0;align-self:flex-start;margin-top:.15rem;}
+.rm-badge.complete{background:rgba(58,184,119,.12);border:1px solid rgba(58,184,119,.3);color:var(--green-l);}
+.rm-badge.active{background:var(--vi-g);border:1px solid var(--vi-b);color:var(--vi-l);}
+.rm-badge.planned{background:var(--abyss);border:1px solid var(--text-4);color:var(--text-3);}
+.rm-badge.vision{background:rgba(184,152,64,.08);border:1px solid rgba(184,152,64,.25);color:var(--gold-l);}
+
+/* TEACHING TEACHERS */
+.teaching{padding:8rem 0;border-top:1px solid var(--text-4);}
+.teaching-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.5rem;overflow:hidden;margin-top:3.5rem;}
+.teach-card{background:var(--abyss);padding:2.25rem;transition:background .3s;}
+.teach-card:hover{background:var(--ink);}
+.teach-card-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--vi-l);margin-bottom:1rem;}
+.teach-card-title{font-family:var(--serif);font-size:1.6rem;font-weight:300;line-height:1.1;margin-bottom:.75rem;}
+.teach-card-desc{font-size:.82rem;line-height:1.72;color:var(--text-3);}
+
+/* GOVERNANCE */
+.governance{padding:8rem 0;border-top:1px solid var(--text-4);}
+.gov-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.gov-headline{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.05;letter-spacing:-.015em;margin-bottom:1.5rem;}
+.gov-headline em{font-style:italic;color:var(--text-3);}
+.gov-body{font-size:.88rem;line-height:1.85;color:var(--text-2);margin-bottom:1rem;}
+.gov-body strong{color:var(--text);}
+.gov-founder{margin-top:1.75rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:var(--text-3);}
+.gov-founder strong{color:var(--vi-l);}
+.gov-principles{display:flex;flex-direction:column;gap:1.5px;background:var(--text-4);border:1px solid var(--text-4);border-radius:1.25rem;overflow:hidden;}
+.gov-principle{background:var(--abyss);padding:1.75rem;display:grid;grid-template-columns:2.5rem 1fr;gap:1.25rem;align-items:start;transition:background .3s;}
+.gov-principle:hover{background:var(--ink);}
+.gp-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--vi);padding-top:.12rem;}
+.gp-content{}
+.gp-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+.gp-desc{font-size:.78rem;line-height:1.65;color:var(--text-3);}
+
+/* FINALE */
+.finale{padding:9rem 0 7rem;border-top:1px solid var(--text-4);text-align:center;position:relative;}
+.finale::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:6rem;background:linear-gradient(180deg,transparent,var(--vi));}
+.finale-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vi-l);margin-bottom:2rem;}
+.finale-heading{font-family:var(--serif);font-size:clamp(3rem,7vw,7rem);font-weight:300;line-height:.93;letter-spacing:-.025em;margin-bottom:1.75rem;}
+.finale-heading em{font-style:italic;color:var(--text-3);}
+.finale-sub{font-size:.95rem;color:var(--text-2);line-height:1.75;max-width:44ch;margin:0 auto 3rem;}
+.finale-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--text-4);padding:3rem 0 2.5rem;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{font-family:var(--serif);font-size:1.15rem;font-weight:300;}
+.footer-links-row{display:flex;gap:1.5rem;}
+.footer-links-row a{font-size:.75rem;color:var(--text-3);transition:color .25s;}
+.footer-links-row a:hover{color:var(--text);}
+.footer-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--text-4);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* RESPONSIVE */
+@media(max-width:1060px){
+  .framework-grid,.field-grid,.gov-grid{grid-template-columns:1fr;gap:3.5rem;}
+  .lenses{grid-template-columns:1fr;}
+  .teaching-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .roadmap-item{grid-template-columns:1fr;gap:1rem;}
+  .rm-badge{align-self:auto;}
+}
+@media(max-width:600px){
+  .container{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .hero-stats{grid-template-columns:1fr;}
+  .fstat{grid-template-columns:1fr;}
+  .fstat-num{text-align:left;}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark" aria-label="enlyst home">
+      <svg width="22" height="24" viewBox="0 0 44 50" fill="none" aria-hidden="true">
+        <path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#7C3AED"/>
+        <path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#7C3AED" opacity="0.58"/>
+        <path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#7C3AED" opacity="0.26"/>
+      </svg>
+      <span class="nav-wordmark">enlyst</span>
+      <span class="nav-tag">Foundation</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Framework</a>
+      <a href="enlyst-about.html" class="nav-link">About</a>
+      <a href="enlyst-education.html" class="nav-link">Education</a>
+      <a href="enlyst-govtech.html" class="nav-link">GovTech</a>
+      <a href="enlyst-contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="enlyst-contact.html" class="nav-cta">Partner With Us</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Enlyst Foundation · Non-Commercial Research Mandate</div>
+      <h1 class="hero-h1">
+        Courage and wisdom<br>
+        <em>in service of</em><br>
+        <span>children who wait.</span>
+      </h1>
+      <p class="hero-urdu">Himat · Hikmat — حمت · حکمت — courage and wisdom in Urdu</p>
+      <p class="hero-sub">Pakistan's most rigorous doctoral-grade investigation into public education inequality. Three years of Punjab field data. 37,000+ children sampled. One unflinching argument for change.</p>
+      <div class="hero-actions">
+        <a href="#framework" class="btn-primary">Read the Framework →</a>
+        <a href="#roadmap" class="btn-ghost">5-Year Roadmap</a>
+      </div>
+    </div>
+
+    <div class="hero-stats" role="list" aria-label="Key research statistics">
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">24.3%</div>
+        <div class="hero-stat-label">Measurable learning deficiency</div>
+        <p class="hero-stat-desc">Children in the lowest infrastructure quartile — after controlling for socioeconomic background, teacher experience, and class size. The deficiency is structural, not demographic.</p>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">55%</div>
+        <div class="hero-stat-label">Teachers with no AI tool exposure</div>
+        <p class="hero-stat-desc">Government school teachers surveyed across GITTC Lahore cohorts with no exposure to AI-assisted lesson planning tools — despite curriculum mandates that assume digital readiness.</p>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-num">37K+</div>
+        <div class="hero-stat-label">Children in primary catchment</div>
+        <p class="hero-stat-desc">Primary field research sample spanning Lahore, Sheikhupura, and Gujranwala divisions — urban, peri-urban, and rural schools — stratified by infrastructure rating and teacher qualification.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS TICKER -->
+<div class="findings" aria-hidden="true">
+  <div class="findings-track">
+    <div class="finding-item"><span class="finding-num">24.3%</span><span class="finding-sep"></span><span class="finding-text">Structural learning deficiency · Punjab schools</span></div>
+    <div class="finding-item"><span class="finding-num">55%</span><span class="finding-sep"></span><span class="finding-text">Teachers · zero AI tool exposure</span></div>
+    <div class="finding-item"><span class="finding-num">&lt;12%</span><span class="finding-sep"></span><span class="finding-text">Consistent AI use · classrooms</span></div>
+    <div class="finding-item"><span class="finding-num">68%</span><span class="finding-sep"></span><span class="finding-text">Variance explained by district resource allocation</span></div>
+    <div class="finding-item"><span class="finding-num">37K+</span><span class="finding-sep"></span><span class="finding-text">Children · primary research sample</span></div>
+    <div class="finding-item"><span class="finding-num">N=37,214</span><span class="finding-sep"></span><span class="finding-text">Controlled regression model · p&lt;0.001</span></div>
+    <div class="finding-item"><span class="finding-num">200+</span><span class="finding-sep"></span><span class="finding-text">Teacher interviews · field conducted</span></div>
+    <div class="finding-item"><span class="finding-num">2027</span><span class="finding-sep"></span><span class="finding-text">Proposed PPSC AI literacy standard submission</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="finding-item"><span class="finding-num">24.3%</span><span class="finding-sep"></span><span class="finding-text">Structural learning deficiency · Punjab schools</span></div>
+    <div class="finding-item"><span class="finding-num">55%</span><span class="finding-sep"></span><span class="finding-text">Teachers · zero AI tool exposure</span></div>
+    <div class="finding-item"><span class="finding-num">&lt;12%</span><span class="finding-sep"></span><span class="finding-text">Consistent AI use · classrooms</span></div>
+    <div class="finding-item"><span class="finding-num">68%</span><span class="finding-sep"></span><span class="finding-text">Variance explained by district resource allocation</span></div>
+    <div class="finding-item"><span class="finding-num">37K+</span><span class="finding-sep"></span><span class="finding-text">Children · primary research sample</span></div>
+    <div class="finding-item"><span class="finding-num">N=37,214</span><span class="finding-sep"></span><span class="finding-text">Controlled regression model · p&lt;0.001</span></div>
+    <div class="finding-item"><span class="finding-num">200+</span><span class="finding-sep"></span><span class="finding-text">Teacher interviews · field conducted</span></div>
+    <div class="finding-item"><span class="finding-num">2027</span><span class="finding-sep"></span><span class="finding-text">Proposed PPSC AI literacy standard submission</span></div>
+  </div>
+</div>
+
+<!-- FRAMEWORK -->
+<section class="framework" id="framework">
+  <div class="container">
+    <div class="framework-grid">
+      <div class="reveal">
+        <div class="sec-label">The Framework</div>
+        <h2 class="sec-title">Four lenses.<br><em>One argument.</em></h2>
+        <blockquote class="framework-pull" style="margin-top:2rem;">
+          "Structural inequality — not teacher effort — is the primary driver of learning deficiency. Resource allocation at district level explains 68% of the variance in primary school outcomes."
+        </blockquote>
+        <p class="framework-body">The framework is structured around four analytical lenses — each addressing a distinct failure layer in Pakistan's public education system. All four converge on a single policy conclusion: the problem is architectural, not motivational. <strong>It requires systems reform, not sympathy.</strong></p>
+        <p class="framework-body">Himat-Hikmat is Pakistan's most rigorous indigenous theoretical model for mathematics education among visually impaired students. Every statistic was gathered through primary field visits, structured teacher interviews, and student assessment sampling — not government-reported aggregate data.</p>
+      </div>
+      <div class="lenses reveal d2">
+        <div class="lens">
+          <div class="lens-roman" aria-hidden="true">I</div>
+          <div class="lens-num">Lens 01</div>
+          <div class="lens-title">Structural Inequality</div>
+          <p class="lens-desc">How resource allocation models at federal, provincial, and district level create systemic disadvantage that individual teacher effort cannot overcome — regardless of motivation or training.</p>
+        </div>
+        <div class="lens">
+          <div class="lens-roman" aria-hidden="true">II</div>
+          <div class="lens-num">Lens 02</div>
+          <div class="lens-title">Technology Readiness Gap</div>
+          <p class="lens-desc">The delta between the curriculum's stated digital learning goals and the actual technological infrastructure and teacher competency available at the point of instruction in government schools.</p>
+        </div>
+        <div class="lens">
+          <div class="lens-roman" aria-hidden="true">III</div>
+          <div class="lens-num">Lens 03</div>
+          <div class="lens-title">Governance Accountability</div>
+          <p class="lens-desc">How performance measurement and accountability chains in provincial education bureaucracy create perverse incentives — where reported metrics diverge systematically from classroom reality.</p>
+        </div>
+        <div class="lens">
+          <div class="lens-roman" aria-hidden="true">IV</div>
+          <div class="lens-num">Lens 04</div>
+          <div class="lens-title">Policy Translation</div>
+          <p class="lens-desc">The gap between research evidence and legislative action in Pakistan's education sector — and the institutional design required to close that gap within a single provincial policy cycle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELD DATA -->
+<section class="field">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Field Data</div>
+      <h2 class="sec-title">Numbers from<br><em>actual classrooms.</em></h2>
+    </div>
+    <div class="field-grid reveal d1">
+      <div class="field-stats" role="list">
+        <div class="fstat" role="listitem">
+          <div class="fstat-num vi">37K+</div>
+          <div class="fstat-body">
+            <div class="fstat-title">Primary Catchment</div>
+            <div class="fstat-source">Doctoral Research · University of Punjab · Dr. Imran Sabir</div>
+            <p class="fstat-desc">Children sampled from Punjab school visits across Lahore, Sheikhupura, and Gujranwala divisions — urban, peri-urban, and rural environments stratified by infrastructure rating and teacher qualification level.</p>
+          </div>
+        </div>
+        <div class="fstat" role="listitem">
+          <div class="fstat-num vi">24.3%</div>
+          <div class="fstat-body">
+            <div class="fstat-title">Structural Learning Deficiency</div>
+            <div class="fstat-source">Controlled regression model · N=37,214 · p&lt;0.001</div>
+            <p class="fstat-desc">Children in the lowest infrastructure quartile — after controlling for socioeconomic background, teacher experience, and class size. The deficiency is structural, not demographic.</p>
+          </div>
+        </div>
+        <div class="fstat" role="listitem">
+          <div class="fstat-num gold">55%</div>
+          <div class="fstat-body">
+            <div class="fstat-title">Teacher AI Readiness Gap</div>
+            <div class="fstat-source">GITTC Lahore · Government AI Training Centre · 2024–2025</div>
+            <p class="fstat-desc">Government school teachers with no exposure to AI-assisted lesson planning tools. Of the 45% with any exposure, fewer than 12% report consistent classroom use.</p>
+          </div>
+        </div>
+        <div class="fstat" role="listitem">
+          <div class="fstat-num green">&lt;12%</div>
+          <div class="fstat-body">
+            <div class="fstat-title">Consistent AI Use in Classrooms</div>
+            <div class="fstat-source">GITTC Lahore cohort survey · 2024–2025</div>
+            <p class="fstat-desc">Of the teachers with any AI tool exposure, fewer than 12% use them consistently in classroom delivery. Infrastructure, time, and confidence are the three cited barriers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="field-aside">
+        <div class="sec-label">Policy Implication</div>
+        <h3 class="field-aside-title">From thesis<br><em>to legislation.</em></h3>
+        <p class="field-aside-body">The research proposes <strong>mandatory AI literacy standards for all new government school teacher appointments from 2027</strong> — embedded into PPSC testing criteria and BISE curriculum review cycles.</p>
+        <p class="field-aside-body">This is not aspirational. It is a dated, documented, peer-reviewed proposal submitted to the Punjab Education Commission within a defined submission window.</p>
+        <div class="field-citation">
+          <div class="field-citation-label">Submission Target</div>
+          <p class="field-citation-text">Punjab Education Commission · 2026 submission window · Proposed integration into PPSC testing criteria and BISE curriculum review cycles from 2027 appointment cycle.</p>
+        </div>
+        <div class="field-citation" style="margin-top:1rem;">
+          <div class="field-citation-label">Finding · Punjab School Survey</div>
+          <p class="field-citation-text">Structural inequality — not teacher effort — is the primary driver of learning deficiency. Resource allocation at district level explains 68% of the variance in primary school outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap" id="roadmap">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">5-Year Legislative Roadmap</div>
+      <h2 class="sec-title">From thesis<br><em>to national replication.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">The Himat-Hikmat research is not designed to sit in a university archive. It is designed to move — from doctoral defence to provincial legislation to national standard within five years.</p>
+    </div>
+    <div class="roadmap-items reveal d1" role="list">
+      <div class="roadmap-item" role="listitem">
+        <div class="rm-year">2024–2025</div>
+        <div class="rm-body">
+          <div class="rm-title">Primary Field Research</div>
+          <p class="rm-desc">37,000+ children sampled. 200+ teacher interviews. GITTC Lahore cohort data collected. Regression models finalised. Doctoral thesis drafted and submitted for supervisor review.</p>
+        </div>
+        <span class="rm-badge complete">Complete</span>
+      </div>
+      <div class="roadmap-item active" role="listitem">
+        <div class="rm-year active">2026</div>
+        <div class="rm-body">
+          <div class="rm-title">Doctoral Defence &amp; Publication</div>
+          <p class="rm-desc">Thesis defence at University of Punjab under Dr. Imran Sabir. Peer-reviewed publication of primary findings. Policy brief prepared for Punjab Education Commission submission window.</p>
+        </div>
+        <span class="rm-badge active">In Progress</span>
+      </div>
+      <div class="roadmap-item" role="listitem">
+        <div class="rm-year">2027</div>
+        <div class="rm-body">
+          <div class="rm-title">Provincial Policy Submission</div>
+          <p class="rm-desc">Formal submission to Punjab Education Department: AI literacy standards for new government school teacher appointments. Proposed integration into PPSC testing criteria and BISE curriculum review cycles.</p>
+        </div>
+        <span class="rm-badge planned">Planned</span>
+      </div>
+      <div class="roadmap-item" role="listitem">
+        <div class="rm-year">2028</div>
+        <div class="rm-body">
+          <div class="rm-title">Pilot Implementation</div>
+          <p class="rm-desc">GITTC Lahore delivers first cohort under the new standard. Enlyst Education arm provides curriculum support. Outcome data collected and published for legislative case.</p>
+        </div>
+        <span class="rm-badge planned">Planned</span>
+      </div>
+      <div class="roadmap-item" role="listitem">
+        <div class="rm-year">2029–2030</div>
+        <div class="rm-body">
+          <div class="rm-title">National Replication</div>
+          <p class="rm-desc">Punjab model presented to Federal Education Ministry as replication template. HEC engagement for integration into pre-service teacher training nationwide.</p>
+        </div>
+        <span class="rm-badge vision">Vision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING TEACHERS -->
+<section class="teaching">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Teaching Teachers of Disabled Students</div>
+      <h2 class="sec-title">Taking the research<br><em>into classrooms.</em></h2>
+      <p style="font-size:.88rem;color:var(--text-3);margin-top:.75rem;max-width:52ch;">Structured capacity-building workshops across Punjab — sessions built from the evidence base, not from good intentions.</p>
+    </div>
+    <div class="teaching-grid reveal d1">
+      <div class="teach-card">
+        <div class="teach-card-num">01</div>
+        <div class="teach-card-title">Workshop Design</div>
+        <p class="teach-card-desc">Built from the evidence base — not generic training content. Sessions are structured around specific competency gaps identified through the field research. Targeted capacity building tied to measurable outcomes, not attendance certificates.</p>
+      </div>
+      <div class="teach-card">
+        <div class="teach-card-num">02</div>
+        <div class="teach-card-title">Who Attends</div>
+        <p class="teach-card-desc">Teachers from government and private special education schools. Priority cohorts include those with high visually impaired enrolment and low pass rates — the schools where structural failure is most visible and most costly.</p>
+      </div>
+      <div class="teach-card">
+        <div class="teach-card-num">03</div>
+        <div class="teach-card-title">What We Measure</div>
+        <p class="teach-card-desc">Pre- and post-workshop competency assessments. Every workshop produces a dataset that feeds back into improving both the research and the training. No workshop is run without measurement. No measurement sits idle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="governance">
+  <div class="container">
+    <div class="gov-grid">
+      <div class="reveal">
+        <div class="sec-label">Foundation Governance</div>
+        <h2 class="gov-headline">Ring-fenced.<br><em>By design.</em></h2>
+        <p class="gov-body">The Foundation operates under strict separation from commercial revenues and commercial influence. These are not aspirational commitments. They are <strong>architectural constraints.</strong></p>
+        <p class="gov-body">The Foundation does not exist to make the business look good. It exists because the problem is real, the data is ours, and the obligation cannot be outsourced.</p>
+        <div class="gov-founder">
+          <strong>Wasim Hassan</strong> — Founder · Enlyst Foundation
+        </div>
+      </div>
+      <div class="gov-principles reveal d2">
+        <div class="gov-principle">
+          <div class="gp-num">01</div>
+          <div class="gp-content">
+            <div class="gp-title">Revenue Ring-Fence</div>
+            <p class="gp-desc">No commercial revenue from enlyst, enlysum, enlybiz, or enlysoft is used to fund Foundation research. The Foundation is funded independently through grants, partnerships, and direct contributions.</p>
+          </div>
+        </div>
+        <div class="gov-principle">
+          <div class="gp-num">02</div>
+          <div class="gp-content">
+            <div class="gp-title">Research Independence</div>
+            <p class="gp-desc">No commercial client has editorial influence over research conclusions, publication timing, or policy positions. Findings are published as documented — not sanitised for business comfort.</p>
+          </div>
+        </div>
+        <div class="gov-principle">
+          <div class="gp-num">03</div>
+          <div class="gp-content">
+            <div class="gp-title">Data Stewardship</div>
+            <p class="gp-desc">All school visit data, student outcome data, and teacher interview data is anonymised, stored securely, and never used as marketing collateral without researcher consent.</p>
+          </div>
+        </div>
+        <div class="gov-principle">
+          <div class="gp-num">04</div>
+          <div class="gp-content">
+            <div class="gp-title">Researcher Primacy</div>
+            <p class="gp-desc">Dr. Imran Sabir and the doctoral research team hold final authority over all published findings. The Foundation is the enabler, not the author.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="container">
+    <div class="finale-eyebrow">Enlyst Foundation · Lahore, Pakistan</div>
+    <h2 class="finale-heading reveal">
+      Every partnership<br>
+      <em>extends the reach.</em>
+    </h2>
+    <p class="finale-sub reveal d1">Research partnerships, academic collaboration, grant funding, and media inquiry — all welcome. All reviewed personally. The problem is real and the data is ours.</p>
+    <div class="finale-btns reveal d2">
+      <a href="enlyst-contact.html" class="btn-primary">Get in Touch →</a>
+      <a href="enlyst-education.html" class="btn-ghost">Education Wing</a>
+      <a href="index.html" class="btn-ghost">Enlyst Framework ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">enlyst Foundation</div>
+      <div class="footer-links-row">
+        <a href="index.html">Framework</a>
+        <a href="enlyst-education.html">Education</a>
+        <a href="enlyst-govtech.html">GovTech</a>
+        <a href="enlyst-methodology.html">Methodology</a>
+        <a href="enlyst-contact.html">Contact</a>
+      </div>
+      <div class="footer-meta">© 2026 Enlyst Smart Recruiting Pvt Ltd · Foundation Division · Lahore</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+  els.forEach(el=>obs.observe(el));
+  const nav=document.querySelector('.nav');
+  window.addEventListener('scroll',()=>{nav.style.borderBottomColor=window.scrollY>40?'rgba(240,237,248,0.1)':'rgba(240,237,248,0.06)';},{passive:true});
+})();
+</script>
+</body>
+</html>

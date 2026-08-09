@@ -1,0 +1,2 @@
+# Place og-share.jpg (1200x630) in each domain _assets/ folder for WhatsApp and LinkedIn previews.
+# Rebuild copies this readme; replace with a branded JPEG before production deploy.

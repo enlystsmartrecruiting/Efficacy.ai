@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Foundation — Data-Driven Policy & Disability Studies</title>
+<meta name="description" content="The ring-fenced philanthropic arm of the Enlyst Framework. Disability-inclusive education research, the Himat-Hikmat Framework, and evidence-based policy for Pakistan's institutional reform."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#0A0A0F;--deep-3:#060D20;--deep-2:#0D1A40;--deep-1:#1A3580;
+  --blue:#2D5BE3;--gold:#C4A24A;--green:#1A7A4A;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace;
+  --max:1200px;--ease:cubic-bezier(.16,1,.3,1);--bar:2.25rem;--nav:4.5rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;}
+::selection{background:var(--gold);color:#000;}
+.bg-gradient{
+  position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(180deg,#0c0a02 0%,#100f03 12%,#0d1020 30%,var(--deep-2) 55%,var(--deep-3) 78%,var(--void) 100%);
+}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(196,162,74,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(196,162,74,.03) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 50%,transparent 100%);}
+.glow-orb{position:fixed;border-radius:50%;filter:blur(150px);z-index:-1;pointer-events:none;}
+.g1{width:800px;height:800px;top:-250px;right:-200px;background:rgba(196,162,74,.09);animation:ga 14s ease-in-out infinite alternate;}
+.g2{width:600px;height:600px;bottom:-100px;left:-150px;background:rgba(45,91,227,.08);animation:gb 20s ease-in-out infinite alternate;}
+@keyframes ga{0%{opacity:.8;transform:scale(1);}100%{opacity:.4;transform:scale(1.12);}}
+@keyframes gb{0%{opacity:.5;}100%{opacity:.2;}}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+
+/* ── NAV ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:90;height:var(--bar);background:rgba(12,10,2,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,162,74,.12);display:flex;align-items:center;justify-content:center;gap:1.25rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.topbar a{color:var(--gold);font-weight:700;transition:color .2s;}
+.topbar-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5;}
+.nav{position:fixed;top:var(--bar);left:0;right:0;z-index:89;height:var(--nav);transition:background .3s;}
+.nav.scrolled{background:rgba(10,10,15,.93);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(16px);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;gap:2rem;}
+.brand{display:flex;align-items:center;gap:.75rem;flex-shrink:0;}
+.brand-wordmark{font-family:var(--serif);font-size:1.625rem;color:#fff;letter-spacing:-.02em;line-height:1;}
+.brand-wordmark span{color:var(--gold);font-style:italic;}
+.brand-div{width:1px;height:1.25rem;background:rgba(255,255,255,.2);}
+.brand-tag{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:.25rem;margin-left:auto;}
+.nav-btn{font-size:.875rem;font-weight:500;color:rgba(255,255,255,.5);padding:.5rem .875rem;border-radius:6px;transition:color .2s,background .2s;}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,.07);}
+.nav-ext{font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:.5rem .875rem;border:1px solid rgba(196,162,74,.3);border-radius:6px;white-space:nowrap;transition:color .2s,border-color .2s;}
+.nav-ext:hover{color:#fff;border-color:var(--gold);}
+.nav-cta-btn{font-size:.875rem;font-weight:600;color:#000;background:var(--gold);padding:.5625rem 1.25rem;border-radius:100px;box-shadow:0 4px 20px rgba(196,162,74,.3);transition:background .2s,transform .15s;flex-shrink:0;}
+.nav-cta-btn:hover{background:#d4af5a;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+.drawer{position:fixed;top:calc(var(--bar) + var(--nav));left:0;right:0;z-index:88;padding:1.5rem;background:rgba(10,10,15,.97);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:.5rem;transform:translateY(-120%);transition:transform .4s var(--ease);}
+.drawer.open{transform:translateY(0);}
+.drawer-btn{font-size:1rem;font-weight:500;color:rgba(255,255,255,.65);padding:.875rem 1rem;border-radius:8px;text-align:left;transition:background .2s,color .2s;}
+.drawer-btn:hover{background:rgba(255,255,255,.06);color:#fff;}
+.drawer-cta{margin-top:.5rem;background:var(--gold);color:#000;font-size:.9375rem;font-weight:700;padding:1rem;border-radius:10px;text-align:center;}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv-d1{transition-delay:.1s;}.rv-d2{transition-delay:.2s;}.rv-d3{transition-delay:.3s;}.rv-d4{transition-delay:.4s;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:calc(var(--bar) + var(--nav));
+  border-bottom:1px solid rgba(196,162,74,.1);
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(196,162,74,.06) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:4rem 0;}
+.hero-eyebrow{font-family:var(--mono);font-size:.625rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem;display:inline-flex;align-items:center;gap:.75rem;}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold);}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,6.5vw,5.5rem);line-height:1.03;letter-spacing:-.032em;color:#fff;margin-bottom:1.5rem;}
+.hero h1 em{font-style:italic;color:rgba(196,162,74,.8);}
+.hero-sub{font-size:1.125rem;line-height:1.8;color:rgba(255,255,255,.45);max-width:30rem;margin-bottom:2.5rem;}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;color:#000;background:var(--gold);padding:.875rem 1.75rem;border-radius:100px;box-shadow:0 4px 24px rgba(196,162,74,.3);transition:background .2s,transform .15s;}
+.btn-gold:hover{background:#d4af5a;transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.65);padding:.875rem 1.75rem;border-radius:100px;border:1.5px solid rgba(255,255,255,.15);transition:color .2s,border-color .2s;}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+
+/* Hero right — stat panel */
+.hero-panel{border-radius:1.5rem;padding:2.5rem;background:rgba(196,162,74,.05);border:1px solid rgba(196,162,74,.18);backdrop-filter:blur(20px);position:relative;overflow:hidden;}
+.hero-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(196,162,74,.3));}
+.hp-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,162,74,.6);margin-bottom:1.75rem;}
+.hp-stats{display:flex;flex-direction:column;gap:1.25rem;}
+.hp-stat{border-bottom:1px solid rgba(196,162,74,.1);padding-bottom:1.25rem;}
+.hp-stat:last-child{border-bottom:none;padding-bottom:0;}
+.hp-stat-num{font-family:var(--serif);font-size:3rem;color:var(--gold);letter-spacing:-.03em;line-height:1;margin-bottom:.375rem;}
+.hp-stat-lbl{font-size:.875rem;color:rgba(255,255,255,.55);line-height:1.55;max-width:260px;}
+
+/* ── SECTIONS ── */
+.section{padding:7rem 0;border-top:1px solid rgba(196,162,74,.08);}
+.s-eyebrow{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.875rem;color:rgba(196,162,74,.7);}
+.s-title{font-family:var(--serif);font-size:clamp(2.25rem,4.5vw,3.5rem);font-weight:400;line-height:1.08;letter-spacing:-.025em;color:#fff;}
+.s-title em{font-style:italic;color:rgba(196,162,74,.8);}
+.s-lead{font-size:1.0625rem;line-height:1.75;color:rgba(255,255,255,.45);max-width:38rem;margin-top:1rem;}
+
+/* Framework cards */
+.hh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem;}
+@media(max-width:768px){.hh-grid{grid-template-columns:1fr;}}
+.hh-card{padding:2.5rem 2.25rem;border-radius:1.25rem;background:rgba(196,162,74,.05);border:1px solid rgba(196,162,74,.15);backdrop-filter:blur(16px);position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .35s var(--ease);}
+.hh-card:hover{background:rgba(196,162,74,.09);border-color:rgba(196,162,74,.3);transform:translateY(-4px);}
+.hh-word{position:absolute;bottom:-20px;right:-8px;font-family:var(--serif);font-style:italic;font-size:8rem;opacity:.05;color:var(--gold);line-height:1;}
+.hh-num{font-family:var(--mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,162,74,.5);margin-bottom:1.5rem;}
+.hh-card h3{font-family:var(--serif);font-size:2.25rem;color:#fff;margin-bottom:.5rem;}
+.hh-card h3 span{color:var(--gold);font-style:italic;}
+.hh-card p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.5rem;}
+.hh-points{display:flex;flex-direction:column;gap:.625rem;}
+.hh-point{display:flex;align-items:flex-start;gap:.75rem;font-size:.875rem;color:rgba(255,255,255,.55);}
+.hh-point::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.45rem;}
+
+/* Research data section */
+.data-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:3rem;}
+.d-c4{grid-column:span 4}.d-c6{grid-column:span 6}.d-c8{grid-column:span 8}.d-c12{grid-column:span 12}
+@media(max-width:900px){.d-c4,.d-c6,.d-c8,.d-c12{grid-column:span 12}}
+.d-cell{padding:2rem 1.875rem;border-radius:1.25rem;background:rgba(255,255,255,.03);border:1px solid rgba(196,162,74,.1);backdrop-filter:blur(16px);transition:background .3s,border-color .3s;}
+.d-cell:hover{background:rgba(196,162,74,.05);border-color:rgba(196,162,74,.2);}
+.d-num{font-family:var(--serif);font-size:3.5rem;color:var(--gold);letter-spacing:-.03em;line-height:1;margin-bottom:.375rem;}
+.d-lbl{font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem;}
+.d-desc{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;}
+.d-cell-dark{background:rgba(0,0,0,.3);border-color:rgba(196,162,74,.15);}
+
+/* Governance section */
+.gov-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+@media(max-width:900px){.gov-layout{grid-template-columns:1fr;gap:3rem;}}
+.gov-principles{display:flex;flex-direction:column;gap:.875rem;margin-top:2rem;}
+.gov-principle{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem 1.5rem;border-radius:.875rem;background:rgba(196,162,74,.05);border:1px solid rgba(196,162,74,.1);transition:background .2s;}
+.gov-principle:hover{background:rgba(196,162,74,.09);}
+.gov-principle-n{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,162,74,.5);flex-shrink:0;width:2rem;}
+.gov-principle-text h4{font-size:.9375rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+.gov-principle-text p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.6;}
+.gov-ring-card{padding:2.5rem;border-radius:1.25rem;background:rgba(0,0,0,.4);border:1px solid rgba(196,162,74,.2);text-align:center;margin-bottom:1rem;}
+.ring-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,162,74,.6);margin-bottom:1.25rem;}
+.ring-visual{width:120px;height:120px;border-radius:50%;margin:0 auto 1.25rem;border:2px solid rgba(196,162,74,.4);display:flex;align-items:center;justify-content:center;position:relative;}
+.ring-visual::before{content:'';position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(196,162,74,.2);}
+.ring-inner{font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--gold);}
+.ring-card-title{font-family:var(--serif);font-size:1.5rem;color:#fff;margin-bottom:.625rem;}
+.ring-card-desc{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;}
+
+/* Team section */
+.team-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+@media(max-width:768px){.team-row{grid-template-columns:1fr;}}
+.team-card{border-radius:1.25rem;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(196,162,74,.1);transition:border-color .3s,transform .35s var(--ease);}
+.team-card:hover{border-color:rgba(196,162,74,.3);transform:translateY(-4px);}
+.team-avatar{height:72px;width:72px;border-radius:50%;background:rgba(196,162,74,.12);border:2px solid rgba(196,162,74,.3);display:flex;align-items:center;justify-content:center;margin:2rem auto 0;}
+.team-avatar-letter{font-family:var(--serif);font-size:1.75rem;color:var(--gold);}
+.team-body{padding:1.5rem;}
+.team-name{font-family:var(--serif);font-size:1.25rem;color:#fff;text-align:center;margin-bottom:.25rem;}
+.team-role{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,162,74,.6);text-align:center;margin-bottom:.875rem;}
+.team-bio{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;text-align:center;}
+
+/* Donate / Partner CTA */
+.cta-section{padding:7rem 0;text-align:center;border-top:1px solid rgba(196,162,74,.1);}
+.cta-section h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);color:#fff;margin-bottom:1rem;letter-spacing:-.025em;}
+.cta-section h2 em{font-style:italic;color:rgba(196,162,74,.8);}
+.cta-section p{font-size:1.0625rem;color:rgba(255,255,255,.4);max-width:30rem;margin:0 auto 2.5rem;line-height:1.75;}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+
+/* Footer */
+footer{border-top:1px solid rgba(196,162,74,.1);padding:4rem 0 2.5rem;background:rgba(0,0,0,.5);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+.footer-wordmark{font-family:var(--serif);font-size:1.5rem;color:#fff;margin-bottom:.5rem;}
+.footer-wordmark span{color:var(--gold);font-style:italic;}
+.footer-desc{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.7;max-width:22rem;}
+.footer-desc a{color:var(--gold);}
+.footer-col h4{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:1.125rem;}
+.footer-col li{margin-bottom:.5rem;list-style:none;}
+.footer-col a{font-size:.875rem;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.6875rem;color:rgba(255,255,255,.2);}
+.footer-legal{display:flex;gap:1.5rem;}.footer-legal a:hover{color:#fff;}
+
+@media(max-width:1200px){.nav-links{display:none;}.hamburger{display:flex;}}
+@media(max-width:640px){.topbar{display:none;}.hero-inner{grid-template-columns:1fr;gap:3rem;}.footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="bg-gradient" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="glow-orb g1" aria-hidden="true"></div>
+<div class="glow-orb g2" aria-hidden="true"></div>
+
+<div class="topbar">
+  <span>Enlyst Ecosystem</span>
+  <span class="topbar-dot"></span>
+  <span>Foundation · Philanthropic Research Arm</span>
+  <span class="topbar-dot"></span>
+  <a href="https://enlystnow.com" target="_blank" rel="noopener">enlystnow.com ↗</a>
+</div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div style="display:flex;align-items:center;">
+        <svg width="28" height="30" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4A24A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4A24A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4A24A" opacity=".26"/></svg>
+      </div>
+      <span class="brand-wordmark">enlyst<span>Foundation</span></span>
+      <div class="brand-div"></div>
+      <span class="brand-tag">Research & Policy</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="enlyst-about.html" class="nav-btn">About</a>
+      <a href="enlyst-services.html" class="nav-btn">Services</a>
+      <a href="enlyst-graduates.html" class="nav-btn">Talent Forge</a>
+      <a href="enlyst-academy.html" class="nav-btn">Academy</a>
+      <a href="enlyst-articles.html" class="nav-btn">Articles</a>
+      <a href="enlyst-blog.html" class="nav-btn">Blog</a>
+      <a href="enlyst-contact.html" class="nav-btn">Contact</a>
+      <a href="https://enlystnow.com" target="_blank" rel="noopener" class="nav-ext">enlystnow.com ↗</a>
+    </div>
+    <a href="#partner" class="nav-cta-btn">Partner With Us</a>
+    <button class="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href="index.html" class="drawer-btn">Home</a>
+  <a href="enlyst-about.html" class="drawer-btn">About</a>
+  <a href="enlyst-services.html" class="drawer-btn">Services</a>
+  <a href="enlyst-graduates.html" class="drawer-btn">Talent Forge</a>
+  <a href="enlyst-academy.html" class="drawer-btn">Academy</a>
+  <a href="enlyst-articles.html" class="drawer-btn">Articles</a>
+  <a href="enlyst-blog.html" class="drawer-btn">Blog</a>
+  <a href="enlyst-contact.html" class="drawer-btn">Contact</a>
+  <a href="#partner" class="drawer-cta">Partner With Us</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="rv">
+        <div class="hero-eyebrow">Enlyst Foundation</div>
+        <h1>Data-driven policy.<br/><em>Disability studies.</em><br/>Evidence that matters.</h1>
+        <p class="hero-sub">The ring-fenced philanthropic arm of the Enlyst Framework. Research on disability-inclusive education, institutional reform, and the structural conditions that determine whether people are protected or failed.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.875rem;">
+          <a href="#research" class="btn-gold">Explore the Research →</a>
+          <a href="enlyst-articles.html" class="btn-ghost">Read Articles</a>
+        </div>
+      </div>
+      <div class="rv rv-d1">
+        <div class="hero-panel">
+          <div class="hp-label">Research Output · Himat-Hikmat Framework</div>
+          <div class="hp-stats">
+            <div class="hp-stat">
+              <div class="hp-stat-num">24.3%</div>
+              <div class="hp-stat-lbl">Leaky Pipeline — attrition rate of visually impaired students from Grade 8 to Matriculation. Financial stipends without instructional capacity institutionalise inequality.</div>
+            </div>
+            <div class="hp-stat">
+              <div class="hp-stat-num">55%</div>
+              <div class="hp-stat-lbl">Central Effect — variance in student achievement explained solely by teacher efficacy and pedagogical content knowledge.</div>
+            </div>
+            <div class="hp-stat">
+              <div class="hp-stat-num">37k+</div>
+              <div class="hp-stat-lbl">Words of rigorous mixed-methods field research constituting the empirical foundation of our policy recommendations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIMAT-HIKMAT FRAMEWORK -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">The Framework</p>
+      <h2 class="s-title">Himat-Hikmat.<br/><em>Courage and Wisdom.</em></h2>
+      <p class="s-lead">The intellectual architecture of the Enlyst Foundation. Not a slogan — a research methodology. Two pillars that must hold simultaneously for institutional reform to be honest.</p>
+    </div>
+    <div class="hh-grid">
+      <div class="hh-card rv rv-d1">
+        <div class="hh-word" aria-hidden="true">H</div>
+        <div class="hh-num">Pillar One</div>
+        <h3><span>Himat</span> — Courage</h3>
+        <p>The courage to see systems as they are — not as they are described in policy documents. The courage to name the failure, trace its incentive structure, and resist the institutional pressure to soften the diagnosis.</p>
+        <div class="hh-points">
+          <div class="hh-point">Structural diagnosis before prescription — always</div>
+          <div class="hh-point">Full institutional audit before any intervention design</div>
+          <div class="hh-point">Name the incentives that produce the failure, not just the failure</div>
+          <div class="hh-point">Resistance to displacing data with narrative</div>
+        </div>
+      </div>
+      <div class="hh-card rv rv-d2">
+        <div class="hh-word" aria-hidden="true">H</div>
+        <div class="hh-num">Pillar Two</div>
+        <h3><span>Hikmat</span> — Wisdom</h3>
+        <p>The wisdom to design alternatives that survive contact with reality. Evidence-anchored, testable, proportionate. Knowing the limits of what data can claim. Building what is implementable, not just what is ideal.</p>
+        <div class="hh-points">
+          <div class="hh-point">Evidence-anchored alternatives — not aspirational ones</div>
+          <div class="hh-point">Human cost as the primary metric — not administrative convenience</div>
+          <div class="hh-point">Testable, falsifiable policy recommendations</div>
+          <div class="hh-point">Proportionate interventions matched to system capacity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH DATA -->
+<section class="section" style="padding-top:0;" id="data">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">Field Data</p>
+      <h2 class="s-title">What the numbers<br/><em>actually say.</em></h2>
+      <p class="s-lead">Three statistics that anchor the Foundation's current research programme. Each number represents a structural failure — and a specific reform target.</p>
+    </div>
+    <div class="data-grid">
+      <div class="d-cell rv rv-d1 d-c4">
+        <div class="d-num">24.3%</div>
+        <div class="d-lbl">The Leaky Pipeline</div>
+        <div class="d-desc">Attrition rate of visually impaired students from Grade 8 to Matriculation in Punjab. Financial stipends without instructional capacity do not produce retention — they produce subsidised exclusion.</div>
+      </div>
+      <div class="d-cell rv rv-d2 d-c4">
+        <div class="d-num">55%</div>
+        <div class="d-lbl">The Central Effect</div>
+        <div class="d-desc">Variance in student achievement explained solely by teacher efficacy and pedagogical content knowledge (PCK). Proof that empowering the human element transforms outcomes more than any curriculum reform.</div>
+      </div>
+      <div class="d-cell rv rv-d3 d-c4">
+        <div class="d-num">37k+</div>
+        <div class="d-lbl">The Research Base</div>
+        <div class="d-desc">Words of rigorous, mixed-methods field research constituting the empirical foundation of the Foundation's policy recommendations for public sector reform in disability-inclusive education.</div>
+      </div>
+      <div class="d-cell d-cell-dark d-c8 rv rv-d1">
+        <p class="s-eyebrow" style="margin-bottom:1.25rem;">The Researcher</p>
+        <h3 style="font-family:var(--serif);font-size:1.75rem;color:#fff;margin-bottom:.875rem;">Dr. Imran Sabir</h3>
+        <p style="font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1rem;">The intellectual backbone of the Enlyst Foundation. Doctoral-grade research on governance, educational reform, and the conditions under which institutions either protect or fail the people they were built to serve.</p>
+        <p style="font-size:.875rem;color:rgba(196,162,74,.6);font-family:var(--mono);letter-spacing:.06em;">Research · Foundation · Himat-Hikmat Framework</p>
+      </div>
+      <div class="d-cell d-c4 rv rv-d2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:var(--serif);font-size:1.125rem;font-style:italic;color:rgba(255,255,255,.5);line-height:1.6;max-width:200px;">"Evidence without courage is decorative. Courage without evidence is dangerous."</div>
+        <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(196,162,74,.4);margin-top:1rem;">Foundation Principle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="section" id="governance">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;margin-bottom:3rem;">
+      <p class="s-eyebrow">Structure</p>
+      <h2 class="s-title">Ring-fenced.<br/><em>By design.</em></h2>
+      <p class="s-lead">The Foundation is not a CSR line item. It is constitutively separate from the commercial P&L — board-protected, metric-distinct, and donor-auditable. Commercial cycles cannot silently consume the mission.</p>
+    </div>
+    <div class="gov-layout">
+      <div class="rv rv-d1">
+        <div class="gov-principles">
+          <div class="gov-principle"><span class="gov-principle-n">01</span><div class="gov-principle-text"><h4>Board Protection</h4><p>Foundation decisions are insulated from commercial P&L pressure. The board holds the mission, not the revenue cycle.</p></div></div>
+          <div class="gov-principle"><span class="gov-principle-n">02</span><div class="gov-principle-text"><h4>Metric Distinctness</h4><p>Foundation outcomes are measured in research rigour, policy reach, and human impact — not in commercial ROI.</p></div></div>
+          <div class="gov-principle"><span class="gov-principle-n">03</span><div class="gov-principle-text"><h4>Donor Auditability</h4><p>Every research output, field deployment, and policy recommendation is documented and available for donor review.</p></div></div>
+          <div class="gov-principle"><span class="gov-principle-n">04</span><div class="gov-principle-text"><h4>Commercial Cross-Subsidy</h4><p>Retainer revenue from the commercial stack funds the Foundation's research rigour. The Foundation does not depend on external grants for its independence.</p></div></div>
+        </div>
+      </div>
+      <div class="rv rv-d2">
+        <div class="gov-ring-card">
+          <div class="ring-label">Foundation Status</div>
+          <div class="ring-visual">
+            <div class="ring-inner">EF</div>
+          </div>
+          <div class="ring-card-title">Enlyst Foundation</div>
+          <div class="ring-card-desc">Constitutively ring-fenced. The commercial ecosystem funds the research. The research holds the ecosystem accountable.</div>
+        </div>
+        <div style="padding:1.75rem;border-radius:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(196,162,74,.1);">
+          <p style="font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.75;">The Foundation's disability-inclusive education policy work is a natural public-sector adjacency to the Enlyst Academy and GovTech practice. The commercial stack funds rigour. The Foundation holds outcome metrics that donors and departments can audit — not slide decks that die in handover.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">The People</p>
+      <h2 class="s-title">Who holds<br/><em>the framework.</em></h2>
+    </div>
+    <div class="team-row">
+      <div class="team-card rv rv-d1">
+        <div class="team-avatar"><div class="team-avatar-letter">WH</div></div>
+        <div class="team-body">
+          <div class="team-name">Wasim Hassan</div>
+          <div class="team-role">Founder · Chairperson</div>
+          <div class="team-bio">Excise & Taxation Officer. Architect of government AI and cloud deployments across Punjab. Originating mind behind Enlyst's conviction that operational excellence should not be the exclusive preserve of large institutions.</div>
+        </div>
+      </div>
+      <div class="team-card rv rv-d2">
+        <div class="team-avatar"><div class="team-avatar-letter">IS</div></div>
+        <div class="team-body">
+          <div class="team-name">Dr. Imran Sabir</div>
+          <div class="team-role">Research · Foundation</div>
+          <div class="team-bio">The intellectual backbone of the Enlyst Foundation. Doctoral-grade research on governance, educational reform, and the conditions under which institutions either protect or fail the people they were built to serve.</div>
+        </div>
+      </div>
+      <div class="team-card rv rv-d3">
+        <div class="team-avatar"><div class="team-avatar-letter">F</div></div>
+        <div class="team-body">
+          <div class="team-name">Miss Fatima</div>
+          <div class="team-role">CEO · enlybiz</div>
+          <div class="team-bio">Leads the marketing and growth engine across the Enlyst portfolio. Her conviction: a business that is invisible is a business that is vulnerable. Specialist in CRM architecture and measurable brand positioning.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER CTA -->
+<section class="cta-section" id="partner">
+  <div class="wrap rv">
+    <div style="width:64px;height:64px;margin:0 auto 2rem;">
+      <svg viewBox="0 0 80 80" fill="none" width="64" height="64"><path d="M40 4 L74 22 L74 58 L40 76 L6 58 L6 22 Z" fill="none" stroke="rgba(196,162,74,.4)" stroke-width="1.5"/><path d="M40 16 L66 30 L66 50 L40 64 L14 50 L14 30 Z" fill="rgba(196,162,74,.06)"/><text x="28" y="46" font-family="'Instrument Serif', serif" font-size="18" fill="#C4A24A" font-style="italic">EF</text></svg>
+    </div>
+    <h2>Partner with<br/>the <em>Foundation.</em></h2>
+    <p>If you are a researcher, policymaker, donor, or institution working on disability inclusion, educational reform, or public-sector modernisation — we want to hear from you.</p>
+    <div class="cta-row">
+      <a href="enlyst-contact.html?type=general" class="btn-gold">Start a Conversation →</a>
+      <a href="enlyst-articles.html" class="btn-ghost">Read the Research</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+          <svg width="26" height="28" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4A24A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4A24A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4A24A" opacity=".26"/></svg>
+          <div class="footer-wordmark">enlyst<span>Foundation</span></div>
+        </div>
+        <div class="footer-desc">Ring-fenced philanthropic research. Part of the <a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework</a>. Commercial rigour funds research independence.</div>
+      </div>
+      <div class="footer-col"><h4>Research</h4><ul><li><a href="#research">Himat-Hikmat</a></li><li><a href="#data">Field Data</a></li><li><a href="enlyst-articles.html">All Articles</a></li></ul></div>
+      <div class="footer-col"><h4>Ecosystem</h4><ul><li><a href="index.html">enlyst HR</a></li><li><a href="enlyst-academy.html">Academy</a></li><li><a href="enlyst-graduates.html">Talent Forge</a></li><li><a href="https://enlystnow.com" target="_blank">enlystnow.com ↗</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:recruiter@enlystnow.com">recruiter@enlystnow.com</a></li><li><a href="tel:03000340036">03000 340 036</a></li><li><a href="enlyst-contact.html">Get in Touch</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Enlyst Smart Recruiting Pvt Ltd · Suite #202, 2nd Floor, South Tower, Stock Exchange Plaza, Lahore, Punjab 54000</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target);}});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
+</script>
+</body>
+</html>
