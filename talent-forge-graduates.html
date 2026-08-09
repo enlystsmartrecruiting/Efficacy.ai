@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Talent Forge — enlyst · Graduate to Professional</title>
+<meta name="description" content="A 6-month structured programme converting fresh graduates into job-ready professionals across HR, tech, finance, and marketing. Practice 01, Enlyst Framework."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500,700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#0A0A0F;--deep-3:#060D20;--deep-2:#0D1A40;--deep-1:#1A3580;
+  --mid-2:#2D5BE3;--sky-3:#8FB8FF;--sky-0:#EBF2FF;
+  --blue:#2D5BE3;--gold:#C4A24A;--amber:#C4620A;--green:#1A7A4A;
+  --ink:#0D1A3A;--ink2:#3A4D7A;--ink3:#6B7FA8;
+  /* Talent Forge accent — warm amber */
+  --forge:#C4620A;--forge-lo:rgba(196,98,10,.12);--forge-hi:rgba(196,98,10,.3);
+  --forge-pale:rgba(196,98,10,.08);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace;
+  --max:1200px;--ease:cubic-bezier(.16,1,.3,1);--bar:2.25rem;--nav:4.5rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--void);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}img,svg{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--sans);border:none;background:none;}
+::selection{background:var(--forge);color:#fff;}
+
+/* BACKGROUND — amber-tinted gradient for Forge */
+.bg-gradient{
+  position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(
+    180deg,
+    #1a0e05 0%,
+    #1f1208 8%,
+    #241508 16%,
+    #1a1a2e 30%,
+    var(--deep-2) 50%,
+    var(--deep-3) 72%,
+    var(--void) 100%
+  );
+}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(196,98,10,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(196,98,10,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.4) 50%,transparent 100%);}
+.glow-orb{position:fixed;border-radius:50%;filter:blur(140px);z-index:-1;pointer-events:none;animation:orb 22s ease-in-out infinite alternate;}
+.g1{width:700px;height:700px;top:-200px;left:-150px;background:rgba(196,98,10,.14);}
+.g2{width:600px;height:600px;top:35%;right:-180px;background:rgba(45,91,227,.1);animation-delay:-9s;animation-duration:28s;}
+.g3{width:450px;height:450px;bottom:-80px;left:30%;background:rgba(196,162,74,.07);animation-delay:-5s;animation-duration:19s;}
+@keyframes orb{0%{transform:translate(0,0) scale(1);}50%{transform:translate(3%,7%) scale(1.06);}100%{transform:translate(-3%,-4%) scale(.97);}}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;}
+
+/* ── TOPBAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:90;height:var(--bar);background:rgba(26,14,5,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,98,10,.15);display:flex;align-items:center;justify-content:center;gap:1.25rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.topbar a{color:var(--gold);font-weight:700;transition:color .2s;}
+.topbar-dot{width:3px;height:3px;border-radius:50%;background:var(--forge);opacity:.6;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:var(--bar);left:0;right:0;z-index:89;height:var(--nav);transition:background .3s,box-shadow .3s;}
+.nav.scrolled{background:rgba(10,10,15,.92);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,.5);}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;gap:2rem;}
+.brand{display:flex;align-items:center;gap:.75rem;flex-shrink:0;}
+.brand-wordmark{font-family:var(--serif);font-size:1.875rem;color:#fff;letter-spacing:-.02em;line-height:1;}
+.brand-wordmark span{color:var(--forge);}
+.brand-div{width:1px;height:1.25rem;background:rgba(255,255,255,.2);}
+.brand-tag{font-family:var(--mono);font-size:.5625rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:.25rem;margin-left:auto;}
+.nav-btn{font-size:.875rem;font-weight:500;color:rgba(255,255,255,.55);padding:.5rem .875rem;border-radius:6px;transition:color .2s,background .2s;}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,.07);}
+.nav-ext{font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:.5rem .875rem;border:1px solid rgba(196,162,74,.3);border-radius:6px;white-space:nowrap;transition:color .2s,border-color .2s;}
+.nav-ext:hover{color:#fff;border-color:var(--gold);}
+.nav-cta-btn{font-size:.875rem;font-weight:600;color:#fff;background:var(--forge);padding:.5625rem 1.25rem;border-radius:100px;box-shadow:0 4px 20px rgba(196,98,10,.35);transition:background .2s,transform .15s;flex-shrink:0;}
+.nav-cta-btn:hover{background:#a0510a;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+.drawer{position:fixed;top:calc(var(--bar) + var(--nav));left:0;right:0;z-index:88;padding:1.5rem;background:rgba(10,10,15,.96);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:.5rem;transform:translateY(-120%);transition:transform .4s var(--ease);}
+.drawer.open{transform:translateY(0);}
+.drawer-btn{font-size:1rem;font-weight:500;color:rgba(255,255,255,.65);padding:.875rem 1rem;border-radius:8px;text-align:left;transition:background .2s,color .2s;}
+.drawer-btn:hover{background:rgba(255,255,255,.06);color:#fff;}
+.drawer-cta{margin-top:.5rem;background:var(--forge);color:#fff;font-size:.9375rem;font-weight:700;padding:1rem;border-radius:10px;text-align:center;}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.on{opacity:1;transform:none;}
+.rv-d1{transition-delay:.1s;}.rv-d2{transition-delay:.2s;}.rv-d3{transition-delay:.3s;}.rv-d4{transition-delay:.4s;}
+
+/* ── HERO ── */
+.hero{padding:calc(var(--bar) + var(--nav) + 5rem) 0 6rem;position:relative;overflow:hidden;border-bottom:1px solid rgba(196,98,10,.15);}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:3rem;}}
+.hero-badge-row{display:flex;align-items:center;gap:.875rem;margin-bottom:1.75rem;flex-wrap:wrap;}
+.hero-cohort-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.375rem 1rem;border-radius:9999px;
+  background:rgba(196,98,10,.12);border:1px solid rgba(196,98,10,.3);
+  font-family:var(--mono);font-size:.625rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--forge);
+}
+.forge-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px #22C55E;animation:blink 2.5s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,6.5vw,5.5rem);line-height:1.03;letter-spacing:-.03em;color:#fff;margin-bottom:1.25rem;}
+.hero h1 em{font-style:italic;color:var(--forge);}
+.hero-sub{font-size:1.125rem;line-height:1.8;color:rgba(255,255,255,.5);max-width:30rem;margin-bottom:2.25rem;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.875rem;margin-bottom:2.5rem;}
+.btn-forge{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:700;color:#fff;background:var(--forge);padding:.875rem 1.75rem;border-radius:100px;box-shadow:0 4px 24px rgba(196,98,10,.35);transition:background .2s,transform .15s;}
+.btn-forge:hover{background:#a0510a;transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.7);padding:.875rem 1.75rem;border-radius:100px;border:1.5px solid rgba(255,255,255,.18);transition:color .2s,border-color .2s;}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+
+/* Cohort stats */
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+@media(max-width:400px){.hero-stats{grid-template-columns:1fr 1fr;}}
+.h-stat{padding:1.25rem 1rem;border-radius:.875rem;background:rgba(196,98,10,.08);border:1px solid rgba(196,98,10,.2);text-align:center;}
+.h-stat-num{font-family:var(--serif);font-size:2rem;color:#fff;letter-spacing:-.025em;line-height:1;}
+.h-stat-lbl{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.25rem;}
+
+/* Hero right — cohort card */
+.cohort-card{
+  border-radius:1.5rem;padding:2.5rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(196,98,10,.2);
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;
+}
+.cohort-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--forge),var(--gold));}
+.cc-label{font-family:var(--mono);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,98,10,.7);margin-bottom:1.5rem;}
+.cc-cohort{font-family:var(--serif);font-size:3.5rem;color:#fff;letter-spacing:-.03em;line-height:1;margin-bottom:.25rem;}
+.cc-sub{font-family:var(--mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2rem;}
+.cc-placements{display:flex;flex-direction:column;gap:.625rem;margin-bottom:2rem;}
+.cc-placement{display:flex;align-items:center;gap:.875rem;padding:.75rem 1rem;border-radius:.75rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);}
+.cc-p-dot{width:8px;height:8px;border-radius:50%;background:var(--forge);flex-shrink:0;}
+.cc-p-name{font-size:.875rem;color:rgba(255,255,255,.75);font-weight:500;}
+.cc-p-role{font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-left:auto;}
+.cc-outcome{border-top:1px solid rgba(255,255,255,.07);padding-top:1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;text-align:center;}
+@media(max-width:400px){.cc-outcome{grid-template-columns:1fr;}}
+.cc-out-num{font-family:var(--serif);font-size:1.5rem;color:var(--forge);letter-spacing:-.02em;}
+.cc-out-lbl{font-family:var(--mono);font-size:.45rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:.2rem;}
+
+/* ── WHAT IS IT ── */
+.section{padding:6rem 0;}
+.s-eyebrow{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.875rem;color:rgba(196,98,10,.8);}
+.s-title{font-family:var(--serif);font-size:clamp(2.25rem,4.5vw,3.5rem);font-weight:400;line-height:1.08;letter-spacing:-.025em;color:#fff;}
+.s-title em{font-style:italic;color:var(--forge);}
+.s-lead{font-size:1.0625rem;line-height:1.75;color:rgba(255,255,255,.5);max-width:38rem;margin-top:1rem;}
+
+/* Programme timeline */
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem;margin-top:3rem;position:relative;}
+.timeline::before{content:'';position:absolute;top:2rem;left:5%;right:5%;height:1px;background:rgba(196,98,10,.15);}
+@media(max-width:900px){.timeline{grid-template-columns:repeat(3,1fr);}.timeline::before{display:none;}}
+@media(max-width:540px){.timeline{grid-template-columns:1fr 1fr;}}
+.t-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.5rem 1.25rem;backdrop-filter:blur(12px);transition:background .3s,border-color .3s,transform .35s var(--ease);position:relative;z-index:1;}
+.t-card:hover{background:rgba(196,98,10,.08);border-color:rgba(196,98,10,.3);transform:translateY(-4px);}
+.t-month{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,98,10,.6);margin-bottom:.75rem;}
+.t-num{width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(196,98,10,.12);border:1px solid rgba(196,98,10,.25);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.625rem;color:rgba(196,98,10,.8);margin-bottom:.875rem;}
+.t-card h4{font-family:var(--serif);font-size:1.0625rem;color:#fff;margin-bottom:.375rem;}
+.t-card p{font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.6;}
+
+/* Tracks bento */
+.tracks-bento{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:3rem;}
+@media(max-width:640px){.tracks-bento{grid-template-columns:1fr;}}
+.track-card{padding:2rem 1.875rem;border-radius:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px);position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .35s var(--ease);}
+.track-card:hover{background:rgba(255,255,255,.08);border-color:rgba(196,98,10,.3);transform:translateY(-4px);}
+.track-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--forge);transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease);}
+.track-card:hover::before{transform:scaleY(1);}
+.track-icon{width:3rem;height:3rem;border-radius:.875rem;background:rgba(196,98,10,.1);border:1px solid rgba(196,98,10,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
+.track-icon svg{width:22px;height:22px;fill:none;stroke:rgba(196,98,10,.8);stroke-width:1.75;}
+.track-card h3{font-family:var(--serif);font-size:1.5rem;color:#fff;margin-bottom:.5rem;}
+.track-card p{font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.25rem;}
+.track-skills{display:flex;flex-wrap:wrap;gap:.375rem;}
+.track-skill{font-family:var(--mono);font-size:.625rem;padding:.25rem .625rem;border-radius:4px;background:rgba(196,98,10,.12);color:rgba(196,98,10,.8);letter-spacing:.04em;}
+
+/* Outcomes section */
+.outcomes-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:3rem;}
+.o-c6{grid-column:span 6}.o-c4{grid-column:span 4}.o-c8{grid-column:span 8}.o-c12{grid-column:span 12}
+@media(max-width:900px){.o-c4,.o-c6,.o-c8,.o-c12{grid-column:span 12}}
+.o-cell{padding:2rem 1.875rem;border-radius:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);transition:background .3s,border-color .3s;}
+.o-cell:hover{background:rgba(255,255,255,.07);}
+.o-cell-gold{background:rgba(196,162,74,.07);border-color:rgba(196,162,74,.2);}
+.o-big-num{font-family:var(--serif);font-size:3.5rem;color:#fff;letter-spacing:-.03em;line-height:1;margin-bottom:.375rem;}
+.o-big-lbl{font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.o-big-sub{font-size:.875rem;color:rgba(255,255,255,.35);margin-top:.625rem;line-height:1.55;}
+.o-company-list{display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem;}
+.o-company{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:rgba(255,255,255,.6);padding:.625rem .875rem;background:rgba(255,255,255,.04);border-radius:.5rem;}
+.o-company-dot{width:6px;height:6px;border-radius:50%;background:var(--forge);flex-shrink:0;}
+
+/* Application section */
+.apply-section{padding:6rem 0 4rem;border-top:1px solid rgba(196,98,10,.12);}
+.apply-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem;}
+@media(max-width:900px){.apply-grid{grid-template-columns:1fr;gap:2.5rem;}}
+.apply-info{display:flex;flex-direction:column;gap:1rem;}
+.apply-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;border-radius:.875rem;background:rgba(196,98,10,.06);border:1px solid rgba(196,98,10,.15);}
+.apply-item-icon{width:2.5rem;height:2.5rem;border-radius:.625rem;background:rgba(196,98,10,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.apply-item-icon svg{width:16px;height:16px;fill:none;stroke:rgba(196,98,10,.9);stroke-width:1.75;}
+.apply-item h4{font-size:.9375rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+.apply-item p{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.6;}
+
+/* Form */
+.apply-form{background:rgba(255,255,255,.03);border:1px solid rgba(196,98,10,.2);border-radius:1rem;padding:2.25rem;backdrop-filter:blur(16px);}
+.form-title{font-family:var(--serif);font-size:1.75rem;color:#fff;margin-bottom:.375rem;}
+.form-sub{font-size:.9rem;color:rgba(255,255,255,.4);margin-bottom:2rem;line-height:1.6;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.field{margin-bottom:1rem;}
+.field label{display:block;font-family:var(--mono);font-size:.5875rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.375rem;}
+.field input,.field select,.field textarea{width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:.625rem;color:#fff;font-family:var(--sans);font-size:.875rem;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--forge);box-shadow:0 0 0 3px rgba(196,98,10,.15);}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.2);}
+.field select option{background:#141820;color:#fff;}
+.field textarea{resize:vertical;min-height:5rem;line-height:1.6;}
+.f-submit{width:100%;margin-top:.5rem;padding:.9375rem;background:var(--forge);color:#fff;border-radius:.625rem;font-size:.9375rem;font-weight:700;cursor:pointer;border:none;transition:background .2s;}
+.f-submit:hover{background:#a0510a;}
+.f-note{font-size:.6875rem;color:rgba(255,255,255,.2);text-align:center;margin-top:.875rem;font-family:var(--mono);letter-spacing:.04em;}
+.learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem;}
+@media(max-width:768px){.learning-grid{grid-template-columns:1fr;}}
+.f-success{display:none;text-align:center;padding:3rem 1rem;}
+.f-success.on{display:block;}
+.f-success h3{font-family:var(--serif);font-size:1.75rem;color:#fff;margin-bottom:.625rem;}
+.f-success p{font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:22rem;margin:0 auto;}
+
+/* CTA band */
+.cta-band{padding:5rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.cta-band h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.75rem);color:#fff;margin-bottom:.75rem;letter-spacing:-.02em;}
+.cta-band h2 em{font-style:italic;color:rgba(196,98,10,.8);}
+.cta-band p{color:rgba(255,255,255,.4);font-size:1.0625rem;max-width:28rem;margin:0 auto 2rem;line-height:1.7;}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+
+/* Footer */
+footer{border-top:1px solid rgba(255,255,255,.05);padding:4rem 0 2.5rem;background:rgba(0,0,0,.4);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;flex:1;margin-bottom:2.5rem;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+.footer-wordmark{font-family:var(--serif);font-size:1.75rem;color:#fff;letter-spacing:-.02em;}
+.footer-desc{font-size:.875rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:.5rem;max-width:22rem;}
+.footer-desc a{color:var(--gold);}
+.footer-col h4{font-family:var(--mono);font-size:.5625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:1.125rem;}
+.footer-col li{margin-bottom:.5rem;list-style:none;}
+.footer-col a{font-size:.875rem;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.6875rem;color:rgba(255,255,255,.2);}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a:hover{color:#fff;}
+
+@media(max-width:1200px){.nav-links{display:none;}.hamburger{display:flex;}}
+@media(max-width:640px){.topbar{display:none;}.footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="bg-gradient" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="glow-orb g1" aria-hidden="true"></div>
+<div class="glow-orb g2" aria-hidden="true"></div>
+<div class="glow-orb g3" aria-hidden="true"></div>
+
+<div class="topbar">
+  <span>Practice 01 · Enlyst HR</span>
+  <span class="topbar-dot"></span>
+  <span>Graduate Programme</span>
+  <span class="topbar-dot"></span>
+  <a href="https://enlystnow.com" target="_blank" rel="noopener">enlystnow.com ↗</a>
+</div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div style="display:flex;align-items:center;">
+        <svg width="32" height="34" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity=".26"/></svg>
+      </div>
+      <span class="brand-wordmark">talent<span>forge</span></span>
+      <div class="brand-div"></div>
+      <span class="brand-tag">by enlyst</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="enlyst-about.html" class="nav-btn">About</a>
+      <a href="enlyst-services.html" class="nav-btn">Services</a>
+      <a href="enlyst-academy.html" class="nav-btn">Academy</a>
+      <a href="enlyst-articles.html" class="nav-btn">Articles</a>
+      <a href="enlyst-blog.html" class="nav-btn">Blog</a>
+      <a href="enlyst-foundation.html" class="nav-btn">Foundation</a>
+      <a href="enlyst-contact.html" class="nav-btn">Contact</a>
+      <a href="https://enlystnow.com" target="_blank" rel="noopener" class="nav-ext">enlystnow.com ↗</a>
+    </div>
+    <a href="#apply" class="nav-cta-btn">Apply Now</a>
+    <button class="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href="index.html" class="drawer-btn">Home</a>
+  <a href="enlyst-about.html" class="drawer-btn">About</a>
+  <a href="enlyst-services.html" class="drawer-btn">Services</a>
+  <a href="enlyst-academy.html" class="drawer-btn">Academy</a>
+  <a href="enlyst-articles.html" class="drawer-btn">Articles</a>
+  <a href="enlyst-blog.html" class="drawer-btn">Blog</a>
+  <a href="enlyst-foundation.html" class="drawer-btn">Foundation</a>
+  <a href="enlyst-contact.html" class="drawer-btn">Contact</a>
+  <a href="#apply" class="drawer-cta">Apply to Talent Forge</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="rv">
+        <div class="hero-badge-row">
+          <div class="hero-cohort-badge"><span class="forge-dot"></span>Cohort 04 — Applications Open</div>
+        </div>
+        <h1>Graduate today.<br/><em>Professional</em><br/>in six months.</h1>
+        <p class="hero-sub">A structured pipeline converting Pakistan's brightest fresh graduates into job-ready professionals — placed at real companies, with real outcomes, documented at every step.</p>
+        <div class="hero-actions">
+          <a href="#apply" class="btn-forge">Apply to Cohort 04 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#outcomes" class="btn-ghost">See Cohort 03 Results</a>
+        </div>
+        <div class="hero-stats">
+          <div class="h-stat"><div class="h-stat-num">12</div><div class="h-stat-lbl">Placed — Cohort 03</div></div>
+          <div class="h-stat"><div class="h-stat-num">6</div><div class="h-stat-lbl">Months programme</div></div>
+          <div class="h-stat"><div class="h-stat-num">4</div><div class="h-stat-lbl">Tracks available</div></div>
+        </div>
+      </div>
+      <div class="rv rv-d1">
+        <div class="cohort-card">
+          <div class="cc-label">Cohort 03 · Placements</div>
+          <div class="cc-cohort">03</div>
+          <div class="cc-sub">12 Graduates Placed · Q1 2026</div>
+          <div class="cc-placements">
+            <div class="cc-placement"><span class="cc-p-dot"></span><span class="cc-p-name">Alchemative</span><span class="cc-p-role">3 placed</span></div>
+            <div class="cc-placement"><span class="cc-p-dot"></span><span class="cc-p-name">Karkao Studios</span><span class="cc-p-role">2 placed</span></div>
+            <div class="cc-placement"><span class="cc-p-dot"></span><span class="cc-p-name">Xeven Solutions</span><span class="cc-p-role">3 placed</span></div>
+            <div class="cc-placement"><span class="cc-p-dot"></span><span class="cc-p-name">Lambda Logics</span><span class="cc-p-role">2 placed</span></div>
+            <div class="cc-placement"><span class="cc-p-dot"></span><span class="cc-p-name">Brickclay</span><span class="cc-p-role">2 placed</span></div>
+          </div>
+          <div class="cc-outcome">
+            <div><div class="cc-out-num">91%</div><div class="cc-out-lbl">90-day retention</div></div>
+            <div><div class="cc-out-num">4.3</div><div class="cc-out-lbl">Manager rating /5</div></div>
+            <div><div class="cc-out-num">6d</div><div class="cc-out-lbl">Avg. time to offer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS TALENT FORGE -->
+<section class="section">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">The Programme</p>
+      <h2 class="s-title">Six months that<br/><em>change the trajectory.</em></h2>
+      <p class="s-lead">Pakistan produces more graduates than the market can absorb without structure. Talent Forge provides that structure — screening, matching, training, placing, and following up. We own the outcome, not just the process.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-card rv rv-d1"><div class="t-month">Month 01</div><div class="t-num">01</div><h4>Screen & Match</h4><p>Competency-based entry screening. Track matching based on aptitude, not just degree.</p></div>
+      <div class="t-card rv rv-d2"><div class="t-month">Month 02</div><div class="t-num">02</div><h4>Foundation Skills</h4><p>Professional writing, tools literacy, workplace ethics, and communication frameworks.</p></div>
+      <div class="t-card rv rv-d3"><div class="t-month">Month 03</div><div class="t-num">03</div><h4>Track Training</h4><p>Deep-dive into your chosen track — HR, Tech, Finance, or Marketing. Real tools, real projects.</p></div>
+      <div class="t-card rv rv-d1"><div class="t-month">Month 04</div><div class="t-num">04</div><h4>Live Projects</h4><p>Work on real client assignments under supervision. Build a documented portfolio, not just a CV.</p></div>
+      <div class="t-card rv rv-d2"><div class="t-month">Month 05</div><div class="t-num">05</div><h4>Employer Matching</h4><p>Structured introductions to hiring companies. Behavioural screening applied both ways.</p></div>
+      <div class="t-card rv rv-d3"><div class="t-month">Month 06</div><div class="t-num">06</div><h4>Placement & Follow-up</h4><p>Offer management and 90-day post-placement accountability. The programme ends when you're stable.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">Four Tracks</p>
+      <h2 class="s-title">Choose your<br/><em>professional direction.</em></h2>
+      <p class="s-lead">Each track is six months of structured, supervised, documented learning — ending in a placement, not a certificate.</p>
+    </div>
+    <div class="tracks-bento">
+      <div class="track-card rv rv-d1">
+        <div class="track-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>HR & Talent</h3>
+        <p>Sourcing, screening methodology, behavioural interviewing, HRIS tools, EOBI compliance, and pipeline management. You will be placed as a junior recruiter or HR coordinator.</p>
+        <div class="track-skills"><span class="track-skill">Sourcing</span><span class="track-skill">Behavioural Screening</span><span class="track-skill">HRIS</span><span class="track-skill">EOBI</span><span class="track-skill">Pipeline Ops</span></div>
+      </div>
+      <div class="track-card rv rv-d2">
+        <div class="track-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Technology</h3>
+        <p>Cloud fundamentals (GCP/Azure), AI literacy, data workflows, and junior development skills. Placed as a junior cloud associate, data analyst, or technical coordinator.</p>
+        <div class="track-skills"><span class="track-skill">GCP / Azure</span><span class="track-skill">AI Literacy</span><span class="track-skill">Data Workflows</span><span class="track-skill">SQL Basics</span><span class="track-skill">Python Intro</span></div>
+      </div>
+      <div class="track-card rv rv-d1">
+        <div class="track-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Finance & Accounting</h3>
+        <p>Bookkeeping, financial reporting, tax basics, payroll, and FBR/SRB compliance. Placed as an accounts assistant, payroll officer, or junior finance analyst.</p>
+        <div class="track-skills"><span class="track-skill">Bookkeeping</span><span class="track-skill">FBR / SRB</span><span class="track-skill">QuickBooks</span><span class="track-skill">Payroll</span><span class="track-skill">Financial Reports</span></div>
+      </div>
+      <div class="track-card rv rv-d2">
+        <div class="track-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Marketing & Growth</h3>
+        <p>Digital strategy, content, SEO, CRM, paid media, and analytics. Placed as a digital marketing associate, content strategist, or growth analyst.</p>
+        <div class="track-skills"><span class="track-skill">SEO / SEM</span><span class="track-skill">CRM</span><span class="track-skill">Content Strategy</span><span class="track-skill">Analytics</span><span class="track-skill">Paid Media</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING PORTAL ACCESS -->
+<section class="section" style="padding-top:0;" id="learning-portal">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow" style="color:rgba(196,98,10,.8);">Learning Credentials</p>
+      <h2 class="s-title">Get your <em>learning accounts.</em></h2>
+      <p class="s-lead">As a Talent Forge candidate or graduate, you get free access to Microsoft Learn and Google Cloud Skills Boost. Enter your name and generate your access request email.</p>
+    </div>
+    <div class="learning-grid">
+
+      <!-- Microsoft Learn -->
+      <div class="rv rv-d1" style="padding:2.5rem;border-radius:1.25rem;background:rgba(0,120,212,.07);border:1px solid rgba(0,120,212,.2);backdrop-filter:blur(16px);">
+        <div style="display:flex;align-items:center;gap:.875rem;margin-bottom:1.5rem;">
+          <div style="width:3rem;height:3rem;border-radius:.75rem;background:rgba(0,120,212,.15);border:1px solid rgba(0,120,212,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 23 23" fill="none"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="12" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="12" width="10" height="10" fill="#00A4EF"/><rect x="12" y="12" width="10" height="10" fill="#FFB900"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.9375rem;font-weight:600;color:#fff;">Microsoft Learn</div>
+            <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,120,212,.7);">via enlyst.onmicrosoft.com</div>
+          </div>
+        </div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.5rem;">Microsoft Learn, Teams, Azure ML, Power BI and 800+ Intel Partner University courses — free through your Enlyst Microsoft 365 account.</p>
+        <div style="margin-bottom:1rem;">
+          <label style="font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:.5rem;">Your First Name</label>
+          <input type="text" id="tf-ms-name" placeholder="e.g. Ahmed"
+            style="width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:.625rem;color:#fff;font-family:var(--sans);font-size:.9375rem;outline:none;transition:border-color .2s;"
+            oninput="updateTFMSPreview(this.value)"
+            onfocus="this.style.borderColor='rgba(0,120,212,.6)'"
+            onblur="this.style.borderColor='rgba(255,255,255,.1)'"/>
+        </div>
+        <div id="tf-ms-preview" style="font-family:var(--mono);font-size:.625rem;letter-spacing:.06em;color:rgba(255,255,255,.25);margin-bottom:1.25rem;min-height:1.2rem;"></div>
+        <a href="#" onclick="return openTFMSLearn()"
+          style="display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;padding:.875rem;background:rgba(0,120,212,.85);color:#fff;border-radius:.625rem;font-size:.9375rem;font-weight:700;transition:background .2s;text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Request Microsoft Learn Access
+        </a>
+      </div>
+
+      <!-- Google Skills -->
+      <div class="rv rv-d2" style="padding:2.5rem;border-radius:1.25rem;background:rgba(66,133,244,.07);border:1px solid rgba(66,133,244,.2);backdrop-filter:blur(16px);">
+        <div style="display:flex;align-items:center;gap:.875rem;margin-bottom:1.5rem;">
+          <div style="width:3rem;height:3rem;border-radius:.75rem;background:rgba(66,133,244,.15);border:1px solid rgba(66,133,244,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.9375rem;font-weight:600;color:#fff;">Google Cloud Skills Boost</div>
+            <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(66,133,244,.7);">via enlyst@gmail.com</div>
+          </div>
+        </div>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.5rem;">GCP fundamentals, data engineering, AI/ML and cloud architecture — all free through your Enlyst Google Workspace account.</p>
+        <div style="margin-bottom:1rem;">
+          <label style="font-family:var(--mono);font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:.5rem;">Your First Name</label>
+          <input type="text" id="tf-gcp-name" placeholder="e.g. Ahmed"
+            style="width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:.625rem;color:#fff;font-family:var(--sans);font-size:.9375rem;outline:none;transition:border-color .2s;"
+            oninput="updateTFGCPPreview(this.value)"
+            onfocus="this.style.borderColor='rgba(66,133,244,.6)'"
+            onblur="this.style.borderColor='rgba(255,255,255,.1)'"/>
+        </div>
+        <div id="tf-gcp-preview" style="font-family:var(--mono);font-size:.625rem;letter-spacing:.06em;color:rgba(255,255,255,.25);margin-bottom:1.25rem;min-height:1.2rem;"></div>
+        <a href="#" onclick="return openTFGCPSkills()"
+          style="display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;padding:.875rem;background:rgba(66,133,244,.85);color:#fff;border-radius:.625rem;font-size:.9375rem;font-weight:700;transition:background .2s;text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Request Google Skills Access
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES — COHORT 03 -->
+<section class="section" style="padding-top:0;" id="outcomes">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">Cohort 03 · Results</p>
+      <h2 class="s-title">What 12 graduates<br/><em>achieved in 90 days.</em></h2>
+    </div>
+    <div class="outcomes-grid">
+      <div class="o-cell o-c4 rv rv-d1">
+        <div class="o-big-num">91%</div>
+        <div class="o-big-lbl">90-Day Retention</div>
+        <div class="o-big-sub">Graduates still employed and performing at the 90-day post-placement review.</div>
+      </div>
+      <div class="o-cell o-c4 rv rv-d2">
+        <div class="o-big-num">4.3</div>
+        <div class="o-big-lbl">Manager Rating / 5</div>
+        <div class="o-big-sub">Average score given by hiring managers at 30-day structured review.</div>
+      </div>
+      <div class="o-cell o-c4 rv rv-d3">
+        <div class="o-big-num">6d</div>
+        <div class="o-big-lbl">Time to Offer</div>
+        <div class="o-big-sub">Average days from employer introduction to signed offer letter.</div>
+      </div>
+      <div class="o-cell o-cell-gold o-c6 rv rv-d1">
+        <p class="s-eyebrow" style="color:rgba(196,162,74,.7);margin-bottom:1.25rem;">Companies that hired from Cohort 03</p>
+        <div class="o-company-list">
+          <div class="o-company"><span class="o-company-dot"></span>Alchemative — 3 hires (Tech Track)</div>
+          <div class="o-company"><span class="o-company-dot"></span>Xeven Solutions — 3 hires (Tech + Marketing)</div>
+          <div class="o-company"><span class="o-company-dot"></span>Karkao Studios — 2 hires (Marketing Track)</div>
+          <div class="o-company"><span class="o-company-dot"></span>Lambda Logics — 2 hires (Tech Track)</div>
+          <div class="o-company"><span class="o-company-dot"></span>Brickclay — 2 hires (HR Track)</div>
+        </div>
+      </div>
+      <div class="o-cell o-c6 rv rv-d2" style="display:flex;flex-direction:column;justify-content:center;text-align:center;">
+        <div class="o-big-num" style="font-size:5rem;color:rgba(196,98,10,.7);">100%</div>
+        <div class="o-big-lbl" style="margin-bottom:.75rem;">Placement Rate</div>
+        <div class="o-big-sub" style="max-width:280px;margin:0 auto;">Every graduate who completed the programme was placed. Not every programme can say that.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION SECTION -->
+<section class="apply-section" id="apply">
+  <div class="wrap">
+    <div class="rv" style="max-width:44rem;">
+      <p class="s-eyebrow">Cohort 04 · Applications Open</p>
+      <h2 class="s-title">Apply to<br/><em>Talent Forge.</em></h2>
+      <p class="s-lead">We accept candidates on merit, not connections. Complete the form and we'll review your application within 72 hours.</p>
+    </div>
+    <div class="apply-grid">
+      <div class="apply-info rv rv-d1">
+        <div class="apply-item">
+          <div class="apply-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h4>6-Month Duration</h4><p>Full programme runs January to June 2027 (Cohort 04). In-person training in Lahore with remote project components.</p></div>
+        </div>
+        <div class="apply-item">
+          <div class="apply-item-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div><h4>Who Can Apply</h4><p>Recent graduates (within 2 years) from any discipline. No prior work experience required. Strong written communication essential.</p></div>
+        </div>
+        <div class="apply-item">
+          <div class="apply-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div><h4>What You Get</h4><p>Structured training, a documented portfolio, direct employer introductions, and a committed 90-day post-placement follow-up from Enlyst.</p></div>
+        </div>
+        <div class="apply-item">
+          <div class="apply-item-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Location</h4><p>Suite #202, 2nd Floor, South Tower, Stock Exchange Plaza, Lahore. Training delivered in-person with structured hours.</p></div>
+        </div>
+      </div>
+      <div class="rv rv-d2">
+        <div class="apply-form">
+          <div class="form-title">Apply — Cohort 04</div>
+          <div class="form-sub">All applications reviewed within 72 hours. Shortlisted candidates contacted for a structured interview.</div>
+          <div id="appform">
+            <div class="form-row">
+              <div class="field"><label>Full Name *</label><input type="text" placeholder="Your full name" required/></div>
+              <div class="field"><label>Phone *</label><input type="tel" placeholder="03XX XXXXXXX" required/></div>
+            </div>
+            <div class="field"><label>Email *</label><input type="email" placeholder="your@email.com" required/></div>
+            <div class="form-row">
+              <div class="field"><label>Degree / Qualification *</label><input type="text" placeholder="e.g. BBA Finance, BSCS" required/></div>
+              <div class="field"><label>Graduation Year *</label>
+                <select required><option value="">Select year</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option></select>
+              </div>
+            </div>
+            <div class="field"><label>Preferred Track *</label>
+              <select required><option value="">Select track</option><option>HR & Talent</option><option>Technology</option><option>Finance & Accounting</option><option>Marketing & Growth</option><option>Open to Guidance</option></select>
+            </div>
+            <div class="field"><label>Why Talent Forge?</label><textarea placeholder="What draws you to this programme — and what do you want to build in your first year of work?"></textarea></div>
+            <button class="f-submit" onclick="submitApplication()">Submit Application →</button>
+            <div class="f-note">Applications close 31 December 2026 · Strictly confidential</div>
+          </div>
+          <div class="f-success" id="app-success">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(196,98,10,.15);border:1px solid rgba(196,98,10,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(196,98,10,.9)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h3>Application received.</h3>
+            <p>We'll review your profile and be in touch within 72 hours. Keep an eye on your email — we only contact candidates we're serious about.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Not a graduate?<br/>We have <em>other paths.</em></h2>
+    <p>Employers hiring from the Forge pipeline, or professionals looking for their next role — the full Enlyst HR practice is here.</p>
+    <div class="cta-row">
+      <a href="enlyst-services.html" class="btn-forge">See All Services →</a>
+      <a href="enlyst-contact.html" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.375rem;">
+          <svg width="28" height="30" viewBox="0 0 44 46" fill="none"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity=".26"/></svg>
+          <div class="footer-wordmark">talentforge</div>
+        </div>
+        <div class="footer-desc">Graduate-to-professional pipeline by <a href="index.html">enlyst</a> · Practice 01 of the <a href="https://enlystnow.com" target="_blank" rel="noopener">Enlyst Framework</a>.</div>
+      </div>
+      <div class="footer-col"><h4>Programme</h4><ul><li><a href="#top">About Forge</a></li><li><a href="#outcomes">Cohort 03 Results</a></li><li><a href="#apply">Apply — Cohort 04</a></li></ul></div>
+      <div class="footer-col"><h4>Enlyst</h4><ul><li><a href="index.html">HR Practice</a></li><li><a href="enlyst-services.html">Services</a></li><li><a href="enlyst-about.html">About Us</a></li><li><a href="enlyst-contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:recruiter@enlystnow.com">recruiter@enlystnow.com</a></li><li><a href="tel:03000340036">03000 340 036</a></li><li><a href="https://wa.me/923000340036" target="_blank">WhatsApp ↗</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Enlyst Smart Recruiting Pvt Ltd · Suite #202, 2nd Floor, South Tower, Stock Exchange Plaza, Lahore, Punjab 54000</span>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target);}});},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
+function updateTFMSPreview(val){
+  const el=document.getElementById('tf-ms-preview');
+  if(!val.trim()){el.textContent='';return;}
+  const name=val.trim().toLowerCase().replace(/\s+/g,'');
+  el.textContent='→ '+name+'@enlyst.onmicrosoft.com';
+}
+function updateTFGCPPreview(val){
+  const el=document.getElementById('tf-gcp-preview');
+  if(!val.trim()){el.textContent='';return;}
+  const name=val.trim().toLowerCase().replace(/\s+/g,'');
+  el.textContent='→ '+name+'.enlyst@gmail.com';
+}
+function openTFMSLearn(){
+  const val=document.getElementById('tf-ms-name').value.trim();
+  if(!val){document.getElementById('tf-ms-name').style.borderColor='rgba(239,68,68,.6)';return false;}
+  const name=val.toLowerCase().replace(/\s+/g,'');
+  const to=name+'@enlyst.onmicrosoft.com';
+  const sub=encodeURIComponent('Microsoft Learn Access Request — '+val);
+  const body=encodeURIComponent('Hi,\n\nI am a Talent Forge candidate and would like to request access to Microsoft Learn through the Enlyst Academy programme.\n\nName: '+val+'\nRequested email: '+to+'\n\nThank you,\n'+val);
+  window.location.href='mailto:recruiter@enlystnow.com?to='+encodeURIComponent(to)+'&subject='+sub+'&body='+body;
+  return false;
+}
+function openTFGCPSkills(){
+  const val=document.getElementById('tf-gcp-name').value.trim();
+  if(!val){document.getElementById('tf-gcp-name').style.borderColor='rgba(239,68,68,.6)';return false;}
+  const name=val.toLowerCase().replace(/\s+/g,'');
+  const to=name+'.enlyst@gmail.com';
+  const sub=encodeURIComponent('Google Cloud Skills Boost Access Request — '+val);
+  const body=encodeURIComponent('Hi,\n\nI am a Talent Forge candidate and would like to request access to Google Cloud Skills Boost through the Enlyst Academy programme.\n\nName: '+val+'\nRequested email: '+to+'\n\nThank you,\n'+val);
+  window.location.href='mailto:recruiter@enlystnow.com?to='+encodeURIComponent(to)+'&subject='+sub+'&body='+body;
+  return false;
+}
+function submitApplication(){
+  const form=document.getElementById('appform');
+  const required=form.querySelectorAll('[required]');
+  let valid=true;
+  required.forEach(f=>{f.style.borderColor=f.value.trim()?'rgba(255,255,255,.1)':'rgba(239,68,68,.6)';if(!f.value.trim())valid=false;});
+  if(!valid)return;
+  const btn=form.querySelector('.f-submit');btn.textContent='Submitting…';btn.disabled=true;
+  setTimeout(()=>{form.style.display='none';document.getElementById('app-success').classList.add('on');},1000);
+}
+</script>
+</body>
+</html>
