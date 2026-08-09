@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enlyst Academy | The Learning Layer of the Enlyst Framework</title>
+<meta name="description" content="Build the capability to work, lead and create in the age of AI. Six schools, structured pathways, applied assessments, and certificates — not merely attendance records."/>
+<meta name="theme-color" content="#080911"/>
+<meta property="og:title" content="Enlyst Academy | Build Capability. Demonstrate It."/>
+<meta property="og:description" content="Practical learning across AI, cloud, data, business, leadership and public-sector transformation. Talent is distributed. Opportunity should be too."/>
+<meta property="og:type" content="website"/>
+<link rel="canonical" href="https://enlystnow.com/academy/"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=cormorant:300,300i,400,400i,500,600,700|syne:400,500,600,700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  /* Base */
+  --void:    #080911;
+  --abyss:   #0C0D14;
+  --ink:     #12141E;
+  --coal:    #1C1F2E;
+
+  /* Parent brand */
+  --blue:    #2D5BE3;
+  --blue-l:  #5B82F0;
+  --blue-g:  rgba(45,91,227,0.08);
+  --blue-b:  rgba(45,91,227,0.18);
+
+  /* Academy accent — electric cyan */
+  --cyan:    #00C9B1;
+  --cyan-d:  #009E8D;
+  --cyan-l:  #33D9C5;
+  --cyan-g:  rgba(0,201,177,0.08);
+  --cyan-b:  rgba(0,201,177,0.2);
+
+  /* Status */
+  --amber:   #C4720A;
+  --amber-l: #E8A040;
+  --green:   #1A7A4A;
+  --green-l: #3AB877;
+
+  /* School accents */
+  --s1: #00C9B1;   /* AI */
+  --s2: #5B82F0;   /* Cloud/Software */
+  --s3: #9B6EE0;   /* Data/Automation */
+  --s4: #E8A040;   /* Business/Finance */
+  --s5: #3AB877;   /* Talent/Leadership */
+  --s6: #E06060;   /* Public Sector */
+
+  /* Text */
+  --text:   #F0F2FF;
+  --text-2: rgba(240,242,255,0.65);
+  --text-3: rgba(240,242,255,0.38);
+  --text-4: rgba(240,242,255,0.18);
+
+  /* Type */
+  --serif: 'Cormorant', Georgia, serif;
+  --sans:  'Syne', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+
+  --ease:  cubic-bezier(.16,1,.3,1);
+  --max:   1320px;
+  --nav-h: 4rem;
+}
+
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  font-family:var(--sans);
+  background:var(--void);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; text-decoration:none; }
+img,svg { display:block; max-width:100%; }
+button { cursor:pointer; font-family:var(--sans); border:none; background:none; color:inherit; }
+::selection { background:var(--cyan); color:var(--void); }
+
+/* ═══════════════════════════════════════
+   ATMOSPHERE
+═══════════════════════════════════════ */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:999;
+  pointer-events:none; opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+.bg-field {
+  position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(ellipse 70% 60% at 10% -10%, rgba(0,201,177,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 110%, rgba(45,91,227,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(0,201,177,.03) 0%, transparent 70%),
+    var(--void);
+}
+.bg-grid {
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,201,177,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,201,177,.035) 1px, transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.15) 60%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:900;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  border-bottom:1px solid var(--text-4);
+  background:rgba(8,9,17,.78);
+  backdrop-filter:blur(24px) saturate(1.4);
+  -webkit-backdrop-filter:blur(24px) saturate(1.4);
+  transition:border-color .3s;
+}
+.nav-inner {
+  max-width:var(--max); width:100%; margin:0 auto;
+  padding:0 2.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:2rem;
+}
+.nav-brand { display:flex; align-items:center; gap:1rem; }
+.nav-parent {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-3);
+  display:flex; align-items:center; gap:.5rem;
+  padding-right:1rem; border-right:1px solid var(--text-4);
+}
+.nav-parent:hover { color:var(--text-2); }
+.nav-parent svg { width:10px; height:10px; stroke:currentColor; fill:none; stroke-width:1.8; }
+.nav-wordmark {
+  font-family:var(--serif); font-size:1.2rem;
+  font-weight:400; letter-spacing:-.01em; line-height:1;
+}
+.nav-wordmark em { font-style:normal; color:var(--cyan); }
+.nav-badge {
+  font-family:var(--mono); font-size:.52rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--cyan);
+  border:1px solid var(--cyan-b); padding:.2rem .55rem;
+  border-radius:100px;
+}
+.nav-links { display:flex; align-items:center; gap:.15rem; }
+.nav-link {
+  font-size:.7rem; font-weight:500; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--text-3);
+  padding:.4rem .85rem; border-radius:.4rem;
+  transition:color .25s, background .25s;
+}
+.nav-link:hover { color:var(--text); background:var(--cyan-g); }
+.nav-right { display:flex; align-items:center; gap:.75rem; }
+.nav-signin {
+  font-size:.7rem; font-weight:500; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--text-3);
+  padding:.4rem .85rem; border:1px solid var(--text-4);
+  border-radius:.4rem; transition:color .3s, border-color .3s;
+}
+.nav-signin:hover { color:var(--text); border-color:var(--text-2); }
+.nav-cta {
+  font-size:.7rem; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--void);
+  padding:.5rem 1.25rem; background:var(--cyan);
+  border-radius:.4rem; transition:background .25s;
+}
+.nav-cta:hover { background:var(--cyan-l); }
+
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+.container { max-width:var(--max); margin:0 auto; padding:0 2.5rem; }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  min-height:100svh;
+  display:grid; grid-template-rows:1fr auto;
+  padding-top:var(--nav-h);
+  position:relative; overflow:hidden;
+}
+.hero-body {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:5rem 2.5rem 3rem;
+  max-width:var(--max); margin:0 auto; width:100%;
+}
+.hero-eyebrow {
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:2.5rem;
+  opacity:0; animation:fadeUp .8s var(--ease) .2s forwards;
+}
+.hero-eyebrow-line { display:block; width:3rem; height:1px; background:var(--cyan); }
+.hero-eyebrow-stack { display:flex; flex-direction:column; gap:.2rem; }
+.hero-eyebrow-top {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--cyan);
+}
+.hero-eyebrow-bottom {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-3);
+}
+.hero-h1 {
+  font-family:var(--serif);
+  font-size:clamp(3.5rem, 8vw, 8.5rem);
+  font-weight:300; line-height:.93; letter-spacing:-.025em;
+  margin-bottom:2.25rem;
+  opacity:0; animation:fadeUp .9s var(--ease) .38s forwards;
+}
+.hero-h1 em { font-style:italic; color:var(--text-3); }
+.hero-h1 span { display:block; color:var(--cyan); }
+.hero-sub {
+  max-width:52ch; font-size:1rem; line-height:1.82;
+  color:var(--text-2); margin-bottom:1.5rem;
+  opacity:0; animation:fadeUp .9s var(--ease) .5s forwards;
+}
+.hero-sub2 {
+  max-width:52ch; font-size:.88rem; line-height:1.75;
+  color:var(--text-3); margin-bottom:2.75rem;
+  opacity:0; animation:fadeUp .9s var(--ease) .58s forwards;
+}
+.hero-actions {
+  display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
+  opacity:0; animation:fadeUp .9s var(--ease) .68s forwards;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-size:.78rem; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--void);
+  padding:.9rem 2rem; background:var(--cyan);
+  border-radius:.5rem; transition:background .3s, transform .3s, box-shadow .3s;
+  box-shadow:0 4px 20px rgba(0,201,177,.25);
+}
+.btn-primary:hover { background:var(--cyan-l); transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,201,177,.4); }
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.78rem; font-weight:500; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--text-2);
+  padding:.9rem 1.75rem; border:1px solid var(--text-4);
+  border-radius:.5rem; transition:color .3s, border-color .3s, background .3s;
+}
+.btn-ghost:hover { color:var(--text); border-color:var(--text-2); background:rgba(240,242,255,.04); }
+.hero-trust {
+  margin-top:2rem;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text-3);
+  display:flex; align-items:center; gap:1rem;
+  opacity:0; animation:fadeUp .9s var(--ease) .8s forwards;
+}
+.trust-dot {
+  display:inline-block; width:4px; height:4px;
+  border-radius:50%; background:var(--cyan);
+}
+/* Hero ticker */
+.hero-ticker {
+  border-top:1px solid var(--text-4); padding:1.1rem 0;
+  overflow:hidden;
+  opacity:0; animation:fadeIn 1s var(--ease) 1.1s forwards;
+}
+.ticker-track {
+  display:flex; gap:0; width:max-content;
+  animation:ticker 60s linear infinite;
+}
+.ticker-item {
+  display:flex; align-items:center; gap:1.75rem;
+  padding:0 2.5rem;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-3); white-space:nowrap;
+}
+.ticker-dot {
+  display:inline-block; width:4px; height:4px;
+  border-radius:50%; background:var(--cyan); flex-shrink:0;
+}
+/* Hero right stats */
+.hero-stats {
+  position:absolute; right:2.5rem; top:50%;
+  transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:2rem;
+  opacity:0; animation:fadeIn 1s var(--ease) .9s forwards;
+}
+.hero-stat { text-align:right; }
+.hero-stat-num {
+  font-family:var(--serif); font-size:2.5rem; font-weight:300;
+  line-height:1; color:var(--text);
+}
+.hero-stat-lbl {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-3); margin-top:.3rem;
+}
+.hero-stat-line {
+  display:block; width:100%; height:1px;
+  background:linear-gradient(90deg, transparent, var(--text-4));
+  margin-top:2rem;
+}
+
+/* ═══════════════════════════════════════
+   SECTION UTILITIES
+═══════════════════════════════════════ */
+.sec-label {
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--cyan);
+  display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem;
+}
+.sec-label::before { content:''; display:block; width:2rem; height:1px; background:var(--cyan); }
+.sec-label.amber { color:var(--amber-l); }
+.sec-label.amber::before { background:var(--amber-l); }
+.sec-label.green { color:var(--green-l); }
+.sec-label.green::before { background:var(--green-l); }
+.sec-title {
+  font-family:var(--serif);
+  font-size:clamp(2.2rem, 4vw, 3.8rem);
+  font-weight:300; line-height:1.08; letter-spacing:-.015em;
+}
+.sec-title em { font-style:italic; color:var(--text-3); }
+.sec-sub {
+  font-size:.9rem; line-height:1.8; color:var(--text-3);
+  max-width:52ch; margin-top:.75rem;
+}
+
+/* ═══════════════════════════════════════
+   PHILOSOPHY
+═══════════════════════════════════════ */
+.philosophy {
+  padding:9rem 0;
+  border-top:1px solid var(--text-4);
+  background:linear-gradient(180deg, transparent 0%, rgba(0,201,177,.03) 50%, transparent 100%);
+}
+.phil-grid { display:grid; grid-template-columns:1fr 1.5fr; gap:7rem; align-items:center; }
+.phil-left {}
+.phil-right {}
+.phil-headline {
+  font-family:var(--serif);
+  font-size:clamp(2.6rem, 5vw, 4.5rem);
+  font-weight:300; line-height:1.05; letter-spacing:-.02em;
+  margin-bottom:2rem;
+}
+.phil-headline em { font-style:italic; color:var(--text-3); }
+.phil-pull {
+  font-family:var(--serif);
+  font-size:1.45rem; font-weight:300; font-style:italic;
+  line-height:1.55; color:var(--text-2);
+  border-left:2px solid var(--cyan); padding-left:1.75rem;
+  margin-bottom:2.25rem;
+}
+.phil-body { font-size:.9rem; line-height:1.85; color:var(--text-2); margin-bottom:1.25rem; }
+.phil-body strong { color:var(--text); font-weight:600; }
+.phil-pillars {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.25rem; overflow:hidden;
+}
+.phil-pillar {
+  background:var(--abyss); padding:1.5rem;
+  transition:background .3s;
+}
+.phil-pillar:hover { background:var(--ink); }
+.pp-num { font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; color:var(--cyan); margin-bottom:.5rem; }
+.pp-title { font-size:.85rem; font-weight:600; margin-bottom:.35rem; }
+.pp-desc { font-size:.77rem; line-height:1.65; color:var(--text-3); }
+
+/* ═══════════════════════════════════════
+   SIX SCHOOLS
+═══════════════════════════════════════ */
+.schools { padding:8rem 0; border-top:1px solid var(--text-4); }
+.schools-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:4rem; gap:2rem;
+}
+.schools-sub { max-width:34ch; font-size:.85rem; line-height:1.7; color:var(--text-3); text-align:right; }
+.schools-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.75rem; overflow:hidden;
+}
+.school-card {
+  background:var(--abyss); padding:2.5rem;
+  display:flex; flex-direction:column; justify-content:space-between;
+  min-height:300px; position:relative; overflow:hidden;
+  transition:background .4s var(--ease); cursor:pointer;
+  text-decoration:none; color:inherit;
+}
+.school-card::before {
+  content:''; position:absolute; inset:0;
+  opacity:0; transition:opacity .4s;
+}
+.school-card:hover { background:var(--ink); }
+.school-card:hover::before { opacity:1; }
+.school-card:hover .school-arrow { transform:translate(4px,-4px); opacity:1; }
+/* School-specific accent fills */
+.school-card[data-s="1"]::before { background:radial-gradient(circle at 0% 0%, rgba(0,201,177,.1) 0%, transparent 55%); }
+.school-card[data-s="2"]::before { background:radial-gradient(circle at 0% 0%, rgba(91,130,240,.1) 0%, transparent 55%); }
+.school-card[data-s="3"]::before { background:radial-gradient(circle at 0% 0%, rgba(155,110,224,.1) 0%, transparent 55%); }
+.school-card[data-s="4"]::before { background:radial-gradient(circle at 0% 0%, rgba(232,160,64,.08) 0%, transparent 55%); }
+.school-card[data-s="5"]::before { background:radial-gradient(circle at 0% 0%, rgba(58,184,119,.1) 0%, transparent 55%); }
+.school-card[data-s="6"]::before { background:radial-gradient(circle at 0% 0%, rgba(224,96,96,.1) 0%, transparent 55%); }
+.school-top { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; position:relative; z-index:1; }
+.school-num { font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; color:var(--text-3); }
+.school-arrow {
+  font-size:.85rem; color:var(--text-4);
+  transition:color .3s, transform .3s, opacity .3s;
+  opacity:.4;
+}
+.school-bottom { position:relative; z-index:1; }
+.school-tag {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.14em;
+  text-transform:uppercase; display:inline-block; padding:.25rem .6rem;
+  border-radius:100px; border:1px solid transparent;
+  margin-bottom:.85rem;
+}
+.school-name {
+  font-family:var(--serif); font-size:1.65rem; font-weight:400;
+  line-height:1.1; letter-spacing:-.01em; margin-bottom:.75rem;
+}
+.school-desc { font-size:.78rem; line-height:1.65; color:var(--text-3); margin-bottom:1rem; }
+.school-subjects {
+  display:flex; flex-wrap:wrap; gap:.4rem;
+}
+.school-subject {
+  font-family:var(--mono); font-size:.55rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--text-3);
+  padding:.2rem .55rem; border:1px solid var(--text-4); border-radius:100px;
+}
+
+/* ═══════════════════════════════════════
+   CHOOSE YOUR PATH
+═══════════════════════════════════════ */
+.paths { padding:8rem 0; border-top:1px solid var(--text-4); }
+.paths-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:3rem;
+  margin-top:3.5rem;
+}
+.paths-intents {
+  display:flex; flex-direction:column;
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.25rem; overflow:hidden;
+}
+.intent-row {
+  background:var(--abyss); padding:1.25rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; cursor:pointer; transition:background .3s;
+  border:none; width:100%; text-align:left;
+}
+.intent-row:hover { background:var(--ink); }
+.intent-row.active { background:var(--cyan-g); border-left:2px solid var(--cyan); }
+.intent-text { font-size:.88rem; color:var(--text-2); }
+.intent-arrow { font-size:.75rem; color:var(--text-4); transition:color .3s, transform .3s; }
+.intent-row:hover .intent-arrow,.intent-row.active .intent-arrow { color:var(--cyan); transform:translateX(4px); }
+.path-detail {
+  background:var(--abyss); border:1px solid var(--text-4);
+  border-radius:1.25rem; padding:2.5rem;
+  display:none; flex-direction:column; gap:1.5rem;
+}
+.path-detail.visible { display:flex; }
+.path-level {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--cyan);
+  display:flex; align-items:center; gap:.5rem;
+}
+.path-dot { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:pulse 2s infinite; }
+.path-title { font-family:var(--serif); font-size:2rem; font-weight:300; line-height:1.1; }
+.path-title em { font-style:italic; color:var(--text-3); }
+.path-desc { font-size:.87rem; line-height:1.8; color:var(--text-2); }
+.path-steps { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+.path-steps li {
+  font-size:.8rem; color:var(--text-2);
+  display:flex; gap:.75rem; align-items:flex-start;
+}
+.path-steps li::before { content:'→'; color:var(--cyan); flex-shrink:0; font-family:var(--mono); font-size:.65rem; }
+.path-cta {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.72rem; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--void);
+  padding:.65rem 1.5rem; background:var(--cyan);
+  border-radius:.4rem; transition:background .3s; width:fit-content; margin-top:.5rem;
+}
+.path-cta:hover { background:var(--cyan-l); }
+
+/* ═══════════════════════════════════════
+   FEATURED COURSES
+═══════════════════════════════════════ */
+.courses { padding:8rem 0; border-top:1px solid var(--text-4); }
+.courses-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.5rem; overflow:hidden;
+  margin-top:3.5rem;
+}
+.course-card {
+  background:var(--abyss); padding:2.25rem;
+  display:flex; flex-direction:column; gap:1.25rem;
+  transition:background .35s; text-decoration:none; color:inherit;
+  position:relative; overflow:hidden;
+}
+.course-card::after {
+  content:'→'; position:absolute; bottom:1.5rem; right:1.75rem;
+  font-size:.9rem; color:var(--text-4);
+  transition:color .3s, transform .3s;
+}
+.course-card:hover { background:var(--ink); }
+.course-card:hover::after { color:var(--cyan); transform:translate(4px,-4px); }
+.course-status {
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-family:var(--mono); font-size:.55rem; letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.cs-dot { width:5px; height:5px; border-radius:50%; }
+.cs-dot.live { background:var(--green-l); box-shadow:0 0 5px var(--green-l); animation:pulse 2s infinite; }
+.cs-dot.soon { background:var(--amber-l); }
+.course-school {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-3);
+}
+.course-name {
+  font-family:var(--serif); font-size:1.55rem; font-weight:300;
+  line-height:1.1; letter-spacing:-.01em;
+}
+.course-desc { font-size:.78rem; line-height:1.65; color:var(--text-3); }
+.course-meta {
+  display:flex; flex-direction:column; gap:.3rem; margin-top:auto;
+}
+.course-meta-item {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.08em;
+  color:var(--text-3); display:flex; align-items:center; gap:.5rem;
+}
+.course-meta-item::before { content:'·'; color:var(--text-4); }
+
+/* ═══════════════════════════════════════
+   HOW LEARNING WORKS
+═══════════════════════════════════════ */
+.how { padding:8rem 0; border-top:1px solid var(--text-4); }
+.how-grid {
+  display:grid; grid-template-columns:1fr 2fr; gap:5rem;
+  align-items:start; margin-top:3.5rem;
+}
+.how-intro {}
+.how-steps {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.5rem; overflow:hidden;
+}
+.how-step {
+  background:var(--abyss); padding:1.75rem;
+  transition:background .3s; position:relative;
+}
+.how-step:hover { background:var(--ink); }
+.how-step-num {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+  color:var(--cyan); margin-bottom:.75rem;
+}
+.how-step-title { font-size:.85rem; font-weight:600; margin-bottom:.4rem; }
+.how-step-desc { font-size:.77rem; line-height:1.6; color:var(--text-3); }
+.how-step-ghost {
+  position:absolute; bottom:-1rem; right:.5rem;
+  font-family:var(--serif); font-size:5rem; font-weight:700;
+  color:var(--text-4); line-height:1; pointer-events:none; user-select:none;
+}
+/* last 3 steps span to second row */
+.how-step.span2 { grid-column:span 2; }
+
+/* ═══════════════════════════════════════
+   INSTRUCTORS
+═══════════════════════════════════════ */
+.instructors { padding:8rem 0; border-top:1px solid var(--text-4); }
+.instructors-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.instructors-left {}
+.inst-headline { font-family:var(--serif); font-size:clamp(2.2rem,4vw,3.8rem); font-weight:300; line-height:1.08; letter-spacing:-.015em; margin-bottom:1.5rem; }
+.inst-headline em { font-style:italic; color:var(--text-3); }
+.inst-body { font-size:.88rem; line-height:1.82; color:var(--text-2); margin-bottom:2rem; }
+.inst-features {
+  display:flex; flex-direction:column;
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.25rem; overflow:hidden;
+  margin-bottom:2rem;
+}
+.inst-feature {
+  background:var(--abyss); padding:1.1rem 1.5rem;
+  display:flex; align-items:center; gap:1rem;
+  transition:background .3s;
+}
+.inst-feature:hover { background:var(--ink); }
+.inst-check {
+  width:20px; height:20px; flex-shrink:0;
+  border-radius:50%; background:var(--cyan-g); border:1px solid var(--cyan-b);
+  display:flex; align-items:center; justify-content:center;
+}
+.inst-check svg { width:10px; height:10px; stroke:var(--cyan); fill:none; stroke-width:2.5; }
+.inst-feature-text { font-size:.82rem; color:var(--text-2); }
+.instructors-right {}
+.gittc-panel {
+  background:var(--abyss); border:1px solid var(--text-4);
+  border-radius:1.25rem; padding:2.25rem; position:relative; overflow:hidden;
+}
+.gittc-panel::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%, rgba(0,201,177,.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+.gittc-label {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--cyan); margin-bottom:1rem;
+  position:relative; z-index:1;
+}
+.gittc-title {
+  font-family:var(--serif); font-size:1.75rem; font-weight:300;
+  line-height:1.1; margin-bottom:.75rem; position:relative; z-index:1;
+}
+.gittc-desc {
+  font-size:.82rem; line-height:1.72; color:var(--text-2);
+  margin-bottom:1.75rem; position:relative; z-index:1;
+}
+.gittc-stats {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:.75rem; overflow:hidden;
+  position:relative; z-index:1;
+}
+.gs-item { background:var(--ink); padding:1.1rem; text-align:center; }
+.gs-num { font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--cyan); line-height:1; }
+.gs-lbl { font-family:var(--mono); font-size:.52rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-top:.3rem; }
+
+/* ═══════════════════════════════════════
+   INTERNSHIP
+═══════════════════════════════════════ */
+.internship { padding:8rem 0; border-top:1px solid var(--text-4); }
+.intern-grid { display:grid; grid-template-columns:1.3fr 1fr; gap:5rem; align-items:start; }
+.intern-headline { font-family:var(--serif); font-size:clamp(2.2rem,4vw,3.8rem); font-weight:300; line-height:1.08; letter-spacing:-.015em; margin-bottom:1.5rem; }
+.intern-headline em { font-style:italic; color:var(--text-3); }
+.intern-body { font-size:.88rem; line-height:1.82; color:var(--text-2); margin-bottom:.75rem; }
+.intern-caveat {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.08em;
+  color:var(--text-3); line-height:1.7;
+  border:1px solid var(--text-4); padding:1rem; border-radius:.5rem;
+  margin-top:1.25rem;
+}
+.intern-process {
+  display:flex; flex-direction:column;
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.25rem; overflow:hidden;
+}
+.intern-step {
+  background:var(--abyss); padding:1.1rem 1.5rem;
+  display:flex; align-items:center; gap:1.25rem;
+  transition:background .3s;
+}
+.intern-step:hover { background:var(--ink); }
+.intern-step-n {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  color:var(--cyan); flex-shrink:0; width:2rem;
+}
+.intern-step-t { font-size:.82rem; color:var(--text-2); }
+.intern-arrow { color:var(--text-4); margin-left:auto; font-size:.75rem; }
+
+/* ═══════════════════════════════════════
+   INSTITUTIONS
+═══════════════════════════════════════ */
+.institutions { padding:8rem 0; border-top:1px solid var(--text-4); }
+.inst-cards {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1.5px; background:var(--text-4);
+  border:1px solid var(--text-4); border-radius:1.5rem; overflow:hidden;
+  margin-top:3.5rem;
+}
+.inst-card {
+  background:var(--abyss); padding:2rem;
+  display:flex; flex-direction:column; gap:.85rem;
+  transition:background .3s;
+}
+.inst-card:hover { background:var(--ink); }
+.inst-card-label {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text-3);
+}
+.inst-card-title { font-family:var(--serif); font-size:1.5rem; font-weight:300; line-height:1.1; }
+.inst-card-desc { font-size:.78rem; line-height:1.7; color:var(--text-3); }
+.inst-card-link {
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--cyan); margin-top:auto;
+  transition:gap .25s;
+}
+.inst-card:hover .inst-card-link { gap:.6rem; }
+
+/* ═══════════════════════════════════════
+   FINALE
+═══════════════════════════════════════ */
+.finale {
+  padding:10rem 0 8rem;
+  border-top:1px solid var(--text-4);
+  text-align:center; position:relative; overflow:hidden;
+}
+.finale::before {
+  content:''; position:absolute; top:0; left:50%;
+  transform:translateX(-50%); width:1px; height:6rem;
+  background:linear-gradient(180deg, transparent, var(--cyan));
+}
+.finale-eyebrow {
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--cyan); margin-bottom:2rem;
+}
+.finale-heading {
+  font-family:var(--serif);
+  font-size:clamp(3rem, 7vw, 7rem);
+  font-weight:300; line-height:.95; letter-spacing:-.025em; margin-bottom:2rem;
+}
+.finale-heading em { font-style:italic; color:var(--text-3); }
+.finale-sub {
+  font-size:.95rem; color:var(--text-2); line-height:1.75;
+  max-width:48ch; margin:0 auto 3rem;
+}
+.finale-actions { display:flex; align-items:center; justify-content:center; gap:1.25rem; flex-wrap:wrap; }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.footer { border-top:1px solid var(--text-4); padding:4.5rem 0 3rem; }
+.footer-grid {
+  display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+  gap:3.5rem; margin-bottom:4rem;
+}
+.footer-brand-name { font-family:var(--serif); font-size:1.3rem; font-weight:300; margin-bottom:.75rem; }
+.footer-brand-name em { font-style:normal; color:var(--cyan); }
+.footer-tagline { font-size:.8rem; line-height:1.72; color:var(--text-3); max-width:24ch; margin-bottom:1.25rem; }
+.footer-contact { font-family:var(--mono); font-size:.65rem; letter-spacing:.04em; color:var(--text-3); line-height:2; }
+.footer-contact a:hover { color:var(--cyan); }
+.footer-col-title { font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:1.1rem; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+.footer-links a { font-size:.8rem; color:var(--text-3); transition:color .25s; }
+.footer-links a:hover { color:var(--text); }
+.footer-bottom {
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top:2rem; border-top:1px solid var(--text-4);
+  gap:2rem; flex-wrap:wrap;
+}
+.footer-legal { font-family:var(--mono); font-size:.6rem; letter-spacing:.08em; color:var(--text-4); }
+.footer-badges { display:flex; gap:.6rem; align-items:center; }
+.footer-badge {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-4);
+  border:1px solid var(--text-4); padding:.25rem .65rem; border-radius:100px;
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:none;} }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+@keyframes ticker { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.visible { opacity:1; transform:none; }
+.d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.3s;} .d4{transition-delay:.4s;}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1100px){
+  .hero-stats{display:none;}
+  .phil-grid,.instructors-grid,.intern-grid{grid-template-columns:1fr; gap:3.5rem;}
+  .schools-grid{grid-template-columns:repeat(2,1fr);}
+  .courses-grid{grid-template-columns:repeat(2,1fr);}
+  .how-grid{grid-template-columns:1fr; gap:3rem;}
+  .how-steps{grid-template-columns:repeat(2,1fr);}
+  .how-step.span2{grid-column:span 1;}
+  .inst-cards{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:2.5rem;}
+  .paths-grid{grid-template-columns:1fr; gap:2rem;}
+}
+@media(max-width:768px){
+  :root{--nav-h:3.5rem;}
+  .container{padding:0 1.5rem;}
+  .nav-links,.nav-parent{display:none;}
+  .hero-body{padding:5rem 1.5rem 3rem;}
+  .schools-grid,.courses-grid,.how-steps,.inst-cards{grid-template-columns:1fr;}
+  .gittc-stats{grid-template-columns:1fr 1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .schools-header{flex-direction:column;}
+  .schools-sub{text-align:left; max-width:100%;}
+  .phil-pillars{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="../index.html" class="nav-parent" aria-label="Return to Enlyst Framework">
+        <svg viewBox="0 0 44 50"><path d="M0 2L28 2L22 16L-6 16Z" fill="#2D5BE3"/><path d="M6 20L34 20L28 34L0 34Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38L40 38L34 50L6 50Z" fill="#2D5BE3" opacity=".26"/></svg>
+        Enlyst Framework
+        <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 9L9 1M9 1H3M9 1v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <svg width="18" height="20" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2L28 2L22 16L-6 16Z" fill="#00C9B1"/><path d="M6 20L34 20L28 34L0 34Z" fill="#00C9B1" opacity=".58"/><path d="M12 38L40 38L34 50L6 50Z" fill="#00C9B1" opacity=".26"/></svg>
+        <span class="nav-wordmark">Enlyst <em>Academy</em></span>
+        <span class="nav-badge">Beta</span>
+      </div>
+    </div>
+    <div class="nav-links" role="navigation" aria-label="Academy navigation">
+      <a href="schools/" class="nav-link">Schools</a>
+      <a href="pathways/" class="nav-link">Paths</a>
+      <a href="courses/" class="nav-link">Courses</a>
+      <a href="instructors/" class="nav-link">Instructors</a>
+      <a href="internships/" class="nav-link">Internships</a>
+      <a href="institutions/" class="nav-link">Institutions</a>
+    </div>
+    <div class="nav-right">
+      <a href="portal/" class="nav-signin">Sign In</a>
+      <a href="courses/" class="nav-cta">Explore Courses</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-body">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line" aria-hidden="true"></span>
+      <div class="hero-eyebrow-stack">
+        <span class="hero-eyebrow-top">Enlyst Academy</span>
+        <span class="hero-eyebrow-bottom">The Learning Layer of the Enlyst Framework</span>
+      </div>
+    </div>
+
+    <h1 class="hero-h1" id="hero-h1">
+      Build the capability<br>
+      to work, <em>lead</em><br>
+      <span>and create.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Practical learning across artificial intelligence, cloud technology, data, business, leadership and public-sector transformation.
+    </p>
+    <p class="hero-sub2">
+      Learn through structured pathways, applied activities, assessments, certificates and opportunities to demonstrate what you can actually do.
+    </p>
+
+    <div class="hero-actions">
+      <a href="schools/" class="btn-primary">
+        Explore the Six Schools
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7H13M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="courses/ai-literacy-fundamentals/" class="btn-ghost">Start with AI Literacy</a>
+    </div>
+
+    <div class="hero-trust" aria-label="Academy principles">
+      <span class="trust-dot" aria-hidden="true"></span>
+      Structured learning
+      <span class="trust-dot" aria-hidden="true"></span>
+      Demonstrated capability
+      <span class="trust-dot" aria-hidden="true"></span>
+      Human accountability
+    </div>
+
+    <div class="hero-stats" aria-hidden="true">
+      <div class="hero-stat">
+        <div class="hero-stat-num">6</div>
+        <div class="hero-stat-lbl">Schools</div>
+        <span class="hero-stat-line"></span>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-lbl">Pathway levels</div>
+        <span class="hero-stat-line"></span>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-lbl">No finish line</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ticker" aria-label="Academy subjects">
+    <div class="ticker-track" aria-hidden="true">
+      <span class="ticker-item"><span class="ticker-dot"></span>AI Literacy Fundamentals</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Prompt Writing Foundations</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>From LLMs to Agentic AI</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Cloud Platforms</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Data Analysis & BI</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Business Fundamentals</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>HR & Talent Systems</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>GovTech Delivery</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Instructor Development</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Internship-Ready Track</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>AI Literacy Fundamentals</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Prompt Writing Foundations</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>From LLMs to Agentic AI</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Cloud Platforms</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Data Analysis & BI</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Business Fundamentals</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>HR & Talent Systems</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>GovTech Delivery</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Instructor Development</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Internship-Ready Track</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" aria-labelledby="phil-heading">
+  <div class="container">
+    <div class="phil-grid">
+      <div class="reveal">
+        <div class="sec-label">Academy Philosophy</div>
+        <h2 class="phil-headline" id="phil-heading">
+          Talent is<br>
+          distributed.<br>
+          <em>Opportunity is not.</em>
+        </h2>
+      </div>
+      <div class="reveal d2">
+        <blockquote class="phil-pull">
+          "Capability should not depend on personal connections, informal networks, or access to privileged institutions. Enlyst Academy converts professional knowledge into structured learning that people can access, practise, and demonstrate."
+        </blockquote>
+        <p class="phil-body">
+          Every pathway is designed to produce <strong>evidence of capability</strong> — not merely a record of attendance. We apply the same philosophy that drives Enlyst's HR practice: evaluate people on demonstrated competency, not on who they know or where they come from.
+        </p>
+        <p class="phil-body">
+          This extends the founding Enlyst belief that <strong>a less biased society produces more owners than employees</strong> — and ensures that access to structured, rigorous learning is not itself a privilege.
+        </p>
+        <div class="phil-pillars">
+          <div class="phil-pillar">
+            <div class="pp-num">01</div>
+            <div class="pp-title">Evidence, not attendance</div>
+            <div class="pp-desc">Certificates follow demonstrated ability. Showing up is not enough. Assessment is structured and the rubric is disclosed.</div>
+          </div>
+          <div class="phil-pillar">
+            <div class="pp-num">02</div>
+            <div class="pp-title">Structured, not improvised</div>
+            <div class="pp-desc">Every pathway has a defined sequence, a baseline check, applied activities, and a clear standard of completion.</div>
+          </div>
+          <div class="phil-pillar">
+            <div class="pp-num">03</div>
+            <div class="pp-title">Accessible by design</div>
+            <div class="pp-desc">WCAG-compliant. Keyboard-navigable. Status never communicated through colour alone. No level requires a prior degree.</div>
+          </div>
+          <div class="phil-pillar">
+            <div class="pp-num">04</div>
+            <div class="pp-title">Honest about what we are</div>
+            <div class="pp-desc">Enlyst certificates are Enlyst certificates. We do not misrepresent them as third-party professional certifications. Claims are governed and sourced.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIX SCHOOLS -->
+<section class="schools" aria-labelledby="schools-heading">
+  <div class="container">
+    <div class="schools-header reveal">
+      <div>
+        <div class="sec-label">Six Schools</div>
+        <h2 class="sec-title" id="schools-heading">Every field of practice.<br><em>One connected framework.</em></h2>
+      </div>
+      <p class="schools-sub">Six schools covering every capability the Enlyst Framework is built on. Pick one or move across all six.</p>
+    </div>
+
+    <div class="schools-grid reveal d1" role="list">
+
+      <a href="schools/artificial-intelligence/" class="school-card" data-s="1" role="listitem" aria-label="School of Artificial Intelligence">
+        <div class="school-top">
+          <span class="school-num">01</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s1);border-color:rgba(0,201,177,.25);background:rgba(0,201,177,.06);">Artificial Intelligence</div>
+          <div class="school-name">School of Artificial Intelligence</div>
+          <p class="school-desc">Understand AI, use it responsibly and progress from foundational literacy to generative and agentic systems.</p>
+          <div class="school-subjects">
+            <span class="school-subject">AI Literacy</span>
+            <span class="school-subject">Prompt Writing</span>
+            <span class="school-subject">AI Agents</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="schools/cloud-software-cybersecurity/" class="school-card" data-s="2" role="listitem" aria-label="School of Cloud, Software and Cybersecurity">
+        <div class="school-top">
+          <span class="school-num">02</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s2);border-color:rgba(91,130,240,.25);background:rgba(91,130,240,.06);">Cloud &amp; Software</div>
+          <div class="school-name">School of Cloud, Software &amp; Cybersecurity</div>
+          <p class="school-desc">Build, integrate, secure and operate the digital systems on which modern institutions depend.</p>
+          <div class="school-subjects">
+            <span class="school-subject">Cloud Platforms</span>
+            <span class="school-subject">Software Dev</span>
+            <span class="school-subject">Cybersecurity</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="schools/data-automation-digital-operations/" class="school-card" data-s="3" role="listitem" aria-label="School of Data, Automation and Digital Operations">
+        <div class="school-top">
+          <span class="school-num">03</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s3);border-color:rgba(155,110,224,.25);background:rgba(155,110,224,.06);">Data &amp; Automation</div>
+          <div class="school-name">School of Data, Automation &amp; Digital Operations</div>
+          <p class="school-desc">Turn information into decisions, processes, dashboards and dependable automated workflows.</p>
+          <div class="school-subjects">
+            <span class="school-subject">Data Analysis</span>
+            <span class="school-subject">Business Intelligence</span>
+            <span class="school-subject">Automation</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="schools/business-finance-entrepreneurship/" class="school-card" data-s="4" role="listitem" aria-label="School of Business, Finance and Entrepreneurship">
+        <div class="school-top">
+          <span class="school-num">04</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s4);border-color:rgba(232,160,64,.25);background:rgba(232,160,64,.06);">Business &amp; Finance</div>
+          <div class="school-name">School of Business, Finance &amp; Entrepreneurship</div>
+          <p class="school-desc">Learn how organisations create, measure, protect and sustain value.</p>
+          <div class="school-subjects">
+            <span class="school-subject">Business Fundamentals</span>
+            <span class="school-subject">Financial Literacy</span>
+            <span class="school-subject">Entrepreneurship</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="schools/talent-leadership-workplace/" class="school-card" data-s="5" role="listitem" aria-label="School of Talent, Leadership and Workplace Capability">
+        <div class="school-top">
+          <span class="school-num">05</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s5);border-color:rgba(58,184,119,.25);background:rgba(58,184,119,.06);">Talent &amp; Leadership</div>
+          <div class="school-name">School of Talent, Leadership &amp; Workplace Capability</div>
+          <p class="school-desc">Develop the human and organisational skills required to work and lead effectively.</p>
+          <div class="school-subjects">
+            <span class="school-subject">Employability</span>
+            <span class="school-subject">Human Resources</span>
+            <span class="school-subject">Leadership</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="schools/public-sector-education-social-impact/" class="school-card" data-s="6" role="listitem" aria-label="School of Public Sector, Education and Social Impact">
+        <div class="school-top">
+          <span class="school-num">06</span>
+          <span class="school-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="school-bottom">
+          <div class="school-tag" style="color:var(--s6);border-color:rgba(224,96,96,.25);background:rgba(224,96,96,.06);">Public Sector</div>
+          <div class="school-name">School of Public Sector, Education &amp; Social Impact</div>
+          <p class="school-desc">Apply technology, research and inclusive design to institutional and public challenges.</p>
+          <div class="school-subjects">
+            <span class="school-subject">GovTech</span>
+            <span class="school-subject">Teacher Development</span>
+            <span class="school-subject">Accessibility</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHOOSE YOUR PATH -->
+<section class="paths" aria-labelledby="paths-heading">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Choose Your Destination</div>
+      <h2 class="sec-title" id="paths-heading">Where do you<br><em>want to go?</em></h2>
+      <p class="sec-sub">Six learning intents. One structured pathway for each.</p>
+    </div>
+    <div class="paths-grid reveal d1">
+      <div class="paths-intents" role="list" aria-label="Learning intents">
+
+        <button class="intent-row active" onclick="showPath('ai')" role="listitem" aria-expanded="true">
+          <span class="intent-text">I want to understand AI</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="intent-row" onclick="showPath('career')" role="listitem" aria-expanded="false">
+          <span class="intent-text">I want to improve my career readiness</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="intent-row" onclick="showPath('tech')" role="listitem" aria-expanded="false">
+          <span class="intent-text">I want to build technical skills</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="intent-row" onclick="showPath('teach')" role="listitem" aria-expanded="false">
+          <span class="intent-text">I want to teach other people</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="intent-row" onclick="showPath('intern')" role="listitem" aria-expanded="false">
+          <span class="intent-text">I want to prepare for applied experience</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="intent-row" onclick="showPath('lead')" role="listitem" aria-expanded="false">
+          <span class="intent-text">I want to lead institutional transformation</span>
+          <span class="intent-arrow" aria-hidden="true">→</span>
+        </button>
+
+      </div>
+
+      <div class="path-details" aria-live="polite">
+
+        <div class="path-detail visible" id="path-ai">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Foundation → Practitioner</div>
+          <div class="path-title">AI Literacy<br><em>Foundation Path</em></div>
+          <p class="path-desc">Understand what AI is, how generative systems work, where their limitations lie, and how humans remain accountable for outcomes. No prior technical background required.</p>
+          <ul class="path-steps">
+            <li>AI Literacy Fundamentals</li>
+            <li>Prompt Writing Foundations</li>
+            <li>From LLMs to Agentic AI</li>
+            <li>Learning-Platform Conduct (required)</li>
+          </ul>
+          <a href="pathways/ai-literacy/" class="path-cta">Start this path →</a>
+        </div>
+
+        <div class="path-detail" id="path-career">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Foundation → Professional</div>
+          <div class="path-title">Workplace<br><em>Capability Path</em></div>
+          <p class="path-desc">Build the skills employers measure: communication, professional conduct, structured thinking, and readiness to perform in documented, accountable environments.</p>
+          <ul class="path-steps">
+            <li>Workplace Fundamentals</li>
+            <li>Professional Communication</li>
+            <li>Structured Problem-Solving</li>
+            <li>Career Readiness Assessment</li>
+          </ul>
+          <a href="pathways/practitioner/" class="path-cta">Start this path →</a>
+        </div>
+
+        <div class="path-detail" id="path-tech">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Foundation → Professional</div>
+          <div class="path-title">Cloud, Software<br><em>&amp; Data Paths</em></div>
+          <p class="path-desc">Enter the School of Cloud, Software and Cybersecurity or the School of Data, Automation and Digital Operations for structured technical capability building.</p>
+          <ul class="path-steps">
+            <li>Cloud Platforms Foundation</li>
+            <li>Data Analysis Fundamentals</li>
+            <li>Software Development Basics</li>
+            <li>Enlysoft-aligned delivery tracks</li>
+          </ul>
+          <a href="schools/cloud-software-cybersecurity/" class="path-cta">Explore technical schools →</a>
+        </div>
+
+        <div class="path-detail" id="path-teach">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Practitioner → Instructor</div>
+          <div class="path-title">Instructor<br><em>Development Path</em></div>
+          <p class="path-desc">Convert subject knowledge into effective learning experiences. Lesson plans, delivery notes, activities, formative checks, accessibility guidance, and assessment rubrics.</p>
+          <ul class="path-steps">
+            <li>How Learning Works</li>
+            <li>Lesson Planning and Facilitation</li>
+            <li>Assessment Design</li>
+            <li>GITTC Programme (eligible instructors)</li>
+          </ul>
+          <a href="pathways/instructor/" class="path-cta">Start instructor path →</a>
+        </div>
+
+        <div class="path-detail" id="path-intern">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Practitioner → Internship-Ready</div>
+          <div class="path-title">Internship-Ready<br><em>Track</em></div>
+          <p class="path-desc">Selected pathways prepare eligible learners for supervised, project-based, or employer-supported internship opportunities within the Enlyst ecosystem and partner organisations.</p>
+          <ul class="path-steps">
+            <li>Complete pathway at Practitioner level</li>
+            <li>Pass applied assessment</li>
+            <li>Build portfolio evidence</li>
+            <li>Complete readiness review and matching</li>
+          </ul>
+          <a href="internships/" class="path-cta">Learn about internships →</a>
+        </div>
+
+        <div class="path-detail" id="path-lead">
+          <div class="path-level"><span class="path-dot" aria-hidden="true"></span>Professional → Leader</div>
+          <div class="path-title">Leadership &amp;<br><em>Public-Sector Paths</em></div>
+          <p class="path-desc">For decision-makers responsible for AI adoption, GovTech delivery, institutional reform, or disability-inclusive education policy.</p>
+          <ul class="path-steps">
+            <li>AI Governance and Strategy</li>
+            <li>GovTech Delivery Fundamentals</li>
+            <li>Institutional Policy and Reform</li>
+            <li>Himat-Hikmat Research Context (optional)</li>
+          </ul>
+          <a href="pathways/leadership/" class="path-cta">Explore leadership path →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COURSES -->
+<section class="courses" aria-labelledby="courses-heading">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Launch Courses</div>
+      <h2 class="sec-title" id="courses-heading">First release.<br><em>Ready to learn now.</em></h2>
+      <p class="sec-sub">Only content completed to a high standard is published. These four are ready.</p>
+    </div>
+    <div class="courses-grid reveal d1" role="list">
+
+      <a href="courses/ai-literacy-fundamentals/" class="course-card" role="listitem" aria-label="AI Literacy Fundamentals — available now">
+        <div class="course-status" style="color:var(--green-l)"><span class="cs-dot live" aria-hidden="true"></span>Available Now</div>
+        <div class="course-school" style="color:var(--s1)">School of AI</div>
+        <div class="course-name">AI Literacy Fundamentals</div>
+        <p class="course-desc">Understand what AI is, how generative systems work, where limitations lie, and how people remain accountable.</p>
+        <div class="course-meta">
+          <div class="course-meta-item">Foundation</div>
+          <div class="course-meta-item">Self-paced</div>
+          <div class="course-meta-item">No prerequisites</div>
+        </div>
+      </a>
+
+      <a href="courses/prompt-writing-foundations/" class="course-card" role="listitem" aria-label="Prompt Writing Foundations — available now">
+        <div class="course-status" style="color:var(--green-l)"><span class="cs-dot live" aria-hidden="true"></span>Available Now</div>
+        <div class="course-school" style="color:var(--s1)">School of AI</div>
+        <div class="course-name">Prompt Writing Foundations</div>
+        <p class="course-desc">Turn an unclear request into a structured, useful, and verifiable AI prompt — with documented technique and evidence of improvement.</p>
+        <div class="course-meta">
+          <div class="course-meta-item">Foundation</div>
+          <div class="course-meta-item">Self-paced or instructor-led</div>
+          <div class="course-meta-item">No prerequisites</div>
+        </div>
+      </a>
+
+      <a href="courses/llms-to-agentic-ai/" class="course-card" role="listitem" aria-label="From LLMs to Agentic AI — enrolment open">
+        <div class="course-status" style="color:var(--amber-l)"><span class="cs-dot soon" aria-hidden="true"></span>Enrolment Open</div>
+        <div class="course-school" style="color:var(--s1)">School of AI</div>
+        <div class="course-name">From LLMs to Agentic AI</div>
+        <p class="course-desc">Understand the progression from language prediction through content generation to tool-using agents and orchestrated agentic systems.</p>
+        <div class="course-meta">
+          <div class="course-meta-item">Foundation–Practitioner</div>
+          <div class="course-meta-item">Self-paced</div>
+          <div class="course-meta-item">AI Literacy recommended</div>
+        </div>
+      </a>
+
+      <a href="courses/learning-platform-conduct/" class="course-card" role="listitem" aria-label="Learning-Platform Conduct — required orientation">
+        <div class="course-status" style="color:var(--green-l)"><span class="cs-dot live" aria-hidden="true"></span>Available Now</div>
+        <div class="course-school" style="color:var(--s5)">School of Talent</div>
+        <div class="course-name">Learning-Platform Conduct</div>
+        <p class="course-desc">Learn how to participate honestly, safely and respectfully in an AI-enabled learning environment. Required for all pathways.</p>
+        <div class="course-meta">
+          <div class="course-meta-item">Foundation</div>
+          <div class="course-meta-item">Required orientation</div>
+          <div class="course-meta-item">No prerequisites</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW LEARNING WORKS -->
+<section class="how" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="how-grid">
+      <div class="reveal">
+        <div class="sec-label">The Process</div>
+        <h2 class="sec-title" id="how-heading">Seven steps.<br><em>No ambiguity.</em></h2>
+        <p class="sec-sub" style="margin-top:1.25rem;">The same documented rigour that drives Enlyst's recruiting process now drives its learning process. You always know where you are and what comes next.</p>
+      </div>
+      <div class="how-steps reveal d2">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <div class="how-step-title">Discover</div>
+          <div class="how-step-desc">Choose a School, capability or professional objective.</div>
+          <span class="how-step-ghost" aria-hidden="true">1</span>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <div class="how-step-title">Diagnose</div>
+          <div class="how-step-desc">Complete a baseline check to identify existing knowledge and gaps.</div>
+          <span class="how-step-ghost" aria-hidden="true">2</span>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <div class="how-step-title">Learn</div>
+          <div class="how-step-desc">Study concise concept lessons and worked examples. Concepts before tools.</div>
+          <span class="how-step-ghost" aria-hidden="true">3</span>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">04</div>
+          <div class="how-step-title">Practise</div>
+          <div class="how-step-desc">Complete structured activities in realistic professional contexts.</div>
+          <span class="how-step-ghost" aria-hidden="true">4</span>
+        </div>
+        <div class="how-step span2">
+          <div class="how-step-num">05</div>
+          <div class="how-step-title">Demonstrate</div>
+          <div class="how-step-desc">Submit evidence that shows what you can do. Assessment rubrics are disclosed in advance — no surprises.</div>
+          <span class="how-step-ghost" aria-hidden="true">5</span>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">06</div>
+          <div class="how-step-title">Earn</div>
+          <div class="how-step-desc">Receive an Enlyst Academy certificate after meeting the assessment requirements.</div>
+          <span class="how-step-ghost" aria-hidden="true">6</span>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">07</div>
+          <div class="how-step-title">Apply</div>
+          <div class="how-step-desc">Progress to advanced learning, applied projects, or internship-eligible tracks.</div>
+          <span class="how-step-ghost" aria-hidden="true">7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section class="instructors" aria-labelledby="inst-heading">
+  <div class="container">
+    <div class="instructors-grid">
+      <div class="reveal">
+        <div class="sec-label green">For Instructors</div>
+        <h2 class="inst-headline" id="inst-heading">
+          Teach capability —<br>
+          <em>not content recall.</em>
+        </h2>
+        <p class="inst-body">The Instructor Academy helps trainers and facilitators convert subject knowledge into effective, evidence-producing learning experiences. Structured resources. Documented methodology. Peer review.</p>
+        <div class="inst-features">
+          <div class="inst-feature">
+            <div class="inst-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+            <span class="inst-feature-text">Structured lesson plans and delivery notes</span>
+          </div>
+          <div class="inst-feature">
+            <div class="inst-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+            <span class="inst-feature-text">Activities, formative checks, and common misconceptions</span>
+          </div>
+          <div class="inst-feature">
+            <div class="inst-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+            <span class="inst-feature-text">Accessibility guidance and WCAG compliance support</span>
+          </div>
+          <div class="inst-feature">
+            <div class="inst-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+            <span class="inst-feature-text">Assessment rubrics that are disclosed to learners</span>
+          </div>
+          <div class="inst-feature">
+            <div class="inst-check"><svg viewBox="0 0 10 8"><polyline points="1 4 4 7 9 1"/></svg></div>
+            <span class="inst-feature-text">Instructor community and peer review</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="instructors/" class="btn-ghost">Instructor Development →</a>
+          <a href="instructors/gittc/" class="btn-ghost">GITTC Programme →</a>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="gittc-panel">
+          <div class="gittc-label">GITTC · Lahore</div>
+          <div class="gittc-title">Government Institute of Technology Training Centre</div>
+          <p class="gittc-desc">Enlyst's field-tested training delivery programme, run in collaboration with GITTC Lahore. AI literacy and GovTech programmes delivered, measured, and iterated. The Academy formalises what GITTC validated in the field.</p>
+          <div class="gittc-stats">
+            <div class="gs-item"><div class="gs-num">3+</div><div class="gs-lbl">Cohorts delivered</div></div>
+            <div class="gs-item"><div class="gs-num">100%</div><div class="gs-lbl">Impact measured</div></div>
+            <div class="gs-item"><div class="gs-num">Live</div><div class="gs-lbl">Programme active</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIP -->
+<section class="internship" aria-labelledby="intern-heading">
+  <div class="container">
+    <div class="intern-grid">
+      <div class="reveal">
+        <div class="sec-label amber">Applied Experience</div>
+        <h2 class="intern-headline" id="intern-heading">
+          From learning<br>
+          <em>to applied experience.</em>
+        </h2>
+        <p class="intern-body">Selected pathways can prepare eligible learners for supervised, project-based, or employer-supported internship opportunities within the Enlyst ecosystem and partner organisations.</p>
+        <p class="intern-body">The internship track is real. The matching is structured. The expectations are explicit.</p>
+        <div class="intern-caveat" role="note">
+          Completing a course does not guarantee an internship or employment. Selection depends on demonstrated capability, programme availability, track requirements, and matching suitability. All claims are governed.
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="intern-process" role="list" aria-label="Internship process steps">
+          <div class="intern-step" role="listitem"><span class="intern-step-n">01</span><span class="intern-step-t">Complete pathway at Practitioner level or above</span><span class="intern-arrow" aria-hidden="true">↓</span></div>
+          <div class="intern-step" role="listitem"><span class="intern-step-n">02</span><span class="intern-step-t">Pass the applied assessment and meet the rubric standard</span><span class="intern-arrow" aria-hidden="true">↓</span></div>
+          <div class="intern-step" role="listitem"><span class="intern-step-n">03</span><span class="intern-step-t">Build portfolio evidence — documented, not self-reported</span><span class="intern-arrow" aria-hidden="true">↓</span></div>
+          <div class="intern-step" role="listitem"><span class="intern-step-n">04</span><span class="intern-step-t">Complete the internship readiness review</span><span class="intern-arrow" aria-hidden="true">↓</span></div>
+          <div class="intern-step" role="listitem"><span class="intern-step-n">05</span><span class="intern-step-t">Apply for available tracks — matching is structured</span><span class="intern-arrow" aria-hidden="true">↓</span></div>
+          <div class="intern-step" role="listitem"><span class="intern-step-n">06</span><span class="intern-step-t">Begin supervised applied experience</span><span class="intern-arrow" aria-hidden="true"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTIONS -->
+<section class="institutions" aria-labelledby="inst-sec-heading">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">For Institutions</div>
+      <h2 class="sec-title" id="inst-sec-heading">Every institutional<br><em>context, served.</em></h2>
+    </div>
+    <div class="inst-cards reveal d1" role="list">
+      <div class="inst-card" role="listitem">
+        <div class="inst-card-label">Government</div>
+        <div class="inst-card-title">Public-Sector Capability</div>
+        <p class="inst-card-desc">AI literacy, GovTech delivery, digital transformation and policy capability programmes for government departments and authorities.</p>
+        <a href="institutions/government.html" class="inst-card-link">Explore →</a>
+      </div>
+      <div class="inst-card" role="listitem">
+        <div class="inst-card-label">Educational Institutions</div>
+        <div class="inst-card-title">Teacher &amp; Instructor Development</div>
+        <p class="inst-card-desc">Structured instructor training, lesson-plan frameworks, learning-platform design, and accessibility integration for schools and colleges.</p>
+        <a href="institutions/education.html" class="inst-card-link">Explore →</a>
+      </div>
+      <div class="inst-card" role="listitem">
+        <div class="inst-card-label">Employers</div>
+        <div class="inst-card-title">Workforce Upskilling</div>
+        <p class="inst-card-desc">Capability programmes aligned to specific roles and performance frameworks — not generic training disconnected from what the job actually requires.</p>
+        <a href="institutions/employers.html" class="inst-card-link">Explore →</a>
+      </div>
+      <div class="inst-card" role="listitem">
+        <div class="inst-card-label">Development Organisations</div>
+        <div class="inst-card-title">Inclusive Education &amp; Social Impact</div>
+        <p class="inst-card-desc">Disability-inclusive programme design, institutional capacity building, and social-impact learning aligned to the Himat-Hikmat research framework.</p>
+        <a href="institutions/custom-programmes.html" class="inst-card-link">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale" aria-labelledby="finale-heading">
+  <div class="container">
+    <div class="finale-eyebrow">Enlyst Academy · Lahore, Pakistan</div>
+    <h2 class="finale-heading reveal" id="finale-heading">
+      Build capability.<br>
+      <em>Demonstrate it.</em>
+    </h2>
+    <p class="finale-sub reveal d1">Six schools, structured pathways, applied assessments. Not a record of attendance — a portfolio of evidence.</p>
+    <div class="finale-actions reveal d2">
+      <a href="schools/" class="btn-primary">
+        Explore the Six Schools
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7H13M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="contact/" class="btn-ghost">Get in Touch →</a>
+      <a href="../index.html" class="btn-ghost">Enlyst Framework ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Enlyst <em>Academy</em></div>
+        <p class="footer-tagline">The learning and capability-development platform of the Enlyst Framework.</p>
+        <div class="footer-contact">
+          <a href="mailto:academy@enlystnow.com">academy@enlystnow.com</a><br>
+          Lahore, Pakistan
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Academy</div>
+        <ul class="footer-links">
+          <li><a href="about/">About</a></li>
+          <li><a href="schools/">Six Schools</a></li>
+          <li><a href="pathways/">Learning Paths</a></li>
+          <li><a href="courses/">Courses</a></li>
+          <li><a href="certifications/">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Participate</div>
+        <ul class="footer-links">
+          <li><a href="courses/">For Learners</a></li>
+          <li><a href="instructors/">For Instructors</a></li>
+          <li><a href="institutions/">For Institutions</a></li>
+          <li><a href="internships/">Internships</a></li>
+          <li><a href="contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Policies</div>
+        <ul class="footer-links">
+          <li><a href="about/accessibility.html">Accessibility</a></li>
+          <li><a href="about/academic-integrity.html">Academic Integrity</a></li>
+          <li><a href="about/learning-model.html">AI Use &amp; Disclosure</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Enlyst Framework</div>
+        <ul class="footer-links">
+          <li><a href="../enlyst-hr-platform.html">Enlyst — HR &amp; Talent</a></li>
+          <li><a href="https://enlystnow.com/enlysum.html">Enlysum — Finance</a></li>
+          <li><a href="https://enlystnow.com/enlybiz.html">Enlybiz — Marketing</a></li>
+          <li><a href="https://enlystnow.com/enlysoft-complete.html">Enlysoft — Cloud &amp; AI</a></li>
+          <li><a href="../index.html">Framework Home ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 Enlyst Smart Recruiting Pvt Ltd · Enlyst Academy · All rights reserved · Lahore, Pakistan</div>
+      <div class="footer-badges">
+        <span class="footer-badge">WCAG Aligned</span>
+        <span class="footer-badge">Claims Governed</span>
+        <span class="footer-badge">Beta · Release 1</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Path switcher */
+function showPath(id) {
+  document.querySelectorAll('.intent-row').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-expanded','false'); });
+  document.querySelectorAll('.path-detail').forEach(d => d.classList.remove('visible'));
+  const btn = event.currentTarget;
+  btn.classList.add('active'); btn.setAttribute('aria-expanded','true');
+  const detail = document.getElementById('path-' + id);
+  if (detail) detail.classList.add('visible');
+}
+
+/* Scroll reveal */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(e => e.forEach(x => {
+    if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); }
+  }), { threshold:.1, rootMargin:'0px 0px -50px 0px' });
+  els.forEach(el => obs.observe(el));
+
+  /* Nav scroll */
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(240,242,255,0.1)' : 'rgba(240,242,255,0.06)';
+  }, { passive:true });
+})();
+</script>
+
+</body>
+</html>

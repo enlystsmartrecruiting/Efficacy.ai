@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F7F6F3;--obs:#1A1A1A;--bdr:#E8E6E1;--mut:#9E9B95;
+  --acc:#2D5BE3;--hr:#2D5BE3;--fin:#1A7A4A;--mkt:#C4620A;--tch:#6B3FA0;--mid:#F2F1EE;
+}
+body{background:var(--bg);color:var(--obs);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+.serif{font-family:'Instrument Serif',serif;font-weight:400}
+.serif-i{font-family:'Instrument Serif',serif;font-style:italic}
+
+/* NAV */
+nav{background:rgba(247,246,243,0.97);border-bottom:1px solid var(--bdr);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:17px;font-weight:500;letter-spacing:-0.02em}.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:28px}.nav-links a{font-size:12px;color:var(--mut);text-decoration:none;letter-spacing:0.03em}
+.nav-cta{background:var(--obs);color:var(--bg);font-size:12px;padding:7px 18px;border-radius:4px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+
+/* HERO */
+.hero{padding:0 48px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;min-height:88vh}
+.hero-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--mut);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.hero-label::before{content:'';width:20px;height:1px;background:var(--mut)}
+.hero h1{font-size:58px;line-height:1.06;letter-spacing:-0.03em;margin-bottom:20px}
+.hero-sub{font-size:18px;color:var(--mut);line-height:1.5;max-width:440px;margin-bottom:32px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.pill{font-size:11px;font-weight:500;letter-spacing:0.04em;padding:5px 12px;border-radius:3px;border-left:3px solid;background:#EFEFED;color:var(--obs)}
+.btns{display:flex;gap:12px}
+.btn-p{background:var(--acc);color:#fff;font-size:13px;font-weight:500;padding:12px 24px;border-radius:4px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-s{background:transparent;color:var(--obs);font-size:13px;font-weight:500;padding:12px 24px;border-radius:4px;border:1px solid var(--bdr);cursor:pointer;font-family:'Inter',sans-serif}
+
+/* HERO VISUAL */
+.hero-visual{position:relative}
+.hero-img{width:100%;height:480px;object-fit:cover;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.12);position:relative;z-index:1}
+.hero-bg1{position:absolute;top:-16px;right:-16px;width:160px;height:160px;background:var(--hr);border-radius:6px;opacity:0.12;z-index:0}
+.hero-bg2{position:absolute;bottom:-16px;left:-16px;width:120px;height:120px;background:var(--mkt);border-radius:6px;opacity:0.1;z-index:0}
+.badge{position:absolute;z-index:2;border-radius:8px;padding:14px 20px}
+.badge-dark{background:var(--obs);bottom:28px;left:-28px;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.badge-blue{background:var(--acc);top:28px;right:-28px}
+.badge-num{font-family:'Instrument Serif',serif;font-size:28px;color:#F7F6F3;line-height:1}
+.badge-blue .badge-num{color:#fff}
+.badge-sub{font-size:11px;color:var(--mut);margin-top:3px}
+.badge-blue .badge-sub{color:rgba(255,255,255,0.75)}
+
+/* METRICS */
+.metrics{background:var(--obs);padding:60px 48px}
+.metrics-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.m-item{padding:0 36px;border-right:1px solid rgba(232,230,225,0.15)}
+.m-item:first-child{padding-left:0}.m-item:last-child{border-right:none}
+.m-num{font-family:'Instrument Serif',serif;font-size:46px;color:#F7F6F3;line-height:1;margin-bottom:6px}
+.m-label{font-size:13px;font-weight:500;color:#F7F6F3;margin-bottom:3px}
+.m-desc{font-size:12px;color:rgba(158,155,149,0.85)}
+
+/* SECTION */
+.sec{padding:100px 48px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--mut);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--mut)}
+.sec h2{font-size:42px;letter-spacing:-0.025em;line-height:1.1;margin-bottom:14px}
+.sec-sub{font-size:17px;color:var(--mut);max-width:520px;line-height:1.5;margin-bottom:48px}
+
+/* DIVISIONS */
+.div-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.div-card{border:1px solid var(--bdr);border-radius:8px;padding:32px;background:var(--bg);border-left-width:3px;transition:box-shadow 0.2s,transform 0.2s;cursor:default}
+.div-card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.06);transform:translateY(-2px)}
+.div-tag{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+.div-card h3{font-size:22px;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2}
+.div-card p{font-size:13px;color:var(--mut);margin-bottom:20px;line-height:1.6}
+.div-list{list-style:none;margin-bottom:20px}
+.div-list li{font-size:12px;color:var(--mut);padding:6px 0;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:6px}
+.div-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--mut);flex-shrink:0}
+.div-list li:last-child{border-bottom:none}
+.div-stats{font-size:12px;color:var(--mut);margin-bottom:16px}
+.div-cta{font-size:13px;font-weight:500;text-decoration:none}
+.bundle{background:var(--obs);border-radius:8px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between}
+.bundle h4{font-size:18px;color:#F7F6F3;font-weight:500;margin-bottom:3px}
+.bundle p{font-size:13px;color:var(--mut)}
+.btn-bundle{background:var(--acc);color:#fff;font-size:12px;font-weight:500;padding:10px 20px;border-radius:4px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+
+/* ANALYTICS SECTION */
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.analytics-img{width:100%;height:360px;object-fit:cover;border-radius:8px;box-shadow:0 16px 48px rgba(0,0,0,0.1);position:relative}
+.analytics-wrap{position:relative}
+.analytics-badge{position:absolute;bottom:-16px;right:-16px;background:var(--fin);border-radius:8px;padding:16px 20px}
+
+/* SAFE ZONE */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;position:relative;margin-bottom:32px}
+.stages::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc);border-radius:2px}
+.stage{padding:32px 28px;border:1px solid var(--bdr);position:relative}
+.stage-dot{position:absolute;top:-7px;left:28px;width:13px;height:13px;border-radius:50%;background:var(--acc);border:2px solid var(--bg)}
+.stage-active{background:var(--obs);border-color:var(--obs)}
+.stage-active .stage-dot{background:#F7F6F3}
+.stage-num{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+.stage-active .stage-num{color:rgba(158,155,149,0.6)}
+.stage h3{font-size:22px;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px}
+.stage-active h3{color:#F7F6F3}
+.stage p{font-size:13px;color:var(--mut);line-height:1.6;margin-bottom:20px}
+.stage-active p{color:rgba(158,155,149,0.8)}
+.stage-result{border-radius:4px;padding:10px 14px;font-size:12px;font-weight:500;background:var(--bdr);color:var(--obs)}
+.stage-active .stage-result{background:rgba(45,91,227,0.15);color:#7BA3F7}
+.method-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.m-pill{background:var(--bg);border:1px solid var(--bdr);border-radius:6px;padding:20px;text-align:center}
+.m-pill-num{font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:3px}
+.m-pill-label{font-size:11px;color:var(--mut);font-weight:500;text-transform:uppercase;letter-spacing:0.06em}
+
+/* COMPARISON */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.comp-old{border:1px solid var(--bdr);border-radius:8px;padding:40px;background:var(--bg)}
+.comp-new{background:var(--obs);border-radius:8px;padding:40px}
+.comp-tag{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px}
+.comp-old .comp-tag{color:var(--mut)}.comp-new .comp-tag{color:var(--acc)}
+.comp-price{font-family:'Instrument Serif',serif;font-size:52px;letter-spacing:-0.03em;line-height:1;margin-bottom:4px}
+.comp-old .comp-price{color:var(--mut)}.comp-new .comp-price{color:#F7F6F3}
+.comp-pkr{font-size:12px;margin-bottom:6px}.comp-old .comp-pkr{color:var(--mut)}.comp-new .comp-pkr{color:rgba(158,155,149,0.6)}
+.comp-desc{font-size:13px;margin-bottom:28px}.comp-old .comp-desc{color:var(--mut)}.comp-new .comp-desc{color:rgba(158,155,149,0.6)}
+.comp-list{list-style:none}
+.comp-list li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid;font-size:14px}
+.comp-old .comp-list li{border-color:var(--bdr);color:var(--mut)}.comp-new .comp-list li{border-color:rgba(232,230,225,0.1);color:#F7F6F3}
+.comp-list li:last-child{border-bottom:none}
+
+/* GRAD */
+.grad-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.grad-points{list-style:none;margin:24px 0 28px}
+.grad-points li{padding:14px 0 14px 18px;border-left:2px solid var(--acc);border-bottom:1px solid var(--bdr);font-size:14px;margin-bottom:2px;line-height:1.5}
+.pipeline{background:var(--mid);border:1px solid var(--bdr);border-radius:8px;padding:32px}
+.pipe-step{display:flex;align-items:center;gap:16px;padding:12px 0}
+.pipe-node{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.pipe-h4{font-size:14px;font-weight:500;margin-bottom:1px}
+.pipe-sub{font-size:12px;color:var(--mut)}
+.pipe-line{width:1px;height:18px;background:var(--bdr);margin-left:18px}
+
+/* TESTIMONIALS */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:16px 0;margin-bottom:40px}
+.marquee-track{display:flex;gap:40px;animation:marquee 30s linear infinite;white-space:nowrap;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.logo-name{font-size:12px;color:var(--mut);letter-spacing:0.03em}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.t-card{background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:28px}
+.t-quote{font-size:16px;line-height:1.5;margin-bottom:24px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
+.t-name{font-size:13px;font-weight:500;margin-bottom:1px}
+.t-role{font-size:11px;color:var(--mut)}
+
+/* CTA */
+.cta-sec{background:var(--obs);padding:100px 48px;text-align:center}
+.cta-sec h2{font-size:50px;letter-spacing:-0.03em;color:#F7F6F3;margin-bottom:16px;line-height:1.1}
+.cta-sec p{font-size:18px;color:var(--mut);margin-bottom:40px}
+.cta-btns{display:flex;gap:14px;justify-content:center;margin-bottom:40px}
+.btn-founder{background:var(--acc);color:#fff;font-size:14px;font-weight:500;padding:14px 32px;border-radius:4px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-grad{background:transparent;color:#F7F6F3;font-size:14px;font-weight:500;padding:14px 32px;border-radius:4px;border:1px solid rgba(232,230,225,0.3);cursor:pointer;font-family:'Inter',sans-serif}
+.cta-contact{display:flex;gap:24px;justify-content:center;font-size:13px;color:var(--mut)}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--bdr);padding:56px 48px 36px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13px;color:var(--mut);margin-top:10px;line-height:1.6}
+.footer-col h5{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:13px;color:var(--obs);text-decoration:none}
+.footer-base{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between}
+.footer-base p{font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">enlyst <span>holding</span></div>
+  <div class="nav-links">
+    <a href="#">enlyst</a><a href="#">enlysum</a><a href="#">enlybiz</a><a href="#">enlysoft</a>
+  </div>
+  <button class="nav-cta">Start the Journey</button>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--bg)">
+<div class="hero">
+  <div>
+    <div class="hero-label">Startup Operating Partner Ecosystem · Lahore, Pakistan</div>
+    <h1 class="serif">The Operating<br>Heartbeat for<br>Ambitious Startups.</h1>
+    <p class="hero-sub">HR. Finance. Marketing. Technology.<br>One integrated partner — so you focus 100% on innovation.</p>
+    <div class="pills">
+      <span class="pill" style="border-color:var(--hr)">· enlyst</span>
+      <span class="pill" style="border-color:var(--fin)">· enlysum</span>
+      <span class="pill" style="border-color:var(--mkt)">· enlybiz</span>
+      <span class="pill" style="border-color:var(--tch)">· enlysoft</span>
+    </div>
+    <div class="btns">
+      <button class="btn-p">Start the Journey</button>
+      <button class="btn-s">How It Works</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-bg1"></div>
+    <div class="hero-bg2"></div>
+    <img class="hero-img" src="https://pub-cdn.sider.ai/u/U04XH6RY193/web-coder/6877a9ce711d0815fd41b312/resource/f3ef34e1-5335-4e27-b622-b26308979d57.jpg" alt="Enlyst professional" />
+    <div class="badge badge-dark">
+      <div class="badge-num">350+</div>
+      <div class="badge-sub">Hires Made</div>
+    </div>
+    <div class="badge badge-blue">
+      <div class="badge-num">90%+</div>
+      <div class="badge-sub" style="color:rgba(255,255,255,0.75)">Retention Rate</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="m-item"><div class="m-num serif">4</div><div class="m-label">Integrated Services</div><div class="m-desc">HR, Finance, Marketing & Tech</div></div>
+    <div class="m-item"><div class="m-num serif">25+</div><div class="m-label">Startups Enabled</div><div class="m-desc">From idea to operational backbone</div></div>
+    <div class="m-item"><div class="m-num serif">350+</div><div class="m-label">Hires Made</div><div class="m-desc">Across all service arms</div></div>
+    <div class="m-item"><div class="m-num serif">90%+</div><div class="m-label">Client Retention</div><div class="m-desc">High-stickiness retainer model</div></div>
+  </div>
+</div>
+
+<!-- FOUR DIVISIONS -->
+<div class="sec" style="background:var(--bg)">
+<div class="sec-inner">
+  <div class="sec-label">The Enlyst Ecosystem</div>
+  <h2 class="serif">Four Superpowers.<br>One Mission.</h2>
+  <p class="sec-sub">Each subsidiary is a specialist unit — together they form an indispensable operational backbone that lets founders focus purely on innovation.</p>
+  <div class="div-grid">
+    <div class="div-card" style="border-left-color:var(--hr)">
+      <div class="div-tag" style="color:var(--hr)">enlyst · HR & TALENT</div>
+      <h3 class="serif">Smart Recruiting,<br>Science-Backed</h3>
+      <p>Our founding arm. We simplify hiring with behavioral science-based processes that deliver candidates who truly belong — not just candidates who apply.</p>
+      <ul class="div-list"><li>Recruitment & Talent Acquisition</li><li>Behavioral Science-Based Interviewing</li><li>Performance Management Systems</li><li>Training & Development Programs</li></ul>
+      <div class="div-stats">350+ Hires · 100% Retention · 20+ Clients</div>
+      <a href="#" class="div-cta" style="color:var(--hr)">Hire with enlyst →</a>
+    </div>
+    <div class="div-card" style="border-left-color:var(--fin)">
+      <div class="div-tag" style="color:var(--fin)">enlysum · FINANCE & ACCOUNTING</div>
+      <h3 class="serif">Accounting &<br>Finance</h3>
+      <p>Real-time financial clarity using modern cloud tools — from bookkeeping to CFO strategy. Built for startups that need clarity from day one.</p>
+      <ul class="div-list"><li>Bookkeeping & Accounting</li><li>Tax Preparation & Compliance</li><li>Financial Planning & Forecasting</li><li>CFO Advisory Services</li></ul>
+      <div class="div-stats">Cloud-native tools · Real-time clarity</div>
+      <a href="#" class="div-cta" style="color:var(--fin)">Get financial clarity →</a>
+    </div>
+    <div class="div-card" style="border-left-color:var(--mkt)">
+      <div class="div-tag" style="color:var(--mkt)">enlybiz · MARKETING & SALES</div>
+      <h3 class="serif">Digital Marketing<br>& Sales</h3>
+      <p>Data-driven campaigns that turn visibility into revenue — CRM, SEO, social and beyond. Growth is not optional. It's engineered.</p>
+      <ul class="div-list"><li>Social Media Management</li><li>SEO & Content Marketing</li><li>CRM & Email Campaigns</li><li>Lead Generation & Sales Automation</li></ul>
+      <div class="div-stats">Full-funnel approach · Data-driven growth</div>
+      <a href="#" class="div-cta" style="color:var(--mkt)">Grow your reach →</a>
+    </div>
+    <div class="div-card" style="border-left-color:var(--tch)">
+      <div class="div-tag" style="color:var(--tch)">enlysoft · CLOUD & TECHNOLOGY</div>
+      <h3 class="serif">Cloud Technology<br>& Development</h3>
+      <p>Quick-deploy cloud apps, automation tools and digital infrastructure built to scale. From MVP to enterprise — we build what your business runs on.</p>
+      <ul class="div-list"><li>Custom Cloud Application Development</li><li>SaaS & Cloud Infrastructure</li><li>Business Process Automation</li><li>API Integrations & Digital Transformation</li></ul>
+      <div class="div-stats">Scalable architecture · Fast deployment</div>
+      <a href="#" class="div-cta" style="color:var(--tch)">Build your tech stack →</a>
+    </div>
+  </div>
+  <div class="bundle">
+    <div><h4>Need all four? That's the point.</h4><p>Bundle all four arms into one retainer — complete operational backbone from day one.</p></div>
+    <button class="btn-bundle">Get a Bundle Quote</button>
+  </div>
+</div>
+</div>
+
+<!-- ANALYTICS + GIRL 2 -->
+<div class="sec" style="background:var(--mid)">
+<div class="sec-inner">
+  <div class="analytics-grid">
+    <div>
+      <div class="sec-label">Intelligence Layer</div>
+      <h2 class="serif">Data-Driven Decisions.<br>Real-Time Clarity.</h2>
+      <p style="font-size:16px;color:var(--mut);line-height:1.65;margin-bottom:32px">Every engagement is backed by real analytics — not intuition. We track, measure, and optimize across all four divisions simultaneously, giving you a unified view of your startup's operational health.</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:14px"><div style="width:8px;height:8px;border-radius:50%;background:var(--acc);flex-shrink:0"></div><span style="font-size:15px">Real-time Business Intelligence</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><div style="width:8px;height:8px;border-radius:50%;background:var(--fin);flex-shrink:0"></div><span style="font-size:15px">Cross-Division Performance Analytics</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><div style="width:8px;height:8px;border-radius:50%;background:var(--mkt);flex-shrink:0"></div><span style="font-size:15px">Market Insights & Competitive Data</span></div>
+      </div>
+    </div>
+    <div class="analytics-wrap">
+      <img class="analytics-img" src="https://pub-cdn.sider.ai/u/U04XH6RY193/web-coder/6877a9ce711d0815fd41b312/resource/762a38f5-8586-43e6-87fe-db4b810a982c.jpg" alt="Analytics" />
+      <div class="analytics-badge">
+        <div style="font-family:'Instrument Serif',serif;font-size:24px;color:#fff;line-height:1">1.2M+</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.75);margin-top:3px">PKR Lifetime Value</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SAFE ZONE -->
+<div class="sec" style="background:var(--bg)">
+<div class="sec-inner">
+  <div class="sec-label">The Enlyst Method</div>
+  <h2 class="serif">From Chaos to Operational<br>Excellence — in 4 Months.</h2>
+  <p class="sec-sub">Three stages. Four subsidiaries running simultaneously. One outcome.</p>
+  <div class="stages">
+    <div class="stage" style="border-radius:0 0 0 8px">
+      <div class="stage-dot"></div>
+      <div class="stage-num">WEEKS 1–2</div>
+      <h3 class="serif">Discovery</h3>
+      <p>We map your entire business before we touch it. Every subsidiary audits simultaneously — delivering one unified 360° blueprint, not four separate reports.</p>
+      <div class="stage-result">Result: Unified 360° business blueprint</div>
+    </div>
+    <div class="stage stage-active">
+      <div class="stage-dot"></div>
+      <div class="stage-num">MONTHS 1–4</div>
+      <h3 class="serif">Safe Zone Build</h3>
+      <p>All four arms build your operational backbone in parallel. By month four: compliant, funded, visible, and technically sound.</p>
+      <div class="stage-result">Result: Startup fully operational</div>
+    </div>
+    <div class="stage" style="border-radius:0 0 8px 0">
+      <div class="stage-dot"></div>
+      <div class="stage-num">MONTH 6 → ONGOING</div>
+      <h3 class="serif">Permanent Partnership</h3>
+      <p>Monthly retainer model. Dedicated account teams, KPI reviews, intern integration. We grow as you grow — forever.</p>
+      <div class="stage-result">Result: You focus 100% on innovation</div>
+    </div>
+  </div>
+  <div class="method-pills">
+    <div class="m-pill"><div class="m-pill-num serif">90%+</div><div class="m-pill-label">Retention Target</div></div>
+    <div class="m-pill"><div class="m-pill-num serif">4 mo</div><div class="m-pill-label">Safe Zone</div></div>
+    <div class="m-pill"><div class="m-pill-num serif">1.2M+</div><div class="m-pill-label">PKR Lifetime Value</div></div>
+    <div class="m-pill"><div class="m-pill-num serif">80%</div><div class="m-pill-label">Startup-to-Permanent</div></div>
+  </div>
+</div>
+</div>
+
+<!-- OLD VS NEW -->
+<div class="sec" style="background:var(--mid)">
+<div class="sec-inner">
+  <div class="sec-label">Why Founders Choose Enlyst</div>
+  <h2 class="serif">The Old Model Is Broken.<br>We Built the New One.</h2>
+  <div class="comp-grid" style="margin-top:40px">
+    <div class="comp-old">
+      <div class="comp-tag">Old Model · Project-Based</div>
+      <div class="comp-price serif">30K</div>
+      <div class="comp-pkr">PKR</div>
+      <div class="comp-desc">one-time, per hire cycle</div>
+      <ul class="comp-list">
+        <li><span style="color:var(--mut);font-size:15px">×</span> Single service — HR only</li>
+        <li><span style="color:var(--mut);font-size:15px">×</span> Client walks away after hire</li>
+        <li><span style="color:var(--mut);font-size:15px">×</span> Zero recurring revenue</li>
+        <li><span style="color:var(--mut);font-size:15px">×</span> Easy to replace</li>
+      </ul>
+    </div>
+    <div class="comp-new">
+      <div class="comp-tag">Evolved Model · Monthly Retainer</div>
+      <div class="comp-price serif">549K</div>
+      <div class="comp-pkr">PKR</div>
+      <div class="comp-desc">year one alone — 18× uplift vs old model</div>
+      <ul class="comp-list">
+        <li><span style="color:var(--acc);font-size:15px">✓</span> 4 integrated service lines</li>
+        <li><span style="color:var(--acc);font-size:15px">✓</span> Monthly retainer · high switching cost</li>
+        <li><span style="color:var(--acc);font-size:15px">✓</span> Predictable recurring revenue</li>
+        <li><span style="color:var(--acc);font-size:15px">✓</span> Indispensable — very hard to replace</li>
+      </ul>
+      <button style="width:100%;margin-top:28px;background:var(--acc);color:#fff;font-size:13px;font-weight:500;padding:14px 0;border-radius:4px;border:none;cursor:pointer;font-family:'Inter',sans-serif">Get a Bundle Quote</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- GRADUATE PROGRAM -->
+<div class="sec" style="background:var(--bg)">
+<div class="sec-inner">
+  <div class="grad-grid">
+    <div>
+      <div class="sec-label">Talent Forge</div>
+      <h2 class="serif">Where Ambitious Graduates Become Business Operators.</h2>
+      <p style="font-size:17px;color:var(--mut);margin:16px 0">100+ graduate interns. Real work. Real clients. Real growth.</p>
+      <p style="font-size:14px;color:var(--mut);line-height:1.7">Our graduate internship program is not a training exercise. Interns work on live client accounts across all four divisions — building careers while building businesses.</p>
+      <ul class="grad-points">
+        <li>Live client work from week one</li>
+        <li>Cross-division rotation across all four arms</li>
+        <li>Top performers converted to permanent roles</li>
+      </ul>
+      <a href="#" style="font-size:13px;font-weight:500;color:var(--acc);text-decoration:none">Join the Program →</a>
+    </div>
+    <div class="pipeline">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--mut);margin-bottom:20px">The Path</div>
+      <div class="pipe-step"><div class="pipe-node" style="background:var(--bdr);color:var(--mut)">01</div><div><div class="pipe-h4">Graduate Application</div><div class="pipe-sub">Open to all disciplines</div></div></div>
+      <div class="pipe-line"></div>
+      <div class="pipe-step"><div class="pipe-node" style="background:var(--acc);color:#fff">02</div><div><div class="pipe-h4">Division Placement</div><div class="pipe-sub">Matched to your strengths</div></div></div>
+      <div class="pipe-line"></div>
+      <div class="pipe-step"><div class="pipe-node" style="background:var(--acc);color:#fff">03</div><div><div class="pipe-h4">Live Client Work</div><div class="pipe-sub">Real accounts, real results</div></div></div>
+      <div class="pipe-line"></div>
+      <div class="pipe-step"><div class="pipe-node" style="background:var(--obs);color:#fff">04</div><div><div class="pipe-h4">Permanent Offer</div><div class="pipe-sub">Top performers join the team</div></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sec" style="background:var(--mid)">
+<div class="sec-inner">
+  <div class="sec-label">Client Proof</div>
+  <h2 class="serif">What Clients Say</h2>
+  <p style="font-size:17px;color:var(--mut);margin-bottom:36px">Trusted by 20+ startups and companies across Pakistan.</p>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="logo-name">Alchemative ·</span><span class="logo-name">Adex 360 ·</span><span class="logo-name">Brickclay ·</span><span class="logo-name">Paradigm ·</span><span class="logo-name">Eccountant ·</span><span class="logo-name">Punch ·</span><span class="logo-name">Al Nafoura ·</span><span class="logo-name">Spring Apartments ·</span><span class="logo-name">Karkao Studios ·</span><span class="logo-name">White Leaf Group ·</span><span class="logo-name">Swift Securities ·</span><span class="logo-name">Lambda Logics ·</span><span class="logo-name">Speridian Technologies ·</span><span class="logo-name">Xeven Solutions ·</span><span class="logo-name">Orcalo ·</span>
+      <span class="logo-name">Alchemative ·</span><span class="logo-name">Adex 360 ·</span><span class="logo-name">Brickclay ·</span><span class="logo-name">Paradigm ·</span><span class="logo-name">Eccountant ·</span><span class="logo-name">Punch ·</span><span class="logo-name">Al Nafoura ·</span><span class="logo-name">Spring Apartments ·</span><span class="logo-name">Karkao Studios ·</span><span class="logo-name">White Leaf Group ·</span><span class="logo-name">Swift Securities ·</span><span class="logo-name">Lambda Logics ·</span><span class="logo-name">Speridian Technologies ·</span><span class="logo-name">Xeven Solutions ·</span><span class="logo-name">Orcalo ·</span>
+    </div>
+  </div>
+  <div class="t-grid">
+    <div class="t-card">
+      <p class="serif-i t-quote">"Enlyst completely transformed our hiring process. We filled 3 senior engineering roles in under 2 weeks — candidates were pre-vetted and genuinely excited to join."</p>
+      <div class="t-author"><div class="t-avatar" style="background:var(--hr)">SM</div><div><div class="t-name">Sarah Mitchell</div><div class="t-role">HR Director, TechFlow Solutions</div></div></div>
+    </div>
+    <div class="t-card">
+      <p class="serif-i t-quote">"Every hire through them has stayed with us long-term. Enlyst stands out for their attention to cultural fit. The process is smooth from start to finish."</p>
+      <div class="t-author"><div class="t-avatar" style="background:var(--fin)">TM</div><div><div class="t-name">Tariq Mahmood</div><div class="t-role">CEO, Nexbridge Capital</div></div></div>
+    </div>
+    <div class="t-card">
+      <p class="serif-i t-quote">"As a startup, we needed people who could hit the ground running. Honestly the best investment we made in our early growth phase."</p>
+      <div class="t-author"><div class="t-avatar" style="background:var(--mkt)">NH</div><div><div class="t-name">Nadia Hussain</div><div class="t-role">Founder, BrightPath Academy</div></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <h2 class="serif">Ready to Build Your<br>Operational Backbone?</h2>
+  <p>One partner. Four superpowers. Your competitive advantage.</p>
+  <div class="cta-btns">
+    <button class="btn-founder">I'm a Founder</button>
+    <button class="btn-grad">I'm a Graduate</button>
+  </div>
+  <div class="cta-contact">
+    <span>03000340036</span><span>·</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b796e68797e627f6e794b6e656772787f65647c25686466">[email&#160;protected]</a></span><span>·</span><span>Lahore Stock Exchange Plaza</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="font-size:17px;font-weight:500;letter-spacing:-0.02em">enlyst <span style="color:var(--acc)">holding</span></div>
+      <p>Startup Operating Partner Ecosystem.<br>Lahore, Pakistan.</p>
+    </div>
+    <div class="footer-col"><h5>Divisions</h5><ul><li><a href="#">enlyst</a></li><li><a href="#">enlysum</a></li><li><a href="#">enlybiz</a></li><li><a href="#">enlysoft</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">How It Works</a></li><li><a href="#">Safe Zone</a></li><li><a href="#">Internships</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">03000340036</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="ccbea9afbeb9a5b8a9be8ca9a2a0b5bfb8a2a3bbe2afa3a1">[email&#160;protected]</span></a></li><li><a href="#" style="color:var(--mut);font-si
