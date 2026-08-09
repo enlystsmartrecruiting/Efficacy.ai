@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What we do · Four arms · Safe Zone · Eighteen doors · Enlystnow</title>
+<meta name="description" content="Four interdependent arms — HR, finance, marketing, technology — that function as a single indispensable partner. The Safe Zone Build. Eighteen sector doors. One Framework keeping everything coherent."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|cormorant:300,300i,400,400i,600|inter:300,400,500,600,700|manrope:700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/showreel.css"/>
+<link rel="stylesheet" href="css/pages.css"/>
+<style>
+.wwd-display{font-family:'Cormorant',Georgia,serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:.94;letter-spacing:-.025em;margin:0 0 1.5rem;color:var(--fg-1);}
+.wwd-display em{font-style:italic;color:var(--accent);}
+.wwd-hero{padding:clamp(80px,11vw,140px) clamp(20px,4vw,64px) clamp(48px,7vw,80px);background:var(--off-white);position:relative;overflow:hidden;border-bottom:1px solid var(--rule);}
+.wwd-hero-inner{max-width:var(--container-max);margin:0 auto;position:relative;z-index:1;}
+.wwd-hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(45,91,227,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,91,227,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(160deg,rgba(0,0,0,.55) 0%,transparent 65%);}
+/* Four arms grid */
+.arms-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-top:32px;}
+.arm{background:var(--bg-surface);padding:24px 22px;transition:background .2s;position:relative;overflow:hidden;}
+.arm:hover{background:var(--cream);}
+.arm-enlyst{grid-column:span 6;}
+.arm-enlysum{grid-column:span 6;}
+.arm-enlybiz{grid-column:span 5;}
+.arm-enlysoft{grid-column:span 7;}
+.arm-mark{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.arm-svg{width:20px;height:22px;flex-shrink:0;}
+.arm-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;}
+.arm-title{font-family:'Cormorant',Georgia,serif;font-size:1.55rem;font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:8px;}
+.arm-tether{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px;}
+.arm-desc{font-size:13.5px;line-height:1.65;color:var(--fg-3);}
+/* Safe Zone band */
+.safezone-band{background:var(--obsidian);padding:clamp(48px,7vw,88px) clamp(20px,4vw,64px);}
+.safezone-inner{max-width:var(--container-max);margin:0 auto;}
+.safezone-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--framework-gold);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.safezone-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--framework-gold);}
+.safezone-display{font-family:'Cormorant',Georgia,serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:300;line-height:1.08;letter-spacing:-.025em;color:var(--off-white);margin-bottom:28px;}
+.safezone-display em{font-style:italic;color:rgba(255,255,255,.38);}
+.safezone-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden;margin-top:28px;}
+.ss-step{background:rgba(255,255,255,.03);padding:22px 20px;}
+.ss-num{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(196,162,74,.7);margin-bottom:10px;}
+.ss-title{font-size:14px;font-weight:600;color:var(--off-white);margin-bottom:6px;}
+.ss-desc{font-size:13px;line-height:1.65;color:rgba(245,244,241,.55);}
+/* Sector doors band */
+.sectors-band{padding:clamp(48px,7vw,80px) clamp(20px,4vw,64px);background:var(--cream);border-top:1px solid var(--rule);}
+.sectors-inner{max-width:var(--container-max);margin:0 auto;}
+.sector-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.sector-chip{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:4px;border:1px solid var(--rule);background:var(--bg-surface);color:var(--fg-3);transition:border-color .2s,color .2s;}
+.sector-chip:hover{border-color:var(--accent);color:var(--accent);}
+/* Enquiry bridge */
+.enquiry-band{padding:clamp(48px,7vw,80px) clamp(20px,4vw,64px);border-top:1px solid var(--rule);}
+.enquiry-inner{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center;}
+.enquiry-display{font-family:'Cormorant',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.05;letter-spacing:-.025em;margin-bottom:14px;}
+.enquiry-display em{font-style:italic;color:var(--fg-3);}
+.enquiry-note{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);margin-bottom:20px;}
+.enquiry-btns{display:flex;gap:10px;flex-wrap:wrap;}
+@media(max-width:900px){
+  .arms-grid{display:flex;flex-direction:column;}
+  .safezone-steps{grid-template-columns:1fr;}
+  .enquiry-inner{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="topbar" role="banner" aria-label="Site family">
+  <a href="https://enlystnow.com">enlystnow</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlysum.com" target="_blank" rel="noopener">enlysum</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Enlystnow home">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="28" height="30" viewBox="0 0 56 56" fill="none"><path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#2D5BE3"/><path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#2D5BE3" opacity="0.58"/><path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+      </div>
+      <span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.035em;color:var(--fg-1);">Enlyst<em style="font-style:normal;color:var(--hr-blue);">now</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-btn" href="index.html#live">Live Sectors</a>
+      <a class="nav-btn" href="about.html">About</a>
+      <a class="nav-btn" href="philosophy.html">Philosophy</a>
+      <a class="nav-btn" href="what-we-do.html" aria-current="page" style="color:var(--fg-1);font-weight:600;">What we do</a>
+      <a class="nav-btn" href="who-we-are.html">Who we are</a>
+      <a class="btn btn-primary nav-cta" href="contact.html">Enquire</a>
+    </div>
+  </div>
+</nav>
+<section class="wwd-hero">
+  <div class="wwd-hero-grid" aria-hidden="true"></div>
+  <div class="wwd-hero-inner">
+    <div class="page-kicker">What we do · Four arms · Eighteen sector doors</div>
+    <h1 class="wwd-display">Four superpowers.<br><em>One partner.</em></h1>
+    <p class="page-lede" style="max-width:640px;">The mother umbrella houses four interdependent arms that function as a single indispensable partner for a startup's success — then opens eighteen sector doors across education, research, method, and platform.</p>
+  </div>
+</section>
+<!-- FOUR ARMS -->
+<div class="prose-band">
+  <div class="prose-inner">
+    <div class="eyebrow-rule" style="margin-bottom:18px;"><span class="eyebrow-mono">The four operating arms · Not four vendors. Four integrated service arms of one mission.</span></div>
+    <div class="arms-grid" role="list">
+      <div class="arm arm-enlyst" role="listitem">
+        <div class="arm-mark">
+          <svg class="arm-svg" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#2D5BE3"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#2D5BE3" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#2D5BE3" opacity=".26"/></svg>
+          <span class="arm-label" style="color:#2D5BE3;">enlyst · HR &amp; Talent</span>
+        </div>
+        <div class="arm-title">The human tether</div>
+        <div class="arm-tether">Talent forged, not merely hired</div>
+        <p class="arm-desc">Behavioral science interviewing, talent acquisition, performance systems, organisational development. The first fifteen hires determine culture more than any values document — we architect them around outcomes, not job descriptions.</p>
+      </div>
+      <div class="arm arm-enlysum" role="listitem">
+        <div class="arm-mark">
+          <svg class="arm-svg" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#1A7A4A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#1A7A4A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#1A7A4A" opacity=".26"/></svg>
+          <span class="arm-label" style="color:#1A7A4A;">enlysum · Finance</span>
+        </div>
+        <div class="arm-title">The financial tether</div>
+        <div class="arm-tether">Navigation, not history</div>
+        <p class="arm-desc">Cloud bookkeeping, tax compliance, real-time cash visibility, CFO advisory. Runway modelling calibrated to the exact hiring plan enlyst is executing — finance that knows what it costs to grow before the bank account does.</p>
+      </div>
+      <div class="arm arm-enlybiz" role="listitem">
+        <div class="arm-mark">
+          <svg class="arm-svg" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#C4620A"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#C4620A" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#C4620A" opacity=".26"/></svg>
+          <span class="arm-label" style="color:#C4620A;">enlybiz · Marketing</span>
+        </div>
+        <div class="arm-title">The growth tether</div>
+        <div class="arm-tether">No vanity metrics, no hollow campaigns</div>
+        <p class="arm-desc">CRM automation, SEO, social, brand positioning — scalable sales channels. GTM execution aligned to finance reality. CAC optimised against the unit economics enlysum has already modelled.</p>
+      </div>
+      <div class="arm arm-enlysoft" role="listitem">
+        <div class="arm-mark">
+          <svg class="arm-svg" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M0 2 L28 2 L22 16 L-6 16 Z" fill="#6B3FA0"/><path d="M6 20 L34 20 L28 34 L0 34 Z" fill="#6B3FA0" opacity=".58"/><path d="M12 38 L40 38 L34 50 L6 50 Z" fill="#6B3FA0" opacity=".26"/></svg>
+          <span class="arm-label" style="color:#6B3FA0;">enlysoft · Technology</span>
+        </div>
+        <div class="arm-title">The digital tether</div>
+        <div class="arm-tether">Infrastructure as leverage, not overhead</div>
+        <p class="arm-desc">Custom cloud apps, SaaS, process automation, GovTech infrastructure. Infrastructure provisioned to match the growth trajectory — not over-engineered on day one. Cloud architecture that scales with the business model enlybiz is executing against.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SAFE ZONE -->
+<section class="safezone-band">
+  <div class="safezone-inner">
+    <div class="safezone-eyebrow">Safe Zone Build</div>
+    <div class="safezone-display">Three to four months.<br><em>All four arms. At once.</em></div>
+    <p style="font-size:15px;line-height:1.75;color:rgba(245,244,241,.65);max-width:56ch;margin-bottom:8px;">All four arms construct operational stability simultaneously — accounting structures, critical early hires, digital presence, tech infrastructure — before transition to permanent retainer. No phase waits for another. No arm works in isolation.</p>
+    <div class="safezone-steps" role="list">
+      <div class="ss-step" role="listitem">
+        <div class="ss-num">Phase 01 · Discovery</div>
+        <div class="ss-title">Map everything</div>
+        <p class="ss-desc">Talent gaps, finance structure, brand positioning, and technology stack. Nothing is assumed. Everything is documented before a single arm starts building.</p>
+      </div>
+      <div class="ss-step" role="listitem">
+        <div class="ss-num">Phase 02 · Build</div>
+        <div class="ss-title">Backbone while you ship</div>
+        <p class="ss-desc">All four workstreams deploy in parallel. HR, finance, marketing, and technology build simultaneously. The backbone appears while the product continues moving.</p>
+      </div>
+      <div class="ss-step" role="listitem">
+        <div class="ss-num">Phase 03 · Partnership</div>
+        <div class="ss-title">Permanent retainer</div>
+        <p class="ss-desc">Transition to sustained retainer with KPI reviews, shared client memory, and AI infrastructure maintenance. The architecture holds because it was built to hold.</p>
+      </div>
+    </div>
+    <p style="margin-top:24px;font-size:13px;font-family:var(--font-mono);letter-spacing:.08em;color:rgba(255,255,255,.3);">See the full method on the mother page →  <a href="index.html" style="color:rgba(196,162,74,.7);">index.html</a></p>
+  </div>
+</section>
+<!-- EIGHTEEN SECTOR DOORS -->
+<div class="sectors-band">
+  <div class="sectors-inner">
+    <div class="eyebrow-rule" style="margin-bottom:14px;"><span class="eyebrow-mono">Eighteen sector doors · Beyond the four arms</span></div>
+    <h2 style="font-family:'Cormorant',Georgia,serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;letter-spacing:-.025em;line-height:1.1;margin:0 0 8px;">One mother.<br><em style="font-style:italic;color:var(--fg-3);">Eighteen ways in.</em></h2>
+    <p style="font-size:14.5px;color:var(--fg-3);max-width:52ch;margin-bottom:0;">Framework, Safe Zone, Fortress, EnlyRecruit, Talent Forge, Education, Academy, AI Academy, Entrepreneurial Route, Foundation, Himat-Hikmat, Special Education, GovTech, Unified Platform — and more.</p>
+    <div class="sector-chips" role="list" aria-label="Sector doors">
+      <span class="sector-chip" role="listitem">Enlyst Framework</span>
+      <span class="sector-chip" role="listitem">Startup Safe Zone</span>
+      <span class="sector-chip" role="listitem">The Fortress</span>
+      <span class="sector-chip" role="listitem">EnlyRecruit</span>
+      <span class="sector-chip" role="listitem">Talent Forge</span>
+      <span class="sector-chip" role="listitem">Enlyst Education</span>
+      <span class="sector-chip" role="listitem">Enlyst Academy</span>
+      <span class="sector-chip" role="listitem">AI Academy</span>
+      <span class="sector-chip" role="listitem">Entrepreneurial Route</span>
+      <span class="sector-chip" role="listitem">Enlyst Foundation</span>
+      <span class="sector-chip" role="listitem">Himat-Hikmat</span>
+      <span class="sector-chip" role="listitem">Special Education</span>
+      <span class="sector-chip" role="listitem">GovTech &amp; Public Sector</span>
+      <span class="sector-chip" role="listitem">Unified Platform</span>
+    </div>
+    <p style="margin-top:18px;"><a href="index.html#sectors" style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);">Open the full door map →</a></p>
+  </div>
+</div>
+<!-- ENQUIRY BRIDGE -->
+<div class="enquiry-band">
+  <div class="enquiry-inner">
+    <div>
+      <div class="enquiry-display">Tell us which<br>door you<br><em>need.</em></div>
+      <p class="enquiry-note">One form. Every public enquiry type.</p>
+      <div class="enquiry-btns">
+        <a class="btn btn-primary" href="contact.html">Open enquiry form</a>
+        <a class="btn btn-outline" href="philosophy.html">Read the philosophy</a>
+      </div>
+    </div>
+    <div style="padding:28px;background:var(--cream);border:1px solid var(--rule);border-radius:10px;">
+      <div class="eyebrow-rule" style="margin-bottom:16px;"><span class="eyebrow-mono">Founders · Graduates · Partners · Research · GovTech</span></div>
+      <p style="font-size:14px;line-height:1.7;color:var(--fg-3);">One form covers every public enquiry type — whether you're a founder looking to adopt the Framework, a graduate applying to Talent Forge, a research partner, or a public sector organisation exploring the GovTech track. All enquiries are reviewed personally. All responses are specific to your situation.</p>
+      <p style="margin-top:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);">admin@enlystnow.com · Suite No 202 · Lahore Stock Exchange</p>
+    </div>
+  </div>
+</div>
+<footer class="footer mother-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-wordmark">Enlyst<em>now</em></div>
+      <p class="footer-tagline">Mother umbrella. Four arms. Eighteen sector doors. One Framework.</p>
+      <div class="footer-contact">
+        <a href="mailto:admin@enlystnow.com">admin@enlystnow.com</a>
+        <a href="tel:+923000340036">03000 340 036</a>
+        <a href="contact.html">Enquire →</a>
+        <span>Suite No 202 · South Building · Lahore Stock Exchange · Pakistan</span>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Company</h4><a href="about.html">About</a><a href="who-we-are.html">Who we are</a><a href="philosophy.html">Philosophy</a><a href="what-we-do.html">What we do</a><a href="contact.html">Enquire</a></div>
+      <div><h4>Operating arms</h4><a href="https://enlystnow.com">enlyst — HR</a><a href="https://enlysum.com" target="_blank" rel="noopener">enlysum — Finance</a><a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz — Marketing</a><a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft — Technology</a></div>
+      <div><h4>Map</h4><a href="index.html#sectors">Eighteen doors</a><a href="index.html#live">Safe Zone</a><a href="index.html#live">Framework</a><a href="SECTORS.md">SECTORS.md</a></div>
+    </div>
+  </div>
+  <p class="footer-legal">© 2026 Enlystnow · Lahore, Pakistan<span class="footer-legal-note">Legal entity names appear on contracts and filings only</span></p>
+</footer>
+<script src="js/pages.js"></script>
+</body>
+</html>

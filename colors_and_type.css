@@ -1,21 +1,13 @@
-/* ═══════════════════════════════════════════════════════════════
-   ENLYST DESIGN SYSTEM — colors + type tokens
-   Source: Enlyst Brand Guidelines 2025
-   Fonts: served via Bunny Fonts (fonts.bunny.net)
-   ═══════════════════════════════════════════════════════════════ */
-
-/* Bunny Fonts (fonts.bunny.net) — production CDN (privacy-friendly, reliable in Pakistan). */
-@import url('https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500&display=swap');
+/* Local copy for Showreel serve-root — keep in sync with Enlystnow/Design System/colors_and_type.css */
+@import url('https://fonts.bunny.net/css?family=instrument-serif:400,400i|inter:300,400,500,600,700|dm-mono:400,500|manrope:400,500,600,700,800&display=swap');
 
 :root {
-  /* ─── DIVISION HUES ─── one per operating arm. Never mix. */
-  --hr-blue:        #2D5BE3; /* enlyst — HR & Talent */
-  --finance-green:  #1A7A4A; /* enlysum — Finance */
-  --biz-amber:      #C4620A; /* enlybiz — Marketing */
-  --tech-purple:    #6B3FA0; /* enlysoft — Cloud & Tech */
-  --framework-gold: #C4A24A; /* EF — Adoption badge */
+  --hr-blue:        #2D5BE3;
+  --finance-green:  #1A7A4A;
+  --biz-amber:      #C4620A;
+  --tech-purple:    #6B3FA0;
+  --framework-gold: #C4A24A;
 
-  /* Division opacity ramps — used in the mark (3 stripes) */
   --hr-blue-58:        rgba(45,  91, 227, 0.58);
   --hr-blue-26:        rgba(45,  91, 227, 0.26);
   --finance-green-58:  rgba(26, 122,  74, 0.58);
@@ -25,30 +17,27 @@
   --tech-purple-58:    rgba(107, 63, 160, 0.58);
   --tech-purple-26:    rgba(107, 63, 160, 0.26);
 
-  /* Pale UI tints — fills, badges, hover states. Never in the mark. */
   --blue-pale:    #EEF2FD;
   --green-pale:   #EBF5EF;
   --amber-pale:   #FDF3EC;
   --purple-pale:  #F2EEF9;
   --gold-pale:    #FAF4E2;
 
-  /* ─── NEUTRALS ─── */
-  --obsidian:    #1A1A1A; /* primary text, dark surfaces */
-  --ink:         #111111; /* highest-contrast text (titles) */
-  --ink-2:       #444444; /* body */
-  --ink-3:       #888888; /* meta / muted */
-  --mid-gray:    #9E9B95; /* labels on cream backgrounds */
+  --obsidian:    #1A1A1A;
+  --ink:         #111111;
+  --ink-2:       #444444;
+  --ink-3:       #888888;
+  --mid-gray:    #9E9B95;
   --white:       #FFFFFF;
-  --off-white:   #F7F6F3; /* primary surface */
-  --cream:       #F4F3F0; /* alt page background */
-  --light-gray:  #E8E6E1; /* card background */
-  --rule:        #E2E0DB; /* dividers, borders */
-  --tech-dark:   #080C12; /* enlysoft only — dark-first surface */
+  --off-white:   #F7F6F3;
+  --cream:       #F4F3F0;
+  --light-gray:  #E8E6E1;
+  --rule:        #E2E0DB;
+  --tech-dark:   #080C12;
 
-  /* ─── SEMANTIC FOREGROUND / BACKGROUND ─── */
-  --fg-1: var(--ink);       /* primary text */
-  --fg-2: var(--ink-2);     /* body */
-  --fg-3: var(--ink-3);     /* secondary / labels */
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
   --fg-inverse: var(--white);
   --bg-page:    var(--off-white);
   --bg-surface: var(--white);
@@ -57,13 +46,11 @@
   --border:     var(--rule);
   --border-strong: #C0BDBA;
 
-  /* Accent — defaults to HR Blue (parent platform); divisions override. */
   --accent:       var(--hr-blue);
   --accent-58:    var(--hr-blue-58);
   --accent-26:    var(--hr-blue-26);
   --accent-pale:  var(--blue-pale);
 
-  /* ─── STATUS COLOURS (UI ONLY — never in marks) ─── */
   --success: #1A7A4A;
   --success-pale: #EBF5EF;
   --warning: #C4620A;
@@ -73,36 +60,34 @@
   --info:    #2D5BE3;
   --info-pale: #EEF2FD;
 
-  /* ─── TYPE FAMILIES ─── */
-  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-sans:  'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  --font-mono:  'DM Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-serif:     'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans:      'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono:      'DM Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-wordmark:  'Manrope', 'Inter', system-ui, sans-serif; /* geometric y, no curl */
 
-  /* ─── BASE TYPE SCALE (recommended in brand guidelines) ─── */
-  --fs-display:    clamp(56px, 6.5vw, 88px); /* @kind font */ /* Hero H1 */
-  --fs-h1:         clamp(40px, 4.5vw, 64px); /* @kind font */
-  --fs-h2:         clamp(32px, 3.2vw, 46px); /* @kind font */
-  --fs-h3:         28px; /* @kind font */
-  --fs-h4:         22px; /* @kind font */
-  --fs-body-lg:    18px; /* @kind font */
-  --fs-body:       16px; /* @kind font */
-  --fs-body-sm:    14px; /* @kind font */
-  --fs-caption:    13px; /* @kind font */
-  --fs-eyebrow:    11px; /* @kind font */
-  --fs-micro:      10px; /* @kind font */
+  --fs-display:    clamp(56px, 6.5vw, 88px);
+  --fs-h1:         clamp(40px, 4.5vw, 64px);
+  --fs-h2:         clamp(32px, 3.2vw, 46px);
+  --fs-h3:         28px;
+  --fs-h4:         22px;
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-body-sm:    14px;
+  --fs-caption:    13px;
+  --fs-eyebrow:    11px;
+  --fs-micro:      10px;
 
-  --lh-tight:   1.05; /* @kind font */
-  --lh-snug:    1.2; /* @kind font */
-  --lh-base:    1.55; /* @kind font */
-  --lh-relaxed: 1.7; /* @kind font */
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-base:    1.55;
+  --lh-relaxed: 1.7;
 
-  --ls-display:  -0.035em; /* @kind font */
-  --ls-h2:       -0.025em; /* @kind font */
-  --ls-h3:       -0.018em; /* @kind font */
-  --ls-eyebrow:  0.14em; /* @kind font */
-  --ls-mono:     0.06em; /* @kind font */
+  --ls-display:  -0.035em;
+  --ls-h2:       -0.025em;
+  --ls-h3:       -0.018em;
+  --ls-eyebrow:  0.14em;
+  --ls-mono:     0.06em;
 
-  /* ─── SPACING (4px base) ─── */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -117,31 +102,27 @@
   --space-24: 96px;
   --space-32: 128px;
 
-  /* ─── RADIUS ─── */
   --radius-xs: 2px;
   --radius-sm: 3px;
-  --radius-md: 4px;   /* default buttons, inputs */
+  --radius-md: 4px;
   --radius-lg: 6px;
-  --radius-xl: 8px;   /* cards */
-  --radius-2xl: 10px; /* hero images */
-  --radius-3xl: 13px; /* favicon squircle */
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-3xl: 13px;
   --radius-pill: 999px;
 
-  /* ─── ELEVATION (Enlyst uses very restrained shadows — almost flat) ─── */
   --shadow-xs: 0 1px 2px rgba(17,17,17,0.04);
   --shadow-sm: 0 2px 8px rgba(17,17,17,0.05);
   --shadow-md: 0 8px 32px rgba(17,17,17,0.07);
   --shadow-lg: 0 28px 72px rgba(17,17,17,0.14);
   --shadow-accent: 0 8px 24px rgba(45,91,227,0.35);
 
-  /* ─── TRANSITIONS ─── */
-  --ease-out:  cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
-  --dur-fast: 150ms; /* @kind other */
-  --dur-base: 220ms; /* @kind other */
-  --dur-slow: 400ms; /* @kind other */
+  --ease-out:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 400ms;
 
-  /* ─── LAYOUT ─── */
   --container-max: 1200px;
   --container-wide: 1440px;
   --gutter:       64px;
@@ -149,7 +130,6 @@
   --nav-height:   64px;
 }
 
-/* ═══ DIVISION SCOPES ═══ apply to a subtree to swap the accent. */
 [data-division="enlyst"], .scope-enlyst {
   --accent: var(--hr-blue);
   --accent-58: var(--hr-blue-58);
@@ -175,7 +155,6 @@
   --accent-pale: var(--purple-pale);
 }
 
-/* ═══ BASE ═══ */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; }
 body {
@@ -187,7 +166,6 @@ body {
   font-synthesis-weight: none;
 }
 
-/* ═══ SEMANTIC TYPE ═══ */
 .serif      { font-family: var(--font-serif); font-weight: 400; }
 .serif-i    { font-family: var(--font-serif); font-weight: 400; font-style: italic; }
 .mono       { font-family: var(--font-mono); }
@@ -242,7 +220,6 @@ body {
   color: var(--ink-2);
 }
 
-/* Pillar rule — common eyebrow pattern: short dash + label */
 .eyebrow-rule {
   display: inline-flex; align-items: center; gap: 10px;
 }

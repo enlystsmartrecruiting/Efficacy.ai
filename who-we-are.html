@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-division="enlyst">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Who we are · Ecosystem architects · Enlystnow</title>
+<meta name="description" content="Enlystnow is the mother umbrella of an integrated multi-service enterprise that grew from recruitment into a mission-critical startup enabler. Under Wasim Hassan's leadership — people, money, demand, systems, one Framework."/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link href="https://fonts.bunny.net/css?family=instrument-serif:400,400i|cormorant:300,300i,400,400i,600|inter:300,400,500,600,700|manrope:700,800|dm-mono:400,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/showreel.css"/>
+<link rel="stylesheet" href="css/pages.css"/>
+<style>
+.wwa-display{font-family:'Cormorant',Georgia,serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:.94;letter-spacing:-.025em;margin:0 0 1.5rem;color:var(--fg-1);}
+.wwa-display em{font-style:italic;color:var(--accent);}
+.wwa-hero{padding:clamp(80px,11vw,140px) clamp(20px,4vw,64px) clamp(48px,7vw,80px);background:var(--off-white);position:relative;overflow:hidden;border-bottom:1px solid var(--rule);}
+.wwa-hero-inner{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:end;position:relative;z-index:1;}
+.wwa-hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(45,91,227,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,91,227,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(135deg,rgba(0,0,0,.6) 0%,transparent 70%);}
+.entity-strip{display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:28px;}
+.entity-item{flex:1;background:var(--bg-surface);padding:16px 14px;text-align:center;}
+.entity-num{font-family:'Cormorant',Georgia,serif;font-size:2rem;font-weight:300;line-height:1;color:var(--accent);display:block;margin-bottom:4px;}
+.entity-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-top:28px;}
+.audience-card{background:var(--bg-surface);padding:24px 20px;transition:background .2s;}
+.audience-card:hover{background:var(--cream);}
+.audience-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px;}
+.audience-title{font-family:'Cormorant',Georgia,serif;font-size:1.5rem;font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:8px;}
+.audience-desc{font-size:13.5px;line-height:1.65;color:var(--fg-3);}
+.mission-band{background:var(--obsidian);padding:clamp(48px,7vw,88px) clamp(20px,4vw,64px);}
+.mission-inner{max-width:var(--container-max);margin:0 auto;}
+.mission-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--hr-blue);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.mission-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--hr-blue);}
+.mission-display{font-family:'Cormorant',Georgia,serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:300;line-height:1.08;letter-spacing:-.025em;color:var(--off-white);max-width:22ch;margin-bottom:28px;}
+.mission-display em{font-style:italic;color:rgba(255,255,255,.38);}
+.mission-body{font-size:15px;line-height:1.75;color:rgba(245,244,241,.65);max-width:58ch;margin-bottom:16px;}
+.mission-body strong{color:var(--off-white);}
+.outcome-panel{margin-top:36px;padding:24px 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;max-width:64ch;}
+.outcome-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;}
+.outcome-text{font-size:14.5px;line-height:1.7;color:rgba(245,244,241,.6);}
+.outcome-text strong{color:var(--off-white);}
+.bridge-band{background:var(--cream);padding:clamp(40px,6vw,72px) clamp(20px,4vw,64px);border-top:1px solid var(--rule);}
+.bridge-inner{max-width:var(--container-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.bridge-copy h3{font-family:'Cormorant',Georgia,serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;letter-spacing:-.02em;margin-bottom:8px;}
+.bridge-copy h3 em{font-style:italic;color:var(--fg-3);}
+.bridge-copy p{font-size:14px;color:var(--fg-3);max-width:44ch;}
+.bridge-btns{display:flex;gap:10px;flex-wrap:wrap;}
+@media(max-width:860px){.wwa-hero-inner{grid-template-columns:1fr;}.audience-grid{grid-template-columns:1fr;}.entity-strip{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<div class="topbar" role="banner" aria-label="Site family">
+  <a href="https://enlystnow.com">enlystnow</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlysum.com" target="_blank" rel="noopener">enlysum</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz</a>
+  <span class="topbar-dot" aria-hidden="true"></span>
+  <a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Enlystnow home">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="28" height="30" viewBox="0 0 56 56" fill="none"><path d="M6 8 L32 8 L24 20 L-2 20 Z" fill="#2D5BE3"/><path d="M12 24 L38 24 L30 36 L4 36 Z" fill="#2D5BE3" opacity="0.58"/><path d="M18 40 L44 40 L36 52 L10 52 Z" fill="#2D5BE3" opacity="0.26"/></svg>
+      </div>
+      <span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.035em;color:var(--fg-1);">Enlyst<em style="font-style:normal;color:var(--hr-blue);">now</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-btn" href="index.html#live">Live Sectors</a>
+      <a class="nav-btn" href="about.html">About</a>
+      <a class="nav-btn" href="philosophy.html">Philosophy</a>
+      <a class="nav-btn" href="what-we-do.html">What we do</a>
+      <a class="nav-btn" href="who-we-are.html" aria-current="page" style="color:var(--fg-1);font-weight:600;">Who we are</a>
+      <a class="btn btn-primary nav-cta" href="contact.html">Enquire</a>
+    </div>
+  </div>
+</nav>
+<section class="wwa-hero">
+  <div class="wwa-hero-grid" aria-hidden="true"></div>
+  <div class="wwa-hero-inner">
+    <div>
+      <div class="page-kicker">Who we are · Ecosystem architects</div>
+      <h1 class="wwa-display">Ecosystem<br><em>architects.</em></h1>
+      <p class="page-lede">We are not a mere recruitment agency. We are the scaffolding of an entrepreneurial nation — an integrated multi-service entity that evolved from talent specialty into the operating heartbeat for ambitious startups.</p>
+    </div>
+    <div>
+      <div class="entity-strip" role="list" aria-label="Key metrics">
+        <div class="entity-item" role="listitem"><span class="entity-num">4</span><span class="entity-lbl">Operating arms</span></div>
+        <div class="entity-item" role="listitem"><span class="entity-num">18</span><span class="entity-lbl">Sector doors</span></div>
+        <div class="entity-item" role="listitem"><span class="entity-num">6</span><span class="entity-lbl">Years operating</span></div>
+        <div class="entity-item" role="listitem"><span class="entity-num">1</span><span class="entity-lbl">Framework</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="prose-band">
+  <div class="prose-inner">
+    <div class="prose-cols">
+      <div>
+        <div class="eyebrow-rule" style="margin-bottom:14px;"><span class="eyebrow-mono">The enterprise behind the mother</span></div>
+        <h2 style="font-family:'Cormorant',Georgia,serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:300;letter-spacing:-.025em;line-height:1.1;margin:0 0 14px;">Built from<br><em style="font-style:italic;color:var(--fg-3);">recruitment up.</em></h2>
+      </div>
+      <div>
+        <p>Enlystnow is the public mother umbrella of an integrated multi-service enterprise that grew from recruitment into a mission-critical startup enabler. The arc was deliberate — talent is the first problem every founder faces, which gave us the trust to enter their operations, and the obligation to solve what we found there.</p>
+        <p>Under the leadership of Wasim Hassan, the enterprise partners with founders to construct sustainable businesses, transition them into permanent clients, and simultaneously cultivate the next generation of entrepreneurs. <strong>We don't just place people — we build businesses.</strong></p>
+        <p>The Enlyst Framework is how we keep four operating arms — HR, finance, marketing, technology — coherent without erasing their distinct mandates. One accountability standard. One shared client memory. Four specialist teams that never need to re-brief each other.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="prose-band alt" style="padding-top:0;">
+  <div class="prose-inner">
+    <div class="eyebrow-rule" style="margin-bottom:18px;padding-top:clamp(40px,6vw,72px);"><span class="eyebrow-mono">What that means in practice</span></div>
+    <div class="audience-grid" role="list">
+      <div class="audience-card" role="listitem">
+        <span class="audience-label">For Founders</span>
+        <div class="audience-title">Operating partner</div>
+        <p class="audience-desc">Four arms under one Framework — HR, finance, marketing, technology — so you stop stitching vendors together and start operating as a single, reinforced institution. One retainer. One shared memory across everything you're building.</p>
+      </div>
+      <div class="audience-card" role="listitem">
+        <span class="audience-label">For Graduates</span>
+        <div class="audience-title">Forge, not hire</div>
+        <p class="audience-desc">Paid apprenticeships across real client work. Talent is forged through Rotational Pedagogy — not screened from a CV pile alone. You leave with documented competency, not an attendance certificate.</p>
+      </div>
+      <div class="audience-card" role="listitem">
+        <span class="audience-label">For the Nation</span>
+        <div class="audience-title">Entrepreneurial scaffolding</div>
+        <p class="audience-desc">Interns become leaders, client hires, or founders we incubate. The loop perpetuates itself. Each cohort feeds the next. The ecosystem compounds — and so does Pakistan's institutional capacity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="mission-band">
+  <div class="mission-inner">
+    <div class="mission-eyebrow">Mission</div>
+    <div class="mission-display">Partner with founders.<br>Build the<br><em>backbone.</em></div>
+    <p class="mission-body">Partner with founders to construct sustainable businesses. Move them from chaos into a Safe Zone Build, then into permanent retainer. <strong>At the same time, run a graduate forge that feeds the ecosystem with culturally aligned operators.</strong></p>
+    <p class="mission-body">This is not a positioning statement. It is an operational description of what happens, in sequence, across every client engagement — from first conversation to year five of a retainer.</p>
+    <div class="outcome-panel">
+      <div class="outcome-label">The outcome we design for</div>
+      <p class="outcome-text">From a commission-based shop with fragile retention into <strong>a mission-critical partner with resilient, recurring revenue and 90%+ retention</strong> where the architecture holds. Not because we lock clients in — because removing Enlyst would mean removing HR, finance, marketing, and technology simultaneously.</p>
+    </div>
+  </div>
+</section>
+<div class="bridge-band">
+  <div class="bridge-inner">
+    <div class="bridge-copy">
+      <h3>Meet the philosophy<br><em>next.</em></h3>
+      <p>Integration · Equilibrium · Perpetuation — and how we solve the service industry trilemma.</p>
+    </div>
+    <div class="bridge-btns">
+      <a class="btn btn-primary" href="philosophy.html">Read the philosophy</a>
+      <a class="btn btn-outline" href="contact.html">Enquire</a>
+    </div>
+  </div>
+</div>
+<footer class="footer mother-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-wordmark">Enlyst<em>now</em></div>
+      <p class="footer-tagline">Mother umbrella. Four arms. Eighteen sector doors. One Framework.</p>
+      <div class="footer-contact">
+        <a href="mailto:admin@enlystnow.com">admin@enlystnow.com</a>
+        <a href="tel:+923000340036">03000 340 036</a>
+        <a href="contact.html">Enquire →</a>
+        <span>Suite No 202 · South Building · Lahore Stock Exchange · Pakistan</span>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div><h4>Company</h4><a href="about.html">About</a><a href="who-we-are.html">Who we are</a><a href="philosophy.html">Philosophy</a><a href="what-we-do.html">What we do</a><a href="contact.html">Enquire</a></div>
+      <div><h4>Operating arms</h4><a href="https://enlystnow.com">enlyst — HR</a><a href="https://enlysum.com" target="_blank" rel="noopener">enlysum — Finance</a><a href="https://enlybiz.com" target="_blank" rel="noopener">enlybiz — Marketing</a><a href="https://enlysoft.net" target="_blank" rel="noopener">enlysoft — Technology</a></div>
+      <div><h4>Map</h4><a href="index.html#sectors">Eighteen doors</a><a href="index.html#live">Safe Zone</a><a href="index.html#live">Framework</a><a href="SECTORS.md">SECTORS.md</a></div>
+    </div>
+  </div>
+  <p class="footer-legal">© 2026 Enlystnow · Lahore, Pakistan<span class="footer-legal-note">Legal entity names appear on contracts and filings only</span></p>
+</footer>
+<script src="js/pages.js"></script>
+</body>
+</html>
