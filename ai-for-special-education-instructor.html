@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Special Education Instructors — Your Takeaway</title>
+<link href="https://fonts.bunny.net/css?family=playfair-display:400,700,900|dm-sans:300,400,500,600|dm-mono:400,500" rel="stylesheet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+  :root {
+    --ink:#0e0e14; --paper:#f5f2ec; --cream:#ede9e0;
+    --gold:#b8860b; --gold-light:#d4a017; --teal:#1a6b6b; --teal-light:#2d9595;
+    --rust:#8b3a2f; --violet:#5a3f8b; --muted:#6b6660; --line:rgba(14,14,20,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:text; user-select:text; }
+  body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.65; }
+  .wrap { max-width:640px; margin:0 auto; }
+
+  .cover { background:var(--ink); color:var(--paper); padding:44px 24px 36px; position:relative; overflow:hidden; }
+  .cover::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(184,134,11,0.04) 60px,rgba(184,134,11,0.04) 61px); }
+  .cover-tag { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:10px; }
+  .cover h1 { font-family:'Playfair Display',serif; font-size:32px; font-weight:900; line-height:1.15; margin-bottom:12px; }
+  .cover h1 em { font-style:normal; color:var(--gold-light); }
+  .cover p { font-size:13.5px; color:rgba(245,242,236,0.65); max-width:480px; }
+
+  .section { padding:32px 24px; border-bottom:1px solid var(--line); }
+  .section:last-child{border-bottom:none;}
+  .section-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:8px; }
+  .section-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; margin-bottom:18px; }
+
+  .day-card { border-radius:4px; padding:20px; margin-bottom:12px; }
+  .day-card.d1 { background:var(--ink); color:var(--paper); }
+  .day-card.d2 { background:var(--teal); color:var(--paper); }
+  .day-card .dc-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:6px; }
+  .day-card.d2 .dc-label { color:rgba(245,242,236,0.7); }
+  .day-card h3 { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; margin-bottom:10px; }
+  .day-card ul { list-style:none; }
+  .day-card li { font-size:13px; padding:4px 0 4px 16px; position:relative; opacity:.85; }
+  .day-card li::before { content:'—'; position:absolute; left:0; color:var(--gold-light); }
+  .day-card.d2 li::before { color:rgba(245,242,236,0.6); }
+
+  .crtf-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .crtf-box { border:1px solid var(--line); border-radius:4px; padding:14px 16px; background:var(--cream); }
+  .crtf-box .letter { font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:var(--gold); display:block; }
+  .crtf-box .word { font-weight:600; font-size:13px; display:block; margin:2px 0 4px; }
+  .crtf-box p { font-size:11.5px; color:var(--muted); line-height:1.4; }
+
+  .rule-box { background:var(--rust); color:var(--paper); border-radius:4px; padding:18px 20px; margin-top:14px; }
+  .rule-box .rb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; opacity:.75; display:block; margin-bottom:6px; }
+  .rule-box p { font-size:14px; font-weight:500; line-height:1.5; }
+
+  .tool-list { list-style:none; }
+  .tool-list li { display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-bottom:1px dashed var(--line); font-size:13px; }
+  .tool-list li:last-child{border-bottom:none;}
+  .tool-list .t-name { font-weight:600; }
+  .tool-list .t-use { color:var(--muted); font-size:11.5px; text-align:right; max-width:56%; }
+
+  .adapt-list { list-style:none; }
+  .adapt-list li { padding:8px 0 8px 0; border-bottom:1px solid var(--line); font-size:13px; }
+  .adapt-list li:last-child{border-bottom:none;}
+  .adapt-list .a-tag { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--violet); display:block; margin-bottom:2px; }
+
+  .self-directed { background:var(--cream); border:1px solid var(--line); border-radius:4px; padding:18px 20px; font-size:13px; color:var(--muted); line-height:1.6; }
+  .self-directed strong { color:var(--ink); }
+
+  .footer { background:var(--ink); color:rgba(245,242,236,0.4); text-align:center; padding:22px; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px; }
+  .footer strong{color:var(--gold);}
+
+  @media (max-width:400px) {
+    .crtf-grid { grid-template-columns:1fr; }
+    .cover h1 { font-size:28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="cover">
+    <span class="cover-tag">Special Education Department · Instructor Takeaway</span>
+    <h1>AI for Your <em>Classroom</em> — Two-Day Recap</h1>
+    <p>Everything from both days, in one place. Save this link — copy freely, no login needed.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Programme Recap</span>
+    <h2 class="section-title">What We Covered</h2>
+    <div class="day-card d1">
+      <span class="dc-label">Day One — Understanding AI</span>
+      <h3>Foundations, Generative AI &amp; Tools</h3>
+      <ul>
+        <li>What AI and machine learning actually are</li>
+        <li>How generative AI produces text, images and ideas</li>
+        <li>Real classroom applications — planning, worksheets, parent letters</li>
+        <li>Free AI tools built for teachers</li>
+        <li>Live classroom demonstration</li>
+      </ul>
+    </div>
+    <div class="day-card d2">
+      <span class="dc-label">Day Two — Using AI Well</span>
+      <h3>Prompting, Ethics &amp; Accessibility</h3>
+      <ul>
+        <li>The CRTF formula for writing effective prompts</li>
+        <li>Ethics, privacy and academic integrity</li>
+        <li>Digital accessibility tools for every disability type</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Your Prompt Formula</span>
+    <h2 class="section-title">CRTF — Use It Every Time</h2>
+    <div class="crtf-grid">
+      <div class="crtf-box"><span class="letter">C</span><span class="word">Context</span><p>Who is the student — grade, disability, situation</p></div>
+      <div class="crtf-box"><span class="letter">R</span><span class="word">Role</span><p>Who should the AI act as — a teacher, a therapist, an editor</p></div>
+      <div class="crtf-box"><span class="letter">T</span><span class="word">Task</span><p>The one clear outcome you want</p></div>
+      <div class="crtf-box"><span class="letter">F</span><span class="word">Format</span><p>How you want it structured — list, table, paragraph</p></div>
+    </div>
+    <div class="rule-box">
+      <span class="rb-label">The One Rule That Never Bends</span>
+      <p>Never type a real student's name, story or personal detail into any AI tool. Use "a student" or "the class" instead. You validate every output — AI never decides.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Tools From Both Days</span>
+    <h2 class="section-title">Free Tools You Can Use Today</h2>
+    <ul class="tool-list">
+      <li><span class="t-name">ChatGPT / Claude</span><span class="t-use">Lesson plans, worksheets, simplified text</span></li>
+      <li><span class="t-name">Google Gemini</span><span class="t-use">Docs &amp; Slides integration</span></li>
+      <li><span class="t-name">Microsoft Copilot</span><span class="t-use">Word, Outlook, Teams automation</span></li>
+      <li><span class="t-name">Canva AI</span><span class="t-use">Visual materials, communication boards</span></li>
+      <li><span class="t-name">Microsoft Immersive Reader</span><span class="t-use">Text-to-speech, built into Word/Edge</span></li>
+      <li><span class="t-name">Otter.ai</span><span class="t-use">Live captioning for hearing-impaired students</span></li>
+      <li><span class="t-name">Be My Eyes AI</span><span class="t-use">Camera description for visually impaired students</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Digital Accessibility</span>
+    <h2 class="section-title">One Adaptation Per Need</h2>
+    <ul class="adapt-list">
+      <li><span class="a-tag">Visual Impairment</span>No visual-only instructions — screen readers and Be My Eyes AI</li>
+      <li><span class="a-tag">Hearing Impairment</span>No audio-only content — live captioning, text-first materials</li>
+      <li><span class="a-tag">Intellectual Disability</span>Simplify and repeat — AI-generated simplified reading levels</li>
+      <li><span class="a-tag">ADHD</span>Chunk content, build in movement breaks</li>
+      <li><span class="a-tag">Autism</span>Structure and predictability — visual schedules, social stories</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <span class="section-label">Keep Going</span>
+    <h2 class="section-title">Beyond These Two Days</h2>
+    <div class="self-directed">
+      <strong>This is a starting point, not the finish line.</strong> Pick one tool from the list above and use it once this week on something real you were already going to do — a worksheet, a letter, a lesson plan. That single repetition will teach you more than any slide did. When you're ready to go further, explore on your own terms — there is no single "right" course to take next.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  AI for Special Education Instructors &nbsp;·&nbsp; <strong>Resource Person: Wasim Hassan</strong>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Special Education Instructors — Two-Day Training | Resource Person: Wasim Hassan</title>
+<link href="https://fonts.bunny.net/css?family=playfair-display:400,700,900|dm-sans:300,400,500,600|dm-mono:400,500" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e14;
+    --paper: #f5f2ec;
+    --cream: #ede9e0;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --teal: #1a6b6b;
+    --teal-light: #2d9595;
+    --rust: #8b3a2f;
+    --violet: #5a3f8b;
+    --muted: #6b6660;
+    --line: rgba(14,14,20,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; font-size:16px; line-height:1.7; }
+
+  .hero { background:var(--ink); color:var(--paper); padding:72px 60px 64px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:0;right:0;bottom:0;left:0; background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(184,134,11,0.04) 60px,rgba(184,134,11,0.04) 61px); }
+  .hero-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px; display:block; }
+  .hero-ref { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; color:rgba(245,242,236,0.4); margin-bottom:24px; display:block; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,60px); font-weight:900; line-height:1.08; max-width:820px; margin-bottom:24px; }
+  .hero h1 em { font-style:normal; color:var(--gold-light); }
+  .hero-sub { font-size:16px; color:rgba(245,242,236,0.65); max-width:600px; margin-bottom:40px; font-weight:300; }
+  .hero-meta { display:flex; gap:36px; flex-wrap:wrap; }
+  .hero-meta-item { border-left:2px solid var(--gold); padding-left:16px; }
+  .hero-meta-item .label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:4px; }
+  .hero-meta-item .value { font-size:14px; font-weight:500; color:var(--paper); }
+
+  .container { max-width:980px; margin:0 auto; padding:0 48px; }
+  @media(max-width:640px){ .container{padding:0 20px;} .hero{padding:48px 20px 40px;} }
+
+  .section { padding:56px 0; border-bottom:1px solid var(--line); }
+  .section:last-child{border-bottom:none;}
+  .section-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--teal); margin-bottom:10px; display:block; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,34px); font-weight:700; margin-bottom:28px; line-height:1.2; }
+
+  .day-tabs { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:8px; }
+  @media(max-width:580px){ .day-tabs{grid-template-columns:1fr;} }
+  .day-tab { border-radius:4px; padding:28px; }
+  .day-tab.day1 { background:var(--ink); color:var(--paper); }
+  .day-tab.day2 { background:var(--teal); color:var(--paper); }
+  .day-tab .dt-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:8px; }
+  .day-tab.day2 .dt-label { color:rgba(245,242,236,0.65); }
+  .day-tab h3 { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; margin-bottom:10px; }
+  .day-tab p { font-size:13.5px; line-height:1.55; opacity:.78; }
+  .day-tab .date-badge { display:inline-block; margin-top:16px; padding:5px 14px; background:var(--gold); color:var(--ink); border-radius:2px; font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:1px; }
+  .day-tab.day2 .date-badge { background:rgba(245,242,236,0.2); color:var(--paper); }
+
+  .day-block { margin-bottom:48px; }
+  .day-heading { display:flex; align-items:center; gap:14px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+  .day-heading.day2-h { border-bottom-color:var(--teal); }
+  .day-num { width:40px;height:40px; border-radius:50%; display:flex;align-items:center;justify-content:center; font-family:'Playfair Display',serif; font-size:16px; font-weight:900; flex-shrink:0; }
+  .dn1 { background:var(--ink); color:var(--gold-light); }
+  .dn2 { background:var(--teal); color:white; }
+  .day-heading-text h3 { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; }
+  .day-heading-text span { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:1px; }
+
+  .slot-label-bar { display:flex; align-items:center; gap:12px; margin:20px 0 12px; }
+  .slot-label-bar::before { content:''; flex:1; height:1px; background:var(--line); }
+  .slot-label-bar span { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+  .slot-label-bar::after { content:''; flex:1; height:1px; background:var(--line); }
+
+  .schedule-row { display:grid; grid-template-columns:100px 1fr; gap:0; border-bottom:1px solid var(--line); }
+  .schedule-row:last-child{border-bottom:none;}
+  .time-col { padding:18px 14px 18px 0; font-family:'DM Mono',monospace; font-size:11px; font-weight:500; border-right:2px solid var(--gold); display:flex; align-items:flex-start; padding-top:21px; color:var(--gold); }
+  .time-col.teal-time { color:var(--teal-light); border-right-color:var(--teal); }
+  .content-col { padding:18px 0 18px 20px; }
+  .activity-title { font-weight:600; font-size:15px; margin-bottom:5px; }
+  .activity-desc { font-size:13px; color:var(--muted); line-height:1.55; }
+  .activity-tag { display:inline-block; margin-top:7px; padding:3px 10px; border-radius:2px; font-size:9px; letter-spacing:1px; font-family:'DM Mono',monospace; text-transform:uppercase; font-weight:500; }
+  .tag-demo{background:rgba(184,134,11,0.12);color:var(--gold);}
+  .tag-concept{background:rgba(26,107,107,0.12);color:var(--teal);}
+  .tag-hands{background:rgba(139,58,47,0.12);color:var(--rust);}
+  .tag-break{background:rgba(107,102,96,0.1);color:var(--muted);}
+  .tag-assess{background:rgba(90,63,139,0.12);color:var(--violet);}
+
+  .break-bar { text-align:center; padding:16px 0 24px; }
+  .break-bar span { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); padding:9px 22px; border-radius:2px; display:inline-block; }
+
+  .curriculum-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:620px){ .curriculum-grid{grid-template-columns:1fr;} }
+  .curriculum-card { border:1px solid var(--line); border-radius:4px; overflow:hidden; }
+  .curriculum-card-header { padding:18px 22px 14px; border-bottom:1px solid var(--line); background:var(--cream); }
+  .curriculum-card-header .num { font-family:'DM Mono',monospace; font-size:9px; color:var(--gold); letter-spacing:2px; display:block; margin-bottom:5px; }
+  .curriculum-card-header .num.teal-num { color:var(--teal); }
+  .curriculum-card-header .num.violet-num { color:var(--violet); }
+  .curriculum-card-header h4 { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; }
+  .curriculum-card-body { padding:18px 22px; }
+  .curriculum-card-body ul { list-style:none; }
+  .curriculum-card-body ul li { font-size:13px; line-height:1.5; padding:6px 0 6px 16px; border-bottom:1px dashed var(--line); color:var(--muted); position:relative; }
+  .curriculum-card-body ul li::before { content:'—'; position:absolute; left:0; color:var(--gold); font-size:10px; }
+  .curriculum-card-body ul li:last-child{border-bottom:none;}
+
+  .tools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  @media(max-width:640px){ .tools-grid{grid-template-columns:1fr 1fr;} }
+  .tool-card { background:var(--cream); border:1px solid var(--line); border-radius:4px; padding:18px; }
+  .tool-card .tool-name { font-weight:600; font-size:13.5px; margin-bottom:5px; }
+  .tool-card .tool-use { font-size:12px; color:var(--muted); line-height:1.45; }
+  .tool-card .tool-cat { margin-top:9px; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal); }
+  .tool-card.violet-card .tool-cat { color:var(--violet); }
+
+  .adapt-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:620px){ .adapt-grid{grid-template-columns:1fr;} }
+  .adapt-card { border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--cream); }
+  .adapt-card .a-need { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:6px; }
+  .adapt-card p { font-size:12.5px; color:var(--muted); line-height:1.5; }
+
+  .tips-box { background:var(--ink); color:var(--paper); border-radius:4px; padding:32px 36px; margin-top:28px; }
+  .tips-box h4 { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:18px; color:var(--gold-light); }
+  .tips-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; }
+  @media(max-width:560px){ .tips-list{grid-template-columns:1fr;} }
+  .tips-list li { font-size:13px; line-height:1.5; color:rgba(245,242,236,0.8); padding-left:18px; position:relative; }
+  .tips-list li::before { content:'▸'; position:absolute; left:0; color:var(--gold-light); font-size:9px; top:4px; }
+
+  .profile-box { display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:start; background:var(--cream); border:1px solid var(--line); border-radius:4px; padding:28px; }
+  @media(max-width:500px){ .profile-box{grid-template-columns:1fr;} }
+  .profile-initials { width:64px;height:64px; background:var(--ink); border-radius:50%; display:flex;align-items:center;justify-content:center; font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:var(--gold-light); flex-shrink:0; }
+  .profile-name { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:5px; }
+  .profile-title { font-size:13px; color:var(--muted); line-height:1.6; }
+  .profile-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+  .profile-tags span { padding:3px 11px; border:1px solid var(--line); border-radius:2px; font-size:10px; font-family:'DM Mono',monospace; color:var(--muted); }
+
+  .footer { background:var(--ink); color:rgba(245,242,236,0.35); text-align:center; padding:28px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:1px; }
+  .footer strong{color:var(--gold);}
+
+  .confirm-flag { display:inline-block; background:rgba(139,58,47,0.14); color:var(--rust); font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px; padding:2px 8px; border-radius:2px; margin-left:6px; }
+
+  @media (max-width: 430px) {
+    .hero{padding:32px 20px 28px;}
+    .hero h1{font-size:36px;}
+    .hero-meta{flex-direction:column;gap:12px;}
+    .schedule-row{grid-template-columns:1fr;display:block;}
+    .time-col{padding:10px 0 4px 0;border-right:none;border-bottom:2px solid var(--gold);}
+    .time-col.teal-time{border-bottom-color:var(--teal);}
+    .content-col{padding:10px 0 14px 0;}
+    .day-tabs,.curriculum-grid,.tools-grid,.adapt-grid{grid-template-columns:1fr;}
+    .section{padding:36px 0;}
+    .container{padding:0 16px;}
+    .profile-box{grid-template-columns:1fr;padding:20px 16px;}
+    .tips-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <span class="hero-tag">Special Education Department <span class="confirm-flag">CONFIRM DEPT/VENUE</span></span>
+    <span class="hero-ref">Memo Reference [TBC] · Dates [TBC] <span class="confirm-flag">FILL IN</span></span>
+    <h1>AI for Special Education<br>Instructors — <em>Two-Day<br>Training Programme</em></h1>
+    <p class="hero-sub">Foundational AI literacy through to effective prompting, ethics and digital accessibility — for junior and mid-career instructors of the Special Education Department.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Resource Person</span>
+        <span class="value">Wasim Hassan</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Duration</span>
+        <span class="value">2 Days · 2 Sessions</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Audience</span>
+        <span class="value">Junior &amp; Mid-Career Instructors · Spl. Ed. Dept.</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Framework</span>
+        <span class="value">CRTF Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Two-Day Programme Overview</span>
+    <h2 class="section-title">What Happens Each Day</h2>
+    <div class="day-tabs">
+      <div class="day-tab day1">
+        <span class="dt-label">Day One · Understanding AI</span>
+        <h3>Foundations, Generative AI &amp; Classroom Tools</h3>
+        <p>What AI and machine learning actually are, how generative AI works, real classroom applications, the AI tools built for teachers, and a live demonstration of classroom use.</p>
+        <span class="date-badge">DATE TBC · 09:30 – 13:00</span>
+      </div>
+      <div class="day-tab day2">
+        <span class="dt-label">Day Two · Using AI Well</span>
+        <h3>Prompt Engineering, Ethics &amp; Accessibility</h3>
+        <p>The CRTF framework for writing effective prompts, ethics/privacy/academic integrity woven through live examples, and digital accessibility as the closing, highest-relevance topic.</p>
+        <span class="date-badge">DATE TBC · 09:30 – 13:00</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Detailed Work Schedule</span>
+    <h2 class="section-title">Session-by-Session Plan — Both Days</h2>
+
+    <!-- DAY 1 -->
+    <div class="day-block">
+      <div class="day-heading">
+        <div class="day-num dn1">1</div>
+        <div class="day-heading-text">
+          <h3>Day One — Understanding AI</h3>
+          <span>2 slots · 3.5 hours · Foundations through classroom demonstration</span>
+        </div>
+      </div>
+
+      <div class="slot-label-bar"><span>Slot 1 · 09:30 – 11:00</span></div>
+      <div class="schedule-row">
+        <div class="time-col">09:30–09:45</div>
+        <div class="content-col">
+          <div class="activity-title">Welcome &amp; Ice-breaker</div>
+          <div class="activity-desc">Introduce yourself and the two-day arc. Ask who used Google Maps, autocorrect or YouTube recommendations this week — that was AI. Levels a mixed junior/mid-career room instantly. State plainly why Day 2 ends on accessibility: this is AI training built for special education, not generic AI training.</div>
+          <span class="activity-tag tag-concept">Interactive</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col">09:45–10:15</div>
+        <div class="content-col">
+          <div class="activity-title">Introduction to AI</div>
+          <div class="activity-desc">What AI is, what it isn't, brief history, why it matters now for classroom practice. Keep it plain-English — no jargon, no math.</div>
+          <span class="activity-tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col">10:15–11:00</div>
+        <div class="content-col">
+          <div class="activity-title">What is AI and Machine Learning</div>
+          <div class="activity-desc">The distinction that matters: AI is the goal, ML is one way machines learn patterns from data. Use a classroom-relevant analogy — a teacher noticing which teaching methods work best over years of experience is the human version of what ML does with data.</div>
+          <span class="activity-tag tag-concept">Concept</span>
+        </div>
+      </div>
+
+      <div class="break-bar"><span>Tea Break · 15 min</span></div>
+
+      <div class="slot-label-bar"><span>Slot 2 · 11:15 – 13:00</span></div>
+      <div class="schedule-row">
+        <div class="time-col">11:15–11:45</div>
+        <div class="content-col">
+          <div class="activity-title">Generative AI</div>
+          <div class="activity-desc">How tools like ChatGPT, Claude and Gemini generate text, images and ideas on demand. Live on-screen example: type one simple request, show the output in real time.</div>
+          <span class="activity-tag tag-demo">Demo</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col">11:45–12:15</div>
+        <div class="content-col">
+          <div class="activity-title">AI Applications</div>
+          <div class="activity-desc">Where AI already touches their work: lesson planning, simplified reading material, IEP drafting support, parent communication drafts, worksheet generation. Ground every example in special education, not generic office use.</div>
+          <span class="activity-tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col">12:15–12:40</div>
+        <div class="content-col">
+          <div class="activity-title">AI Tools for Teachers</div>
+          <div class="activity-desc">Walk through the tools grid below. Emphasise free tiers only — assume no institutional budget. Have each participant open one tool on their own phone.</div>
+          <span class="activity-tag tag-hands">Hands-On</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col">12:40–13:00</div>
+        <div class="content-col">
+          <div class="activity-title">Demonstration of Classroom Uses</div>
+          <div class="activity-desc">Live build: turn one real lesson topic (participant-suggested) into a simplified worksheet on-screen, start to finish. This is the moment that sells Day 2 — end on it, don't rush past it.</div>
+          <span class="activity-tag tag-demo">Demo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-block">
+      <div class="day-heading day2-h">
+        <div class="day-num dn2">2</div>
+        <div class="day-heading-text">
+          <h3>Day Two — Using AI Well</h3>
+          <span>2 slots · 3.5 hours · Prompting through ethics to accessibility</span>
+        </div>
+      </div>
+
+      <div class="slot-label-bar"><span>Slot 1 · 09:30 – 11:00</span></div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">09:30–09:40</div>
+        <div class="content-col">
+          <div class="activity-title">Reconnect &amp; Recap</div>
+          <div class="activity-desc">Ask who tried a tool overnight. Build on whatever energy comes back — this is your bridge from Day 1's "what AI can do" to Day 2's "how to make it do it well."</div>
+          <span class="activity-tag tag-concept">Interactive</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">09:40–10:15</div>
+        <div class="content-col">
+          <div class="activity-title">Prompt Engineering</div>
+          <div class="activity-desc">Why the same tool gives a bad answer to a bad question and a great answer to a well-built one. Set up CRTF before showing the formula.</div>
+          <span class="activity-tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">10:15–11:00</div>
+        <div class="content-col">
+          <div class="activity-title">How to Write Effective Prompts — CRTF</div>
+          <div class="activity-desc">Context, Role, Task, Format — the four-part formula. Live rebuild of a weak participant prompt into a strong one, on-screen. Every participant writes and runs one prompt before the break.</div>
+          <span class="activity-tag tag-hands">Hands-On</span>
+        </div>
+      </div>
+
+      <div class="break-bar"><span>Tea Break · 15 min</span></div>
+
+      <div class="slot-label-bar"><span>Slot 2 · 11:15 – 13:00</span></div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">11:15–11:50</div>
+        <div class="content-col">
+          <div class="activity-title">Ethics, Privacy &amp; Academic Integrity</div>
+          <div class="activity-desc">No real student data ever goes into any AI tool — state this once, plainly, as the one non-negotiable rule of the two days. Cover AI-assisted vs AI-authored work, and what "the teacher validates, AI never decides" means in practice.</div>
+          <span class="activity-tag tag-concept">Concept</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">11:50–12:35</div>
+        <div class="content-col">
+          <div class="activity-title">Digital Accessibility</div>
+          <div class="activity-desc">The closing topic and the reason this training exists in this form. Walk through the adaptation grid below — one tool or technique per disability type participants actually teach.</div>
+          <span class="activity-tag tag-demo">Demo</span>
+        </div>
+      </div>
+      <div class="schedule-row">
+        <div class="time-col teal-time">12:35–13:00</div>
+        <div class="content-col">
+          <div class="activity-title">Wrap-Up, Q&amp;A &amp; Takeaway</div>
+          <div class="activity-desc">Distribute the instructor takeaway link. Close by asking each participant to name one thing they will try this week — verbal commitment beats a handout alone.</div>
+          <span class="activity-tag tag-concept">Interactive</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h4>Resource Person Notes — Two-Day Strategy</h4>
+      <ul class="tips-list">
+        <li>Open by naming what's already AI in their daily life — mixed-seniority rooms need a shared floor, not a shared ceiling</li>
+        <li>Fold ethics into every demo rather than isolating it as one lecture — it lands as practice, not theory</li>
+        <li>State the "no real student data" rule once, clearly, early on Day 2 — don't bury it in the ethics slot</li>
+        <li>Keep every tool on free tiers only — assume no budget across the department</li>
+        <li>End Day 1 on the live demonstration — it is what makes people show up for Day 2</li>
+        <li>Save Digital Accessibility for the very last topic — it's your differentiator, not a footnote</li>
+        <li>Have a pre-recorded screen capture ready as backup for any live demo</li>
+        <li>Close with a verbal one-thing commitment from each participant, not just a takeaway handout</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CURRICULUM MAP -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Curriculum Alignment</span>
+    <h2 class="section-title">Where Each Topic Lands</h2>
+    <div class="curriculum-grid">
+      <div class="curriculum-card">
+        <div class="curriculum-card-header">
+          <span class="num">DAY 1</span>
+          <h4>Teaching &amp; Classroom Application</h4>
+        </div>
+        <div class="curriculum-card-body"><ul>
+          <li>AI-assisted lesson and session planning</li>
+          <li>Simplified reading material generation</li>
+          <li>Worksheet and activity generation</li>
+          <li>Live classroom demonstration build</li>
+        </ul></div>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-header">
+          <span class="num teal-num">DAY 1</span>
+          <h4>Parent Communication &amp; IEP Support</h4>
+        </div>
+        <div class="curriculum-card-body"><ul>
+          <li>AI Applications topic covers drafting parent letters and updates</li>
+          <li>AI-assisted first-draft IEP language — teacher validates and finalises every line</li>
+          <li>Tone and clarity checks for family-facing communication</li>
+        </ul></div>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-header">
+          <span class="num violet-num">DAY 2</span>
+          <h4>Ethics, Privacy &amp; Academic Integrity</h4>
+        </div>
+        <div class="curriculum-card-body"><ul>
+          <li>No real student data in any AI tool — the one absolute rule</li>
+          <li>AI-assisted vs AI-authored work, explained plainly</li>
+          <li>Teacher validation as the final and only authority</li>
+        </ul></div>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-header">
+          <span class="num teal-num">DAY 2</span>
+          <h4>Assistive Technology &amp; Accessibility</h4>
+        </div>
+        <div class="curriculum-card-body"><ul>
+          <li>One adaptation per disability type — see grid below</li>
+          <li>Built-in, free accessibility tools already on their devices</li>
+          <li>Direct tie-back to their actual classrooms, not generic office AI</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Tools Reference — Both Days</span>
+    <h2 class="section-title">Every Tool You Will Demonstrate</h2>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-name">ChatGPT (GPT-4o/5)</div><div class="tool-use">Lesson plans, worksheets, simplified text, parent letters</div><div class="tool-cat">Day 1 · Free tier</div></div>
+      <div class="tool-card"><div class="tool-name">Google Gemini</div><div class="tool-use">Google Docs/Slides integration for Google-ecosystem teachers</div><div class="tool-cat">Day 1 · Free</div></div>
+      <div class="tool-card"><div class="tool-name">Claude (Anthropic)</div><div class="tool-use">Long documents, nuanced content, careful and ethical responses</div><div class="tool-cat">Day 1 · Free tier</div></div>
+      <div class="tool-card"><div class="tool-name">Microsoft Copilot</div><div class="tool-use">Word, Teams, Outlook — admin automation, free in Edge</div><div class="tool-cat">Day 1 · Free</div></div>
+      <div class="tool-card"><div class="tool-name">Canva AI (Magic Write)</div><div class="tool-use">Accessible visual materials, communication boards, posters</div><div class="tool-cat">Day 1 · Free tier</div></div>
+      <div class="tool-card"><div class="tool-name">Gamma.app</div><div class="tool-use">Type a topic → complete presentation in seconds</div><div class="tool-cat">Day 1 · Free tier</div></div>
+      <div class="tool-card violet-card"><div class="tool-name">Microsoft Immersive Reader</div><div class="tool-use">Text-to-speech, syllable mode — built into Word and Edge, free</div><div class="tool-cat">Day 2 · Free</div></div>
+      <div class="tool-card violet-card"><div class="tool-name">Otter.ai</div><div class="tool-use">Live classroom transcription for hearing-impaired students</div><div class="tool-cat">Day 2 · Free tier</div></div>
+      <div class="tool-card violet-card"><div class="tool-name">Be My Eyes AI</div><div class="tool-use">AI describes what the camera sees — free, visually impaired students</div><div class="tool-cat">Day 2 · Free</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ACCESSIBILITY ADAPTATION -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Digital Accessibility — Live Reference</span>
+    <h2 class="section-title">One Adaptation, Every Disability Type</h2>
+    <div class="adapt-grid">
+      <div class="adapt-card"><span class="a-need">Visual Impairment</span><p>No visual-only instructions. Demonstrate Be My Eyes AI and screen-reader-friendly document structure.</p></div>
+      <div class="adapt-card"><span class="a-need">Hearing Impairment</span><p>No audio-only content. Demonstrate Otter.ai live captioning and text-first material.</p></div>
+      <div class="adapt-card"><span class="a-need">Intellectual Disability</span><p>Simplify and repeat. Demonstrate AI-generated simplified-reading-level worksheets.</p></div>
+      <div class="adapt-card"><span class="a-need">ADHD</span><p>Chunk content, build in movement. Demonstrate AI breaking one long task into short steps.</p></div>
+      <div class="adapt-card"><span class="a-need">Autism</span><p>Structure and predictability. Demonstrate AI-generated visual schedules and social stories.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">Resource Person</span>
+    <h2 class="section-title">Presenter Profile</h2>
+    <div class="profile-box">
+      <div class="profile-initials">WH</div>
+      <div>
+        <div class="profile-name">Wasim Hassan</div>
+        <div class="profile-title">
+          Excise &amp; Taxation Officer, Government of Punjab<br>
+          Doctoral Researcher, University of Punjab — Mathematics Education, Teacher Self-Efficacy<br>
+          Chairperson, Enlyst Smart Recruiting Pvt Ltd · Google Cloud Certified (ACE, CDL, Data Analytics) · GCP Partner APAC
+        </div>
+        <div class="profile-tags">
+          <span>PhD Researcher · Teacher Self-Efficacy</span>
+          <span>Google Cloud ACE</span>
+          <span>GCP Partner APAC</span>
+          <span>Founder, Enlyst Academy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Two-Day AI Training Programme · Special Education Department <span class="confirm-flag">CONFIRM VENUE/MEMO</span> &nbsp;·&nbsp; <strong>Resource Person: Wasim Hassan</strong>
+</div>
+
+</body>
+</html>
